@@ -1,0 +1,19 @@
+﻿@model Bruttissimo.Domain.Logic.Email.Model.LatestNewsSidebarModel
+<h4 class="h4" style="text-decoration:underline;"></h4>
+
+<table border="0" cellpadding="0" cellspacing="4">
+	<tr>
+		<td align="left" valign="middle" width="16">
+			<img src="@Url.Content("~/Content/Images/Email/news.png")" style="margin:0 !important;" />
+		</td>
+		<td align="left" valign="top">
+			<strong>@Resource.String("LatestNews")</strong>
+		</td>
+	</tr>
+</table>
+
+@foreach(string title in Model.Titles)
+{
+	<a href="http://www.google.com">@title</a>
+	<br/>
+}

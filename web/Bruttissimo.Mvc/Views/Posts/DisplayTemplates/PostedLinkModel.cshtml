@@ -1,0 +1,20 @@
+﻿@model PostedLinkModel
+@{
+	string articleUrl = Url.Action("Details", "Posts", new { id = Model.PostId, slug = Model.PostSlug });
+}
+<header>
+    <h1>
+        <a href="@articleUrl">@Model.Title</a>
+    </h1>
+</header>
+<section class="user-description">
+    <strong class="username">@Model.UserDisplayName</strong>
+    <span class="user-message">@Model.UserMessage</span>
+</section>
+@if (Model.HasPicture)
+{
+    <a class="post-thumbnail" href="@articleUrl">
+        <img src="@Model.PictureUrl" alt="" />
+    </a>
+}
+<section class="post-description">@Model.Description</section>

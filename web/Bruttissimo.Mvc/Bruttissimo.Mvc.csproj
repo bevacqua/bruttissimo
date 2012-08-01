@@ -1,0 +1,458 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5C3C4F8C-DC67-4E7E-8435-667774FC043E}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bruttissimo.Mvc</RootNamespace>
+    <AssemblyName>Bruttissimo.Mvc</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Bruttissimo.External\Castle.Windsor\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\Bruttissimo.External\Castle.Windsor\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="dotless.Core, Version=1.2.2.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Bruttissimo.External\SquishIt\0.9\dotless.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\Bruttissimo.External\FluentValidation\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\Bruttissimo.External\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="MiniProfiler">
+      <HintPath>..\Bruttissimo.External\MiniProfiler\MiniProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.0.5.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Bruttissimo.External\Newtonsoft.Json\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SignalR">
+      <HintPath>..\Bruttissimo.External\SignalR\SignalR.dll</HintPath>
+    </Reference>
+    <Reference Include="SignalR.Hosting.AspNet">
+      <HintPath>..\Bruttissimo.External\SignalR\SignalR.Hosting.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="SignalR.Hosting.Common">
+      <HintPath>..\Bruttissimo.External\SignalR\SignalR.Hosting.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="SquishIt.Framework, Version=0.8.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Bruttissimo.External\SquishIt\0.9\SquishIt.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="SquishIt.Mvc, Version=0.8.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Bruttissimo.External\SquishIt\0.9\SquishIt.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Yahoo.Yui.Compressor, Version=1.6.0.2, Culture=neutral, PublicKeyToken=f8b4b81ec75097e2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Bruttissimo.External\SquishIt\0.9\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\..\functional.txt">
+      <Link>functional.txt</Link>
+    </Content>
+    <Content Include="Content\Images\Email\facebook.png" />
+    <Content Include="Content\Images\Email\header.gif" />
+    <Content Include="Content\Images\Email\news.png" />
+    <Content Include="Content\Images\Email\sharing.png" />
+    <Content Include="Content\Images\Email\twitter.png" />
+    <Content Include="Content\Images\Email\validation.png" />
+    <Content Include="Content\Images\lgah.jpg" />
+    <Content Include="Content\Images\san-dia.jpg" />
+    <Content Include="Content\Images\sandia.png" />
+    <Content Include="Content\Images\Sprites\icons.png" />
+    <Content Include="Content\Images\Sprites\providers-large.png" />
+    <Content Include="Content\Images\Sprites\providers-small.png" />
+    <Content Include="Content\Script\b.init.js" />
+    <Content Include="Content\Script\b.facebook.js" />
+    <Content Include="Content\Script\b.twitter.js" />
+    <Content Include="Content\Script\b.realtime.js" />
+    <Content Include="Content\Script\jquery-1.7.2.js" />
+    <Content Include="Content\Script\jquery-1.7.2.min.js" />
+    <Content Include="Content\Script\json2.js" />
+    <Content Include="Content\Script\jquery.validate.js" />
+    <Content Include="Content\Script\jquery.validate.tooltip.js" />
+    <Content Include="Content\Script\jquery.tooltip.js" />
+    <Content Include="Content\Script\jquery.placeholder.js" />
+    <Content Include="Content\Script\Views\Posts\index.js" />
+    <Content Include="Content\Style\Views\Posts\create.css" />
+    <Content Include="Content\Style\Views\Posts\index.css" />
+    <Content Include="Content\Style\Views\User\login.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="robots.txt" />
+    <Content Include="old_stylesheet_design.css" />
+    <None Include="..\..\..\readme.md">
+      <Link>readme.md</Link>
+    </None>
+    <None Include="Content\Style\controls.less" />
+    <None Include="Content\Style\layout.footer.less" />
+    <None Include="Content\Style\design.less" />
+    <None Include="Content\Style\functions.less" />
+    <Content Include="Content\Style\layout.css" />
+    <Content Include="Content\Script\jquery.signalR-0.5.2.js" />
+    <Content Include="Content\Script\jquery.signalR-0.5.2.min.js" />
+    <Content Include="SignalR\note.txt" />
+    <Content Include="Views\Error\ChildAction.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\Unhandled.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Posts\Create.cshtml" />
+    <Content Include="Views\Posts\Create.js.cshtml" />
+    <Content Include="Views\Posts\Preview.cshtml" />
+    <Content Include="Views\Resource\Localization.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Exception.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LayoutHtml.cshtml" />
+    <Content Include="Views\Shared\_LayoutSections.cshtml" />
+    <Content Include="Views\Shared\_LayoutScripts.cshtml" />
+    <Content Include="Views\Shared\_LayoutStyles.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Xml\app.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Xml\compilation.config" />
+    <Content Include="Xml\db.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Xml\log4net.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Xml\membership.authentication.config" />
+    <Content Include="Xml\membership.provider.config" />
+    <Content Include="Xml\membership.roles.config" />
+    <Content Include="Xml\pages.config" />
+    <Content Include="web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Error\_ViewStart.cshtml" />
+    <Content Include="Xml\smtp.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Shared\NoScript.cshtml" />
+    <Content Include="Views\User\Login.js.cshtml" />
+    <Content Include="Views\Shared\_Sitemap.cshtml" />
+    <Content Include="Views\Shared\_Logon.cshtml" />
+    <Content Include="Views\Posts\Index.cshtml" />
+    <Content Include="Views\Shared\_OpenGraphMetadata.cshtml" />
+    <Content Include="Views\Posts\DisplayTemplates\PostedLinkModel.cshtml" />
+    <Content Include="Views\Posts\DisplayTemplates\PostedImageModel.cshtml" />
+    <Content Include="Views\Posts\Index.js.cshtml" />
+    <Content Include="Views\Posts\Details.cshtml" />
+    <Content Include="Views\web.config" />
+    <Content Include="Views\Shared\DisplayTemplates\String.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Bruttissimo.SharedComponents\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="IoC\ApplicationInstaller.cs" />
+    <Compile Include="Content\Script\Resources\Authentication.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Authentication.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\Script\Resources\Common.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Common.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\Script\Resources\Facebook.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Facebook.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\Script\Resources\Post.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Post.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PostsController.cs" />
+    <Compile Include="Models\PostedImageModel.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Models\Binders\MiniPrincipalModelBinder.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Interfaces\IHasOpenGraphMetadata.cs" />
+    <Compile Include="Models\OpenGraphModel.cs" />
+    <Compile Include="Models\PostModel.cs" />
+    <Compile Include="Models\PostedLinkModel.cs" />
+    <Compile Include="Models\PostListModel.cs" />
+    <Compile Include="Models\PostCreationModel.cs" />
+    <Compile Include="Models\UserLoginModel.cs" />
+    <Compile Include="Models\Validators\PostCreationModelValidator.cs" />
+    <Compile Include="Models\Validators\UserLoginModelValidator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Routing\All.cs" />
+    <Compile Include="Views\Error\Resources\Index.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Error\Resources\NotFound.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NotFound.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Error\Resources\Unhandled.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Unhandled.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Posts\Resources\Index.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Posts\Resources\Create.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Create.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Posts\Resources\Preview.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Preview.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Resources\Application.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Application.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Resources\_Logon.Designer.cs">
+      <DependentUpon>_Logon.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Shared\Resources\_Sitemap.Designer.cs">
+      <DependentUpon>_Sitemap.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Shared\Resources\NoScript.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NoScript.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\Resources\_LayoutSections.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_LayoutSections.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\Resources\Login.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Login.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Images\Error\alone.png" />
+    <Content Include="Content\Images\Error\server.png" />
+    <Content Include="Content\Images\Error\servers.png" />
+    <Content Include="Content\Images\Error\sign.png" />
+    <Content Include="Content\Script\b.core.js" />
+    <Content Include="Content\Script\b.extensions.js" />
+    <Content Include="Content\Script\html5shiv.js" />
+    <Content Include="Content\Script\jquery-1.7.1.js" />
+    <Content Include="Content\Script\jquery-1.7.1.min.js" />
+    <Content Include="Content\Script\jquery.extensions.js" />
+    <Content Include="Content\Script\jquery.form.js" />
+    <Content Include="Content\Script\jquery.validate.min.js" />
+    <Content Include="Content\Script\jquery.validate.unobtrusive.js" />
+    <Content Include="Content\Script\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Content\Script\modernizr-2.5.3.min.js" />
+    <Content Include="Content\Script\modernizr.js" />
+    <Content Include="Content\Script\Views\User\login.js" />
+    <Content Include="Content\Script\Views\Posts\create.js" />
+    <Content Include="Content\Style\elements.css" />
+    <Content Include="Content\Style\form.css" />
+    <Content Include="Content\Style\misc.css" />
+    <Content Include="Content\Style\reset.css" />
+    <Content Include="Content\Style\Views\Error\all.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Content\Script\Resources\Authentication.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Authentication.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content\Script\Resources\Facebook.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Facebook.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content\Script\Resources\Common.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Common.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content\Script\Resources\Post.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Post.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Error\Resources\Index.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Error\Resources\NotFound.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>NotFound.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Error\Resources\Unhandled.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Unhandled.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Posts\Resources\Index.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Posts\Resources\Create.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Create.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Posts\Resources\Preview.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Preview.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Shared\Resources\Application.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Shared\Resources\_Logon.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>_Logon.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Shared\Resources\_Sitemap.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>_Sitemap.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Shared\Resources\NoScript.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>NoScript.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Shared\Resources\_LayoutSections.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>_LayoutSections.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\User\Resources\Login.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Login.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Bruttissimo.Common.Mvc\Bruttissimo.Common.Mvc.csproj">
+      <Project>{BE9DCCD0-D5AA-4AFF-9C42-34E325D1FD7E}</Project>
+      <Name>Bruttissimo.Common.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bruttissimo.Common\Bruttissimo.Common.csproj">
+      <Project>{8069E6E0-91C4-4BC2-A490-80A5674F6CFC}</Project>
+      <Name>Bruttissimo.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bruttissimo.Domain.Logic\Bruttissimo.Domain.Logic.csproj">
+      <Project>{58A64FF9-DA97-4097-8149-E2E93844B738}</Project>
+      <Name>Bruttissimo.Domain.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bruttissimo.Domain\Bruttissimo.Domain.csproj">
+      <Project>{2CDC59CD-F04A-4CF3-BCD4-7063245101B6}</Project>
+      <Name>Bruttissimo.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bruttissimo.Mvc.Windsor\Bruttissimo.Mvc.Windsor.csproj">
+      <Project>{64E9FD64-74DA-4FEE-9611-722D475B6312}</Project>
+      <Name>Bruttissimo.Mvc.Windsor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3092</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://bruttijji.mo</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

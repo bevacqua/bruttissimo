@@ -1,0 +1,37 @@
+﻿@model UserLoginModel
+<section class="logon-container">
+	<header class="logon-validation">
+		@if (Model.HasReturnUrl)
+		{
+			<p>@Resource.String("LoginRequired")</p>
+		}
+		<p>@Html.ValidationMessage("Authentication")</p>
+	</header>
+	@using (Html.BeginForm("Login", "User", FormMethod.Post, new { @class = "site-logon" }))
+	{
+		@Html.AntiForgeryToken("g#CzX3w")
+		<input type="hidden" name="source" value="local" />
+		<fieldset>
+			<legend>@Resource.String("LocalLogon")</legend>
+			<p>
+				@Html.TextBoxFor(m => m.Email, new { type = "email", placeholder = Resource.String("EmailPlaceholder"), title = Resource.String("EmailPlaceholder") })
+				@Html.ValidationMessageFor(m => m.Email)
+			</p>
+			<p>
+				@Html.PasswordFor(m => m.Password, new { placeholder = Resource.String("PasswordPlaceholder"), title = Resource.String("PasswordPlaceholder") })
+				@Html.ValidationMessageFor(m => m.Password)
+			</p>
+		</fieldset>
+		<input type="submit" value="@Resource.String("LocalSubmit")" />
+	}
+	@using (Html.BeginForm("Authenticate", "User", FormMethod.Post, new { @class = "provider-logon hidden" }))
+	{
+		<input type="hidden" class="provider-source" name="source" />
+		<input type="hidden" class="provider-openIdProvider" name="openIdProvider" />
+		<input type="hidden" class="provider-returnUrl" name="returnUrl" />
+		<fieldset>
+			<legend>@Resource.String("ProviderLogon")</legend>
+			<section class="provider-buttons"></section>
+		</fieldset>
+	}
+</section>

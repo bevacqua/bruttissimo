@@ -1,0 +1,7 @@
+﻿@{
+    IHasOpenGraphMetadata model = Model as IHasOpenGraphMetadata;
+    if (model != null && model.OpenGraph != null)
+    {
+        <meta property="og:title" content="test" />
+    }
+}

@@ -1,0 +1,24 @@
+﻿@model PostListModel
+@if (Model.Posts == null || Model.Posts.Count == 0)
+{
+	<section class="posts">
+		<p>@Resource.String("NoMorePosts")</p>
+	</section>
+}
+else
+{
+	long timestamp = Model.Posts.Last().Timestamp.ToBinary();
+	<section class="posts">
+		@for (int i = 0; i < Model.Posts.Count; i++)
+		{
+			PostModel post = Model.Posts[i];
+			<article class="post @(i.IsEven() ? "even" : "odd")" data-timestamp="@timestamp">
+				@Html.DisplayFor(m => post)
+			</article>
+		}
+	</section>
+	<div class="clear"></div>
+	<section class="more-posts">
+		<a class="button more-posts-link" href="@Url.Action("Until", "Posts", new { id = timestamp })">@Resource.String("More")</a>
+	</section>
+}

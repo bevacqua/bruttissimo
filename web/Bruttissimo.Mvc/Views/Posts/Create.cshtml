@@ -1,0 +1,18 @@
+﻿@model PostCreationModel
+<section class="create-post">
+    @using (Html.BeginForm("Create", "Posts", FormMethod.Post, new { @class = "post-creation" }))
+    {
+	    @Html.AntiForgeryToken("c!#3s")
+	    <fieldset>
+		    <p>
+			    @Html.TextBoxFor(m => m.Link, new { type = "url", @class = "post-link", placeholder = Resource.String("LinkPlaceholder"), title = Resource.String("LinkPlaceholder") })
+			    @Html.ValidationMessageFor(m => m.Link)
+		    </p>
+		    <p>
+			    @Html.TextBoxFor(m => m.UserMessage, new { @class="post-user-message", placeholder = Resource.String("UserMessagePlaceholder"), title = Resource.String("UserMessagePlaceholder") })
+		    </p>
+	    </fieldset>
+	    <input type="submit" value="@Resource.String("Publish")" />
+    }
+    <article class="post-preview medium-screen"></article>
+</section>

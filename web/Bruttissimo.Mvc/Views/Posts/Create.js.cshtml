@@ -1,0 +1,8 @@
+﻿@model PostCreationModel
+<script>
+	(function ($, b) {
+		$(function () {
+			b.views.post.create('@Url.Action("Preview", "Posts")');
+		});
+	})(jQuery, bruttijjimo);
+</script>
