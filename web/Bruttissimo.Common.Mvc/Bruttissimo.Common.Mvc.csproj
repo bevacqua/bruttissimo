@@ -95,10 +95,10 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\ResourceController.cs" />
     <Compile Include="Engine\ExtendedController.cs" />
-    <Compile Include="Engine\ExtendedRazorView.cs" />
+    <Compile Include="Engine\ExtendedView.cs" />
+    <Compile Include="Engine\ExtendedViewEngine.cs" />
     <Compile Include="Engine\StringRenderingController.cs" />
     <Compile Include="Engine\ExtendedControllerContext.cs" />
-    <Compile Include="Engine\ExtendedRazorViewEngine.cs" />
     <Compile Include="Extensions\BundleBase`1.cs" />
     <Compile Include="Extensions\Exception.cs" />
     <Compile Include="Extensions\HttpRequestBase.cs" />

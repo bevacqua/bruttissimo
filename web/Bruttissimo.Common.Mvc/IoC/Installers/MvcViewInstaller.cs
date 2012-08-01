@@ -32,7 +32,7 @@ namespace Bruttissimo.Common.Mvc
 			container.Register(
 				Component
 					.For<IViewEngine>()
-					.ImplementedBy<ExtendedRazorViewEngine>()
+					.ImplementedBy<ExtendedViewEngine>()
 					.LifestyleSingleton()
 			);
 

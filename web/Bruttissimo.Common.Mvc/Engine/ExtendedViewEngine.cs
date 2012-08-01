@@ -4,11 +4,11 @@ using Castle.MicroKernel;
 
 namespace Bruttissimo.Common.Mvc
 {
-	public sealed class ExtendedRazorViewEngine : RazorViewEngine
+	public sealed class ExtendedViewEngine : RazorViewEngine
 	{
 		private readonly IKernel kernel;
 
-		public ExtendedRazorViewEngine(IKernel kernel)
+		public ExtendedViewEngine(IKernel kernel)
 		{
 			if (kernel == null)
 			{
@@ -20,13 +20,15 @@ namespace Bruttissimo.Common.Mvc
 		protected override IView CreatePartialView(ControllerContext controllerContext, string partialPath)
 		{
 			RegisterJavaScript(controllerContext, partialPath);
-			return new ExtendedRazorView(controllerContext, partialPath, null, false, FileExtensions, ViewPageActivator);
+			IView view = base.CreatePartialView(controllerContext, partialPath);
+			return new ExtendedView(view, controllerContext); // expose the controller context.
 		}
 
 		protected override IView CreateView(ControllerContext controllerContext, string viewPath, string masterPath)
 		{
 			RegisterJavaScript(controllerContext, viewPath);
-			return new ExtendedRazorView(controllerContext, viewPath, masterPath, true, FileExtensions, ViewPageActivator);
+			IView view = base.CreateView(controllerContext, viewPath, masterPath);
+			return new ExtendedView(view, controllerContext); // expose the controller context.
 		}
 
 		/// <summary>
@@ -70,7 +72,7 @@ namespace Bruttissimo.Common.Mvc
 				var viewContext = controllerContext as ViewContext;
 				if (viewContext != null)
 				{
-					var razorView = viewContext.View as ExtendedRazorView;
+					var razorView = viewContext.View as ExtendedView;
 					if (razorView != null)
 					{
 						extendedContext = razorView.ControllerContext as ExtendedControllerContext;

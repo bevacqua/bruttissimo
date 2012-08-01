@@ -1,6 +1,14 @@
-# Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
+# Build Folders
+sql
 bin
 obj
 
 # mstest test results
 TestResults
+
+# ReSharper cache
+_ReSharper*
+
+# localized solution configuration files
+*.suo
+*.user
