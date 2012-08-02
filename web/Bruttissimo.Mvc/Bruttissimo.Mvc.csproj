@@ -147,12 +147,6 @@
     <None Include="..\..\README.md">
       <Link>README.md</Link>
     </None>
-    <None Include="..\..\TODO.functional">
-      <Link>TODO.functional</Link>
-    </None>
-    <None Include="..\..\TODO.nth">
-      <Link>TODO.nth</Link>
-    </None>
     <None Include="Content\Style\controls.less" />
     <None Include="Content\Style\layout.footer.less" />
     <None Include="Content\Style\design.less" />

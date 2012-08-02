@@ -16,3 +16,4 @@ desktop.ini
 
 # db project files
 *.dbmdl
+*.schemaview
