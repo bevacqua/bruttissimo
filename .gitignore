@@ -9,6 +9,10 @@ TestResults
 # ReSharper cache
 _ReSharper*
 
-# localized solution configuration files
+# local environment configuration files
 *.suo
 *.user
+desktop.ini
+
+# db project files
+*.dbmdl
