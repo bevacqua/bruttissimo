@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using Bruttissimo.Common;
 using Bruttissimo.Common.Resources;
-using Bruttissimo.Domain.Social.Facebook;
+using Bruttissimo.Domain.Social;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Bruttissimo.Tests.Integration

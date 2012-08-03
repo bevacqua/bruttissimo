@@ -1,4 +1,4 @@
-﻿namespace Bruttissimo.Domain.Social.Facebook
+﻿namespace Bruttissimo.Domain.Social
 {
 	public class FacebookUserProvider : FacebookProvider
 	{

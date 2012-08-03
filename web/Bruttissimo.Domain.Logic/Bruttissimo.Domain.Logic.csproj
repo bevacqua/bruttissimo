@@ -99,6 +99,7 @@
     <Compile Include="Authentication\PlainAuthenticationPortal.cs" />
     <Compile Include="Authentication\OAuthAuthenticationPortal.cs" />
     <Compile Include="Authentication\OpenIdAuthenticationPortal.cs" />
+    <Compile Include="Job\FacebookImportJob.cs" />
     <Compile Include="MiniMembership\MiniAuthenticationWrapper.cs" />
     <Compile Include="SignalR\Hubs\PostHub.cs" />
     <Compile Include="MiniMembership\MiniIdentity.cs" />
@@ -180,6 +181,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scheduler\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

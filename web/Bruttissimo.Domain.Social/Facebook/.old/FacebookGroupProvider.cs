@@ -4,7 +4,7 @@ using Bruttissimo.Common;
 using Bruttissimo.Common.Resources;
 using Facebook;
 
-namespace Bruttissimo.Domain.Social.Facebook
+namespace Bruttissimo.Domain.Social
 {
 	public class FacebookGroupProvider
 	{

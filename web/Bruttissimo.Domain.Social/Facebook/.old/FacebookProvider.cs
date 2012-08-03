@@ -1,7 +1,7 @@
 ﻿using System;
 using Facebook;
 
-namespace Bruttissimo.Domain.Social.Facebook
+namespace Bruttissimo.Domain.Social
 {
 	public abstract class FacebookProvider
 	{

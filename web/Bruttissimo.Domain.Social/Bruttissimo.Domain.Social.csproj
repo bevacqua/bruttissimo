@@ -51,11 +51,13 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Facebook\FacebookProvider.cs" />
-    <Compile Include="Facebook\FacebookUserProvider.cs" />
-    <Compile Include="Facebook\GroupGetParams.cs" />
-    <Compile Include="Facebook\GroupPostParams.cs" />
-    <Compile Include="Facebook\FacebookGroupProvider.cs" />
+    <Compile Include="Facebook\Entity\FacebookPost.cs" />
+    <Compile Include="Facebook\FacebookService.cs" />
+    <Compile Include="Facebook\.old\FacebookProvider.cs" />
+    <Compile Include="Facebook\.old\FacebookUserProvider.cs" />
+    <Compile Include="Facebook\.old\GroupGetParams.cs" />
+    <Compile Include="Facebook\.old\GroupPostParams.cs" />
+    <Compile Include="Facebook\.old\FacebookGroupProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,9 +66,7 @@
       <Name>Bruttissimo.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Facebook\Entity\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
