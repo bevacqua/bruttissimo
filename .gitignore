@@ -3,11 +3,15 @@ sql
 bin
 obj
 
+# not a build folder per se, but the NuGet packages repository
+packages
+
 # mstest test results
 TestResults
 
-# ReSharper cache
+# Local cache files
 _ReSharper*
+*.debug.css
 
 # local environment configuration files
 *.suo

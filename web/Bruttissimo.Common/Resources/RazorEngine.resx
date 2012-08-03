@@ -120,6 +120,9 @@
   <data name="EmbeddedResourceNotFound" xml:space="preserve">
     <value>There is no embedded resource with the provided key. Please verify the resource has the 'Embedded Resource' build action.</value>
   </data>
+  <data name="EmbeddedTemplateResolverNotFound" xml:space="preserve">
+    <value>TemplateService improperly configured. Template resolver should be a configured instance of EmbeddedTemplateResolver.</value>
+  </data>
   <data name="ResourceSharedNamespace" xml:space="preserve">
     <value>Shared</value>
   </data>
@@ -130,8 +133,5 @@
   <data name="TemplateNameWithNamespace" xml:space="preserve">
     <value>{0}.{1}.cshtml</value>
     <comment>0=namespace, 1=template name</comment>
-  </data>
-  <data name="TemplateResolverNotFound" xml:space="preserve">
-    <value>TemplateService improperly configured. Template resolver should be a configured instance of EmbeddedTemplateResolver.</value>
   </data>
 </root>

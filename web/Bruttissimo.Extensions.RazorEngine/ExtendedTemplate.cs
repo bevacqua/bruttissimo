@@ -1,6 +1,4 @@
-using System;
 using Bruttissimo.Common;
-using Bruttissimo.Common.Resources;
 using RazorEngine.Templating;
 
 namespace Bruttissimo.Extensions.RazorEngine

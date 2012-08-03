@@ -32,7 +32,7 @@ namespace Bruttissimo.Extensions.RazorEngine
 			EmbeddedTemplateResolver resolver = templateBase.TemplateService.Resolver as EmbeddedTemplateResolver;
 			if (resolver == null)
 			{
-				throw new InvalidOperationException(Common.Resources.RazorEngine.TemplateResolverNotFound);
+				throw new InvalidOperationException(Common.Resources.RazorEngine.EmbeddedTemplateResolverNotFound);
 			}
 			Assembly assembly = resolver.ResourceAssembly;
 			return assembly;
