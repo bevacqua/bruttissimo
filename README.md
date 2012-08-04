@@ -9,12 +9,12 @@ Conventions
 Script and Style Resources:
 ---------------------------
 
-	- localization resources located in ~/Content/Script/Resources and ~/Common.prj/Resources/Shared/ are passed to the client through JavaScript after being minified.
+	- localization resources located in specific folders are passed to the client as JavaScript after being minified.
 	- all CSS is bundled and minified into a single stylesheet.
 	- static JS is bundled and minified into a single script file. views are to contain the smallest amount of JS code possible.
 	- view-specific code that is static should be invoked from the view, but be in the bundled script file.
 	- sometimes razor parameters are to be passed to these static files, keep them out of the static files, and pass them as arguments when invoked from the view.
-	- not all javascript resources are actually used, some are just for reference, like the un-minified version of jquery.
+	- not all javascript resources are actually referenced in the website, some are just for intellisense or code lookups, like the un-minified version of jquery.
 
 
 Exception Handling:
@@ -43,7 +43,7 @@ Features:
 	- Unobtrusive AJAX automation converting action ViewResults into AjaxViewResults.
 	- SignalR for persistent client/server connections for realtime updates.
 
-	- MVC arquitecture.
+	- MVC architecture.
 	- Custom "Mini" membership schema and providers, including Principal and Identity injection.
 	- Inversion of Control, Dependency Injection via constructors and properties.
 	- POCO Entities.
