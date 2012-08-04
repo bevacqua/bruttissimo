@@ -234,8 +234,7 @@ namespace Bruttissimo.Common.Mvc
 			StringBuilder sb = new StringBuilder();
 			using (StringWriter writer = new StringWriter(sb))
 			{
-				ViewContext viewContext = new ViewContext(context, view, new ViewDataDictionary(model), new TempDataDictionary(),
-														  writer);
+				ViewContext viewContext = new ViewContext(context, view, new ViewDataDictionary(model), new TempDataDictionary(), writer);
 				view.Render(viewContext, writer);
 				writer.Flush();
 			}

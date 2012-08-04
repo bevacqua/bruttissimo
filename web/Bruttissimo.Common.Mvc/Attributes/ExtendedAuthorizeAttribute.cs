@@ -4,8 +4,8 @@ using System.Web.Mvc;
 namespace Bruttissimo.Common.Mvc
 {
 	/// <summary>
-	/// AuthorizeAttribute implementation with a slight tweak that allows authenticated
-	/// but unauthorized requests to redirect to the home page instead of the login page.
+	/// AuthorizeAttribute implementation with a slight tweak that makes authenticated
+	/// but unauthorized requests to return Not Found results, enhancing security.
 	/// </summary>
 	[AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
 	public class ExtendedAuthorizeAttribute : AuthorizeAttribute
@@ -19,14 +19,8 @@ namespace Bruttissimo.Common.Mvc
 			}
 			else
 			{
-				filterContext.Result = RedirectToHome();
+				filterContext.Result = new NotFoundResult();
 			}
-		}
-
-		private ActionResult RedirectToHome()
-		{
-			ActionResult result = IoC.GetApplicationContainer().Resolve<RedirectToHomeResult>();
-			return result;
 		}
 	}
 }

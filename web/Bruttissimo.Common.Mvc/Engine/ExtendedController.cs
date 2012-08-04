@@ -1,6 +1,4 @@
 using System;
-using System.IO;
-using System.Text;
 using System.Web.Mvc;
 
 namespace Bruttissimo.Common.Mvc
@@ -44,7 +42,8 @@ namespace Bruttissimo.Common.Mvc
 		/// <summary>
 		/// Returns an AjaxViewJsonResult with the corresponding HTML and JavaScript for the provided view.
 		/// <para>This method is intended to be used in action methods marked with <see cref="AjaxOnlyAttribute" />.</para>
-		/// <para>For regular action methods (which can either be AJAX or not), it's not necessary to use AjaxView, in those cases, use View() instead.</para>
+		/// <para>For regular action methods (which can either be AJAX or not), it's not necessary to use AjaxView. Just invoke View instead.</para>
+		/// <para>Keep in mind in AJAX scenarios you can still return View and target a container using ViewBag.AjaxViewContainer</para>
 		/// </summary>
 		/// <param name="model">The model.</param>
 		/// <param name="container">The client-side container where to place the AJAX view result.</param>
@@ -57,7 +56,8 @@ namespace Bruttissimo.Common.Mvc
 		/// <summary>
 		/// Returns an AjaxViewJsonResult with the corresponding HTML and JavaScript for the provided view.
 		/// <para>This method is intended to be used in action methods marked with <see cref="AjaxOnlyAttribute" />.</para>
-		/// <para>For regular action methods (which can either be AJAX or not), it's not necessary to use AjaxView.</para>
+		/// <para>For regular action methods (which can either be AJAX or not), it's not necessary to use AjaxView. Just invoke View instead.</para>
+		/// <para>Keep in mind in AJAX scenarios you can still return View and target a container using ViewBag.AjaxViewContainer</para>
 		/// </summary>
 		/// <param name="viewName">The name of the view to return.</param>
 		/// <param name="model">The model.</param>
@@ -71,7 +71,8 @@ namespace Bruttissimo.Common.Mvc
 		/// <summary>
 		/// Returns an AjaxViewJsonResult with the corresponding HTML and JavaScript for the provided view.
 		/// <para>This method is intended to be used in action methods marked with <see cref="AjaxOnlyAttribute" />.</para>
-		/// <para>For regular action methods (which can either be AJAX or not), it's not necessary to use AjaxView.</para>
+		/// <para>For regular action methods (which can either be AJAX or not), it's not necessary to use AjaxView. Just invoke View instead.</para>
+		/// <para>Keep in mind in AJAX scenarios you can still return View and target a container using ViewBag.AjaxViewContainer</para>
 		/// </summary>
 		/// <param name="viewName">The name of the view to return.</param>
 		/// <param name="controller">The controller.</param>
