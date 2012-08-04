@@ -51,6 +51,7 @@ namespace Bruttissimo.Common.Mvc
 
 			filterContext.HttpContext.Response.Clear();
 			filterContext.HttpContext.Response.Status = Resources.Constants.HttpServerError;
+			filterContext.HttpContext.Response.TrySkipIisCustomErrors = true;
 
 			ErrorViewModel model = helper.GetErrorViewModel(filterContext.RouteData, exception);
 			filterContext.Result = new ViewResult

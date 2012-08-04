@@ -39,6 +39,7 @@ namespace Bruttissimo.Common.Mvc
 				{
 					application.Response.Clear();
 					application.Response.Status = Constants.HttpServerError;
+					application.Response.TrySkipIisCustomErrors = true;
 
 					LogApplicationException(application.Response, exception);
 					try

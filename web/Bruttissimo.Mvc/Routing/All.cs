@@ -19,10 +19,7 @@ namespace Bruttissimo.Mvc
 			RegisterViewRoutes(routes);
 
 			// this route is intended to catch 404 Not Found errors instead of bubbling them all the way up to IIS.
-			routes.MapRoute(
-				"PageNotFound", "{*catchall}",
-				notFound
-			);
+			routes.MapRoute("PageNotFound", "{*catchall}", notFound);
 		}
 
 		internal static void RegisterRouteIgnores(RouteCollection routes)
@@ -35,15 +32,8 @@ namespace Bruttissimo.Mvc
 				new { controller = "Error", action = "NotFound", id = UrlParameter.Optional }
 			);
 
-			routes.MapRoute(
-				"IgnoreHome", "Home",
-				notFound
-			);
-
-			routes.MapRoute(
-				"IgnoreIndex", "{controllerName}/Index/{*pathInfo}",
-				notFound
-			);
+			routes.MapRoute("IgnoreHome", "Home", notFound);
+			routes.MapRoute("IgnoreIndex", "{controllerName}/Index/{*pathInfo}", notFound);
 		}
 
 		internal static void RegisterViewRoutes(RouteCollection routes)
