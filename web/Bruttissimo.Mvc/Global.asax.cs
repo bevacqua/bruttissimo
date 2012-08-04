@@ -65,6 +65,7 @@ namespace Bruttissimo.Mvc
 
 			if (!Request.CanDisplayDebuggingDetails())
 			{
+				// abort profiling session if this isn't a local request and the user is not an administrator.
 				MiniProfiler.Stop(discardResults: true);
 			}
 		}
