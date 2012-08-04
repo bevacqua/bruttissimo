@@ -1,6 +1,4 @@
 using System;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Castle.MicroKernel;
@@ -29,7 +27,8 @@ namespace Bruttissimo.Common.Mvc
 		{
 			if (controllerType == null)
 			{
-				throw new HttpException((int)HttpStatusCode.NotFound, Resources.Error.ControllerNotFound.FormatWith(requestContext.HttpContext.Request.Path));
+				string message = Resources.Error.ControllerNotFound.FormatWith(requestContext.HttpContext.Request.Path);
+				throw new HttpNotFoundException(message);
 			}
 			return (IController)kernel.Resolve(controllerType); // this also resolves the IActionInvoker.
 		}

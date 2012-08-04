@@ -83,6 +83,8 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Exceptions\ExpectedException.cs" />
+    <Compile Include="Exceptions\HttpNotFoundException.cs" />
     <Compile Include="ActionResults\Json\AjaxViewJsonResult.cs" />
     <Compile Include="ActionResults\NotFoundResult.cs" />
     <Compile Include="ActionResults\Json\ExceptionJsonResult.cs" />

@@ -68,7 +68,6 @@
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Config.cs" />
-    <Compile Include="Exception\ExpectedException.cs" />
     <Compile Include="Extensions\Stream.cs" />
     <Compile Include="Extensions\Enumerable.cs" />
     <Compile Include="Extensions\Guid.cs" />

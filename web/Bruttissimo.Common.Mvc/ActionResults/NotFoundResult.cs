@@ -21,7 +21,7 @@ namespace Bruttissimo.Common.Mvc
 
 		public override void ExecuteResult(ControllerContext context)
 		{
-			throw new HttpException((int)HttpStatusCode.NotFound, Message, InnerException);
+			throw new HttpNotFoundException(Message, InnerException);
 		}
 	}
 }
