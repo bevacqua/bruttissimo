@@ -64,6 +64,8 @@ namespace Bruttissimo.Mvc.Controller
 			}
 		}
 
+		// TODO: replace with AutoMap attribute magic fun :)
+		// http://lostechies.com/jimmybogard/2009/06/30/how-we-do-mvc-view-models/
 		private PostModel PostModelConverter(Post post)
 		{
 			Link link = post.Link;
