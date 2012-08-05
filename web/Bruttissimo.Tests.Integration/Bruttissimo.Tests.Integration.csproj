@@ -79,7 +79,8 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Api\FacebookTests.cs" />
+    <Compile Include="FacebookServiceTests.cs" />
+    <Compile Include="FacebookTests.cs" />
     <Compile Include="DbTests.cs" />
     <Compile Include="EmailTests.cs" />
     <Compile Include="InversionOfControlTests.cs" />
