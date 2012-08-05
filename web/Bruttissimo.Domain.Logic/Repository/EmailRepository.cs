@@ -1,6 +1,7 @@
 using System;
 using System.Net.Mail;
 using Bruttissimo.Common;
+using Bruttissimo.Domain.Entity;
 using log4net;
 
 namespace Bruttissimo.Domain.Logic

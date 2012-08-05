@@ -1,5 +1,6 @@
 using System;
 using Bruttissimo.Common.Mvc;
+using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain.Logic
 {

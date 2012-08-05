@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Bruttissimo.Domain;
+using Bruttissimo.Domain.Entity;
 using Dapper;
 using Dapper.Contrib.Extensions;
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Bruttissimo.Common;
 using Bruttissimo.Domain;
+using Bruttissimo.Domain.Entity;
 using Bruttissimo.Domain.Logic;
 using Bruttissimo.Tests.Mocking;
 using HtmlAgilityPack;

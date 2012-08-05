@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Castle.Core;
@@ -15,15 +16,15 @@ namespace Bruttissimo.Common.Mvc
 	/// </summary>
 	public sealed class MvcViewInstaller : IWindsorInstaller
 	{
-		private readonly Type type;
+		private readonly Assembly assembly;
 
-		public MvcViewInstaller(Type type)
+		public MvcViewInstaller(Assembly assembly)
 		{
-			if (type == null)
+			if (assembly == null)
 			{
-				throw new ArgumentNullException("type");
+				throw new ArgumentNullException("assembly");
 			}
-			this.type = type;
+			this.assembly = assembly;
 		}
 
 		public void Install(IWindsorContainer container, IConfigurationStore store)
@@ -63,7 +64,7 @@ namespace Bruttissimo.Common.Mvc
 		{
 			string ns = Resources.Constants.ResourceNamespaceRoot;
 			HtmlHelper html = context.AdditionalArguments["htmlHelper"] as HtmlHelper;
-			MvcResourceHelper helper = new MvcResourceHelper(ns, html, type.Assembly);
+			MvcResourceHelper helper = new MvcResourceHelper(ns, html, assembly);
 			return helper;
 		}
 

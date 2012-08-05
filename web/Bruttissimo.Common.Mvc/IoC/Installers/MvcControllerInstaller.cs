@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Web.Mvc;
-using Bruttissimo.Mvc.Controllers;
 using Castle.Core;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Context;
@@ -16,15 +16,15 @@ namespace Bruttissimo.Common.Mvc
 	/// </summary>
 	public sealed class MvcControllerInstaller : IWindsorInstaller
 	{
-		private readonly Type type;
+		private readonly Assembly assembly;
 		private readonly string defaultApplicationTitle;
 		private readonly IList<ResourceAssemblyLocation> resourceAssemblyLocations;
 
-		public MvcControllerInstaller(Type type, string defaultApplicationTitle, IList<ResourceAssemblyLocation> resourceAssemblyLocations)
+		public MvcControllerInstaller(Assembly assembly, string defaultApplicationTitle, IList<ResourceAssemblyLocation> resourceAssemblyLocations)
 		{
-			if (type == null)
+			if (assembly == null)
 			{
-				throw new ArgumentNullException("type");
+				throw new ArgumentNullException("assembly");
 			}
 			if (defaultApplicationTitle == null)
 			{
@@ -34,17 +34,17 @@ namespace Bruttissimo.Common.Mvc
 			{
 				throw new ArgumentNullException("resourceAssemblyLocations");
 			}
-			this.type = type;
+			this.assembly = assembly;
 			this.defaultApplicationTitle = defaultApplicationTitle;
 			this.resourceAssemblyLocations = resourceAssemblyLocations;
 		}
 
 		public void Install(IWindsorContainer container, IConfigurationStore store)
 		{
-			// Registers all controllers from the installing assembly.
+			// Registers all controllers from the controller assembly.
 			container.Register(
 				Classes
-					.FromAssemblyContaining(type)
+					.FromAssembly(assembly)
 					.BasedOn<IController>()
 					.LifestylePerWebRequest()
 			);

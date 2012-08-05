@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using Bruttissimo.Common;
 using Bruttissimo.Common.Resources;
+using Bruttissimo.Domain.Entity;
 using HtmlAgilityPack;
 
 namespace Bruttissimo.Domain.Logic

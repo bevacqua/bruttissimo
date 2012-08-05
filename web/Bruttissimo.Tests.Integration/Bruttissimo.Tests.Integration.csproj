@@ -96,6 +96,10 @@
       <Project>{8069E6E0-91C4-4BC2-A490-80A5674F6CFC}</Project>
       <Name>Bruttissimo.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bruttissimo.Domain.Entity\Bruttissimo.Domain.Entity.csproj">
+      <Project>{F03C32AC-F451-43D2-8506-D4E695C6C8A9}</Project>
+      <Name>Bruttissimo.Domain.Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bruttissimo.Domain.Logic\Bruttissimo.Domain.Logic.csproj">
       <Project>{58A64FF9-DA97-4097-8149-E2E93844B738}</Project>
       <Name>Bruttissimo.Domain.Logic</Name>
@@ -111,6 +115,14 @@
     <ProjectReference Include="..\Bruttissimo.Extensions.RazorEngine\Bruttissimo.Extensions.RazorEngine.csproj">
       <Project>{DADE5AE6-DDBB-48DC-B65A-C20A39FA0FF7}</Project>
       <Name>Bruttissimo.Extensions.RazorEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bruttissimo.Mvc.Controller\Bruttissimo.Mvc.Controller.csproj">
+      <Project>{29B0B536-3C50-481A-BC6C-89F66FE39F88}</Project>
+      <Name>Bruttissimo.Mvc.Controller</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bruttissimo.Mvc.Model\Bruttissimo.Mvc.Model.csproj">
+      <Project>{C7BE64F2-B820-4B8D-8823-0DE436FCBA60}</Project>
+      <Name>Bruttissimo.Mvc.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\Bruttissimo.Mvc\Bruttissimo.Mvc.csproj">
       <Project>{5C3C4F8C-DC67-4E7E-8435-667774FC043E}</Project>

@@ -2,7 +2,7 @@ using System;
 using System.Security.Principal;
 using System.Web.Security;
 using Bruttissimo.Common;
-using Bruttissimo.Common.Resources;
+using Bruttissimo.Domain.Entity;
 using Bruttissimo.Domain.Logic.Email.Model;
 
 namespace Bruttissimo.Domain.Logic
@@ -157,13 +157,13 @@ namespace Bruttissimo.Domain.Logic
 
 		private string EncodeUserIdIntoAuthCookie(long id)
 		{
-			string encoded = Authentication.AuthCookiePrefix + id;
+			string encoded = Common.Resources.Authentication.AuthCookiePrefix + id;
 			return encoded;
 		}
 
 		private long DecodeUserIdFromAuthCookie(string authCookie)
 		{
-			string decoded = authCookie.Replace(Authentication.AuthCookiePrefix, string.Empty);
+			string decoded = authCookie.Replace(Common.Resources.Authentication.AuthCookiePrefix, string.Empty);
 			long id = long.Parse(decoded);
 			return id;
 		}

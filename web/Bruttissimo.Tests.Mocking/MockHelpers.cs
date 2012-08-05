@@ -5,6 +5,7 @@ using System.Net.Mail;
 using System.Web;
 using Bruttissimo.Common;
 using Bruttissimo.Domain;
+using Bruttissimo.Domain.Entity;
 using Bruttissimo.Domain.Logic;
 using Bruttissimo.Domain.Logic.Email.Template;
 using Bruttissimo.Extensions.RazorEngine;

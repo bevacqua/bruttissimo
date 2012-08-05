@@ -54,22 +54,12 @@
     </Compile>
     <Compile Include="Authentication\AuthenticationResult.cs" />
     <Compile Include="Authentication\ConnectionStatus.cs" />
-    <Compile Include="EmailMessageModel.cs" />
-    <Compile Include="Entity\Enum\LinkType.cs" />
-    <Compile Include="Entity\Post.cs" />
-    <Compile Include="Entity\Enum\UserRoleEnum.cs" />
-    <Compile Include="Entity\Log.cs" />
-    <Compile Include="Entity\UserConnection.cs" />
-    <Compile Include="Entity\User.cs" />
-    <Compile Include="Entity\Picture.cs" />
-    <Compile Include="Entity\Link.cs" />
-    <Compile Include="Entity\UserRight.cs" />
-    <Compile Include="Entity\UserRole.cs" />
-    <Compile Include="Interface\IMiniAuthentication.cs" />
     <Compile Include="Entity\Link\LinkParseResult.cs" />
     <Compile Include="Entity\Link\LinkResult.cs" />
     <Compile Include="Entity\Picture\PicturePixelsAttribute.cs" />
     <Compile Include="Entity\Picture\PictureSize.cs" />
+    <Compile Include="Interface\IMiniAuthentication.cs" />
+    <Compile Include="Interface\IMiniPrincipal.cs" />
     <Compile Include="Repository\IPostRepository.cs" />
     <Compile Include="Repository\IEmailRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -90,10 +80,15 @@
       <Project>{8069E6E0-91C4-4BC2-A490-80A5674F6CFC}</Project>
       <Name>Bruttissimo.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bruttissimo.Domain.Entity\Bruttissimo.Domain.Entity.csproj">
+      <Project>{F03C32AC-F451-43D2-8506-D4E695C6C8A9}</Project>
+      <Name>Bruttissimo.Domain.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

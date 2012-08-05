@@ -4,6 +4,7 @@ using System.Linq;
 using System.Data;
 using Bruttissimo.Common;
 using Bruttissimo.Domain;
+using Bruttissimo.Domain.Entity;
 using Dapper;
 using Dapper.Contrib.Extensions;
 

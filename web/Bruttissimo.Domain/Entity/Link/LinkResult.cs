@@ -1,3 +1,5 @@
+using Bruttissimo.Domain.Entity;
+
 namespace Bruttissimo.Domain
 {
 	public class LinkResult

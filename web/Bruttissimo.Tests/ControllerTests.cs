@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using Bruttissimo.Mvc.Controllers;
+using Bruttissimo.Mvc.Controller;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Bruttissimo.Tests

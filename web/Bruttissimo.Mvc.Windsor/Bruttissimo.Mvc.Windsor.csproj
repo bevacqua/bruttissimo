@@ -61,6 +61,7 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\RazorEngine.3.0.8\lib\net40\System.Web.Razor.dll</HintPath>
@@ -75,12 +76,12 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="LibraryInstaller.cs" />
-    <Compile Include="MiniMembershipInstaller.cs" />
+    <Compile Include="Installers\LibraryInstaller.cs" />
+    <Compile Include="Installers\MiniMembershipInstaller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RepositoryInstaller.cs" />
-    <Compile Include="ServiceInstaller.cs" />
-    <Compile Include="WindsorInstaller.cs" />
+    <Compile Include="Installers\RepositoryInstaller.cs" />
+    <Compile Include="Installers\ServiceInstaller.cs" />
+    <Compile Include="Installers\WindsorInstaller.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bruttissimo.Common.Mvc\Bruttissimo.Common.Mvc.csproj">
@@ -95,6 +96,10 @@
       <Project>{F17E96BA-A4DA-4FD1-B091-2C85B953695A}</Project>
       <Name>Bruttissimo.Data.Dapper</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bruttissimo.Domain.Entity\Bruttissimo.Domain.Entity.csproj">
+      <Project>{F03C32AC-F451-43D2-8506-D4E695C6C8A9}</Project>
+      <Name>Bruttissimo.Domain.Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bruttissimo.Domain.Logic\Bruttissimo.Domain.Logic.csproj">
       <Project>{58A64FF9-DA97-4097-8149-E2E93844B738}</Project>
       <Name>Bruttissimo.Domain.Logic</Name>
@@ -106,6 +111,14 @@
     <ProjectReference Include="..\Bruttissimo.Extensions.RazorEngine\Bruttissimo.Extensions.RazorEngine.csproj">
       <Project>{DADE5AE6-DDBB-48DC-B65A-C20A39FA0FF7}</Project>
       <Name>Bruttissimo.Extensions.RazorEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bruttissimo.Mvc.Controller\Bruttissimo.Mvc.Controller.csproj">
+      <Project>{29B0B536-3C50-481A-BC6C-89F66FE39F88}</Project>
+      <Name>Bruttissimo.Mvc.Controller</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bruttissimo.Mvc.Model\Bruttissimo.Mvc.Model.csproj">
+      <Project>{C7BE64F2-B820-4B8D-8823-0DE436FCBA60}</Project>
+      <Name>Bruttissimo.Mvc.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Security.Principal;
+using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain.Logic
 {
-	public class MiniPrincipal : IPrincipal
+	public class MiniPrincipal : IMiniPrincipal
 	{
 		private readonly IUserService userService;
 

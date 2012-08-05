@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Web.Mvc;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Registration;
@@ -13,22 +14,22 @@ namespace Bruttissimo.Common.Mvc
 	/// </summary>
 	public sealed class MvcModelBinderInstaller : IWindsorInstaller
 	{
-		private readonly Type type;
+		private readonly Assembly assembly;
 
-		public MvcModelBinderInstaller(Type type)
+		public MvcModelBinderInstaller(Assembly assembly)
 		{
-			if (type == null)
+			if (assembly == null)
 			{
-				throw new ArgumentNullException("type");
+				throw new ArgumentNullException("assembly");
 			}
-			this.type = type;
+			this.assembly = assembly;
 		}
 
 		public void Install(IWindsorContainer container, IConfigurationStore store)
 		{
 			container.Register(
 				Classes
-					.FromAssemblyContaining(type)
+					.FromAssembly(assembly)
 					.BasedOn<IModelBinder>()
 					.LifestylePerWebRequest()
 			);

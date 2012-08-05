@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using Bruttissimo.Common;
+using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain.Logic
 {

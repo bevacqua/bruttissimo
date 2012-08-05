@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
@@ -11,15 +12,15 @@ namespace Bruttissimo.Common.Mvc
 	/// </summary>
 	public sealed class MvcModelValidatorInstaller : IWindsorInstaller
 	{
-		private readonly Type type;
+		private readonly Assembly assembly;
 
-		public MvcModelValidatorInstaller(Type type)
+		public MvcModelValidatorInstaller(Assembly assembly)
 		{
-			if (type == null)
+			if (assembly == null)
 			{
-				throw new ArgumentNullException("type");
+				throw new ArgumentNullException("assembly");
 			}
-			this.type = type;
+			this.assembly = assembly;
 		}
 
 		public void Install(IWindsorContainer container, IConfigurationStore store)
@@ -33,10 +34,10 @@ namespace Bruttissimo.Common.Mvc
 					.LifestylePerWebRequest()
 			);
 
-			// Register validators in web project assembly.
+			// Register validators in model project assembly.
 			container.Register(
 				AllTypes
-					.FromAssemblyContaining(type)
+					.FromAssembly(assembly)
 					.BasedOn(typeof(IValidator<>))
 					.WithServiceBase()
 					.LifestylePerWebRequest()

@@ -1,4 +1,5 @@
 ﻿using Bruttissimo.Domain;
+using Bruttissimo.Domain.Entity;
 using Bruttissimo.Domain.Logic;
 using Bruttissimo.Tests.Mocking;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

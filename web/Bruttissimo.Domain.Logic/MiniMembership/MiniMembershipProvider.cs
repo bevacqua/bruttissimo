@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Security;
 using Bruttissimo.Common;
+using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain.Logic
 {

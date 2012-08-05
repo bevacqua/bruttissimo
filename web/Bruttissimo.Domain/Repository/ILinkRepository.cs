@@ -1,4 +1,5 @@
 ﻿using System;
+using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain
 {

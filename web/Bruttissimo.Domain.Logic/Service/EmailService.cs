@@ -1,6 +1,7 @@
 using System;
 using System.Net.Mail;
 using Bruttissimo.Common;
+using Bruttissimo.Domain.Entity;
 using Bruttissimo.Domain.Logic.Email.Model;
 using RazorEngine.Templating;
 using log4net;

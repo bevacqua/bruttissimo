@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace Bruttissimo.Mvc.Models
+namespace Bruttissimo.Common.Mvc
 {
 	public class ResourceLocalizationModel
 	{

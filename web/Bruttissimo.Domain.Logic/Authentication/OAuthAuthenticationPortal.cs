@@ -1,6 +1,7 @@
 using System;
 using Bruttissimo.Common;
 using Bruttissimo.Common.Mvc;
+using Bruttissimo.Domain.Entity;
 using Facebook;
 using log4net;
 

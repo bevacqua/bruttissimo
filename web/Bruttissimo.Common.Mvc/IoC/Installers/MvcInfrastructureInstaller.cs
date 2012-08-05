@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Bruttissimo.Mvc.Controllers;
+using System.Reflection;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
@@ -12,21 +12,33 @@ namespace Bruttissimo.Common.Mvc
 	/// </summary>
 	public sealed class MvcInfrastructureInstaller : IWindsorInstaller
 	{
-		private readonly Type type;
+		private readonly Assembly modelAssembly;
+		private readonly Assembly viewAssembly;
+		private readonly Assembly controllerAssembly;
 		private readonly string defaultApplicationTitle;
 		private readonly IList<ResourceAssemblyLocation> resourceAssemblyLocations;
 
 		/// <summary>
 		/// Installs all required components and dependencies for the Mvc infrastructure package.
 		/// </summary>
-		/// <param name="type">Any type contained in the web project assembly.</param>
+		/// <param name="modelAssembly">The model assembly.</param>
+		/// <param name="viewAssembly">The view assembly.</param>
+		/// <param name="controllerAssembly">The controller assembly.</param>
 		/// <param name="defaultApplicationTitle">The default title to display in ajax requests when partially rendering a view.</param>
 		/// <param name="resourceAssemblyLocations">The location of the different string resources that are rendered client-side.</param>
-		public MvcInfrastructureInstaller(Type type, string defaultApplicationTitle, IList<ResourceAssemblyLocation> resourceAssemblyLocations)
+		public MvcInfrastructureInstaller(Assembly modelAssembly, Assembly viewAssembly, Assembly controllerAssembly, string defaultApplicationTitle, IList<ResourceAssemblyLocation> resourceAssemblyLocations)
 		{
-			if (type == null)
+			if (modelAssembly == null)
 			{
-				throw new ArgumentNullException("type");
+				throw new ArgumentNullException("modelAssembly");
+			}
+			if (viewAssembly == null)
+			{
+				throw new ArgumentNullException("viewAssembly");
+			}
+			if (controllerAssembly == null)
+			{
+				throw new ArgumentNullException("controllerAssembly");
 			}
 			if (defaultApplicationTitle == null)
 			{
@@ -36,7 +48,9 @@ namespace Bruttissimo.Common.Mvc
 			{
 				throw new ArgumentNullException("resourceAssemblyLocations");
 			}
-			this.type = type;
+			this.modelAssembly = modelAssembly;
+			this.viewAssembly = viewAssembly;
+			this.controllerAssembly = controllerAssembly;
 			this.defaultApplicationTitle = defaultApplicationTitle;
 			this.resourceAssemblyLocations = resourceAssemblyLocations;
 		}
@@ -47,10 +61,10 @@ namespace Bruttissimo.Common.Mvc
 				new CommonInstaller(),
 				new ComponentInstaller(),
 				new AspNetInstaller(),
-				new MvcViewInstaller(type),
-				new MvcControllerInstaller(type, defaultApplicationTitle, resourceAssemblyLocations),
-				new MvcModelValidatorInstaller(type),
-				new MvcModelBinderInstaller(type),
+				new MvcViewInstaller(viewAssembly),
+				new MvcControllerInstaller(controllerAssembly, defaultApplicationTitle, resourceAssemblyLocations),
+				new MvcModelValidatorInstaller(modelAssembly),
+				new MvcModelBinderInstaller(modelAssembly),
 				new SquishItInstaller()
 			);
 		}

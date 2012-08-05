@@ -47,9 +47,6 @@
     <Reference Include="dotless.Core">
       <HintPath>..\packages\dotless.1.3.0.5\lib\dotless.Core.dll</HintPath>
     </Reference>
-    <Reference Include="FluentValidation">
-      <HintPath>..\packages\FluentValidation.3.3.1.0\lib\Net40\FluentValidation.dll</HintPath>
-    </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
     </Reference>
@@ -105,9 +102,6 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="Yahoo.Yui.Compressor">
-      <HintPath>..\packages\YUICompressor.NET.1.7.1.0\lib\net35\Yahoo.Yui.Compressor.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\Email\facebook.png" />
@@ -133,14 +127,13 @@
     <Content Include="Content\Script\jquery.validate.tooltip.js" />
     <Content Include="Content\Script\jquery.tooltip.js" />
     <Content Include="Content\Script\jquery.placeholder.js" />
-    <Content Include="Content\Script\Views\Posts\index.js" />
+    <Content Include="Content\Script\Views\Posts\list.js" />
     <Content Include="Content\Style\Views\Posts\create.css" />
-    <Content Include="Content\Style\Views\Posts\index.css" />
+    <Content Include="Content\Style\Views\Posts\list.css" />
     <Content Include="Content\Style\Views\User\login.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="robots.txt" />
-    <Content Include="old_stylesheet_design.css" />
     <None Include="..\..\.gitignore">
       <Link>.gitignore</Link>
     </None>
@@ -197,11 +190,11 @@
     <Content Include="Views\User\Login.js.cshtml" />
     <Content Include="Views\Shared\_Sitemap.cshtml" />
     <Content Include="Views\Shared\_Logon.cshtml" />
-    <Content Include="Views\Posts\Index.cshtml" />
+    <Content Include="Views\Posts\List.cshtml" />
     <Content Include="Views\Shared\_OpenGraphMetadata.cshtml" />
     <Content Include="Views\Posts\DisplayTemplates\PostedLinkModel.cshtml" />
     <Content Include="Views\Posts\DisplayTemplates\PostedImageModel.cshtml" />
-    <Content Include="Views\Posts\Index.js.cshtml" />
+    <Content Include="Views\Posts\List.js.cshtml" />
     <Content Include="Views\Posts\Details.cshtml" />
     <Content Include="Views\web.config" />
     <Content Include="Views\Shared\DisplayTemplates\String.cshtml" />
@@ -211,7 +204,7 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="IoC\ApplicationInstaller.cs" />
+    <Compile Include="Plumbing\ApplicationInstaller.cs" />
     <Compile Include="Content\Script\Resources\Authentication.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -232,25 +225,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Post.resx</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PostsController.cs" />
-    <Compile Include="Models\PostedImageModel.cs" />
-    <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Models\Binders\MiniPrincipalModelBinder.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Interfaces\IHasOpenGraphMetadata.cs" />
-    <Compile Include="Models\OpenGraphModel.cs" />
-    <Compile Include="Models\PostModel.cs" />
-    <Compile Include="Models\PostedLinkModel.cs" />
-    <Compile Include="Models\PostListModel.cs" />
-    <Compile Include="Models\PostCreationModel.cs" />
-    <Compile Include="Models\UserLoginModel.cs" />
-    <Compile Include="Models\Validators\PostCreationModelValidator.cs" />
-    <Compile Include="Models\Validators\UserLoginModelValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Routing\All.cs" />
+    <Compile Include="Plumbing\Routing.cs" />
     <Compile Include="Views\Error\Resources\Index.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -266,10 +245,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Unhandled.resx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Posts\Resources\Index.Designer.cs">
+    <Compile Include="Views\Posts\Resources\List.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Index.resx</DependentUpon>
+      <DependentUpon>List.resx</DependentUpon>
     </Compile>
     <Compile Include="Views\Posts\Resources\Create.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -366,9 +345,9 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Unhandled.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Posts\Resources\Index.resx">
+    <EmbeddedResource Include="Views\Posts\Resources\List.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Index.Designer.cs</LastGenOutput>
+      <LastGenOutput>List.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Posts\Resources\Create.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -414,13 +393,13 @@
       <Project>{8069E6E0-91C4-4BC2-A490-80A5674F6CFC}</Project>
       <Name>Bruttissimo.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Bruttissimo.Domain.Logic\Bruttissimo.Domain.Logic.csproj">
-      <Project>{58A64FF9-DA97-4097-8149-E2E93844B738}</Project>
-      <Name>Bruttissimo.Domain.Logic</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Bruttissimo.Domain\Bruttissimo.Domain.csproj">
       <Project>{2CDC59CD-F04A-4CF3-BCD4-7063245101B6}</Project>
       <Name>Bruttissimo.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bruttissimo.Mvc.Model\Bruttissimo.Mvc.Model.csproj">
+      <Project>{C7BE64F2-B820-4B8D-8823-0DE436FCBA60}</Project>
+      <Name>Bruttissimo.Mvc.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\Bruttissimo.Mvc.Windsor\Bruttissimo.Mvc.Windsor.csproj">
       <Project>{64E9FD64-74DA-4FEE-9611-722D475B6312}</Project>

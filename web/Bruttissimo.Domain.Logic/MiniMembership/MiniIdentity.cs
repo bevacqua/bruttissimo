@@ -1,4 +1,5 @@
 using System.Security.Principal;
+using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain.Logic
 {
