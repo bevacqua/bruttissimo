@@ -160,7 +160,7 @@ namespace Bruttissimo.Tests
 			Link link = linkCrawler.CrawlHttpResource(endpoint);
 
 			// Assert
-			Assert.IsTrue(link.Description.Contains("banquitos"));
+			Assert.IsTrue(link.Description.Contains("skate"));
 		}
 
 		#endregion

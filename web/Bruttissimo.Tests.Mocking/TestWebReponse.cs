@@ -21,5 +21,13 @@ namespace Bruttissimo.Tests.Mocking
 		{
 			return responseStream;
 		}
+
+		public override WebHeaderCollection Headers
+		{
+			get
+			{
+				return new WebHeaderCollection();
+			}
+		}
 	}
 }

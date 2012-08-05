@@ -19,7 +19,7 @@ namespace Bruttissimo.Tests.Integration
 		}
 
 		[TestMethod]
-		public void FacebookProvider_CanPostToGroupWall()
+		public void FacebookProvider_CanGetPostsInGroupFeed()
 		{
 			// Arrange
 			string group = Config.Social.FacebookGroupId;

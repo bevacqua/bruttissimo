@@ -37,7 +37,7 @@ namespace Bruttissimo.Domain.Social
 				{
 					message = parameters.UserMessage,
 					link = parameters.Link,
-					picture = parameters.Picture,
+					picture = parameters.Picture ?? string.Empty, // sanity, otherwise Facebook complains.
 					name = parameters.Name,
 					caption = parameters.Caption,
 					description = parameters.Description
@@ -115,7 +115,7 @@ namespace Bruttissimo.Domain.Social
 			{
 				return new FacebookApiException(response.error_msg)
 				{
-				    ErrorType = response.error_code
+					ErrorType = response.error_code
 				};
 			}
 		}

@@ -58,14 +58,15 @@
     </Compile>
     <Compile Include="Binders\MiniPrincipalModelBinder.cs" />
     <Compile Include="Interfaces\IHasOpenGraphMetadata.cs" />
-    <Compile Include="Mappers\EntityToViewModelProfile.cs" />
-    <Compile Include="Mappers\PostListModelFromPostEntityEnumerableTypeConverter.cs" />
+    <Compile Include="Mappers\PostModelFromPostEntityConverter.cs" />
+    <Compile Include="Mappers\Profiles\EntityToViewModelProfile.cs" />
+    <Compile Include="Mappers\PostListModelFromPostEntityEnumerableConverter.cs" />
     <Compile Include="Validators\PostCreationModelValidator.cs" />
     <Compile Include="Validators\UserLoginModelValidator.cs" />
     <Compile Include="ViewModels\OpenGraphModel.cs" />
     <Compile Include="ViewModels\PostCreationModel.cs" />
-    <Compile Include="ViewModels\PostedImageModel.cs" />
-    <Compile Include="ViewModels\PostedLinkModel.cs" />
+    <Compile Include="ViewModels\ImagePostModel.cs" />
+    <Compile Include="ViewModels\LinkPostModel.cs" />
     <Compile Include="ViewModels\PostListModel.cs" />
     <Compile Include="ViewModels\PostModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
