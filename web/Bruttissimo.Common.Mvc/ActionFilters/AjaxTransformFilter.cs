@@ -3,15 +3,11 @@ using System.Web.Mvc;
 
 namespace Bruttissimo.Common.Mvc
 {
-	/// <summary>
-	/// This attribute is tasked with transforming view and redirect results into AJAX responses during AJAX requests.
-	/// </summary>
-	[AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
-	public class AjaxTransformActionResultAttribute : ActionFilterAttribute
+	public class AjaxTransformFilter : IActionFilter
 	{
 		private readonly string defaultTitle;
 
-		public AjaxTransformActionResultAttribute(string defaultTitle)
+		public AjaxTransformFilter(string defaultTitle)
 		{
 			if (defaultTitle.NullOrBlank())
 			{
@@ -20,7 +16,11 @@ namespace Bruttissimo.Common.Mvc
 			this.defaultTitle = defaultTitle;
 		}
 
-		public override void OnActionExecuted(ActionExecutedContext filterContext)
+		public void OnActionExecuting(ActionExecutingContext filterContext)
+		{
+		}
+
+		public void OnActionExecuted(ActionExecutedContext filterContext)
 		{
 			if (filterContext.Exception != null || !filterContext.HttpContext.Request.IsAjaxRequest())
 			{

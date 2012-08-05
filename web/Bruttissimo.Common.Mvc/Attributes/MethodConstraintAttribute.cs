@@ -9,7 +9,7 @@ namespace Bruttissimo.Common.Mvc
 	/// Only AJAX POST requests or Non AJAX GET requests are allowed.
 	/// </summary>
 	[AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
-	public class HttpMethodConstraintAttribute : ActionMethodSelectorAttribute
+	public class MethodConstraintAttribute : ActionMethodSelectorAttribute
 	{
 		/// <summary>
 		/// Determines whether the action method selection is valid for the specified controller context.

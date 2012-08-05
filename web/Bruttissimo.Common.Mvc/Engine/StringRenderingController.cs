@@ -278,7 +278,7 @@ namespace Bruttissimo.Common.Mvc
 			 * 
 			 * This simple overwrite fixes a few scenarios collaterally:
 			 *	- JavaScript partials don't try to emit JavaScript, because they are rendered using the ExtendedControllerContext.
-			 *	- The same applies to both partial and JavaScript views being rendered by the AjaxTransformActionResultAttribute engine.
+			 *	- The same applies to both partial and JavaScript views being rendered by the AjaxTransformAttribute engine.
 			 *	
 			 * In addition, the only scenario likely to ever want this to happen would be something like an AJAX call,
 			 * where we'd like to return both the HTML and the JavaScript, but that can already be handled through the existing methods.

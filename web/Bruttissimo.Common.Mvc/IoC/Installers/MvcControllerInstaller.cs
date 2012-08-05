@@ -80,9 +80,9 @@ namespace Bruttissimo.Common.Mvc
 			ExceptionHelper exceptionHelper = kernel.Resolve<ExceptionHelper>();
 			ErrorHandlingAttribute errorHandling = new ErrorHandlingAttribute(loggerType, exceptionHelper);
 
-			AjaxTransformActionResultAttribute ajaxTransformActionResult = new AjaxTransformActionResultAttribute(defaultApplicationTitle);
+			AjaxTransformAttribute ajaxTransform = new AjaxTransformAttribute(defaultApplicationTitle);
 
-			IList<IActionFilter> actionFilters = new List<IActionFilter> { ajaxTransformActionResult };
+			IList<IActionFilter> actionFilters = new List<IActionFilter> { ajaxTransform };
 			IList<IAuthorizationFilter> authorizationFilters = new List<IAuthorizationFilter> { };
 			IList<IExceptionFilter> exceptionFilters = new List<IExceptionFilter> { errorHandling };
 			IList<IResultFilter> resultFilters = new List<IResultFilter> { };
