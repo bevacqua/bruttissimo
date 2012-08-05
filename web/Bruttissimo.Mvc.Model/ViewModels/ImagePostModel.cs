@@ -1,6 +1,6 @@
 namespace Bruttissimo.Mvc.Model
 {
-    public class PostedImageModel : PostModel
+    public class ImagePostModel : PostModel
     {
         public string PictureUrl { get; set; }
     }

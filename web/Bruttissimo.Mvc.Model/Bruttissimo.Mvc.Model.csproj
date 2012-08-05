@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.2.1.267\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="FluentValidation">
       <HintPath>..\packages\FluentValidation.3.3.1.0\lib\Net40\FluentValidation.dll</HintPath>
     </Reference>
@@ -55,6 +58,8 @@
     </Compile>
     <Compile Include="Binders\MiniPrincipalModelBinder.cs" />
     <Compile Include="Interfaces\IHasOpenGraphMetadata.cs" />
+    <Compile Include="Mappers\EntityToViewModelProfile.cs" />
+    <Compile Include="Mappers\PostListModelFromPostEntityEnumerableTypeConverter.cs" />
     <Compile Include="Validators\PostCreationModelValidator.cs" />
     <Compile Include="Validators\UserLoginModelValidator.cs" />
     <Compile Include="ViewModels\OpenGraphModel.cs" />
@@ -78,11 +83,16 @@
       <Project>{8069E6E0-91C4-4BC2-A490-80A5674F6CFC}</Project>
       <Name>Bruttissimo.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bruttissimo.Domain.Entity\Bruttissimo.Domain.Entity.csproj">
+      <Project>{F03C32AC-F451-43D2-8506-D4E695C6C8A9}</Project>
+      <Name>Bruttissimo.Domain.Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bruttissimo.Domain\Bruttissimo.Domain.csproj">
       <Project>{2CDC59CD-F04A-4CF3-BCD4-7063245101B6}</Project>
       <Name>Bruttissimo.Domain</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

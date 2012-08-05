@@ -75,7 +75,7 @@ namespace Bruttissimo.Mvc.Controller
 			}
 			if (link.Type == LinkType.Html)
 			{
-				return new PostedLinkModel
+				return new LinkPostModel
 				{
 				    Description = link.Description,
 				    PictureUrl = link.Picture,
@@ -89,7 +89,7 @@ namespace Bruttissimo.Mvc.Controller
 			}
 			else if (link.Type == LinkType.Image)
 			{
-				return new PostedImageModel
+				return new ImagePostModel
 				{
 					PictureUrl = link.Picture,
 					PostId = post.Id,

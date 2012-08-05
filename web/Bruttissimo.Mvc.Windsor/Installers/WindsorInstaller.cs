@@ -51,6 +51,7 @@ namespace Bruttissimo.Mvc
 
 			container.Install(
 				new MvcInfrastructureInstaller(modelAssembly, viewAssembly, controllerAssembly, applicationTitle, resourceAssemblyLocations),
+				new AutoMapperInstaller(),
 				new MiniMembershipInstaller(),
 				new ServiceInstaller(),
 				new RepositoryInstaller(),

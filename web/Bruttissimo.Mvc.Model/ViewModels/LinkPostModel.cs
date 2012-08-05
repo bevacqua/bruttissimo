@@ -2,7 +2,7 @@ using Bruttissimo.Common;
 
 namespace Bruttissimo.Mvc.Model
 {
-    public class PostedLinkModel : PostModel
+    public class LinkPostModel : PostModel
     {
         public string Title { get; set; }
         public string Description { get; set; }
