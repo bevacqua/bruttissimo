@@ -1,3 +1,5 @@
+using System;
+using System.Reflection;
 using AutoMapper;
 using Bruttissimo.Mvc.Model;
 using Castle.MicroKernel.Registration;
@@ -8,11 +10,28 @@ namespace Bruttissimo.Mvc
 {
 	public class AutoMapperProfileInstaller : IWindsorInstaller
 	{
+		private readonly Assembly modelAssembly;
+
+		public AutoMapperProfileInstaller(Assembly modelAssembly)
+		{
+			if (modelAssembly == null)
+			{
+				throw new ArgumentNullException("modelAssembly");
+			}
+			this.modelAssembly = modelAssembly;
+		}
+
 		public void Install(IWindsorContainer container, IConfigurationStore store)
 		{
-			Profile entityToViewModel = container.Resolve<EntityToViewModelProfile>();
-			Profile[] profiles = new[] { entityToViewModel };
-			container.Install(new AutoMapperInstaller(profiles));
+			container.Register(
+				Classes
+					.FromAssembly(modelAssembly)
+					.BasedOn<Profile>()
+					.LifestyleTransient()
+			);
+			Type entityToViewModel = typeof(EntityToViewModelProfile);
+			Type[] profileTypes = new[] { entityToViewModel };
+			container.Install(new AutoMapperInstaller(profileTypes));
 		}
 	}
 }

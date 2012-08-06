@@ -54,8 +54,12 @@ namespace Bruttissimo.Mvc
 				new MiniMembershipInstaller(),
 				new ServiceInstaller(),
 				new RepositoryInstaller(),
-				new LibraryInstaller(),
-				new AutoMapperProfileInstaller() // this installer needs to resolve dependencies such as repositories through the container itself, so it goes last.
+				new LibraryInstaller()
+			);
+
+			// this installer needs to resolve dependencies such as repositories through the container itself, so it goes last.
+			container.Install(
+				new AutoMapperProfileInstaller(modelAssembly)
 			);
 		}
 	}

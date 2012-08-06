@@ -8,15 +8,15 @@ namespace Bruttissimo.Mvc
 {
 	public class AutoMapperInstaller : IWindsorInstaller
 	{
-		private readonly Profile[] profiles;
+		private readonly Type[] profileTypes;
 
-		public AutoMapperInstaller(params Profile[] profiles)
+		public AutoMapperInstaller(params Type[] profileTypes)
 		{
-			if (profiles == null)
+			if (profileTypes == null)
 			{
-				throw new ArgumentNullException("profiles");
+				throw new ArgumentNullException("profileTypes");
 			}
-			this.profiles = profiles;
+			this.profileTypes = profileTypes;
 		}
 
 		public void Install(IWindsorContainer container, IConfigurationStore store)
@@ -25,8 +25,9 @@ namespace Bruttissimo.Mvc
 			{
 				config.ConstructServicesUsing(container.Resolve);
 
-				foreach (Profile profile in profiles)
+				foreach (Type type in profileTypes)
 				{
+					Profile profile = (Profile)container.Resolve(type);
 					config.AddProfile(profile);
 				}
 			});

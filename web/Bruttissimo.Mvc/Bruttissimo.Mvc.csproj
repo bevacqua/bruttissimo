@@ -199,7 +199,7 @@
     <Content Include="Views\web.config" />
     <Content Include="Views\Shared\DisplayTemplates\String.cshtml" />
     <Content Include="packages.config" />
-    <Content Include="unrecoverable.html" />
+    <Content Include="fatal.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\GlobalAssemblyInfo.cs">
