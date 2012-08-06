@@ -4,10 +4,13 @@ namespace Bruttissimo.Mvc.Model
 {
     public class LinkPostModel : PostModel
     {
-        public string Title { get; set; }
-        public string Description { get; set; }
+        public string LinkTitle { get; set; }
+        public string LinkDescription { get; set; }
+        public string LinkPicture { get; set; }
 
-        public string PictureUrl { get; set; }
-        public bool HasPicture { get { return !PictureUrl.NullOrEmpty(); } }
+    	public bool HasPicture
+    	{
+    		get { return !LinkPicture.NullOrEmpty(); }
+    	}
     }
 }

@@ -192,8 +192,8 @@
     <Content Include="Views\Shared\_Logon.cshtml" />
     <Content Include="Views\Posts\List.cshtml" />
     <Content Include="Views\Shared\_OpenGraphMetadata.cshtml" />
-    <Content Include="Views\Posts\DisplayTemplates\PostedLinkModel.cshtml" />
-    <Content Include="Views\Posts\DisplayTemplates\PostedImageModel.cshtml" />
+    <Content Include="Views\Posts\DisplayTemplates\LinkPostModel.cshtml" />
+    <Content Include="Views\Posts\DisplayTemplates\ImagePostModel.cshtml" />
     <Content Include="Views\Posts\List.js.cshtml" />
     <Content Include="Views\Posts\Details.cshtml" />
     <Content Include="Views\web.config" />

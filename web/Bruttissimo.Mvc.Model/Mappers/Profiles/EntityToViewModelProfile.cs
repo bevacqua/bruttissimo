@@ -22,31 +22,19 @@ namespace Bruttissimo.Mvc.Model
 		protected override void Configure()
 		{
 			CreateMap<Post, PostModel>().ConvertUsing<PostModelFromPostEntityConverter>();
-			CreateMap<Post, LinkPostModel>();
-			CreateMap<Post, ImagePostModel>();
 
-			//return new LinkPostModel
-			//{
-			//    Description = link.Description,
-			//    PictureUrl = link.Picture,
-			//    PostId = post.Id,
-			//    PostSlug = postService.GetTitleSlug(post),
-			//    Timestamp = post.Created,
-			//    Title = link.Title,
-			//    UserMessage = post.UserMessage,
-			//    UserDisplayName = post.User.DisplayName
-			//};
-			//return new ImagePostModel
-			//{
-			//    PictureUrl = link.Picture,
-			//    PostId = post.Id,
-			//    PostSlug = postService.GetTitleSlug(post),
-			//    Timestamp = post.Created,
-			//    UserMessage = post.UserMessage,
-			//    UserDisplayName = post.User.DisplayName
-			//};
+			CreateMap<Post, LinkPostModel>().ForMember(
+				m => m.PostSlug,
+				x => x.MapFrom(p => postService.GetTitleSlug(p))
+			);
+			CreateMap<Post, ImagePostModel>().ForMember(
+				m => m.PostSlug,
+				x => x.MapFrom(p => postService.GetTitleSlug(p))
+			);
 
 			CreateMap<Post, OpenGraphModel>();
+			CreateMap<Link, LinkModel>();
+
 			CreateMap<IEnumerable<Post>, PostListModel>().ConvertUsing<PostListModelFromPostEntityEnumerableConverter>();
 		}
 	}

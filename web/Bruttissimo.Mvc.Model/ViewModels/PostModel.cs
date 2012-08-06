@@ -5,10 +5,10 @@ namespace Bruttissimo.Mvc.Model
 {
     public abstract class PostModel
 	{
-		public long PostId { get; set; }
+		public long Id { get; set; }
         public string PostSlug { get; set; }
 
-        public DateTime Timestamp { get; set; }
+        public DateTime Created { get; set; }
         public string UserDisplayName { get; set; }
 
         public string UserMessage { get; set; }

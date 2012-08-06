@@ -24,7 +24,7 @@ namespace Bruttissimo.Mvc.Model
 			{
 				default:
 				{
-					throw new ArgumentOutOfRangeException("link.Type");
+					throw new ArgumentOutOfRangeException("post.Link.Type");
 				}
 				case LinkType.Html:
 				{

@@ -63,6 +63,7 @@
     <Compile Include="Mappers\PostListModelFromPostEntityEnumerableConverter.cs" />
     <Compile Include="Validators\PostCreationModelValidator.cs" />
     <Compile Include="Validators\UserLoginModelValidator.cs" />
+    <Compile Include="ViewModels\LinkModel.cs" />
     <Compile Include="ViewModels\OpenGraphModel.cs" />
     <Compile Include="ViewModels\PostCreationModel.cs" />
     <Compile Include="ViewModels\ImagePostModel.cs" />

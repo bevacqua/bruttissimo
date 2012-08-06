@@ -244,6 +244,9 @@
     <value>
 </value>
   </data>
+	<data name="EscapedNewLine" xml:space="preserve">
+    <value>\n</value>
+  </data>
   <data name="CharsetEncodingHeader" xml:space="preserve">
     <value>charset</value>
   </data>

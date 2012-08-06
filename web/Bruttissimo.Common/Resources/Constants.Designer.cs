@@ -124,6 +124,15 @@ namespace Bruttissimo.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to \n.
+        /// </summary>
+        public static string EscapedNewLine {
+            get {
+                return ResourceManager.GetString("EscapedNewLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to gzip.
         /// </summary>
         public static string GzipContentEncoding {

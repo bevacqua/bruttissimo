@@ -50,7 +50,7 @@ namespace Bruttissimo.Common
 		public static string[] SplitOnNewLines(this string text, bool removeEmptyEntries = true)
 		{
 			StringSplitOptions opts = removeEmptyEntries ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None;
-			string[] separators = new[] { Environment.NewLine, Constants.NewLine };
+			string[] separators = new[] { Environment.NewLine, Constants.NewLine, Constants.EscapedNewLine };
 			string[] result = text.Split(separators, opts);
 			return result;
 		}

@@ -1,10 +1,10 @@
-﻿@model Link
+﻿@model LinkModel
 <header>
 	<h1>
 		<a href="@Model.ReferenceUri" rel="nofollow" target="_blank">@Model.Title</a>
 	</h1>
 </header>
-@if (!Model.Picture.NullOrEmpty())
+@if (Model.HasPicture)
 {
 	<a class="post-thumbnail" href="@Model.ReferenceUri" rel="nofollow" target="_blank">
 		<img src="@Model.Picture" alt="" />

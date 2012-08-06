@@ -132,7 +132,8 @@ namespace Bruttissimo.Mvc.Controller
 					{
 						link.Description = link.Description.Substring(0, 200);
 					}
-					return AjaxView(link);
+					LinkModel model = mapper.Map<Link, LinkModel>(link);
+					return AjaxView(model);
 				}
 			}
 		}
