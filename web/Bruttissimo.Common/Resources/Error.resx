@@ -124,6 +124,12 @@
     <value>Authentication attempt failed for user {0}.</value>
     <comment>0=display name</comment>
   </data>
+  <data name="AutoMapperInvalidEngine" xml:space="preserve">
+    <value>IMappingEngine instance must also implement IMappingEngineRunner in order to properly configure the mapping profiles.</value>
+  </data>
+  <data name="AutoMapperInvalidProvider" xml:space="preserve">
+    <value>IMappingEngineRunner.ConfigurationProvider must implement IConfiguration in order to properly configure the mapping profiles.</value>
+  </data>
   <data name="CommitOnFileSystemRepository" xml:space="preserve">
     <value>Commits on a file system repository are unnecessary because everything is committed immediatly. Transactional operations are not implemented on file system repositories.</value>
   </data>

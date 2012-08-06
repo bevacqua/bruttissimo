@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using AutoMapper;
-using Bruttissimo.Common.Mvc;
+using Castle.MicroKernel;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
@@ -31,6 +31,13 @@ namespace Bruttissimo.Mvc
 		public void Install(IWindsorContainer container, IConfigurationStore store)
 		{
 			container.Register(
+				AllTypes
+					.FromAssembly(profileAssembly)
+					.BasedOn(typeof(ITypeConverter<,>))
+					.WithServiceSelf()
+			);
+
+			container.Register(
 				Classes
 					.FromAssembly(profileAssembly)
 					.BasedOn<Profile>()
@@ -41,36 +48,40 @@ namespace Bruttissimo.Mvc
 				Component
 					.For<ITypeMapFactory>()
 					.ImplementedBy<TypeMapFactory>()
+					.LifestyleTransient()
 			);
-
-			Property mappers = Property
-				.ForKey<IEnumerable<IObjectMapper>>()
-				.Eq(AutoMapper.Mappers.MapperRegistry.AllMappers);
 
 			container.Register(
 				Component
 					.For<IConfiguration, IConfigurationProvider>()
-					.ImplementedBy<ConfigurationStore>()
-					.DependsOn(new[] { mappers })
+					.UsingFactoryMethod(InstanceConfigurationStore)
+					.LifestyleTransient()
 			);
 
 			container.Register(
 				Component
 					.For<IMappingEngine>()
 					.ImplementedBy<MappingEngine>()
+					.LifestyleTransient()
 			);
-
-			Property profiles = Property
-				.ForKey<Type[]>()
-				.Eq(profileTypes);
 
 			container.Register(
-				AllTypes
-					.FromAssemblyContaining<IMapper>()
-					.BasedOn<IMapper>()
-					.WithServiceSelect(IoC.SelectByInterfaceConvention)
-					.Configure(x => x.DependsOn(new[] { profiles }))
+				Component
+					.For<IMapper>()
+					.ImplementedBy<Mapper>()
+					.DynamicParameters(
+						(k, parameters) => parameters["profileTypes"] = profileTypes
+					)
+					.LifestyleTransient()
 			);
+		}
+
+		private ConfigurationStore InstanceConfigurationStore(IKernel kernel)
+		{
+			ITypeMapFactory typeMapFactory = kernel.Resolve<ITypeMapFactory>();
+			IEnumerable<IObjectMapper> mappers = AutoMapper.Mappers.MapperRegistry.AllMappers();
+
+			return new ConfigurationStore(typeMapFactory, mappers);
 		}
 	}
 }

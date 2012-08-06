@@ -1,6 +1,5 @@
 using System;
 using System.Reflection;
-using AutoMapper;
 using Bruttissimo.Mvc.Model;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;

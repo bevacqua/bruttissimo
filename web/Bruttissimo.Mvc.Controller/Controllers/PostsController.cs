@@ -14,8 +14,9 @@ namespace Bruttissimo.Mvc.Controller
 		private readonly ILinkService linkService;
 		private readonly IPostService postService;
 		private readonly UrlHelper urlHelper;
+		private readonly IMapper mapper;
 
-		public PostsController(ILinkService linkService, IPostService postService, UrlHelper urlHelper)
+		public PostsController(ILinkService linkService, IPostService postService, UrlHelper urlHelper, IMapper mapper)
 		{
 			if (linkService == null)
 			{
@@ -29,9 +30,14 @@ namespace Bruttissimo.Mvc.Controller
 			{
 				throw new ArgumentNullException("urlHelper");
 			}
+			if (mapper == null)
+			{
+				throw new ArgumentNullException("mapper");
+			}
 			this.linkService = linkService;
 			this.postService = postService;
 			this.urlHelper = urlHelper;
+			this.mapper = mapper;
 		}
 
 		#region Get
@@ -52,7 +58,7 @@ namespace Bruttissimo.Mvc.Controller
 		internal ActionResult List(long? timestamp = null, int count = 8)
 		{
 			IEnumerable<Post> posts = postService.GetLatest(timestamp, count);
-			PostListModel model = AutoMapper.Mapper.Map<IEnumerable<Post>, PostListModel>(posts);
+			PostListModel model = mapper.Map<IEnumerable<Post>, PostListModel>(posts);
 			return ContextView("List", model);
 		}
 

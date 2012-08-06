@@ -7,9 +7,8 @@ namespace Bruttissimo.Mvc
 	public class Mapper : IMapper
 	{
 		private readonly IMappingEngine engine;
-		private readonly IConfiguration configuration;
 
-		public Mapper(IKernel kernel, IMappingEngine engine, IConfiguration configuration, Type[] profileTypes)
+		public Mapper(IKernel kernel, IMappingEngine engine, Type[] profileTypes)
 		{
 			if (kernel == null)
 			{
@@ -19,18 +18,33 @@ namespace Bruttissimo.Mvc
 			{
 				throw new ArgumentNullException("engine");
 			}
-			if (configuration == null)
+			if (profileTypes == null)
 			{
-				throw new ArgumentNullException("configuration");
+				throw new ArgumentNullException("profileTypes");
 			}
 			this.engine = engine;
-			this.configuration = configuration;
-			this.configuration.ConstructServicesUsing(kernel.Resolve);
+
+			ConfigureEngine(kernel, profileTypes);
+		}
+
+		private void ConfigureEngine(IKernel kernel, Type[] profileTypes)
+		{
+			IMappingEngineRunner runner = engine as IMappingEngineRunner;
+			if (runner == null)
+			{
+				throw new ArgumentException(Common.Resources.Error.AutoMapperInvalidEngine);
+			}
+			IConfiguration configuration = runner.ConfigurationProvider as IConfiguration;
+			if (configuration == null)
+			{
+				throw new ArgumentException(Common.Resources.Error.AutoMapperInvalidProvider);
+			}
+			configuration.ConstructServicesUsing(kernel.Resolve);
 
 			foreach (Type type in profileTypes)
 			{
 				Profile profile = (Profile)kernel.Resolve(type);
-				this.configuration.AddProfile(profile);
+				configuration.AddProfile(profile);
 			}
 		}
 

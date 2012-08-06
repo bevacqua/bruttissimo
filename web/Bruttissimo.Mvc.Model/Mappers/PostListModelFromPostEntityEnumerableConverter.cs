@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
@@ -7,15 +8,26 @@ namespace Bruttissimo.Mvc.Model
 {
 	public class PostListModelFromPostEntityEnumerableConverter : ITypeConverter<IEnumerable<Post>, PostListModel>
 	{
+		private readonly IMapper mapper;
+
+		public PostListModelFromPostEntityEnumerableConverter(IMapper mapper)
+		{
+			if (mapper == null)
+			{
+				throw new ArgumentNullException("mapper");
+			}
+			this.mapper = mapper;
+		}
+
 		public PostListModel Convert(ResolutionContext context)
 		{
 			IEnumerable<Post> posts = (IEnumerable<Post>)context.SourceValue;
 			PostListModel result = new PostListModel
 			{
-				Posts = posts.Select(AutoMapper.Mapper.Map<Post, PostModel>).ToList()
+				Posts = posts.Select(mapper.Map<Post, PostModel>).ToList()
 			};
 			Post first = posts.FirstOrDefault();
-			result.OpenGraph = AutoMapper.Mapper.Map<Post, OpenGraphModel>(first);
+			result.OpenGraph = mapper.Map<Post, OpenGraphModel>(first);
 			return result;
 		}
 	}

@@ -1,21 +1,20 @@
 using System;
 using AutoMapper;
-using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Mvc.Model
 {
 	public class PostModelFromPostEntityConverter : ITypeConverter<Post, PostModel>
 	{
-		private readonly IPostService postService;
+		private readonly IMapper mapper;
 
-		public PostModelFromPostEntityConverter(IPostService postService)
+		public PostModelFromPostEntityConverter(IMapper mapper)
 		{
-			if (postService == null)
+			if (mapper == null)
 			{
-				throw new ArgumentNullException("postService");
+				throw new ArgumentNullException("mapper");
 			}
-			this.postService = postService;
+			this.mapper = mapper;
 		}
 
 		public PostModel Convert(ResolutionContext context)
@@ -29,11 +28,11 @@ namespace Bruttissimo.Mvc.Model
 				}
 				case LinkType.Html:
 				{
-					return AutoMapper.Mapper.Map<Post, LinkPostModel>(post);
+					return mapper.Map<Post, LinkPostModel>(post);
 				}
 				case LinkType.Image:
 				{
-					return AutoMapper.Mapper.Map<Post, ImagePostModel>(post);
+					return mapper.Map<Post, ImagePostModel>(post);
 				}
 			}
 		}
