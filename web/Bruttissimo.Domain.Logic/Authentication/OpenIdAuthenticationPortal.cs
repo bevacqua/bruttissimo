@@ -74,6 +74,10 @@ namespace Bruttissimo.Domain.Logic
 		{
 			switch (response.Status)
 			{
+				default:
+				{
+					return AbortedAuthentication(Common.Resources.Authentication.InvalidOpenAuthenticationStatus);
+				}
 				case AuthenticationStatus.Canceled:
 				{
 					return AbortedAuthentication(Common.Resources.Authentication.CanceledAtProvider, ConnectionStatus.Canceled);
@@ -117,7 +121,6 @@ namespace Bruttissimo.Domain.Logic
 					return SuccessfulAuthentication(user, isNewUser, isNewConnection);
 				}
 			}
-			return AbortedAuthentication(Common.Resources.Authentication.InvalidOpenAuthenticationStatus);
 		}
 	}
 }

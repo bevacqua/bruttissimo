@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Web.Mvc;
+using AutoMapper;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
@@ -48,58 +49,11 @@ namespace Bruttissimo.Mvc.Controller
 		}
 
 		[NonAction]
-		public ActionResult List(long? timestamp = null, int count = 8)
+		internal ActionResult List(long? timestamp = null, int count = 8)
 		{
-			PostListModel model = new PostListModel();
-			model.OpenGraph = new OpenGraphModel(); // TODO: load
-			model.Posts = postService.GetLatest(timestamp, count).Select(PostModelConverter).ToList();
-
-			if (ControllerContext.IsChildAction)
-			{
-				return PartialView("List", model);
-			}
-			else
-			{
-				return View("List", model);
-			}
-		}
-
-		// TODO: replace with AutoMap attribute magic fun :)
-		// http://lostechies.com/jimmybogard/2009/06/30/how-we-do-mvc-view-models/
-		private PostModel PostModelConverter(Post post)
-		{
-			Link link = post.Link;
-			if (link == null)
-			{
-				throw new ArgumentException("post.Link can't be null");
-			}
-			if (link.Type == LinkType.Html)
-			{
-				return new LinkPostModel
-				{
-				    Description = link.Description,
-				    PictureUrl = link.Picture,
-				    PostId = post.Id,
-				    PostSlug = postService.GetTitleSlug(post),
-				    Timestamp = post.Created,
-				    Title = link.Title,
-				    UserMessage = post.UserMessage,
-				    UserDisplayName = post.User.DisplayName
-				};
-			}
-			else if (link.Type == LinkType.Image)
-			{
-				return new ImagePostModel
-				{
-					PictureUrl = link.Picture,
-					PostId = post.Id,
-					PostSlug = postService.GetTitleSlug(post),
-					Timestamp = post.Created,
-					UserMessage = post.UserMessage,
-					UserDisplayName = post.User.DisplayName
-				};
-			}
-			return null;
+			IEnumerable<Post> posts = postService.GetLatest(timestamp, count);
+			PostListModel model = Mapper.Map<IEnumerable<Post>, PostListModel>(posts);
+			return ContextView("List", model);
 		}
 
 		#endregion
@@ -140,43 +94,47 @@ namespace Bruttissimo.Mvc.Controller
 		public JsonResult Preview(string input)
 		{
 			LinkResult parsed = linkService.ParseUserInput(input);
-			if (parsed.Result == LinkParseResult.Used)
+			switch (parsed.Result)
 			{
-				long? postId = parsed.Link.PostId;
-				if (postId.HasValue)
-				{
-					Post post = postService.GetById(postId.Value, false);
-					return Json(new
-					{
-						faulted = "used",
-						link = DetailsRoute(post),
-						id = postId
-					});
-				}
-				else
+				default:
+				case LinkParseResult.Invalid:
 				{
 					return Json(new { faulted = "invalid" });
 				}
-			}
-			else if (parsed.Result == LinkParseResult.Invalid)
-			{
-				return Json(new { faulted = "invalid" });
-			}
-			else
-			{
-				Link link = parsed.Link;
-				if (link.Description != null && link.Description.Length > 200)
+				case LinkParseResult.Used:
 				{
-					link.Description = link.Description.Substring(0, 200);
+					long? postId = parsed.Link.PostId;
+					if (postId.HasValue)
+					{
+						Post post = postService.GetById(postId.Value, false);
+						return Json(new
+						{
+							faulted = "used",
+							link = DetailsRoute(post),
+							id = postId
+						});
+					}
+					else
+					{
+						return Json(new { faulted = "invalid" });
+					}
 				}
-				return AjaxView(link);
+				case LinkParseResult.Valid:
+				{
+					Link link = parsed.Link;
+					if (link.Description != null && link.Description.Length > 200)
+					{
+						link.Description = link.Description.Substring(0, 200);
+					}
+					return AjaxView(link);
+				}
 			}
 		}
 
 		#endregion
 
 		[NonAction]
-		public string DetailsRoute(Post post)
+		internal string DetailsRoute(Post post)
 		{
 			return urlHelper.Action("Details", "Posts", new
 			{

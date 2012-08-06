@@ -85,5 +85,20 @@ namespace Bruttissimo.Common.Mvc
 			string script = view.JavaScript;
 			return new AjaxViewJsonResult(null, html, script, container);
 		}
+
+		/// <summary>
+		/// Returns a PartialViewResult if the executing context is a child action, and a ViewResult otherwise.
+		/// </summary>
+		protected ActionResult ContextView(string viewName, object model)
+		{
+			if (ControllerContext.IsChildAction)
+			{
+				return PartialView(viewName, model);
+			}
+			else
+			{
+				return View(viewName, model);
+			}
+		}
 	}
 }
