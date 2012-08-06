@@ -1,7 +1,18 @@
 ﻿@{
-    IHasOpenGraphMetadata model = Model as IHasOpenGraphMetadata;
-    if (model != null && model.OpenGraph != null)
-    {
-        <meta property="og:title" content="test" />
-    }
+	IHasOpenGraphMetadata model = Model as IHasOpenGraphMetadata;
+	if (model != null && model.OpenGraph != null)
+	{
+		OpenGraphModel openGraph = model.OpenGraph;
+		@OpenGraphMetaProperty("title", openGraph.Title)
+		@OpenGraphMetaProperty("description", openGraph.Description)
+		@OpenGraphMetaProperty("url", openGraph.Url)
+		@OpenGraphMetaProperty("image", openGraph.Image)
+	}
+}
+@helper OpenGraphMetaProperty(string property, string value)
+{
+	if (!value.NullOrBlank())
+	{
+		<meta property="og:@property" content="@value" />
+	}
 }
