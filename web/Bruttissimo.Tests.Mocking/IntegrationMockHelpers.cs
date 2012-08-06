@@ -19,7 +19,9 @@ namespace Bruttissimo.Tests.Mocking
 				if (model.LifestyleType == LifestyleType.PerWebRequest)
 					model.LifestyleType = LifestyleType.Transient;
 			};
-			container.Install(new ApplicationInstaller());
+			container.Install(
+				new ApplicationInstaller()
+			);
 			OverrideRegistrations(container);
 			return container;
 		}

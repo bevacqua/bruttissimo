@@ -12,10 +12,10 @@ namespace Bruttissimo.Mvc.Model
 			IEnumerable<Post> posts = (IEnumerable<Post>)context.SourceValue;
 			PostListModel result = new PostListModel
 			{
-				Posts = posts.Select(Mapper.Map<Post, PostModel>).ToList()
+				Posts = posts.Select(AutoMapper.Mapper.Map<Post, PostModel>).ToList()
 			};
 			Post first = posts.FirstOrDefault();
-			result.OpenGraph = Mapper.Map<Post, OpenGraphModel>(first);
+			result.OpenGraph = AutoMapper.Mapper.Map<Post, OpenGraphModel>(first);
 			return result;
 		}
 	}

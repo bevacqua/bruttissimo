@@ -23,15 +23,12 @@ namespace Bruttissimo.Mvc
 
 		public void Install(IWindsorContainer container, IConfigurationStore store)
 		{
-			container.Register(
-				Classes
-					.FromAssembly(modelAssembly)
-					.BasedOn<Profile>()
-					.LifestyleTransient()
-			);
 			Type entityToViewModel = typeof(EntityToViewModelProfile);
 			Type[] profileTypes = new[] { entityToViewModel };
-			container.Install(new AutoMapperInstaller(profileTypes));
+
+			container.Install(
+				new AutoMapperInstaller(modelAssembly, profileTypes)
+			);
 		}
 	}
 }

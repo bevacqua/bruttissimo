@@ -117,6 +117,8 @@
     <Compile Include="ErrorHandling\ErrorHandlingAttribute.cs" />
     <Compile Include="Extensions\IView.cs" />
     <Compile Include="IoC\Installers\AutoMapperInstaller.cs" />
+    <Compile Include="IoC\AutoMapper\Mapper.cs" />
+    <Compile Include="IoC\AutoMapper\IMapper.cs" />
     <Compile Include="IoC\Installers\MvcComponentInstaller.cs" />
     <Compile Include="IoC\Installers\SquishItInstaller.cs" />
     <Compile Include="IoC\IoC.cs" />

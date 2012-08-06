@@ -52,7 +52,7 @@ namespace Bruttissimo.Mvc.Controller
 		internal ActionResult List(long? timestamp = null, int count = 8)
 		{
 			IEnumerable<Post> posts = postService.GetLatest(timestamp, count);
-			PostListModel model = Mapper.Map<IEnumerable<Post>, PostListModel>(posts);
+			PostListModel model = AutoMapper.Mapper.Map<IEnumerable<Post>, PostListModel>(posts);
 			return ContextView("List", model);
 		}
 

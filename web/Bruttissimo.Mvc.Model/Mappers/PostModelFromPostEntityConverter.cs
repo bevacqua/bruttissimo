@@ -29,11 +29,11 @@ namespace Bruttissimo.Mvc.Model
 				}
 				case LinkType.Html:
 				{
-					return Mapper.Map<Post, LinkPostModel>(post);
+					return AutoMapper.Mapper.Map<Post, LinkPostModel>(post);
 				}
 				case LinkType.Image:
 				{
-					return Mapper.Map<Post, ImagePostModel>(post);
+					return AutoMapper.Mapper.Map<Post, ImagePostModel>(post);
 				}
 			}
 		}
