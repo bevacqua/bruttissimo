@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Bruttissimo.Common.Mvc;
+using Bruttissimo.Common.Resources;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
 using Bruttissimo.Mvc.Model;
@@ -59,6 +60,25 @@ namespace Bruttissimo.Mvc.Controller
 			IEnumerable<Post> posts = postService.GetLatest(timestamp, count);
 			PostListModel model = mapper.Map<IEnumerable<Post>, PostListModel>(posts);
 			return ContextView("List", model);
+		}
+
+		// TODO: hooks? or something better, there MUST be a better way to do this.
+		protected override PartialViewResult PartialView(string viewName, object model)
+		{
+			IHasOpenGraphMetadata metadata = model as IHasOpenGraphMetadata;
+			if (metadata != null)
+			{
+				HttpContext.Items[Constants.OpenGraphContextItem] = metadata.OpenGraph;
+			}
+			return base.PartialView(viewName, model);
+		}
+		protected override ViewResult View(IView view, object model)
+		{
+			return base.View(view, model);
+		}
+		protected override ViewResult View(string viewName, string masterName, object model)
+		{
+			return base.View(viewName, masterName, model);
 		}
 
 		#endregion
