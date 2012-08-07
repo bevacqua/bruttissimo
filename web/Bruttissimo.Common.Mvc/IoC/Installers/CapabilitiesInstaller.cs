@@ -8,7 +8,7 @@ namespace Bruttissimo.Common.Mvc
 	/// <summary>
 	/// Registers common dependencies and components.
 	/// </summary>
-	public sealed class CommonInstaller : IWindsorInstaller
+	public sealed class CapabilitiesInstaller : IWindsorInstaller
 	{
 		public void Install(IWindsorContainer container, IConfigurationStore store)
 		{

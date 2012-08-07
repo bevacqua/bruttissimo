@@ -72,7 +72,7 @@ namespace Bruttissimo.Mvc
 					.DynamicParameters(
 						(k, parameters) => parameters["profileTypes"] = profileTypes
 					)
-					.LifestyleTransient()
+					.LifestyleSingleton()
 			);
 		}
 

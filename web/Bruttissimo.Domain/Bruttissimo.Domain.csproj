@@ -58,8 +58,9 @@
     <Compile Include="Entity\Link\LinkResult.cs" />
     <Compile Include="Entity\Picture\PicturePixelsAttribute.cs" />
     <Compile Include="Entity\Picture\PictureSize.cs" />
-    <Compile Include="Interface\IMiniAuthentication.cs" />
-    <Compile Include="Interface\IMiniPrincipal.cs" />
+    <Compile Include="Service\IFacebookService.cs" />
+    <Compile Include="MiniMembership\IMiniAuthentication.cs" />
+    <Compile Include="MiniMembership\IMiniPrincipal.cs" />
     <Compile Include="Repository\IPostRepository.cs" />
     <Compile Include="Repository\IEmailRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

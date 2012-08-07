@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Castle.Windsor;
 using FluentValidation.Mvc;
+using Quartz;
 using SquishIt.Framework;
 using SquishIt.Less;
 
@@ -38,6 +39,11 @@ namespace Bruttissimo.Common.Mvc
 			// initialize dotless preprocessors.
 			LessPreprocessor dotless = container.Resolve<LessPreprocessor>();
 			Bundle.RegisterStylePreprocessor(dotless);
+
+			// auto run jobs on application start.
+			IScheduler scheduler = container.Resolve<IScheduler>();
+			IJobAutoRunner autoRunner = container.Resolve<IJobAutoRunner>();
+			autoRunner.Fire(scheduler);
 		}
 		
 		public static IWindsorContainer GetApplicationContainer()

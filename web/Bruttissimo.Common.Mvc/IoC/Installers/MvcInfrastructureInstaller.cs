@@ -27,14 +27,15 @@ namespace Bruttissimo.Common.Mvc
 		public void Install(IWindsorContainer container, IConfigurationStore store)
 		{
 			container.Install(
-				new CommonInstaller(),
-				new ComponentInstaller(),
+				new CapabilitiesInstaller(),
+				new UtilityInstaller(),
 				new AspNetInstaller(),
 				new MvcViewInstaller(parameters.ViewAssembly),
 				new MvcControllerInstaller(parameters),
 				new MvcModelValidatorInstaller(parameters.ModelAssembly),
 				new MvcModelBinderInstaller(parameters.ModelAssembly),
-				new SquishItInstaller()
+				new SquishItInstaller(),
+				new QuartzInstaller(parameters.JobAssembly)
 			);
 		}
 	}

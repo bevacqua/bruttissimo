@@ -12,6 +12,7 @@ namespace Bruttissimo.Common.Mvc
 		public string ApplicationTitle { get; private set; }
 		public IList<ResourceAssemblyLocation> ResourceAssemblies { get; private set; }
 		public ActionInvokerFilters Filters { get; private set; }
+		public Assembly JobAssembly { get; set; }
 
 		/// <summary>
 		/// All required parameters for the Mvc infrastructure package.
@@ -22,13 +23,15 @@ namespace Bruttissimo.Common.Mvc
 		/// <param name="applicationTitle">The default title to display in ajax requests when partially rendering a view.</param>
 		/// <param name="resourceAssemblies">The location of the different string resources that are rendered client-side.</param>
 		/// <param name="filters">A list of default action invoker filters.</param>
+		/// <param name="jobAssembly">The assembly containing jobs.</param>
 		public MvcInstallerParameters(
 			Assembly modelAssembly,
 			Assembly viewAssembly,
 			Assembly controllerAssembly,
 			string applicationTitle,
 			IList<ResourceAssemblyLocation> resourceAssemblies,
-			ActionInvokerFilters filters)
+			ActionInvokerFilters filters,
+			Assembly jobAssembly)
 		{
 			if (modelAssembly == null)
 			{
@@ -54,12 +57,17 @@ namespace Bruttissimo.Common.Mvc
 			{
 				throw new ArgumentNullException("filters");
 			}
+			if (jobAssembly == null)
+			{
+				throw new ArgumentNullException("jobAssembly");
+			}
 			ModelAssembly = modelAssembly;
 			ViewAssembly = viewAssembly;
 			ControllerAssembly = controllerAssembly;
 			ApplicationTitle = applicationTitle;
 			ResourceAssemblies = resourceAssemblies;
 			Filters = filters;
+			JobAssembly = jobAssembly;
 		}
 	}
 }

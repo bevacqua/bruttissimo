@@ -1,13 +1,26 @@
-﻿namespace Bruttissimo.Domain.Logic.Job
+﻿using System;
+using Bruttissimo.Common.Mvc;
+using Quartz;
+
+namespace Bruttissimo.Domain.Logic
 {
-	public class FacebookImportJob
+	[AutoRun]
+	public class FacebookImportJob : IJob
 	{
-		public FacebookImportJob()
+		private readonly IFacebookService facebookService;
+
+		public FacebookImportJob(IFacebookService facebookService)
 		{
+			if (facebookService == null)
+			{
+				throw new ArgumentNullException("facebookService");
+			}
+			this.facebookService = facebookService;
 		}
 
-		public void Execute()
+		public void Execute(IJobExecutionContext context)
 		{
+			facebookService.Import();
 		}
 	}
 }

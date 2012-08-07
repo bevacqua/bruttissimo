@@ -7,7 +7,7 @@ namespace Bruttissimo.Common.Mvc
 	/// <summary>
 	/// Registers all internal component dependencies, such as utility classes.
 	/// </summary>
-	public class ComponentInstaller : IWindsorInstaller
+	public class UtilityInstaller : IWindsorInstaller
 	{
 		public void Install(IWindsorContainer container, IConfigurationStore store)
 		{

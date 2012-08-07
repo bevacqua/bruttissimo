@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using Bruttissimo.Common.Mvc;
+using Bruttissimo.Domain.Logic;
 using Bruttissimo.Mvc.Controller;
 using Bruttissimo.Mvc.Model;
 using Castle.MicroKernel.Registration;
@@ -64,6 +65,7 @@ namespace Bruttissimo.Mvc
 			Assembly modelAssembly = typeof(UserLoginModel).Assembly;
 			Assembly controllerAssembly = typeof(HomeController).Assembly;
 			ActionInvokerFilters filters = new ActionInvokerFilters();
+			Assembly jobAssembly = typeof(FacebookService).Assembly;
 			MvcInstallerParameters parameters = new MvcInstallerParameters
 			(
 				modelAssembly,
@@ -71,7 +73,8 @@ namespace Bruttissimo.Mvc
 				controllerAssembly,
 				applicationTitle,
 				resourceAssemblies,
-				filters
+				filters,
+				jobAssembly
 			);
 			return parameters;
 		}
