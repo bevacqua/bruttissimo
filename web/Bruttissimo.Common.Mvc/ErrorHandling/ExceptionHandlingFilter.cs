@@ -4,12 +4,12 @@ using log4net;
 
 namespace Bruttissimo.Common.Mvc
 {
-	public class ExceptionFilter: IExceptionFilter
+	public class ExceptionHandlingFilter: IExceptionFilter
 	{
 		private readonly ILog log;
 		private readonly ExceptionHelper helper;
 
-		public ExceptionFilter(ILog log, ExceptionHelper helper)
+		public ExceptionHandlingFilter(ILog log, ExceptionHelper helper)
 		{
 			if (log == null)
 			{
@@ -55,10 +55,10 @@ namespace Bruttissimo.Common.Mvc
 
 			ErrorViewModel model = helper.GetErrorViewModel(filterContext.RouteData, exception);
 			filterContext.Result = new ViewResult
-				{
-					ViewName = Resources.Constants.ErrorViewName,
-					ViewData = new ViewDataDictionary(model)
-				};
+			{
+				ViewName = Resources.Constants.ErrorViewName,
+				ViewData = new ViewDataDictionary(model)
+			};
 			filterContext.ExceptionHandled = true;
 		}
 
@@ -70,10 +70,10 @@ namespace Bruttissimo.Common.Mvc
 
 			ErrorViewModel model = helper.GetErrorViewModel(filterContext.RouteData, exception);
 			filterContext.Result = new PartialViewResult
-				{
-					ViewName = Resources.Constants.ChildActionErrorViewName,
-					ViewData = new ViewDataDictionary(model)
-				};
+			{
+				ViewName = Resources.Constants.ChildActionErrorViewName,
+				ViewData = new ViewDataDictionary(model)
+			};
 			filterContext.ExceptionHandled = true;
 		}
 

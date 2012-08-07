@@ -1,56 +1,37 @@
 using System;
-using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace Bruttissimo.Common.Mvc
 {
 	public class WindsorActionInvoker : ControllerActionInvoker
 	{
-		private readonly IList<IActionFilter> actionFilters;
-		private readonly IList<IAuthorizationFilter> authorizationFilters;
-		private readonly IList<IExceptionFilter> exceptionFilters;
-		private readonly IList<IResultFilter> resultFilters;
+		private readonly ActionInvokerFilters filters;
 
-		public WindsorActionInvoker(IList<IActionFilter> actionFilters, IList<IAuthorizationFilter> authorizationFilters, IList<IExceptionFilter> exceptionFilters, IList<IResultFilter> resultFilters)
+		public WindsorActionInvoker(ActionInvokerFilters filters)
 		{
-			if (actionFilters == null)
+			if (filters == null)
 			{
-				throw new ArgumentNullException("actionFilters");
+				throw new ArgumentNullException("filters");
 			}
-			if (authorizationFilters == null)
-			{
-				throw new ArgumentNullException("authorizationFilters");
-			}
-			if (exceptionFilters == null)
-			{
-				throw new ArgumentNullException("exceptionFilters");
-			}
-			if (resultFilters == null)
-			{
-				throw new ArgumentNullException("resultFilters");
-			}
-			this.actionFilters = actionFilters;
-			this.authorizationFilters = authorizationFilters;
-			this.exceptionFilters = exceptionFilters;
-			this.resultFilters = resultFilters;
+			this.filters = filters;
 		}
 
 		protected override FilterInfo GetFilters(ControllerContext controllerContext, ActionDescriptor actionDescriptor)
 		{
 			FilterInfo filterInfo = base.GetFilters(controllerContext, actionDescriptor);
-			foreach (IActionFilter filter in actionFilters)
+			foreach (IActionFilter filter in filters.Action)
 			{
 				filterInfo.ActionFilters.Add(filter);
 			}
-			foreach (IAuthorizationFilter filter in authorizationFilters)
+			foreach (IAuthorizationFilter filter in filters.Authorization)
 			{
 				filterInfo.AuthorizationFilters.Add(filter);
 			}
-			foreach (IExceptionFilter filter in exceptionFilters)
+			foreach (IExceptionFilter filter in filters.Exception)
 			{
 				filterInfo.ExceptionFilters.Add(filter);
 			}
-			foreach (IResultFilter filter in resultFilters)
+			foreach (IResultFilter filter in filters.Result)
 			{
 				filterInfo.ResultFilters.Add(filter);
 			}

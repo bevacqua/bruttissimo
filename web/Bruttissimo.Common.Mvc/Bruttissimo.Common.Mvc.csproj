@@ -87,7 +87,7 @@
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="ActionFilters\AjaxTransformFilter.cs" />
-    <Compile Include="ActionFilters\ExceptionFilter.cs" />
+    <Compile Include="ErrorHandling\ExceptionHandlingFilter.cs" />
     <Compile Include="Exceptions\ExpectedException.cs" />
     <Compile Include="Exceptions\HttpNotFoundException.cs" />
     <Compile Include="ActionResults\Json\AjaxViewJsonResult.cs" />
@@ -95,7 +95,6 @@
     <Compile Include="ActionResults\Json\ExceptionJsonResult.cs" />
     <Compile Include="ActionResults\Json\ModelStateValidationJsonResult.cs" />
     <Compile Include="ActionResults\RssActionResult.cs" />
-    <Compile Include="Attributes\AjaxTransformAttribute.cs" />
     <Compile Include="Attributes\ExtendedAuthorizeAttribute.cs" />
     <Compile Include="Attributes\MethodConstraintAttribute.cs" />
     <Compile Include="ActionResults\Json\JsonRedirectResult.cs" />
@@ -114,12 +113,13 @@
     <Compile Include="Extensions\HttpRequestBase.cs" />
     <Compile Include="FluentValidation\NullModelValidator.cs" />
     <Compile Include="Helpers\MvcResourceHelper.cs" />
-    <Compile Include="ErrorHandling\ErrorHandlingAttribute.cs" />
     <Compile Include="Extensions\IView.cs" />
+    <Compile Include="IoC\ActionInvokerFilters.cs" />
     <Compile Include="IoC\Installers\AutoMapperInstaller.cs" />
     <Compile Include="IoC\AutoMapper\Mapper.cs" />
     <Compile Include="IoC\AutoMapper\IMapper.cs" />
     <Compile Include="IoC\Installers\MvcComponentInstaller.cs" />
+    <Compile Include="IoC\MvcInstallerParameters.cs" />
     <Compile Include="IoC\Installers\SquishItInstaller.cs" />
     <Compile Include="IoC\IoC.cs" />
     <Compile Include="IoC\Installers\AspNetInstaller.cs" />

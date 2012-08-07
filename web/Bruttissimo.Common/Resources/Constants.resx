@@ -244,7 +244,7 @@
     <value>
 </value>
   </data>
-	<data name="EscapedNewLine" xml:space="preserve">
+  <data name="EscapedNewLine" xml:space="preserve">
     <value>\n</value>
   </data>
   <data name="CharsetEncodingHeader" xml:space="preserve">
@@ -252,5 +252,8 @@
   </data>
   <data name="ContentType" xml:space="preserve">
     <value>Content-Type</value>
+  </data>
+  <data name="OpenGraphContextItem" xml:space="preserve">
+    <value>__OpenGraphMetadata</value>
   </data>
 </root>

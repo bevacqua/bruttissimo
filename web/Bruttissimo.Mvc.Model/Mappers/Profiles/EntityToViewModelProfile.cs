@@ -50,11 +50,7 @@ namespace Bruttissimo.Mvc.Model
 				x => x.MapFrom(p => p.Link.Picture)
 			).ForMember(
 				m => m.Url,
-				x => x.MapFrom(p => urlHelper.Action("Details", "Posts", new
-				{
-					id = p.Id,
-					slug = postService.GetTitleSlug(p)
-				}, "http"))
+				x => x.MapFrom(p => urlHelper.RouteUrl("PostShortcut", new { id = p.Id }, "http"))
 			);
 
 			CreateMap<Link, LinkModel>();

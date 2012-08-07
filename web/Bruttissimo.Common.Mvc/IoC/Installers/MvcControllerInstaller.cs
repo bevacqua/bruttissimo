@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Web.Mvc;
 using Castle.Core;
 using Castle.MicroKernel;
@@ -8,6 +7,7 @@ using Castle.MicroKernel.Context;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
+using log4net;
 
 namespace Bruttissimo.Common.Mvc
 {
@@ -16,27 +16,15 @@ namespace Bruttissimo.Common.Mvc
 	/// </summary>
 	public sealed class MvcControllerInstaller : IWindsorInstaller
 	{
-		private readonly Assembly assembly;
-		private readonly string defaultApplicationTitle;
-		private readonly IList<ResourceAssemblyLocation> resourceAssemblyLocations;
+		private readonly MvcInstallerParameters parameters;
 
-		public MvcControllerInstaller(Assembly assembly, string defaultApplicationTitle, IList<ResourceAssemblyLocation> resourceAssemblyLocations)
+		public MvcControllerInstaller(MvcInstallerParameters parameters)
 		{
-			if (assembly == null)
+			if (parameters == null)
 			{
-				throw new ArgumentNullException("assembly");
+				throw new ArgumentNullException("parameters");
 			}
-			if (defaultApplicationTitle == null)
-			{
-				throw new ArgumentNullException("defaultApplicationTitle");
-			}
-			if (resourceAssemblyLocations == null)
-			{
-				throw new ArgumentNullException("resourceAssemblyLocations");
-			}
-			this.assembly = assembly;
-			this.defaultApplicationTitle = defaultApplicationTitle;
-			this.resourceAssemblyLocations = resourceAssemblyLocations;
+			this.parameters = parameters;
 		}
 
 		public void Install(IWindsorContainer container, IConfigurationStore store)
@@ -44,7 +32,7 @@ namespace Bruttissimo.Common.Mvc
 			// Registers all controllers from the controller assembly.
 			container.Register(
 				Classes
-					.FromAssembly(assembly)
+					.FromAssembly(parameters.ControllerAssembly)
 					.BasedOn<IController>()
 					.LifestylePerWebRequest()
 			);
@@ -62,32 +50,31 @@ namespace Bruttissimo.Common.Mvc
 				Component
 					.For<IActionInvoker>()
 					.UsingFactoryMethod(InstanceActionInvoker)
-					.LifestylePerWebRequest()
+					.LifestyleSingleton()
 			);
 
 			// Register the assembly and namespaces different resource strings are located in. Used by the ResourceController.
 			container.Register(
 				Component
 					.For<IList<ResourceAssemblyLocation>>()
-					.UsingFactoryMethod(() => resourceAssemblyLocations)
-					.LifestyleTransient()
+					.UsingFactoryMethod(() => parameters.ResourceAssemblies)
+					.LifestyleSingleton()
 			);
 		}
 
 		private IActionInvoker InstanceActionInvoker(IKernel kernel, ComponentModel model, CreationContext context)
 		{
 			Type loggerType = context.Handler.ComponentModel.Implementation;
+			ILog log = LogManager.GetLogger(loggerType);
 			ExceptionHelper exceptionHelper = kernel.Resolve<ExceptionHelper>();
-			ErrorHandlingAttribute errorHandling = new ErrorHandlingAttribute(loggerType, exceptionHelper);
+			ExceptionHandlingFilter exceptionHandling = new ExceptionHandlingFilter(log, exceptionHelper);
+			AjaxTransformFilter ajaxTransform = new AjaxTransformFilter(parameters.ApplicationTitle);
+			ActionInvokerFilters filters = parameters.Filters;
 
-			AjaxTransformAttribute ajaxTransform = new AjaxTransformAttribute(defaultApplicationTitle);
+			filters.Action.Add(ajaxTransform);
+			filters.Exception.Add(exceptionHandling);
 
-			IList<IActionFilter> actionFilters = new List<IActionFilter> { ajaxTransform };
-			IList<IAuthorizationFilter> authorizationFilters = new List<IAuthorizationFilter> { };
-			IList<IExceptionFilter> exceptionFilters = new List<IExceptionFilter> { errorHandling };
-			IList<IResultFilter> resultFilters = new List<IResultFilter> { };
-
-			return new WindsorActionInvoker(actionFilters, authorizationFilters, exceptionFilters, resultFilters);
+			return new WindsorActionInvoker(filters);
 		}
 	}
 }

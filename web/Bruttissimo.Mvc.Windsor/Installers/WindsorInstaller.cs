@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Web.Mvc;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Mvc.Controller;
 using Bruttissimo.Mvc.Model;
@@ -17,15 +18,15 @@ namespace Bruttissimo.Mvc
 	{
 		private readonly Assembly viewAssembly;
 		private readonly string applicationTitle;
-		private readonly IList<ResourceAssemblyLocation> resourceAssemblyLocations;
+		private readonly IList<ResourceAssemblyLocation> resourceAssemblies;
 
 		/// <summary>
 		/// Installs all required components and dependencies for the application.
 		/// </summary>
 		/// <param name="viewAssembly">The view assembly.</param>
 		/// <param name="applicationTitle">The default title to display in ajax requests when partially rendering a view.</param>
-		/// <param name="resourceAssemblyLocations">The location of the different string resources that are rendered client-side.</param>
-		public WindsorInstaller(Assembly viewAssembly, string applicationTitle, IList<ResourceAssemblyLocation> resourceAssemblyLocations)
+		/// <param name="resourceAssemblies">The location of the different string resources that are rendered client-side.</param>
+		public WindsorInstaller(Assembly viewAssembly, string applicationTitle, IList<ResourceAssemblyLocation> resourceAssemblies)
 		{
 			if (viewAssembly == null)
 			{
@@ -35,32 +36,52 @@ namespace Bruttissimo.Mvc
 			{
 				throw new ArgumentNullException("applicationTitle");
 			}
-			if (resourceAssemblyLocations == null)
+			if (resourceAssemblies == null)
 			{
-				throw new ArgumentNullException("resourceAssemblyLocations");
+				throw new ArgumentNullException("resourceAssemblies");
 			}
 			this.viewAssembly = viewAssembly;
 			this.applicationTitle = applicationTitle;
-			this.resourceAssemblyLocations = resourceAssemblyLocations;
+			this.resourceAssemblies = resourceAssemblies;
 		}
 
 		public void Install(IWindsorContainer container, IConfigurationStore store)
 		{
-			Assembly modelAssembly = typeof(UserLoginModel).Assembly;
-			Assembly controllerAssembly = typeof(HomeController).Assembly;
+			MvcInstallerParameters parameters = GetMvcInstallerParameters();
+			Type[] profileTypes = GetAutoMapperProfileTypes();
 
 			container.Install(
-				new MvcInfrastructureInstaller(modelAssembly, viewAssembly, controllerAssembly, applicationTitle, resourceAssemblyLocations),
+				new MvcInfrastructureInstaller(parameters),
+				new AutoMapperInstaller(parameters.ModelAssembly, profileTypes),
 				new MiniMembershipInstaller(),
 				new ServiceInstaller(),
 				new RepositoryInstaller(),
 				new LibraryInstaller()
 			);
+		}
 
-			// this installer needs to resolve dependencies such as repositories through the container itself, so it goes last.
-			container.Install(
-				new AutoMapperProfileInstaller(modelAssembly)
+		private MvcInstallerParameters GetMvcInstallerParameters()
+		{
+			Assembly modelAssembly = typeof(UserLoginModel).Assembly;
+			Assembly controllerAssembly = typeof(HomeController).Assembly;
+			ActionInvokerFilters filters = new ActionInvokerFilters();
+			MvcInstallerParameters parameters = new MvcInstallerParameters
+			(
+				modelAssembly,
+				viewAssembly,
+				controllerAssembly,
+				applicationTitle,
+				resourceAssemblies,
+				filters
 			);
+			return parameters;
+		}
+
+		private Type[] GetAutoMapperProfileTypes()
+		{
+			Type entityToViewModel = typeof(EntityToViewModelProfile);
+			Type[] profileTypes = new[] { entityToViewModel };
+			return profileTypes;
 		}
 	}
 }

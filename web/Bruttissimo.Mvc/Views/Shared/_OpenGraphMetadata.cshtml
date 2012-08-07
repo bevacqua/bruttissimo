@@ -1,8 +1,7 @@
 ﻿@{
-	IHasOpenGraphMetadata model = Model as IHasOpenGraphMetadata;
-	if (model != null && model.OpenGraph != null)
+	OpenGraphModel openGraph = GetOpenGraphMetadata();
+	if (openGraph != null)
 	{
-		OpenGraphModel openGraph = model.OpenGraph;
 		@OpenGraphMetaProperty("title", openGraph.Title)
 		@OpenGraphMetaProperty("description", openGraph.Description)
 		@OpenGraphMetaProperty("url", openGraph.Url)
@@ -14,5 +13,17 @@
 	if (!value.NullOrBlank())
 	{
 		<meta property="og:@property" content="@value" />
+	}
+}
+@functions
+{
+	private OpenGraphModel GetOpenGraphMetadata()
+	{
+		IHasOpenGraphMetadata model = Model as IHasOpenGraphMetadata;
+		if (model != null)
+		{
+			return model.OpenGraph;
+		}
+		return Context.Items[Constants.OpenGraphContextItem] as OpenGraphModel;
 	}
 }
