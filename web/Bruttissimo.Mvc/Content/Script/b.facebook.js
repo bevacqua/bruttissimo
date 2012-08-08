@@ -1,19 +1,11 @@
-﻿; (function ($, b, l, window) {
-	b.fb = (function () {
+﻿; (function($, b, l, window) {
+	b.fb = (function() {
 		var api = {
-			script: {
-				id: "fb-connect",
-				src: "https://connect.facebook.net/en_US/all.js"
-			},
-			appId: void 0,
-			status: "disabled",
-			loading: null,
-			timeout: 10000,
+			src: "https://connect.facebook.net/en_US/all.js",
+			id: void 0,
 			params: {
 				scope: "email"
-			},
-			waiting: false,
-			afterLoad: []
+			}
 		};
 
 		var callback_params = {
@@ -23,48 +15,41 @@
 			accessToken: "&accessToken={0}"
 		};
 
-		function asyncInit(appId, callback) {
-			if (!!appId) {
-				api.appId = appId;
-			}
-			if (!api.appId) {
-				return;
-			}
+		function load(appId) {
+			api.id = appId;
+			enqueue();
+		}
+
+		function enqueue(callback) {
 			b.load({
-				url: api.script.src,
-				id: api.script.id,
-				condition: function() {
-					var fb = window.FB;
-					return fb && fb.init;
-				},
-				beforeLoad: function() {
+				url: api.src,
+				before: function() {
 					var body = $("body");
 					var root = $("<div id='fb-root'></div>");
 					body.append(root);
 				},
-				onError: function() {
-					$("#fb-root").remove();
-				},
-				onSuccess: function(result) {
+				success: function(result) {
 					var fb = window.FB;
 					fb.init({
-						appId: api.appId,
+						appId: api.id,
 						status: false,
 						cookie: false,
 						xfbml: false,
 						oauth: true
 					});
-					result.status = "initializing";
 					fb.getLoginStatus(function() {
-						result.defaultSuccess();
+						result.complete(result); // mark the result as completed, running any pending callbacks.
 					});
+				},
+				error: function() {
+					$("#fb-root").remove();
 				},
 				callback: callback
 			});
 		}
 
 		function loginWithFacebook(opts) {
-			var logon = function() {
+			enqueue(function() {
 				window.FB.login(function(response) {
 					if (response.authResponse && response.status === "connected") {
 						var userId = encodeURI(response.authResponse.userID);
@@ -79,13 +64,12 @@
 						window.location = callback;
 					}
 				}, api.params);
-			};
-			asyncInit(null, logon);
+			});
 		}
 
-    	return {
-			load: asyncInit,
+		return {
+			load: load,
 			login: loginWithFacebook
-        };
-    })();
+		};
+	})();
 })(jQuery, bruttijjimo, localization, window);

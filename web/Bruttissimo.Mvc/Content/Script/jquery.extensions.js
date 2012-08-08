@@ -26,4 +26,12 @@
 		    this.disabled = !b;
 	    });
     };
+
+	$.script = function(url, opts) {
+		var options = $.extend(opts || { }, {
+			dataType: "script",
+			url: url			
+		});
+		return $.ajax(options);
+	};
 })(jQuery);

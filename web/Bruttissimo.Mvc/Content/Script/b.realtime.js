@@ -1,21 +1,20 @@
 ﻿; (function ($, b, window) {
 	b.realtime = (function() {
-		var posts = $.connection.posts;
-
-		$.extend(posts, {
-			postCreated: function(cid, post) {
-				if ($.connection.hub.id === cid) {
-					return;
-				}
-				console.log(post);
-			}
-		});
-		
 		function load() {
-			$.connection.hub.start().done(initializePostHub);
+			b.load({
+				url: "/signalr/hubs"
+			});
+			$.connection.hub.start().done(initializeLogHub);
 		}
 
-		function initializePostHub() {
+		function initializeLogHub() {
+			var logs = $.connection.logs;
+
+			$.extend(logs, {
+				testBcast: function(message) {
+					console.log(message);
+				}
+			});
 		}
 
 		return {

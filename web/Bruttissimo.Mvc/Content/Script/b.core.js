@@ -435,79 +435,70 @@
 		 *
 		 * opts format:	{
 		 *		url: the url of the target script resource,
-		 *		id: the ID of the script tag, if any,
 		 *		timeout: a timeout in milliseconds after which any callbacks on the script will be dropped, and the script element removed.
+		 *		callbacks: an optional array of callbacks to execute after the script completes loading.
 		 *		callback: an optional callback to execute after the script completes loading.
-		 *		condition: a condition that allows us to verify the script completed loading.
+		 *		before: an optional callback to execute before the script is loaded, only intended to be ran prior to requesting the script, not multiple times.
+		 *		success: an optional callback to execute when the script successfully loads, always remember to call script.complete at the end.
+		 *		error: an optional callback to execute when and if the script request fails.
 		 *	}
 		 */
-		function loadScript(opts) {
-			if (typeof opts === "string") {
-				opts = {
-					url: opts
-				};
-			}
-			var script = scriptLoader[opts.url];
-			if (script === void 0) {
-				var dom = $("<script src='{0}'><\/script>".format(opts.url));
-				if (!!opts.id) {
-					dom.attr("id", opts.id);
-				}
-				(opts.beforeLoad || $.noop)();
-				$("body").append(dom);
+		 function loadScript(opts) {
+		 	if (typeof opts === "string") {
+		 		opts = {
+		 			url: opts
+		 		};
+		 	}
+		 	var script = scriptLoader[opts.url];
+		 	if (script === void 0) {
+		 		var complete = function(s) {
+		 			s.status = "loaded";
+		 			s.executeCallbacks();
+		 		};
 
-				scriptLoader[opts.url] = script = {
-					dom: dom,
-					status: "loading",
-					loading: new Date(),
-					timeout: opts.timeout || 10000,
-					callbacks: [opts.callback || $.noop],
-					addCallback: function(callback) {
-						if (!!callback) {
-							if (script.status !== "loaded") {
-								script.callbacks.push(callback);
-							} else {
-								callback();
-							}
-						}
-					},
-					hasTimedOut: function() {
-						var now = new Date();
-						if (script.loading + script.timeout < now) {
-							return true;
-						}
-						return false;
-					},
-					execCallbacks: function() {
-						$.each(script.callbacks, function() {
-							this();
-						});
-						script.callbacks = [];
-					},
-					onSuccess: opts.onSuccess || function () {
-						script.defaultSuccess();
-					},
-					defaultSuccess: function () {
-						script.status = "loaded";
-						script.execCallbacks();
-					}
-				};
+		 		script = scriptLoader[opts.url] = {
+		 			url: opts.url,
+		 			status: "loading",
+		 			requested: new Date(),
+		 			timeout: opts.timeout || 10000,
+		 			callbacks: opts.callbacks || [opts.callback || $.noop],
+		 			addCallback: function(callback) {
+		 				if (!!callback) {
+		 					if (script.status !== "loaded") {
+		 						script.callbacks.push(callback);
+		 					} else {
+		 						callback();
+		 					}
+		 				}
+		 			},
+		 			executeCallbacks: function() {
+		 				$.each(script.callbacks, function() {
+		 					this();
+		 				});
+		 				script.callbacks = [];
+		 			},
+		 			before: opts.before || $.noop,
+		 			success: opts.success || complete,
+		 			complete: complete,
+		 			error: opts.error || $.noop
+		 		};
 
-				var interval = setInterval(function() {
-					if (!!(opts.condition || $.noop)()) {
-						clearInterval(interval);
-						script.onSuccess(script);
-					} else if (script.hasTimedOut()) {
-						clearInterval(interval);
-						(opts.onError || $.noop)();
-						script.dom.remove();
-						scriptLoader[opts.url] = void 0;
-					}
-				}, 50);
-			} else {
-				script.addCallback(opts.callback);
-			}
-		}
+		 		script.before();
+
+		 		$.script(script.url, {
+		 			timeout: script.timeout,
+		 			success: function() {
+		 				script.success(script);
+		 			},
+		 			error: function() {
+		 				script.error(); // .error should remove anything added by .before
+		 				scriptLoader[script.url] = void 0; // dereference, no callbacks were executed, no harm is done.
+		 			}
+		 		});
+		 	} else {
+		 		script.addCallback(opts.callback);
+		 	}
+		 }
 
 		return {
 	        ajax: {

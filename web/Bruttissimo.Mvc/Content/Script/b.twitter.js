@@ -1,11 +1,8 @@
-﻿; (function ($, b, l, window) {
+﻿; (function ($, b, window) {
 	b.twitter = (function () {
 		var api = {
-			script: {
-				id: "tw-connect",
-				src: "http://platform.twitter.com/anywhere.js?id={0}&v=1"
-			},
-			appId: void 0
+			src: "http://platform.twitter.com/anywhere.js?id={0}&v=1",
+			id: void 0
 		};
 		
 		var callback_params = {
@@ -15,25 +12,20 @@
 			displayName: "&displayName={0}"
 		};
 
-		function asyncInit(appId, callback) {
-			if (!!appId) {
-				api.appId = appId;
-			}
-			if (!api.appId) {
-				return;
-			}
+		function load (appId) {
+			api.id = appId;
+			enqueue();
+		}
+
+		function enqueue(callback) {
 			b.load({
-				url: api.script.src.format(api.appId),
-				id: api.script.id,
-				condition: function() {
-					return window.twttr;
-				},
+				url: api.src.format(api.id),
 				callback: callback
 			});
 		}
 
 		function loginWithTwitter(opts) {
-			asyncInit(null, function() {
+			enqueue(function() {
 				var twitter = window.twttr;
 				twitter.anywhere(function(t) {
 					t.bind("authComplete", function(e, user) {
@@ -51,8 +43,8 @@
 		}
 
 		return {
-			load: asyncInit,
+			load: load,
 			login: loginWithTwitter
         };
     })();
-})(jQuery, bruttijjimo, localization, window);
+})(jQuery, bruttijjimo, window);
