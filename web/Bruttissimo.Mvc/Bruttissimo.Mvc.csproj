@@ -402,6 +402,10 @@
       <Project>{2CDC59CD-F04A-4CF3-BCD4-7063245101B6}</Project>
       <Name>Bruttissimo.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bruttissimo.Extensions.CommonLogging\Bruttissimo.Extensions.CommonLogging.csproj">
+      <Project>{89562EED-6323-4739-9557-2D4F5AA69F8F}</Project>
+      <Name>Bruttissimo.Extensions.CommonLogging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bruttissimo.Mvc.Model\Bruttissimo.Mvc.Model.csproj">
       <Project>{C7BE64F2-B820-4B8D-8823-0DE436FCBA60}</Project>
       <Name>Bruttissimo.Mvc.Model</Name>

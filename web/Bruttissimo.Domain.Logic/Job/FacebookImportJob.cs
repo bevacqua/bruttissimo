@@ -20,7 +20,14 @@ namespace Bruttissimo.Domain.Logic
 
 		public void Execute(IJobExecutionContext context)
 		{
-			facebookService.Import();
+			try
+			{
+				facebookService.Import();
+			}
+			catch (Exception exception)
+			{
+				throw new JobExecutionException(exception);
+			}
 		}
 	}
 }

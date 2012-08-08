@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Quartz;
-using Quartz.Impl;
 using log4net;
 
 namespace Bruttissimo.Common.Mvc
@@ -22,16 +21,17 @@ namespace Bruttissimo.Common.Mvc
 
 		public void Fire(IScheduler scheduler)
 		{
+			scheduler.Start();
+
 			foreach (Type jobType in jobTypes)
 			{
 				log.Debug(Resources.Debug.SchedulingAutoRunJob.FormatWith(jobType.Name));
 
-				JobDetailImpl detail = new JobDetailImpl(jobType.Name, null, jobType);
-				ITrigger trigger = TriggerBuilder.Create().ForJob(detail).StartNow().Build();
+				IJobDetail detail = JobBuilder.Create(jobType).Build();
+				ITrigger trigger = TriggerBuilder.Create().StartNow().Build();
 
 				scheduler.ScheduleJob(detail, trigger);
 			}
-			scheduler.Start();
 		}
 	}
 }

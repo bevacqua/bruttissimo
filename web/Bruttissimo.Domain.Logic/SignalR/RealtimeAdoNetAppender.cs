@@ -13,7 +13,11 @@ namespace Bruttissimo.Domain.Logic
 		protected override void Append(LoggingEvent loggingEvent)
 		{
 			base.Append(loggingEvent);
+			SignalClients(loggingEvent);
+		}
 
+		private void SignalClients(LoggingEvent loggingEvent)
+		{
 			LoggingEventData data = loggingEvent.GetLoggingEventData();
 			Exception exception = loggingEvent.ExceptionObject;
 
