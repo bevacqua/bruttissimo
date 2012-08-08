@@ -29,7 +29,6 @@ namespace Bruttissimo.Common.Mvc
 
 				IJobDetail detail = JobBuilder.Create(jobType).Build();
 				ITrigger trigger = TriggerBuilder.Create().StartNow().Build();
-
 				scheduler.ScheduleJob(detail, trigger);
 			}
 		}

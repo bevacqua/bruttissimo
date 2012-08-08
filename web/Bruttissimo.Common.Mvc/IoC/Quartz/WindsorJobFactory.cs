@@ -22,7 +22,6 @@ namespace Bruttissimo.Common.Mvc
 		{
 			IJobDetail detail = bundle.JobDetail;
 			Type jobType = detail.JobType;
-
 			return (IJob)kernel.Resolve(jobType);
     	}
     }
