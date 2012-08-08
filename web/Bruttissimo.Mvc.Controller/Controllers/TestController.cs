@@ -1,17 +1,16 @@
 ﻿using System.Web.Mvc;
 using Bruttissimo.Common.Mvc;
-using Bruttissimo.Domain.Logic.Hubs;
-using SignalR;
-using SignalR.Hubs;
+using log4net;
 
 namespace Bruttissimo.Mvc.Controller
 {
 	public class TestController : ExtendedController
 	{
+		private readonly ILog log = LogManager.GetLogger(typeof(TestController));
+
 		public ActionResult EmitSignal()
 		{
-			IHubContext logHub = GlobalHost.ConnectionManager.GetHubContext<LogHub>();
-			logHub.Clients.testBcast("HOLA DEL INFRAMUNDO MAN! jouejoue");
+			log.Debug("HOLA DEL INFRAMUNDO MAN! jouejoue");
 			return new EmptyResult();
 		}
 	}

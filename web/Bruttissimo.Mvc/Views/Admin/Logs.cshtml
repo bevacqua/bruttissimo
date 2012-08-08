@@ -1,5 +1,20 @@
 ﻿@model IList<LogModel>
-@foreach(LogModel entry in Model)
-{
-	<div style="padding-bottom: 20px;">@entry.Message</div>
-}
+<table id="syslogs">
+	<thead>
+		<tr>
+			<th>@Resource.String("Date")</th>
+			<th>@Resource.String("Level")</th>
+			<th>@Resource.String("Message")</th>
+		</tr>
+	</thead>
+	<tbody>
+	@foreach(LogModel entry in Model)
+	{
+		<tr>
+			<td>@entry.Date.ToShortDateString()</td>
+			<td>@entry.Level</td>
+			<td>@entry.Message</td>
+		</tr>
+	}
+	</tbody>
+</table>

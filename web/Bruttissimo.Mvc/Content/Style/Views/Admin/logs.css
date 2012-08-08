@@ -1,0 +1,16 @@
+﻿/* CREATE A POST VIEW LAYOUT
+----------------------------------------------------------*/
+
+table#syslogs {
+	margin: 0 auto;
+}
+
+table#syslogs thead {
+	padding-bottom: 5px;
+	border-bottom: 1px solid #ccc;
+}
+
+table#syslogs tr th,
+table#syslogs tr td {
+	padding: 5px 10px;
+}

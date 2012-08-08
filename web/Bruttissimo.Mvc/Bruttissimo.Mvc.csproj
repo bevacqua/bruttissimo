@@ -128,6 +128,7 @@
     <Content Include="Content\Script\jquery.tooltip.js" />
     <Content Include="Content\Script\jquery.placeholder.js" />
     <Content Include="Content\Script\Views\Posts\list.js" />
+    <Content Include="Content\Style\Views\Admin\logs.css" />
     <Content Include="Content\Style\Views\Posts\create.css" />
     <Content Include="Content\Style\Views\Posts\list.css" />
     <Content Include="Content\Style\Views\User\login.css" />
@@ -197,7 +198,9 @@
     <Content Include="Views\Posts\Details.cshtml" />
     <Content Include="Views\web.config" />
     <Content Include="Views\Shared\DisplayTemplates\String.cshtml" />
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Admin\Logs.cshtml" />
     <Content Include="Views\Admin\Logs.js.cshtml" />
   </ItemGroup>
@@ -226,6 +229,11 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Plumbing\Routing.cs" />
+    <Compile Include="Views\Admin\Resources\Logs.Designer.cs">
+      <DependentUpon>Logs.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Views\Error\Resources\Index.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -324,6 +332,10 @@
     <EmbeddedResource Include="Content\Script\Resources\Post.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Post.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Admin\Resources\Logs.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Logs.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Error\Resources\Index.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

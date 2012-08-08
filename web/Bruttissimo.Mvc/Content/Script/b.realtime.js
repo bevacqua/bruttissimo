@@ -1,40 +1,47 @@
 ﻿; (function($, b, window) {
-	b.realtime = (function() {
-		var api = {
-			hubs: void 0
-		};
+	$(function() {
+		b.realtime = (function() {
+			var api = {
+				url: void 0
+			};
+			
+			function listen(url) {
+				api.url = url;
 
-		function listen(hubs) {
-			api.hubs = hubs;
+				enqueue(function() {
+					extendHubs();
 
-			enqueue(function() {
-				$.connection.hub.start().done(initializeLogHub);
-			});
-		}
+					$.connection.hub.start(); // .done(initializeLogHub);
+				});
+			}
 
-		function enqueue(callback) {
-			b.load({
-				url: api.hubs,
-				callback: callback
-			});
-		}
+			function enqueue(callback) {
+				b.load({
+					url: api.url,
+					callback: callback
+				});
+			}
 
-		function initializeLogHub() {
-			var logs = $.connection.logs;
+			function extendHubs () {
+				var logs = $.connection.logs;
 
-			$.extend(logs, {
-				testBcast: function(cid, message) {
-					// why U no come back??
-					console.log(message);
-					alert(cid);
-				}
-			});
+				$.extend(logs, {
+					update: function(entry) {
+						var syslogs = $("#syslogs tbody");
+						var build = b.tag;
+						var row = build("tr").hide();
+						build("td").appendTo(row).text(entry.date);
+						build("td").appendTo(row).text(entry.level);
+						build("td").appendTo(row).text(entry.message);
+						row.prependTo(syslogs).fadeIn();
+						$("tr", syslogs).slice(10).fadeOutAndRemove();
+					}
+				});
+			}
 
-			logs.testMessage("blobloblop!");
-		}
-
-		return {
-			listen: listen
-		};
-	})();
+			return {
+				listen: listen
+			};
+		})();
+	});
 })(jQuery, bruttijjimo, window);

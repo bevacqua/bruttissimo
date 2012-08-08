@@ -13,7 +13,7 @@ namespace Bruttissimo.Mvc
 {
 	public class MvcApplication : HttpApplication, IContainerAccessor
 	{
-		private static readonly ILog _log = LogManager.GetLogger(typeof(HttpApplication));
+		private readonly ILog log = LogManager.GetLogger(typeof(HttpApplication));
 		private static IWindsorContainer _container;
 
 		public IWindsorContainer Container
@@ -23,7 +23,7 @@ namespace Bruttissimo.Mvc
 
 		protected void Application_Start()
 		{
-			_log.Debug(Debug.ApplicationStart);
+			log.Debug(Debug.ApplicationStart);
 			MvcHandler.DisableMvcResponseHeader = true;
 
 			AreaRegistration.RegisterAllAreas();
@@ -48,7 +48,7 @@ namespace Bruttissimo.Mvc
 		{
 			if (Config.Debug.RequestLog)
 			{
-				_log.DebugFormat(Debug.ApplicationRequest, Request.RawUrl);
+				log.DebugFormat(Debug.ApplicationRequest, Request.RawUrl);
 			}
 			RequestSanitizer sanitizer = _container.Resolve<RequestSanitizer>();
 			if (sanitizer.ValidateUrl())
@@ -84,7 +84,7 @@ namespace Bruttissimo.Mvc
 
 		protected void Application_End()
 		{
-			_log.Debug(Debug.ApplicationEnd);
+			log.Debug(Debug.ApplicationEnd);
 
 			if (_container != null)
 			{
