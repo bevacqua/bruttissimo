@@ -147,7 +147,6 @@
     <Content Include="Content\Style\layout.css" />
     <Content Include="Content\Script\jquery.signalR-0.5.2.js" />
     <Content Include="Content\Script\jquery.signalR-0.5.2.min.js" />
-    <Content Include="SignalR\note.txt" />
     <Content Include="Views\Error\ChildAction.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
@@ -200,6 +199,7 @@
     <Content Include="Views\Shared\DisplayTemplates\String.cshtml" />
     <Content Include="packages.config" />
     <Content Include="Views\Admin\Logs.cshtml" />
+    <Content Include="Views\Admin\Logs.js.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\GlobalAssemblyInfo.cs">

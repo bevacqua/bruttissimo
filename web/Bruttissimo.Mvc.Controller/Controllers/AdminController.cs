@@ -37,5 +37,4 @@ namespace Bruttissimo.Mvc.Controller
 			return View(model);
 		}
 	}
-
 }

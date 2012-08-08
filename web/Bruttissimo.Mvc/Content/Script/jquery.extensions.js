@@ -28,7 +28,7 @@
     };
 
 	$.script = function(url, opts) {
-		var options = $.extend(opts || { }, {
+		var options = $.extend(opts || {}, {
 			dataType: "script",
 			url: url			
 		});

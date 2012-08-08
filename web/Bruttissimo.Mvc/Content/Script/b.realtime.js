@@ -1,10 +1,22 @@
-﻿; (function ($, b, window) {
+﻿; (function($, b, window) {
 	b.realtime = (function() {
-		function load() {
-			b.load({
-				url: "/signalr/hubs"
+		var api = {
+			hubs: void 0
+		};
+
+		function listen(hubs) {
+			api.hubs = hubs;
+
+			enqueue(function() {
+				$.connection.hub.start().done(initializeLogHub);
 			});
-			$.connection.hub.start().done(initializeLogHub);
+		}
+
+		function enqueue(callback) {
+			b.load({
+				url: api.hubs,
+				callback: callback
+			});
 		}
 
 		function initializeLogHub() {
@@ -18,7 +30,7 @@
 		}
 
 		return {
-			load: load
+			listen: listen
 		};
 	})();
 })(jQuery, bruttijjimo, window);

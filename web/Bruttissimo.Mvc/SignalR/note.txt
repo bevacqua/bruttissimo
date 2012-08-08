@@ -1,4 +1,0 @@
-﻿this folder exists to avoid exception in SquishIt:
-Directory '\signalr' does not exist. Failed to start monitoring file changes.
-
-this is a temporary measure.

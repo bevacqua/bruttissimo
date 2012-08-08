@@ -1,10 +1,10 @@
 ﻿; (function ($, b, window) {
-	b.twitter = (function () {
+	b.twitter = (function() {
 		var api = {
 			src: "http://platform.twitter.com/anywhere.js?id={0}&v=1",
 			id: void 0
 		};
-		
+
 		var callback_params = {
 			source: "?source=twitter",
 			userId: "&userId={0}",
@@ -12,7 +12,7 @@
 			displayName: "&displayName={0}"
 		};
 
-		function load (appId) {
+		function load(appId) {
 			api.id = appId;
 			enqueue();
 		}
@@ -45,6 +45,6 @@
 		return {
 			load: load,
 			login: loginWithTwitter
-        };
-    })();
+		};
+	})();
 })(jQuery, bruttijjimo, window);
