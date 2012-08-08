@@ -34,7 +34,7 @@
 						build("td").appendTo(row).text(entry.level);
 						build("td").appendTo(row).text(entry.message);
 						row.prependTo(syslogs).flash("#b1f7ed").slideDown("fast");
-						$("tr", syslogs).slice(9).slideUp();
+						syslogs.find("tr").slice(9).slideUp();
 					}
 				});
 			}

@@ -178,7 +178,7 @@ namespace Bruttissimo.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Schedling AutoRun job: {0}.
+        ///   Looks up a localized string similar to Scheduling AutoRun job: {0}.
         /// </summary>
         public static string SchedulingAutoRunJob {
             get {
