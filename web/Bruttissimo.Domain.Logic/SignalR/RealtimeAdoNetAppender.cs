@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using Bruttissimo.Domain.Logic.Hubs;
 using SignalR;
 using SignalR.Hubs;
@@ -19,7 +20,7 @@ namespace Bruttissimo.Domain.Logic
 			IHubContext logHub = GlobalHost.ConnectionManager.GetHubContext<LogHub>();
 			logHub.Clients.update(new
 			{
-				date = data.TimeStamp,
+				date = data.TimeStamp.ToString(CultureInfo.InvariantCulture),
 				thread = data.ThreadName,
 				level = data.Level.DisplayName,
 				logger = data.LoggerName,

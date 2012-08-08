@@ -11,7 +11,7 @@
 				enqueue(function() {
 					extendHubs();
 
-					$.connection.hub.start(); // .done(initializeLogHub);
+					$.connection.hub.start();
 				});
 			}
 
@@ -33,8 +33,8 @@
 						build("td").appendTo(row).text(entry.date);
 						build("td").appendTo(row).text(entry.level);
 						build("td").appendTo(row).text(entry.message);
-						row.prependTo(syslogs).fadeIn();
-						$("tr", syslogs).slice(10).fadeOutAndRemove();
+						row.prependTo(syslogs).flash("#b1f7ed").slideDown("fast");
+						$("tr", syslogs).slice(9).slideUp();
 					}
 				});
 			}

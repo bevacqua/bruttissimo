@@ -122,6 +122,7 @@
     <Content Include="Content\Script\b.realtime.js" />
     <Content Include="Content\Script\jquery-1.7.2.js" />
     <Content Include="Content\Script\jquery-1.7.2.min.js" />
+    <Content Include="Content\Script\jquery.color.js" />
     <Content Include="Content\Script\json2.js" />
     <Content Include="Content\Script\jquery.validate.js" />
     <Content Include="Content\Script\jquery.validate.tooltip.js" />
