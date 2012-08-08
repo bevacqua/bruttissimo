@@ -23,10 +23,14 @@
 			var logs = $.connection.logs;
 
 			$.extend(logs, {
-				testBcast: function(message) {
+				testBcast: function(cid, message) {
+					// why U no come back??
 					console.log(message);
+					alert(cid);
 				}
 			});
+
+			logs.testMessage("blobloblop!");
 		}
 
 		return {

@@ -8,7 +8,7 @@ namespace Bruttissimo.Domain.Logic.Hubs
 		[HubMethodName("testMessage")]
 		public void TestMessage(string message)
 		{
-			Clients.testBcast(message);
+			Clients.testBcast(Context.ConnectionId, message); // why U no come back??
 		}
 	}
 }
