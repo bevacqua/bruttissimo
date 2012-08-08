@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Bruttissimo.Domain.Entity
+namespace Bruttissimo.Mvc.Model
 {
-	public class Log
+	public class LogModel
 	{
 		public int Id { get; set; }
 		public DateTime Date { get; set; }

@@ -427,7 +427,89 @@
             }
         }
 
-	    return {
+		var scriptLoader = [];
+
+		/*
+		 * loads a script and defers a callback for when the script finishes loading.
+		 * you can also just stack callbacks on the script load by invoking this method repeatedly.
+		 *
+		 * opts format:	{
+		 *		url: the url of the target script resource,
+		 *		id: the ID of the script tag, if any,
+		 *		timeout: a timeout in milliseconds after which any callbacks on the script will be dropped, and the script element removed.
+		 *		callback: an optional callback to execute after the script completes loading.
+		 *		condition: a condition that allows us to verify the script completed loading.
+		 *	}
+		 */
+		function loadScript(opts) {
+			if (typeof opts === "string") {
+				opts = {
+					url: opts
+				};
+			}
+			var script = scriptLoader[opts.url];
+			if (script === void 0) {
+				var dom = $("<script src='{0}'><\/script>".format(opts.url));
+				if (!!opts.id) {
+					dom.attr("id", opts.id);
+				}
+				(opts.beforeLoad || $.noop)();
+				$("body").append(dom);
+
+				scriptLoader[opts.url] = script = {
+					dom: dom,
+					status: "loading",
+					loading: new Date(),
+					timeout: opts.timeout || 10000,
+					callbacks: [opts.callback || $.noop],
+					addCallback: function(callback) {
+						if (!!callback) {
+							if (script.status !== "loaded") {
+								script.callbacks.push(callback);
+							} else {
+								callback();
+							}
+						}
+					},
+					hasTimedOut: function() {
+						var now = new Date();
+						if (script.loading + script.timeout < now) {
+							return true;
+						}
+						return false;
+					},
+					execCallbacks: function() {
+						$.each(script.callbacks, function() {
+							this();
+						});
+						script.callbacks = [];
+					},
+					onSuccess: opts.onSuccess || function () {
+						script.defaultSuccess();
+					},
+					defaultSuccess: function () {
+						script.status = "loaded";
+						script.execCallbacks();
+					}
+				};
+
+				var interval = setInterval(function() {
+					if (!!(opts.condition || $.noop)()) {
+						clearInterval(interval);
+						script.onSuccess(script);
+					} else if (script.hasTimedOut()) {
+						clearInterval(interval);
+						(opts.onError || $.noop)();
+						script.dom.remove();
+						scriptLoader[opts.url] = void 0;
+					}
+				}, 50);
+			} else {
+				script.addCallback(opts.callback);
+			}
+		}
+
+		return {
 	        ajax: {
                 success: ajaxSuccess,
                 disableDuringRequests: disableDuringAjaxRequests,
@@ -440,6 +522,7 @@
 	        scrollTo: scrollTo,
 	        setPreference: setPreference,
 	        getPreference: getPreference,
+			load: loadScript,
 	        views: {}
 	    };
 	})();

@@ -199,6 +199,7 @@
     <Content Include="Views\web.config" />
     <Content Include="Views\Shared\DisplayTemplates\String.cshtml" />
     <Content Include="packages.config" />
+    <Content Include="Views\Admin\Logs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\GlobalAssemblyInfo.cs">
@@ -214,11 +215,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Common.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Content\Script\Resources\Facebook.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Facebook.resx</DependentUpon>
     </Compile>
     <Compile Include="Content\Script\Resources\Post.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -320,10 +316,6 @@
     <EmbeddedResource Include="Content\Script\Resources\Authentication.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Authentication.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Content\Script\Resources\Facebook.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Facebook.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Content\Script\Resources\Common.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

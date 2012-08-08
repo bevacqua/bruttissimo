@@ -111,6 +111,7 @@
     <Compile Include="Job\FacebookImportJob.cs" />
     <Compile Include="Service\FacebookService.cs" />
     <Compile Include="MiniMembership\MiniAuthenticationWrapper.cs" />
+    <Compile Include="Service\LogService.cs" />
     <Compile Include="SignalR\Hubs\PostHub.cs" />
     <Compile Include="MiniMembership\MiniIdentity.cs" />
     <Compile Include="MiniMembership\MiniPrincipal.cs" />

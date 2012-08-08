@@ -272,15 +272,15 @@ namespace Bruttissimo.Data.Dapper
 				DisplayName = GetDisplayName(email, displayName),
 				Password = password == null ? null : InternalPasswordHash(password),
 				Created = DateTime.UtcNow,
-				UserRoleId = GetRoleId(UserRoleEnum.Regular, transaction)
+				UserRoleId = GetRoleId(Roles.Regular, transaction)
 			};
 			connection.Insert(user, transaction);
 			return user;
 		}
 
-		private long GetRoleId(UserRoleEnum name, IDbTransaction transaction = null)
+		private long GetRoleId(string name, IDbTransaction transaction = null)
 		{
-			long role = connection.Query<long>("SELECT [UserRole].[Id] FROM [UserRole] WHERE [UserRole].[Name] = @name", new { name = name.ToString() }, transaction).First();
+			long role = connection.Query<long>("SELECT [UserRole].[Id] FROM [UserRole] WHERE [UserRole].[Name] = @name", new { name }, transaction).First();
 			return role;
 		}
 

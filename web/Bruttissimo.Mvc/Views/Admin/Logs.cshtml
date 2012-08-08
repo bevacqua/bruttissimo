@@ -1,0 +1,5 @@
+﻿@model IList<LogModel>
+@foreach(LogModel entry in Model)
+{
+	<div style="padding-bottom: 20px;">@entry.Message</div>
+}

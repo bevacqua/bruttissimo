@@ -28,6 +28,13 @@ namespace Bruttissimo.Mvc.Model
 
 		protected override void Configure()
 		{
+			CreatePostMaps();
+
+			CreateMap<Log, LogModel>();
+		}
+
+		internal void CreatePostMaps()
+		{
 			CreateMap<Post, PostModel>().ConvertUsing<PostModelFromPostEntityConverter>();
 
 			CreateMap<Post, LinkPostModel>().ForMember(
