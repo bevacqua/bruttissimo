@@ -167,4 +167,8 @@
     <value>Inserting link: {0}</value>
     <comment>0=link</comment>
   </data>
+  <data name="SchedulingAutoRunJob" xml:space="preserve">
+    <value>Schedling AutoRun job: {0}</value>
+    <comment>0=job name</comment>
+  </data>
 </root>
