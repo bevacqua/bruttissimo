@@ -9,3 +9,16 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
+
+INSERT INTO [UserRole] ([Name])
+SELECT 'Regular'
+UNION ALL
+SELECT 'Admin'
+
+INSERT INTO [UserRight] ([Name])
+SELECT 'CanAccessApplicationLogs'
+
+INSERT INTO [UserRoleRight] ([UserRoleId], [UserRightId])
+SELECT	[Ro].[Id], [Ri].[Id] FROM [UserRight] Ri, [UserRole] Ro
+ WHERE	[Ro].[Name] = 'Admin' AND
+		[Ri].[Name] = 'CanAccessApplicationLogs'
