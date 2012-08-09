@@ -25,6 +25,7 @@ Exception Handling:
 	- for exceptions that do not occur in the context of a controller (say a resource was not found), the global handler will take care of that.
 	- all exceptions are logged through log4net into a database log table.
 	- SQL exceptions are also logged through log4net.
+    - realtime application logs thanks to SignalR and log4net.
 
 
 Features:
@@ -41,7 +42,7 @@ Features:
 	- Progressive enhancement and unobtrusive javascript.
 	- Unobtrusive javascript further enhanced by using a convention where .js.cshtml files are the javascript counterpart to views (separation of concerns).
 	- Unobtrusive AJAX automation converting action ViewResults into AjaxViewResults.
-	- SignalR for persistent client/server connections for realtime updates.
+	- SignalR persistent client/server connections for realtime updates.
 
 	- MVC architecture.
 	- Custom "Mini" membership schema and providers, including Principal and Identity injection.
@@ -50,7 +51,7 @@ Features:
 	- Dapper Micro-ORM, for performance boost and simplified database querying.
 	- Log4Net logging, which tracks exceptions, stack traces, SQL code and request endpoints.
 	- Mvc MiniProfiler implementation to rapidly identify performance bottlenecks.
-	- Exception handling for both AJAX and non-AJAX requests.
+    - Quartz.NET job scheduling for long running background tasks.
 	- Both server and client-side validation using FluentValidation.
 	- DRY approach to string resource handling.
 	- Unit Tests over the application logic.
