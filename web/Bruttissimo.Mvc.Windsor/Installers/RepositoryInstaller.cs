@@ -11,7 +11,7 @@ using Castle.Windsor;
 using StackExchange.Profiling;
 using StackExchange.Profiling.Data;
 
-namespace Bruttissimo.Mvc
+namespace Bruttissimo.Mvc.Windsor
 {
 	/// <summary>
 	/// Registers all repositories.

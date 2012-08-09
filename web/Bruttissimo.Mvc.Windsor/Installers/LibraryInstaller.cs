@@ -11,7 +11,7 @@ using DotNetOpenAuth.OpenId.RelyingParty;
 using RazorEngine.Configuration;
 using RazorEngine.Templating;
 
-namespace Bruttissimo.Mvc
+namespace Bruttissimo.Mvc.Windsor
 {
 	/// <summary>
 	/// Registers all external dependencies, such as RazorEngine templating services.

@@ -37,7 +37,10 @@
     <Reference Include="AutoMapper">
       <HintPath>..\packages\AutoMapper.2.1.267\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="Castle.Windsor">
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.1.0\lib\net40-client\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=3.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Windsor.3.1.0\lib\net40\Castle.Windsor.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack">
@@ -74,11 +77,11 @@
     <Compile Include="Extensions\Stream.cs" />
     <Compile Include="Extensions\Enumerable.cs" />
     <Compile Include="Extensions\Guid.cs" />
+    <Compile Include="Helpers\CastleWindsorHelpers.cs" />
     <Compile Include="Helpers\HtmlParsing.cs" />
     <Compile Include="Extensions\WebResponse.cs" />
     <Compile Include="Helpers\Uri.cs" />
     <Compile Include="CompiledRegex.cs" />
-    <Compile Include="IoC\LifestyleSelector.cs" />
     <Compile Include="IoC\PropertyInjection.cs" />
     <Compile Include="log4net\NullableAdoNetParameter.cs" />
     <Compile Include="log4net\ExceptionDataLayoutPattern.cs" />

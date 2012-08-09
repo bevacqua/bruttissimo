@@ -1,4 +1,4 @@
-using System;
+using Bruttissimo.Common;
 using Castle.MicroKernel.Registration;
 
 namespace Bruttissimo.Tests.Mocking
@@ -7,9 +7,7 @@ namespace Bruttissimo.Tests.Mocking
 	{
 		public static ComponentRegistration<T> OverridesExistingRegistration<T>(this ComponentRegistration<T> componentRegistration) where T : class
 		{
-			return componentRegistration
-				.Named(Guid.NewGuid().ToString())
-				.IsDefault();
+			return componentRegistration.NamedRandomly().IsDefault();
 		}
 	}
 }

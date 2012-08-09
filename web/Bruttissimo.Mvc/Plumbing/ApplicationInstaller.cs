@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Common.Resources;
+using Bruttissimo.Mvc.Windsor;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;

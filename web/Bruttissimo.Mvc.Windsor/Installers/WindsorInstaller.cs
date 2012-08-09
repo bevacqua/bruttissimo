@@ -9,7 +9,7 @@ using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
-namespace Bruttissimo.Mvc
+namespace Bruttissimo.Mvc.Windsor
 {
 	/// <summary>
 	/// Installs all dependencies into the container. Acts as the composition root.

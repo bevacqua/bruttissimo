@@ -5,7 +5,7 @@ using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
-namespace Bruttissimo.Mvc
+namespace Bruttissimo.Mvc.Windsor
 {
 	/// <summary>
 	/// Installs ASP.NET membership components.
