@@ -26,7 +26,6 @@ namespace Bruttissimo.Common.Mvc
 
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            container.Kernel.AddHandlerSelector(new LifestyleSelector());
             container.Install(
                 new CapabilitiesInstaller(),
                 new UtilityInstaller(),

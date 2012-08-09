@@ -1,20 +1,17 @@
-using System;
 using Castle.MicroKernel.Registration;
 
 namespace Bruttissimo.Common
 {
 	public static class CastleWindsorHelpers
     {
-        public static ComponentRegistration<T> NamedRandomly<T>(this ComponentRegistration<T> registration) where T : class
+        public static ComponentRegistration<T> LifestyleHybridPerWebRequestPerThread<T>(this ComponentRegistration<T> registration) where T : class
         {
-            string name = registration.Implementation.FullName;
-            string random = "{0}{{{1}}}".FormatWith(name, Guid.NewGuid());
-            return registration.Named(random);
+            return registration.LifeStyle.HybridPerWebRequestPerThread();
         }
 
-        public static BasedOnDescriptor NamedRandomly(this BasedOnDescriptor registration)
+        public static BasedOnDescriptor LifestyleHybridPerWebRequestPerThread(this BasedOnDescriptor registration)
         {
-            return registration.Configure(x => x.NamedRandomly());
+            return registration.Configure(x => x.LifeStyle.HybridPerWebRequestPerThread());
         }
     }
 }

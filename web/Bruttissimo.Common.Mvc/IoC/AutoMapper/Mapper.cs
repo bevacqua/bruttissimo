@@ -2,7 +2,7 @@ using System;
 using AutoMapper;
 using Castle.MicroKernel;
 
-namespace Bruttissimo.Mvc
+namespace Bruttissimo.Common.Mvc
 {
 	public class Mapper : IMapper
 	{

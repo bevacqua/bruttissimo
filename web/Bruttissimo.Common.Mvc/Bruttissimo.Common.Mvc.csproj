@@ -123,7 +123,6 @@
     <Compile Include="FluentValidation\NullModelValidator.cs" />
     <Compile Include="Helpers\MvcResourceHelper.cs" />
     <Compile Include="Extensions\IView.cs" />
-    <Compile Include="IoC\LifestyleSelector.cs" />
     <Compile Include="IoC\Mvc\ActionInvokerFilters.cs" />
     <Compile Include="IoC\Quartz\WindsorSchedulerFactory.cs" />
     <Compile Include="IoC\Quartz\IJobAutoRunner.cs" />

@@ -1,4 +1,4 @@
-namespace Bruttissimo.Mvc
+namespace Bruttissimo.Common.Mvc
 {
 	public interface IMapper
 	{

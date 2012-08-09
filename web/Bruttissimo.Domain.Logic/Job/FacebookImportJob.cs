@@ -1,15 +1,17 @@
 ﻿using System;
 using Bruttissimo.Common.Mvc;
+using Castle.MicroKernel;
 using Quartz;
 
 namespace Bruttissimo.Domain.Logic
 {
     [AutoRun]
-    public class FacebookImportJob : IJob
+    public class FacebookImportJob : BaseJob
     {
         private readonly IFacebookService facebookService;
 
-        public FacebookImportJob(IFacebookService facebookService)
+        public FacebookImportJob(IKernel kernel, IFacebookService facebookService) :
+            base(kernel, facebookService)
         {
             if (facebookService == null)
             {
@@ -18,16 +20,9 @@ namespace Bruttissimo.Domain.Logic
             this.facebookService = facebookService;
         }
 
-        public void Execute(IJobExecutionContext context)
+        public override void DoWork(IJobExecutionContext context)
         {
-            try
-            {
-                facebookService.Import();
-            }
-            catch (Exception exception)
-            {
-                throw new JobExecutionException(exception);
-            }
+            facebookService.Import();
         }
     }
 }

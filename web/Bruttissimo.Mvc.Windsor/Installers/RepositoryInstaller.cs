@@ -25,7 +25,7 @@ namespace Bruttissimo.Mvc.Windsor
 				AllTypes.FromAssemblyContaining<EmailRepository>()
 					.Where(t => t.Name.EndsWith("Repository"))
 					.WithService.Select(IoC.SelectByInterfaceConvention)
-					.LifestylePerWebRequest()
+                    .LifestyleHybridPerWebRequestPerThread()
 			);
 
 			// Dapper assembly repositories.
@@ -33,7 +33,7 @@ namespace Bruttissimo.Mvc.Windsor
 				AllTypes.FromAssemblyContaining<UserRepository>()
 					.Where(t => t.Name.EndsWith("Repository"))
 					.WithService.Select(IoC.SelectByInterfaceConvention)
-					.LifestylePerWebRequest()
+                    .LifestyleHybridPerWebRequestPerThread()
 			);
 
 			// IDbConnection component.
@@ -43,7 +43,7 @@ namespace Bruttissimo.Mvc.Windsor
 					.UsingFactoryMethod(InstanceDbConnection)
 					.OnCreate(c => c.Open())
 					.OnDestroy(DestroyDbConnection)
-					.LifestylePerWebRequest()
+                    .LifestyleHybridPerWebRequestPerThread()
 			);
 		}
 

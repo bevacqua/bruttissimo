@@ -7,7 +7,7 @@ using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
-namespace Bruttissimo.Mvc
+namespace Bruttissimo.Common.Mvc
 {
 	public class AutoMapperInstaller : IWindsorInstaller
 	{
