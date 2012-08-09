@@ -19,8 +19,8 @@ namespace Bruttissimo.Mvc.Windsor
                     .FromAssemblyContaining<EmailService>()
                     .Where(t => t.Name.EndsWith("Service"))
                     .WithService.Select(IoC.SelectByInterfaceConvention)
-                    .LifestylePerWebRequest()
                     .NamedRandomly()
+                    .LifestylePerWebRequest()
             );
 
             container.Register(
@@ -28,8 +28,8 @@ namespace Bruttissimo.Mvc.Windsor
                     .FromAssemblyContaining<EmailService>()
                     .Where(t => t.Name.EndsWith("Service"))
                     .WithService.Select(IoC.SelectByInterfaceConvention)
-                    .LifestylePerThread()
                     .NamedRandomly()
+                    .LifestylePerThread()
             );
 
             container.Register(
