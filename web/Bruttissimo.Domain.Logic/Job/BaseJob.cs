@@ -33,7 +33,10 @@ namespace Bruttissimo.Domain.Logic
             }
             finally
             {
-                kernel.ReleaseComponent(dependencies);
+                foreach (object dependency in dependencies) // PerThread lifestyle dependencies are released when application shuts down.
+                {
+                    kernel.ReleaseComponent(dependency); // release them when the job completes execution instead.
+                }
             }
         }
     }

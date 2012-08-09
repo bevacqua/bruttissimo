@@ -65,6 +65,9 @@
     <Reference Include="RazorEngine">
       <HintPath>..\lib\RazorEngine.modified\RazorEngine.dll</HintPath>
     </Reference>
+    <Reference Include="SquishIt.Framework, Version=0.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SquishIt.0.9.0-alpha3\lib\SquishIt.Framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
