@@ -1,4 +1,3 @@
-using System;
 using log4net;
 
 namespace Bruttissimo.Domain.Logic
@@ -10,7 +9,6 @@ namespace Bruttissimo.Domain.Logic
 		public void Import()
 		{
 			log.Debug("import job");
-			throw new NotImplementedException("bingo");
 		}
 	}
 }
