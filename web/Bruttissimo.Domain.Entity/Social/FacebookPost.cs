@@ -1,4 +1,4 @@
-namespace Bruttissimo.Domain.Social
+namespace Bruttissimo.Domain.Entity
 {
 	public class FacebookPost
 	{

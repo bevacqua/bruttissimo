@@ -59,6 +59,7 @@
     <Compile Include="Entity\Picture\PicturePixelsAttribute.cs" />
     <Compile Include="Entity\Picture\PictureSize.cs" />
     <Compile Include="Repository\ILogRepository.cs" />
+    <Compile Include="Repository\Social\IFacebookRepository.cs" />
     <Compile Include="Service\ILogService.cs" />
     <Compile Include="Service\IFacebookService.cs" />
     <Compile Include="MiniMembership\IMiniAuthentication.cs" />

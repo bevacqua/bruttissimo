@@ -23,7 +23,7 @@ namespace Bruttissimo.Mvc
 
 		protected void Application_Start()
 		{
-			System.Diagnostics.Debugger.Break(); // debug application start in IIS.
+			// System.Diagnostics.Debugger.Break(); // debug application start in IIS.
 			log.Debug(Debug.ApplicationStart);
 			MvcHandler.DisableMvcResponseHeader = true;
 

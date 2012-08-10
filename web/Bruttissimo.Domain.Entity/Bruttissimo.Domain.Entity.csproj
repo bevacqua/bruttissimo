@@ -61,6 +61,7 @@
     <Compile Include="Entities\UserConnection.cs" />
     <Compile Include="Entities\UserRight.cs" />
     <Compile Include="Entities\UserRole.cs" />
+    <Compile Include="Social\FacebookPost.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

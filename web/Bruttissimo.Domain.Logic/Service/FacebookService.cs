@@ -1,14 +1,27 @@
-using log4net;
+using System;
+using System.Collections.Generic;
+using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain.Logic
 {
-	public class FacebookService : IFacebookService
-	{
-		private readonly ILog log = LogManager.GetLogger(typeof(FacebookService));
+    public class FacebookService : IFacebookService
+    {
+        private readonly IFacebookRepository facebookRepository;
 
-		public void Import()
-		{
-			log.Debug("import job");
-		}
-	}
+        public FacebookService(IFacebookRepository facebookRepository)
+        {
+            if (facebookRepository == null)
+            {
+                throw new ArgumentNullException("facebookRepository");
+            }
+            this.facebookRepository = facebookRepository;
+        }
+
+        public void Import()
+        {
+            string next;
+            IList<FacebookPost> feed = facebookRepository.GetPostsInGroupFeed(null, out next);
+
+        }
+    }
 }
