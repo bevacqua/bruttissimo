@@ -116,7 +116,7 @@
     <Compile Include="Service\FacebookService.cs" />
     <Compile Include="MiniMembership\MiniAuthenticationWrapper.cs" />
     <Compile Include="Service\LogService.cs" />
-    <Compile Include="SignalR\Hubs\LogHub.cs" />
+    <Compile Include="SignalR\Hub\LogHub.cs" />
     <Compile Include="MiniMembership\MiniIdentity.cs" />
     <Compile Include="MiniMembership\MiniPrincipal.cs" />
     <Compile Include="Email\Model\EmailModel.cs" />
@@ -151,6 +151,7 @@
     <Compile Include="Service\PictureService.cs" />
     <Compile Include="Repository\PictureStorageRepository.cs" />
     <Compile Include="SignalR\RealtimeAdoNetAppender.cs" />
+    <Compile Include="SignalR\Service\LogRealtimeService.cs" />
     <Compile Include="XPath.cs" />
     <Compile Include="Service\LinkCrawlerService.cs" />
     <Compile Include="Service\LinkService.cs" />

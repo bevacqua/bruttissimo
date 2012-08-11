@@ -11,7 +11,7 @@
 	@foreach(LogModel entry in Model)
 	{
 		<tr>
-			<td>@entry.Date.ToString(CultureInfo.InvariantCulture)</td>
+			<td>@entry.Date.ToInvariantString()</td>
 			<td>@entry.Level</td>
 			<td>@entry.Message</td>
 		</tr>

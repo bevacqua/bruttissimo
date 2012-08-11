@@ -29,8 +29,7 @@ namespace Bruttissimo.Extensions.RazorEngine
 			{
 				builder.Append("/");
 			}
-
-			builder.Append(relativeUrl.ToLowerInvariant());
+            builder.Append(relativeUrl.ToLowerInvariant());
 			return builder.ToString();
 		}
 

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
-using Bruttissimo.Common.Resources;
-using Regex = System.Text.RegularExpressions.Regex;
 
 namespace Bruttissimo.Common
 {
@@ -37,24 +35,34 @@ namespace Bruttissimo.Common
 			return StringComparer.InvariantCultureIgnoreCase.Compare(left, right) == 0;
 		}
 
-		public static string UnicodeDecode(this string text)
+        public static string ToInvariantString(this string text)
+        {
+            return text.ToString(CultureInfo.InvariantCulture);
+        }
+
+        public static string ToInvariantString(this char text)
+        {
+            return text.ToString(CultureInfo.InvariantCulture);
+        }
+
+	    public static string UnicodeDecode(this string text)
 		{
 			if (string.IsNullOrEmpty(text))
 			{
 				return text;
 			}
-			Regex regex = new Regex(Constants.UnicodeRegex, RegexOptions.IgnoreCase | RegexOptions.Compiled);
-			return regex.Replace(text, match => ((char)int.Parse(match.Groups[1].Value, NumberStyles.HexNumber)).ToString(CultureInfo.InvariantCulture));
+            Regex regex = new Regex(Resources.Constants.UnicodeRegex, RegexOptions.IgnoreCase | RegexOptions.Compiled);
+			return regex.Replace(text, match => ((char)int.Parse(match.Groups[1].Value, NumberStyles.HexNumber)).ToInvariantString());
 		}
 
 		public static string[] SplitOnNewLines(this string text, bool removeEmptyEntries = true)
 		{
 			StringSplitOptions opts = removeEmptyEntries ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None;
-			string[] separators = new[] { Environment.NewLine, Constants.NewLine, Constants.EscapedNewLine };
+            string[] separators = new[] { Environment.NewLine, Resources.Constants.NewLine, Resources.Constants.EscapedNewLine };
 			string[] result = text.Split(separators, opts);
 			return result;
 		}
-
+        
 		public static string TrimAll(this string text, bool includeLineBreaks = true)
 		{
 			if (includeLineBreaks)

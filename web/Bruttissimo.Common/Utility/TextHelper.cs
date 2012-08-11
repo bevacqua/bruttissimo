@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using System.Text;
+﻿using System.Text;
 
 namespace Bruttissimo.Common
 {
@@ -67,7 +66,7 @@ namespace Bruttissimo.Common
 
 		public string RemapInternationalCharToAscii(char c)
 		{
-			string s = c.ToString(CultureInfo.InvariantCulture).ToLowerInvariant();
+			string s = c.ToInvariantString().ToLowerInvariant();
 			if ("àåáâäãåą".Contains(s))
 			{
 				return "a";

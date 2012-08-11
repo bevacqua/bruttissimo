@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 
 namespace Bruttissimo.Common
 {
@@ -13,7 +12,7 @@ namespace Bruttissimo.Common
             }
         	if (number < 1000)
         	{
-        		return number.ToString(CultureInfo.InvariantCulture);
+        		return number.ToInvariantString();
         	}
         	double d = number / 1000.0;
             if (d < 1000)
