@@ -2,8 +2,6 @@ using System;
 using System.Web;
 using Bruttissimo.Common;
 using Bruttissimo.Domain.Logic.Hubs;
-using SignalR;
-using SignalR.Hubs;
 using log4net.Core;
 
 namespace Bruttissimo.Domain
@@ -11,22 +9,32 @@ namespace Bruttissimo.Domain
     public class LogRealtimeService : ILogRealtimeService
     {
         private readonly HttpContextBase context;
+        private readonly IHubContextWrapper<LogHub> hub;
 
-        public LogRealtimeService(HttpContextBase context)
+        public LogRealtimeService(HttpContextBase context, IHubContextWrapper<LogHub> hub)
         {
             if (context == null)
             {
                 throw new ArgumentNullException("context");
             }
+            if (hub == null)
+            {
+                throw new ArgumentNullException("hub");
+            }
             this.context = context;
+            this.hub = hub;
         }
 
         public void Update(LoggingEvent loggingEvent)
         {
+            if (loggingEvent == null)
+            {
+                throw new ArgumentNullException("loggingEvent");
+            }
             string url = null;
             try
             {
-                if (context != null)
+                if (context != null && context.Request != null)
                 {
                     url = context.Request.RawUrl;
                 }
@@ -35,7 +43,6 @@ namespace Bruttissimo.Domain
             {
                 // do nothing.
             }
-
             LoggingEventData data = loggingEvent.GetLoggingEventData();
             Exception exception = loggingEvent.ExceptionObject;
             var json = new
@@ -53,9 +60,7 @@ namespace Bruttissimo.Domain
                 },
                 requestUrl = url,
             };
-
-            IHubContext logHub = GlobalHost.ConnectionManager.GetHubContext<LogHub>();
-            logHub.Clients.update(json);
+            hub.Context.Clients.update(json);
         }
     }
 }
