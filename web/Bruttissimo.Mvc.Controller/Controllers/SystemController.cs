@@ -8,12 +8,12 @@ using Bruttissimo.Mvc.Model;
 
 namespace Bruttissimo.Mvc.Controller
 {
-    public class AdminController : ExtendedController
+    public class SystemController : ExtendedController
     {
         private readonly ILogService logService;
         private readonly IMapper mapper;
 
-        public AdminController(ILogService logService, IMapper mapper)
+        public SystemController(ILogService logService, IMapper mapper)
         {
             if (logService == null)
             {
@@ -30,19 +30,10 @@ namespace Bruttissimo.Mvc.Controller
         [HttpGet]
         [NotAjax]
         [ExtendedAuthorize(Roles = Rights.CanAccessApplicationLogs)]
-        public ActionResult Logs()
+        public ActionResult Log()
         {
             IList<Log> logs = logService.GetLast(10);
             IList<LogModel> model = mapper.Map<IList<Log>, IList<LogModel>>(logs);
-            return View(model);
-        }
-
-        [HttpGet]
-        [NotAjax]
-        [ExtendedAuthorize(Roles = Rights.CanAccessApplicationJobs)]
-        public ActionResult Jobs()
-        {
-            JobModel model = null;
             return View(model);
         }
     }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Bruttissimo.Mvc.Views.Admin.Resources {
+namespace Bruttissimo.Mvc.Views.Jobs.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Bruttissimo.Mvc.Views.Admin.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Jobs {
+    public class Index {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Jobs() {
+        internal Index() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Bruttissimo.Mvc.Views.Admin.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Bruttissimo.Mvc.Views.Admin.Resources.Jobs", typeof(Jobs).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Bruttissimo.Mvc.Views.Jobs.Resources.Index", typeof(Index).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,15 @@ namespace Bruttissimo.Mvc.Views.Admin.Resources {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Schedule New Job.
+        /// </summary>
+        public static string ScheduleJob {
+            get {
+                return ResourceManager.GetString("ScheduleJob", resourceCulture);
             }
         }
     }

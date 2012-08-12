@@ -202,9 +202,10 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\Admin\Logs.cshtml" />
-    <Content Include="Views\Admin\Logs.js.cshtml" />
-    <Content Include="Views\Admin\Jobs.cshtml" />
+    <Content Include="Views\Jobs\Index.cshtml" />
+    <Content Include="Views\Jobs\Schedule.cshtml" />
+    <Content Include="Views\System\Log.cshtml" />
+    <Content Include="Views\System\Log.js.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\GlobalAssemblyInfo.cs">
@@ -231,16 +232,6 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Plumbing\Routing.cs" />
-    <Compile Include="Views\Admin\Resources\Jobs.Designer.cs">
-      <DependentUpon>Jobs.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Views\Admin\Resources\Logs.Designer.cs">
-      <DependentUpon>Logs.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Views\Error\Resources\Index.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -255,6 +246,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Unhandled.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Jobs\Resources\Index.Designer.cs">
+      <DependentUpon>Index.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\Posts\Resources\List.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -295,6 +291,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>_LayoutSections.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\System\Resources\Log.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Log.resx</DependentUpon>
     </Compile>
     <Compile Include="Views\User\Resources\Login.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -340,14 +341,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Post.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Admin\Resources\Jobs.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Jobs.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Admin\Resources\Logs.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Logs.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\Error\Resources\Index.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Index.Designer.cs</LastGenOutput>
@@ -359,6 +352,10 @@
     <EmbeddedResource Include="Views\Error\Resources\Unhandled.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Unhandled.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Jobs\Resources\Index.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Posts\Resources\List.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -392,6 +389,10 @@
     <EmbeddedResource Include="Views\Shared\Resources\_LayoutSections.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>_LayoutSections.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\System\Resources\Log.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Log.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\User\Resources\Login.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
