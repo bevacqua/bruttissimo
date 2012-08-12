@@ -67,12 +67,12 @@ namespace Bruttissimo.Common.Mvc
 			Type loggerType = context.Handler.ComponentModel.Implementation;
 			ILog log = LogManager.GetLogger(loggerType);
 			ExceptionHelper exceptionHelper = kernel.Resolve<ExceptionHelper>();
-			ExceptionHandlingFilter exceptionHandling = new ExceptionHandlingFilter(log, exceptionHelper);
+			ChildActionExceptionFilter childActionFilter = new ChildActionExceptionFilter(log, exceptionHelper);
 			AjaxTransformFilter ajaxTransform = new AjaxTransformFilter(parameters.ApplicationTitle);
 			ActionInvokerFilters filters = parameters.Filters;
 
 			filters.Action.Add(ajaxTransform);
-			filters.Exception.Add(exceptionHandling);
+            filters.Exception.Add(childActionFilter);
 
 			return new WindsorActionInvoker(filters);
 		}
