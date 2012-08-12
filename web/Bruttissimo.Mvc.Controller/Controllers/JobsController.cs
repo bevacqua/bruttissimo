@@ -32,8 +32,8 @@ namespace Bruttissimo.Mvc.Controller
         [NotAjax]
         public ActionResult Index()
         {
-            IList<JobDto> dto = jobService.GetScheduledJobs();
-            IList<JobModel> model = mapper.Map<IList<JobDto>, IList<JobModel>>(dto);
+            IEnumerable<JobDto> dto = jobService.GetScheduledJobs();
+            IEnumerable<JobModel> model = mapper.Map<IEnumerable<JobDto>, IEnumerable<JobModel>>(dto);
             return View(model);
         }
 
