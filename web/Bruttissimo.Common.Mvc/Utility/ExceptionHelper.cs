@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Web;
 using System.Web.Routing;
+using Bruttissimo.Common.Resources;
+using log4net;
 
 namespace Bruttissimo.Common.Mvc
 {
@@ -104,7 +106,19 @@ namespace Bruttissimo.Common.Mvc
         /// <returns>An exception that contains both exceptions.</returns>
         public Exception ConcatExceptions(Exception source, Exception child)
         {
-            throw new NotImplementedException();
+            return new Exception(child.Message, source);
+        }
+
+        public void Log(ILog log, Exception exception, string message = null)
+        {
+            if (exception.IsHttpNotFound())
+            {
+                log.Info(message ?? Error.WebResourceNotFound, exception);
+            }
+            else
+            {
+                log.Error(message ?? Error.UnhandledException, exception);
+            }
         }
     }
 }

@@ -41,10 +41,18 @@ namespace Bruttissimo.Common.Mvc
                 }
                 HttpResponseBase response = context.Response;
                 response.Clear();
-                response.Status = Constants.HttpServerError;
                 response.TrySkipIisCustomErrors = true;
 
-                LogApplicationException(response, exception);
+                if (exception.IsHttpNotFound())
+                {
+                    response.Status = Constants.HttpNotFound;
+                }
+                else
+                {
+                    response.Status = Constants.HttpServerError;
+                }
+                helper.Log(log, exception);
+
                 try
                 {
                     WriteViewResponse(exception, controller);
@@ -59,17 +67,6 @@ namespace Bruttissimo.Common.Mvc
                     application.Server.ClearError();
                 }
             }
-        }
-
-        private void LogApplicationException(HttpResponseBase response, Exception exception)
-        {
-            if (exception.IsHttpNotFound())
-            {
-                log.Debug(Error.WebResourceNotFound, exception);
-                response.Status = Constants.HttpNotFound;
-                return;
-            }
-            log.Error(Error.UnhandledException, exception);
         }
 
         private bool WriteJsonResponse(HttpRequestBase request, HttpResponseBase response, string message)
@@ -113,7 +110,7 @@ namespace Bruttissimo.Common.Mvc
         private void WriteHtmlResponse(Exception exceptionWritingView, Controller controller)
         {
             log.Fatal(Error.FatalException, exceptionWritingView);
-            
+
             HttpResponseBase response = controller.Response;
             ErrorViewModel model = helper.GetErrorViewModel(controller.RouteData, exceptionWritingView);
             string html = GetHtmlResponse(model);
