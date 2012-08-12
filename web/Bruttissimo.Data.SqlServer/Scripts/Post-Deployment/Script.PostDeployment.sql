@@ -17,8 +17,12 @@ SELECT 'Admin'
 
 INSERT INTO [UserRight] ([Name])
 SELECT 'CanAccessApplicationLogs'
+UNION ALL
+SELECT 'CanAccessApplicationJobs'
 
 INSERT INTO [UserRoleRight] ([UserRoleId], [UserRightId])
 SELECT	[Ro].[Id], [Ri].[Id] FROM [UserRight] Ri, [UserRole] Ro
- WHERE	[Ro].[Name] = 'Admin' AND
-		[Ri].[Name] = 'CanAccessApplicationLogs'
+ WHERE ([Ro].[Name] = 'Admin' AND
+		[Ri].[Name] = 'CanAccessApplicationLogs')
+    OR ([Ro].[Name] = 'Admin' AND
+		[Ri].[Name] = 'CanAccessApplicationJobs')

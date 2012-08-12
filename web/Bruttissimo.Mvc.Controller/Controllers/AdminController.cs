@@ -36,5 +36,14 @@ namespace Bruttissimo.Mvc.Controller
             IList<LogModel> model = mapper.Map<IList<Log>, IList<LogModel>>(logs);
             return View(model);
         }
+
+        [HttpGet]
+        [NotAjax]
+        [ExtendedAuthorize(Roles = Rights.CanAccessApplicationJobs)]
+        public ActionResult Jobs()
+        {
+            JobModel model = null;
+            return View(model);
+        }
     }
 }

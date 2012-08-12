@@ -2,7 +2,7 @@
 
 namespace Bruttissimo.Mvc.Model
 {
-	public class LogModel
+    public class LogModel
 	{
 		public long Id { get; set; }
 		public DateTime Date { get; set; }
