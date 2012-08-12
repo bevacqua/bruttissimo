@@ -5,6 +5,7 @@ using Bruttissimo.Common;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Data.Dapper;
 using Bruttissimo.Domain.Logic;
+using Bruttissimo.Domain.Social;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
@@ -26,7 +27,15 @@ namespace Bruttissimo.Mvc.Windsor
 					.Where(t => t.Name.EndsWith("Repository"))
 					.WithService.Select(IoC.SelectByInterfaceConvention)
                     .LifestyleHybridPerWebRequestPerThread()
-			);
+            );
+
+            // Social assembly repositories.
+            container.Register(
+                AllTypes.FromAssemblyContaining<FacebookRepository>()
+                    .Where(t => t.Name.EndsWith("Repository"))
+                    .WithService.Select(IoC.SelectByInterfaceConvention)
+                    .LifestyleHybridPerWebRequestPerThread()
+            );
 
 			// Dapper assembly repositories.
 			container.Register(

@@ -10,8 +10,8 @@ namespace Bruttissimo.Domain.Logic
     {
         private readonly IFacebookService facebookService;
 
-        public FacebookImportJob(IKernel kernel, IFacebookService facebookService) :
-            base(kernel, facebookService)
+        public FacebookImportJob(IKernel kernel, IFacebookService facebookService)
+            : base(kernel, facebookService)
         {
             if (facebookService == null)
             {
