@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common
 {
     public sealed class JobTypeStore : IJobTypeStore
     {

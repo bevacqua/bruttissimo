@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Quartz;
 using log4net;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common
 {
 	public class JobAutoRunner : IJobAutoRunner
 	{
@@ -26,10 +26,7 @@ namespace Bruttissimo.Common.Mvc
 			foreach (Type jobType in jobTypes)
 			{
 				log.Debug(Resources.Debug.SchedulingAutoRunJob.FormatWith(jobType.Name));
-
-				IJobDetail detail = JobBuilder.Create(jobType).Build();
-				ITrigger trigger = TriggerBuilder.Create().StartNow().Build();
-				scheduler.ScheduleJob(detail, trigger);
+				scheduler.ScheduleJob(jobType);
 			}
 		}
 	}

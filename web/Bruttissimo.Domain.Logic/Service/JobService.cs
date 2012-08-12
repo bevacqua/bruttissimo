@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Bruttissimo.Common.Mvc;
+using Bruttissimo.Common;
 using Bruttissimo.Domain.Entity;
 using Quartz;
 

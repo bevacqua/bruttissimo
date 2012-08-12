@@ -1,6 +1,6 @@
 using System;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common
 {
 	/// <summary>
 	/// Jobs decorated with this attribute should be fired when the application starts.

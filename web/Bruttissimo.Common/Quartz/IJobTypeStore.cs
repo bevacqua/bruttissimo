@@ -1,7 +1,7 @@
 using System;
 using System.Collections.ObjectModel;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common
 {
     public interface IJobTypeStore
     {

@@ -1,6 +1,6 @@
 using Quartz;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common
 {
 	public interface IJobAutoRunner
 	{
