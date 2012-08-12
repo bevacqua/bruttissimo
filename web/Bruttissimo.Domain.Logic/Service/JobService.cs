@@ -1,21 +1,27 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain.Entity;
 using Quartz;
 
-namespace Bruttissimo.Domain
+namespace Bruttissimo.Domain.Logic
 {
     public class JobService : IJobService
     {
         private readonly IScheduler scheduler;
+        private readonly IJobTypeStore store;
 
-        public JobService(IScheduler scheduler)
+        public JobService(IScheduler scheduler, IJobTypeStore store)
         {
             if (scheduler == null)
             {
                 throw new ArgumentNullException("scheduler");
             }
+            if (store == null)
+            {
+                throw new ArgumentNullException("store");
+            }
+            this.store = store;
             this.scheduler = scheduler;
         }
 
@@ -27,6 +33,7 @@ namespace Bruttissimo.Domain
 
         public IEnumerable<AvailableJobDto> GetAvailableJobs()
         {
+            IEnumerable<Type> types = store.All;
             throw new NotImplementedException();
         }
     }

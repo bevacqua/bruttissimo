@@ -65,21 +65,39 @@ namespace Bruttissimo.Common.Mvc
                     .WithServiceSelf()
                     .LifestyleTransient()
             );
+
+            // Component tasked with holding the different Job types available.
+            container.Register(
+                Component
+                    .For<IJobTypeStore>()
+                    .UsingFactoryMethod(InstanceJobTypes)
+                    .LifestyleSingleton()
+            );
         }
 
         /// <summary>
-        /// Gets all jobs marked as AutoRun in the target assembly.
+        /// Gets all jobs marked as AutoRun found in the provided assemblies.
         /// </summary>
         private IEnumerable<Type> FindAutoRunJobTypes()
         {
+            IEnumerable<Type> types = FindJobTypes();
+            IEnumerable<Type> jobTypes = types.Where(type => type.HasAttribute<AutoRunAttribute>());
+            return jobTypes;
+        }
+
+        /// <summary>
+        /// Gets all job types found in the provided assemblies.
+        /// </summary>
+        internal IEnumerable<Type> FindJobTypes()
+        {
             Type jobType = typeof(IJob);
 
-            IEnumerable<Type> jobs = jobAssembly
+            IEnumerable<Type> jobTypes = jobAssembly
                 .GetTypes()
-                .Where(jobType.IsAssignableFrom)
-                .Where(type => type.HasAttribute<AutoRunAttribute>());
+                .Where(type => !(type.IsAbstract || type.IsInterface))
+                .Where(jobType.IsAssignableFrom);
 
-            return jobs;
+            return jobTypes;
         }
 
         internal IJobAutoRunner InstanceJobAutoRunner(IKernel kernel)
@@ -87,6 +105,13 @@ namespace Bruttissimo.Common.Mvc
             IList<Type> jobTypes = FindAutoRunJobTypes().ToList();
             IJobAutoRunner autoRunner = new JobAutoRunner(jobTypes);
             return autoRunner;
+        }
+
+        internal IJobTypeStore InstanceJobTypes()
+        {
+            IEnumerable<Type> allTypes = FindJobTypes();
+            IEnumerable<Type> autoRunTypes = FindAutoRunJobTypes();
+            return new JobTypeStore(allTypes, autoRunTypes);
         }
     }
 }
