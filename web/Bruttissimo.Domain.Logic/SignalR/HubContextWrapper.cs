@@ -3,7 +3,7 @@ using SignalR.Hubs;
 
 namespace Bruttissimo.Domain
 {
-    public class HubContextWrapper<THub> where THub : IHub
+    public class HubContextWrapper<THub> : IHubContextWrapper<THub> where THub : IHub
     {
         public IHubContext Context
         {
