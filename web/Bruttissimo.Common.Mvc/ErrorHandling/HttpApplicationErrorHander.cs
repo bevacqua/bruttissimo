@@ -57,7 +57,6 @@ namespace Bruttissimo.Common.Mvc
                 try
                 {
                     WriteViewResponse(exception, controller);
-                    throw new Exception("second exc");
                 }
                 catch (Exception exceptionRenderingViewResult) // now we're in trouble. lets be as graceful as possible.
                 {
