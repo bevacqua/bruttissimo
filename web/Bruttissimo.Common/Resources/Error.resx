@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AggregateException" xml:space="preserve">
+    <value>Multiple exceptions were raised.</value>
+  </data>
   <data name="AjaxTransformAttributeDecoration" xml:space="preserve">
     <value>AjaxTransformActionResultAttribute must decorate a method or class that inherits from StringRenderingController.</value>
   </data>

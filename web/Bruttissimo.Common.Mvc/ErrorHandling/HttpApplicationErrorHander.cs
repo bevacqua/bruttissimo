@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -56,6 +57,7 @@ namespace Bruttissimo.Common.Mvc
                 try
                 {
                     WriteViewResponse(exception, controller);
+                    throw new Exception("second exc");
                 }
                 catch (Exception exceptionRenderingViewResult) // now we're in trouble. lets be as graceful as possible.
                 {
@@ -69,13 +71,13 @@ namespace Bruttissimo.Common.Mvc
             }
         }
 
-        private bool WriteJsonResponse(HttpRequestBase request, HttpResponseBase response, string message)
+        private bool WriteJsonResponse(HttpRequestBase request, HttpResponseBase response, string json)
         {
             if (request.IsAjaxRequest())
             {
                 response.Status = Constants.HttpSuccess;
                 response.ContentType = Constants.JsonContentType;
-                response.Write(message);
+                response.Write(json);
                 return true;
             }
             return false;
@@ -154,7 +156,6 @@ namespace Bruttissimo.Common.Mvc
                 string sql = sqlData.ToString();
                 sqlHtml = Unrecoverable.Sql.FormatWith(HttpUtility.HtmlEncode(sql));
             }
-
             StringBuilder stackTrace = new StringBuilder();
             string stackTraceHtml = string.Empty;
 
@@ -168,16 +169,31 @@ namespace Bruttissimo.Common.Mvc
                 stackTraceHtml = Unrecoverable.StackTrace.FormatWith(stackTrace);
             }
 
-            string innerException = GetHtmlException(exception.InnerException);
-            if (!innerException.NullOrBlank())
+            #region Inner Exception recursion
+
+            AggregateException aggregate = exception as AggregateException;
+            IEnumerable<Exception> innerExceptions = new[] { exception.InnerException };
+            if (aggregate != null)
             {
-                innerException = Unrecoverable.InnerException.FormatWith(innerException);
+                innerExceptions = aggregate.InnerExceptions;
             }
+            string innerHtml = string.Empty;
+            foreach (Exception inner in innerExceptions)
+            {
+                innerHtml += GetHtmlException(inner);
+            }
+            if (!innerHtml.NullOrBlank())
+            {
+                innerHtml = Unrecoverable.InnerException.FormatWith(innerHtml);
+            }
+
+            #endregion
+
             string html = GetEmbeddedHtmlTemplate(Constants.UnrecoverableExceptionViewName);
             html = html.Replace(Unrecoverable.ModelMessage, HttpUtility.HtmlEncode(exception.Message));
             html = html.Replace(Unrecoverable.ModelSql, sqlHtml);
             html = html.Replace(Unrecoverable.ModelStackTrace, stackTraceHtml);
-            html = html.Replace(Unrecoverable.ModelInnerException, innerException);
+            html = html.Replace(Unrecoverable.ModelInnerException, innerHtml);
             return html;
         }
 

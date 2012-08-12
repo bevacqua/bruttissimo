@@ -57,10 +57,10 @@ namespace Bruttissimo.Common.Mvc
                 exception = stack.Pop();
             }
 
-            string genericMessage = Resources.User.UnhandledException; // generic default exception response
+            string genericMessage = User.UnhandledException; // generic default exception response
             if (ajax)
             {
-                genericMessage = Resources.User.UnhandledAjaxException;
+                genericMessage = User.UnhandledAjaxException;
             }
 
             return genericMessage;
@@ -76,11 +76,11 @@ namespace Bruttissimo.Common.Mvc
 
             if (exception is SqlException)
             {
-                errorMessage = Resources.User.DatabaseError;
+                errorMessage = User.DatabaseError;
             }
             else if (exception.IsHttpNotFound())
             {
-                errorMessage = Resources.User.WebResourceNotFound;
+                errorMessage = User.WebResourceNotFound;
             }
             return errorMessage;
         }
@@ -91,8 +91,8 @@ namespace Bruttissimo.Common.Mvc
             {
                 throw new ArgumentNullException("data");
             }
-            string controllerName = data.GetControllerString(Resources.Error.EmptyController);
-            string actionName = data.GetActionString(Resources.Error.EmptyAction);
+            string controllerName = data.GetControllerString(Error.EmptyController);
+            string actionName = data.GetActionString(Error.EmptyAction);
             string errorMessage = GetMessage(exception, ajax);
             ErrorViewModel model = new ErrorViewModel(context, exception, controllerName, actionName, errorMessage);
             return model;
@@ -106,7 +106,7 @@ namespace Bruttissimo.Common.Mvc
         /// <returns>An exception that contains both exceptions.</returns>
         public Exception ConcatExceptions(Exception source, Exception child)
         {
-            return new Exception(child.Message, source);
+            return new AggregateException(Error.AggregateException, child, source);
         }
 
         public void Log(ILog log, Exception exception, string message = null)
