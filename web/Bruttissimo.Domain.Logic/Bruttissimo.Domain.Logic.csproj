@@ -114,6 +114,7 @@
     <Compile Include="Job\BaseJob.cs" />
     <Compile Include="Job\FacebookImportJob.cs" />
     <Compile Include="log4net\RequestIdentityPattern.cs" />
+    <Compile Include="MiniMembership\MembershipExtensions.cs" />
     <Compile Include="Service\FacebookService.cs" />
     <Compile Include="MiniMembership\MiniAuthenticationWrapper.cs" />
     <Compile Include="Service\LogService.cs" />

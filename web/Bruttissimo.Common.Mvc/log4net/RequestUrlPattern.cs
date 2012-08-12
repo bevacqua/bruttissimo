@@ -20,7 +20,7 @@ namespace log4net.Layout
             }
             catch (HttpException) // when attempting to access the request in an HttpContext that isn't part of a Request.
             {
-                // do nothing.
+                // suppress.
             }
         }
     }

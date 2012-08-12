@@ -1,6 +1,7 @@
 using System;
 using System.Web;
 using Bruttissimo.Common;
+using Bruttissimo.Domain.Logic;
 using Bruttissimo.Domain.Logic.Hubs;
 using log4net.Core;
 
@@ -31,21 +32,10 @@ namespace Bruttissimo.Domain
             {
                 throw new ArgumentNullException("loggingEvent");
             }
-            string url = null;
-            try
-            {
-                if (context != null && context.Request != null)
-                {
-                    url = context.Request.RawUrl;
-                }
-            }
-            catch (HttpException) // when attempting to access the request in an HttpContext that isn't part of a Request.
-            {
-                // do nothing.
-            }
             LoggingEventData data = loggingEvent.GetLoggingEventData();
             Exception exception = loggingEvent.ExceptionObject;
-            long? userId = null; // TODO
+            string requestUrl = GetRawUrl();
+            long? userId = context.GetUserId();
 
             var json = new
             {
@@ -58,12 +48,28 @@ namespace Bruttissimo.Domain
                 {
                     message = exception.Message,
                     stackTrace = exception.StackTrace,
-                    sql = exception.Data.Contains("SQL") ? exception.Data["SQL"] : null
+                    sql = exception.Data["SQL"]
                 },
-                requestUrl = url,
+                requestUrl,
                 userId
             };
             hub.Context.Clients.update(json);
+        }
+
+        private string GetRawUrl()
+        {
+            try
+            {
+                if (context != null && context.Request != null)
+                {
+                    return context.Request.RawUrl;
+                }
+            }
+            catch (HttpException) // when attempting to access the request in an HttpContext that isn't part of a Request.
+            {
+                // suppress.
+            }
+            return null;
         }
     }
 }

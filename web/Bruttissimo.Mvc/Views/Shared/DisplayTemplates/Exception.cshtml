@@ -1,10 +1,13 @@
 ﻿@model Exception
+@{
+    object sql = Model.Data["SQL"];
+}
 <article class="exception">
 	<header>@Model.Message</header>
-@if (Model.Data.Contains("SQL"))
+@if (sql != null)
 {
 	<section class="sql">
-		<pre>@Model.Data["SQL"]</pre>
+		<pre>@sql</pre>
 	</section>
 }
 @if (Model.StackTrace != null)

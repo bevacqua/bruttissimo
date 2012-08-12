@@ -1,5 +1,4 @@
 using System.IO;
-using System.Security.Principal;
 using System.Web;
 using Bruttissimo.Domain.Logic;
 using log4net.Core;
@@ -16,37 +15,16 @@ namespace log4net.Layout
             {
                 return;
             }
-            try
-            {
-                if (context.Request.IsAuthenticated) // note this won't be true until after HttpApplication.PostAuthenticateRequest for any given request.
-                {
-                    long? id = GetUserId(context.User);
-                    if (id.HasValue)
-                    {
-                        writer.Write(id.Value);
-                    }
-                }
-            }
-            catch (HttpException) // when attempting to access the request in an HttpContext that isn't part of a Request.
-            {
-                // do nothing.
-            }
+            AppendUserId(writer, new HttpContextWrapper(context));
         }
 
-        protected long? GetUserId(IPrincipal principal)
+        private void AppendUserId(TextWriter writer, HttpContextBase context)
         {
-            MiniPrincipal miniPrincipal = principal as MiniPrincipal;
-            if (miniPrincipal != null && miniPrincipal.User != null)
+            long? id = context.GetUserId();
+            if (id.HasValue)
             {
-                return miniPrincipal.User.Id;
+                writer.Write(id.Value);
             }
-
-            long id;
-            if (long.TryParse(principal.Identity.Name, out id))
-            {
-                return id;
-            }
-            return null;
         }
     }
 }
