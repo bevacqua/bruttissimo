@@ -246,7 +246,7 @@ namespace Bruttissimo.Data.Dapper
 			}
 			if (user.Role == null)
 			{
-				user.Role = GetRoleDetails(user);
+				user.Role = GetRoleDetails(user); // load lazily.
 			}
 			// Shim this finer grained right-based schema into the ASP.NET role-based framework.
 			if (user.Role.Name.InsensitiveEquals(roleOrRight))

@@ -1,0 +1,7 @@
+﻿@model IEnumerable<ActionLinkModel>
+<section id="sysadmin">
+@foreach(ActionLinkModel action in Model)
+{
+    <a href="@action.Url">@Resource.String(action.ResourceKey)</a>
+}
+</section>

@@ -16,6 +16,8 @@ UNION ALL
 SELECT 'Admin'
 
 INSERT INTO [UserRight] ([Name])
+SELECT 'CanAccessSystemPanel'
+UNION ALL
 SELECT 'CanAccessApplicationLogs'
 UNION ALL
 SELECT 'CanAccessApplicationJobs'
@@ -23,6 +25,8 @@ SELECT 'CanAccessApplicationJobs'
 INSERT INTO [UserRoleRight] ([UserRoleId], [UserRightId])
 SELECT	[Ro].[Id], [Ri].[Id] FROM [UserRight] Ri, [UserRole] Ro
  WHERE ([Ro].[Name] = 'Admin' AND
+		[Ri].[Name] = 'CanAccessSystemPanel')
+    OR ([Ro].[Name] = 'Admin' AND
 		[Ri].[Name] = 'CanAccessApplicationLogs')
     OR ([Ro].[Name] = 'Admin' AND
 		[Ri].[Name] = 'CanAccessApplicationJobs')

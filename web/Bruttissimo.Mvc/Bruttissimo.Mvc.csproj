@@ -206,6 +206,7 @@
     <Content Include="Views\Jobs\Schedule.cshtml" />
     <Content Include="Views\System\Log.cshtml" />
     <Content Include="Views\System\Log.js.cshtml" />
+    <Content Include="Views\System\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\GlobalAssemblyInfo.cs">

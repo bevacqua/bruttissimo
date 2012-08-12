@@ -48,7 +48,7 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="EmailMessageModel.cs" />
+    <Compile Include="Email\EmailMessageModel.cs" />
     <Compile Include="Constants\Rights.cs" />
     <Compile Include="Enum\LinkType.cs" />
     <Compile Include="Constants\Roles.cs" />
@@ -61,6 +61,7 @@
     <Compile Include="Entities\UserConnection.cs" />
     <Compile Include="Entities\UserRight.cs" />
     <Compile Include="Entities\UserRole.cs" />
+    <Compile Include="DTO\JobDto.cs" />
     <Compile Include="Social\FacebookPost.cs" />
   </ItemGroup>
   <ItemGroup>
