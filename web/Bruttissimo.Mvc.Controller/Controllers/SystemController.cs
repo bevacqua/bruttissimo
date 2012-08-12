@@ -50,7 +50,7 @@ namespace Bruttissimo.Mvc.Controller
             {
                 yield return new ActionLinkModel
                 {
-                    Url = Url.Action("Jobs", "System"),
+                    Url = Url.Action("Index", "Jobs"),
                     ResourceKey = "Jobs"
                 };
             }
