@@ -4,7 +4,7 @@ namespace Bruttissimo.Domain.Entity
 {
 	public class Log
 	{
-		public int Id { get; set; }
+		public long Id { get; set; }
 		public DateTime Date { get; set; }
 		public string Thread { get; set; }
 		public string Level { get; set; }
@@ -13,6 +13,7 @@ namespace Bruttissimo.Domain.Entity
 		public string Exception { get; set; }
 		public string StackTrace { get; set; }
 		public string SQL { get; set; }
-		public string RequestUrl { get; set; }
+        public string RequestUrl { get; set; }
+        public long? UserId { get; set; }
 	}
 }
