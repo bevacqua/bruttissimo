@@ -96,7 +96,7 @@
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="ActionFilters\AjaxTransformFilter.cs" />
-    <Compile Include="ErrorHandling\ExceptionHandlingFilter.cs" />
+    <Compile Include="ErrorHandling\ChildActionExceptionFilter.cs" />
     <Compile Include="Exceptions\HttpNotFoundException.cs" />
     <Compile Include="ActionResults\Json\AjaxViewJsonResult.cs" />
     <Compile Include="ActionResults\NotFoundResult.cs" />

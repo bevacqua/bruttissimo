@@ -41,7 +41,9 @@ namespace Bruttissimo.Mvc.Controller
         [NotAjax]
         public ActionResult Schedule()
         {
-            return View();
+            IEnumerable<AvailableJobDto> dto = jobService.GetAvailableJobs();
+            IEnumerable<AvailableJobModel> model = mapper.Map<IEnumerable<AvailableJobDto>, IEnumerable<AvailableJobModel>>(dto);
+            return View(model);
         }
     }
 }

@@ -6,5 +6,6 @@ namespace Bruttissimo.Domain
     public interface IJobService
     {
         IEnumerable<JobDto> GetScheduledJobs();
+        IEnumerable<AvailableJobDto> GetAvailableJobs();
     }
 }

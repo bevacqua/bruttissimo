@@ -22,8 +22,12 @@ namespace Bruttissimo.Domain
         public IEnumerable<JobDto> GetScheduledJobs()
         {
             IList<IJobExecutionContext> jobs = scheduler.GetCurrentlyExecutingJobs();
-            var job = jobs.First();
             return new List<JobDto>();
+        }
+
+        public IEnumerable<AvailableJobDto> GetAvailableJobs()
+        {
+            throw new NotImplementedException();
         }
     }
 }
