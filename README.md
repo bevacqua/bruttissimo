@@ -20,7 +20,6 @@ Script and Style Resources:
 Exception Handling:
 -------------------
 
-	- throwing an ExpectedException in a controller will return a JsonResult specifying the message set in the ExpectedException. This produces a dialog box with the error message.
 	- if the Request was non-AJAX, the UnhandledError view will be displayed instead, and display the message.
 	- for exceptions that do not occur in the context of a controller (say a resource was not found), the global handler will take care of that.
 	- all exceptions are logged through log4net into a database log table.

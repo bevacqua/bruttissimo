@@ -6,109 +6,105 @@ using System.Web.Routing;
 
 namespace Bruttissimo.Common.Mvc
 {
-	public class ExceptionHelper
-	{
-		private readonly HttpContextBase context;
+    public class ExceptionHelper
+    {
+        private readonly HttpContextBase context;
 
-		public ExceptionHelper(HttpContextBase context)
-		{
-			if (context == null)
-			{
-				throw new ArgumentNullException("context");
-			}
-			this.context = context;
-		}
+        public ExceptionHelper(HttpContextBase context)
+        {
+            if (context == null)
+            {
+                throw new ArgumentNullException("context");
+            }
+            this.context = context;
+        }
 
-		/// <summary>
-		/// Gets all inner exceptions for the current exception, not including itself.
-		/// </summary>
-		internal Stack<Exception> GetExceptionStack(Exception exception)
-		{
-			Stack<Exception> stack = new Stack<Exception>();
-			Exception inner = exception.InnerException;
-			while (inner != null)
-			{
-				stack.Push(inner);
-				inner = inner.InnerException;
-			}
-			return stack;
-		}
+        /// <summary>
+        /// Gets all inner exceptions for the current exception, not including itself.
+        /// </summary>
+        internal Stack<Exception> GetExceptionStack(Exception exception)
+        {
+            Stack<Exception> stack = new Stack<Exception>();
+            Exception inner = exception.InnerException;
+            while (inner != null)
+            {
+                stack.Push(inner);
+                inner = inner.InnerException;
+            }
+            return stack;
+        }
 
-		/// <summary>
-		/// Examines the exception inside out (innermost-first) and returns the most reasonable explanation about what is going on to the user,
-		/// without actually disclosing any sensitive information about the error that was raised.
-		/// </summary>
-		public string GetMessage(Exception exception, bool ajax)
-		{
-			Stack<Exception> stack = GetExceptionStack(exception);
-			while (exception != null)
-			{
-				string specificMessage = GetSpecificExceptionMessage(exception, ajax);
-				if (!specificMessage.NullOrEmpty())
-				{
-					return specificMessage;
-				}
-				if (stack.Count == 0)
-				{
-					break;
-				}
-				exception = stack.Pop();
-			}
+        /// <summary>
+        /// Examines the exception inside out (innermost-first) and returns the most reasonable explanation about what is going on to the user,
+        /// without actually disclosing any sensitive information about the error that was raised.
+        /// </summary>
+        public string GetMessage(Exception exception, bool ajax)
+        {
+            Stack<Exception> stack = GetExceptionStack(exception);
+            while (exception != null)
+            {
+                string specificMessage = GetSpecificExceptionMessage(exception, ajax);
+                if (!specificMessage.NullOrEmpty())
+                {
+                    return specificMessage;
+                }
+                if (stack.Count == 0)
+                {
+                    break;
+                }
+                exception = stack.Pop();
+            }
 
-			string genericMessage = Resources.User.UnhandledException; // generic default exception response
-			if (ajax)
-			{
-				genericMessage = Resources.User.UnhandledAjaxException;
-			}
+            string genericMessage = Resources.User.UnhandledException; // generic default exception response
+            if (ajax)
+            {
+                genericMessage = Resources.User.UnhandledAjaxException;
+            }
 
-			return genericMessage;
-		}
+            return genericMessage;
+        }
 
-		internal string GetSpecificExceptionMessage(Exception exception, bool ajax)
-		{
-			if (exception == null)
-			{
-				return null;
-			}
-			string errorMessage = null;
+        internal string GetSpecificExceptionMessage(Exception exception, bool ajax)
+        {
+            if (exception == null)
+            {
+                return null;
+            }
+            string errorMessage = null;
 
-			bool argument = exception is ArgumentException;
+            if (exception is SqlException)
+            {
+                errorMessage = Resources.User.DatabaseError;
+            }
+            else if (exception.IsHttpNotFound())
+            {
+                errorMessage = Resources.User.WebResourceNotFound;
+            }
+            return errorMessage;
+        }
 
-			if (exception is ExpectedException)
-			{
-				errorMessage = exception.Message;
-			}
-			else if (ajax && argument)
-			{
-				errorMessage = Resources.User.BadAjaxRequest;
-			}
-			else if (!ajax && argument)
-			{
-				errorMessage = Resources.User.BadRequest;
-			}
-			else if (exception is SqlException)
-			{
-				errorMessage = Resources.User.DatabaseError;
-			}
-			else if (exception.IsHttpNotFound())
-			{
-				errorMessage = Resources.User.WebResourceNotFound;
-			}
+        public ErrorViewModel GetErrorViewModel(RouteData data, Exception exception, bool ajax = false)
+        {
+            if (data == null)
+            {
+                throw new ArgumentNullException("data");
+            }
+            string controllerName = data.GetControllerString(Resources.Error.EmptyController);
+            string actionName = data.GetActionString(Resources.Error.EmptyAction);
+            string errorMessage = GetMessage(exception, ajax);
+            ErrorViewModel model = new ErrorViewModel(context, exception, controllerName, actionName, errorMessage);
+            return model;
+        }
 
-			return errorMessage;
-		}
-
-		public ErrorViewModel GetErrorViewModel(RouteData data, Exception exception, bool ajax = false)
-		{
-			if (data == null)
-			{
-				throw new ArgumentNullException("data");
-			}
-			string controllerName = data.GetControllerString(Resources.Error.EmptyController);
-			string actionName = data.GetActionString(Resources.Error.EmptyAction);
-			string errorMessage = GetMessage(exception, ajax);
-			ErrorViewModel model = new ErrorViewModel(context, exception, controllerName, actionName, errorMessage);
-			return model;
-		}
-	}
+        /// <summary>
+        /// Concatenate two exceptions where the latter is thrown while addressing the former.
+        /// </summary>
+        /// <param name="source">The exception that originated the event.</param>
+        /// <param name="child">The exception raised when trying to handle the original exception.</param>
+        /// <returns>An exception that contains both exceptions.</returns>
+        public Exception ConcatExceptions(Exception source, Exception child)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

@@ -97,7 +97,6 @@
     </Compile>
     <Compile Include="ActionFilters\AjaxTransformFilter.cs" />
     <Compile Include="ErrorHandling\ExceptionHandlingFilter.cs" />
-    <Compile Include="Exceptions\ExpectedException.cs" />
     <Compile Include="Exceptions\HttpNotFoundException.cs" />
     <Compile Include="ActionResults\Json\AjaxViewJsonResult.cs" />
     <Compile Include="ActionResults\NotFoundResult.cs" />

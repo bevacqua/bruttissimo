@@ -35,30 +35,33 @@ namespace Bruttissimo.Common.Mvc
             using (ErrorController controller = ErrorController.Instance(context))
             {
                 Exception exception = application.Server.GetLastError();
-                if (exception != null) // prevent bizarre scenario when handling requests to *.cshtml physical files.
+                if (exception == null) // prevent bizarre scenario when handling requests to *.cshtml physical files.
                 {
-                    application.Response.Clear();
-                    application.Response.Status = Constants.HttpServerError;
-                    application.Response.TrySkipIisCustomErrors = true;
+                    return;
+                }
+                HttpResponseBase response = context.Response;
+                response.Clear();
+                response.Status = Constants.HttpServerError;
+                response.TrySkipIisCustomErrors = true;
 
-                    LogApplicationException(application.Response, exception);
-                    try
-                    {
-                        WriteViewResponse(exception, controller);
-                    }
-                    catch (Exception exceptionWritingView) // now we're in trouble. lets be as graceful as possible.
-                    {
-                        WriteGracefulResponse(exceptionWritingView, controller);
-                    }
-                    finally
-                    {
-                        application.Server.ClearError();
-                    }
+                LogApplicationException(response, exception);
+                try
+                {
+                    WriteViewResponse(exception, controller);
+                }
+                catch (Exception exceptionRenderingViewResult) // now we're in trouble. lets be as graceful as possible.
+                {
+                    Exception concatenated = helper.ConcatExceptions(exception, exceptionRenderingViewResult);
+                    WriteGracefulResponse(concatenated, controller);
+                }
+                finally
+                {
+                    application.Server.ClearError();
                 }
             }
         }
 
-        private void LogApplicationException(HttpResponse response, Exception exception)
+        private void LogApplicationException(HttpResponseBase response, Exception exception)
         {
             if (exception.IsHttpNotFound())
             {
@@ -69,13 +72,13 @@ namespace Bruttissimo.Common.Mvc
             log.Error(Error.UnhandledException, exception);
         }
 
-        private bool WriteJsonResponse(string message)
+        private bool WriteJsonResponse(HttpRequestBase request, HttpResponseBase response, string message)
         {
-            if (application.Request.IsAjaxRequest())
+            if (request.IsAjaxRequest())
             {
-                application.Response.Status = Constants.HttpSuccess;
-                application.Response.ContentType = Constants.JsonContentType;
-                application.Response.Write(message);
+                response.Status = Constants.HttpSuccess;
+                response.ContentType = Constants.JsonContentType;
+                response.Write(message);
                 return true;
             }
             return false;
@@ -83,61 +86,50 @@ namespace Bruttissimo.Common.Mvc
 
         private void WriteViewResponse(Exception exception, StringRenderingController controller)
         {
-            if (!WriteJsonResponse(User.UnhandledExceptionJson))
+            if (!WriteJsonResponse(controller.Request, controller.Response, User.UnhandledExceptionJson))
             {
+                HttpResponseBase response = controller.Response;
                 ErrorViewModel model = helper.GetErrorViewModel(controller.RouteData, exception);
                 string result = controller.ViewString(Constants.ErrorViewName, model);
-                application.Response.ContentType = Constants.HtmlContentType;
-                application.Response.Write(result);
+                response.ContentType = Constants.HtmlContentType;
+                response.Write(result);
             }
         }
 
-        private void WriteGracefulResponse(Exception exception, ErrorController controller, bool clear = false)
+        private void WriteGracefulResponse(Exception exception, ErrorController controller)
         {
             try
             {
                 // write an HTML response from an embedded resource in the assembly.
                 WriteHtmlResponse(exception, controller);
             }
-            catch (Exception exceptionWritingHtml) // we seem to be having a very rough day, lets just call it a day.
+            catch (Exception exceptionRenderingHtml) // we seem to be having a very rough day, lets just call it a day.
             {
-                // write a plain text response.
-                WritePlainTextResponse(exceptionWritingHtml);
-            }
-            finally
-            {
-                if (clear)
-                {
-                    application.Server.ClearError();
-                }
+                Exception concatenated = helper.ConcatExceptions(exception, exceptionRenderingHtml);
+                WritePlainTextResponse(controller.Response, concatenated); // write a plain text response.
             }
         }
 
         private void WriteHtmlResponse(Exception exceptionWritingView, Controller controller)
         {
-            application.Response.Clear();
-
-            if (!WriteJsonResponse(User.UnhandledExceptionJson))
-            {
-                ErrorViewModel model = helper.GetErrorViewModel(controller.RouteData, exceptionWritingView);
-                string html = GetHtmlResponse(model);
-
-                application.Response.ContentType = Constants.HtmlContentType;
-                application.Response.Write(html);
-            }
             log.Fatal(Error.FatalException, exceptionWritingView);
+            
+            HttpResponseBase response = controller.Response;
+            ErrorViewModel model = helper.GetErrorViewModel(controller.RouteData, exceptionWritingView);
+            string html = GetHtmlResponse(model);
+
+            response.Clear();
+            response.ContentType = Constants.HtmlContentType;
+            response.Write(html);
         }
 
-        private void WritePlainTextResponse(Exception exceptionWritingHtml)
+        private void WritePlainTextResponse(HttpResponseBase response, Exception exceptionWritingHtml)
         {
-            application.Response.Clear();
-
-            if (!WriteJsonResponse(User.FatalExceptionJson))
-            {
-                application.Response.ContentType = Constants.PlainTextContentType;
-                application.Response.Write(User.FatalException);
-            }
             log.Fatal(Error.FatalException, exceptionWritingHtml);
+
+            response.Clear();
+            response.ContentType = Constants.PlainTextContentType;
+            response.Write(User.FatalException);
         }
 
         private string GetHtmlResponse(ErrorViewModel model)

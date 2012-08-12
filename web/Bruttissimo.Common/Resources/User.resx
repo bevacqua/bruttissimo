@@ -123,12 +123,6 @@
   <data name="AuthenticationFaulted" xml:space="preserve">
     <value>Se produjo un error al identificarte con las credenciales solicitadas. Vuelve a intentar más tarde.</value>
   </data>
-  <data name="BadAjaxRequest" xml:space="preserve">
-    <value>Al parecer el servidor rechazó el pedido enviado! Vuelve a intentar más tarde.</value>
-  </data>
-  <data name="BadRequest" xml:space="preserve">
-    <value>Al parecer el servidor rechazó el pedido enviado.</value>
-  </data>
   <data name="DatabaseError" xml:space="preserve">
     <value>Se produjo un error accediendo a la base de datos.</value>
   </data>
