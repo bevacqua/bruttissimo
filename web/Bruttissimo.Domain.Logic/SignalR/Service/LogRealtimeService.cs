@@ -9,24 +9,18 @@ namespace Bruttissimo.Domain
 {
     public class LogRealtimeService : ILogRealtimeService
     {
-        private readonly HttpContextBase context;
         private readonly IHubContextWrapper<LogHub> hub;
 
-        public LogRealtimeService(HttpContextBase context, IHubContextWrapper<LogHub> hub)
+        public LogRealtimeService(IHubContextWrapper<LogHub> hub)
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException("context");
-            }
             if (hub == null)
             {
                 throw new ArgumentNullException("hub");
             }
-            this.context = context;
             this.hub = hub;
         }
 
-        public void Update(LoggingEvent loggingEvent)
+        public void Update(HttpContextBase context, LoggingEvent loggingEvent)
         {
             if (loggingEvent == null)
             {
@@ -34,7 +28,7 @@ namespace Bruttissimo.Domain
             }
             LoggingEventData data = loggingEvent.GetLoggingEventData();
             Exception exception = loggingEvent.ExceptionObject;
-            string requestUrl = GetRawUrl();
+            string requestUrl = GetRawUrl(context);
             long? userId = context.GetUserId();
 
             var json = new
@@ -56,7 +50,7 @@ namespace Bruttissimo.Domain
             hub.Context.Clients.update(json);
         }
 
-        private string GetRawUrl()
+        private string GetRawUrl(HttpContextBase context)
         {
             try
             {

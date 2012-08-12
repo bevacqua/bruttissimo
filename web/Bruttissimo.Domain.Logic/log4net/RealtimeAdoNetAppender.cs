@@ -1,4 +1,5 @@
-﻿using Bruttissimo.Common.Mvc;
+﻿using System.Web;
+using Bruttissimo.Common.Mvc;
 using log4net.Appender;
 using log4net.Core;
 
@@ -14,8 +15,9 @@ namespace Bruttissimo.Domain.Logic
 
         private void EmitSignal(LoggingEvent loggingEvent)
         {
+            HttpContextWrapper context = new HttpContextWrapper(HttpContext.Current);
             ILogRealtimeService realtime = IoC.GetApplicationContainer().Resolve<ILogRealtimeService>();
-            realtime.Update(loggingEvent);
+            realtime.Update(context, loggingEvent);
         }
     }
 }
