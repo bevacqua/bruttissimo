@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Bruttissimo.Mvc.Model;
+using Bruttissimo.Domain.Entity;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain
 {
     public interface IJobService
     {

@@ -1,4 +1,4 @@
-﻿namespace Bruttissimo.Mvc.Model
+﻿namespace Bruttissimo.Domain.Entity
 {
     public class JobDto
 	{

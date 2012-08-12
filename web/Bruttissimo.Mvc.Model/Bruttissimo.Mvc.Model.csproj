@@ -61,9 +61,9 @@
     </Compile>
     <Compile Include="Binders\MiniPrincipalModelBinder.cs" />
     <Compile Include="Interfaces\IHasOpenGraphMetadata.cs" />
-    <Compile Include="Mappers\PostModelFromPostEntityConverter.cs" />
-    <Compile Include="Mappers\Profiles\EntityToViewModelProfile.cs" />
-    <Compile Include="Mappers\PostListModelFromPostEntityEnumerableConverter.cs" />
+    <Compile Include="Mappers\TypeConverters\PostModelFromPostEntityConverter.cs" />
+    <Compile Include="Mappers\EntityToViewModelProfile.cs" />
+    <Compile Include="Mappers\TypeConverters\PostListModelFromPostEntityEnumerableConverter.cs" />
     <Compile Include="Validators\PostCreationModelValidator.cs" />
     <Compile Include="Validators\UserLoginModelValidator.cs" />
     <Compile Include="ViewModels\JobModel.cs" />

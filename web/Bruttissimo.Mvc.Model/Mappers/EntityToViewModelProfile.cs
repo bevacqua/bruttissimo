@@ -30,7 +30,8 @@ namespace Bruttissimo.Mvc.Model
 		{
 			CreatePostMaps();
 
-			CreateMap<Log, LogModel>();
+            CreateMap<Log, LogModel>();
+            CreateMap<JobDto, JobModel>();
 		}
 
 		internal void CreatePostMaps()

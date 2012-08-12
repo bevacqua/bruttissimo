@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Bruttissimo.Common.Mvc;
+using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
-using Bruttissimo.Domain.Logic;
 using Bruttissimo.Mvc.Model;
 
 namespace Bruttissimo.Mvc.Controller

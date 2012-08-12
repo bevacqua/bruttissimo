@@ -87,10 +87,6 @@
       <Project>{F03C32AC-F451-43D2-8506-D4E695C6C8A9}</Project>
       <Name>Bruttissimo.Domain.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Bruttissimo.Domain.Logic\Bruttissimo.Domain.Logic.csproj">
-      <Project>{58A64FF9-DA97-4097-8149-E2E93844B738}</Project>
-      <Name>Bruttissimo.Domain.Logic</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Bruttissimo.Domain\Bruttissimo.Domain.csproj">
       <Project>{2CDC59CD-F04A-4CF3-BCD4-7063245101B6}</Project>
       <Name>Bruttissimo.Domain</Name>

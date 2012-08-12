@@ -293,6 +293,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>_LayoutSections.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\System\Resources\Index.Designer.cs">
+      <DependentUpon>Index.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Views\System\Resources\Log.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -390,6 +395,10 @@
     <EmbeddedResource Include="Views\Shared\Resources\_LayoutSections.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>_LayoutSections.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\System\Resources\Index.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\System\Resources\Log.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
