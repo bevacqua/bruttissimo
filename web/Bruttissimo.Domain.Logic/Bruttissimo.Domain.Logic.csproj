@@ -113,6 +113,7 @@
     <Compile Include="Authentication\OpenIdAuthenticationPortal.cs" />
     <Compile Include="Job\BaseJob.cs" />
     <Compile Include="Job\FacebookImportJob.cs" />
+    <Compile Include="log4net\RequestIdentityPattern.cs" />
     <Compile Include="Service\FacebookService.cs" />
     <Compile Include="MiniMembership\MiniAuthenticationWrapper.cs" />
     <Compile Include="Service\LogService.cs" />
@@ -150,7 +151,9 @@
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Service\PictureService.cs" />
     <Compile Include="Repository\PictureStorageRepository.cs" />
-    <Compile Include="SignalR\RealtimeAdoNetAppender.cs" />
+    <Compile Include="SignalR\IHubContextWrapper.cs" />
+    <Compile Include="log4net\RealtimeAdoNetAppender.cs" />
+    <Compile Include="SignalR\HubContextWrapper.cs" />
     <Compile Include="SignalR\Service\LogRealtimeService.cs" />
     <Compile Include="XPath.cs" />
     <Compile Include="Service\LinkCrawlerService.cs" />

@@ -35,16 +35,6 @@ namespace Bruttissimo.Common
 			return StringComparer.InvariantCultureIgnoreCase.Compare(left, right) == 0;
 		}
 
-        public static string ToInvariantString(this string text)
-        {
-            return text.ToString(CultureInfo.InvariantCulture);
-        }
-
-        public static string ToInvariantString(this char text)
-        {
-            return text.ToString(CultureInfo.InvariantCulture);
-        }
-
 	    public static string UnicodeDecode(this string text)
 		{
 			if (string.IsNullOrEmpty(text))

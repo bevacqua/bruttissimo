@@ -15,11 +15,6 @@ namespace Bruttissimo.Common
 			return date.ToString(Resources.User.LongDateTimeFormat);
         }
 
-        public static string ToInvariantString(this DateTime date)
-        {
-            return date.ToString(CultureInfo.InvariantCulture);
-        }
-
         public static string ToTimeAgoString(this DateTime since)
         {
             return since.ToTimeAgoString(DateTime.Now);

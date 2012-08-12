@@ -9,7 +9,6 @@ namespace Bruttissimo.Domain.Logic
         protected override void Append(LoggingEvent loggingEvent)
         {
             base.Append(loggingEvent);
-
             EmitSignal(loggingEvent);
         }
 

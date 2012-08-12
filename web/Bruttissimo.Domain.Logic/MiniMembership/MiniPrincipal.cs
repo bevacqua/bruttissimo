@@ -23,7 +23,7 @@ namespace Bruttissimo.Domain.Logic
 			}
 			this.userService = userService;
 			long? id = userService.GetUserId(identity);
-
+            
 			if (id.HasValue)
 			{
 				User = userService.GetByUserId(id.Value);

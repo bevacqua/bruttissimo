@@ -45,6 +45,8 @@ namespace Bruttissimo.Domain
             }
             LoggingEventData data = loggingEvent.GetLoggingEventData();
             Exception exception = loggingEvent.ExceptionObject;
+            long? userId = null; // TODO
+
             var json = new
             {
                 date = data.TimeStamp.ToInvariantString(),
@@ -59,6 +61,7 @@ namespace Bruttissimo.Domain
                     sql = exception.Data.Contains("SQL") ? exception.Data["SQL"] : null
                 },
                 requestUrl = url,
+                userId
             };
             hub.Context.Clients.update(json);
         }
