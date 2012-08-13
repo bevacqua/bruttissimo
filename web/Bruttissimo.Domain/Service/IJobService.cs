@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Bruttissimo.Domain.Entity;
 
@@ -7,5 +8,6 @@ namespace Bruttissimo.Domain
     {
         IEnumerable<ScheduledJobDto> GetScheduledJobs();
         IEnumerable<JobDto> GetAvailableJobs();
+        bool ScheduleJob(Guid guid);
     }
 }

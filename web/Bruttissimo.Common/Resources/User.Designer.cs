@@ -124,6 +124,15 @@ namespace Bruttissimo.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to El Job solicitado no parece existir en el servidor..
+        /// </summary>
+        public static string InvalidJobKey {
+            get {
+                return ResourceManager.GetString("InvalidJobKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to dd&apos; de &apos;MMMM, yyyy.
         /// </summary>
         public static string LongDateFormat {

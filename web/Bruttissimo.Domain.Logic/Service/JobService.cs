@@ -44,5 +44,10 @@ namespace Bruttissimo.Domain.Logic
             IEnumerable<JobDto> dto = mapper.Map<IEnumerable<Type>, IEnumerable<JobDto>>(types);
             return dto;
         }
+
+        public bool ScheduleJob(Guid guid)
+        {
+            return false;
+        }
     }
 }

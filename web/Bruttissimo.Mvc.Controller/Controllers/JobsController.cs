@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
-using Bruttissimo.Common;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
@@ -45,18 +43,26 @@ namespace Bruttissimo.Mvc.Controller
         {
             IEnumerable<JobDto> dto = jobService.GetAvailableJobs();
             IEnumerable<JobModel> model = mapper.Map<IEnumerable<JobDto>, IEnumerable<JobModel>>(dto);
+            
+            if (!ModelState.IsValid)
+            {
+                return InvalidModelState(model);
+            }
             return View(model);
         }
 
         [HttpPost]
         public ActionResult Schedule(Guid guid)
         {
-            IEnumerable<JobDto> dto = jobService.GetAvailableJobs();
-            if (dto.Any(job => job.Guid == guid.Stringify())) // sanity
+            if (!jobService.ScheduleJob(guid)) // sanity
+            {
+                ModelState.AddModelError("JobKey", Common.Resources.User.InvalidJobKey);
+                return Schedule();
+            }
+            else
             {
                 return RedirectToAction("Index");
             }
-            return View();
         }
     }
 }

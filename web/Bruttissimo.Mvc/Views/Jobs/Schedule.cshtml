@@ -1,4 +1,7 @@
 ﻿@model IEnumerable<JobModel>
+<header class="validation-summary">
+	<p>@Html.ValidationMessage("JobKey")</p>
+</header>
 <table id="sysjobs">
 	<thead>
 		<tr>
@@ -8,7 +11,7 @@
 	</thead>
 	<tbody>
 	@foreach (JobModel entry in Model)
-    {
+ {
 		<tr>
 			<td>@entry.Name</td>
             <td>

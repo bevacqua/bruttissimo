@@ -138,6 +138,9 @@
   <data name="FatalExceptionJson" xml:space="preserve">
     <value>{"Exceptions":["Oops! Algo salió muy mal!"]}</value>
   </data>
+  <data name="InvalidJobKey" xml:space="preserve">
+    <value>El Job solicitado no parece existir en el servidor.</value>
+  </data>
   <data name="LongDateFormat" xml:space="preserve">
     <value>dd' de 'MMMM, yyyy</value>
   </data>
