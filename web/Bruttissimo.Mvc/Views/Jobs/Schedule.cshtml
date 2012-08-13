@@ -2,7 +2,7 @@
 <header class="validation-summary">
 	<p>@Html.ValidationMessage("JobKey")</p>
 </header>
-<table id="sysjobs">
+<table>
 	<thead>
 		<tr>
 			<th>@Resource.String("Name")</th>
@@ -11,7 +11,7 @@
 	</thead>
 	<tbody>
 	@foreach (JobModel entry in Model)
- {
+    {
 		<tr>
 			<td>@entry.Name</td>
             <td>

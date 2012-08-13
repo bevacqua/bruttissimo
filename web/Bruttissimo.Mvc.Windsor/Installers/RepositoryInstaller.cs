@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using Bruttissimo.Common;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Data.Dapper;
+using Bruttissimo.Domain;
 using Bruttissimo.Domain.Logic;
 using Bruttissimo.Domain.Social;
 using Castle.MicroKernel.Registration;
@@ -31,9 +32,9 @@ namespace Bruttissimo.Mvc.Windsor
 
             // Social assembly repositories.
             container.Register(
-                AllTypes.FromAssemblyContaining<FacebookRepository>()
-                    .Where(t => t.Name.EndsWith("Repository"))
-                    .WithService.Select(IoC.SelectByInterfaceConvention)
+                Component
+                    .For<IFacebookRepository>()
+                    .UsingFactoryMethod(InstanceFacebookRepository)
                     .LifestyleHybridPerWebRequestPerThread()
             );
 
@@ -85,5 +86,11 @@ namespace Bruttissimo.Mvc.Windsor
 			string connectionString = Config.GetConnectionString(key);
 			return connectionString;
 		}
+
+        private IFacebookRepository InstanceFacebookRepository()
+        {
+            string accessToken = Config.Social.FacebookAccessToken;
+            return new FacebookRepository(accessToken);
+        }
 	}
 }

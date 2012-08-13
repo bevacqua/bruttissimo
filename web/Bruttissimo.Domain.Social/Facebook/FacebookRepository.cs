@@ -12,15 +12,18 @@ namespace Bruttissimo.Domain.Social
         private const int DEFAULT_PAGE_LIMIT = 15;
         private const string GRAPH_FEED_LIMITED = "{0}/feed?limit={1}";
 
-        private readonly string accessToken;
-
-        public FacebookRepository(string accessToken)
+        /// <summary>
+        /// Access token used when no user-specific access token is provided to a method.
+        /// </summary>
+        private readonly string defaultAccessToken;
+        
+        public FacebookRepository(string defaultAccessToken)
         {
-            if (accessToken == null)
+            if (defaultAccessToken == null)
             {
-                throw new ArgumentNullException("accessToken");
+                throw new ArgumentNullException("defaultAccessToken");
             }
-            this.accessToken = accessToken;
+            this.defaultAccessToken = defaultAccessToken;
         }
 
         public IList<FacebookPost> GetPostsInGroupFeed(string group, out string next)
@@ -31,7 +34,7 @@ namespace Bruttissimo.Domain.Social
 
         public IList<FacebookPost> GetPostsInFeed(string url, out string next)
         {
-            FacebookClient client = new FacebookClient(accessToken);
+            FacebookClient client = new FacebookClient(defaultAccessToken);
             string json = (client.Get(url) ?? string.Empty).ToString();
             FacebookPostCollection response = JsonConvert.DeserializeObject<FacebookPostCollection>(json);
             next = response.Paging.Next;

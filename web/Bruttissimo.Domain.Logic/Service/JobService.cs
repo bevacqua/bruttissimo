@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Bruttissimo.Common;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain.Entity;
@@ -47,7 +48,14 @@ namespace Bruttissimo.Domain.Logic
 
         public bool ScheduleJob(Guid guid)
         {
-            return false;
+            IEnumerable<Type> types = store.All;
+            Type type = types.FirstOrDefault(t => t.GUID == guid);
+            if (type == null) // sanity
+            {
+                return false;
+            }
+            scheduler.ScheduleJob(type);
+            return true;
         }
     }
 }
