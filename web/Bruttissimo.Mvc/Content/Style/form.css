@@ -69,3 +69,24 @@ fieldset .field-validation-valid.tooltip-icon {
 fieldset .field-validation-error.tooltip-icon {
 	background-position: -32px -192px;
 }
+
+.validation-summary {
+	margin-bottom: 10px;
+	font-size: 0.9em;
+	color: #b22222;
+    text-align: center;
+}
+.validation-summary p {
+    margin-bottom: 6px;
+}
+
+
+
+/* LARGE SCREEN MEDIA QUERIES
+----------------------------------------------------------*/
+
+@media only screen and (min-width: 768px) {
+    .validation-summary {
+	    margin-bottom: 25px;
+    }
+}

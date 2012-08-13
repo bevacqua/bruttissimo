@@ -4,14 +4,6 @@
 section.logon-container {
     text-align: center;
 }
-section.logon-container header.logon-validation {
-	margin-bottom: 10px;
-	font-size: 0.9em;
-	color: #b22222;
-}
-section.logon-container header.logon-validation p {
-    margin-bottom: 6px;
-}
 
 
 
@@ -73,9 +65,6 @@ form.provider-logon a.provider-icon.yahoo-icon {
 @media only screen and (min-width: 768px) {
 	section.logon-container {
 		margin-top: 1%;
-	}
-	section.logon-container header.logon-validation {
-		margin-bottom: 25px;
 	}
 
 	form.site-logon {
