@@ -5,6 +5,7 @@ using AutoMapper;
 using Bruttissimo.Common;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
+using Quartz;
 
 namespace Bruttissimo.Mvc.Model
 {
@@ -30,10 +31,12 @@ namespace Bruttissimo.Mvc.Model
         protected override void Configure()
         {
             CreatePostMaps();
-
+            CreateJobMaps();
             CreateMap<Log, LogModel>();
+        }
 
-            // jobs
+        internal void CreateJobMaps()
+        {
             CreateMap<Type, JobDto>().ForMember(
                 m => m.Name,
                 x => x.MapFrom(t => t.Name.Replace("Job", string.Empty).SplitOnCamelCase())
@@ -43,7 +46,28 @@ namespace Bruttissimo.Mvc.Model
             );
 
             CreateMap<JobDto, JobModel>();
-            CreateMap<ScheduledJobDto, ScheduledJobModel>();
+
+            CreateMap<IJobExecutionContext, ScheduledJobDto>().ForMember(
+                m => m.Name,
+                x => x.MapFrom(c => c.JobDetail.JobType.Name.Replace("Job", string.Empty).SplitOnCamelCase())
+            ).ForMember(
+                m => m.Guid,
+                x => x.MapFrom(c => c.JobDetail.JobType.GUID.Stringify())
+            ).ForMember(
+                m => m.RunTime,
+                x => x.MapFrom(c => c.JobRunTime)
+            ).ForMember(
+                m => m.FireTime,
+                x => x.MapFrom(c => c.FireTimeUtc ?? c.ScheduledFireTimeUtc ?? c.PreviousFireTimeUtc)
+            );
+
+            CreateMap<ScheduledJobDto, ScheduledJobModel>().ForMember(
+                m => m.RunTime,
+                x => x.MapFrom(c => c.RunTime.ToDurationString())
+            ).ForMember(
+                m => m.FireTime,
+                x => x.MapFrom(c => c.FireTime) // TODO.
+            );
         }
 
         internal void CreatePostMaps()

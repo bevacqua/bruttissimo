@@ -35,8 +35,9 @@ namespace Bruttissimo.Domain.Logic
 
         public IEnumerable<ScheduledJobDto> GetScheduledJobs()
         {
-            IList<IJobExecutionContext> jobs = scheduler.GetCurrentlyExecutingJobs();
-            return new List<ScheduledJobDto>();
+            IEnumerable<IJobExecutionContext> jobs = scheduler.GetCurrentlyExecutingJobs();
+            IEnumerable<ScheduledJobDto> dto = mapper.Map<IEnumerable<IJobExecutionContext>, IEnumerable<ScheduledJobDto>>(jobs);
+            return dto;
         }
 
         public IEnumerable<JobDto> GetAvailableJobs()
