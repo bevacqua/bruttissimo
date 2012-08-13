@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
+using Bruttissimo.Common;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
@@ -32,8 +34,8 @@ namespace Bruttissimo.Mvc.Controller
         [NotAjax]
         public ActionResult Index()
         {
-            IEnumerable<JobDto> dto = jobService.GetScheduledJobs();
-            IEnumerable<JobModel> model = mapper.Map<IEnumerable<JobDto>, IEnumerable<JobModel>>(dto);
+            IEnumerable<ScheduledJobDto> dto = jobService.GetScheduledJobs();
+            IEnumerable<ScheduledJobModel> model = mapper.Map<IEnumerable<ScheduledJobDto>, IEnumerable<ScheduledJobModel>>(dto);
             return View(model);
         }
 
@@ -41,9 +43,20 @@ namespace Bruttissimo.Mvc.Controller
         [NotAjax]
         public ActionResult Schedule()
         {
-            IEnumerable<AvailableJobDto> dto = jobService.GetAvailableJobs();
-            IEnumerable<AvailableJobModel> model = mapper.Map<IEnumerable<AvailableJobDto>, IEnumerable<AvailableJobModel>>(dto);
+            IEnumerable<JobDto> dto = jobService.GetAvailableJobs();
+            IEnumerable<JobModel> model = mapper.Map<IEnumerable<JobDto>, IEnumerable<JobModel>>(dto);
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Schedule(Guid guid)
+        {
+            IEnumerable<JobDto> dto = jobService.GetAvailableJobs();
+            if (dto.Any(job => job.Guid == guid.Stringify())) // sanity
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
         }
     }
 }

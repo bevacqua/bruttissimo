@@ -1,5 +1,5 @@
 ﻿using System;
-using Bruttissimo.Common.Mvc;
+using Bruttissimo.Common;
 using Castle.MicroKernel;
 using Quartz;
 

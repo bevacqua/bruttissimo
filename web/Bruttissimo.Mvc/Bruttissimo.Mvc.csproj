@@ -129,7 +129,7 @@
     <Content Include="Content\Script\jquery.tooltip.js" />
     <Content Include="Content\Script\jquery.placeholder.js" />
     <Content Include="Content\Script\Views\Posts\list.js" />
-    <Content Include="Content\Style\Views\Admin\logs.css" />
+    <Content Include="Content\Style\tables.css" />
     <Content Include="Content\Style\Views\Posts\create.css" />
     <Content Include="Content\Style\Views\Posts\list.css" />
     <Content Include="Content\Style\Views\User\login.css" />
@@ -249,6 +249,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Unhandled.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Jobs\Resources\Schedule.Designer.cs">
+      <DependentUpon>Schedule.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Views\Jobs\Resources\Index.Designer.cs">
       <DependentUpon>Index.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -359,6 +364,10 @@
     <EmbeddedResource Include="Views\Error\Resources\Unhandled.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Unhandled.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Jobs\Resources\Schedule.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Schedule.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Jobs\Resources\Index.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

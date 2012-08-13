@@ -122,13 +122,8 @@
     <Compile Include="FluentValidation\NullModelValidator.cs" />
     <Compile Include="Helpers\MvcResourceHelper.cs" />
     <Compile Include="Extensions\IView.cs" />
-    <Compile Include="IoC\Installers\IJobTypes.cs" />
-    <Compile Include="IoC\Installers\JobTypes.cs" />
     <Compile Include="IoC\Mvc\ActionInvokerFilters.cs" />
     <Compile Include="IoC\Quartz\WindsorSchedulerFactory.cs" />
-    <Compile Include="IoC\Quartz\IJobAutoRunner.cs" />
-    <Compile Include="IoC\Quartz\AutoRunAttribute.cs" />
-    <Compile Include="IoC\Quartz\JobAutoRunner.cs" />
     <Compile Include="IoC\Quartz\WindsorJobFactory.cs" />
     <Compile Include="IoC\Installers\AutoMapperInstaller.cs" />
     <Compile Include="IoC\AutoMapper\Mapper.cs" />

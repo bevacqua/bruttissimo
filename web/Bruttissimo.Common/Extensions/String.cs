@@ -64,5 +64,14 @@ namespace Bruttissimo.Common
 				return Regex.Replace(text, @"[^\S\n]+", " ");
 			}
 		}
+
+        private const string CAMEL_CASE_REGEX = @"(?<a>(?<!^)((?:[A-Z][a-z])|(?:(?<!^[A-Z]+)[A-Z0-9]+(?:(?=[A-Z][a-z])|$))|(?:[0-9]+)))";
+        private const string CAMEL_CASE_REPLACE = @" ${a}";
+
+        public static string SplitOnCamelCase(this string text)
+        {
+            string splitted = Regex.Replace(text, CAMEL_CASE_REGEX, CAMEL_CASE_REPLACE);
+            return splitted;
+        }
 	}
 }
