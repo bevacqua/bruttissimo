@@ -178,6 +178,24 @@ namespace Bruttissimo.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Job {0} with ID {1} finished executing in {2}..
+        /// </summary>
+        public static string JobExecuted {
+            get {
+                return ResourceManager.GetString("JobExecuted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Executing Job {0} with ID: {1}..
+        /// </summary>
+        public static string JobExecuting {
+            get {
+                return ResourceManager.GetString("JobExecuting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Scheduling AutoRun job: {0}.
         /// </summary>
         public static string SchedulingAutoRunJob {

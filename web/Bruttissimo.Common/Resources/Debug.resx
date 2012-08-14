@@ -167,6 +167,14 @@
     <value>Inserting link: {0}</value>
     <comment>0=link</comment>
   </data>
+  <data name="JobExecuted" xml:space="preserve">
+    <value>Job {0} with ID {1} finished executing in {2}.</value>
+    <comment>0=type, 1=id, 2=duration</comment>
+  </data>
+  <data name="JobExecuting" xml:space="preserve">
+    <value>Executing Job {0} with ID: {1}.</value>
+    <comment>0=type, 1=id</comment>
+  </data>
   <data name="SchedulingAutoRunJob" xml:space="preserve">
     <value>Scheduling AutoRun job: {0}</value>
     <comment>0=job name</comment>
