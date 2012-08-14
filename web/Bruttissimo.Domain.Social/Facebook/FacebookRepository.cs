@@ -9,14 +9,15 @@ namespace Bruttissimo.Domain.Social
 {
     public class FacebookRepository : IFacebookRepository
     {
-        private const int DEFAULT_PAGE_LIMIT = 15;
+        private const int PAGE_LIMIT = 15;
         private const string GRAPH_FEED_LIMITED = "{0}/feed?limit={1}";
+        private const string GRAPH_FEED_SINCE = "{0}&since={1}";
 
         /// <summary>
         /// Access token used when no user-specific access token is provided to a method.
         /// </summary>
         private readonly string defaultAccessToken;
-        
+
         public FacebookRepository(string defaultAccessToken)
         {
             if (defaultAccessToken == null)
@@ -26,19 +27,44 @@ namespace Bruttissimo.Domain.Social
             this.defaultAccessToken = defaultAccessToken;
         }
 
-        public IList<FacebookPost> GetPostsInGroupFeed(string group, out string next)
+        public IEnumerable<FacebookPost> GetPostsInGroupFeed(string group, DateTime? since)
         {
-            string feed = GRAPH_FEED_LIMITED.FormatWith(group, DEFAULT_PAGE_LIMIT);
-            return GetPostsInFeed(feed, out next);
+            if (group == null)
+            {
+                throw new ArgumentNullException("group");
+            }
+            string feed = GRAPH_FEED_LIMITED.FormatWith(group, PAGE_LIMIT);
+            return GetPostsInFeed(feed, since);
         }
 
-        public IList<FacebookPost> GetPostsInFeed(string url, out string next)
+        public IEnumerable<FacebookPost> GetPostsInFeed(string url, DateTime? since)
         {
+            if (url == null)
+            {
+                throw new ArgumentNullException("url");
+            }
+            if (since.HasValue)
+            {
+                url = GRAPH_FEED_SINCE.FormatWith(url, since.Value); // TODO: UNIX
+            }
             FacebookClient client = new FacebookClient(defaultAccessToken);
-            string json = (client.Get(url) ?? string.Empty).ToString();
-            FacebookPostCollection response = JsonConvert.DeserializeObject<FacebookPostCollection>(json);
-            next = response.Paging.Next;
-            return response.Data;
+            FacebookPostCollection response;
+            List<FacebookPost> posts = new List<FacebookPost>();
+            do
+            {
+                string json = (client.Get(url) ?? string.Empty).ToString();
+                response = JsonConvert.DeserializeObject<FacebookPostCollection>(json);
+
+                posts.AddRange(response.Data);
+
+                if (url == response.Paging.Next)
+                {
+                    break;
+                }
+                url = response.Paging.Next;
+            } while (response.Data.Count < PAGE_LIMIT);
+
+            return posts;
         }
     }
 }

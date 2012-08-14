@@ -170,9 +170,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Xml\compilation.config" />
-    <Content Include="Xml\db.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Xml\db.config" />
     <Content Include="Xml\log4net.config">
       <SubType>Designer</SubType>
     </Content>

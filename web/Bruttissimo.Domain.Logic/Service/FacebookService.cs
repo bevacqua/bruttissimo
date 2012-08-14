@@ -21,8 +21,8 @@ namespace Bruttissimo.Domain.Logic
         public void Import()
         {
             Thread.Sleep(300000);
-            string next;
-            IList<FacebookPost> feed = facebookRepository.GetPostsInGroupFeed(null, out next);
+            DateTime? since = null;
+            IEnumerable<FacebookPost> feed = facebookRepository.GetPostsInGroupFeed(null, since);
         }
     }
 }

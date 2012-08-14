@@ -7,4 +7,3 @@
     [Picture]      NVARCHAR (MAX) NULL,
     [Created]      DATETIME2 (7)  NOT NULL
 );
-
