@@ -45,7 +45,7 @@ namespace Bruttissimo.Domain.Social
             }
             if (since.HasValue)
             {
-                url = GRAPH_FEED_SINCE.FormatWith(url, since.Value); // TODO: UNIX
+                url = GRAPH_FEED_SINCE.FormatWith(url, since.Value); // TODO: UNIX //// since.Value.ToIso8601()      ... http://stackoverflow.com/questions/114983
             }
             FacebookClient client = new FacebookClient(defaultAccessToken);
             FacebookPostCollection response;
@@ -57,7 +57,7 @@ namespace Bruttissimo.Domain.Social
 
                 posts.AddRange(response.Data);
 
-                if (url == response.Paging.Next)
+                if (response.Paging.Next == null || response.Paging.Next == url) // sanity
                 {
                     break;
                 }
