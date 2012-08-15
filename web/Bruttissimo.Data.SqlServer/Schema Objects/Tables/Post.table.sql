@@ -9,4 +9,3 @@
     [Created]         DATETIME2 (7)  NOT NULL,
     [Updated]         DATETIME2 (7)  NOT NULL
 );
-
