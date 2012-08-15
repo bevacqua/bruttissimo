@@ -216,10 +216,10 @@
     <Build Include="Schema Objects\Service Broker\Routes\AutoCreatedLocal.route.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Tables\Import.table.sql">
+    <Build Include="Schema Objects\Tables\FacebookImportLog.table.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Tables\Keys\PK_Import.pkey.sql">
+    <Build Include="Schema Objects\Tables\Keys\PK_FacebookImportLog.pkey.sql">
       <SubType>Code</SubType>
     </Build>
   </ItemGroup>
