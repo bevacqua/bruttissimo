@@ -22,7 +22,8 @@ namespace Bruttissimo.Domain.Logic
 
         public override void DoWork(IJobExecutionContext context)
         {
-            facebookService.Import();
+            string group = null; // TODO: how to pass group graph Id to a job?
+            facebookService.Import(group);
         }
     }
 }
