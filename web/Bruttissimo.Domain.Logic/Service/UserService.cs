@@ -26,9 +26,9 @@ namespace Bruttissimo.Domain.Logic
 			this.emailService = emailService;
 		}
 
-		public User GetByUserId(long id)
+		public User GetById(long id)
 		{
-			User user = userRepository.GetByUserId(id);
+			User user = userRepository.GetById(id);
 			return user;
 		}
 

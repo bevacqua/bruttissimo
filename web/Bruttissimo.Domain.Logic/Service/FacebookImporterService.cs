@@ -43,7 +43,7 @@ namespace Bruttissimo.Domain.Logic
                 // TODO: automap link from fbpost
                 // TODO: automap post from fbpost
                 // TODO: link user to post?
-                // TODO: save post to DB.
+                linkRepository.Insert(link);
             }
         }
     }

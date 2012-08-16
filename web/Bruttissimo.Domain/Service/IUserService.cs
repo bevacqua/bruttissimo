@@ -5,7 +5,7 @@ namespace Bruttissimo.Domain
 {
 	public interface IUserService
 	{
-		User GetByUserId(long id);
+		User GetById(long id);
 		User GetByEmail(string email);
 		User GetByOpenId(string openId);
 		User GetByFacebookGraphId(string facebookId);

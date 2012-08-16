@@ -2,12 +2,11 @@ using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain
 {
-	public interface IUserRepository
+    public interface IUserRepository : IEntityRepository<User>
 	{
 		bool AreMatchingPasswords(string password, string databaseHash);
 		bool IsInRoleOrHasRight(User user, string roleOrRight);
 		User GetByEmail(string email);
-		User GetByUserId(long id);
 		User GetByOpenId(string openId);
 		User GetByFacebookGraphId(string facebookId);
 		User GetByTwitterId(string twitterId);

@@ -3,10 +3,8 @@ using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain
 {
-	public interface ILinkRepository
-	{
-		Link GetById(long id);
-		Link GetByReferenceUri(Uri referenceUri);
-		Link Insert(Link link);
-	}
+    public interface ILinkRepository : IEntityRepository<Link>
+    {
+        Link GetByReferenceUri(Uri referenceUri);
+    }
 }

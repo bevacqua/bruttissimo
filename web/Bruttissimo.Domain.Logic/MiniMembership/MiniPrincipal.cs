@@ -26,7 +26,7 @@ namespace Bruttissimo.Domain.Logic
             
 			if (id.HasValue)
 			{
-				User = userService.GetByUserId(id.Value);
+				User = userService.GetById(id.Value);
 			}
 			Identity = new MiniIdentity(User, identity.AuthenticationType);
 		}

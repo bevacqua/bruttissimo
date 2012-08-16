@@ -32,7 +32,7 @@ namespace Bruttissimo.Domain.Logic
 
 		public Post GetById(long id, bool includeLink = true)
 		{
-			Post post = postRepository.GetByPostId(id, includeLink);
+			Post post = postRepository.GetById(id, includeLink);
 			return post;
 		}
 
@@ -61,7 +61,7 @@ namespace Bruttissimo.Domain.Logic
 
 		public Post Create(Link link, string message, User user)
 		{
-			Post post = postRepository.Create(link, message, user);
+			Post post = postRepository.Insert(link, message, user);
 			return post;
 		}
 	}
