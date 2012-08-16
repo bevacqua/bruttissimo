@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 
 namespace Bruttissimo.Common
 {
@@ -35,6 +34,14 @@ namespace Bruttissimo.Common
         {
             var ts = new TimeSpan(start.Ticks - since.Ticks);
             return ts.ToDurationString();
+        }
+
+        /// <summary>
+        /// Converts a DateTime object into an ISO-8601 compliant date string.
+        /// </summary>
+        public static string ToIso8601(this DateTime date)
+        {
+            return date.ToString("o");
         }
     }
 }
