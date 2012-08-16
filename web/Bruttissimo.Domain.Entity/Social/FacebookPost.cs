@@ -1,3 +1,5 @@
+using System;
+
 namespace Bruttissimo.Domain.Entity
 {
 	public class FacebookPost
@@ -8,5 +10,7 @@ namespace Bruttissimo.Domain.Entity
 		public string Picture { get; set; }
 		public string Link { get; set; }
 		public string Description { get; set; }
+
+	    public DateTime UpdatedTime { get; set; }
 	}
 }

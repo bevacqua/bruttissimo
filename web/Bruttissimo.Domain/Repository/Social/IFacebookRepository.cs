@@ -6,7 +6,7 @@ namespace Bruttissimo.Domain
 {
     public interface IFacebookRepository
     {
-        IEnumerable<FacebookPost> GetPostsInGroupFeed(string group, DateTime? since);
-        IEnumerable<FacebookPost> GetPostsInFeed(string url, DateTime? since);
+        IList<FacebookPost> GetPostsInGroupFeed(string group, DateTime? since);
+        IList<FacebookPost> GetPostsInFeed(string url, DateTime? since);
     }
 }

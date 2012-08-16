@@ -10,7 +10,7 @@ namespace Bruttissimo.Domain.Social
     public class FacebookRepository : IFacebookRepository
     {
         private const int PAGE_LIMIT = 15;
-        private const string GRAPH_FEED_LIMITED = "{0}/feed?limit={1}";
+        private const string GRAPH_FEED_LIMITED = "{0}/feed?limit={1}&fields=id,from.id,message,link,type,created_time,updated_time,name,caption,description";
         private const string GRAPH_FEED_SINCE = "{0}&since={1}";
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Bruttissimo.Domain.Social
             this.defaultAccessToken = defaultAccessToken;
         }
 
-        public IEnumerable<FacebookPost> GetPostsInGroupFeed(string group, DateTime? since)
+        public IList<FacebookPost> GetPostsInGroupFeed(string group, DateTime? since)
         {
             if (group == null)
             {
@@ -37,7 +37,7 @@ namespace Bruttissimo.Domain.Social
             return GetPostsInFeed(feed, since);
         }
 
-        public IEnumerable<FacebookPost> GetPostsInFeed(string url, DateTime? since)
+        public IList<FacebookPost> GetPostsInFeed(string url, DateTime? since)
         {
             if (url == null)
             {
