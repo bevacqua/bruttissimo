@@ -52,14 +52,9 @@ namespace Bruttissimo.Domain.Logic
             DateTime last = feed.Max(p => p.UpdatedTime);
             foreach (FacebookPost post in feed)
             {
-                Post existing = postRepository.GetByFacebookPostId(post.Id);
-                if (existing != null)
-                {
-                    break;
-                }
                 Uri uri = new Uri(post.Link);
                 Link link = linkRepository.GetByReferenceUri(uri);
-                if (link != null)
+                if (link != null) // no need to look up by FacebookPost Id in the case of imports, looking up by Link Uri is enough.
                 {
                     break;
                 }
