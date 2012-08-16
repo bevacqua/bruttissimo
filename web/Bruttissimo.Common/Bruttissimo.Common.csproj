@@ -103,6 +103,7 @@
     </Compile>
     <Compile Include="Helpers\Attribute.cs" />
     <Compile Include="Quartz\AutoRunAttribute.cs" />
+    <Compile Include="Quartz\BaseJob.cs" />
     <Compile Include="Quartz\QuartzExtensions.cs" />
     <Compile Include="Quartz\IJobAutoRunner.cs" />
     <Compile Include="Quartz\IJobTypeStore.cs" />

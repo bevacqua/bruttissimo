@@ -1,11 +1,10 @@
 using System;
 using System.Diagnostics;
-using Bruttissimo.Common;
 using Castle.MicroKernel;
 using Quartz;
 using log4net;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Common
 {
     public abstract class BaseJob : IJob
     {
@@ -31,7 +30,7 @@ namespace Bruttissimo.Domain.Logic
 
         public void Execute(IJobExecutionContext context)
         {
-            log.Info(Common.Resources.Debug.JobExecuting.FormatWith(concreteType.FullName, context.FireInstanceId));
+            log.Info(Resources.Debug.JobExecuting.FormatWith(concreteType.FullName, context.FireInstanceId));
 
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
@@ -41,13 +40,13 @@ namespace Bruttissimo.Domain.Logic
             }
             catch (Exception exception)
             {
-                log.Error(Common.Resources.Error.UnhandledException, exception);
+                log.Error(Resources.Error.UnhandledException, exception);
                 throw new JobExecutionException(exception);
             }
             finally
             {
                 stopwatch.Stop();
-                log.Info(Common.Resources.Debug.JobExecuted.FormatWith(concreteType.FullName, context.FireInstanceId, stopwatch.Elapsed.ToShortDurationString()));
+                log.Info(Resources.Debug.JobExecuted.FormatWith(concreteType.FullName, context.FireInstanceId, stopwatch.Elapsed.ToShortDurationString()));
 
                 foreach (object dependency in dependencies) // PerThread lifestyle dependencies are released when application shuts down.
                 {

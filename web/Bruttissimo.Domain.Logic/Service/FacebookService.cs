@@ -58,6 +58,9 @@ namespace Bruttissimo.Domain.Logic
                 {
                     break;
                 }
+                // TODO: automap link from fbpost
+                // TODO: automap post from fbpost
+                // TODO: link user to post?
                 // TODO: save post to DB.
             }
             importLogRepository.UpdateLastImportDate(group, last);
