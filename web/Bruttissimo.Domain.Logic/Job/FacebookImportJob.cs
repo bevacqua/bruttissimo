@@ -5,7 +5,7 @@ using Quartz;
 
 namespace Bruttissimo.Domain.Logic
 {
-    [AutoRun]
+    // [AutoRun]
     public class FacebookImportJob : BaseJob
     {
         private readonly IFacebookService facebookService;
