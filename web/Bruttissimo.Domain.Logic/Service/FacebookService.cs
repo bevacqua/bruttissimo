@@ -8,32 +8,26 @@ namespace Bruttissimo.Domain.Logic
     public class FacebookService : IFacebookService
     {
         private readonly IFacebookRepository facebookRepository;
-        private readonly IImportLogRepository importLogRepository;
-        private readonly IPostRepository postRepository;
-        private readonly ILinkRepository linkRepository;
+        private readonly ILogRepository logRepository;
+        private readonly IFacebookImporterService facebookImporterService;
 
-        public FacebookService(IFacebookRepository facebookRepository, IImportLogRepository importLogRepository, IPostRepository postRepository, ILinkRepository linkRepository)
+        public FacebookService(IFacebookRepository facebookRepository, ILogRepository logRepository, IFacebookImporterService facebookImporterService)
         {
             if (facebookRepository == null)
             {
                 throw new ArgumentNullException("facebookRepository");
             }
-            if (importLogRepository == null)
+            if (logRepository == null)
             {
-                throw new ArgumentNullException("importLogRepository");
+                throw new ArgumentNullException("logRepository");
             }
-            if (postRepository == null)
+            if (facebookImporterService == null)
             {
-                throw new ArgumentNullException("postRepository");
-            }
-            if (linkRepository == null)
-            {
-                throw new ArgumentNullException("linkRepository");
+                throw new ArgumentNullException("facebookImporterService");
             }
             this.facebookRepository = facebookRepository;
-            this.importLogRepository = importLogRepository;
-            this.postRepository = postRepository;
-            this.linkRepository = linkRepository;
+            this.logRepository = logRepository;
+            this.facebookImporterService = facebookImporterService;
         }
 
         public void Import(string group)
@@ -42,7 +36,7 @@ namespace Bruttissimo.Domain.Logic
             {
                 throw new ArgumentNullException("group");
             }
-            DateTime? since = importLogRepository.GetLastImportDate(group);
+            DateTime? since = logRepository.GetLastImportDate(group);
             IEnumerable<FacebookPost> feed = facebookRepository.GetPostsInGroupFeed(group, since);
 
             if (!feed.Any()) // no new posts.
@@ -50,20 +44,8 @@ namespace Bruttissimo.Domain.Logic
                 return;
             }
             DateTime last = feed.Max(p => p.UpdatedTime);
-            foreach (FacebookPost post in feed)
-            {
-                Uri uri = new Uri(post.Link);
-                Link link = linkRepository.GetByReferenceUri(uri);
-                if (link != null) // no need to look up by FacebookPost Id in the case of imports, looking up by Link Uri is enough.
-                {
-                    break;
-                }
-                // TODO: automap link from fbpost
-                // TODO: automap post from fbpost
-                // TODO: link user to post?
-                // TODO: save post to DB.
-            }
-            importLogRepository.UpdateLastImportDate(group, last);
+            facebookImporterService.Import(feed);
+            logRepository.UpdateLastImportDate(group, last);
         }
     }
 }

@@ -34,5 +34,15 @@ namespace Bruttissimo.Data.Dapper
 			IEnumerable<Log> logs = connection.Query<Log>(sql, new { count });
 			return logs;
 		}
+
+	    public DateTime? GetLastImportDate(string @group)
+	    {
+	        throw new NotImplementedException();
+	    }
+
+	    public void UpdateLastImportDate(string @group, DateTime date)
+	    {
+	        throw new NotImplementedException();
+	    }
 	}
 }
