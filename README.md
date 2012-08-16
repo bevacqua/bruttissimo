@@ -54,3 +54,4 @@ Features:
 	- Both server and client-side validation using FluentValidation.
 	- DRY approach to string resource handling.
 	- Unit Tests over the application logic.
+    - nuget packaging to reduce overall digital footprint of the solution.
