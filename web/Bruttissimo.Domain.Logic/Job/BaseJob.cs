@@ -41,6 +41,7 @@ namespace Bruttissimo.Domain.Logic
             }
             catch (Exception exception)
             {
+                log.Error(Common.Resources.Error.UnhandledException, exception);
                 throw new JobExecutionException(exception);
             }
             finally

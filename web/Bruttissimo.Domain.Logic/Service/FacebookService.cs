@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Bruttissimo.Common;
 using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain.Logic
@@ -13,8 +12,7 @@ namespace Bruttissimo.Domain.Logic
         private readonly IPostRepository postRepository;
         private readonly ILinkRepository linkRepository;
 
-        public FacebookService(IFacebookRepository facebookRepository, IImportLogRepository importLogRepository,
-                               IPostRepository postRepository, ILinkRepository linkRepository)
+        public FacebookService(IFacebookRepository facebookRepository, IImportLogRepository importLogRepository, IPostRepository postRepository, ILinkRepository linkRepository)
         {
             if (facebookRepository == null)
             {
