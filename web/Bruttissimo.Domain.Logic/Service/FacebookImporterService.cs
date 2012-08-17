@@ -32,9 +32,9 @@ namespace Bruttissimo.Domain.Logic
 
         public void Import(IEnumerable<FacebookPost> posts)
         {
-            foreach (FacebookPost post in posts)
+            foreach (FacebookPost facebookPost in posts)
             {
-                Uri uri = new Uri(post.Link);
+                Uri uri = new Uri(facebookPost.Link);
                 Link link = linkRepository.GetByReferenceUri(uri);
                 if (link != null) // no need to look up by FacebookPost Id in the case of imports, looking up by Link Uri is enough.
                 {
@@ -42,8 +42,10 @@ namespace Bruttissimo.Domain.Logic
                 }
                 // TODO: automap link from fbpost
                 // TODO: automap post from fbpost
-                // TODO: link user to post?
-                linkRepository.Insert(link);
+                Post post = mapper.Map<FacebookPost, Post>(facebookPost);
+                // TODO: link user to post, if one is found with accessToken == user id.
+                // NOTE: the post is always linked with the facebook user Id that posted it, though.
+                postRepository.Insert(post);
             }
         }
     }

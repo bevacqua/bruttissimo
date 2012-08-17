@@ -1,13 +1,16 @@
 using System;
+using Newtonsoft.Json;
 
 namespace Bruttissimo.Domain.Entity
 {
 	public class FacebookPost
 	{
 		public string Id { get; set; }
-        public string FromId { get; set; }
 
-        public string Type { get; set; } // TODO: enum??
+        [JsonProperty("From.Id")]
+        public string UserId { get; set; }
+
+        public string Type { get; set; } // TODO: Type enum??
 
         public DateTime CreatedTime { get; set; }
         public DateTime UpdatedTime { get; set; }
