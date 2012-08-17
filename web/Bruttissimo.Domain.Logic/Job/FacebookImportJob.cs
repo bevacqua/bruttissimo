@@ -22,7 +22,7 @@ namespace Bruttissimo.Domain.Logic
 
         public override void DoWork(IJobExecutionContext context)
         {
-            string feed = null; // TODO: how to pass feed Id to a job?
+            string feed = Config.Social.FacebookFeedId; // TODO: how to pass feed Id to a job?
             facebookService.Import(feed);
         }
     }

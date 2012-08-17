@@ -32,12 +32,12 @@ namespace Bruttissimo.Common.Mvc
 			IMappingEngineRunner runner = engine as IMappingEngineRunner;
 			if (runner == null)
 			{
-				throw new ArgumentException(Common.Resources.Error.AutoMapperInvalidEngine);
+				throw new ArgumentException(Resources.Error.AutoMapperInvalidEngine);
 			}
 			IConfiguration configuration = runner.ConfigurationProvider as IConfiguration;
 			if (configuration == null)
 			{
-				throw new ArgumentException(Common.Resources.Error.AutoMapperInvalidProvider);
+				throw new ArgumentException(Resources.Error.AutoMapperInvalidProvider);
 			}
 			configuration.ConstructServicesUsing(kernel.Resolve);
 
