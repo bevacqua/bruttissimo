@@ -8,7 +8,7 @@ namespace Bruttissimo.Domain
 	{
         IEnumerable<Log> GetLast(int count);
 
-        DateTime? GetLastImportDate(string group);
-        void UpdateLastImportDate(string group, DateTime date);
+        DateTime? GetFacebookImportDate(string feed);
+        void UpdateFacebookImportDate(string feed, DateTime date);
 	}
 }

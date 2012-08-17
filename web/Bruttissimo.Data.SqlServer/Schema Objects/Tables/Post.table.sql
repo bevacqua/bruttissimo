@@ -2,7 +2,7 @@
     [Id]              BIGINT         IDENTITY (1, 1) NOT NULL,
     [UserId]          BIGINT         NULL,
     [LinkId]          BIGINT         NULL,
-    [FacebookGroupId] NVARCHAR (MAX) NULL,
+    [FacebookFeedId]  NVARCHAR (MAX) NULL,
     [FacebookPostId]  NVARCHAR (MAX) NULL,
     [FacebookUserId]  NVARCHAR (MAX) NULL,
     [UserMessage]     NVARCHAR (MAX) NULL,

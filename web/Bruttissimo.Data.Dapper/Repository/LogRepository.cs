@@ -35,12 +35,12 @@ namespace Bruttissimo.Data.Dapper
 			return logs;
 		}
 
-	    public DateTime? GetLastImportDate(string @group)
+	    public DateTime? GetFacebookImportDate(string feed)
 	    {
 	        throw new NotImplementedException();
 	    }
 
-	    public void UpdateLastImportDate(string @group, DateTime date)
+	    public void UpdateFacebookImportDate(string feed, DateTime date)
 	    {
 	        throw new NotImplementedException();
 	    }

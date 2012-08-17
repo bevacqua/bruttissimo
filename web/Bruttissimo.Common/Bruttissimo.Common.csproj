@@ -135,11 +135,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Resources\FacebookApi.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FacebookApi.resx</DependentUpon>
-    </Compile>
     <Compile Include="Resources\Html.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -218,10 +213,6 @@
       <LastGenOutput>Error.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\FacebookApi.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>FacebookApi.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Html.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Html.Designer.cs</LastGenOutput>
@@ -229,6 +220,7 @@
     <EmbeddedResource Include="Resources\Links.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Links.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\RazorEngine.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

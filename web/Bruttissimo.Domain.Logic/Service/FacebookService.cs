@@ -36,7 +36,7 @@ namespace Bruttissimo.Domain.Logic
             {
                 throw new ArgumentNullException("feed");
             }
-            DateTime? since = logRepository.GetLastImportDate(feed);
+            DateTime? since = logRepository.GetFacebookImportDate(feed);
             IEnumerable<FacebookPost> posts = facebookRepository.GetPostsInFeed(feed, since);
 
             if (!posts.Any()) // no new posts.
@@ -45,7 +45,7 @@ namespace Bruttissimo.Domain.Logic
             }
             DateTime last = posts.Max(p => p.UpdatedTime);
             facebookImporterService.Import(posts);
-            logRepository.UpdateLastImportDate(feed, last);
+            logRepository.UpdateFacebookImportDate(feed, last);
         }
     }
 }

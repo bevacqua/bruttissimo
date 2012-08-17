@@ -69,9 +69,9 @@ namespace Bruttissimo.Common
 			{
 				get { return Get("Social.FacebookAccessToken"); }
 			}
-			public static string FacebookGroupId
+			public static string FacebookFeedId
 			{
-				get { return Get("Social.FacebookGroupId"); }
+				get { return Get("Social.FacebookFeedId"); }
 			}
 
 			public static string TwitterAppId

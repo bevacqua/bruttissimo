@@ -12,7 +12,7 @@ namespace Bruttissimo.Domain.Entity
 		public long? LinkId { get; set; }
 		public Link Link { get; set; }
 
-		public string FacebookGroupId { get; set; }
+		public string FacebookFeedId { get; set; }
 		public string FacebookPostId { get; set; }
 		public string FacebookUserId { get; set; }
 
