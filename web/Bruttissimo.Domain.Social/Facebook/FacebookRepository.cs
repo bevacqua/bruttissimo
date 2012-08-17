@@ -45,7 +45,7 @@ namespace Bruttissimo.Domain.Social
             return result;
         }
 
-        private IList<FacebookPost> FetchAll(string url)
+        internal IList<FacebookPost> FetchAll(string url)
         {
             FacebookClient client = new FacebookClient(defaultAccessToken);
             FacebookPostCollection response;
