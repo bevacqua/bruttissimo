@@ -8,25 +8,19 @@ namespace Bruttissimo.Domain.Logic
 	public class PostService : IPostService
 	{
 		private readonly IPostRepository postRepository;
-		private readonly ILinkRepository linkRepository;
 		private readonly TextHelper textHelper;
 
-		public PostService(IPostRepository postRepository, ILinkRepository linkRepository, TextHelper textHelper)
+		public PostService(IPostRepository postRepository, TextHelper textHelper)
 		{
 			if (postRepository == null)
 			{
 				throw new ArgumentNullException("postRepository");
-			}
-			if (linkRepository == null)
-			{
-				throw new ArgumentNullException("linkRepository");
 			}
 			if (textHelper == null)
 			{
 				throw new ArgumentNullException("textHelper");
 			}
 			this.postRepository = postRepository;
-			this.linkRepository = linkRepository;
 			this.textHelper = textHelper;
 		}
 

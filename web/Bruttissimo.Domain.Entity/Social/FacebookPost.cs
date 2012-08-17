@@ -7,7 +7,10 @@ namespace Bruttissimo.Domain.Entity
 	{
 		public string Id { get; set; }
 
-        [JsonProperty("From.Id")]
+        [JsonProperty("to.data.id")]
+        public string FeedId { get; set; }
+
+        [JsonProperty("from.id")]
         public string UserId { get; set; }
 
         public string Type { get; set; } // TODO: Type enum??

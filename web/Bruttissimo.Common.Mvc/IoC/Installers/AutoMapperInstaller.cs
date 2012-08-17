@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using AutoMapper;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Registration;
@@ -11,20 +10,14 @@ namespace Bruttissimo.Common.Mvc
 {
 	public class AutoMapperInstaller : IWindsorInstaller
 	{
-		private readonly Assembly profileAssembly;
 		private readonly Type[] profileTypes;
 
-		public AutoMapperInstaller(Assembly profileAssembly, params Type[] profileTypes)
+		public AutoMapperInstaller(params Type[] profileTypes)
 		{
-			if (profileAssembly == null)
-			{
-				throw new ArgumentNullException("profileAssembly");
-			}
 			if (profileTypes == null)
 			{
 				throw new ArgumentNullException("profileTypes");
 			}
-			this.profileAssembly = profileAssembly;
 			this.profileTypes = profileTypes;
 		}
 
@@ -32,14 +25,14 @@ namespace Bruttissimo.Common.Mvc
 		{
 			container.Register(
 				AllTypes
-					.FromAssembly(profileAssembly)
+                    .From(profileTypes)
 					.BasedOn(typeof(ITypeConverter<,>))
 					.WithServiceSelf()
 			);
 
 			container.Register(
 				Classes
-					.FromAssembly(profileAssembly)
+                    .From(profileTypes)
 					.BasedOn<Profile>()
 					.LifestyleTransient()
 			);
