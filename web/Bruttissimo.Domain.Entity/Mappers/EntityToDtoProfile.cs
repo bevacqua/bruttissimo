@@ -20,10 +20,10 @@ namespace Bruttissimo.Domain.Entity
                 x => x.MapFrom(p => p.Id)
             ).ForMember(
                 m => m.FacebookFeedId,
-                x => x.MapFrom(p => p.FeedId)
+                x => x.MapFrom(p => p.To.Data[0].Id)
             ).ForMember(
                 m => m.FacebookUserId,
-                x => x.MapFrom(p => p.UserId)
+                x => x.MapFrom(p => p.From.Id)
             ).ForMember(
                 m => m.UserMessage,
                 x => x.MapFrom(p => p.Message)

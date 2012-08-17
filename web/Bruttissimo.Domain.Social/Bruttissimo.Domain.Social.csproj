@@ -57,10 +57,10 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Facebook\FacebookPostCollection.cs" />
+    <Compile Include="Facebook\Entity\FacebookPostCollection.cs" />
     <Compile Include="Facebook\FacebookRepository.cs" />
-    <Compile Include="Facebook\FacebookResponse.cs" />
-    <Compile Include="Facebook\FacebookResponsePaging.cs" />
+    <Compile Include="Facebook\Entity\FacebookResponse.cs" />
+    <Compile Include="Facebook\Entity\FacebookResponsePaging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

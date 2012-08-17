@@ -7,11 +7,8 @@ namespace Bruttissimo.Domain.Entity
 	{
 		public string Id { get; set; }
 
-        [JsonProperty("to.data.id")]
-        public string FeedId { get; set; }
-
-        [JsonProperty("from.id")]
-        public string UserId { get; set; }
+        public FacebookTo To { get; set; }
+        public FacebookFrom From { get; set; }
 
         [JsonProperty("created_time")]
         public DateTime CreatedTime { get; set; }

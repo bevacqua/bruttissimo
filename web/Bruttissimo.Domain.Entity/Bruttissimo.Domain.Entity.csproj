@@ -73,7 +73,10 @@
     <Compile Include="Entities\Right.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="DTO\ScheduledJobDto.cs" />
-    <Compile Include="Social\FacebookPost.cs" />
+    <Compile Include="Social\Facebook\Generic\FacebookSource.cs" />
+    <Compile Include="Social\Facebook\Generic\FacebookTo.cs" />
+    <Compile Include="Social\Facebook\Generic\FacebookFrom.cs" />
+    <Compile Include="Social\Facebook\FacebookPost.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
