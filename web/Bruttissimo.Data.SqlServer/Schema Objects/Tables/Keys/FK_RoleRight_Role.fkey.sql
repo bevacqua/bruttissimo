@@ -1,0 +1,3 @@
+﻿ALTER TABLE [dbo].[RoleRight]
+    ADD CONSTRAINT [FK_RoleRight_Role] FOREIGN KEY ([RoleId]) REFERENCES [dbo].[Role] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+

@@ -267,7 +267,7 @@ namespace Bruttissimo.Data.Dapper
                 DisplayName = GetDisplayName(email, displayName),
                 Password = password == null ? null : InternalPasswordHash(password),
                 Created = DateTime.UtcNow,
-                UserRoleId = GetRoleId(Roles.Regular, transaction)
+                RoleId = GetRoleId(Roles.Regular, transaction)
             };
             connection.Insert(user, transaction);
             return user;
@@ -275,18 +275,18 @@ namespace Bruttissimo.Data.Dapper
 
         private long GetRoleId(string name, IDbTransaction transaction = null)
         {
-            long role = connection.Query<long>("SELECT [UserRole].[Id] FROM [UserRole] WHERE [UserRole].[Name] = @name", new { name }, transaction).First();
+            long role = connection.Query<long>("SELECT [Role].[Id] FROM [Role] WHERE [Role].[Name] = @name", new { name }, transaction).First();
             return role;
         }
 
-        private UserRole GetRoleDetails(User user)
+        private Role GetRoleDetails(User user)
         {
-            UserRole role = connection.Get<UserRole>(user.UserRoleId);
+            Role role = connection.Get<Role>(user.RoleId);
 
-            IEnumerable<UserRight> rights = connection.Query<UserRight>(@"
-				SELECT [R].[Id], [R].[Name] FROM [UserRight] [R]
-				INNER JOIN [UserRoleRight] [RR] ON [R].[Id] = [RR].[UserRightId]
-				INNER JOIN [UserRole] ON [RR].[UserRoleId] = @roleId", new { roleId = user.UserRoleId });
+            IEnumerable<Right> rights = connection.Query<Right>(@"
+				SELECT [R].[Id], [R].[Name] FROM [Right] [R]
+				INNER JOIN [RoleRight] [RR] ON [R].[Id] = [RR].[RightId]
+				INNER JOIN [Role] ON [RR].[RoleId] = @roleId", new { roleId = user.RoleId });
 
             role.Rights = rights;
             return role;

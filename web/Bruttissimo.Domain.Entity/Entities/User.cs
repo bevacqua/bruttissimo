@@ -11,7 +11,7 @@ namespace Bruttissimo.Domain.Entity
 
 		public DateTime Created { get; set; }
 
-		public long UserRoleId { get; set; }
-		public UserRole Role { get; set; }
+		public long RoleId { get; set; }
+		public Role Role { get; set; }
 	}
 }

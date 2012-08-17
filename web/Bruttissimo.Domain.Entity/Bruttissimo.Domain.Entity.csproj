@@ -63,8 +63,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserConnection.cs" />
-    <Compile Include="Entities\UserRight.cs" />
-    <Compile Include="Entities\UserRole.cs" />
+    <Compile Include="Entities\Right.cs" />
+    <Compile Include="Entities\Role.cs" />
     <Compile Include="DTO\ScheduledJobDto.cs" />
     <Compile Include="Social\FacebookPost.cs" />
   </ItemGroup>

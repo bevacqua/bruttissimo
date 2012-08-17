@@ -10,56 +10,56 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
-IF NOT EXISTS(SELECT NULL FROM UserRole WHERE Name = 'Regular')
-    INSERT INTO UserRole VALUES('Regular')
+IF NOT EXISTS(SELECT NULL FROM Role WHERE Name = 'Regular')
+    INSERT INTO Role VALUES('Regular')
 
-IF NOT EXISTS(SELECT NULL FROM UserRole WHERE Name = 'Admin')
-    INSERT INTO UserRole VALUES('Admin')
+IF NOT EXISTS(SELECT NULL FROM Role WHERE Name = 'Admin')
+    INSERT INTO Role VALUES('Admin')
 
-IF NOT EXISTS(SELECT NULL FROM UserRight WHERE Name = 'CanAccessSystemPanel')
-    INSERT INTO UserRight VALUES('CanAccessSystemPanel')
+IF NOT EXISTS(SELECT NULL FROM [Right] WHERE Name = 'CanAccessSystemPanel')
+    INSERT INTO [Right] VALUES('CanAccessSystemPanel')
 
-IF NOT EXISTS(SELECT NULL FROM UserRight WHERE Name = 'CanAccessApplicationLogs')
-    INSERT INTO UserRight VALUES('CanAccessApplicationLogs')
+IF NOT EXISTS(SELECT NULL FROM [Right] WHERE Name = 'CanAccessApplicationLogs')
+    INSERT INTO [Right] VALUES('CanAccessApplicationLogs')
 
-IF NOT EXISTS(SELECT NULL FROM UserRight WHERE Name = 'CanAccessApplicationJobs')
-    INSERT INTO UserRight VALUES('CanAccessApplicationJobs')
+IF NOT EXISTS(SELECT NULL FROM [Right] WHERE Name = 'CanAccessApplicationJobs')
+    INSERT INTO [Right] VALUES('CanAccessApplicationJobs')
 
 IF NOT EXISTS(
-    SELECT NULL FROM UserRoleRight RR
-    WHERE RR.UserRoleId  = (SELECT Ro.Id FROM UserRole  Ro WHERE Ro.Name = 'Admin')
-      AND RR.UserRightId = (SELECT Ri.Id FROM UserRight Ri WHERE Ri.Name = 'CanAccessSystemPanel')
+    SELECT NULL FROM RoleRight RR
+    WHERE RR.RoleId  = (SELECT Ro.Id FROM Role  Ro WHERE Ro.Name = 'Admin')
+      AND RR.RightId = (SELECT Ri.Id FROM [Right] Ri WHERE Ri.Name = 'CanAccessSystemPanel')
 )
 BEGIN
-    INSERT INTO UserRoleRight (UserRoleId, UserRightId)
+    INSERT INTO RoleRight (RoleId, RightId)
     SELECT	Ro.Id, Ri.Id
-      FROM  UserRight Ri, UserRole Ro
+      FROM  [Right] Ri, Role Ro
      WHERE (Ro.Name = 'Admin' AND
 		    Ri.Name = 'CanAccessSystemPanel')
 END
 
 IF NOT EXISTS(
-    SELECT NULL FROM UserRoleRight RR
-    WHERE RR.UserRoleId  = (SELECT Ro.Id FROM UserRole  Ro WHERE Ro.Name = 'Admin')
-      AND RR.UserRightId = (SELECT Ri.Id FROM UserRight Ri WHERE Ri.Name = 'CanAccessApplicationLogs')
+    SELECT NULL FROM RoleRight RR
+    WHERE RR.RoleId  = (SELECT Ro.Id FROM Role  Ro WHERE Ro.Name = 'Admin')
+      AND RR.RightId = (SELECT Ri.Id FROM [Right] Ri WHERE Ri.Name = 'CanAccessApplicationLogs')
 )
 BEGIN
-    INSERT INTO UserRoleRight (UserRoleId, UserRightId)
+    INSERT INTO RoleRight (RoleId, RightId)
     SELECT	Ro.Id, Ri.Id
-      FROM  UserRight Ri, UserRole Ro
+      FROM  [Right] Ri, Role Ro
      WHERE (Ro.Name = 'Admin' AND
 		    Ri.Name = 'CanAccessApplicationLogs')
 END
 
 IF NOT EXISTS(
-    SELECT NULL FROM UserRoleRight RR
-    WHERE RR.UserRoleId  = (SELECT Ro.Id FROM UserRole  Ro WHERE Ro.Name = 'Admin')
-      AND RR.UserRightId = (SELECT Ri.Id FROM UserRight Ri WHERE Ri.Name = 'CanAccessApplicationJobs')
+    SELECT NULL FROM RoleRight RR
+    WHERE RR.RoleId  = (SELECT Ro.Id FROM Role  Ro WHERE Ro.Name = 'Admin')
+      AND RR.RightId = (SELECT Ri.Id FROM [Right] Ri WHERE Ri.Name = 'CanAccessApplicationJobs')
 )
 BEGIN
-    INSERT INTO UserRoleRight (UserRoleId, UserRightId)
+    INSERT INTO RoleRight (RoleId, RightId)
     SELECT	Ro.Id, Ri.Id
-      FROM  UserRight Ri, UserRole Ro
+      FROM  [Right] Ri, Role Ro
      WHERE (Ro.Name = 'Admin' AND
 		    Ri.Name = 'CanAccessApplicationJobs')
 END

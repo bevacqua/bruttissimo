@@ -141,16 +141,16 @@
     <Build Include="Schema Objects\Storage\Files\Bruttissimo_Debug.sqlfile.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Tables\Keys\FK_UserRoleRight_UserRight.fkey.sql">
+    <Build Include="Schema Objects\Tables\Keys\FK_RoleRight_Right.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Tables\Keys\FK_UserRoleRight_UserRole.fkey.sql">
+    <Build Include="Schema Objects\Tables\Keys\FK_RoleRight_Role.fkey.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Tables\Keys\FK_UserConnection_User.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Tables\Keys\FK_User_UserRole.fkey.sql">
+    <Build Include="Schema Objects\Tables\Keys\FK_User_Role.fkey.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Tables\Keys\FK_Post_Link.fkey.sql">
@@ -159,13 +159,13 @@
     <Build Include="Schema Objects\Tables\Keys\FK_Post_User.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Tables\Keys\PK_UserRoleRight.pkey.sql">
+    <Build Include="Schema Objects\Tables\Keys\PK_RoleRight.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Tables\Keys\PK_UserRight.pkey.sql">
+    <Build Include="Schema Objects\Tables\Keys\PK_Right.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Tables\Keys\PK_UserRole.pkey.sql">
+    <Build Include="Schema Objects\Tables\Keys\PK_Role.pkey.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Tables\Keys\PK_UserConnection.pkey.sql">
@@ -201,13 +201,13 @@
     <Build Include="Schema Objects\Tables\Link.table.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Tables\UserRoleRight.table.sql">
+    <Build Include="Schema Objects\Tables\RoleRight.table.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Tables\UserRight.table.sql">
+    <Build Include="Schema Objects\Tables\Right.table.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Tables\UserRole.table.sql">
+    <Build Include="Schema Objects\Tables\Role.table.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Tables\UserConnection.table.sql">
