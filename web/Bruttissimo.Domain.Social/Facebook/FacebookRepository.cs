@@ -47,14 +47,11 @@ namespace Bruttissimo.Domain.Social
 
         internal IList<FacebookPost> FetchAll(string url)
         {
-            FacebookClient client = new FacebookClient(defaultAccessToken);
             FacebookPostCollection response;
             List<FacebookPost> posts = new List<FacebookPost>();
             do
             {
-                string json = (client.Get(url) ?? string.Empty).ToString();
-                response = JsonConvert.DeserializeObject<FacebookPostCollection>(json);
-
+                response = Fetch(url);
                 posts.AddRange(response.Data);
 
                 if (response.Paging.Next == null || response.Paging.Next == url) // sanity
@@ -65,6 +62,15 @@ namespace Bruttissimo.Domain.Social
             } while (response.Data.Count < PAGE_LIMIT);
 
             return posts;
+        }
+
+        internal FacebookPostCollection Fetch(string url)
+        {
+            FacebookClient client = new FacebookClient(defaultAccessToken);
+            string json = (client.Get(url) ?? string.Empty).ToString();
+
+            FacebookPostCollection response = JsonConvert.DeserializeObject<FacebookPostCollection>(json);
+            return response;
         }
     }
 }

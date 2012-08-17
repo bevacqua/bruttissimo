@@ -2,7 +2,7 @@ using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain.Social
 {
-    public class FacebookPostCollection : FacebookResponse<FacebookPost>
+    internal class FacebookPostCollection : FacebookResponse<FacebookPost>
     {
     }
 }
