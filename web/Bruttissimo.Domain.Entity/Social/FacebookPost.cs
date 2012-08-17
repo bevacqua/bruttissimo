@@ -13,10 +13,13 @@ namespace Bruttissimo.Domain.Entity
         [JsonProperty("from.id")]
         public string UserId { get; set; }
 
-        public string Type { get; set; } // TODO: Type enum??
-
+        [JsonProperty("created_time")]
         public DateTime CreatedTime { get; set; }
+
+        [JsonProperty("updated_time")]
         public DateTime UpdatedTime { get; set; }
+
+        public string Type { get; set; } // TODO: Type enum??
 
         public string Message { get; set; }
         public string Link { get; set; }

@@ -10,7 +10,7 @@ namespace Bruttissimo.Domain.Social
     public class FacebookRepository : IFacebookRepository
     {
         private const int PAGE_LIMIT = 15;
-        private const string GRAPH_FEED_LIMITED = "{0}/feed?limit={1}&fields=id,from.id,type,created_time,updated_time,message,link,name,caption,description";
+        private const string GRAPH_FEED_LIMITED = "{0}/feed?limit={1}&fields=id,from,type,created_time,updated_time,message,link,name,caption,description";
         private const string GRAPH_FEED_SINCE = "{0}&since={1}";
 
         /// <summary>
@@ -47,19 +47,18 @@ namespace Bruttissimo.Domain.Social
 
         internal IList<FacebookPost> FetchAll(string url)
         {
-            FacebookPostCollection response;
             List<FacebookPost> posts = new List<FacebookPost>();
             do
             {
-                response = Fetch(url);
+                FacebookPostCollection response = Fetch(url);
                 posts.AddRange(response.Data);
 
-                if (response.Paging.Next == null || response.Paging.Next == url) // sanity
+                if (response.Data.Count < PAGE_LIMIT || response.Paging.Next == url) // sanity
                 {
                     break;
                 }
                 url = response.Paging.Next;
-            } while (response.Data.Count < PAGE_LIMIT);
+            } while (url != null);
 
             return posts;
         }
