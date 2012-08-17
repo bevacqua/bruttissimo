@@ -30,22 +30,22 @@ namespace Bruttissimo.Domain.Logic
             this.facebookImporterService = facebookImporterService;
         }
 
-        public void Import(string group)
+        public void Import(string feed)
         {
-            if (group == null)
+            if (feed == null)
             {
-                throw new ArgumentNullException("group");
+                throw new ArgumentNullException("feed");
             }
-            DateTime? since = logRepository.GetLastImportDate(group);
-            IEnumerable<FacebookPost> feed = facebookRepository.GetPostsInGroupFeed(group, since);
+            DateTime? since = logRepository.GetLastImportDate(feed);
+            IEnumerable<FacebookPost> posts = facebookRepository.GetPostsInFeed(feed, since);
 
-            if (!feed.Any()) // no new posts.
+            if (!posts.Any()) // no new posts.
             {
                 return;
             }
-            DateTime last = feed.Max(p => p.UpdatedTime);
-            facebookImporterService.Import(feed);
-            logRepository.UpdateLastImportDate(group, last);
+            DateTime last = posts.Max(p => p.UpdatedTime);
+            facebookImporterService.Import(posts);
+            logRepository.UpdateLastImportDate(feed, last);
         }
     }
 }

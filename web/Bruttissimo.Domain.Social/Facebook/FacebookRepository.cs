@@ -27,27 +27,26 @@ namespace Bruttissimo.Domain.Social
             this.defaultAccessToken = defaultAccessToken;
         }
 
-        public IList<FacebookPost> GetPostsInGroupFeed(string group, DateTime? since)
+        public IList<FacebookPost> GetPostsInFeed(string feed, DateTime? since)
         {
-            if (group == null)
+            if (feed == null)
             {
-                throw new ArgumentNullException("group");
+                throw new ArgumentNullException("feed");
             }
-            string feed = GRAPH_FEED_LIMITED.FormatWith(group, PAGE_LIMIT);
-            return GetPostsInFeed(feed, since);
-        }
+            string url = GRAPH_FEED_LIMITED.FormatWith(feed, PAGE_LIMIT);
 
-        public IList<FacebookPost> GetPostsInFeed(string url, DateTime? since)
-        {
-            if (url == null)
-            {
-                throw new ArgumentNullException("url");
-            }
             if (since.HasValue)
             {
                 string date = since.Value.ToIso8601();
                 url = GRAPH_FEED_SINCE.FormatWith(url, date);
             }
+
+            IList<FacebookPost> result = FetchAll(url);
+            return result;
+        }
+
+        private IList<FacebookPost> FetchAll(string url)
+        {
             FacebookClient client = new FacebookClient(defaultAccessToken);
             FacebookPostCollection response;
             List<FacebookPost> posts = new List<FacebookPost>();
