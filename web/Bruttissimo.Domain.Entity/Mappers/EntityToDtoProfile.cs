@@ -30,13 +30,7 @@ namespace Bruttissimo.Domain.Entity
             )
             // application specific properties.
             .ForMember(
-                m => m.UserId,
-                x => x.UseValue(null)
-            ).ForMember(
                 m => m.Created,
-                x => x.MapFrom(p => DateTime.UtcNow)
-            ).ForMember(
-                m => m.Updated,
                 x => x.MapFrom(p => DateTime.UtcNow)
             );
         }
