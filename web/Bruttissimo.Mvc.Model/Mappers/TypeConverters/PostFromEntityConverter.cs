@@ -5,11 +5,11 @@ using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Mvc.Model
 {
-	public class PostModelFromPostEntityConverter : ITypeConverter<Post, PostModel>
+	public class PostFromEntityConverter : ITypeConverter<Post, PostModel>
 	{
 		private readonly IMapper mapper;
 
-		public PostModelFromPostEntityConverter(IMapper mapper)
+		public PostFromEntityConverter(IMapper mapper)
 		{
 			if (mapper == null)
 			{

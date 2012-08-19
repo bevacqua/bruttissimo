@@ -49,7 +49,7 @@ namespace Bruttissimo.Mvc.Model
 
         internal void CreatePostMaps()
         {
-            CreateMap<Post, PostModel>().ConvertUsing<PostModelFromPostEntityConverter>();
+            CreateMap<Post, PostModel>().ConvertUsing<PostFromEntityConverter>();
 
             CreateMap<Post, LinkPostModel>().ForMember(
                 m => m.PostSlug,
@@ -76,7 +76,7 @@ namespace Bruttissimo.Mvc.Model
 
             CreateMap<Link, LinkModel>();
 
-            CreateMap<IEnumerable<Post>, PostListModel>().ConvertUsing<PostListModelFromPostEntityEnumerableConverter>();
+            CreateMap<IEnumerable<Post>, PostListModel>().ConvertUsing<PostListFromEntitiesConverter>();
         }
     }
 }

@@ -7,11 +7,11 @@ using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Mvc.Model
 {
-	public class PostListModelFromPostEntityEnumerableConverter : ITypeConverter<IEnumerable<Post>, PostListModel>
+	public class PostListFromEntitiesConverter : ITypeConverter<IEnumerable<Post>, PostListModel>
 	{
 		private readonly IMapper mapper;
 
-		public PostListModelFromPostEntityEnumerableConverter(IMapper mapper)
+		public PostListFromEntitiesConverter(IMapper mapper)
 		{
 			if (mapper == null)
 			{
