@@ -58,7 +58,7 @@ namespace Bruttissimo.Domain.Social
                 FacebookPostCollection response = Fetch(url);
                 posts.AddRange(response.Data);
 
-                if (/*response.Data.Count < PAGE_LIMIT ||*/ response.Paging.Next == url) // sanity
+                if (response.Paging == null || response.Paging.Next == url) // sanity
                 {
                     break;
                 }
