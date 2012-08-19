@@ -43,6 +43,10 @@ namespace Bruttissimo.Domain.Logic
         {
             foreach (FacebookPost facebookPost in posts)
             {
+                if (facebookPost.Link == null) // only links.
+                {
+                    continue;
+                }
                 Uri uri = new Uri(facebookPost.Link);
                 Link link = linkRepository.GetByReferenceUri(uri);
                 if (link != null && link.PostId.HasValue) // no need to look up by FacebookPost.Id in the case of imports, looking up by Link.ReferenceUri is enough.
