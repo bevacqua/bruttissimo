@@ -23,6 +23,10 @@ namespace Bruttissimo.Domain.Logic
 
         public static long? GetUserId(this HttpContextBase context)
         {
+            if (context == null)
+            {
+                return null;
+            }
             try
             {
                 if (context.Request.IsAuthenticated) // note this won't be true until after HttpApplication.PostAuthenticateRequest for any given request.

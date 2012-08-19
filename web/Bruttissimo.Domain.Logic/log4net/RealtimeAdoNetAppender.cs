@@ -15,8 +15,9 @@ namespace Bruttissimo.Domain.Logic
 
         private void EmitSignal(LoggingEvent loggingEvent)
         {
-            HttpContextWrapper context = new HttpContextWrapper(HttpContext.Current);
-            ILogRealtimeService realtime = IoC.GetApplicationContainer().Resolve<ILogRealtimeService>();
+            HttpContext current = HttpContext.Current;
+            HttpContextWrapper context = current == null ? null : new HttpContextWrapper(current);
+            ILogRealtimeService realtime = IoC.Container.Resolve<ILogRealtimeService>();
             realtime.Update(context, loggingEvent);
         }
     }
