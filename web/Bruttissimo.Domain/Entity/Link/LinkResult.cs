@@ -2,9 +2,9 @@ using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain
 {
-	public class LinkResult
-	{
-		public Link Link { get; set; }
-		public LinkParseResult Result { get; set; }
-	}
+    public class LinkResult
+    {
+        public Link Link { get; set; }
+        public LinkParseResult Result { get; set; }
+    }
 }

@@ -14,7 +14,7 @@ namespace Bruttissimo.Common
             return expression.ForMember(
                 destination,
                 x => x.Ignore()
-            );
+                );
         }
 
         public static IMappingExpression<TSource, TDestination> Ignoring<TSource, TDestination>(

@@ -8,32 +8,32 @@ namespace Bruttissimo.Common
         {
             if (number < 0)
             {
-            	return string.Concat("-", (number * -1).ToFancyString());
+                return string.Concat("-", (number * -1).ToFancyString());
             }
-        	if (number < 1000)
-        	{
-        		return number.ToInvariantString();
-        	}
-        	double d = number / 1000.0;
+            if (number < 1000)
+            {
+                return number.ToInvariantString();
+            }
+            double d = number / 1000.0;
             if (d < 1000)
             {
-            	return d.ToString("#.#k");
+                return d.ToString("#.#k");
             }
-        	return d.ToString("#.#m");
+            return d.ToString("#.#m");
         }
 
         public static string ToFancyLabel(this Int32 number, string label)
         {
             if (number < 0 || number > 1000)
             {
-            	return string.Format("{0} {1}", number, label);
+                return string.Format("{0} {1}", number, label);
             }
-        	return label;
+            return label;
         }
 
         public static bool IsEven(this Int32 number)
         {
-            return number%2 == 0;
+            return number % 2 == 0;
         }
     }
 }

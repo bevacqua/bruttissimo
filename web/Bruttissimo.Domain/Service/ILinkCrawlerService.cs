@@ -3,8 +3,8 @@ using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain.Logic
 {
-	public interface ILinkCrawlerService
-	{
-		Link CrawlHttpResource(Uri uri);
-	}
+    public interface ILinkCrawlerService
+    {
+        Link CrawlHttpResource(Uri uri);
+    }
 }

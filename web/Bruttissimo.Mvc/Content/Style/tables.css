@@ -1,16 +1,12 @@
 ﻿/* TABLES
 ----------------------------------------------------------*/
 
-table {
-	margin: 0 auto;
-}
+table { margin: 0 auto; }
 
 table thead {
-	padding-bottom: 5px;
-	border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
 }
 
 table tr th,
-table tr td {
-	padding: 5px 10px;
-}
+table tr td { padding: 5px 10px; }

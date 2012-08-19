@@ -34,7 +34,7 @@ namespace Bruttissimo.Data.Dapper
 				LEFT JOIN [Post] ON [Post].[LinkId] = [Link].[Id]
 				WHERE [Link].[ReferenceUri] = @referenceUri
             ";
-            IEnumerable<Link> result = connection.Query<Link>(sql, new { referenceUri = referenceUri.AbsoluteUri });
+            IEnumerable<Link> result = connection.Query<Link>(sql, new {referenceUri = referenceUri.AbsoluteUri});
 
             Link link = result.FirstOrDefault();
             return link;

@@ -4,11 +4,11 @@ using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain
 {
-	public interface ILogRepository
-	{
+    public interface ILogRepository
+    {
         IEnumerable<Log> GetLast(int count);
 
         DateTime? GetFacebookImportDate(string feed);
-	    FacebookImportLog UpdateFacebookImportDate(string feed, DateTime date);
-	}
+        FacebookImportLog UpdateFacebookImportDate(string feed, DateTime date);
+    }
 }

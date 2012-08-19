@@ -91,6 +91,7 @@ namespace Common.Logging.Log4Net
         }
 
         private delegate string MessageFormatter();
+
         private delegate void LogMethod(ILog logger, MessageFormatter fmtr, Exception exception);
 
         private static readonly Dictionary<Level, LogMethod> logMethods;
@@ -111,7 +112,7 @@ namespace Common.Logging.Log4Net
         /// <summary>
         /// Gets the closest level supported by Common.Logging of the given log4net level
         /// </summary>
-        protected static Level GetClosestLevel( Level currentLevel )
+        protected static Level GetClosestLevel(Level currentLevel)
         {
             if (currentLevel.Equals(Level.Off)) return Level.Off;
             if (currentLevel.Equals(Level.All)) return Level.All;
@@ -133,9 +134,9 @@ namespace Common.Logging.Log4Net
         {
             get
             {
-                return (base.Layout is ExceptionAwareLayout) 
-                    ? ((ExceptionAwareLayout)base.Layout).InnerLayout
-                    : base.Layout;
+                return (base.Layout is ExceptionAwareLayout)
+                           ? ((ExceptionAwareLayout)base.Layout).InnerLayout
+                           : base.Layout;
             }
             set
             {
@@ -157,7 +158,7 @@ namespace Common.Logging.Log4Net
             Level logLevel = GetClosestLevel(loggingEvent.Level);
             LogMethod log = logMethods[logLevel];
             loggingEvent.Fix = FixFlags.LocationInfo;
-            log( logger, delegate { return RenderLoggingEvent(loggingEvent); }, loggingEvent.ExceptionObject);
+            log(logger, delegate { return RenderLoggingEvent(loggingEvent); }, loggingEvent.ExceptionObject);
         }
     }
 }

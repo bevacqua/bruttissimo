@@ -7,40 +7,40 @@ using Castle.Windsor;
 
 namespace Bruttissimo.Mvc.Windsor
 {
-	/// <summary>
-	/// Installs ASP.NET membership components.
-	/// </summary>
-	public class MiniMembershipInstaller : IWindsorInstaller
-	{
-		public void Install(IWindsorContainer container, IConfigurationStore store)
-		{
-			container.Register(
-				Component
-					.For<MembershipProvider>()
-					.ImplementedBy<MiniMembershipProvider>()
-					.LifestylePerWebRequest()
-			);
+    /// <summary>
+    /// Installs ASP.NET membership components.
+    /// </summary>
+    public class MiniMembershipInstaller : IWindsorInstaller
+    {
+        public void Install(IWindsorContainer container, IConfigurationStore store)
+        {
+            container.Register(
+                Component
+                    .For<MembershipProvider>()
+                    .ImplementedBy<MiniMembershipProvider>()
+                    .LifestylePerWebRequest()
+                );
 
-			container.Register(
-				Component
-					.For<RoleProvider>()
-					.ImplementedBy<MiniRoleProvider>()
-					.LifestylePerWebRequest()
-			);
+            container.Register(
+                Component
+                    .For<RoleProvider>()
+                    .ImplementedBy<MiniRoleProvider>()
+                    .LifestylePerWebRequest()
+                );
 
-			container.Register(
-				Component
-					.For<MiniAuthentication>()
-					.ImplementedBy<MiniAuthentication>()
-					.LifestylePerWebRequest()
-			);
+            container.Register(
+                Component
+                    .For<MiniAuthentication>()
+                    .ImplementedBy<MiniAuthentication>()
+                    .LifestylePerWebRequest()
+                );
 
-			container.Register(
-				Component
-					.For<IMiniAuthentication>()
-					.ImplementedBy<MiniAuthenticationWrapper>()
-					.LifestylePerWebRequest()
-			);
-		}
-	}
+            container.Register(
+                Component
+                    .For<IMiniAuthentication>()
+                    .ImplementedBy<MiniAuthenticationWrapper>()
+                    .LifestylePerWebRequest()
+                );
+        }
+    }
 }

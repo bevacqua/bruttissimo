@@ -43,7 +43,7 @@ namespace Bruttissimo.Data.Dapper
                 FROM [User]
                 WHERE [User].[Email] = @email
             ";
-            IEnumerable<User> result = connection.Query<User>(sql, new { email });
+            IEnumerable<User> result = connection.Query<User>(sql, new {email});
             User user = result.FirstOrDefault();
             return user;
         }
@@ -60,7 +60,7 @@ namespace Bruttissimo.Data.Dapper
 				ON [User].[Id] = [UserConnection].[UserId]
 				WHERE [UserConnection].[OpenId] = @openId
             ";
-            IEnumerable<User> result = connection.Query<User>(sql, new { openId });
+            IEnumerable<User> result = connection.Query<User>(sql, new {openId});
 
             User user = result.FirstOrDefault();
             return user;
@@ -78,7 +78,7 @@ namespace Bruttissimo.Data.Dapper
 				ON [User].[Id] = [UserConnection].[UserId]
 				WHERE [UserConnection].[FacebookId] = @facebookId
             ";
-            IEnumerable<User> result = connection.Query<User>(sql, new { facebookId });
+            IEnumerable<User> result = connection.Query<User>(sql, new {facebookId});
 
             User user = result.FirstOrDefault();
             return user;
@@ -96,7 +96,7 @@ namespace Bruttissimo.Data.Dapper
 				ON [User].[Id] = [UserConnection].[UserId]
 				WHERE [UserConnection].[TwitterId] = @twitterId
             ";
-            IEnumerable<User> result = connection.Query<User>(sql, new { twitterId });
+            IEnumerable<User> result = connection.Query<User>(sql, new {twitterId});
 
             User user = result.FirstOrDefault();
             return user;
@@ -291,7 +291,7 @@ namespace Bruttissimo.Data.Dapper
                 FROM [Role]
                 WHERE [Role].[Name] = @name
             ";
-            long role = connection.Query<long>(sql, new { name }, transaction).First();
+            long role = connection.Query<long>(sql, new {name}, transaction).First();
             return role;
         }
 
@@ -303,7 +303,7 @@ namespace Bruttissimo.Data.Dapper
 				INNER JOIN [RoleRight] [RR] ON [R].[Id] = [RR].[RightId]
 				INNER JOIN [Role] ON [RR].[RoleId] = @roleId
             ";
-            IEnumerable<Right> rights = connection.Query<Right>(sql, new { roleId = user.RoleId });
+            IEnumerable<Right> rights = connection.Query<Right>(sql, new {roleId = user.RoleId});
 
             role.Rights = rights;
             return role;

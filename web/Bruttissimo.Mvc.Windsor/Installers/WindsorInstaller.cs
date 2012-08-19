@@ -58,17 +58,17 @@ namespace Bruttissimo.Mvc.Windsor
                 new ServiceInstaller(),
                 new RepositoryInstaller(),
                 new LibraryInstaller()
-            );
+                );
         }
 
         private MvcInstallerParameters GetMvcInstallerParameters()
         {
-            Assembly modelAssembly = typeof(UserLoginModel).Assembly;
-            Assembly controllerAssembly = typeof(HomeController).Assembly;
+            Assembly modelAssembly = typeof (UserLoginModel).Assembly;
+            Assembly controllerAssembly = typeof (HomeController).Assembly;
             ActionInvokerFilters filters = new ActionInvokerFilters();
-            Assembly jobAssembly = typeof(FacebookService).Assembly;
+            Assembly jobAssembly = typeof (FacebookService).Assembly;
             MvcInstallerParameters parameters = new MvcInstallerParameters
-            (
+                (
                 modelAssembly,
                 viewAssembly,
                 controllerAssembly,
@@ -76,15 +76,15 @@ namespace Bruttissimo.Mvc.Windsor
                 resourceAssemblies,
                 filters,
                 jobAssembly
-            );
+                );
             return parameters;
         }
 
         private Type[] GetAutoMapperProfileTypes()
         {
-            Type domainToModel = typeof(DomainToModelProfile);
-            Type entityToDto = typeof(EntityToDtoProfile);
-            Type[] profileTypes = new[] { entityToDto, domainToModel };
+            Type domainToModel = typeof (DomainToModelProfile);
+            Type entityToDto = typeof (EntityToDtoProfile);
+            Type[] profileTypes = new[] {entityToDto, domainToModel};
             return profileTypes;
         }
     }

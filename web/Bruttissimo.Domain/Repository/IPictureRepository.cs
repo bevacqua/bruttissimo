@@ -1,6 +1,6 @@
 ﻿namespace Bruttissimo.Domain
 {
-	public interface IPictureRepository
-	{
-	}
+    public interface IPictureRepository
+    {
+    }
 }

@@ -1,25 +1,21 @@
 ﻿/* OPENID PROVIDERS FORM
 ----------------------------------------------------------*/
 
-section.logon-container {
-    text-align: center;
-}
+section.logon-container { text-align: center; }
 
 
 
 /* REGULAR SITE LOGON FORM
 ----------------------------------------------------------*/
 
-form.site-logon {
-    vertical-align: top;
-}
+form.site-logon { vertical-align: top; }
+
 form.site-logon p {
     text-align: center;
-	padding-top: 6px;
+    padding-top: 6px;
 }
-form.site-logon input[type=submit] {
-	margin: 0 auto;
-}
+
+form.site-logon input[type=submit] { margin: 0 auto; }
 
 
 
@@ -27,35 +23,32 @@ form.site-logon input[type=submit] {
 ----------------------------------------------------------*/
 
 form.provider-logon {
-	display: block;
-	margin-top: 35px;
+    display: block;
+    margin-top: 35px;
 }
+
 form.provider-logon a.logon-provider-button {
-	margin: 4px;
-	display: inline-block;
+    margin: 4px;
+    display: inline-block;
 }
-form.provider-logon a.logon-provider-button.logon-provider-selected {
-}
-form.provider-logon section.provider-buttons {
-    text-align: center;
-}
+
+form.provider-logon a.logon-provider-button.logon-provider-selected { }
+
+form.provider-logon section.provider-buttons { text-align: center; }
+
 form.provider-logon a.provider-icon {
-	background-image: url('/content/images/sprites/providers-small.png');
-	width: 32px;
-	height: 32px;
+    background-image: url('/content/images/sprites/providers-small.png');
+    width: 32px;
+    height: 32px;
 }
-form.provider-logon a.provider-icon.google-icon {
-	background-position: 0px 0px;
-}
-form.provider-logon a.provider-icon.fb-icon {
-	background-position: -32px 0px;
-}
-form.provider-logon a.provider-icon.twitter-icon {
-	background-position: -64px 0px;
-}
-form.provider-logon a.provider-icon.yahoo-icon {
-	background-position: -96px 0px;
-}
+
+form.provider-logon a.provider-icon.google-icon { background-position: 0px 0px; }
+
+form.provider-logon a.provider-icon.fb-icon { background-position: -32px 0px; }
+
+form.provider-logon a.provider-icon.twitter-icon { background-position: -64px 0px; }
+
+form.provider-logon a.provider-icon.yahoo-icon { background-position: -96px 0px; }
 
 
 
@@ -63,41 +56,37 @@ form.provider-logon a.provider-icon.yahoo-icon {
 ----------------------------------------------------------*/
 
 @media only screen and (min-width: 768px) {
-	section.logon-container {
-		margin-top: 1%;
-	}
+    section.logon-container { margin-top: 1%; }
 
-	form.site-logon {
-		display: inline-block;
-		margin-right: 15px;
-	    width: 300px;
-	}
-	
-	form.provider-logon {
-		padding-left: 30px;
-		border-left: 1px solid #ddd;
-	    margin-top: 0;
-	    display: inline-block;
-	}
+    form.site-logon {
+        display: inline-block;
+        margin-right: 15px;
+        width: 300px;
+    }
+
+    form.provider-logon {
+        padding-left: 30px;
+        border-left: 1px solid #ddd;
+        margin-top: 0;
+        display: inline-block;
+    }
+
     form.provider-logon a.provider-icon {
-	    background-image: url('/content/images/sprites/providers-large.png');
-	    width: 100px;
-	    height: 60px;
+        background-image: url('/content/images/sprites/providers-large.png');
+        width: 100px;
+        height: 60px;
     }
-    form.provider-logon a.provider-icon.google-icon {
-	    background-position: 0px 0px;
+
+    form.provider-logon a.provider-icon.google-icon { background-position: 0px 0px; }
+
+    form.provider-logon a.provider-icon.fb-icon { background-position: -100px 0px; }
+
+    form.provider-logon a.provider-icon.twitter-icon { background-position: -200px 0px; }
+
+    form.provider-logon a.provider-icon.yahoo-icon { background-position: -300px 0px; }
+
+    form.provider-logon section.provider-buttons {
+        width: 230px;
+        margin: 0 auto;
     }
-    form.provider-logon a.provider-icon.fb-icon {
-	    background-position: -100px 0px;
-    }
-    form.provider-logon a.provider-icon.twitter-icon {
-	    background-position: -200px 0px;
-    }
-    form.provider-logon a.provider-icon.yahoo-icon {
-	    background-position: -300px 0px;
-    }	
-	form.provider-logon section.provider-buttons {
-		width: 230px;
-		margin: 0 auto;
-	}
 }

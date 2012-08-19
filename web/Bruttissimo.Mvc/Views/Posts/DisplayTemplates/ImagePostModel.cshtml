@@ -3,6 +3,6 @@
     <strong class="username">@Model.UserDisplayName</strong>
     <span class="user-message">@Model.UserMessage</span>
 </section>
-<a class="post-image" href="@Url.Action("Details", "Posts", new { id = Model.Id, slug = Model.PostSlug })">
+<a class="post-image" href="@Url.Action("Details", "Posts", new {id = Model.Id, slug = Model.PostSlug})">
     <img src="@Model.LinkPicture" alt="" />
 </a>

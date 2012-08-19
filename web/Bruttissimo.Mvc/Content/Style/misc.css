@@ -1,32 +1,18 @@
 ﻿/* MISC
 ----------------------------------------------------------*/
 
-.clear {
-    clear: both;
-}
+.clear { clear: both; }
 
-.left {
-    float:left;
-}
+.left { float: left; }
 
-.right {
-    float:right;
-}
+.right { float: right; }
 
-.hidden {
-	display: none !important;
-}
+.hidden { display: none !important; }
 
-.center {
-	text-align: center;
-}
+.center { text-align: center; }
 
-.medium-screen {
-	display: none !important;
-}
+.medium-screen { display: none !important; }
 
 @media only screen and (min-width: 768px) {
-	.medium-screen {
-		display: inherit !important;
-	}
+    .medium-screen { display: inherit !important; }
 }

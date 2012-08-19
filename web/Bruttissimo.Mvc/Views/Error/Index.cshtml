@@ -1,16 +1,16 @@
 ﻿@model ErrorViewModel
 @if (Model.DisplayException)
 {
-	@Html.DisplayFor(m => m.Exception)
+    @Html.DisplayFor(m => m.Exception)
 }
 @{
-	Title = Resource.String("ViewTitle");
-	if (Model.NotFound)
-	{
-		Html.RenderPartial(Resource.String("NotFoundViewName"), Model);
-	}
-	else
-	{
+    Title = Resource.String("ViewTitle");
+    if (Model.NotFound)
+    {
+        Html.RenderPartial(Resource.String("NotFoundViewName"), Model);
+    }
+    else
+    {
         Html.RenderPartial(Resource.String("UnhandledViewName"), Model);
-	}
+    }
 }

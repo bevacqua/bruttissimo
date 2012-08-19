@@ -11,75 +11,75 @@ using StackExchange.Profiling;
 
 namespace Bruttissimo.Mvc
 {
-	public class MvcApplication : HttpApplication
-	{
-		private readonly ILog log = LogManager.GetLogger(typeof(HttpApplication));
+    public class MvcApplication : HttpApplication
+    {
+        private readonly ILog log = LogManager.GetLogger(typeof (HttpApplication));
 
-		protected void Application_Start()
-		{
-			System.Diagnostics.Debugger.Break(); // debug application start in IIS.
-			MvcHandler.DisableMvcResponseHeader = true;
-			AreaRegistration.RegisterAllAreas();
-			Routing.RegisterRoutes(RouteTable.Routes);
+        protected void Application_Start()
+        {
+            System.Diagnostics.Debugger.Break(); // debug application start in IIS.
+            MvcHandler.DisableMvcResponseHeader = true;
+            AreaRegistration.RegisterAllAreas();
+            Routing.RegisterRoutes(RouteTable.Routes);
 
-			InitializeDependencies();
+            InitializeDependencies();
             log.Debug(Debug.ApplicationStart);
-		}
+        }
 
-		private void InitializeDependencies()
-		{
-			IWindsorContainer container = new WindsorContainer();
-			container.Install(new ApplicationInstaller());
-			IoC.Bootstrap(container);
-		}
+        private void InitializeDependencies()
+        {
+            IWindsorContainer container = new WindsorContainer();
+            container.Install(new ApplicationInstaller());
+            IoC.Bootstrap(container);
+        }
 
-		protected void Application_PreSendRequestHeaders()
-		{
-			Response.Headers.Remove(Constants.ServerResponseHeader);
-		}
+        protected void Application_PreSendRequestHeaders()
+        {
+            Response.Headers.Remove(Constants.ServerResponseHeader);
+        }
 
-		protected void Application_BeginRequest()
-		{
-			if (Config.Debug.RequestLog)
-			{
-				log.DebugFormat(Debug.ApplicationRequest, Request.RawUrl);
-			}
-			RequestSanitizer sanitizer = IoC.Container.Resolve<RequestSanitizer>();
-			if (sanitizer.ValidateUrl())
-			{
-				return;
-			}
-			MiniProfiler.Start();
-		}
+        protected void Application_BeginRequest()
+        {
+            if (Config.Debug.RequestLog)
+            {
+                log.DebugFormat(Debug.ApplicationRequest, Request.RawUrl);
+            }
+            RequestSanitizer sanitizer = IoC.Container.Resolve<RequestSanitizer>();
+            if (sanitizer.ValidateUrl())
+            {
+                return;
+            }
+            MiniProfiler.Start();
+        }
 
-		protected void Application_PostAuthenticateRequest()
-		{
-			IMiniAuthentication miniAuthentication = IoC.Container.Resolve<IMiniAuthentication>();
-			miniAuthentication.SetContextPrincipal();
+        protected void Application_PostAuthenticateRequest()
+        {
+            IMiniAuthentication miniAuthentication = IoC.Container.Resolve<IMiniAuthentication>();
+            miniAuthentication.SetContextPrincipal();
 
-			if (!Request.CanDisplayDebuggingDetails())
-			{
-				// abort profiling session if this isn't a local request and the user is not an administrator.
-				MiniProfiler.Stop(discardResults: true);
-			}
-		}
+            if (!Request.CanDisplayDebuggingDetails())
+            {
+                // abort profiling session if this isn't a local request and the user is not an administrator.
+                MiniProfiler.Stop(discardResults: true);
+            }
+        }
 
-		protected void Application_EndRequest()
-		{
-			MiniProfiler.Stop();
-		}
+        protected void Application_EndRequest()
+        {
+            MiniProfiler.Stop();
+        }
 
-		protected void Application_Error()
-		{
-			ExceptionHelper exceptionHelper = IoC.Container.Resolve<ExceptionHelper>();
-			HttpApplicationErrorHander errorHandler = new HttpApplicationErrorHander(this, exceptionHelper);
-			errorHandler.HandleApplicationError();
-		}
+        protected void Application_Error()
+        {
+            ExceptionHelper exceptionHelper = IoC.Container.Resolve<ExceptionHelper>();
+            HttpApplicationErrorHander errorHandler = new HttpApplicationErrorHander(this, exceptionHelper);
+            errorHandler.HandleApplicationError();
+        }
 
-		protected void Application_End()
-		{
-			log.Debug(Debug.ApplicationEnd);
-		    IoC.Shutdown();
-		}
-	}
+        protected void Application_End()
+        {
+            log.Debug(Debug.ApplicationEnd);
+            IoC.Shutdown();
+        }
+    }
 }

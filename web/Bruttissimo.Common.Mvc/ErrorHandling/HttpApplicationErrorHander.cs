@@ -12,7 +12,7 @@ namespace Bruttissimo.Common.Mvc
 {
     public class HttpApplicationErrorHander
     {
-        private readonly ILog log = LogManager.GetLogger(typeof(HttpApplicationErrorHander));
+        private readonly ILog log = LogManager.GetLogger(typeof (HttpApplicationErrorHander));
         private readonly HttpApplication application;
         private readonly ExceptionHelper helper;
 
@@ -171,7 +171,7 @@ namespace Bruttissimo.Common.Mvc
             #region Inner Exception recursion
 
             AggregateException aggregate = exception as AggregateException;
-            IEnumerable<Exception> innerExceptions = new[] { exception.InnerException };
+            IEnumerable<Exception> innerExceptions = new[] {exception.InnerException};
             if (aggregate != null)
             {
                 innerExceptions = aggregate.InnerExceptions;
@@ -198,7 +198,7 @@ namespace Bruttissimo.Common.Mvc
 
         private string GetEmbeddedHtmlTemplate(string viewName)
         {
-            Type type = typeof(HttpApplicationErrorHander);
+            Type type = typeof (HttpApplicationErrorHander);
             Assembly assembly = type.Assembly;
             Stream stream = assembly.GetManifestResourceStream(type, viewName);
             string html = stream.ReadFully(); // we don't use RazorEngine here, to avoid any complications in case what's faulty is RazorEngine itself.

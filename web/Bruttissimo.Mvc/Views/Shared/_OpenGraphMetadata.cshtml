@@ -1,29 +1,30 @@
 ﻿@{
-	OpenGraphModel openGraph = GetOpenGraphMetadata();
-	if (openGraph != null)
-	{
-		@OpenGraphMetaProperty("title", openGraph.Title)
-		@OpenGraphMetaProperty("description", openGraph.Description)
-		@OpenGraphMetaProperty("url", openGraph.Url)
-		@OpenGraphMetaProperty("image", openGraph.Image)
-	}
+    OpenGraphModel openGraph = GetOpenGraphMetadata();
+    if (openGraph != null)
+    {
+        @OpenGraphMetaProperty("title", openGraph.Title)
+        @OpenGraphMetaProperty("description", openGraph.Description)
+        @OpenGraphMetaProperty("url", openGraph.Url)
+        @OpenGraphMetaProperty("image", openGraph.Image)
+    }
 }
 @helper OpenGraphMetaProperty(string property, string value)
 {
-	if (!value.NullOrBlank())
-	{
-		<meta property="og:@property" content="@value" />
-	}
+    if (!value.NullOrBlank())
+    {
+        <meta property="og:@property" content="@value" />
+    }
 }
 @functions
 {
-	private OpenGraphModel GetOpenGraphMetadata()
-	{
-		IHasOpenGraphMetadata model = Model as IHasOpenGraphMetadata;
-		if (model != null)
-		{
-			return model.OpenGraph;
-		}
-		return Context.Items[Constants.OpenGraphContextItem] as OpenGraphModel;
-	}
+
+    private OpenGraphModel GetOpenGraphMetadata()
+    {
+        IHasOpenGraphMetadata model = Model as IHasOpenGraphMetadata;
+        if (model != null)
+        {
+            return model.OpenGraph;
+        }
+        return Context.Items[Constants.OpenGraphContextItem] as OpenGraphModel;
+    }
 }

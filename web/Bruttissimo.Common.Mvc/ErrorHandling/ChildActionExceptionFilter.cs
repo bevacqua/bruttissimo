@@ -35,7 +35,7 @@ namespace Bruttissimo.Common.Mvc
             }
         }
 
-        internal protected void OnChildActionException(ExceptionContext filterContext)
+        protected internal void OnChildActionException(ExceptionContext filterContext)
         {
             Exception exception = filterContext.Exception;
 

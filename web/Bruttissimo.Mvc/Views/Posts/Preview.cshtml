@@ -1,13 +1,13 @@
 ﻿@model LinkModel
 <header>
-	<h1>
-		<a href="@Model.ReferenceUri" rel="nofollow" target="_blank">@Model.Title</a>
-	</h1>
+    <h1>
+        <a href="@Model.ReferenceUri" rel="nofollow" target="_blank">@Model.Title</a>
+    </h1>
 </header>
 @if (Model.HasPicture)
 {
-	<a class="post-thumbnail" href="@Model.ReferenceUri" rel="nofollow" target="_blank">
-		<img src="@Model.Picture" alt="" />
-	</a>
+    <a class="post-thumbnail" href="@Model.ReferenceUri" rel="nofollow" target="_blank">
+        <img src="@Model.Picture" alt="" />
+    </a>
 }
 <section class="post-description">@Html.DisplayFor(m => m.Description)</section>

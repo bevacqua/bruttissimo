@@ -6,33 +6,33 @@ using Yahoo.Yui.Compressor;
 
 namespace Bruttissimo.Common.Mvc
 {
-	/// <summary>
-	/// Registers SquishIt components, such as preprocessors.
-	/// </summary>
-	public class SquishItInstaller : IWindsorInstaller
-	{
-		public void Install(IWindsorContainer container, IConfigurationStore store)
-		{
-			container.Register(
-				Component
-					.For<LessPreprocessor>()
-					.ImplementedBy<LessPreprocessor>()
-					.LifestyleTransient()
-			);
+    /// <summary>
+    /// Registers SquishIt components, such as preprocessors.
+    /// </summary>
+    public class SquishItInstaller : IWindsorInstaller
+    {
+        public void Install(IWindsorContainer container, IConfigurationStore store)
+        {
+            container.Register(
+                Component
+                    .For<LessPreprocessor>()
+                    .ImplementedBy<LessPreprocessor>()
+                    .LifestyleTransient()
+                );
 
-			container.Register(
-				Component
-					.For<CssCompressor>()
-					.ImplementedBy<CssCompressor>()
-					.LifestyleTransient()
-			);
+            container.Register(
+                Component
+                    .For<CssCompressor>()
+                    .ImplementedBy<CssCompressor>()
+                    .LifestyleTransient()
+                );
 
-			container.Register(
-				Component
-					.For<JavaScriptCompressor>()
-					.ImplementedBy<JavaScriptCompressor>()
-					.LifestyleTransient()
-			);
-		}
-	}
+            container.Register(
+                Component
+                    .For<JavaScriptCompressor>()
+                    .ImplementedBy<JavaScriptCompressor>()
+                    .LifestyleTransient()
+                );
+        }
+    }
 }

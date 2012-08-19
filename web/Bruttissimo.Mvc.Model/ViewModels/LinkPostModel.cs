@@ -8,9 +8,9 @@ namespace Bruttissimo.Mvc.Model
         public string LinkDescription { get; set; }
         public string LinkPicture { get; set; }
 
-    	public bool HasPicture
-    	{
-    		get { return !LinkPicture.NullOrEmpty(); }
-    	}
+        public bool HasPicture
+        {
+            get { return !LinkPicture.NullOrEmpty(); }
+        }
     }
 }

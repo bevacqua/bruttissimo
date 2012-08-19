@@ -33,7 +33,7 @@ namespace Bruttissimo.Data.Dapper
 
 				SET ROWCOUNT 0
 			";
-            IEnumerable<Log> logs = connection.Query<Log>(sql, new { count });
+            IEnumerable<Log> logs = connection.Query<Log>(sql, new {count});
             return logs;
         }
 
@@ -46,7 +46,7 @@ namespace Bruttissimo.Data.Dapper
 			";
             IEnumerable<FacebookImportLog> logs = connection.Query<FacebookImportLog>(sql);
             FacebookImportLog log = logs.FirstOrDefault();
-            return log == null ? (DateTime?) null : log.Date;
+            return log == null ? (DateTime?)null : log.Date;
         }
 
         public FacebookImportLog UpdateFacebookImportDate(string feed, DateTime date)

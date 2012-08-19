@@ -26,7 +26,7 @@ namespace Bruttissimo.Mvc.Controller
             this.logService = logService;
             this.mapper = mapper;
         }
-        
+
         [HttpGet]
         [NotAjax]
         [ExtendedAuthorize(Roles = Rights.CanAccessSystemPanel)]

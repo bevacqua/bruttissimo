@@ -34,7 +34,7 @@ namespace Bruttissimo.Common.Mvc
                         .FromAssembly(assembly)
                         .BasedOn(typeof (ITypeConverter<,>))
                         .WithServiceSelf()
-                );
+                    );
             }
 
             foreach (Assembly assembly in assemblies)
@@ -44,7 +44,7 @@ namespace Bruttissimo.Common.Mvc
                         .FromAssembly(assembly)
                         .BasedOn<Profile>()
                         .LifestyleTransient()
-                );
+                    );
             }
 
             container.Register(
@@ -52,21 +52,21 @@ namespace Bruttissimo.Common.Mvc
                     .For<ITypeMapFactory>()
                     .ImplementedBy<TypeMapFactory>()
                     .LifestyleTransient()
-            );
+                );
 
             container.Register(
                 Component
                     .For<IConfiguration, IConfigurationProvider>()
                     .UsingFactoryMethod(InstanceConfigurationStore)
                     .LifestyleTransient()
-            );
+                );
 
             container.Register(
                 Component
                     .For<IMappingEngine>()
                     .ImplementedBy<MappingEngine>()
                     .LifestyleTransient()
-            );
+                );
 
             container.Register(
                 Component
@@ -76,7 +76,7 @@ namespace Bruttissimo.Common.Mvc
                         (k, parameters) => parameters["profileTypes"] = profileTypes
                     )
                     .LifestyleSingleton()
-            );
+                );
         }
 
         private ConfigurationStore InstanceConfigurationStore(IKernel kernel)

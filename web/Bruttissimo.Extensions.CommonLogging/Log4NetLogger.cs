@@ -55,7 +55,7 @@ namespace Common.Logging.Log4Net
         /// Constructor
         /// </summary>
         /// <param name="log"></param>
-        internal protected Log4NetLogger(ILoggerWrapper log)
+        protected internal Log4NetLogger(ILoggerWrapper log)
         {
             _logger = log.Logger;
         }
@@ -125,7 +125,7 @@ namespace Common.Logging.Log4Net
                 {
                     StackTrace stack = new StackTrace();
                     Type thisType = this.GetType();
-                    callerStackBoundaryType = typeof(AbstractLogger);
+                    callerStackBoundaryType = typeof (AbstractLogger);
                     for (int i = 1; i < stack.FrameCount; i++)
                     {
                         if (!IsInTypeHierarchy(thisType, stack.GetFrame(i).GetMethod().DeclaringType))
@@ -143,7 +143,7 @@ namespace Common.Logging.Log4Net
 
         private bool IsInTypeHierarchy(Type currentType, Type checkType)
         {
-            while (currentType != null && currentType != typeof(object))
+            while (currentType != null && currentType != typeof (object))
             {
                 if (currentType == checkType)
                 {

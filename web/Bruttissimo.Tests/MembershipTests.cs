@@ -7,61 +7,61 @@ using Moq;
 
 namespace Bruttissimo.Tests
 {
-	[TestClass]
-	public class MembershipTests
-	{
-		private MiniMembershipProvider miniMembership;
+    [TestClass]
+    public class MembershipTests
+    {
+        private MiniMembershipProvider miniMembership;
 
-		[TestInitialize]
-		public void TestInit()
-		{
-			// Arrange
-			Mock<IUserRepository> userRepository = new Mock<IUserRepository>();
-			User user = new User
-			{
-				Email = "test",
-				Password = "123"
-			};
+        [TestInitialize]
+        public void TestInit()
+        {
+            // Arrange
+            Mock<IUserRepository> userRepository = new Mock<IUserRepository>();
+            User user = new User
+            {
+                Email = "test",
+                Password = "123"
+            };
 
-			userRepository.Setup(x => x
-				.GetByEmail("test"))
-				.Returns(user);
+            userRepository.Setup(x => x
+                                          .GetByEmail("test"))
+                .Returns(user);
 
-			userRepository.Setup(x => x
-				.AreMatchingPasswords(It.IsAny<string>(), It.IsAny<string>()))
-				.Returns((string l, string r) => l == r);
+            userRepository.Setup(x => x
+                                          .AreMatchingPasswords(It.IsAny<string>(), It.IsAny<string>()))
+                .Returns((string l, string r) => l == r);
 
-			miniMembership = MockHelpers.FakeMiniMembership(userRepository.Object);
-		}
+            miniMembership = MockHelpers.FakeMiniMembership(userRepository.Object);
+        }
 
-		[TestMethod]
-		public void ValidateUser_WithInvalidUser_ReturnsFalse()
-		{
-			// Act
-			bool valid = miniMembership.ValidateUser("invalid", "123");
+        [TestMethod]
+        public void ValidateUser_WithInvalidUser_ReturnsFalse()
+        {
+            // Act
+            bool valid = miniMembership.ValidateUser("invalid", "123");
 
-			// Assert
-			Assert.IsFalse(valid);
-		}
+            // Assert
+            Assert.IsFalse(valid);
+        }
 
-		[TestMethod]
-		public void ValidateUser_WithInvalidPassword_ReturnsFalse()
-		{
-			// Act
-			bool valid = miniMembership.ValidateUser("test", "invalid");
+        [TestMethod]
+        public void ValidateUser_WithInvalidPassword_ReturnsFalse()
+        {
+            // Act
+            bool valid = miniMembership.ValidateUser("test", "invalid");
 
-			// Assert
-			Assert.IsFalse(valid);
-		}
+            // Assert
+            Assert.IsFalse(valid);
+        }
 
-		[TestMethod]
-		public void ValidateUser_WithValidUserAndPassword_ReturnsTrue()
-		{
-			// Act
-			bool valid = miniMembership.ValidateUser("test", "123");
+        [TestMethod]
+        public void ValidateUser_WithValidUserAndPassword_ReturnsTrue()
+        {
+            // Act
+            bool valid = miniMembership.ValidateUser("test", "123");
 
-			// Assert
-			Assert.IsTrue(valid);
-		}
-	}
+            // Assert
+            Assert.IsTrue(valid);
+        }
+    }
 }

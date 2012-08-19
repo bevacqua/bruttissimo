@@ -1,8 +1,8 @@
 ﻿@if (Context.User.Identity.IsAuthenticated)
 {
-	<a href="@Url.Action("Logout", "User")">@Resource.String("Logout", Context.User.Identity.Name)</a>
+    <a href="@Url.Action("Logout", "User")">@Resource.String("Logout", Context.User.Identity.Name)</a>
 }
 else
 {
-	<a href="@Url.Action("Login", "User")">@Resource.String("Login")</a>
+    <a href="@Url.Action("Login", "User")">@Resource.String("Login")</a>
 }

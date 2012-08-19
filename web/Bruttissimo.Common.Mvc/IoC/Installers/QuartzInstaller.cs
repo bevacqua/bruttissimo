@@ -34,28 +34,28 @@ namespace Bruttissimo.Common.Mvc
                 Component
                     .For<IJobFactory>()
                     .ImplementedBy<WindsorJobFactory>()
-            );
+                );
 
             // Register Job Scheduler Factory.
             container.Register(
                 Component
                     .For<ISchedulerFactory>()
                     .ImplementedBy<WindsorSchedulerFactory>()
-            );
+                );
 
             // Register Job Scheduler.
             container.Register(
                 Component
                     .For<IScheduler>()
                     .UsingFactory((ISchedulerFactory factory) => factory.GetScheduler())
-            );
+                );
 
             // Register Job Scheduler.
             container.Register(
                 Component
                     .For<IJobAutoRunner>()
                     .UsingFactoryMethod(InstanceJobAutoRunner)
-            );
+                );
 
             // Register all jobs in target assembly.
             container.Register(
@@ -64,7 +64,7 @@ namespace Bruttissimo.Common.Mvc
                     .BasedOn<IJob>()
                     .WithServiceSelf()
                     .LifestyleTransient()
-            );
+                );
 
             // Component tasked with holding the different Job types available.
             container.Register(
@@ -72,7 +72,7 @@ namespace Bruttissimo.Common.Mvc
                     .For<IJobTypeStore>()
                     .UsingFactoryMethod(InstanceJobTypes)
                     .LifestyleSingleton()
-            );
+                );
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Bruttissimo.Common.Mvc
         /// </summary>
         internal IEnumerable<Type> FindJobTypes()
         {
-            Type jobType = typeof(IJob);
+            Type jobType = typeof (IJob);
 
             IEnumerable<Type> jobTypes = jobAssembly
                 .GetTypes()

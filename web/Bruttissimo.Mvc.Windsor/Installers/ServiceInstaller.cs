@@ -20,14 +20,14 @@ namespace Bruttissimo.Mvc.Windsor
                     .Where(t => t.Name.EndsWith("Service"))
                     .WithService.Select(IoC.SelectByInterfaceConvention)
                     .LifestyleHybridPerWebRequestPerThread()
-            );
+                );
 
             container.Register(
                 AllTypes
                     .FromAssemblyContaining<AuthenticationPortal>()
                     .Where(t => t.Name.EndsWith("AuthenticationPortal"))
                     .LifestylePerWebRequest()
-            );
+                );
         }
     }
 }

@@ -43,7 +43,7 @@ namespace Bruttissimo.Mvc.Controller
         {
             IEnumerable<JobDto> dto = jobService.GetAvailableJobs();
             IEnumerable<JobModel> model = mapper.Map<IEnumerable<JobDto>, IEnumerable<JobModel>>(dto);
-            
+
             if (!ModelState.IsValid)
             {
                 return InvalidModelState(model);

@@ -36,7 +36,7 @@ namespace Bruttissimo.Common.Mvc
                 new MvcModelBinderInstaller(parameters.ModelAssembly),
                 new SquishItInstaller(),
                 new QuartzInstaller(parameters.JobAssembly)
-            );
+                );
         }
     }
 }

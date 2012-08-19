@@ -25,7 +25,7 @@ namespace Bruttissimo.Common.Mvc
             {
                 throw new ArgumentNullException("validatorType");
             }
-            if (!validatorType.IsGenericType || validatorType.GetGenericTypeDefinition() != typeof(IValidator<>))
+            if (!validatorType.IsGenericType || validatorType.GetGenericTypeDefinition() != typeof (IValidator<>))
             {
                 throw new ArgumentException("validatorType must implement IValidator<>");
             }

@@ -8,27 +8,25 @@
 .dialog {
     display: none;
     padding: 15px;
-    position:absolute;
-	top: 50%;
-	left: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     font-size: 100%;
 }
 
 .dialog > header {
-    font-family:Trebuchet MS,Helvetica,sans-serif;
+    font-family: Trebuchet MS, Helvetica, sans-serif;
     font-size: 1.4em;
     font-weight: bold;
     margin-bottom: 7px;
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
-.dialog.notification {
-    cursor:pointer;
-}
+.dialog.notification { cursor: pointer; }
 
 .dialog .dialog-buttons {
-	text-align: right;
-	margin-top: 20px;
+    text-align: right;
+    margin-top: 20px;
 }
 
 
@@ -44,8 +42,9 @@
     z-index: 100;
     padding: 15px;
 }
- 
-.tooltip:after { /* triangle decoration */
+
+.tooltip:after {
+    /* triangle decoration */
     width: 0;
     height: 0;
     border-left: 10px solid transparent;
@@ -57,19 +56,19 @@
     bottom: -10px;
     margin-left: -10px;
 }
- 
+
 .tooltip.tooltip-top:after {
     border-top-color: transparent;
     border-bottom: 10px solid #111;
     top: -20px;
     bottom: auto;
 }
- 
+
 .tooltip.tooltip-left:after {
     left: 10px;
     margin: 0;
 }
- 
+
 .tooltip.tooltip-right:after {
     right: 10px;
     left: auto;

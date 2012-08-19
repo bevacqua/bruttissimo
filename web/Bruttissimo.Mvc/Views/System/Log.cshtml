@@ -1,20 +1,20 @@
 ﻿@model IList<LogModel>
 <table id="syslogs">
-	<thead>
-		<tr>
-			<th>@Resource.String("Date")</th>
-			<th>@Resource.String("Level")</th>
-			<th>@Resource.String("Message")</th>
-		</tr>
-	</thead>
-	<tbody>
-	@foreach(LogModel entry in Model)
-	{
-		<tr>
-			<td>@entry.Date.ToInvariantString()</td>
-			<td>@entry.Level</td>
-			<td>@entry.Message</td>
-		</tr>
-	}
-	</tbody>
+    <thead>
+        <tr>
+            <th>@Resource.String("Date")</th>
+            <th>@Resource.String("Level")</th>
+            <th>@Resource.String("Message")</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (LogModel entry in Model)
+        {
+            <tr>
+                <td>@entry.Date.ToInvariantString()</td>
+                <td>@entry.Level</td>
+                <td>@entry.Message</td>
+            </tr>
+        }
+    </tbody>
 </table>

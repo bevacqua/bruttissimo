@@ -4,30 +4,27 @@ using System.Net;
 
 namespace Bruttissimo.Tests.Mocking
 {
-	public class TestWebReponse : WebResponse
-	{
-		private readonly Stream responseStream;
+    public class TestWebReponse : WebResponse
+    {
+        private readonly Stream responseStream;
 
-		public TestWebReponse(Stream responseStream)
-		{
-			if (responseStream == null)
-			{
-				throw new ArgumentNullException("responseStream");
-			}
-			this.responseStream = responseStream;
-		}
+        public TestWebReponse(Stream responseStream)
+        {
+            if (responseStream == null)
+            {
+                throw new ArgumentNullException("responseStream");
+            }
+            this.responseStream = responseStream;
+        }
 
-		public override Stream GetResponseStream()
-		{
-			return responseStream;
-		}
+        public override Stream GetResponseStream()
+        {
+            return responseStream;
+        }
 
-		public override WebHeaderCollection Headers
-		{
-			get
-			{
-				return new WebHeaderCollection();
-			}
-		}
-	}
+        public override WebHeaderCollection Headers
+        {
+            get { return new WebHeaderCollection(); }
+        }
+    }
 }

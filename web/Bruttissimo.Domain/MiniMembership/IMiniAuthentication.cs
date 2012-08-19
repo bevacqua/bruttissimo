@@ -1,7 +1,7 @@
 namespace Bruttissimo.Domain
 {
-	public interface IMiniAuthentication
-	{
-		void SetContextPrincipal();
-	}
+    public interface IMiniAuthentication
+    {
+        void SetContextPrincipal();
+    }
 }

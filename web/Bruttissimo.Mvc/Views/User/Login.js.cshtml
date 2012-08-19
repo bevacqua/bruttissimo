@@ -1,13 +1,13 @@
 ﻿@model UserLoginModel
 <script>
-	(function ($, b) {
-		$(function () {
-			b.openid.init({
-				facebookAppId: "@Config.Social.FacebookAppId",
-				twitterAppId: "@Config.Social.TwitterAppId",
-				callbackUrl: "@Url.Action("Authenticate", "User")",
-				returnUrl: "@Model.ReturnUrl"
-			});
-		});
-	})(jQuery, bruttijjimo);
+    (function($, b) {
+        $(function() {
+            b.openid.init({
+                facebookAppId: "@Config.Social.FacebookAppId",
+                twitterAppId: "@Config.Social.TwitterAppId",
+                callbackUrl: "@Url.Action("Authenticate", "User")",
+                returnUrl: "@Model.ReturnUrl"
+            });
+        });
+    })(jQuery, bruttijjimo);
 </script>

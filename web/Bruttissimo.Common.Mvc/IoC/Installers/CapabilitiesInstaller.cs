@@ -5,18 +5,18 @@ using Castle.Windsor;
 
 namespace Bruttissimo.Common.Mvc
 {
-	/// <summary>
-	/// Registers common dependencies and components.
-	/// </summary>
-	public sealed class CapabilitiesInstaller : IWindsorInstaller
-	{
-		public void Install(IWindsorContainer container, IConfigurationStore store)
-		{
-			container.Register(
-			   Component
-				   .For<ILazyComponentLoader>()
-				   .ImplementedBy<LazyOfTComponentLoader>()
-			);
-		}
-	}
+    /// <summary>
+    /// Registers common dependencies and components.
+    /// </summary>
+    public sealed class CapabilitiesInstaller : IWindsorInstaller
+    {
+        public void Install(IWindsorContainer container, IConfigurationStore store)
+        {
+            container.Register(
+                Component
+                    .For<ILazyComponentLoader>()
+                    .ImplementedBy<LazyOfTComponentLoader>()
+                );
+        }
+    }
 }

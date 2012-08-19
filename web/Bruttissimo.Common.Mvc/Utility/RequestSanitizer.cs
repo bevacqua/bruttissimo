@@ -4,35 +4,35 @@ using System.Web;
 
 namespace Bruttissimo.Common.Mvc
 {
-	public class RequestSanitizer
-	{
-		private readonly HttpContextBase context;
+    public class RequestSanitizer
+    {
+        private readonly HttpContextBase context;
 
-		public RequestSanitizer(HttpContextBase context)
-		{
-			if (context == null)
-			{
-				throw new ArgumentNullException("context");
-			}
-			this.context = context;
-		}
+        public RequestSanitizer(HttpContextBase context)
+        {
+            if (context == null)
+            {
+                throw new ArgumentNullException("context");
+            }
+            this.context = context;
+        }
 
-    	/// <summary>
-		/// Fixes the request Url, if required. Returns a value indicating whether a redirect is necessary.
-		/// </summary>
+        /// <summary>
+        /// Fixes the request Url, if required. Returns a value indicating whether a redirect is necessary.
+        /// </summary>
         public bool ValidateUrl()
-    	{
-    		HttpRequestBase request = context.Request;
-    		HttpResponseBase response = context.Response;
-			string incoming = request.Url.GetLeftPart(UriPartial.Path);
-			string absolute = request.Url.AbsolutePath;
+        {
+            HttpRequestBase request = context.Request;
+            HttpResponseBase response = context.Response;
+            string incoming = request.Url.GetLeftPart(UriPartial.Path);
+            string absolute = request.Url.AbsolutePath;
             string decoded = HttpUtility.UrlDecode(absolute);
             string redirect;
 
             if (absolute != decoded)
             {
                 // encoded characters such as %7D result in issues, so we better leave them untouched.
-				string host = request.Url.GetLeftPart(UriPartial.Authority);
+                string host = request.Url.GetLeftPart(UriPartial.Authority);
                 redirect = host.ToLowerInvariant() + absolute;
             }
             else
@@ -51,14 +51,14 @@ namespace Bruttissimo.Common.Mvc
             if (redirect != incoming)
             {
                 // append the query string to the redirect result.
-				NameValueCollection query = request.QueryString;
+                NameValueCollection query = request.QueryString;
                 string queryString = string.Empty;
 
                 if (query.Count > 0)
                 {
-                	queryString = "?{0}".FormatWith(query.ToString());
+                    queryString = "?{0}".FormatWith(query.ToString());
                 }
-            	response.RedirectPermanent(redirect + queryString);
+                response.RedirectPermanent(redirect + queryString);
                 return true;
             }
             return false;

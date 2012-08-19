@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 
 namespace Bruttissimo.Domain.Entity
 {
-	public class FacebookPost
-	{
-		public string Id { get; set; }
+    public class FacebookPost
+    {
+        public string Id { get; set; }
 
         public FacebookTo To { get; set; }
         public FacebookFrom From { get; set; }
@@ -24,5 +24,5 @@ namespace Bruttissimo.Domain.Entity
         public string Caption { get; set; }
         public string Description { get; set; }
         public string Picture { get; set; }
-	}
+    }
 }

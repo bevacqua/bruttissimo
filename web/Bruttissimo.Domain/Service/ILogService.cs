@@ -3,8 +3,8 @@ using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain
 {
-	public interface ILogService
-	{
-		IList<Log> GetLast(int count);
-	}
+    public interface ILogService
+    {
+        IList<Log> GetLast(int count);
+    }
 }

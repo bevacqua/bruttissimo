@@ -3,31 +3,31 @@ using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain.Logic
 {
-	public class MiniIdentity : IIdentity
-	{
-		private readonly User user;
+    public class MiniIdentity : IIdentity
+    {
+        private readonly User user;
 
-		public User User
-		{
-			get { return user; }
-		}
+        public User User
+        {
+            get { return user; }
+        }
 
-		public MiniIdentity(User user, string authenticationType)
-		{
-			this.user = user;
-			AuthenticationType = authenticationType;
-		}
+        public MiniIdentity(User user, string authenticationType)
+        {
+            this.user = user;
+            AuthenticationType = authenticationType;
+        }
 
-		public string AuthenticationType { get; private set; }
+        public string AuthenticationType { get; private set; }
 
-		public string Name
-		{
-			get { return user == null ? Common.Resources.User.UnregisteredUserDisplayName : user.DisplayName; }
-		}
+        public string Name
+        {
+            get { return user == null ? Common.Resources.User.UnregisteredUserDisplayName : user.DisplayName; }
+        }
 
-		public bool IsAuthenticated
-		{
-			get { return user != null; }
-		}
-	}
+        public bool IsAuthenticated
+        {
+            get { return user != null; }
+        }
+    }
 }

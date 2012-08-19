@@ -4,21 +4,21 @@ using System.Web;
 
 namespace Bruttissimo.Common.Mvc
 {
-	public class HttpNotFoundException : HttpException
-	{
-		public HttpNotFoundException()
-			: this(null, null)
-		{
-		}
+    public class HttpNotFoundException : HttpException
+    {
+        public HttpNotFoundException()
+            : this(null, null)
+        {
+        }
 
-		public HttpNotFoundException(string message)
-			: this(message, null)
-		{
-		}
+        public HttpNotFoundException(string message)
+            : this(message, null)
+        {
+        }
 
-		public HttpNotFoundException(string message, Exception innerException)
-			: base((int)HttpStatusCode.NotFound, message, innerException)
-		{
-		}
-	}
+        public HttpNotFoundException(string message, Exception innerException)
+            : base((int)HttpStatusCode.NotFound, message, innerException)
+        {
+        }
+    }
 }

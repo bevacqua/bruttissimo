@@ -7,41 +7,41 @@ using FluentValidation;
 
 namespace Bruttissimo.Common.Mvc
 {
-	/// <summary>
-	/// Registers all fluent validators.
-	/// </summary>
-	public sealed class MvcModelValidatorInstaller : IWindsorInstaller
-	{
-		private readonly Assembly assembly;
+    /// <summary>
+    /// Registers all fluent validators.
+    /// </summary>
+    public sealed class MvcModelValidatorInstaller : IWindsorInstaller
+    {
+        private readonly Assembly assembly;
 
-		public MvcModelValidatorInstaller(Assembly assembly)
-		{
-			if (assembly == null)
-			{
-				throw new ArgumentNullException("assembly");
-			}
-			this.assembly = assembly;
-		}
+        public MvcModelValidatorInstaller(Assembly assembly)
+        {
+            if (assembly == null)
+            {
+                throw new ArgumentNullException("assembly");
+            }
+            this.assembly = assembly;
+        }
 
-		public void Install(IWindsorContainer container, IConfigurationStore store)
-		{
-			// Register validators in this assembly, such as NullModelValidator.
-			container.Register(
-				AllTypes
-					.FromThisAssembly()
-					.BasedOn(typeof(IValidator<>))
-					.WithServiceBase()
-					.LifestylePerWebRequest()
-			);
+        public void Install(IWindsorContainer container, IConfigurationStore store)
+        {
+            // Register validators in this assembly, such as NullModelValidator.
+            container.Register(
+                AllTypes
+                    .FromThisAssembly()
+                    .BasedOn(typeof (IValidator<>))
+                    .WithServiceBase()
+                    .LifestylePerWebRequest()
+                );
 
-			// Register validators in model project assembly.
-			container.Register(
-				AllTypes
-					.FromAssembly(assembly)
-					.BasedOn(typeof(IValidator<>))
-					.WithServiceBase()
-					.LifestylePerWebRequest()
-			);
-		}
-	}
+            // Register validators in model project assembly.
+            container.Register(
+                AllTypes
+                    .FromAssembly(assembly)
+                    .BasedOn(typeof (IValidator<>))
+                    .WithServiceBase()
+                    .LifestylePerWebRequest()
+                );
+        }
+    }
 }

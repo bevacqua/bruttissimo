@@ -6,12 +6,12 @@ namespace Bruttissimo.Common
     {
         public static string ToLongDateString(this DateTime date)
         {
-			return date.ToString(Resources.User.LongDateFormat);
+            return date.ToString(Resources.User.LongDateFormat);
         }
 
         public static string ToLongDateTimeString(this DateTime date)
         {
-			return date.ToString(Resources.User.LongDateTimeFormat);
+            return date.ToString(Resources.User.LongDateTimeFormat);
         }
 
         public static string ToTimeAgoString(this DateTime since)

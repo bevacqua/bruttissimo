@@ -9,7 +9,7 @@ namespace Bruttissimo.Common.Mvc
     {
         private readonly IKernel kernel;
 
-		public WindsorJobFactory(IKernel kernel)
+        public WindsorJobFactory(IKernel kernel)
         {
             if (kernel == null)
             {
@@ -18,11 +18,11 @@ namespace Bruttissimo.Common.Mvc
             this.kernel = kernel;
         }
 
-    	public IJob NewJob(TriggerFiredBundle bundle, IScheduler scheduler)
-		{
-			IJobDetail detail = bundle.JobDetail;
-			Type jobType = detail.JobType;
-			return (IJob)kernel.Resolve(jobType);
-    	}
+        public IJob NewJob(TriggerFiredBundle bundle, IScheduler scheduler)
+        {
+            IJobDetail detail = bundle.JobDetail;
+            Type jobType = detail.JobType;
+            return (IJob)kernel.Resolve(jobType);
+        }
     }
 }

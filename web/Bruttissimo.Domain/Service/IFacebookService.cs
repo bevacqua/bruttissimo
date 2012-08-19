@@ -1,7 +1,7 @@
 namespace Bruttissimo.Domain.Logic
 {
-	public interface IFacebookService
-	{
-		void Import(string feed);
-	}
+    public interface IFacebookService
+    {
+        void Import(string feed);
+    }
 }

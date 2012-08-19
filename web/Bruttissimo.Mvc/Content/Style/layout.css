@@ -2,8 +2,8 @@
 ----------------------------------------------------------*/
 
 body {
-	word-wrap: break-word;
-	overflow-x: hidden;
+    word-wrap: break-word;
+    overflow-x: hidden;
 }
 
 .layout-section {
@@ -14,69 +14,58 @@ body {
 
 header#layout-header {
     padding: 12px 0;
-	margin-bottom: 20px;
+    margin-bottom: 20px;
 }
+
 @media only screen and (min-width: 768px) {
-	header#layout-header {
-		margin-bottom: 30px;
-	}
+    header#layout-header { margin-bottom: 30px; }
 }
+
 @media only screen and (min-width: 1024px) {
-	header#layout-header {
-		margin-bottom: 40px;
-	}
+    header#layout-header { margin-bottom: 40px; }
 }
 
 header#layout-header h1 {
-	margin: 0 auto;
-	display: inline-block;
+    margin: 0 auto;
+    display: inline-block;
 }
 
-section#layout-content {
-    padding: 6px 0;
-}
+section#layout-content { padding: 6px 0; }
 
-section#layout-content h1 {
-    margin-bottom: 12px;
-}
+section#layout-content h1 { margin-bottom: 12px; }
 
 
 
 /* NOSCRIPT LAYOUT
 ----------------------------------------------------------*/
 
-#noscript-padding {
-    padding-bottom: 37px;
-}
+#noscript-padding { padding-bottom: 37px; }
+
 @media only screen and (min-width: 768px) {
-	#noscript-padding {
-		padding-bottom: 22px;
-	}
+    #noscript-padding { padding-bottom: 22px; }
 }
-@media only screen\0 { /* IE-only media hack */
-	#noscript-padding {
-		padding-bottom: 67px;
-	}
+
+@media only screen\0 {
+    /* IE-only media hack */
+    #noscript-padding { padding-bottom: 67px; }
 }
-@media only screen\0 and (min-width: 768px) { /* IE-only media hack */
-	#noscript-padding {
-		padding-bottom: 47px;
-	}
+
+@media only screen\0 and (min-width: 768px) {
+    /* IE-only media hack */
+    #noscript-padding { padding-bottom: 47px; }
 }
 
 #noscript-notice {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	z-index: 99;
-	text-align: center;
-	padding: 6px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+    text-align: center;
+    padding: 6px 0;
 }
 
-#noscript-notice .ie-warning {
-	padding-top: 6px;
-}
+#noscript-notice .ie-warning { padding-top: 6px; }
 
 
 
@@ -91,17 +80,13 @@ a#menu-icon {
     line-height: 22px;
     height: 22px;
     letter-spacing: 0.1em;
-	margin-top: 10px;
+    margin-top: 10px;
 }
 
-nav#menu {
-	margin-top: 30px;
-}
+nav#menu { margin-top: 30px; }
 
-nav#menu ol {
-    padding: 5px 0;
-}
- 
+nav#menu ol { padding: 5px 0; }
+
 nav#menu li a {
     display: block;
     padding: 0 20px;
@@ -111,42 +96,34 @@ nav#menu li a {
     line-height: 2em;
     height: 2em;
 }
- 
-nav#menu li:last-child a {
-    border-bottom: none;
-}
+
+nav#menu li:last-child a { border-bottom: none; }
 
 @media only screen and (min-width: 768px) {
-	section#layout-content {
-		position: relative;
-	}
-	nav#menu {
-		margin-top: 0;
-		position: absolute;
-		top: 16px;
-		right: 3.125%;
-		max-width: 45%;
-	}
-	nav#menu ol {
-		padding: 5px 5px;
-	}
+    section#layout-content { position: relative; }
 
-	a#menu-icon,
-	nav#menu li.nav-top {
-		display: none;
-	}
-	nav#menu li {
-		display: inline-block;
-	}
-	nav#menu li a {
+    nav#menu {
+        margin-top: 0;
+        position: absolute;
+        top: 16px;
+        right: 3.125%;
+        max-width: 45%;
+    }
+
+    nav#menu ol { padding: 5px 5px; }
+
+    a#menu-icon,
+    nav#menu li.nav-top { display: none; }
+
+    nav#menu li { display: inline-block; }
+
+    nav#menu li a {
         float: left;
         border: none;
         padding: 0 10px;
-	}
+    }
 }
 
 @media only screen and (min-width: 1024px) {
-	nav#menu {
-		top: 28px;
-	}
+    nav#menu { top: 28px; }
 }

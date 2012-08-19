@@ -6,39 +6,39 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Bruttissimo.Tests.Integration
 {
-	[TestClass]
-	public class EmailTests
-	{
-		private IWindsorContainer container;
-		private IEmailService emailService;
+    [TestClass]
+    public class EmailTests
+    {
+        private IWindsorContainer container;
+        private IEmailService emailService;
 
-		[TestInitialize]
-		public void TestInit()
-		{
-			// Arrange
-			container = IntegrationMockHelpers.GetWindsorContainer();
-			emailService = container.Resolve<IEmailService>();
-		}
+        [TestInitialize]
+        public void TestInit()
+        {
+            // Arrange
+            container = IntegrationMockHelpers.GetWindsorContainer();
+            emailService = container.Resolve<IEmailService>();
+        }
 
-		[TestCleanup]
-		public void TestCleanup()
-		{
-			container.Dispose();
-		}
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            container.Dispose();
+        }
 
-		[TestMethod]
-		public void EmailService_ShouldSend_RegistrationEmail()
-		{
-			// Arrange
-			RegistrationEmailModel model = new RegistrationEmailModel
-			{
-				DisplayName = "TestUser"
-			};
+        [TestMethod]
+        public void EmailService_ShouldSend_RegistrationEmail()
+        {
+            // Arrange
+            RegistrationEmailModel model = new RegistrationEmailModel
+            {
+                DisplayName = "TestUser"
+            };
 
-			// Act
-			emailService.SendRegistrationEmail("unit@test.ms", model);
+            // Act
+            emailService.SendRegistrationEmail("unit@test.ms", model);
 
-			// if no exceptions are thrown, we're fine.
-		}
-	}
+            // if no exceptions are thrown, we're fine.
+        }
+    }
 }

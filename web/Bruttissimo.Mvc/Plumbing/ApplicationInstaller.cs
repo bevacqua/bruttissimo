@@ -9,15 +9,15 @@ using Castle.Windsor;
 
 namespace Bruttissimo.Mvc
 {
-	internal class ApplicationInstaller : IWindsorInstaller
-	{
-		public void Install(IWindsorContainer container, IConfigurationStore store)
-		{
-			Assembly viewAssembly = typeof(ApplicationInstaller).Assembly;
-			
-			string title = Views.Shared.Resources.Application.Title;
+    internal class ApplicationInstaller : IWindsorInstaller
+    {
+        public void Install(IWindsorContainer container, IConfigurationStore store)
+        {
+            Assembly viewAssembly = typeof (ApplicationInstaller).Assembly;
 
-			IList<ResourceAssemblyLocation> locations = new List<ResourceAssemblyLocation>
+            string title = Views.Shared.Resources.Application.Title;
+
+            IList<ResourceAssemblyLocation> locations = new List<ResourceAssemblyLocation>
             {
                 new ResourceAssemblyLocation
                 {
@@ -25,8 +25,8 @@ namespace Bruttissimo.Mvc
                     Namespace = Constants.JavaScriptResourceNamespaceRoot
                 }
             };
-			WindsorInstaller installer = new WindsorInstaller(viewAssembly, title, locations);
-			container.Install(installer);
-		}
-	}
+            WindsorInstaller installer = new WindsorInstaller(viewAssembly, title, locations);
+            container.Install(installer);
+        }
+    }
 }

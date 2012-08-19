@@ -14,7 +14,7 @@ namespace Bruttissimo.Domain.Entity
         public string Picture { get; set; }
 
         public DateTime Created { get; set; }
-        
+
         public long? PostId;
     }
 }

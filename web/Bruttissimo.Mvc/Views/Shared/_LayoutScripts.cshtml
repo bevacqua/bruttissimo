@@ -1,44 +1,44 @@
 ﻿@using SquishIt.Framework.Minifiers.JavaScript;
 @using StackExchange.Profiling;
 @{
-	string[] scriptLinks = new[]
-	{
-	    Url.Content("~/content/script/json2.js"),
-	    Url.Content("~/content/script/b.extensions.js"),
-	    Url.Content("~/content/script/jquery.extensions.js"),
-	    Url.Content("~/content/script/jquery.validate.min.js"),
-	    Url.Content("~/content/script/jquery.validate.unobtrusive.min.js"),
-	    Url.Content("~/content/script/jquery.validate.tooltip.js"),
-	    Url.Content("~/content/script/jquery.form.js"),
-	    Url.Content("~/content/script/jquery.placeholder.js"),
-	    Url.Content("~/content/script/jquery.tooltip.js"),
-	    Url.Content("~/content/script/jquery.color.js"),
-	    Url.Content("~/content/script/jquery.signalr-0.5.2.js"),
-	    Url.Content("~/content/script/b.core.js"),
-	    Url.Content("~/content/script/b.facebook.js"),
-	    Url.Content("~/content/script/b.twitter.js"),
-	    Url.Content("~/content/script/b.realtime.js"),
-	    Url.Content("~/content/script/b.init.js"),
-	    Url.Content("~/content/script/views/user/login.js"),
-	    Url.Content("~/content/script/views/posts/create.js"),
-	    Url.Content("~/content/script/views/posts/list.js")
-	};
+    string[] scriptLinks = new[]
+    {
+        Url.Content("~/content/script/json2.js"),
+        Url.Content("~/content/script/b.extensions.js"),
+        Url.Content("~/content/script/jquery.extensions.js"),
+        Url.Content("~/content/script/jquery.validate.min.js"),
+        Url.Content("~/content/script/jquery.validate.unobtrusive.min.js"),
+        Url.Content("~/content/script/jquery.validate.tooltip.js"),
+        Url.Content("~/content/script/jquery.form.js"),
+        Url.Content("~/content/script/jquery.placeholder.js"),
+        Url.Content("~/content/script/jquery.tooltip.js"),
+        Url.Content("~/content/script/jquery.color.js"),
+        Url.Content("~/content/script/jquery.signalr-0.5.2.js"),
+        Url.Content("~/content/script/b.core.js"),
+        Url.Content("~/content/script/b.facebook.js"),
+        Url.Content("~/content/script/b.twitter.js"),
+        Url.Content("~/content/script/b.realtime.js"),
+        Url.Content("~/content/script/b.init.js"),
+        Url.Content("~/content/script/views/user/login.js"),
+        Url.Content("~/content/script/views/posts/create.js"),
+        Url.Content("~/content/script/views/posts/list.js")
+    };
 }
 @{
 @* we don't bundle external javascript links nor localization messages. *@
-	const string jQueryVersion = "1.7.2";
-	string jQueryExternal = "//ajax.googleapis.com/ajax/libs/jquery/{0}/jquery.min.js".FormatWith(jQueryVersion);
-	string jQueryLocal = @Url.Content("~/content/script/jquery-{0}.min.js".FormatWith(jQueryVersion));
+    const string jQueryVersion = "1.7.2";
+    string jQueryExternal = "//ajax.googleapis.com/ajax/libs/jquery/{0}/jquery.min.js".FormatWith(jQueryVersion);
+    string jQueryLocal = @Url.Content("~/content/script/jquery-{0}.min.js".FormatWith(jQueryVersion));
 }
-<script src="@jQueryExternal"></script>
-<script>!window.jQuery && document.write(unescape("%3Cscript src='@jQueryLocal'%3E%3C/script%3E"))</script>
-<script src="@Url.Action("Localization", "Resource")"></script>
+<script src="@jQueryExternal"> </script>
+<script> !window.jQuery && document.write(unescape("%3Cscript src='@jQueryLocal'%3E%3C/script%3E"))</script>
+<script src="@Url.Action("Localization", "Resource")"> </script>
 @(Bundle.JavaScript()
-	.Add(scriptLinks)
-	.WithoutTypeAttribute()
-	.WithMinifier<YuiMinifier>()
-	.WithConfiguration()
-	.MvcRender("~/all.js?_=1")
+    .Add(scriptLinks)
+    .WithoutTypeAttribute()
+    .WithMinifier<YuiMinifier>()
+    .WithConfiguration()
+    .MvcRender("~/all.js?_=1")
 )
 @JavaScript.Emit()
 @MiniProfiler.RenderIncludes(useExistingjQuery: true)
