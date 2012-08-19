@@ -4,6 +4,7 @@ using Bruttissimo.Common;
 using Bruttissimo.Domain.Entity;
 using Facebook;
 using Newtonsoft.Json;
+using log4net;
 
 namespace Bruttissimo.Domain.Social
 {
@@ -12,6 +13,10 @@ namespace Bruttissimo.Domain.Social
         private const int PAGE_LIMIT = 15;
         private const string GRAPH_FEED_LIMITED = "{0}/feed?limit={1}&fields=id,from,to,type,created_time,updated_time,message,link,name,caption,description";
         private const string GRAPH_FEED_SINCE = "{0}&since={1}";
+
+        private const string DEBUG_API_GET = "Facebook API GET: {0}";
+
+        private readonly ILog log = LogManager.GetLogger(typeof(FacebookRepository));
 
         /// <summary>
         /// Access token used when no user-specific access token is provided to a method.
@@ -53,7 +58,7 @@ namespace Bruttissimo.Domain.Social
                 FacebookPostCollection response = Fetch(url);
                 posts.AddRange(response.Data);
 
-                if (response.Data.Count < PAGE_LIMIT || response.Paging.Next == url) // sanity
+                if (/*response.Data.Count < PAGE_LIMIT ||*/ response.Paging.Next == url) // sanity
                 {
                     break;
                 }
@@ -65,6 +70,7 @@ namespace Bruttissimo.Domain.Social
 
         internal FacebookPostCollection Fetch(string url)
         {
+            log.Debug(DEBUG_API_GET.FormatWith(url));
             FacebookClient client = new FacebookClient(defaultAccessToken);
             string json = (client.Get(url) ?? string.Empty).ToString();
 
