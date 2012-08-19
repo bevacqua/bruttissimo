@@ -142,9 +142,9 @@
     <None Include="..\..\README.md">
       <Link>README.md</Link>
     </None>
-    <None Include="Content\Style\controls.less" />
-    <None Include="Content\Style\layout.footer.less" />
+    <Content Include="Content\Style\controls.css" />
     <None Include="Content\Style\design.less" />
+    <None Include="Content\Style\layout.footer.less" />
     <None Include="Content\Style\functions.less" />
     <Content Include="Content\Style\layout.css" />
     <Content Include="Content\Script\jquery.signalR-0.5.2.js" />

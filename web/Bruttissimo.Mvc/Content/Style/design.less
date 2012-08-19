@@ -13,27 +13,32 @@
 /* DEFAULTS
 ----------------------------------------------------------*/
 
-body { font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif; }
+body {
+	font-family: "Helvetica Neue","Lucida Grande","Segoe UI",Arial,Helvetica,Verdana,sans-serif;
+}
 
 
 
 /* WIREFRAME
 ----------------------------------------------------------*/
 
-header#layout-header h1 {
-    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: 2.4em;
+header#layout-header h1 {	
+	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 2.4em;
 }
 
 @media only screen and (min-width: 768px) {
-    header#layout-header h1 { font-size: 3.2em; }
+	header#layout-header h1 {	
+		font-size: 3.2em;
+	}
 }
 
 @media only screen and (min-width: 1024px) {
-    header#layout-header h1 { font-size: 4.6em; }
+	header#layout-header h1 {	
+		font-size: 4.6em;
+	}
 }
-
 
 
 /* NAVIGATION MENU
@@ -44,19 +49,22 @@ a#menu-icon {
     background: #4e4e4e;
     text-transform: uppercase;
     text-decoration: none;
-    .box_round (3px);
-} 
+	.box_round(3px);
+}
 
-nav#menu ol { background: #1c1c1c; }
-
-nav#menu li span { color: #fff; }
-
+nav#menu ol {
+    background: #1c1c1c;
+}
+ 
+nav#menu li span {
+    color: #fff;
+}
 nav#menu li a {
     color: #fff;
     text-decoration: none;
     border-bottom: 1px solid #383838;
 }
-
+ 
 nav#menu li a:hover,
 nav#menu li a:focus {
     color: #1c1c1c;
@@ -64,14 +72,13 @@ nav#menu li a:focus {
 }
 
 @media only screen and (min-width: 768px) {
-    nav#menu ol {
-        .box_round (4px);
-    } 
-
-    nav#menu li a { 
-        .box_round (2px);
-        border-bottom: inherit;
-    } 
+	nav#menu ol {
+		.box_round(4px);
+	}
+	nav#menu li a {
+		.box_round(2px);
+		border-bottom: inherit;
+	}
 }
 
 
@@ -79,28 +86,35 @@ nav#menu li a:focus {
 /* BUTTONS
 ----------------------------------------------------------*/
 
-a { text-decoration: none; }
-
-a:hover { text-decoration: underline; }
-
-a.button:hover { text-decoration: none; }
-
-a, button, input[type=submit] { cursor: pointer; }
-
-button.disabled, a.button.disabled { cursor: not-allowed; }
-
-nav a, button.submit, input[type=submit] { font-variant: small-caps; }
+a { 
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a.button:hover {
+	text-decoration: none;
+}
+a, button, input[type=submit] {
+    cursor: pointer;
+}
+button.disabled, a.button.disabled {
+	cursor: not-allowed;
+}
+nav a, button.submit, input[type=submit] {
+	font-variant: small-caps;
+}
 
 input[type=submit],
 button.submit,
 a.button {
-    border: 1px solid #313131;
-    background-color: #dbdbdb;
-    color: #171515;
+	border: 1px solid #313131;
+	background-color: #dbdbdb;
+	color: #171515;
 }
 
 button, a.button {
-    display: inline-block;
+	display: inline-block;
     padding: 8px;
 }
 
@@ -116,10 +130,13 @@ button, a.button {
 }
 */
 /* using very light colors because of placeholder values being grayed, and changing that seems rather inappropriate */
+form input.valid { 
+	background-color: #f0ffff;
+}
 
-form input.valid { background-color: #f0ffff; }
-
-form input.input-validation-error { background-color: #fff0ff; }
+form input.input-validation-error {
+	background-color: #fff0ff;
+}
 
 
 
@@ -127,16 +144,17 @@ form input.input-validation-error { background-color: #fff0ff; }
 ----------------------------------------------------------*/
 
 #noscript-notice {
-    font-family: sans-serif;
-    font-weight: bold;
-    font-size: 1.1em;
-    background-color: @error_bg;
-    color: @error_text;
-    border-bottom: 2px solid @error_border;
-    cursor: not-allowed;
+	font-family: sans-serif;
+	font-weight: bold;
+	font-size: 1.1em;
+	background-color: @error_bg;
+	color: @error_text;
+	border-bottom: 2px solid @error_border;
+	cursor: not-allowed;
 }
-
-#noscript-notice a { text-decoration: underline; }
+#noscript-notice a {
+	text-decoration: underline;
+}
 
 
 
@@ -144,21 +162,21 @@ form input.input-validation-error { background-color: #fff0ff; }
 ----------------------------------------------------------*/
 
 .dialog {
-    background-color: #fff;
-    border: 2px solid #222;
+	background-color: #fff;
+	border: 2px solid #222;
 }
 
-.dialog.notification { 
-    .box_shadow (2px 2px 5px # 400);
+.dialog.notification {
+	.box_shadow(2px 2px 5px #400);
     color: #fff;
 }
 
 .dialog.notification.notification-error {
     background-color: @error_bg;
-    border: 2px solid @error_border;
+	border: 2px solid @error_border;
 }
 
 .dialog.notification.notification-message {
     background-color: @info_bg;
-    border: 2px solid @info_border;
+	border: 2px solid @info_border;	
 }
