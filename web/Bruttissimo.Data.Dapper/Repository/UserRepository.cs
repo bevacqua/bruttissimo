@@ -38,7 +38,12 @@ namespace Bruttissimo.Data.Dapper
             {
                 throw new ArgumentNullException("email");
             }
-            IEnumerable<User> result = connection.Query<User>("SELECT [User].* FROM [User] WHERE [User].[Email] = @email", new { email });
+            const string sql = @"
+                SELECT [User].*
+                FROM [User]
+                WHERE [User].[Email] = @email
+            ";
+            IEnumerable<User> result = connection.Query<User>(sql, new { email });
             User user = result.FirstOrDefault();
             return user;
         }
@@ -49,11 +54,13 @@ namespace Bruttissimo.Data.Dapper
             {
                 throw new ArgumentNullException("openId");
             }
-            IEnumerable<User> result = connection.Query<User>(@"
+            const string sql = @"
 				SELECT [User].* FROM [User]
 				INNER JOIN [UserConnection]
 				ON [User].[Id] = [UserConnection].[UserId]
-				WHERE [UserConnection].[OpenId] = @openId", new { openId });
+				WHERE [UserConnection].[OpenId] = @openId
+            ";
+            IEnumerable<User> result = connection.Query<User>(sql, new { openId });
 
             User user = result.FirstOrDefault();
             return user;
@@ -65,11 +72,13 @@ namespace Bruttissimo.Data.Dapper
             {
                 throw new ArgumentNullException("facebookId");
             }
-            IEnumerable<User> result = connection.Query<User>(@"
+            const string sql = @"
 				SELECT [User].* FROM [User]
 				INNER JOIN [UserConnection]
 				ON [User].[Id] = [UserConnection].[UserId]
-				WHERE [UserConnection].[FacebookId] = @facebookId", new { facebookId });
+				WHERE [UserConnection].[FacebookId] = @facebookId
+            ";
+            IEnumerable<User> result = connection.Query<User>(sql, new { facebookId });
 
             User user = result.FirstOrDefault();
             return user;
@@ -81,11 +90,13 @@ namespace Bruttissimo.Data.Dapper
             {
                 throw new ArgumentNullException("twitterId");
             }
-            IEnumerable<User> result = connection.Query<User>(@"
+            const string sql = @"
 				SELECT [User].* FROM [User]
 				INNER JOIN [UserConnection]
 				ON [User].[Id] = [UserConnection].[UserId]
-				WHERE [UserConnection].[TwitterId] = @twitterId", new { twitterId });
+				WHERE [UserConnection].[TwitterId] = @twitterId
+            ";
+            IEnumerable<User> result = connection.Query<User>(sql, new { twitterId });
 
             User user = result.FirstOrDefault();
             return user;
@@ -275,18 +286,24 @@ namespace Bruttissimo.Data.Dapper
 
         private long GetRoleId(string name, IDbTransaction transaction = null)
         {
-            long role = connection.Query<long>("SELECT [Role].[Id] FROM [Role] WHERE [Role].[Name] = @name", new { name }, transaction).First();
+            const string sql = @"
+                SELECT [Role].[Id]
+                FROM [Role]
+                WHERE [Role].[Name] = @name
+            ";
+            long role = connection.Query<long>(sql, new { name }, transaction).First();
             return role;
         }
 
         private Role GetRoleDetails(User user)
         {
             Role role = connection.Get<Role>(user.RoleId);
-
-            IEnumerable<Right> rights = connection.Query<Right>(@"
+            const string sql = @"
 				SELECT [R].[Id], [R].[Name] FROM [Right] [R]
 				INNER JOIN [RoleRight] [RR] ON [R].[Id] = [RR].[RightId]
-				INNER JOIN [Role] ON [RR].[RoleId] = @roleId", new { roleId = user.RoleId });
+				INNER JOIN [Role] ON [RR].[RoleId] = @roleId
+            ";
+            IEnumerable<Right> rights = connection.Query<Right>(sql, new { roleId = user.RoleId });
 
             role.Rights = rights;
             return role;

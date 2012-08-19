@@ -24,7 +24,7 @@ namespace Bruttissimo.Data.Dapper
 
         public IEnumerable<Log> GetLast(int count)
         {
-            string sql = @"
+            const string sql = @"
 				SET ROWCOUNT @count
 
 				SELECT [Log].*
@@ -39,7 +39,7 @@ namespace Bruttissimo.Data.Dapper
 
         public DateTime? GetFacebookImportDate(string feed)
         {
-            string sql = @"
+            const string sql = @"
 				SELECT TOP 1 [FacebookImportLog].*
 				FROM [FacebookImportLog]
 				ORDER BY [FacebookImportLog].[Date] DESC

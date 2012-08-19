@@ -27,7 +27,7 @@ namespace Bruttissimo.Data.Dapper
         {
             if (includeLink)
             {
-                string sql = @"
+                const string sql = @"
 					SELECT [Post].*, [Link].*
 					FROM [Post]
 					LEFT JOIN [Link] ON [Post].[LinkId] = [Link].[Id]
@@ -50,7 +50,7 @@ namespace Bruttissimo.Data.Dapper
         public IEnumerable<Post> GetLatest(DateTime? until, int count)
         {
             DateTime created = until ?? DateTime.UtcNow;
-            string sql = @"
+            const string sql = @"
 				SET ROWCOUNT @count
 
 				SELECT [Post].*, [Link].*, [User].*

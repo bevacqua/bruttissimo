@@ -28,11 +28,13 @@ namespace Bruttissimo.Data.Dapper
             {
                 throw new ArgumentNullException("referenceUri");
             }
-            IEnumerable<Link> result = connection.Query<Link>(@"
+            const string sql = @"
 				SELECT [Link].*, [Post].[Id] AS [PostId]
 				FROM [Link]
 				LEFT JOIN [Post] ON [Post].[LinkId] = [Link].[Id]
-				WHERE [Link].[ReferenceUri] = @referenceUri", new { referenceUri = referenceUri.AbsoluteUri });
+				WHERE [Link].[ReferenceUri] = @referenceUri
+            ";
+            IEnumerable<Link> result = connection.Query<Link>(sql, new { referenceUri = referenceUri.AbsoluteUri });
 
             Link link = result.FirstOrDefault();
             return link;
