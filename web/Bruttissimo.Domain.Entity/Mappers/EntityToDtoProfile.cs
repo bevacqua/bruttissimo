@@ -33,6 +33,10 @@ namespace Bruttissimo.Domain.Entity
             ).ForMember(
                 m => m.Created,
                 x => x.MapFrom(p => DateTime.UtcNow)
+            ).Ignoring(
+                m => m.Id,
+                m => m.PostId,
+                m => m.Type
             );
 
             CreateMap<FacebookPost, Post>().ForMember(
@@ -50,6 +54,13 @@ namespace Bruttissimo.Domain.Entity
             ).ForMember(
                 m => m.Created,
                 x => x.MapFrom(p => DateTime.UtcNow)
+            ).Ignoring(
+                m => m.Id,
+                m => m.UserId,
+                m => m.User,
+                m => m.LinkId,
+                m => m.Link,
+                m => m.Updated
             );
         }
 

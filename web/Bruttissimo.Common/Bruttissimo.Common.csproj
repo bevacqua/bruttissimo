@@ -90,6 +90,7 @@
     <Compile Include="Extensions\Stream.cs" />
     <Compile Include="Extensions\Enumerable.cs" />
     <Compile Include="Extensions\Guid.cs" />
+    <Compile Include="Helpers\AutoMapperHelpers.cs" />
     <Compile Include="Helpers\CastleWindsorHelpers.cs" />
     <Compile Include="Helpers\HtmlParsing.cs" />
     <Compile Include="Extensions\WebResponse.cs" />

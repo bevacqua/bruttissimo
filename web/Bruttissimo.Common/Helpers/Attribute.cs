@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace Bruttissimo.Common
 {
-	/// <summary>
+    /// <summary>
 	/// Reflection helpers to help deal with attributes.
 	/// </summary>
 	public static class AttributeHelpers
