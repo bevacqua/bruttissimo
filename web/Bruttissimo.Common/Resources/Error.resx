@@ -189,11 +189,8 @@
     <value>A required attribute ModelTypeAttribute is missing from an implementation of IModelBinder: {0}. This is required to map model binders to models.</value>
     <comment>0=model binder type</comment>
   </data>
-  <data name="NoContainerAccessor" xml:space="preserve">
-    <value>HttpApplication must implement IContainerAccessor in order to resolve external dependencies.</value>
-  </data>
   <data name="NoContainerInitialized" xml:space="preserve">
-    <value>The IContainerAccessor must be properly initialized before resolving external dependencies.</value>
+    <value>The IContainerAccessor must be properly initialized before attempting to resolve dependencies.</value>
   </data>
   <data name="PropertyNotInjected" xml:space="preserve">
     <value>Property '{0}' must be injected.</value>

@@ -259,16 +259,7 @@ namespace Bruttissimo.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to HttpApplication must implement IContainerAccessor in order to resolve external dependencies..
-        /// </summary>
-        public static string NoContainerAccessor {
-            get {
-                return ResourceManager.GetString("NoContainerAccessor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The IContainerAccessor must be properly initialized before resolving external dependencies..
+        ///   Looks up a localized string similar to The IContainerAccessor must be properly initialized before attempting to resolve dependencies..
         /// </summary>
         public static string NoContainerInitialized {
             get {

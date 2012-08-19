@@ -11,15 +11,9 @@ using StackExchange.Profiling;
 
 namespace Bruttissimo.Mvc
 {
-	public class MvcApplication : HttpApplication, IContainerAccessor
+	public class MvcApplication : HttpApplication
 	{
 		private readonly ILog log = LogManager.GetLogger(typeof(HttpApplication));
-		private static IWindsorContainer _container;
-
-		public IWindsorContainer Container
-		{
-			get { return _container; }
-		}
 
 		protected void Application_Start()
 		{
@@ -34,9 +28,9 @@ namespace Bruttissimo.Mvc
 
 		private void InitializeDependencies()
 		{
-			_container = new WindsorContainer();
-			_container.Install(new ApplicationInstaller());
-			IoC.Bootstrap(_container);
+			IWindsorContainer container = new WindsorContainer();
+			container.Install(new ApplicationInstaller());
+			IoC.Bootstrap(container);
 		}
 
 		protected void Application_PreSendRequestHeaders()
@@ -50,7 +44,7 @@ namespace Bruttissimo.Mvc
 			{
 				log.DebugFormat(Debug.ApplicationRequest, Request.RawUrl);
 			}
-			RequestSanitizer sanitizer = _container.Resolve<RequestSanitizer>();
+			RequestSanitizer sanitizer = IoC.Container.Resolve<RequestSanitizer>();
 			if (sanitizer.ValidateUrl())
 			{
 				return;
@@ -60,7 +54,7 @@ namespace Bruttissimo.Mvc
 
 		protected void Application_PostAuthenticateRequest()
 		{
-			IMiniAuthentication miniAuthentication = _container.Resolve<IMiniAuthentication>();
+			IMiniAuthentication miniAuthentication = IoC.Container.Resolve<IMiniAuthentication>();
 			miniAuthentication.SetContextPrincipal();
 
 			if (!Request.CanDisplayDebuggingDetails())
@@ -77,7 +71,7 @@ namespace Bruttissimo.Mvc
 
 		protected void Application_Error()
 		{
-			ExceptionHelper exceptionHelper = _container.Resolve<ExceptionHelper>();
+			ExceptionHelper exceptionHelper = IoC.Container.Resolve<ExceptionHelper>();
 			HttpApplicationErrorHander errorHandler = new HttpApplicationErrorHander(this, exceptionHelper);
 			errorHandler.HandleApplicationError();
 		}
@@ -85,12 +79,7 @@ namespace Bruttissimo.Mvc
 		protected void Application_End()
 		{
 			log.Debug(Debug.ApplicationEnd);
-
-			if (_container != null)
-			{
-				_container.Dispose();
-				_container = null;
-			}
+		    IoC.Shutdown();
 		}
 	}
 }

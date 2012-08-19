@@ -44,7 +44,7 @@ namespace Bruttissimo.Common.Mvc
 		{
 			base.InitHelpers();
 
-			IWindsorContainer container = IoC.GetApplicationContainer();
+			IWindsorContainer container = IoC.Container;
 			Resource = container.Resolve<MvcResourceHelper>(new { htmlHelper = Html });
 			JavaScript = container.Resolve<JavaScriptHelper>();
 		}

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Castle.Windsor;
 using FluentValidation.Mvc;
@@ -11,77 +10,83 @@ using SquishIt.Less;
 
 namespace Bruttissimo.Common.Mvc
 {
-	public static class IoC
-	{
-		/// <summary>
-		/// Initialize Mvc factories and providers using our custom infrastructure.
-		/// </summary>
-		public static void Bootstrap(IWindsorContainer container)
-		{
-			// inject view engine.
-			IViewEngine engine = container.Resolve<IViewEngine>();
-			ViewEngines.Engines.Clear();
-			ViewEngines.Engines.Add(engine);
+    public static class IoC
+    {
+        private static IContainerAccessor Accessor;
 
-			// inject controllers.
-			WindsorControllerFactory controllerFactory = new WindsorControllerFactory(container.Kernel);
-			ControllerBuilder.Current.SetControllerFactory(controllerFactory);
+        public static IWindsorContainer Container
+        {
+            get
+            {
+                if (Accessor == null)
+                {
+                    throw new InvalidOperationException(Resources.Error.NoContainerInitialized);
+                }
+                return Accessor.Container;
+            }
+        }
 
-			// inject model binders.
-			WindsorModelBinderProvider binderProvider = container.Resolve<WindsorModelBinderProvider>();
-			ModelBinderProviders.BinderProviders.Add(binderProvider);
+        /// <summary>
+        /// Initialize Mvc factories and providers using our custom infrastructure.
+        /// </summary>
+        public static void Bootstrap(IWindsorContainer container)
+        {
+            // service locator (used as last resort)
+            ContainerAccessor accessor = new ContainerAccessor(container);
+            Accessor = accessor;
 
-			// inject model validators.
-			WindsorValidatorFactory validatorFactory = new WindsorValidatorFactory(container.Kernel);
-			FluentValidationModelValidatorProvider validatorProvider = new FluentValidationModelValidatorProvider(validatorFactory);
-			ModelValidatorProviders.Providers.Add(validatorProvider);
+            // inject view engine.
+            IViewEngine engine = container.Resolve<IViewEngine>();
+            ViewEngines.Engines.Clear();
+            ViewEngines.Engines.Add(engine);
 
-			// initialize dotless preprocessors.
-			LessPreprocessor dotless = container.Resolve<LessPreprocessor>();
-			Bundle.RegisterStylePreprocessor(dotless);
+            // inject controllers.
+            WindsorControllerFactory controllerFactory = new WindsorControllerFactory(container.Kernel);
+            ControllerBuilder.Current.SetControllerFactory(controllerFactory);
 
-			// auto run jobs on application start.
-			IScheduler scheduler = container.Resolve<IScheduler>();
-			IJobAutoRunner autoRunner = container.Resolve<IJobAutoRunner>();
-			autoRunner.Fire(scheduler);
-		}
-		
-		public static IWindsorContainer GetApplicationContainer()
-		{
-			HttpContext context = HttpContext.Current;
-			if (context == null)
-			{
-				throw new InvalidOperationException(Resources.Error.InvalidContext);
-			}
-			IContainerAccessor accessor = context.ApplicationInstance as IContainerAccessor;
-			if (accessor == null)
-			{
-				throw new InvalidOperationException(Resources.Error.NoContainerAccessor);
-			}
-			if (accessor.Container == null)
-			{
-				throw new InvalidOperationException(Resources.Error.NoContainerInitialized);
-			}
-			return accessor.Container;
-		}
+            // inject model binders.
+            WindsorModelBinderProvider binderProvider = container.Resolve<WindsorModelBinderProvider>();
+            ModelBinderProviders.BinderProviders.Add(binderProvider);
 
-		public static IEnumerable<Type> SelectByInterfaceConvention(Type type, Type[] types)
-		{
-			Type[] interfaces = type.GetInterfaces();
-			foreach (Type interfaceType in interfaces)
-			{
-				string name = interfaceType.Name;
-				if (name.StartsWith("I"))
-				{
-					name = name.Remove(0, 1);
-				}
-				if (type.Name.EndsWith(name))
-				{
-					return new[] { interfaceType };
-				}
-			}
-			return Enumerable.Empty<Type>();
-		}
+            // inject model validators.
+            WindsorValidatorFactory validatorFactory = new WindsorValidatorFactory(container.Kernel);
+            FluentValidationModelValidatorProvider validatorProvider = new FluentValidationModelValidatorProvider(validatorFactory);
+            ModelValidatorProviders.Providers.Add(validatorProvider);
 
-	}
+            // initialize dotless preprocessors.
+            LessPreprocessor dotless = container.Resolve<LessPreprocessor>();
+            Bundle.RegisterStylePreprocessor(dotless);
+
+            // auto run jobs on application start.
+            IScheduler scheduler = container.Resolve<IScheduler>();
+            IJobAutoRunner autoRunner = container.Resolve<IJobAutoRunner>();
+            autoRunner.Fire(scheduler);
+        }
+
+        public static IEnumerable<Type> SelectByInterfaceConvention(Type type, Type[] types)
+        {
+            Type[] interfaces = type.GetInterfaces();
+            foreach (Type interfaceType in interfaces)
+            {
+                string name = interfaceType.Name;
+                if (name.StartsWith("I"))
+                {
+                    name = name.Remove(0, 1);
+                }
+                if (type.Name.EndsWith(name))
+                {
+                    return new[] { interfaceType };
+                }
+            }
+            return Enumerable.Empty<Type>();
+        }
+
+        public static void Shutdown()
+        {
+            if (Container != null)
+            {
+                Container.Dispose();
+            }
+        }
+    }
 }

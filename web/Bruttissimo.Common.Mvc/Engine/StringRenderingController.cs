@@ -78,7 +78,7 @@ namespace Bruttissimo.Common.Mvc
 		internal SeparationOfConcernsResult ViewSeparationOfConcerns(string viewName, string controller, object model)
 		{
 			ExtendedControllerContext context = CloneControllerContext(); // use the same context in order to fetch JavaScript code for the PartialView being rendered.
-			JavaScriptHelper jsHelper = IoC.GetApplicationContainer().Resolve<JavaScriptHelper>();
+            JavaScriptHelper jsHelper = IoC.Container.Resolve<JavaScriptHelper>();
 			string html = ViewString(viewName, controller, model, context);
 			string js = jsHelper.Emit(context.Guid).ToHtmlString();
 			return new SeparationOfConcernsResult
@@ -156,7 +156,7 @@ namespace Bruttissimo.Common.Mvc
 		internal SeparationOfConcernsResult PartialViewSeparationOfConcerns(string partialViewName, string controller, object model)
 		{
 			ExtendedControllerContext context = CloneControllerContext(); // use the same context in order to fetch JavaScript code for the PartialView being rendered.
-			JavaScriptHelper jsHelper = IoC.GetApplicationContainer().Resolve<JavaScriptHelper>();
+            JavaScriptHelper jsHelper = IoC.Container.Resolve<JavaScriptHelper>();
 			string html = PartialViewString(partialViewName, controller, model, context);
 			string js = jsHelper.Emit(context.Guid).ToHtmlString();
 			return new SeparationOfConcernsResult

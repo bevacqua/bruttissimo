@@ -145,6 +145,7 @@
     <Compile Include="IoC\Mvc\WindsorActionInvoker.cs" />
     <Compile Include="ErrorHandling\HttpApplicationErrorHander.cs" />
     <Compile Include="Extensions\HttpRequest.cs" />
+    <Compile Include="IoC\ContainerAccessor.cs" />
     <Compile Include="log4net\RequestUrlPattern.cs" />
     <Compile Include="MiniProfiler\RichErrorDbCommand.cs" />
     <Compile Include="MiniProfiler\RichErrorDbConnection.cs" />

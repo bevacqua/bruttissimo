@@ -13,7 +13,7 @@ namespace Bruttissimo.Common.Mvc
 
 		public WindsorRoleProviderMvc()
 		{
-			container = new Lazy<IWindsorContainer>(IoC.GetApplicationContainer);
+		    container = new Lazy<IWindsorContainer>(() => IoC.Container);
 		}
 	}
 }
