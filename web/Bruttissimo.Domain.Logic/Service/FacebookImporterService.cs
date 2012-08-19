@@ -9,11 +9,9 @@ namespace Bruttissimo.Domain.Logic
     {
         private readonly IPostRepository postRepository;
         private readonly ILinkRepository linkRepository;
-        private readonly IUserRepository userRepository;
-
         private readonly IMapper mapper;
 
-        public FacebookImporterService(IPostRepository postRepository, ILinkRepository linkRepository, IUserRepository userRepository, IMapper mapper)
+        public FacebookImporterService(IPostRepository postRepository, ILinkRepository linkRepository, IMapper mapper)
         {
             if (postRepository == null)
             {
@@ -23,34 +21,33 @@ namespace Bruttissimo.Domain.Logic
             {
                 throw new ArgumentNullException("linkRepository");
             }
-            if (userRepository == null)
-            {
-                throw new ArgumentNullException("userRepository");
-            }
             if (mapper == null)
             {
                 throw new ArgumentNullException("mapper");
             }
             this.postRepository = postRepository;
             this.linkRepository = linkRepository;
-            this.userRepository = userRepository;
             this.mapper = mapper;
         }
 
+        /// <summary>
+        /// Takes a list of posts imported from Facebook, filters them and inserts into the persistance storage.
+        /// </summary>
         public void Import(IEnumerable<FacebookPost> posts)
         {
             foreach (FacebookPost facebookPost in posts)
             {
                 Uri uri = new Uri(facebookPost.Link);
                 Link link = linkRepository.GetByReferenceUri(uri);
-                if (link != null && link.PostId.HasValue) // no need to look up by FacebookPost Id in the case of imports, looking up by Link Uri is enough.
+                if (link != null) // no need to look up by FacebookPost Id in the case of imports, looking up by Link Uri is enough.
                 {
                     break;
                 }
+                // TODO: automap link from fbpost
+                // TODO: automap post from fbpost
                 Post post = mapper.Map<FacebookPost, Post>(facebookPost);
-                User user = userRepository.GetByFacebookGraphId(post.FacebookUserId);
-
-                post.UserId = user == null ? (long?)null : user.Id;
+                // TODO: link user to post, if one is found with accessToken == user id.
+                // NOTE: the post is always linked with the facebook user Id that posted it, though.
                 postRepository.Insert(post);
             }
         }
