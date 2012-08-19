@@ -7,5 +7,5 @@
     [FacebookUserId]  NVARCHAR (MAX) NULL,
     [UserMessage]     NVARCHAR (MAX) NULL,
     [Created]         DATETIME2 (7)  NOT NULL,
-    [Updated]         DATETIME2 (7)  NOT NULL
+    [Updated]         DATETIME2 (7)  NULL
 );
