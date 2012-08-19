@@ -14,6 +14,9 @@ namespace Bruttissimo.Common.Mvc
     {
         private static IContainerAccessor Accessor;
 
+        /// <summary>
+        /// Uses IoC as a Service Locator, should be used as a last resort.
+        /// </summary>
         public static IWindsorContainer Container
         {
             get
@@ -31,7 +34,6 @@ namespace Bruttissimo.Common.Mvc
         /// </summary>
         public static void Bootstrap(IWindsorContainer container)
         {
-            // service locator (used as last resort)
             ContainerAccessor accessor = new ContainerAccessor(container);
             Accessor = accessor;
 
