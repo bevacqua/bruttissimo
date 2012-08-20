@@ -5,10 +5,9 @@
 <table id="sysjobs" class="clear">
     <thead>
         <tr>
-            <th>@Resource.String("GUID")</th>
+            <th>@Resource.String("Guid")</th>
             <th>@Resource.String("Name")</th>
-            <th>@Resource.String("FireTime")</th>
-            <th>@Resource.String("RunTime")</th>
+            <th>@Resource.String("StartTime")</th>
         </tr>
     </thead>
     <tbody>
@@ -17,8 +16,7 @@
             <tr>
                 <td>@job.Guid</td>
                 <td>@job.Name</td>
-                <td>@job.FireTime</td>
-                <td>@job.RunTime</td>
+                <td>@job.StartTime</td>
             </tr>
         }
     </tbody>

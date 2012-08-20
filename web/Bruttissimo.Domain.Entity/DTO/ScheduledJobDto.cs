@@ -6,7 +6,6 @@ namespace Bruttissimo.Domain.Entity
     {
         public string Guid { get; set; }
         public string Name { get; set; }
-        public DateTimeOffset? FireTime { get; set; }
-        public TimeSpan RunTime { get; set; }
+        public DateTime StartTime { get; set; }
     }
 }

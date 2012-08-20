@@ -61,11 +61,38 @@ namespace Bruttissimo.Mvc.Views.Jobs.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GUID.
+        /// </summary>
+        public static string Guid {
+            get {
+                return ResourceManager.GetString("Guid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Schedule New Job.
         /// </summary>
         public static string ScheduleJob {
             get {
                 return ResourceManager.GetString("ScheduleJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Time.
+        /// </summary>
+        public static string StartTime {
+            get {
+                return ResourceManager.GetString("StartTime", resourceCulture);
             }
         }
     }

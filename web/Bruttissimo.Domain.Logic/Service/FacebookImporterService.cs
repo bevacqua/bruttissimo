@@ -56,31 +56,23 @@ namespace Bruttissimo.Domain.Logic
                 {
                     continue;
                 }
-                try
+                Uri uri = new Uri(facebookPost.Link);
+                Link link = linkRepository.GetByReferenceUri(uri);
+                if (link != null && link.PostId.HasValue) // no need to look up by FacebookPost.Id in the case of imports, looking up by Link.ReferenceUri is enough.
                 {
-                    Uri uri = new Uri(facebookPost.Link);
-                    Link link = linkRepository.GetByReferenceUri(uri);
-                    if (link != null && link.PostId.HasValue) // no need to look up by FacebookPost.Id in the case of imports, looking up by Link.ReferenceUri is enough.
-                    {
-                        log.Debug(LINK_EXISTS.FormatWith(link.ReferenceUri));
-                        break;
-                    }
-                    link = mapper.Map<FacebookPost, Link>(facebookPost);
-                    Post post = mapper.Map<FacebookPost, Post>(facebookPost);
-                    User user = userRepository.GetByFacebookGraphId(post.FacebookUserId);
-
-                    linkRepository.Insert(link);
-                    log.Debug(LINK_INSERTION.FormatWith(link.Id));
-
-                    post.LinkId = link.Id;
-                    post.UserId = user == null ? (long?)null : user.Id;
-                    postRepository.Insert(post);
-                    log.Debug(POST_INSERTION.FormatWith(post.Id));
+                    log.Debug(LINK_EXISTS.FormatWith(link.ReferenceUri));
                 }
-                catch (Exception exception)
-                {
-                    log.Error(exception);
-                }
+                link = mapper.Map<FacebookPost, Link>(facebookPost);
+                Post post = mapper.Map<FacebookPost, Post>(facebookPost);
+                User user = userRepository.GetByFacebookGraphId(post.FacebookUserId);
+
+                linkRepository.Insert(link);
+                log.Debug(LINK_INSERTION.FormatWith(link.Id));
+
+                post.LinkId = link.Id;
+                post.UserId = user == null ? (long?)null : user.Id;
+                postRepository.Insert(post);
+                log.Debug(POST_INSERTION.FormatWith(post.Id));
             }
         }
     }

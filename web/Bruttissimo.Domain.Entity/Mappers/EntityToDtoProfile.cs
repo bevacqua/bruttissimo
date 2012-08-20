@@ -29,10 +29,10 @@ namespace Bruttissimo.Domain.Entity
                 x => x.MapFrom(p => p.Picture)
             ).ForMember(
                 m => m.Type,
-                x => x.UseValue(LinkType.Html)
+                x => x.MapFrom(p => LinkType.Html)
             ).ForMember(
                 m => m.Created,
-                x => x.MapFrom(p => DateTime.UtcNow)
+                x => x.MapFrom(p => p.CreatedTime)
             ).Ignoring(
                 m => m.Id,
                 m => m.PostId,
@@ -53,7 +53,7 @@ namespace Bruttissimo.Domain.Entity
                 x => x.MapFrom(p => p.Message)
             ).ForMember(
                 m => m.Created,
-                x => x.MapFrom(p => DateTime.UtcNow)
+                x => x.MapFrom(p => p.CreatedTime)
             ).Ignoring(
                 m => m.Id,
                 m => m.UserId,
@@ -81,11 +81,8 @@ namespace Bruttissimo.Domain.Entity
                 m => m.Guid,
                 x => x.MapFrom(c => c.JobDetail.JobType.GUID.Stringify())
             ).ForMember(
-                m => m.RunTime,
-                x => x.MapFrom(c => c.JobRunTime)
-            ).ForMember(
-                m => m.FireTime,
-                x => x.MapFrom(c => c.FireTimeUtc ?? c.ScheduledFireTimeUtc ?? c.PreviousFireTimeUtc)
+                m => m.StartTime,
+                x => x.MapFrom(c => c.Trigger.StartTimeUtc.UtcDateTime)
             );
         }
     }

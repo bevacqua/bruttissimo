@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using AutoMapper;
-using Bruttissimo.Common;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
 
@@ -38,13 +37,7 @@ namespace Bruttissimo.Mvc.Model
         {
             CreateMap<JobDto, JobModel>();
 
-            CreateMap<ScheduledJobDto, ScheduledJobModel>().ForMember(
-                m => m.RunTime,
-                x => x.MapFrom(c => c.RunTime.ToDurationString())
-            ).ForMember(
-                m => m.FireTime,
-                x => x.MapFrom(c => c.FireTime) // TODO.
-            );
+            CreateMap<ScheduledJobDto, ScheduledJobModel>();
         }
 
         internal void CreatePostMaps()
