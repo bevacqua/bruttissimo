@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Bruttissimo.Common;
 using Bruttissimo.Domain.Entity;
 using Facebook;
@@ -76,18 +77,33 @@ namespace Bruttissimo.Domain.Social
 
             importLog.QueryCount = queryCount;
             importLog.PostCount = posts.Count;
-            importLog.PostUpdated = posts.Max(p => p.UpdatedTime);
+            importLog.PostUpdated = posts.Max(p => (DateTime?)p.UpdatedTime);
             return posts;
         }
 
         internal FacebookPostCollection Fetch(string url)
         {
-            log.Debug(DEBUG_API_GET.FormatWith(url));
+            LogApiCall(url);
+
             FacebookClient client = new FacebookClient(defaultAccessToken);
             string json = (client.Get(url) ?? string.Empty).ToString();
 
             FacebookPostCollection response = JsonConvert.DeserializeObject<FacebookPostCollection>(json);
             return response;
+        }
+
+        private const string FACEBOOK_GRAPH_API = "https://graph.facebook.com/";
+        private const string FACEBOOK_ACCESS_TOKEN_REGEX = "&access_token=(?:[^&])+";
+
+        private void LogApiCall(string url)
+        {
+            string parameters = url;
+            if (parameters.StartsWith(FACEBOOK_GRAPH_API))
+            {
+                parameters = parameters.Remove(0, FACEBOOK_GRAPH_API.Length);
+            }
+            parameters = Regex.Replace(parameters, FACEBOOK_ACCESS_TOKEN_REGEX, string.Empty);
+            log.Debug(DEBUG_API_GET.FormatWith(parameters));
         }
     }
 }

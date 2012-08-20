@@ -44,10 +44,6 @@ namespace Bruttissimo.Domain.Logic
             DateTime? since = logRepository.GetFacebookImportDate(feed);
             IEnumerable<FacebookPost> posts = facebookRepository.GetPostsInFeed(feed, since, importLog);
 
-            if (!posts.Any()) // no new posts.
-            {
-                return;
-            }
             facebookImporterService.Import(posts, importLog);
 
             importLog.Duration = DateTime.UtcNow - importLog.StartDate;
