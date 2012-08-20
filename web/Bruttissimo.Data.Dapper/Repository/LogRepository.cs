@@ -40,9 +40,9 @@ namespace Bruttissimo.Data.Dapper
         public DateTime? GetFacebookImportDate(string feed)
         {
             const string sql = @"
-				SELECT TOP 1 [FacebookImportLog].*
+				SELECT TOP 1 [FacebookImportLog].[PostUpdated]
 				FROM [FacebookImportLog]
-				ORDER BY [FacebookImportLog].[Date] DESC
+				ORDER BY [FacebookImportLog].[PostUpdated] DESC
 			";
             IEnumerable<FacebookImportLog> logs = connection.Query<FacebookImportLog>(sql);
             FacebookImportLog log = logs.FirstOrDefault();
