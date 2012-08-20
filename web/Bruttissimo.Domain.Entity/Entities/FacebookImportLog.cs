@@ -7,5 +7,6 @@ namespace Bruttissimo.Domain.Entity
         public long Id { get; set; }
         public string FacebookFeedId { get; set; }
         public DateTime Date { get; set; }
+        public int QueryCount { get; set; }
     }
 }

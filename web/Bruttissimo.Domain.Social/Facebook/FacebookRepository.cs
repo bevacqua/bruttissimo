@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Bruttissimo.Common;
 using Bruttissimo.Domain.Entity;
 using Facebook;
@@ -32,7 +33,7 @@ namespace Bruttissimo.Domain.Social
             this.defaultAccessToken = defaultAccessToken;
         }
 
-        public IList<FacebookPost> GetPostsInFeed(string feed, DateTime? since)
+        public IList<FacebookPost> GetPostsInFeed(string feed, DateTime? since, out int queryCount)
         {
             if (feed == null)
             {
@@ -46,18 +47,24 @@ namespace Bruttissimo.Domain.Social
                 url = GRAPH_FEED_SINCE.FormatWith(url, date);
             }
 
-            IList<FacebookPost> result = FetchAll(url);
+            IList<FacebookPost> result = FetchAll(url, since, out queryCount);
             return result;
         }
 
-        internal IList<FacebookPost> FetchAll(string url)
+        internal IList<FacebookPost> FetchAll(string url, DateTime? since, out int queryCount)
         {
+            queryCount = 0;
             List<FacebookPost> posts = new List<FacebookPost>();
             do
             {
                 FacebookPostCollection response = Fetch(url);
+                queryCount++;
                 posts.AddRange(response.Data);
 
+                if (since.HasValue && response.Data.Any(p => p.UpdatedTime <= since.Value)) // prevent unnecessary over-querying.
+                {
+                    break;
+                }
                 if (response.Paging == null || response.Paging.Next == url) // sanity
                 {
                     break;

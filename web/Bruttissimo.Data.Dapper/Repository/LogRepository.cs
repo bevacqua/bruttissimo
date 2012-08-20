@@ -49,12 +49,13 @@ namespace Bruttissimo.Data.Dapper
             return log == null ? (DateTime?)null : log.Date;
         }
 
-        public FacebookImportLog UpdateFacebookImportDate(string feed, DateTime date)
+        public FacebookImportLog UpdateFacebookImportDate(string feed, DateTime date, int queries)
         {
             FacebookImportLog entity = new FacebookImportLog
             {
                 FacebookFeedId = feed,
-                Date = date
+                Date = date,
+                QueryCount = queries
             };
             connection.Insert(entity);
             return entity;
