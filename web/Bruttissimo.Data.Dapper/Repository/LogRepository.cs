@@ -42,8 +42,8 @@ namespace Bruttissimo.Data.Dapper
             const string sql = @"
 				SELECT TOP 1 [L].[PostUpdated]
 				FROM [FacebookImportLog] [L]
-				ORDER BY [L].[PostUpdated] DESC
                 WHERE [L].[FacebookFeedId] = @feed
+				ORDER BY [L].[PostUpdated] DESC
 			";
             IEnumerable<FacebookImportLog> logs = connection.Query<FacebookImportLog>(sql, new { feed });
             FacebookImportLog log = logs.FirstOrDefault();
