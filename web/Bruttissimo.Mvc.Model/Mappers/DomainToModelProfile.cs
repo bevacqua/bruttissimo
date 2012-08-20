@@ -11,18 +11,24 @@ namespace Bruttissimo.Mvc.Model
     {
         private readonly IPostService postService;
         private readonly UrlHelper urlHelper;
+        private readonly IUserService userService;
 
-        public DomainToModelProfile(IPostService postService, UrlHelper urlHelper)
+        public DomainToModelProfile(IPostService postService, IUserService userService, UrlHelper urlHelper)
         {
             if (postService == null)
             {
                 throw new ArgumentNullException("postService");
+            }
+            if (userService == null)
+            {
+                throw new ArgumentNullException("userService");
             }
             if (urlHelper == null)
             {
                 throw new ArgumentNullException("urlHelper");
             }
             this.postService = postService;
+            this.userService = userService;
             this.urlHelper = urlHelper;
         }
 
@@ -37,7 +43,10 @@ namespace Bruttissimo.Mvc.Model
         {
             CreateMap<JobDto, JobModel>();
 
-            CreateMap<ScheduledJobDto, ScheduledJobModel>();
+            CreateMap<ScheduledJobDto, ScheduledJobModel>().ForMember(
+                m => m.StartTime,
+                x => x.MapFrom(j => userService.ToCurrentUserTimeZone(j.StartTime))
+            );
         }
 
         internal void CreatePostMaps()
@@ -64,7 +73,7 @@ namespace Bruttissimo.Mvc.Model
                 x => x.MapFrom(p => p.Link.Picture)
             ).ForMember(
                 m => m.Url,
-                x => x.MapFrom(p => urlHelper.RouteUrl("PostShortcut", new {id = p.Id}, "http"))
+                x => x.MapFrom(p => urlHelper.RouteUrl("PostShortcut", new { id = p.Id }, "http"))
             );
 
             CreateMap<Link, LinkModel>();

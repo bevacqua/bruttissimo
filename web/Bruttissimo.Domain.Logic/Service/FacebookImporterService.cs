@@ -52,7 +52,7 @@ namespace Bruttissimo.Domain.Logic
 
             foreach (FacebookPost facebookPost in posts)
             {
-                if (facebookPost.Link == null || facebookPost.Type != "link") // only links.
+                if (facebookPost.Link == null || facebookPost.Type != FacebookPostType.Link) // only links.
                 {
                     continue;
                 }

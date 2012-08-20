@@ -16,7 +16,7 @@ namespace Bruttissimo.Domain.Entity
         [JsonProperty("updated_time")]
         public DateTime UpdatedTime { get; set; }
 
-        public string Type { get; set; } // TODO: Type enum??
+        public FacebookPostType Type { get; set; }
 
         public string Message { get; set; }
         public string Link { get; set; }
@@ -24,5 +24,12 @@ namespace Bruttissimo.Domain.Entity
         public string Caption { get; set; }
         public string Description { get; set; }
         public string Picture { get; set; }
+    }
+
+    public enum FacebookPostType
+    {
+        Undefined,
+        Link,
+        Image
     }
 }

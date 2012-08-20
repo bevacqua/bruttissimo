@@ -27,7 +27,7 @@ namespace Bruttissimo.Common
             {
                 return result;
             }
-            return null;
+            return default(bool?);
         }
 
         internal static int? Int(string value)
@@ -37,7 +37,17 @@ namespace Bruttissimo.Common
             {
                 return result;
             }
-            return null;
+            return default(int?);
+        }
+
+        internal static double? Double(string value)
+        {
+            double result;
+            if (double.TryParse(value, out result))
+            {
+                return result;
+            }
+            return default(double?);
         }
 
         #endregion
@@ -128,6 +138,14 @@ namespace Bruttissimo.Common
             public static string Home
             {
                 get { return Get("Site.Home"); }
+            }
+        }
+
+        public static class Defaults
+        {
+            public static double TimeZone
+            {
+                get { return Double(Get("Defaults.TimeZone")) ?? 0; }
             }
         }
     }

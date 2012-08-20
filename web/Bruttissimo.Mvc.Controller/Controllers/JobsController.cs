@@ -54,7 +54,7 @@ namespace Bruttissimo.Mvc.Controller
         [HttpPost]
         public ActionResult Schedule(Guid guid)
         {
-            if (!jobService.ScheduleJob(guid)) // sanity
+            if (!jobService.ScheduleJob(guid)) // sanity.
             {
                 ModelState.AddModelError("JobKey", Common.Resources.User.InvalidJobKey);
                 return Schedule();

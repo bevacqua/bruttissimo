@@ -2,6 +2,8 @@
 <section id="sysadmin">
     @foreach (ActionLinkModel action in Model)
     {
-        <a href="@action.Url">@Resource.String(action.ResourceKey)</a>
+        <div>
+            <a href="@action.Url">@Resource.String(action.ResourceKey)</a>
+        </div>
     }
 </section>

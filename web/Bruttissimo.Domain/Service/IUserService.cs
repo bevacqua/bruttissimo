@@ -1,3 +1,4 @@
+using System;
 using System.Security.Principal;
 using Bruttissimo.Domain.Entity;
 
@@ -23,5 +24,7 @@ namespace Bruttissimo.Domain
         string GetAuthCookie(User user);
         long? GetUserId(IIdentity identity);
         bool IsInRoleOrHasRight(User user, string roleOrRight);
+
+        DateTime ToCurrentUserTimeZone(DateTime dateTime);
     }
 }

@@ -274,11 +274,12 @@ namespace Bruttissimo.Data.Dapper
         {
             User user = new User
             {
+                RoleId = GetRoleId(Roles.Regular, transaction),
                 Email = email,
                 DisplayName = GetDisplayName(email, displayName),
                 Password = password == null ? null : InternalPasswordHash(password),
                 Created = DateTime.UtcNow,
-                RoleId = GetRoleId(Roles.Regular, transaction)
+                TimeZone = Config.Defaults.TimeZone
             };
             connection.Insert(user, transaction);
             return user;
