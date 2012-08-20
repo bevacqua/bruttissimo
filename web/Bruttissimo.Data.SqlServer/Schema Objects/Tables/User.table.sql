@@ -4,6 +4,6 @@
     [Email]       NVARCHAR (320) NULL,
     [DisplayName] NVARCHAR (60)  NULL,
     [Password]    NVARCHAR (60)  NULL,
-    [Created]     DATETIME2 (7)  NOT NULL
+    [Created]     DATETIME2 (7)  NOT NULL,
+    [TimeZone]    FLOAT          NOT NULL
 );
-
