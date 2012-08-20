@@ -49,15 +49,8 @@ namespace Bruttissimo.Data.Dapper
             return log == null ? (DateTime?)null : log.PostUpdated;
         }
 
-        public FacebookImportLog UpdateFacebookImportDate(string feed, DateTime last, int queryCount)
+        public FacebookImportLog UpdateFacebookImportLog(FacebookImportLog entity)
         {
-            FacebookImportLog entity = new FacebookImportLog
-            {
-                ImportDate = DateTime.UtcNow,
-                FacebookFeedId = feed,
-                PostUpdated = last,
-                QueryCount = queryCount
-            };
             connection.Insert(entity);
             return entity;
         }

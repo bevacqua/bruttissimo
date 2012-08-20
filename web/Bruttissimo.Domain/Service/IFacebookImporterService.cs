@@ -5,6 +5,6 @@ namespace Bruttissimo.Domain
 {
     public interface IFacebookImporterService
     {
-        void Import(IEnumerable<FacebookPost> posts);
+        void Import(IEnumerable<FacebookPost> posts, FacebookImportLog importLog);
     }
 }

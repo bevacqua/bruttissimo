@@ -33,7 +33,7 @@ namespace Bruttissimo.Domain.Social
             this.defaultAccessToken = defaultAccessToken;
         }
 
-        public IList<FacebookPost> GetPostsInFeed(string feed, DateTime? since, out int queryCount)
+        public IList<FacebookPost> GetPostsInFeed(string feed, DateTime? since, FacebookImportLog importLog)
         {
             if (feed == null)
             {
@@ -47,13 +47,13 @@ namespace Bruttissimo.Domain.Social
                 url = GRAPH_FEED_SINCE.FormatWith(url, date);
             }
 
-            IList<FacebookPost> result = FetchAll(url, since, out queryCount);
+            IList<FacebookPost> result = FetchAll(url, since, importLog);
             return result;
         }
 
-        internal IList<FacebookPost> FetchAll(string url, DateTime? since, out int queryCount)
+        internal IList<FacebookPost> FetchAll(string url, DateTime? since, FacebookImportLog importLog)
         {
-            queryCount = 0;
+            int queryCount = 0;
             List<FacebookPost> posts = new List<FacebookPost>();
             do
             {
@@ -73,6 +73,9 @@ namespace Bruttissimo.Domain.Social
                 url = response.Paging.Next;
             } while (url != null);
 
+            importLog.QueryCount = queryCount;
+            importLog.PostCount = posts.Count;
+            importLog.PostUpdated = posts.Max(p => p.UpdatedTime);
             return posts;
         }
 

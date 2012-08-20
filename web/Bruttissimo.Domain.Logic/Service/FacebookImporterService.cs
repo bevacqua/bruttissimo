@@ -46,8 +46,9 @@ namespace Bruttissimo.Domain.Logic
         /// <summary>
         /// Takes a list of posts imported from Facebook, filters them and inserts into the persistance storage.
         /// </summary>
-        public void Import(IEnumerable<FacebookPost> posts)
+        public void Import(IEnumerable<FacebookPost> posts, FacebookImportLog importLog)
         {
+            int insertCount = 0;
             const string LINK_EXISTS = "Link exists: {0}";
             const string LINK_INSERTION = "Inserted Link #{0}";
             const string POST_INSERTION = "Inserted Post #{0}";
@@ -75,7 +76,11 @@ namespace Bruttissimo.Domain.Logic
                 post.UserId = user == null ? (long?)null : user.Id;
                 postRepository.Insert(post);
                 log.Debug(POST_INSERTION.FormatWith(post.Id));
+
+                insertCount++;
             }
+
+            importLog.InsertCount = insertCount;
         }
     }
 }
