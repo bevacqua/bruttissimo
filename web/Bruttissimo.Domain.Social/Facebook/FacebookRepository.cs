@@ -64,6 +64,7 @@ namespace Bruttissimo.Domain.Social
 
                 if (since.HasValue && response.Data.Any(p => p.UpdatedTime <= since.Value)) // prevent unnecessary over-querying.
                 {
+                    posts.RemoveAll(p => p.UpdatedTime <= since.Value); // removed already-evaluated posts.
                     break;
                 }
                 if (response.Paging == null || response.Paging.Next == url) // sanity
