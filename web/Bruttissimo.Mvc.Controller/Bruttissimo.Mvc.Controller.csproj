@@ -65,7 +65,6 @@
     </Compile>
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\SystemController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
