@@ -48,7 +48,6 @@ namespace Bruttissimo.Domain.Logic
             {
                 return;
             }
-            
             facebookImporterService.Import(posts, importLog);
 
             importLog.Duration = DateTime.UtcNow - importLog.StartDate;
