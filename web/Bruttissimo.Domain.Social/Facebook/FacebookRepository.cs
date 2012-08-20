@@ -58,8 +58,9 @@ namespace Bruttissimo.Domain.Social
             do
             {
                 FacebookPostCollection response = Fetch(url);
-                queryCount++;
                 posts.AddRange(response.Data);
+
+                queryCount++;
 
                 if (since.HasValue && response.Data.Any(p => p.UpdatedTime <= since.Value)) // prevent unnecessary over-querying.
                 {
