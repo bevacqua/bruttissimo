@@ -29,7 +29,7 @@ namespace Bruttissimo.Domain.Entity
                 x => x.MapFrom(p => p.Picture)
             ).ForMember(
                 m => m.Type,
-                x => x.UseValue(LinkType.None)
+                x => x.UseValue(LinkType.Html)
             ).ForMember(
                 m => m.Created,
                 x => x.MapFrom(p => DateTime.UtcNow)

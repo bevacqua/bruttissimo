@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using Bruttissimo.Common;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain.Entity;
+using log4net;
 
 namespace Bruttissimo.Domain.Logic
 {
@@ -11,6 +13,8 @@ namespace Bruttissimo.Domain.Logic
         private readonly ILinkRepository linkRepository;
         private readonly IUserRepository userRepository;
         private readonly IMapper mapper;
+
+        private readonly ILog log = LogManager.GetLogger(typeof(FacebookImporterService));
 
         public FacebookImporterService(IPostRepository postRepository, ILinkRepository linkRepository, IUserRepository userRepository, IMapper mapper)
         {
@@ -36,31 +40,47 @@ namespace Bruttissimo.Domain.Logic
             this.mapper = mapper;
         }
 
+
         /// <summary>
         /// Takes a list of posts imported from Facebook, filters them and inserts into the persistance storage.
         /// </summary>
         public void Import(IEnumerable<FacebookPost> posts)
         {
+            const string LINK_EXISTS = "Link exists: {0}";
+            const string LINK_INSERTION = "Inserted Link #{0}";
+            const string POST_INSERTION = "Inserted Post #{0}";
+
             foreach (FacebookPost facebookPost in posts)
             {
-                if (facebookPost.Link == null) // only links.
+                if (facebookPost.Link == null || facebookPost.Type != "link") // only links.
                 {
                     continue;
                 }
-                Uri uri = new Uri(facebookPost.Link);
-                Link link = linkRepository.GetByReferenceUri(uri);
-                if (link != null && link.PostId.HasValue) // no need to look up by FacebookPost.Id in the case of imports, looking up by Link.ReferenceUri is enough.
+                try
                 {
-                    break;
-                }
-                link = mapper.Map<FacebookPost, Link>(facebookPost);
-                Post post = mapper.Map<FacebookPost, Post>(facebookPost);
-                User user = userRepository.GetByFacebookGraphId(post.FacebookUserId);
+                    Uri uri = new Uri(facebookPost.Link);
+                    Link link = linkRepository.GetByReferenceUri(uri);
+                    if (link != null && link.PostId.HasValue) // no need to look up by FacebookPost.Id in the case of imports, looking up by Link.ReferenceUri is enough.
+                    {
+                        log.Debug(LINK_EXISTS.FormatWith(link.ReferenceUri));
+                        break;
+                    }
+                    link = mapper.Map<FacebookPost, Link>(facebookPost);
+                    Post post = mapper.Map<FacebookPost, Post>(facebookPost);
+                    User user = userRepository.GetByFacebookGraphId(post.FacebookUserId);
 
-                linkRepository.Insert(link);
-                post.LinkId = link.Id;
-                post.UserId = user == null ? (long?)null : user.Id;
-                postRepository.Insert(post);
+                    linkRepository.Insert(link);
+                    log.Debug(LINK_INSERTION.FormatWith(link.Id));
+
+                    post.LinkId = link.Id;
+                    post.UserId = user == null ? (long?)null : user.Id;
+                    postRepository.Insert(post);
+                    log.Debug(POST_INSERTION.FormatWith(post.Id));
+                }
+                catch (Exception exception)
+                {
+                    log.Error(exception);
+                }
             }
         }
     }
