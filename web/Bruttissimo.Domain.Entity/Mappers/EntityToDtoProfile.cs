@@ -35,8 +35,7 @@ namespace Bruttissimo.Domain.Entity
                 x => x.MapFrom(p => p.CreatedTime)
             ).Ignoring(
                 m => m.Id,
-                m => m.PostId,
-                m => m.Type
+                m => m.PostId
             );
 
             CreateMap<FacebookPost, Post>().ForMember(

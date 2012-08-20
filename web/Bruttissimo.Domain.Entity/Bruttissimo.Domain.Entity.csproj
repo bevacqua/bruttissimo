@@ -74,6 +74,8 @@
     <Compile Include="Entities\Right.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="DTO\ScheduledJobDto.cs" />
+    <Compile Include="Social\Facebook\FacebookPostType.cs" />
+    <Compile Include="Social\Facebook\FacebookPostTypeEnumConverter.cs" />
     <Compile Include="Social\Facebook\Generic\FacebookSource.cs" />
     <Compile Include="Social\Facebook\Generic\FacebookTo.cs" />
     <Compile Include="Social\Facebook\Generic\FacebookFrom.cs" />
