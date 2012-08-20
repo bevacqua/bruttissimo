@@ -12,7 +12,7 @@ namespace Bruttissimo.Domain.Social
     public class FacebookRepository : IFacebookRepository
     {
         private const int PAGE_LIMIT = 15;
-        private const string GRAPH_FEED_LIMITED = "{0}/feed?limit={1}&fields=id,from,to,type,created_time,updated_time,message,picture,link,name,caption,description";
+        private const string GRAPH_FEED_LIMITED = "{0}/feed?limit={1}";
         private const string GRAPH_FEED_SINCE = "{0}&since={1}";
 
         private const string DEBUG_API_GET = "Facebook API GET: {0}";

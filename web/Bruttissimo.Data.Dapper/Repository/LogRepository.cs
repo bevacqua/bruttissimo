@@ -46,15 +46,16 @@ namespace Bruttissimo.Data.Dapper
 			";
             IEnumerable<FacebookImportLog> logs = connection.Query<FacebookImportLog>(sql);
             FacebookImportLog log = logs.FirstOrDefault();
-            return log == null ? (DateTime?)null : log.Date;
+            return log == null ? (DateTime?)null : log.PostUpdated;
         }
 
-        public FacebookImportLog UpdateFacebookImportDate(string feed, DateTime date, int queryCount)
+        public FacebookImportLog UpdateFacebookImportDate(string feed, DateTime last, int queryCount)
         {
             FacebookImportLog entity = new FacebookImportLog
             {
+                ImportDate = DateTime.UtcNow,
                 FacebookFeedId = feed,
-                Date = date,
+                PostUpdated = last,
                 QueryCount = queryCount
             };
             connection.Insert(entity);
