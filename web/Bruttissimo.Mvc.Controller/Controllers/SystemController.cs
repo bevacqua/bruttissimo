@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain;
@@ -29,6 +30,16 @@ namespace Bruttissimo.Mvc.Controller
 
         [HttpGet]
         [NotAjax]
+        [ExtendedAuthorize(Roles = Rights.CanAccessApplicationLogs)]
+        public ActionResult Log()
+        {
+            IList<Log> logs = logService.GetLast(10);
+            IList<LogModel> model = mapper.Map<IList<Log>, IList<LogModel>>(logs);
+            return View(model);
+        }
+
+        [HttpGet]
+        [NotAjax]
         [ExtendedAuthorize(Roles = Rights.CanAccessSystemPanel)]
         public ActionResult Index(IMiniPrincipal principal)
         {
@@ -38,32 +49,31 @@ namespace Bruttissimo.Mvc.Controller
 
         private IEnumerable<ActionLinkModel> GetActions(IMiniPrincipal principal)
         {
-            if (principal.IsInRole(Rights.CanAccessApplicationLogs))
+            Permission[] permissions = new[]
             {
-                yield return new ActionLinkModel
-                {
-                    Url = Url.Action("Log"),
-                    ResourceKey = "Log"
-                };
-            }
-            if (principal.IsInRole(Rights.CanAccessApplicationJobs))
-            {
-                yield return new ActionLinkModel
-                {
-                    Url = Url.Action("Index", "Jobs"),
-                    ResourceKey = "Jobs"
-                };
-            }
+                permission(Rights.CanAccessApplicationLogs, Url.Action("Log"), "Log"),
+                permission(Rights.CanAccessApplicationJobs, Url.Action("Index", "Jobs"), "Jobs")
+            };
+            return permissions.Where(permission => principal.IsInRole(permission.Role)).Select(permission => permission.Action);
         }
 
-        [HttpGet]
-        [NotAjax]
-        [ExtendedAuthorize(Roles = Rights.CanAccessApplicationLogs)]
-        public ActionResult Log()
+        private class Permission
         {
-            IList<Log> logs = logService.GetLast(10);
-            IList<LogModel> model = mapper.Map<IList<Log>, IList<LogModel>>(logs);
-            return View(model);
+            public string Role { get; set; }
+            public ActionLinkModel Action { get; set; }
+        }
+
+        private Permission permission(string role, string url, string resourceKey)
+        {
+            return new Permission
+            {
+                Role = role,
+                Action = new ActionLinkModel
+                {
+                    Url = url,
+                    ResourceKey = resourceKey
+                }
+            };
         }
     }
 }
