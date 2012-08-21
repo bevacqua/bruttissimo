@@ -89,7 +89,7 @@ namespace Bruttissimo.Common.Mvc
         /// <summary>
         /// Returns a PartialViewResult if the executing context is a child action, and a ViewResult otherwise.
         /// </summary>
-        protected ActionResult ContextView(string viewName, object model)
+        protected ActionResult FlexibleView(string viewName, object model)
         {
             if (ControllerContext.IsChildAction)
             {

@@ -59,7 +59,7 @@ namespace Bruttissimo.Mvc.Controller
         {
             IEnumerable<Post> posts = postService.GetLatest(timestamp, count);
             PostListModel model = mapper.Map<IEnumerable<Post>, PostListModel>(posts);
-            return ContextView("List", model);
+            return FlexibleView("List", model);
         }
 
         // TODO: hooks? or something better, there MUST be a better way to do this.
@@ -126,7 +126,7 @@ namespace Bruttissimo.Mvc.Controller
                 default:
                 case LinkParseResult.Invalid:
                 {
-                    return Json(new {faulted = "invalid"});
+                    return Json(new { faulted = "invalid" });
                 }
                 case LinkParseResult.Used:
                 {
@@ -143,7 +143,7 @@ namespace Bruttissimo.Mvc.Controller
                     }
                     else
                     {
-                        return Json(new {faulted = "invalid"});
+                        return Json(new { faulted = "invalid" });
                     }
                 }
                 case LinkParseResult.Valid:
@@ -183,9 +183,10 @@ namespace Bruttissimo.Mvc.Controller
             string titleSlug = postService.GetTitleSlug(post);
             if (slug != titleSlug) // favor consistency and single-endpoint posts.
             {
-                return RedirectToActionPermanent("Details", "Posts", new {id, slug = titleSlug});
+                return RedirectToActionPermanent("Details", "Posts", new { id, slug = titleSlug });
             }
-            return View(); // TODO
+            PostModel model = mapper.Map<Post, PostModel>(post);
+            return View(model);
         }
     }
 }
