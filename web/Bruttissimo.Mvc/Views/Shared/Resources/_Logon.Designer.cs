@@ -70,7 +70,7 @@ namespace Bruttissimo.Mvc.Views.Shared.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Logout ({0}).
+        ///   Looks up a localized string similar to Logout.
         /// </summary>
         public static string Logout {
             get {

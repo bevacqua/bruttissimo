@@ -98,6 +98,7 @@ nav#menu li a {
 }
 
 nav#menu li:last-child a { border-bottom: none; }
+nav#menu .logout-identifier { display: none; }
 
 @media only screen and (min-width: 768px) {
     section#layout-content { position: relative; }
@@ -122,6 +123,8 @@ nav#menu li:last-child a { border-bottom: none; }
         border: none;
         padding: 0 10px;
     }
+
+    nav#menu .logout-identifier { display: inherit; }
 }
 
 @media only screen and (min-width: 1024px) {

@@ -54,7 +54,7 @@ namespace Bruttissimo.Mvc.Controller
                 permission(Rights.CanAccessApplicationLogs, Url.Action("Log"), "Log"),
                 permission(Rights.CanAccessApplicationJobs, Url.Action("Index", "Jobs"), "Jobs")
             };
-            return permissions.Where(permission => principal.IsInRole(permission.Role)).Select(permission => permission.Action);
+            return permissions.Where(p => principal.IsInRole(p.Role)).Select(p => p.Action);
         }
 
         private class Permission

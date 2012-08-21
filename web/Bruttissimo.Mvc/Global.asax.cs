@@ -17,7 +17,7 @@ namespace Bruttissimo.Mvc
 
         protected void Application_Start()
         {
-            System.Diagnostics.Debugger.Break(); // debug application start in IIS.
+            // System.Diagnostics.Debugger.Break(); // debug application start in IIS.
             MvcHandler.DisableMvcResponseHeader = true;
             AreaRegistration.RegisterAllAreas();
             Routing.RegisterRoutes(RouteTable.Routes);
