@@ -145,7 +145,7 @@ namespace Bruttissimo.Common
             }
             else
             {
-                return s;
+                return string.Empty;
             }
         }
     }
