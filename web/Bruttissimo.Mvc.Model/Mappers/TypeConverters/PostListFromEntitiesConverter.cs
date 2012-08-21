@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using Bruttissimo.Common;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain.Entity;
 
@@ -22,6 +23,7 @@ namespace Bruttissimo.Mvc.Model
 
         public PostListModel Convert(ResolutionContext context)
         {
+            int count = Config.Defaults.PostListPageSize;
             IEnumerable<Post> posts = (IEnumerable<Post>)context.SourceValue;
             PostListModel result = new PostListModel
             {
@@ -29,6 +31,7 @@ namespace Bruttissimo.Mvc.Model
             };
             Post first = posts.FirstOrDefault();
             result.OpenGraph = mapper.Map<Post, OpenGraphModel>(first);
+            result.HasMorePosts = result.Posts.Count >= count;
             return result;
         }
     }

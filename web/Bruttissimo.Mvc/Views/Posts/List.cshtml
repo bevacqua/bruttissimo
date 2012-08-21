@@ -19,6 +19,13 @@ else
     </section>
     <div class="clear"></div>
     <section class="more-posts">
-        <a class="button more-posts-link" href="@Url.Action("Until", "Posts", new {id = timestamp})">@Resource.String("More")</a>
+        @if (Model.HasMorePosts)
+        {
+            <a class="button more-posts-link" href="@Url.Action("Until", "Posts", new { id = timestamp })">@Resource.String("More")</a>
+        }
+        else
+        {
+            <p>@Resource.String("NoMorePosts")</p>
+        }
     </section>
 }

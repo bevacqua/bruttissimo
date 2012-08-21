@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using Bruttissimo.Common;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Common.Resources;
 using Bruttissimo.Domain;
@@ -55,8 +56,9 @@ namespace Bruttissimo.Mvc.Controller
         }
 
         [NonAction]
-        internal ActionResult List(long? timestamp = null, int count = 8)
+        internal ActionResult List(long? timestamp = null)
         {
+            int count = Config.Defaults.PostListPageSize;
             IEnumerable<Post> posts = postService.GetLatest(timestamp, count);
             PostListModel model = mapper.Map<IEnumerable<Post>, PostListModel>(posts);
             return FlexibleView("List", model);

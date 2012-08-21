@@ -147,6 +147,11 @@ namespace Bruttissimo.Common
             {
                 get { return Double(Get("Defaults.TimeZone")) ?? 0; }
             }
+
+            public static int PostListPageSize
+            {
+                get { return Int(Get("Defaults.PostListPageSize")) ?? 1; }
+            }
         }
     }
 }
