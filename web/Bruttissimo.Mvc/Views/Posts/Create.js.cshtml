@@ -2,7 +2,10 @@
 <script>
     (function($, b) {
         $(function() {
-            b.views.post.create('@Url.Action("Preview", "Posts")');
+            b.views.post.create({
+                previewUrl: '@Url.Action("Preview", "Posts")',
+                commentUrl: '@Url.Action("New", "Comments")'
+            });
         });
     })(jQuery, bruttijjimo);
 </script>

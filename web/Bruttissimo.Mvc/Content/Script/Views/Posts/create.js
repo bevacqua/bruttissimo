@@ -1,7 +1,7 @@
 ﻿;
 (function ($, b, l) {
 	b.views.post = b.views.post || { };
-	b.views.post.create = function(previewLinkActionUrl) {
+	b.views.post.create = function(settings) {
 		$(function() {
 			var form = $("form.post-creation");
 			var linkInput = $(".post-link");
@@ -52,9 +52,7 @@
 								buttons.push({
 									caption: l.Post.PostComment,
 									click: function() {
-										// TODO: post comment, then redirect to the post #comment_id
-										alert("post-as-comment clicked");
-										console.log(result.id); // post.Id
+										commentOnPost(result.id, comment);
 									}
 								});
 							}
@@ -79,7 +77,7 @@
 					}
 					previewContainer.empty();
 					var ajaxOptions = {
-						url: previewLinkActionUrl,
+						url: settings.previewUrl,
 						data: {
 							input: linkValue
 						},
@@ -93,6 +91,18 @@
 					form.data("preview-xhr", last);
 				}, 0);
 			});
+
+            function commentOnPost(id, comment) {
+                $.ajax({
+                    url: settings.commentUrl,
+                    data: {
+                        comment: comment
+                    },
+                    success: function(result) {
+                        alert("post-as-comment clicked");
+                    }
+                });
+            }
 		});
 	};
 })(jQuery, bruttijjimo, localization);
