@@ -1,0 +1,2 @@
+﻿ALTER TABLE [dbo].[Comment]
+    ADD  CONSTRAINT [FK_Comment_User] FOREIGN KEY([UserId]) REFERENCES [dbo].[User] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
