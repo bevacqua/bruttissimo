@@ -1,4 +1,4 @@
-﻿; (function ($, b) {
+﻿(function ($, b) {
 	b.container = "#layout-content";
 
 	$.ajaxSetup({

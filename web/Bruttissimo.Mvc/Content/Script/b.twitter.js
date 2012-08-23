@@ -1,5 +1,5 @@
-﻿; (function ($, b, window) {
-	b.twitter = (function() {
+﻿(function ($, b, window) {
+	b.twitter = function() {
 		var api = {
 			src: "http://platform.twitter.com/anywhere.js?id={0}&v=1",
 			id: void 0
@@ -46,5 +46,5 @@
 			load: load,
 			login: loginWithTwitter
 		};
-	})();
+	};
 })(jQuery, bruttijjimo, window);

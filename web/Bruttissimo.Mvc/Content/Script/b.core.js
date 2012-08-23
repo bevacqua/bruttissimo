@@ -1,5 +1,5 @@
-﻿; (function (window, $, l) {
-	var b = (function() {
+﻿(function (window, $, l) {
+	var b = function() {
 	    function createTag(tagName, css) {
 	        return $("<" + tagName + ">").addClass(css);
 	    }
@@ -270,19 +270,19 @@
 
 	    function disableDuringAjaxRequests(ajaxOptions, element) {
             // update form status before and after ajax calls
-            var old_beforeSend = ajaxOptions.beforeSend;
-            var new_beforeSend = function() {
-                (old_beforeSend || $.noop).apply(this, arguments);
+            var oldBeforeSend = ajaxOptions.beforeSend;
+            var newBeforeSend = function() {
+                (oldBeforeSend || $.noop).apply(this, arguments);
                 disableElementBeforeSend(element);
             };
-            ajaxOptions.beforeSend = new_beforeSend;
+            ajaxOptions.beforeSend = newBeforeSend;
             
-            var old_complete = ajaxOptions.complete;
-            var new_complete = function() {
-                (old_complete || $.noop).apply(this, arguments);
+            var oldComplete = ajaxOptions.complete;
+            var newComplete = function() {
+                (oldComplete || $.noop).apply(this, arguments);
                 enableElementOnCompletion(element);
             };
-            ajaxOptions.complete = new_complete;
+            ajaxOptions.complete = newComplete;
             return ajaxOptions;
         }
 	    
@@ -516,7 +516,7 @@
 			load: loadScript,
 	        views: {}
 	    };
-	})();
+	};
 
     // expose the b object to the global namespace.
     window.bruttijjimo = b;

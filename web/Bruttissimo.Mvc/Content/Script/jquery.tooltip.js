@@ -1,4 +1,4 @@
-; (function ($, window) {
+(function ($, window) {
     $.fn.tooltip = function (){
 		var classes = {
 			tooltip: "tooltip",

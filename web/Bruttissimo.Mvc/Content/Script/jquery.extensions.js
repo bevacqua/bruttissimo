@@ -1,4 +1,4 @@
-﻿; (function($) {
+﻿(function($) {
 	$.fn.fadeOutAndRemove = function() {
 		return this.each(function() {
 			var self = $(this);
@@ -18,7 +18,7 @@
 			color: "#000",
 			duration: 500
 		};
-		var settings = $.extend({ }, defaults, opts);
+		var settings = $.extend({}, defaults, opts);
 		var half = settings.duration / 2;
 
 		return this.each(function() {
