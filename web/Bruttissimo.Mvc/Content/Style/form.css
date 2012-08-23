@@ -46,8 +46,7 @@ fieldset .field-validation-error {
 }
 
 fieldset .field-validation-valid.tooltip-icon,
-fieldset .field-validation-error.tooltip-icon {
-    /* javascript enabled */
+fieldset .field-validation-error.tooltip-icon { /* javascript enabled */
     display: inline-block;
     margin-bottom: 0;
 
@@ -57,7 +56,9 @@ fieldset .field-validation-error.tooltip-icon {
     vertical-align: middle;
 }
 
-fieldset .field-validation-valid.model-validation { /* javascript enabled, model validation (as in, rendered with the page) */display: none; }
+fieldset .field-validation-valid.model-validation {	/* javascript enabled, model validation (as in, rendered with the page) */
+	display: none; 
+}
 
 fieldset .field-validation-valid.tooltip-icon { background-position: -208px -192px; }
 
