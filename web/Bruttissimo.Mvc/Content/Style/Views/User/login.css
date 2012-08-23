@@ -37,7 +37,7 @@ form.provider-logon a.logon-provider-button.logon-provider-selected { }
 form.provider-logon section.provider-buttons { text-align: center; }
 
 form.provider-logon a.provider-icon {
-    background-image: url('/content/images/sprites/providers-small.png');
+    background-image: url('/image/sprite/providers-small.png');
     width: 32px;
     height: 32px;
 }
@@ -72,7 +72,7 @@ form.provider-logon a.provider-icon.yahoo-icon { background-position: -96px 0px;
     }
 
     form.provider-logon a.provider-icon {
-        background-image: url('/content/images/sprites/providers-large.png');
+        background-image: url('/image/sprite/providers-large.png');
         width: 100px;
         height: 60px;
     }

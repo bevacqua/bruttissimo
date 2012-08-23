@@ -157,7 +157,7 @@
     <value>image</value>
   </data>
   <data name="ImageUploadFolder" xml:space="preserve">
-    <value>~/Content/Images/Uploads</value>
+    <value>~/Image/Upload</value>
   </data>
   <data name="InternalServerError" xml:space="preserve">
     <value>500 Internal Server Error</value>

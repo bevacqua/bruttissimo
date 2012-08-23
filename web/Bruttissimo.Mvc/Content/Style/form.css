@@ -51,7 +51,7 @@ fieldset .field-validation-error.tooltip-icon {
     display: inline-block;
     margin-bottom: 0;
 
-    background-image: url('/content/images/sprites/icons.png');
+    background-image: url('/image/sprite/icons.png');
     width: 16px;
     height: 16px;
     vertical-align: middle;
