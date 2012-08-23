@@ -5,7 +5,7 @@ using Castle.MicroKernel;
 
 namespace Bruttissimo.Common.Mvc
 {
-    public class WindsorModelBinderProvider : IModelBinderProvider
+    internal sealed class WindsorModelBinderProvider : IModelBinderProvider
     {
         private readonly IKernel kernel;
         private readonly IDictionary<Type, Type> modelBinderTypes;

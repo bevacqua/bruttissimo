@@ -5,7 +5,7 @@ using Bruttissimo.Common;
 using Bruttissimo.Common.Resources;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain;
-using Castle.Windsor;
+using Bruttissimo.Mvc.Windsor;
 using log4net;
 using StackExchange.Profiling;
 
@@ -17,20 +17,13 @@ namespace Bruttissimo.Mvc
 
         protected void Application_Start()
         {
-            // System.Diagnostics.Debugger.Break(); // debug application start in IIS.
+            System.Diagnostics.Debugger.Break(); // debug application start in IIS.
+            CompositionRoot.Install(new ApplicationInstaller());
+            
             MvcHandler.DisableMvcResponseHeader = true;
             AreaRegistration.RegisterAllAreas();
             Routing.RegisterRoutes(RouteTable.Routes);
-
-            InitializeDependencies();
             log.Debug(Debug.ApplicationStart);
-        }
-
-        private void InitializeDependencies()
-        {
-            IWindsorContainer container = new WindsorContainer();
-            container.Install(new ApplicationInstaller());
-            IoC.Bootstrap(container);
         }
 
         protected void Application_PreSendRequestHeaders()

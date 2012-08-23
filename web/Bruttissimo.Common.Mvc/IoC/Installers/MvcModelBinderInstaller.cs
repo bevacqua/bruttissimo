@@ -12,7 +12,7 @@ namespace Bruttissimo.Common.Mvc
     /// <summary>
     /// Registers all model binders and the model binder provider.
     /// </summary>
-    public sealed class MvcModelBinderInstaller : IWindsorInstaller
+    internal sealed class MvcModelBinderInstaller : IWindsorInstaller
     {
         private readonly Assembly assembly;
 

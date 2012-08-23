@@ -6,7 +6,7 @@ using FluentValidation.Attributes;
 
 namespace Bruttissimo.Common.Mvc
 {
-    public class WindsorValidatorFactory : ValidatorFactoryBase
+    internal sealed class WindsorValidatorFactory : ValidatorFactoryBase
     {
         private readonly IKernel kernel;
 

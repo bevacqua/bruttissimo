@@ -10,7 +10,7 @@ namespace Bruttissimo.Common.Mvc
     /// <summary>
     /// Registers all ASP.NET related components.
     /// </summary>
-    public sealed class AspNetInstaller : IWindsorInstaller
+    internal sealed class AspNetInstaller : IWindsorInstaller
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {

@@ -1,5 +1,5 @@
 ﻿using System.Web;
-using Bruttissimo.Common.Mvc;
+using Bruttissimo.Common;
 using log4net.Appender;
 using log4net.Core;
 

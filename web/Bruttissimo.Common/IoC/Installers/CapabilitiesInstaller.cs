@@ -1,22 +1,21 @@
 using Castle.MicroKernel.Registration;
+using Castle.MicroKernel.Resolvers;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common
 {
     /// <summary>
     /// Registers common dependencies and components.
     /// </summary>
-    internal sealed class MvcComponentInstaller : IWindsorInstaller
+    internal sealed class CapabilitiesInstaller : IWindsorInstaller
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            // Register the default RedirectToHomeResult.
             container.Register(
                 Component
-                    .For<RedirectToHomeResult>()
-                    .ImplementedBy<RedirectToHomeResult>()
-                    .LifestyleTransient()
+                    .For<ILazyComponentLoader>()
+                    .ImplementedBy<LazyOfTComponentLoader>()
                 );
         }
     }

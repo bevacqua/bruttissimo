@@ -96,6 +96,7 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="CompositionRoot.cs" />
     <Compile Include="Installers\LibraryInstaller.cs" />
     <Compile Include="Installers\MiniMembershipInstaller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

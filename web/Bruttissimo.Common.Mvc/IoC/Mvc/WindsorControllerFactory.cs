@@ -5,7 +5,7 @@ using Castle.MicroKernel;
 
 namespace Bruttissimo.Common.Mvc
 {
-    public class WindsorControllerFactory : DefaultControllerFactory
+    internal sealed class WindsorControllerFactory : DefaultControllerFactory
     {
         private readonly IKernel kernel;
 

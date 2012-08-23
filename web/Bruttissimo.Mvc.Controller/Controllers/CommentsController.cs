@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using Bruttissimo.Common;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain;
 

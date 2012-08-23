@@ -5,7 +5,7 @@ namespace Bruttissimo.Common.Mvc
     /// <summary>
     /// Defines the model type a model binder is in charge of binding.
     /// </summary>
-    public class ModelTypeAttribute : Attribute
+    public sealed class ModelTypeAttribute : Attribute
     {
         public Type ModelType { get; private set; }
 

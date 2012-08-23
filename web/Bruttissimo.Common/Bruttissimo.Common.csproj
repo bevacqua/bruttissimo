@@ -96,7 +96,17 @@
     <Compile Include="Extensions\WebResponse.cs" />
     <Compile Include="Helpers\Uri.cs" />
     <Compile Include="CompiledRegex.cs" />
+    <Compile Include="IoC\AutoMapper\IMapper.cs" />
+    <Compile Include="IoC\AutoMapper\Mapper.cs" />
+    <Compile Include="IoC\ContainerAccessor.cs" />
+    <Compile Include="IoC\Installers\AutoMapperInstaller.cs" />
+    <Compile Include="IoC\Installers\CapabilitiesInstaller.cs" />
+    <Compile Include="IoC\Installers\CommonInstaller.cs" />
+    <Compile Include="IoC\Installers\QuartzInstaller.cs" />
+    <Compile Include="IoC\IoC.cs" />
     <Compile Include="IoC\PropertyInjection.cs" />
+    <Compile Include="IoC\Quartz\WindsorJobFactory.cs" />
+    <Compile Include="IoC\Quartz\WindsorSchedulerFactory.cs" />
     <Compile Include="log4net\NullableAdoNetParameter.cs" />
     <Compile Include="log4net\ExceptionDataLayoutPattern.cs" />
     <Compile Include="ExtendedWebClient.cs">
@@ -190,6 +200,7 @@
     <Compile Include="Extensions\String.cs" />
     <Compile Include="Extensions\TimeSpan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="IoC\Installers\UtilityInstaller.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Authentication.resx">

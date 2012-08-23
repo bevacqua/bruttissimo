@@ -10,7 +10,7 @@ namespace Bruttissimo.Common.Mvc
     /// <summary>
     /// Registers all fluent validators.
     /// </summary>
-    public sealed class MvcModelValidatorInstaller : IWindsorInstaller
+    internal sealed class MvcModelValidatorInstaller : IWindsorInstaller
     {
         private readonly Assembly assembly;
 

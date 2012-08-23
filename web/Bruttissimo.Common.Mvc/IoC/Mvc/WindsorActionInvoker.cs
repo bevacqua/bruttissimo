@@ -3,7 +3,7 @@ using System.Web.Mvc;
 
 namespace Bruttissimo.Common.Mvc
 {
-    public class WindsorActionInvoker : ControllerActionInvoker
+    internal sealed class WindsorActionInvoker : ControllerActionInvoker
     {
         private readonly ActionInvokerFilters filters;
 

@@ -49,16 +49,14 @@ namespace Bruttissimo.Mvc.Windsor
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             MvcInstallerParameters parameters = GetMvcInstallerParameters();
-            Type[] profileTypes = GetAutoMapperProfileTypes();
 
             container.Install(
-                new MvcInfrastructureInstaller(parameters),
-                new AutoMapperInstaller(profileTypes),
+                new MvcInstaller(parameters),
                 new MiniMembershipInstaller(),
                 new ServiceInstaller(),
                 new RepositoryInstaller(),
                 new LibraryInstaller()
-                );
+            );
         }
 
         private MvcInstallerParameters GetMvcInstallerParameters()
@@ -66,17 +64,19 @@ namespace Bruttissimo.Mvc.Windsor
             Assembly modelAssembly = typeof (UserLoginModel).Assembly;
             Assembly controllerAssembly = typeof (HomeController).Assembly;
             ActionInvokerFilters filters = new ActionInvokerFilters();
-            Assembly jobAssembly = typeof (FacebookService).Assembly;
+            Assembly jobAssembly = typeof(FacebookService).Assembly;
+            Type[] profileTypes = GetAutoMapperProfileTypes();
             MvcInstallerParameters parameters = new MvcInstallerParameters
-                (
+            (
                 modelAssembly,
                 viewAssembly,
                 controllerAssembly,
                 applicationTitle,
                 resourceAssemblies,
                 filters,
-                jobAssembly
-                );
+                jobAssembly,
+                profileTypes
+            );
             return parameters;
         }
 

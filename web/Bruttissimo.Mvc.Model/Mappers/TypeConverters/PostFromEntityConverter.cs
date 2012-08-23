@@ -1,6 +1,6 @@
 using System;
 using AutoMapper;
-using Bruttissimo.Common.Mvc;
+using Bruttissimo.Common;
 using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Mvc.Model

@@ -14,7 +14,7 @@ namespace Bruttissimo.Common.Mvc
     /// <summary>
     /// Registers core MVC-specific dependencies.
     /// </summary>
-    public sealed class MvcViewInstaller : IWindsorInstaller
+    internal sealed class MvcViewInstaller : IWindsorInstaller
     {
         private readonly Assembly assembly;
 

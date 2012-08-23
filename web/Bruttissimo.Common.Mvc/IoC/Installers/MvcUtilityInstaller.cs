@@ -1,36 +1,34 @@
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using SquishIt.Less;
-using Yahoo.Yui.Compressor;
 
 namespace Bruttissimo.Common.Mvc
 {
     /// <summary>
-    /// Registers SquishIt components, such as preprocessors.
+    /// Registers all internal component dependencies, such as Mvc utility classes.
     /// </summary>
-    internal class SquishItInstaller : IWindsorInstaller
+    internal class MvcUtilityInstaller : IWindsorInstaller
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(
                 Component
-                    .For<LessPreprocessor>()
-                    .ImplementedBy<LessPreprocessor>()
+                    .For<ResourceCompressor>()
+                    .ImplementedBy<ResourceCompressor>()
                     .LifestyleTransient()
                 );
 
             container.Register(
                 Component
-                    .For<CssCompressor>()
-                    .ImplementedBy<CssCompressor>()
+                    .For<ExceptionHelper>()
+                    .ImplementedBy<ExceptionHelper>()
                     .LifestyleTransient()
                 );
 
             container.Register(
                 Component
-                    .For<JavaScriptCompressor>()
-                    .ImplementedBy<JavaScriptCompressor>()
+                    .For<RequestSanitizer>()
+                    .ImplementedBy<RequestSanitizer>()
                     .LifestyleTransient()
                 );
         }
