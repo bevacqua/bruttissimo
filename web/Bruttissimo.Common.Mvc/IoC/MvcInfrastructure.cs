@@ -1,6 +1,5 @@
 ﻿using System.Web.Mvc;
 using Castle.MicroKernel;
-using Castle.Windsor;
 using FluentValidation.Mvc;
 using SquishIt.Framework;
 using SquishIt.Less;
