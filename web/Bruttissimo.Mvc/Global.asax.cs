@@ -21,7 +21,7 @@ namespace Bruttissimo.Mvc
             Routing.RegisterRoutes(RouteTable.Routes);
 
             IJobAutoRunner autoRunner = IoC.Container.Resolve<IJobAutoRunner>();
-            autoRunner.Fire(); // fire auto run jobs.
+            autoRunner.Fire();
 
             log.Debug(Debug.ApplicationStart);
         }
