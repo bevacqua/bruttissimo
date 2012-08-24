@@ -7,7 +7,7 @@ namespace Bruttissimo.Common
 {
     public class JobAutoRunner : IJobAutoRunner
     {
-        private readonly ILog log = LogManager.GetLogger(typeof (JobAutoRunner));
+        private readonly ILog log = LogManager.GetLogger(typeof(JobAutoRunner));
         private readonly IScheduler scheduler;
         private readonly IList<Type> jobTypes;
 
