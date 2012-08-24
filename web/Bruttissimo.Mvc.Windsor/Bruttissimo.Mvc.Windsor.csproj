@@ -104,7 +104,6 @@
     <Compile Include="Installers\RepositoryInstaller.cs" />
     <Compile Include="Installers\ServiceInstaller.cs" />
     <Compile Include="Installers\WindsorInstaller.cs" />
-    <Compile Include="WindsorDependencyResolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bruttissimo.Common.Mvc\Bruttissimo.Common.Mvc.csproj">

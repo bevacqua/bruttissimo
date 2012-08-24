@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Bruttissimo.Common;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Registration;
 using SignalR;
 
-namespace Bruttissimo.Mvc.Windsor
+namespace Bruttissimo.Common.Mvc
 {
     public class WindsorDependencyResolver : DefaultDependencyResolver
     {

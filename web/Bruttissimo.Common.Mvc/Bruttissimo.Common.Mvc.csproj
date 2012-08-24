@@ -145,7 +145,8 @@
     <Compile Include="Interface\IResourceCompressor.cs" />
     <Compile Include="SignalR\Extensions\HubJavaScriptMinifier.cs" />
     <Compile Include="SignalR\HubContextWrapper.cs" />
-    <Compile Include="SignalR\IHubContextWrapper.cs" />
+    <Compile Include="Interface\IHubContextWrapper.cs" />
+    <Compile Include="IoC\SignalR\WindsorDependencyResolver.cs" />
     <Compile Include="Utility\RequestSanitizer.cs" />
     <Compile Include="IoC\Mvc\WindsorModelBinderProvider.cs" />
     <Compile Include="IoC\Membership\WindsorRoleProviderMvc.cs" />
