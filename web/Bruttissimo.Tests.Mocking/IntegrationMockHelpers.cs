@@ -1,5 +1,6 @@
 using System.Web;
 using System.Web.Routing;
+using Bruttissimo.Common;
 using Bruttissimo.Mvc;
 using Castle.Core;
 using Castle.MicroKernel.Registration;

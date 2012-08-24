@@ -135,7 +135,7 @@
     <Compile Include="Core\Engine\ExtendedWebViewPage.cs" />
     <Compile Include="Core\Helpers\JavaScriptHelper.cs" />
     <Compile Include="Extensions\RouteData.cs" />
-    <Compile Include="Utility\IResourceCompressor.cs" />
+    <Compile Include="Interface\IResourceCompressor.cs" />
     <Compile Include="Utility\RequestSanitizer.cs" />
     <Compile Include="IoC\Mvc\WindsorModelBinderProvider.cs" />
     <Compile Include="IoC\Membership\WindsorRoleProviderMvc.cs" />

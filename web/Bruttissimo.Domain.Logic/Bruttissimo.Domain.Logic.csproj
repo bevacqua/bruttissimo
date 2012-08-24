@@ -119,7 +119,7 @@
     <Compile Include="Service\FacebookService.cs" />
     <Compile Include="MiniMembership\MiniAuthenticationWrapper.cs" />
     <Compile Include="Service\LogService.cs" />
-    <Compile Include="SignalR\Extensions\HubContextWrapper.cs" />
+    <Compile Include="SignalR\Extensions\JavaScriptMinifier.cs" />
     <Compile Include="SignalR\Hub\LogHub.cs" />
     <Compile Include="MiniMembership\MiniIdentity.cs" />
     <Compile Include="MiniMembership\MiniPrincipal.cs" />

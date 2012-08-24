@@ -2,6 +2,7 @@
 using Bruttissimo.Common.Mvc;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
+using SignalR;
 
 namespace Bruttissimo.Mvc.Windsor
 {
@@ -12,7 +13,11 @@ namespace Bruttissimo.Mvc.Windsor
             IWindsorContainer container = new WindsorContainer();
             container.Install(installers);
             IoC.Register(container);
+
             MvcInfrastructure.Initialize(container.Kernel);
+
+            // TODO: push SignalR common stuff to Common.Mvc
+            GlobalHost.DependencyResolver = new WindsorDependencyResolver(container.Kernel);
         }
     }
 }

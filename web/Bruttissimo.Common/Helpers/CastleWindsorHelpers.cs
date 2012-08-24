@@ -1,3 +1,4 @@
+using System;
 using Castle.MicroKernel.Registration;
 
 namespace Bruttissimo.Common
@@ -12,6 +13,11 @@ namespace Bruttissimo.Common
         public static BasedOnDescriptor LifestyleHybridPerWebRequestPerThread(this BasedOnDescriptor registration)
         {
             return registration.Configure(x => x.LifeStyle.HybridPerWebRequestPerThread());
+        }
+
+        public static ComponentRegistration<T> OverridesExistingRegistration<T>(this ComponentRegistration<T> componentRegistration) where T : class
+        {
+            return componentRegistration.Named(Guid.NewGuid().ToString()).IsDefault();
         }
     }
 }
