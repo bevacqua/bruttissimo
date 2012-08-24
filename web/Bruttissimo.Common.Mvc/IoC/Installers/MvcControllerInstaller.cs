@@ -7,6 +7,7 @@ using Castle.MicroKernel.Context;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
+using StackExchange.Profiling.MVCHelpers;
 using log4net;
 
 namespace Bruttissimo.Common.Mvc
@@ -64,14 +65,19 @@ namespace Bruttissimo.Common.Mvc
 
         private IActionInvoker InstanceActionInvoker(IKernel kernel, ComponentModel model, CreationContext context)
         {
+            ActionInvokerFilters filters = parameters.Filters;
+
+            AjaxTransformFilter ajaxTransform = new AjaxTransformFilter(parameters.ApplicationTitle);
+            ProfilingActionFilter profiler = new ProfilingActionFilter();
+
             Type loggerType = context.Handler.ComponentModel.Implementation;
             ILog log = LogManager.GetLogger(loggerType);
             ExceptionHelper exceptionHelper = kernel.Resolve<ExceptionHelper>();
             ChildActionExceptionFilter childActionFilter = new ChildActionExceptionFilter(log, exceptionHelper);
-            AjaxTransformFilter ajaxTransform = new AjaxTransformFilter(parameters.ApplicationTitle);
-            ActionInvokerFilters filters = parameters.Filters;
-
+            
             filters.Action.Add(ajaxTransform);
+            filters.Action.Add(profiler);
+
             filters.Exception.Add(childActionFilter);
 
             return new WindsorActionInvoker(filters);
