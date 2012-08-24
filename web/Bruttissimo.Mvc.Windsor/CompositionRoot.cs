@@ -13,9 +13,6 @@ namespace Bruttissimo.Mvc.Windsor
             container.Install(installers);
             IoC.Register(container);
             MvcInfrastructure.Initialize(container.Kernel);
-
-            IJobAutoRunner autoRunner = container.Resolve<IJobAutoRunner>();
-            autoRunner.Fire(); // fire auto run jobs.
         }
     }
 }

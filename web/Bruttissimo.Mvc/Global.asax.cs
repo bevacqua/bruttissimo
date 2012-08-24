@@ -20,6 +20,9 @@ namespace Bruttissimo.Mvc
             AreaRegistration.RegisterAllAreas();
             Routing.RegisterRoutes(RouteTable.Routes);
 
+            IJobAutoRunner autoRunner = IoC.Container.Resolve<IJobAutoRunner>();
+            autoRunner.Fire(); // fire auto run jobs.
+
             log.Debug(Debug.ApplicationStart);
         }
 
