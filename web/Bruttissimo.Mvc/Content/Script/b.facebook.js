@@ -1,5 +1,5 @@
 ﻿(function($, b, l, window) {
-	b.fb = function() {
+	b.fb = (function() {
 		var api = {
 			src: "https://connect.facebook.net/en_US/all.js",
 			id: void 0,
@@ -71,5 +71,5 @@
 			load: load,
 			login: loginWithFacebook
 		};
-	};
+	})();
 })(jQuery, bruttijjimo, localization, window);

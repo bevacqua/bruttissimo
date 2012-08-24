@@ -1,5 +1,5 @@
 ﻿(function($, b, window) {
-	b.realtime = function() {
+	b.realtime = (function() {
 		var api = {
 			url: void 0
 		};
@@ -41,5 +41,5 @@
 		return {
 			listen: listen
 		};
-	};
+	})();
 })(jQuery, bruttijjimo, window);

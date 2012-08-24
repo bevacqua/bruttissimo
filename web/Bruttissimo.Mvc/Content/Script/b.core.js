@@ -1,5 +1,5 @@
 ﻿(function (window, $, l) {
-	var b = function() {
+	var b = (function() {
 	    function createTag(tagName, css) {
 	        return $("<" + tagName + ">").addClass(css);
 	    }
@@ -516,7 +516,7 @@
 			load: loadScript,
 	        views: {}
 	    };
-	};
+	})();
 
     // expose the b object to the global namespace.
     window.bruttijjimo = b;

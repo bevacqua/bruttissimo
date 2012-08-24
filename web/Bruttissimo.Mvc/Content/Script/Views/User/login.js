@@ -1,5 +1,5 @@
 (function ($, b, l, window) {
-    b.openid = function () {
+    b.openid = (function () {
     	var providers = {
     		google: {
 				source: "openid",
@@ -121,5 +121,5 @@
     	return {
             init: init
         };
-    };
+    })();
 })(jQuery, bruttijjimo, localization, window);
