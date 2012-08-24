@@ -8,6 +8,9 @@ namespace Bruttissimo.Common.Mvc
     {
         public void Init(HttpApplication context)
         {
+            MiniProfiler.Settings.Results_Authorize = AuthorizeRequest;
+            MiniProfiler.Settings.Results_List_Authorize = AuthorizeRequest;
+
             context.BeginRequest += BeginRequest;
             context.PostAuthenticateRequest += PostAuthenticateRequest;
             context.EndRequest += EndRequest;
@@ -27,11 +30,16 @@ namespace Bruttissimo.Common.Mvc
             HttpApplication application = (HttpApplication)sender;
             HttpRequest request = application.Request;
             
-            if (!request.CanDisplayDebuggingDetails())
+            if (!AuthorizeRequest(request))
             {
                 // abort profiling session if this isn't a local request and the user is not an administrator.
                 MiniProfiler.Stop(discardResults: true);
             }
+        }
+
+        private bool AuthorizeRequest(HttpRequest request)
+        {
+            return request.CanDisplayDebuggingDetails();
         }
 
         protected void EndRequest(object sender, EventArgs args)
