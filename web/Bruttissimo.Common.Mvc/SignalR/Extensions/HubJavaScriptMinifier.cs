@@ -1,14 +1,13 @@
 using System;
-using Bruttissimo.Common.Mvc;
 using SignalR.Hubs;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Common.Mvc
 {
-    public sealed class JavaScriptMinifier : IJavaScriptMinifier
+    public sealed class HubJavaScriptMinifier : IJavaScriptMinifier
     {
         private readonly IResourceCompressor resourceCompressor;
 
-        public JavaScriptMinifier(IResourceCompressor resourceCompressor)
+        public HubJavaScriptMinifier(IResourceCompressor resourceCompressor)
         {
             if (resourceCompressor == null)
             {

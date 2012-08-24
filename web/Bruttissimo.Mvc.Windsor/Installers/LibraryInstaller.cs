@@ -1,4 +1,3 @@
-using Bruttissimo.Domain;
 using Bruttissimo.Domain.Logic;
 using Bruttissimo.Domain.Logic.Email.Template;
 using Bruttissimo.Extensions.RazorEngine;
@@ -49,13 +48,6 @@ namespace Bruttissimo.Mvc.Windsor
                     .For<OpenIdRelyingParty>()
                     .ImplementedBy<OpenIdRelyingParty>()
                     .LifestyleSingleton()
-                );
-
-            container.Register(
-                Component
-                    .For(typeof (IHubContextWrapper<>))
-                    .ImplementedBy(typeof (HubContextWrapper<>))
-                    .LifestyleTransient()
                 );
         }
 

@@ -6,6 +6,7 @@ namespace Bruttissimo.Common.Mvc
 {
     public sealed class MvcInstallerParameters
     {
+        public Assembly HubAssembly { get; private set; }
         public Assembly ModelAssembly { get; private set; }
         public Assembly ViewAssembly { get; private set; }
         public Assembly ControllerAssembly { get; private set; }
@@ -26,6 +27,7 @@ namespace Bruttissimo.Common.Mvc
         /// <param name="filters">A list of default action invoker filters.</param>
         /// <param name="jobAssembly">The assembly containing jobs.</param>
         /// <param name="automapperProfileTypes">A list of AutoMapper profile types.</param>
+        /// <param name="hubAssembly">The SignalR hub assembly.</param>
         public MvcInstallerParameters(
             Assembly modelAssembly,
             Assembly viewAssembly,
@@ -34,7 +36,8 @@ namespace Bruttissimo.Common.Mvc
             IList<ResourceAssemblyLocation> resourceAssemblies,
             ActionInvokerFilters filters,
             Assembly jobAssembly,
-            Type[] automapperProfileTypes)
+            Type[] automapperProfileTypes,
+            Assembly hubAssembly)
         {
             if (modelAssembly == null)
             {
@@ -68,6 +71,10 @@ namespace Bruttissimo.Common.Mvc
             {
                 throw new ArgumentNullException("automapperProfileTypes");
             }
+            if (hubAssembly == null)
+            {
+                throw new ArgumentNullException("hubAssembly");
+            }
             ModelAssembly = modelAssembly;
             ViewAssembly = viewAssembly;
             ControllerAssembly = controllerAssembly;
@@ -76,6 +83,7 @@ namespace Bruttissimo.Common.Mvc
             Filters = filters;
             JobAssembly = jobAssembly;
             AutomapperProfileTypes = automapperProfileTypes;
+            HubAssembly = hubAssembly;
         }
     }
 }

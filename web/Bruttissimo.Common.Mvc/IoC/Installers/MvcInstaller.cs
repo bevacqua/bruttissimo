@@ -36,7 +36,8 @@ namespace Bruttissimo.Common.Mvc
                 new MvcModelValidatorInstaller(parameters.ModelAssembly),
                 new MvcUtilityInstaller(),
                 new MvcViewInstaller(parameters.ViewAssembly),
-                new SquishItInstaller()
+                new SquishItInstaller(),
+                new SignalRInstaller(parameters.HubAssembly)
             );
         }
     }

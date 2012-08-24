@@ -1,6 +1,7 @@
 using System;
 using System.Web;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain.Logic.Hubs;
 using log4net.Core;
 

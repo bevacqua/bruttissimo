@@ -1,7 +1,7 @@
 using SignalR;
 using SignalR.Hubs;
 
-namespace Bruttissimo.Domain
+namespace Bruttissimo.Common.Mvc
 {
     public class HubContextWrapper<THub> : IHubContextWrapper<THub> where THub : IHub
     {

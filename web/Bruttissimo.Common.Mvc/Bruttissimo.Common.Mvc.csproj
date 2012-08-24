@@ -52,6 +52,15 @@
     <Reference Include="MiniProfiler">
       <HintPath>..\packages\MiniProfiler.2.0.2\lib\net40\MiniProfiler.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SignalR">
+      <HintPath>..\packages\SignalR.Server.0.5.2\lib\net40\SignalR.dll</HintPath>
+    </Reference>
+    <Reference Include="SignalR.Hosting.Common">
+      <HintPath>..\packages\SignalR.Hosting.Common.0.5.2\lib\net40\SignalR.Hosting.Common.dll</HintPath>
+    </Reference>
     <Reference Include="SquishIt.Framework">
       <HintPath>..\packages\SquishIt.0.9.0-alpha3\lib\SquishIt.Framework.dll</HintPath>
     </Reference>
@@ -111,6 +120,7 @@
     <Compile Include="HttpModules\HeaderCleanupModule.cs" />
     <Compile Include="HttpModules\MiniProfilerModule.cs" />
     <Compile Include="HttpModules\RequestSanitizerModule.cs" />
+    <Compile Include="IoC\Installers\SignalRInstaller.cs" />
     <Compile Include="IoC\Installers\HttpModuleInstaller.cs" />
     <Compile Include="IoC\MvcInfrastructure.cs" />
     <Compile Include="IoC\Mvc\ActionInvokerFilters.cs" />
@@ -136,6 +146,9 @@
     <Compile Include="Core\Helpers\JavaScriptHelper.cs" />
     <Compile Include="Extensions\RouteData.cs" />
     <Compile Include="Interface\IResourceCompressor.cs" />
+    <Compile Include="SignalR\Extensions\HubJavaScriptMinifier.cs" />
+    <Compile Include="SignalR\HubContextWrapper.cs" />
+    <Compile Include="SignalR\IHubContextWrapper.cs" />
     <Compile Include="Utility\RequestSanitizer.cs" />
     <Compile Include="IoC\Mvc\WindsorModelBinderProvider.cs" />
     <Compile Include="IoC\Membership\WindsorRoleProviderMvc.cs" />

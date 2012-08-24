@@ -4,6 +4,7 @@ using System.Reflection;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain.Entity;
 using Bruttissimo.Domain.Logic;
+using Bruttissimo.Domain.Logic.Hubs;
 using Bruttissimo.Mvc.Controller;
 using Bruttissimo.Mvc.Model;
 using Castle.MicroKernel.Registration;
@@ -66,6 +67,8 @@ namespace Bruttissimo.Mvc.Windsor
             ActionInvokerFilters filters = new ActionInvokerFilters();
             Assembly jobAssembly = typeof(FacebookService).Assembly;
             Type[] profileTypes = GetAutoMapperProfileTypes();
+            Assembly hubAssembly = typeof (LogHub).Assembly;
+
             MvcInstallerParameters parameters = new MvcInstallerParameters
             (
                 modelAssembly,
@@ -75,7 +78,8 @@ namespace Bruttissimo.Mvc.Windsor
                 resourceAssemblies,
                 filters,
                 jobAssembly,
-                profileTypes
+                profileTypes,
+                hubAssembly
             );
             return parameters;
         }
