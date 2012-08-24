@@ -75,7 +75,8 @@ namespace Bruttissimo.Common.Mvc
             }
             else
             {
-                minified = minify(plain);
+                string raw = plain.Replace("/*!", "/*"); // ignore mandatory comments.
+                minified = minify(raw);
             }
             if (wrapResultInTags)
             {
