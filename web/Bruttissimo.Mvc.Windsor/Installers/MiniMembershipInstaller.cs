@@ -1,3 +1,4 @@
+using System.Web;
 using System.Web.Security;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Logic;
@@ -8,7 +9,7 @@ using Castle.Windsor;
 namespace Bruttissimo.Mvc.Windsor
 {
     /// <summary>
-    /// Installs ASP.NET membership components.
+    /// Installs MiniMembership implementation components.
     /// </summary>
     public class MiniMembershipInstaller : IWindsorInstaller
     {
@@ -27,7 +28,6 @@ namespace Bruttissimo.Mvc.Windsor
                     .ImplementedBy<MiniRoleProvider>()
                     .LifestylePerWebRequest()
                 );
-
             container.Register(
                 Component
                     .For<MiniAuthentication>()
@@ -40,6 +40,13 @@ namespace Bruttissimo.Mvc.Windsor
                     .For<IMiniAuthentication>()
                     .ImplementedBy<MiniAuthenticationWrapper>()
                     .LifestylePerWebRequest()
+                );
+
+            container.Register(
+                Component
+                    .For<IHttpModule>()
+                    .ImplementedBy<MiniAuthenticationModule>()
+                    .LifestyleTransient()
                 );
         }
     }

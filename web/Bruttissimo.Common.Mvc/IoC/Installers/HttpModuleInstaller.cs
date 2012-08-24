@@ -1,6 +1,4 @@
-using System.Net.Mail;
 using System.Web;
-using System.Web.Routing;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
