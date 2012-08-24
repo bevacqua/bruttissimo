@@ -29,6 +29,7 @@ namespace Bruttissimo.Common.Mvc
             container.Install(
                 new CommonInstaller(parameters.JobAssembly, parameters.AutomapperProfileTypes),
                 new AspNetInstaller(),
+                new HttpModuleInstaller(),
                 new MvcComponentInstaller(),
                 new MvcControllerInstaller(parameters),
                 new MvcModelBinderInstaller(parameters.ModelAssembly),

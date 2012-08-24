@@ -106,6 +106,12 @@
     <Compile Include="FluentValidation\NullModelValidator.cs" />
     <Compile Include="Helpers\MvcResourceHelper.cs" />
     <Compile Include="Extensions\IView.cs" />
+    <Compile Include="HttpModules\LogModule.cs" />
+    <Compile Include="HttpModules\ErrorHandlerModule.cs" />
+    <Compile Include="HttpModules\HeaderCleanupModule.cs" />
+    <Compile Include="HttpModules\MiniProfilerModule.cs" />
+    <Compile Include="HttpModules\RequestSanitizerModule.cs" />
+    <Compile Include="IoC\Installers\HttpModuleInstaller.cs" />
     <Compile Include="IoC\MvcInfrastructure.cs" />
     <Compile Include="IoC\Mvc\ActionInvokerFilters.cs" />
     <Compile Include="IoC\Installers\MvcComponentInstaller.cs" />

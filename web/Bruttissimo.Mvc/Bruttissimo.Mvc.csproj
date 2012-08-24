@@ -104,6 +104,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\.gitattributes">
+      <Link>.gitattributes</Link>
+    </Content>
     <Content Include="Image\Email\facebook.png" />
     <Content Include="Image\Email\header.gif" />
     <Content Include="Image\Email\news.png" />
