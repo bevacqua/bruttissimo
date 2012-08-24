@@ -13,9 +13,9 @@ namespace Bruttissimo.Common.Mvc
     public sealed class JavaScriptHelper
     {
         private readonly HttpContextBase context;
-        private readonly ResourceCompressor compressor;
+        private readonly IResourceCompressor compressor;
 
-        public JavaScriptHelper(HttpContextBase context, ResourceCompressor compressor)
+        public JavaScriptHelper(HttpContextBase context, IResourceCompressor compressor)
         {
             if (context == null)
             {

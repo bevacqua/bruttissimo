@@ -5,7 +5,7 @@ using Yahoo.Yui.Compressor;
 
 namespace Bruttissimo.Common.Mvc
 {
-    public class ResourceCompressor
+    public class ResourceCompressor : IResourceCompressor
     {
         private readonly CssCompressor cssCompressor;
         private readonly JavaScriptCompressor jsCompressor;
@@ -24,6 +24,19 @@ namespace Bruttissimo.Common.Mvc
             this.jsCompressor = jsCompressor;
         }
 
+        public string MinifyStylesheet(IEnumerable<string> sources, bool wrapResultInTags = true)
+        {
+            StringBuilder builder = new StringBuilder();
+            foreach (string styleSheet in sources)
+            {
+                string source = StripTag(Resources.Html.StyleTagName, styleSheet);
+                builder.AppendLine(source);
+            }
+            string all = builder.ToString();
+            return MinifyStylesheet(all, wrapResultInTags);
+        }
+
+
         public string MinifyStylesheet(string source, bool wrapResultInTags = true)
         {
             string tag = Resources.Html.StyleTagName;
@@ -36,7 +49,7 @@ namespace Bruttissimo.Common.Mvc
             foreach (string script in sources)
             {
                 string source = StripTag(Resources.Html.ScriptTagName, script);
-                builder.Append(source);
+                builder.AppendLine(source);
             }
             string all = builder.ToString();
             return MinifyJavaScript(all, wrapResultInTags);
@@ -48,7 +61,7 @@ namespace Bruttissimo.Common.Mvc
             return MinifyResource(source, wrapResultInTags, tag, jsCompressor.Compress);
         }
 
-        private string MinifyResource(string source, bool wrapResultInTags, string tag, Func<string, string> minify)
+        internal string MinifyResource(string source, bool wrapResultInTags, string tag, Func<string, string> minify)
         {
             if (source == null)
             {
@@ -75,7 +88,7 @@ namespace Bruttissimo.Common.Mvc
             }
         }
 
-        public string StripTag(string tag, string source)
+        internal string StripTag(string tag, string source)
         {
             tag = Resources.Html.TagFormat.FormatWith(tag);
             source = source.Trim();

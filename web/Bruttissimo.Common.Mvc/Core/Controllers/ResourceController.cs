@@ -15,9 +15,9 @@ namespace Bruttissimo.Common.Mvc
     {
         private readonly IList<ResourceAssemblyLocation> locations;
         private readonly ResourceAssemblyLocation sharedLocation;
-        private readonly ResourceCompressor compressor;
+        private readonly IResourceCompressor compressor;
 
-        public ResourceController(IList<ResourceAssemblyLocation> locations, ResourceCompressor compressor)
+        public ResourceController(IList<ResourceAssemblyLocation> locations, IResourceCompressor compressor)
         {
             if (locations == null)
             {

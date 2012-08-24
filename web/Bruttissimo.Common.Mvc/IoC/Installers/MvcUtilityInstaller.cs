@@ -13,7 +13,7 @@ namespace Bruttissimo.Common.Mvc
         {
             container.Register(
                 Component
-                    .For<ResourceCompressor>()
+                    .For<IResourceCompressor>()
                     .ImplementedBy<ResourceCompressor>()
                     .LifestyleTransient()
                 );
