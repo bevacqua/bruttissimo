@@ -11,7 +11,7 @@ namespace Bruttissimo.Common.Mvc
         /// <summary>
         /// Initialize Mvc factories.
         /// </summary>
-        public static void HookUsing(IKernel kernel)
+        public static void Initialize(IKernel kernel)
         {
             // inject view engine.
             IViewEngine engine = kernel.Resolve<IViewEngine>();
