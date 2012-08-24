@@ -40,7 +40,7 @@ namespace Bruttissimo.Mvc.Windsor
                 .For(serviceType)
                 .UsingFactoryMethod(activator, true);
 
-            if (kernel == null) // for some obscure reason, SignalR invokes this method before the constructor even begins execution.
+            if (kernel == null) // SignalR invokes this method in the base constructor, before our constructor is executed.
             {
                 deferredRegistrations.Add(component);
             }
