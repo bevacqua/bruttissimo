@@ -5,7 +5,7 @@ using log4net.Config;
 
 [assembly: AssemblyCompany("Bruttissimo")]
 [assembly: AssemblyProduct("Bruttissimo")]
-[assembly: AssemblyCopyright("Copyright © Bruttissimo 2011")]
+[assembly: AssemblyCopyright("Copyright © Bruttissimo 2010")]
 [assembly: ComVisible(false)]
 [assembly: AssemblyVersion("1.0.*")]
 
