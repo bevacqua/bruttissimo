@@ -2,8 +2,8 @@
     b.views.post = b.views.post || {};
     b.views.post.create = function (settings) {
         var form = $("form.post-creation");
-        var linkInput = $(".post-link");
-        var messageInput = $(".post-user-message");
+        var linkInput = $("input.post-link");
+        var messageInput = $("input.post-user-message");
         var previewContainer = $("article.post-preview");
 
         b.ajaxify({
@@ -24,6 +24,32 @@
                     alert("post-as-comment clicked");
                 }
             });
+        }
+
+        function validatePreview() {
+            if (!form.valid()) { // no link was provided, or the provided link is missing its protocol.
+                return false;
+            }
+            if (!previewContainer.is(":visible")) { // reduce overhead for small screen devices.
+                previewContainer.empty();
+                return false;
+            }
+            var last = form.data("preview-xhr") || {};
+            if (last.model && last.model.input === input) { // avoid duplicates.
+                return false;
+            }
+            if (last.xhr && last.xhr.readyState !== 4) { // abort request in progress.
+                last.xhr.abort();
+            }
+            if (b.ajax.isDisabled(form)) { // sanity.
+                return false;
+            }
+            var previews = form.data("previews") || [];
+            if (input in previews) {
+                b.ajax.success(previews[input], previewContainer); // preview from cache.
+                return false;
+            }
+            return true; // valid, can perform request.
         }
 
         function previewSuccess(result, model) {
@@ -63,26 +89,7 @@
         function preview() {
             var input = linkInput.val();
 
-            if (!form.valid()) { // no link was provided, or the provided link is missing its protocol.
-                return;
-            }
-            if (!previewContainer.is(":visible")) { // reduce overhead for small screen devices.
-                previewContainer.empty();
-                return;
-            }
-            var last = form.data("preview-xhr") || {};
-            if (last.model && last.model.input === input) { // avoid duplicates.
-                return;
-            }
-            if (last.xhr && last.xhr.readyState !== 4) { // abort request in progress.
-                last.xhr.abort();
-            }
-            if (b.ajax.isDisabled(form)) { // sanity.
-                return;
-            }
-            var previews = form.data("previews") || [];
-            if (input in previews) {
-                b.ajax.success(previews[input], previewContainer);
+            if (!validatePreview()) {
                 return;
             }
             previewContainer.empty();
@@ -97,7 +104,7 @@
                 }
             };
             ajaxOptions = b.ajax.disableDuringRequests(ajaxOptions, form);
-            last = {
+            var last = {
                 model: model,
                 xhr: $.ajax(ajaxOptions)
             };
