@@ -66,6 +66,7 @@
     <Compile Include="Mappers\TypeConverters\PostListFromEntitiesConverter.cs" />
     <Compile Include="Validators\PostCreationModelValidator.cs" />
     <Compile Include="Validators\UserLoginModelValidator.cs" />
+    <Compile Include="ViewModels\CommentCreationModel.cs" />
     <Compile Include="ViewModels\JobModel.cs" />
     <Compile Include="ViewModels\ScheduledJobModel.cs" />
     <Compile Include="ViewModels\LogModel.cs" />

@@ -44,7 +44,7 @@ namespace Bruttissimo.Mvc
         {
             routes.MapRouteLowercase(
                 "Comment", "Posts/{id}/Comment",
-                new { controller = "Comments", action = "New", id = UrlConstraint.RequiredNumeric },
+                new { controller = "Comments", action = "Create", id = UrlConstraint.RequiredNumeric },
                 new { id = UrlConstraint.RequiredNumeric });
 
             routes.MapRouteLowercase(

@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using Bruttissimo.Common;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain;
+using Bruttissimo.Mvc.Model;
 
 namespace Bruttissimo.Mvc.Controller
 {
@@ -28,14 +29,14 @@ namespace Bruttissimo.Mvc.Controller
         [HttpGet]
         [NotAjax]
         [ExtendedAuthorize]
-        public ActionResult New(long id)
+        public ActionResult Create(long id)
         {
             return RedirectToActionPermanent("Details", "Posts", new { id }); // lets be graceful.
         }
 
         [HttpPost]
         [ExtendedAuthorize]
-        public ActionResult New(long id, string comment, IMiniPrincipal principal)
+        public ActionResult Create(CommentCreationModel model)
         {
             throw new NotImplementedException();
         }
