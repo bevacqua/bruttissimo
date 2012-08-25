@@ -86,7 +86,7 @@
             }
         }
 
-        function preview() {
+        function previewLink() {
             var input = linkInput.val();
 
             if (!validatePreview()) {
@@ -113,7 +113,7 @@
 
         // ajax-only functionality to preview a link.
         linkInput.on("paste.preview, change.preview", function () {
-            setTimeout(function () { preview(); }, 0); // setTimeout is required to get the correct value after paste.
+            setTimeout(function () { previewLink(); }, 0); // setTimeout is required to get the correct value after paste.
         });
 
     };
