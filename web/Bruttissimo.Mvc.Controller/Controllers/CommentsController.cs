@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Web.Mvc;
-using Bruttissimo.Common;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain;
+using Bruttissimo.Domain.Entity;
 using Bruttissimo.Mvc.Model;
 
 namespace Bruttissimo.Mvc.Controller
@@ -10,26 +10,21 @@ namespace Bruttissimo.Mvc.Controller
     public class CommentsController : ExtendedController
     {
         private readonly ICommentService commentService;
-        private readonly IMapper mapper;
 
-        public CommentsController(ICommentService commentService, IMapper mapper)
+        public CommentsController(ICommentService commentService)
         {
             if (commentService == null)
             {
                 throw new ArgumentNullException("commentService");
             }
-            if (mapper == null)
-            {
-                throw new ArgumentNullException("mapper");
-            }
             this.commentService = commentService;
-            this.mapper = mapper;
         }
 
         [HttpPost]
         [ExtendedAuthorize]
-        public ActionResult New(CommentCreationModel model, IMiniPrincipal principal)
+        public ActionResult Create(CommentCreationModel model, IMiniPrincipal principal)
         {
+            Comment comment = commentService.Create(model.Id, model.Message, principal.User);
             throw new NotImplementedException();
         }
     }

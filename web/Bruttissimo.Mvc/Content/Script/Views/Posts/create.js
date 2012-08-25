@@ -14,11 +14,11 @@
             }
         });
 
-        function commentOnPost(id, comment) {
+        function commentOnPost(id, message) {
             $.ajax({
                 url: settings.commentUrl.format(id),
                 data: {
-                    comment: comment
+                    message: message
                 },
                 success: function (result) {
                     alert("post-as-comment clicked");
