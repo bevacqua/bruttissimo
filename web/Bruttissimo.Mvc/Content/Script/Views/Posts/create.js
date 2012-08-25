@@ -6,9 +6,7 @@
         var messageInput = $("input.post-user-message");
         var previewContainer = $("article.post-preview");
 
-        b.ajaxify({
-            element: form
-        });
+        b.ajaxify(form);
 
         function commentOnPost(id, message) {
             $.ajax({
@@ -103,7 +101,7 @@
             };
             form.data("preview-xhr", last);
         }
-        
+
         linkInput.on("paste.preview, change.preview", function () {
             setTimeout(function () { previewLink(); }, 0); // setTimeout is required to get the correct value after paste.
         });
