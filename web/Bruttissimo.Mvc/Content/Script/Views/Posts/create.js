@@ -7,10 +7,7 @@
         var previewContainer = $("article.post-preview");
 
         b.ajaxify({
-            element: form,
-            success: function (result) {
-                alert("success"); // TODO: ajaxify when the result comes back, we should add the post to the list 
-            }
+            element: form
         });
 
         function commentOnPost(id, message) {

@@ -114,7 +114,7 @@ namespace Bruttissimo.Mvc.Controller
                 string details = DetailsRoute(post);
                 return Redirect(details); // redirect to the newly created post.
             }
-            return View(model); // TODO: reload home?
+            return View(model);
         }
         
         [HttpGet]
