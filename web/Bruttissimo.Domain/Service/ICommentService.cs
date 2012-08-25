@@ -4,6 +4,6 @@ namespace Bruttissimo.Domain
 {
     public interface ICommentService
     {
-        Comment Create(long postId, string message);
+        Comment Create(long postId, string message, User user);
     }
 }

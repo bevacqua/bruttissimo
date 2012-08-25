@@ -52,6 +52,7 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Repository\CommentRepository.cs" />
     <Compile Include="Repository\EntityRepository.cs" />
     <Compile Include="Repository\LogRepository.cs" />
     <Compile Include="Repository\LinkRepository.cs" />
