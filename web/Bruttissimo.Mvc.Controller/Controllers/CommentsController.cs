@@ -25,7 +25,9 @@ namespace Bruttissimo.Mvc.Controller
             this.mapper = mapper;
         }
 
-        public ActionResult New(long id, string comment)
+        [HttpPost]
+        [ExtendedAuthorize]
+        public ActionResult New(long id, string comment, IMiniPrincipal miniPrincipal)
         {
             throw new NotImplementedException();
         }
