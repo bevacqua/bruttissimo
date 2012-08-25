@@ -10,7 +10,6 @@
             element: form,
             success: function (result) {
                 alert("success"); // TODO: ajaxify when the result comes back, we should add the post to the list 
-                // TODO (in case the result is the partial or whatever..), this is true for any viewport size
             }
         });
 

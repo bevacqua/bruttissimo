@@ -107,6 +107,8 @@
     <Content Include="..\..\.gitattributes">
       <Link>.gitattributes</Link>
     </Content>
+    <Content Include="Content\Script\Lib\jquery-1.8.0.js" />
+    <Content Include="Content\Script\Lib\jquery-1.8.0.min.js" />
     <Content Include="Image\Email\facebook.png" />
     <Content Include="Image\Email\header.gif" />
     <Content Include="Image\Email\news.png" />
