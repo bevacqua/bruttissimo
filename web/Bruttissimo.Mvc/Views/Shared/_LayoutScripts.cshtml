@@ -27,10 +27,10 @@
 }
 @{
 @* we don't bundle external javascript links nor localization messages. *@
-    const string jQueryVersion = "1.8.0";
+    const string version = "1.8.0";
     string extension = Config.Debug.IgnoreMinification ? "js" : "min.js";
-    string jQueryExternal = "//ajax.googleapis.com/ajax/libs/jquery/{0}/jquery.{1}".FormatWith(jQueryVersion, extension);
-    string jQueryLocal = @Url.Content("~/content/script/lib/jquery-{0}.{1}".FormatWith(jQueryVersion, extension));
+    string jQueryExternal = "//ajax.googleapis.com/ajax/libs/jquery/{0}/jquery.{1}".FormatWith(version, extension);
+    string jQueryLocal = @Url.Content("~/content/script/lib/jquery-{0}.{1}".FormatWith(version, extension));
 }
 <script src="@jQueryExternal"> </script>
 <script> !window.jQuery && document.write(unescape("%3Cscript src='@jQueryLocal'%3E%3C/script%3E"))</script>
