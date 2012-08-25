@@ -14,7 +14,7 @@ namespace Bruttissimo.Mvc
 
         protected void Application_Start()
         {
-            System.Diagnostics.Debugger.Break(); // debug application start in IIS.
+            // System.Diagnostics.Debugger.Break(); // debug application start in IIS.
             CompositionRoot.Install(new ApplicationInstaller());
 
             AreaRegistration.RegisterAllAreas();
