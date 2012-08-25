@@ -132,6 +132,7 @@ namespace Bruttissimo.Mvc.Controller
             return RedirectToAction("Login"); // sanity
         }
 
+        [HttpGet]
         [NotAjax]
         public ActionResult Logout()
         {
