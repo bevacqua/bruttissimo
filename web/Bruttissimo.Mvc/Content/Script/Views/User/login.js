@@ -61,7 +61,7 @@
 				button = getButton(provider, providers[provider]);
 				container.append(button);
 			}
-			var id = b.getPreference(preferenceKey);
+			var id = b.get(preferenceKey);
 			if (id) {
 				login(id, true);
 			}
@@ -98,7 +98,7 @@
 						returnUrl: opts.returnUrl
 					});
 				} else {
-					b.setPreference(preferenceKey, id);
+					b.set(preferenceKey, id);
 					form.submit();
 				}
 			}

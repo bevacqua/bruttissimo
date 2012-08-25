@@ -32,7 +32,7 @@
             if (last.xhr && last.xhr.readyState !== 4) { // abort request in progress.
                 last.xhr.abort();
             }
-            if (b.ajax.isDisabled(form)) { // sanity.
+            if (b.ajax.disabled(form)) { // sanity.
                 return false;
             }
             var previews = form.data("previews") || [];
@@ -94,7 +94,7 @@
                     previewSuccess(result, model);
                 }
             };
-            ajaxOptions = b.ajax.disableDuringRequests(ajaxOptions, form);
+            ajaxOptions = b.ajax.disables(form, ajaxOptions);
             var last = {
                 model: model,
                 xhr: $.ajax(ajaxOptions)

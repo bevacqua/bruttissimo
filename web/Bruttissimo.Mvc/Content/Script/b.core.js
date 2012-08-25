@@ -268,7 +268,7 @@
             element.removeClass("disabled").enable(true);
         }
 
-        function disableDuringAjaxRequests(ajaxOptions, element) {
+        function disableElementDuringAjaxRequests(element, ajaxOptions) {
             // update form status before and after ajax calls
             var oldBeforeSend = ajaxOptions.beforeSend;
             var newBeforeSend = function () {
@@ -327,7 +327,7 @@
                         }
                     }
                 };
-                ajaxOptions = disableDuringAjaxRequests(ajaxOptions, opts.element);
+                ajaxOptions = disableElementDuringAjaxRequests(opts.element, ajaxOptions);
                 $.ajax(ajaxOptions);
                 e.preventDefault();
             });
@@ -340,7 +340,7 @@
             replaceSubmitButton(submit);
 
             form.submit(function (e) {
-                if (!b.ajax.isDisabled(form) && form.valid()) {
+                if (!isAjaxFormDisabled(form) && form.valid()) {
                     var ajaxOptions = {
                         success: function (result) {
                             if (ajaxSuccess(result, opts.viewResultContainer)) {
@@ -350,7 +350,7 @@
                             }
                         }
                     };
-                    ajaxOptions = disableDuringAjaxRequests(ajaxOptions, form);
+                    ajaxOptions = disableElementDuringAjaxRequests(form, ajaxOptions);
                     form.ajaxSubmit(ajaxOptions);
                 }
                 e.preventDefault();
@@ -506,16 +506,16 @@
         return {
             ajax: {
                 success: ajaxSuccess,
-                disableDuringRequests: disableDuringAjaxRequests,
-                isDisabled: isAjaxFormDisabled
+                disables: disableElementDuringAjaxRequests,
+                disabled: isAjaxFormDisabled
             },
             ajaxify: ajaxify,
             notification: notificationDialog,
             dialog: actionDialog,
             tag: createTag,
             scrollTo: scrollTo,
-            setPreference: setPreference,
-            getPreference: getPreference,
+            set: setPreference,
+            get: getPreference,
             load: loadScript,
             views: {}
         };
