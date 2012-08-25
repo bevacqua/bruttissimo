@@ -116,6 +116,14 @@ namespace Bruttissimo.Mvc.Controller
             }
             return View(model); // TODO: reload home?
         }
+        
+        [HttpGet]
+        [NotAjax]
+        [ExtendedAuthorize]
+        public ActionResult Preview()
+        {
+            return RedirectToActionPermanent("Create", "Posts"); // lets be graceful.
+        }
 
         [HttpPost]
         [AjaxOnly]
