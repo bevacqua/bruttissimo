@@ -16,7 +16,6 @@ namespace Bruttissimo.Mvc.Windsor
 
             MvcInfrastructure.Initialize(container.Kernel);
 
-            // TODO: push SignalR common stuff to Common.Mvc
             GlobalHost.DependencyResolver = new WindsorDependencyResolver(container.Kernel);
         }
     }
