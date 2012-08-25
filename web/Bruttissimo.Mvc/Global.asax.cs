@@ -28,8 +28,6 @@ namespace Bruttissimo.Mvc
 
         public override void Init()
         {
-            base.Init();
-
             IHttpModule[] modules = IoC.Container.ResolveAll<IHttpModule>();
 
             foreach (IHttpModule module in modules)
