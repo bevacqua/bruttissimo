@@ -16,7 +16,7 @@ namespace Bruttissimo.Domain.Logic
             this.commentRepository = commentRepository;
         }
 
-        public Comment Create(long postId, string message, User user)
+        public Comment Create(long postId, string message, User user, long? parentId)
         {
             if (message == null)
             {
@@ -26,12 +26,21 @@ namespace Bruttissimo.Domain.Logic
             {
                 throw new ArgumentNullException("user");
             }
+            if (parentId.HasValue)
+            {
+                Comment parent = commentRepository.GetById(parentId.Value);
+                if (parent == null || parent.ParentId.HasValue) // prevent nesting deeper than one level.
+                {
+                    throw new ArgumentOutOfRangeException("parentId");
+                }
+            }
             Comment comment = new Comment
             {
                 PostId = postId,
                 Message = message,
                 Created = DateTime.UtcNow,
-                UserId = user.Id
+                UserId = user.Id,
+                ParentId = parentId
             };
             return commentRepository.Insert(comment);
         }

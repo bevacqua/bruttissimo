@@ -23,7 +23,7 @@ namespace Bruttissimo.Mvc.Controller
         [ExtendedAuthorize]
         public ActionResult Create(CommentCreationModel model, IMiniPrincipal principal)
         {
-            commentService.Create(model.Id, model.Message, principal.User);
+            commentService.Create(model.Id, model.Message, principal.User, model.ParentId);
             return RedirectToAction("Details", "Posts", new { id = model.Id });
         }
     }
