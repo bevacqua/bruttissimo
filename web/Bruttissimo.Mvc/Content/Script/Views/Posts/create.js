@@ -49,7 +49,7 @@
             if (result.faulted === "used") {
                 var comment = $.trim(messageInput.val());
                 var message;
-                var buttons = [{ caption: l.Post.ViewPost, href: result.link}]; // TODO: ajaxify?
+                var buttons = [{ caption: l.Post.ViewPost, href: result.link}];
 
                 if (!comment) {
                     message = l.Post.DuplicateMessage;
@@ -79,7 +79,7 @@
             }
         }
 
-        function previewLink() {
+        function previewLink() { // ajax-only functionality to preview a link.
             var input = $.trim(linkInput.val());
 
             if (!validatePreview(input)) {
@@ -103,8 +103,7 @@
             };
             form.data("preview-xhr", last);
         }
-
-        // ajax-only functionality to preview a link.
+        
         linkInput.on("paste.preview, change.preview", function () {
             setTimeout(function () { previewLink(); }, 0); // setTimeout is required to get the correct value after paste.
         });
