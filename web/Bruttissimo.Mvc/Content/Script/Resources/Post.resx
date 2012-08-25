@@ -133,9 +133,9 @@
     <value>Post Inválido</value>
   </data>
   <data name="PostComment" xml:space="preserve">
-    <value>Publicar Comentar</value>
+    <value>Comentar</value>
   </data>
   <data name="ViewPost" xml:space="preserve">
-    <value>Ver post</value>
+    <value>Ir</value>
   </data>
 </root>
