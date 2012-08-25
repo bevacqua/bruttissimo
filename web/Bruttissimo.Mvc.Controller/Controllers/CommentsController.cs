@@ -26,14 +26,6 @@ namespace Bruttissimo.Mvc.Controller
             this.mapper = mapper;
         }
 
-        [HttpGet]
-        [NotAjax]
-        [ExtendedAuthorize]
-        public ActionResult Create(long id)
-        {
-            return RedirectToActionPermanent("Details", "Posts", new { id }); // lets be graceful.
-        }
-
         [HttpPost]
         [ExtendedAuthorize]
         public ActionResult Create(CommentCreationModel model)
