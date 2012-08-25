@@ -42,10 +42,10 @@ namespace Bruttissimo.Mvc
 
         internal static void RegisterViewRoutes(RouteCollection routes)
         {
-            routes.MapRouteLowercase(
-                "Comment", "Posts/{id}/Comment",
-                new { controller = "Comments", action = "Create", id = UrlConstraint.RequiredNumeric },
-                new { id = UrlConstraint.RequiredNumeric, httpMethod = new HttpMethodConstraint("POST") });
+            routes.MapRouteLowercase( // commenting route
+                "Comment", "Posts/{id}/Comment/{parentId}",
+                new { controller = "Comments", action = "Create", id = UrlConstraint.RequiredNumeric, parentId = UrlParameter.Optional },
+                new { id = UrlConstraint.RequiredNumeric, parentId = UrlConstraint.OptionalNumeric, httpMethod = new HttpMethodConstraint("POST") });
 
             routes.MapRouteLowercase(
                 "Post", "Posts/{id}/{slug}",
