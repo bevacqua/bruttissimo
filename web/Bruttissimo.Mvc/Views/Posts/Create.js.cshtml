@@ -1,10 +1,10 @@
 ﻿@model PostCreationModel
 <script>
-    (function($, b) {
-        $(function() {
+    (function ($, b) {
+        $(function () {
             b.views.post.create({
                 previewUrl: '@Url.Action("Preview", "Posts")',
-                commentUrl: '@Url.Action("New", "Comments", new { id = "0" })'
+                commentUrl: '@Url.Action("New", "Comments", new { id = "0" }).Replace("0", "{0}")'
             });
         });
     })(jQuery, bruttijjimo);

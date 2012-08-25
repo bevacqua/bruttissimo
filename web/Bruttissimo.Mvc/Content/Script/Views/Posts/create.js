@@ -16,7 +16,7 @@
 
         function commentOnPost(id, comment) {
             $.ajax({
-                url: settings.commentUrl.replace("0", id),
+                url: settings.commentUrl.format(id),
                 data: {
                     comment: comment
                 },
