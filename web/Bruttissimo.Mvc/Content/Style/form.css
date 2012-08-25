@@ -6,7 +6,7 @@ form legend {
     width: 100%;
 }
 
-form input, form textarea, form button, form a.button {
+form input, form textarea, form button {
     margin-bottom: 10px;
     margin-right: 3px;
 }
@@ -20,12 +20,12 @@ form input[type=text],
 form input[type=email],
 form input[type=url],
 form input[type=password],
-form textarea { width: 75%; /* 225px on 300px */ }
-
-textarea { }
+form textarea { 
+    width: 75%; /* 225px on 300px */ 
+}
 
 form input[type=submit],
-form form button.submit {
+form button.submit {
     display: block;
     text-align: center;
 }
@@ -39,8 +39,7 @@ fieldset .field-validation-valid,
 fieldset .field-validation-error { font-size: 0.8em; }
 
 fieldset .field-validation-valid,
-fieldset .field-validation-error {
-    /* noscript */
+fieldset .field-validation-error { /* noscript */
     display: block;
     margin-bottom: 15px;
 }
@@ -61,7 +60,6 @@ fieldset .field-validation-valid.model-validation {	/* javascript enabled, model
 }
 
 fieldset .field-validation-valid.tooltip-icon { background-position: -208px -192px; }
-
 fieldset .field-validation-error.tooltip-icon { background-position: -32px -192px; }
 
 .validation-summary {

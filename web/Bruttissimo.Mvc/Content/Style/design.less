@@ -92,28 +92,24 @@ a {
 a:hover {
 	text-decoration: underline;
 }
-a.button:hover {
-	text-decoration: none;
-}
 a, button, input[type=submit] {
     cursor: pointer;
 }
-button.disabled, a.button.disabled {
+button.disabled {
 	cursor: not-allowed;
 }
-nav a, button.submit, input[type=submit] {
+nav a, button, input[type=submit] {
 	font-variant: small-caps;
 }
 
 input[type=submit],
-button.submit,
-a.button {
+button {
 	border: 1px solid #313131;
 	background-color: #dbdbdb;
 	color: #171515;
 }
 
-button, a.button {
+button {
 	display: inline-block;
     padding: 8px;
 }
