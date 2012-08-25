@@ -87,7 +87,7 @@
         }
 
         function previewLink() {
-            var input = linkInput.val();
+            var input = $.trim(linkInput.val());
 
             if (!validatePreview(input)) {
                 return;
