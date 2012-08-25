@@ -26,7 +26,7 @@
             });
         }
 
-        function validatePreview() {
+        function validatePreview(input) {
             if (!form.valid()) { // no link was provided, or the provided link is missing its protocol.
                 return false;
             }
@@ -89,7 +89,7 @@
         function previewLink() {
             var input = linkInput.val();
 
-            if (!validatePreview()) {
+            if (!validatePreview(input)) {
                 return;
             }
             previewContainer.empty();
