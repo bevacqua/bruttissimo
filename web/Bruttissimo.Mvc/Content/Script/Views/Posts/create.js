@@ -19,9 +19,6 @@
                 url: settings.commentUrl.format(id),
                 data: {
                     message: message
-                },
-                success: function (result) {
-                    alert("post-as-comment clicked");
                 }
             });
         }

@@ -2,7 +2,6 @@
 using System.Web.Mvc;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain;
-using Bruttissimo.Domain.Entity;
 using Bruttissimo.Mvc.Model;
 
 namespace Bruttissimo.Mvc.Controller
@@ -24,8 +23,8 @@ namespace Bruttissimo.Mvc.Controller
         [ExtendedAuthorize]
         public ActionResult Create(CommentCreationModel model, IMiniPrincipal principal)
         {
-            Comment comment = commentService.Create(model.Id, model.Message, principal.User);
-            throw new NotImplementedException();
+            commentService.Create(model.Id, model.Message, principal.User);
+            return RedirectToAction("Details", "Posts", new { id = model.Id });
         }
     }
 }
