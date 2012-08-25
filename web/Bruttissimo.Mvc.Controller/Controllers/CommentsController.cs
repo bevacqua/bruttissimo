@@ -28,7 +28,7 @@ namespace Bruttissimo.Mvc.Controller
 
         [HttpPost]
         [ExtendedAuthorize]
-        public ActionResult Create(CommentCreationModel model)
+        public ActionResult New(CommentCreationModel model, IMiniPrincipal principal)
         {
             throw new NotImplementedException();
         }

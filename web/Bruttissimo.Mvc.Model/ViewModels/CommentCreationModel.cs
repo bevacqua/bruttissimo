@@ -6,6 +6,5 @@ namespace Bruttissimo.Mvc.Model
     {
         public long Id { get; set; }
         public string Comment { get; set; }
-        public IMiniPrincipal Principal { get; set; }
     }
 }
