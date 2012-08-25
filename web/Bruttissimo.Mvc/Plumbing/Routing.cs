@@ -8,7 +8,7 @@ namespace Bruttissimo.Mvc
 {
     internal static class Routing
     {
-        private static readonly object notFound = new {controller = "Error", action = "NotFound"};
+        private static readonly object notFound = new { controller = "Error", action = "NotFound" };
 
         public static void RegisterRoutes(RouteCollection routes)
         {
@@ -34,8 +34,7 @@ namespace Bruttissimo.Mvc
             // by not using .IgnoreRoute I avoid IIS taking over my custom error handling engine.
             routes.MapRoute(
                 "IgnorePostDetails", "Posts/Details/{id}",
-                new {controller = "Error", action = "NotFound", id = UrlParameter.Optional}
-                );
+                new { controller = "Error", action = "NotFound", id = UrlParameter.Optional });
 
             routes.MapRoute("IgnoreHome", "Home", notFound);
             routes.MapRoute("IgnoreIndex", "{controllerName}/Index/{*pathInfo}", notFound);
@@ -44,22 +43,24 @@ namespace Bruttissimo.Mvc
         internal static void RegisterViewRoutes(RouteCollection routes)
         {
             routes.MapRouteLowercase(
-                "Post", "posts/{id}/{slug}",
-                new {controller = "Posts", action = "Details", slug = UrlParameter.Optional}, // slug is optional, although the request will be redirected if the slug is incorrect.
-                new {id = UrlConstraint.RequiredNumeric}
-                );
+                "Comment", "Posts/{id}/Comment",
+                new { controller = "Comments", action = "New", id = UrlConstraint.RequiredNumeric },
+                new { id = UrlConstraint.RequiredNumeric });
+
+            routes.MapRouteLowercase(
+                "Post", "Posts/{id}/{slug}",
+                new { controller = "Posts", action = "Details", slug = UrlParameter.Optional }, // slug is optional, although the request will be redirected if the slug is incorrect.
+                new { id = UrlConstraint.RequiredNumeric });
 
             routes.MapRouteLowercase( // this route is used for sharing purposes, it will ultimately result in a permanent redirect.
-                "PostShortcut", "p/{id}",
-                new {controller = "Posts", action = "Details"},
-                new {id = UrlConstraint.RequiredNumeric}
-                );
+                "PostShortcut", "P/{id}",
+                new { controller = "Posts", action = "Details" },
+                new { id = UrlConstraint.RequiredNumeric });
 
             routes.MapRouteLowercase(
                 "Default", "{controller}/{action}/{id}",
-                new {controller = "Home", action = "Index", id = UrlParameter.Optional},
-                new {id = UrlConstraint.OptionalNumeric}
-                );
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                new { id = UrlConstraint.OptionalNumeric });
         }
     }
 }
