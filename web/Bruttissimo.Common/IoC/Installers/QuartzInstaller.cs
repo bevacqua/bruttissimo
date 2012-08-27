@@ -98,7 +98,7 @@ namespace Bruttissimo.Common
         /// </summary>
         internal IEnumerable<Type> FindJobTypes()
         {
-            Type jobType = typeof (IJob);
+            Type jobType = typeof(IJob);
 
             IEnumerable<Type> jobTypes = jobAssembly
                 .GetTypes()
