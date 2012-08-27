@@ -1,15 +1,16 @@
 ﻿using System;
+using System.Threading;
 using Bruttissimo.Common;
 using Quartz;
 
 namespace Bruttissimo.Domain.Logic
 {
-    // [AutoRun]
-    public class FacebookImportJob : BaseJob
+    [AutoRun]
+    public class FacebookExportJob : BaseJob
     {
-        private readonly IFacebookService facebookService;
+        private readonly IFacebookRepository facebookService;
 
-        public FacebookImportJob(IFacebookService facebookService)
+        public FacebookExportJob(IFacebookRepository facebookService)
         {
             if (facebookService == null)
             {
@@ -20,8 +21,7 @@ namespace Bruttissimo.Domain.Logic
 
         public override void DoWork(IJobExecutionContext context)
         {
-            string feed = Config.Social.FacebookFeedId; // TODO: how to pass feed Id to a job?
-            facebookService.Import(feed);
+            Thread.Sleep(2500);
         }
     }
 }

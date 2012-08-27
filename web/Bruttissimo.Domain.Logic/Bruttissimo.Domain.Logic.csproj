@@ -111,6 +111,7 @@
     <Compile Include="Authentication\PlainAuthenticationPortal.cs" />
     <Compile Include="Authentication\OAuthAuthenticationPortal.cs" />
     <Compile Include="Authentication\OpenIdAuthenticationPortal.cs" />
+    <Compile Include="Job\FacebookExportJob.cs" />
     <Compile Include="Job\FacebookImportJob.cs" />
     <Compile Include="log4net\RequestIdentityPattern.cs" />
     <Compile Include="MiniMembership\MembershipExtensions.cs" />
