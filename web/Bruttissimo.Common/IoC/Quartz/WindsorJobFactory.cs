@@ -31,11 +31,11 @@ namespace Bruttissimo.Common
                 IJob job = (IJob)kernel.Resolve(jobType);
                 return job;
             }
-            catch (Exception exception)
+            catch (Exception exception) // log the issue, then re-throw.
             {
                 string message = EXCEPTION_INSTANTIATING_JOB.FormatWith(jobType.Name);
                 log.Error(message, exception);
-                return null;
+                throw;
             }
         }
     }
