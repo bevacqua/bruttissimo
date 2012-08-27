@@ -101,10 +101,10 @@
     <Compile Include="Core\ActionResults\RedirectToHomeResult.cs" />
     <Compile Include="Core\Controllers\ErrorController.cs" />
     <Compile Include="Core\Controllers\ResourceController.cs" />
-    <Compile Include="Core\Engine\ExtendedController.cs" />
+    <Compile Include="Core\Controllers\ExtendedController.cs" />
     <Compile Include="Core\Engine\ExtendedView.cs" />
     <Compile Include="Core\Engine\ExtendedViewEngine.cs" />
-    <Compile Include="Core\Engine\StringRenderingController.cs" />
+    <Compile Include="Core\Controllers\StringRenderingController.cs" />
     <Compile Include="Core\Engine\ExtendedControllerContext.cs" />
     <Compile Include="Extensions\BundleBase`1.cs" />
     <Compile Include="Extensions\Exception.cs" />
