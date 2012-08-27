@@ -1,10 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using Bruttissimo.Common;
-using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain.Entity;
-using Newtonsoft.Json;
 using log4net;
 
 namespace Bruttissimo.Domain.Logic
