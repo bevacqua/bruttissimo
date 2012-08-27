@@ -62,8 +62,8 @@ namespace Bruttissimo.Common
                 AllTypes
                     .FromAssembly(jobAssembly)
                     .BasedOn<IJob>()
-                    .WithServiceSelf()
                     .LifestyleTransient()
+                    .Configure(x => x.Interceptors<ReleaseJobInterceptor>())
                 );
 
             // Component tasked with holding the different Job types available.
@@ -72,6 +72,14 @@ namespace Bruttissimo.Common
                     .For<IJobTypeStore>()
                     .UsingFactoryMethod(InstanceJobTypes)
                     .LifestyleSingleton()
+                );
+
+            // Interceptor to release component dependencies in non-web request contexts.
+            container.Register(
+                Component
+                    .For<ReleaseJobInterceptor>()
+                    .ImplementedBy<ReleaseJobInterceptor>()
+                    .LifestyleTransient()
                 );
         }
 

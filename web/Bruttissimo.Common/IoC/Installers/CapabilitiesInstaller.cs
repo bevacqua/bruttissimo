@@ -16,6 +16,7 @@ namespace Bruttissimo.Common
                 Component
                     .For<ILazyComponentLoader>()
                     .ImplementedBy<LazyOfTComponentLoader>()
+                    .LifestyleTransient()
                 );
         }
     }

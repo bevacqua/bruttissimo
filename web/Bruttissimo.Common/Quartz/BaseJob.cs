@@ -1,27 +1,17 @@
 using System;
 using System.Diagnostics;
-using Castle.MicroKernel;
 using Quartz;
 using log4net;
 
 namespace Bruttissimo.Common
 {
-    public abstract class BaseJob : IJob
+    public abstract class BaseJob : IJob, IDisposable
     {
         private readonly Type concreteType;
         private readonly ILog log;
-        private readonly IKernel kernel;
-        private readonly object[] dependencies;
 
-        protected BaseJob(IKernel kernel, params object[] dependencies)
+        protected BaseJob()
         {
-            if (kernel == null)
-            {
-                throw new ArgumentNullException("kernel");
-            }
-            this.kernel = kernel;
-            this.dependencies = dependencies ?? new object[0];
-
             concreteType = GetType();
             log = LogManager.GetLogger(concreteType);
         }
@@ -30,29 +20,35 @@ namespace Bruttissimo.Common
 
         public void Execute(IJobExecutionContext context)
         {
-            log.Info(Resources.Debug.JobExecuting.FormatWith(concreteType.FullName, context.FireInstanceId));
+            string id = context.FireInstanceId;
+            string name = concreteType.FullName;
+            log.Info(Resources.Debug.JobExecuting.FormatWith(name, id));
 
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
+
             try
             {
                 DoWork(context);
             }
             catch (Exception exception)
             {
-                log.Error(Resources.Error.UnhandledException, exception);
+                log.Error(Resources.Error.UnhandledException, exception); // log here too, because the wrapper clears the stack trace.
                 throw new JobExecutionException(exception);
             }
             finally
             {
                 stopwatch.Stop();
-                log.Info(Resources.Debug.JobExecuted.FormatWith(concreteType.FullName, context.FireInstanceId, stopwatch.Elapsed.ToShortDurationString()));
+                string duration = stopwatch.Elapsed.ToShortDurationString();
+                log.Info(Resources.Debug.JobExecuted.FormatWith(name, id, duration));
 
-                foreach (object dependency in dependencies) // PerThread lifestyle dependencies are released when application shuts down.
-                {
-                    kernel.ReleaseComponent(dependency); // release them when the job completes execution instead.
-                }
+                Dispose();
             }
+        }
+
+        public virtual void Dispose() // virtual so castle proxies it, and the interceptor is able to catch invocations.
+        {
+            // just intended to be captured by the container's release interceptor.
         }
     }
 }

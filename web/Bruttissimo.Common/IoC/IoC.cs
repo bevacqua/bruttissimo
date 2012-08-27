@@ -45,7 +45,7 @@ namespace Bruttissimo.Common
                 }
                 if (type.Name.EndsWith(name))
                 {
-                    return new[] {interfaceType};
+                    return new[] { interfaceType };
                 }
             }
             return Enumerable.Empty<Type>();

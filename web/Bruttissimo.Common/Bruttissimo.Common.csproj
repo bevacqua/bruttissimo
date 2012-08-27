@@ -97,8 +97,10 @@
     <Compile Include="IoC\Installers\QuartzInstaller.cs" />
     <Compile Include="IoC\IoC.cs" />
     <Compile Include="IoC\PropertyInjection.cs" />
+    <Compile Include="IoC\Quartz\ReleaseJobInterceptor.cs" />
     <Compile Include="IoC\Quartz\WindsorJobFactory.cs" />
     <Compile Include="IoC\Quartz\WindsorSchedulerFactory.cs" />
+    <Compile Include="IoC\ReleaseComponentInterceptor.cs" />
     <Compile Include="log4net\NullableAdoNetParameter.cs" />
     <Compile Include="log4net\ExceptionDataLayoutPattern.cs" />
     <Compile Include="ExtendedWebClient.cs">
