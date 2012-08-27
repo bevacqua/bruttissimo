@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using AutoMapper;
+using AutoMapper.Mappers;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
@@ -82,7 +83,7 @@ namespace Bruttissimo.Common
         private ConfigurationStore InstanceConfigurationStore(IKernel kernel)
         {
             ITypeMapFactory typeMapFactory = kernel.Resolve<ITypeMapFactory>();
-            IEnumerable<IObjectMapper> mappers = AutoMapper.Mappers.MapperRegistry.AllMappers();
+            IEnumerable<IObjectMapper> mappers = MapperRegistry.AllMappers();
 
             return new ConfigurationStore(typeMapFactory, mappers);
         }

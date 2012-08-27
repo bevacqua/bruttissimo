@@ -42,21 +42,21 @@ namespace Bruttissimo.Common.Mvc
                 Component
                     .For<JavaScriptHelper>()
                     .ImplementedBy<JavaScriptHelper>()
-                    .LifestyleTransient()
+                    .LifestylePerWebRequest()
                 );
 
             container.Register(
                 Component
                     .For<MvcResourceHelper>()
                     .UsingFactoryMethod(InstanceMvcResourceHelper)
-                    .LifestyleTransient()
+                    .LifestylePerWebRequest()
                 );
 
             container.Register(
                 Component
                     .For<UrlHelper>()
-                    .UsingFactoryMethod(InstanceUrlHelper)
-                    .LifestyleTransient()
+                    .ImplementedBy<UrlHelper>()
+                    .LifestylePerWebRequest()
                 );
         }
 
@@ -65,13 +65,6 @@ namespace Bruttissimo.Common.Mvc
             string ns = Resources.Constants.ResourceNamespaceRoot;
             HtmlHelper html = context.AdditionalArguments["htmlHelper"] as HtmlHelper;
             MvcResourceHelper helper = new MvcResourceHelper(ns, html, assembly);
-            return helper;
-        }
-
-        internal UrlHelper InstanceUrlHelper(IKernel kernel)
-        {
-            RequestContext requestContext = kernel.Resolve<RequestContext>();
-            UrlHelper helper = new UrlHelper(requestContext);
             return helper;
         }
     }
