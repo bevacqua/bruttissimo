@@ -3,10 +3,20 @@
 
 table { margin: 0 auto; }
 
-table thead {
+thead {
     padding-bottom: 5px;
     border-bottom: 1px solid #ccc;
 }
 
-table tr th,
-table tr td { padding: 5px 10px; }
+th,
+td { 
+	padding: 5px 10px;
+	vertical-align: middle;
+}
+td input { 
+	vertical-align: middle;
+}
+
+table form input, table form textarea, table form button {
+	margin: 0;
+}
