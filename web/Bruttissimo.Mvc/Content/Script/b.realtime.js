@@ -28,11 +28,11 @@
 				update: function(entry) {
 					var syslogs = $("#syslogs tbody");
 					var build = b.tag;
-					var row = build("tr").hide();
+					var row = build("tr");
 					build("td").appendTo(row).text(entry.date);
 					build("td").appendTo(row).text(entry.level);
 					build("td").appendTo(row).text(entry.message);
-					row.prependTo(syslogs).flash("#b1f7ed").slideDown("fast");
+					row.prependTo(syslogs).flash("#b1f7ed");
 					syslogs.find("tr").slice(9).slideUp().remove();
 				}
 			});
