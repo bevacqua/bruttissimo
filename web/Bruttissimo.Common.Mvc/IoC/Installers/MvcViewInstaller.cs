@@ -58,7 +58,7 @@ namespace Bruttissimo.Common.Mvc
                 Component
                     .For<UrlHelper>()
                     .UsingFactoryMethod(InstanceUrlHelper)
-                    .LifestyleHybridPerWebRequestPerThread()
+                    .LifestyleTransient()
                 );
         }
 
