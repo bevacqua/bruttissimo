@@ -21,7 +21,7 @@
 			});
 		}
 
-		function extendHubs () {
+		function extendHubs() {
 			var logs = $.connection.logs;
 
 			$.extend(logs, {
