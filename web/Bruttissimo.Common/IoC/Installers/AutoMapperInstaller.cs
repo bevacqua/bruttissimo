@@ -33,7 +33,7 @@ namespace Bruttissimo.Common
                 container.Register(
                     AllTypes
                         .FromAssembly(assembly)
-                        .BasedOn(typeof (ITypeConverter<,>))
+                        .BasedOn(typeof(ITypeConverter<,>))
                         .WithServiceSelf()
                     );
             }
