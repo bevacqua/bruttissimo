@@ -1,33 +1,26 @@
 ﻿using System;
-using System.Threading;
 using Bruttissimo.Common;
 using Quartz;
 
 namespace Bruttissimo.Domain.Logic
 {
-    [AutoRun]
+    // [AutoRun]
     public class FacebookExportJob : BaseJob
     {
-        private readonly IFacebookRepository facebookService;
-        private readonly IMapper mapper;
+        private readonly IFacebookService facebookService;
 
-        public FacebookExportJob(IFacebookRepository facebookService, IMapper mapper)
+        public FacebookExportJob(IFacebookService facebookService)
         {
             if (facebookService == null)
             {
                 throw new ArgumentNullException("facebookService");
             }
-            if (mapper == null)
-            {
-                throw new ArgumentNullException("mapper");
-            }
             this.facebookService = facebookService;
-            this.mapper = mapper;
         }
 
         public override void DoWork(IJobExecutionContext context)
         {
-            Thread.Sleep(2500);
+            facebookService.Export();
         }
     }
 }

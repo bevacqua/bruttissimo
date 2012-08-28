@@ -49,5 +49,17 @@ namespace Bruttissimo.Domain.Logic
 
             logRepository.UpdateFacebookImportLog(importLog);
         }
+
+        public void Export()
+        {
+            /*
+             * TODO: get all posts without a fb post Id
+             * TODO: for each post, check if the user has a fb access token that's usable, otherwise use the generic token
+             * TODO: check if a target feed Id is specified, otherwise target the default feed Id.
+             * TODO: post to the facebook feed.
+             * TODO: update the post with the fb post Id, and fb user Id (what about case when post is published with default token?)
+             */
+            throw new NotImplementedException();
+        }
     }
 }
