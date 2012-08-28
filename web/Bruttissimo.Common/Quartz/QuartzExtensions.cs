@@ -10,9 +10,8 @@ namespace Bruttissimo.Common
         /// </summary>
         public static DateTimeOffset StartJob(this IScheduler scheduler, Type jobType)
         {
-            IJobDetail detail = JobBuilder.Create(jobType).Build();
             ITrigger trigger = TriggerBuilder.Create().StartNow().Build();
-            return scheduler.ScheduleJob(detail, trigger);
+            return scheduler.ScheduleJob(jobType, trigger);
         }
 
         /// <summary>

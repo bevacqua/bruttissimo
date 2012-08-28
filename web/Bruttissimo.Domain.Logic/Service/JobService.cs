@@ -55,7 +55,7 @@ namespace Bruttissimo.Domain.Logic
             {
                 return false;
             }
-            scheduler.ScheduleJob(type);
+            scheduler.StartJob(type);
             return true;
         }
     }
