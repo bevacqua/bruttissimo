@@ -12,9 +12,8 @@ namespace Bruttissimo.Domain.Logic
     {
         private readonly IUserRepository userRepository;
         private readonly IEmailService emailService;
-        private readonly HttpContextBase httpContext;
 
-        public UserService(IUserRepository userRepository, IEmailService emailService, HttpContextBase httpContext)
+        public UserService(IUserRepository userRepository, IEmailService emailService)
         {
             if (userRepository == null)
             {
@@ -26,7 +25,6 @@ namespace Bruttissimo.Domain.Logic
             }
             this.userRepository = userRepository;
             this.emailService = emailService;
-            this.httpContext = httpContext; // can be null.
         }
 
         public User GetById(long id)
@@ -158,7 +156,7 @@ namespace Bruttissimo.Domain.Logic
             return allowed;
         }
 
-        public DateTime ToCurrentUserTimeZone(DateTime dateTime)
+        public DateTime ToCurrentUserTimeZone(HttpContextBase httpContext, DateTime dateTime)
         {
             User user = httpContext.GetUser();
             double tz = user == null ? Config.Defaults.TimeZone : user.TimeZone;

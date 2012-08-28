@@ -108,6 +108,7 @@
     <Compile Include="Core\Engine\ExtendedControllerContext.cs" />
     <Compile Include="Extensions\BundleBase`1.cs" />
     <Compile Include="Extensions\Exception.cs" />
+    <Compile Include="Extensions\HttpContextExtensions.cs" />
     <Compile Include="Extensions\HttpRequestBase.cs" />
     <Compile Include="FluentValidation\NullModelValidator.cs" />
     <Compile Include="Core\Helpers\MvcResourceHelper.cs" />

@@ -1,5 +1,6 @@
 using System;
 using System.Security.Principal;
+using System.Web;
 using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain
@@ -25,6 +26,6 @@ namespace Bruttissimo.Domain
         long? GetUserId(IIdentity identity);
         bool IsInRoleOrHasRight(User user, string roleOrRight);
 
-        DateTime ToCurrentUserTimeZone(DateTime dateTime);
+        DateTime ToCurrentUserTimeZone(HttpContextBase httpContext, DateTime dateTime);
     }
 }

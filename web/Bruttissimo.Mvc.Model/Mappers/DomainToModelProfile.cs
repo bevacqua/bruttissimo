@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
 
@@ -45,7 +47,7 @@ namespace Bruttissimo.Mvc.Model
 
             CreateMap<ScheduledJobDto, ScheduledJobModel>().ForMember(
                 m => m.StartTime,
-                x => x.MapFrom(j => userService.ToCurrentUserTimeZone(j.StartTime))
+                x => x.MapFrom(j => userService.ToCurrentUserTimeZone(HttpContext.Current.Wrap(), j.StartTime))
             );
         }
 
