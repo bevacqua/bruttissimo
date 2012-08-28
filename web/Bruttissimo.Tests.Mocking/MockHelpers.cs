@@ -85,7 +85,7 @@ namespace Bruttissimo.Tests.Mocking
 
         public static IUserService FakeUserService(IUserRepository userRepository = null)
         {
-            return new UserService(userRepository ?? MockUserRepository().Object, FakeEmailService(), null);
+            return new UserService(userRepository ?? MockUserRepository().Object, FakeEmailService());
         }
 
         public static IEmailTemplateService GetRazorTemplateService(Type type)
