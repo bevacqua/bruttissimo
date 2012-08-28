@@ -85,8 +85,12 @@ namespace Bruttissimo.Common.Mvc
 
                 return new UrlHelper(requestContext);
             }
+            else
+            {
+                RequestContext requestContext = kernel.Resolve<RequestContext>();
 
-            return new UrlHelper(httpContext.Request.RequestContext);
+                return new UrlHelper(requestContext);
+            }
         }
     }
 }
