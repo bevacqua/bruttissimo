@@ -1,5 +1,7 @@
 using System;
+using System.IO;
 using System.Reflection;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Castle.Core;
@@ -55,8 +57,8 @@ namespace Bruttissimo.Common.Mvc
             container.Register(
                 Component
                     .For<UrlHelper>()
-                    .ImplementedBy<UrlHelper>()
-                    .LifestylePerWebRequest()
+                    .UsingFactoryMethod(InstanceUrlHelper)
+                    .LifestyleHybridPerWebRequestPerThread()
                 );
         }
 
@@ -66,6 +68,24 @@ namespace Bruttissimo.Common.Mvc
             HtmlHelper html = context.AdditionalArguments["htmlHelper"] as HtmlHelper;
             MvcResourceHelper helper = new MvcResourceHelper(ns, html, assembly);
             return helper;
+        }
+
+        internal UrlHelper InstanceUrlHelper(IKernel kernel, ComponentModel model, CreationContext context)
+        {
+            HttpContext httpContext = HttpContext.Current;
+
+            if (httpContext == null) // mock it.
+            {
+                HttpRequest request = new HttpRequest("/", Config.Site.Home, string.Empty);
+                HttpResponse response = new HttpResponse(new StringWriter());
+                httpContext = new HttpContext(request, response);
+            }
+
+            HttpContextWrapper httpContextBase = new HttpContextWrapper(httpContext);
+            RouteData routeData = new RouteData();
+            RequestContext requestContext = new RequestContext(httpContextBase, routeData);
+
+            return new UrlHelper(requestContext);
         }
     }
 }
