@@ -39,7 +39,7 @@ namespace Bruttissimo.Common.Mvc
                 Component
                     .For<SmtpClient>()
                     .ImplementedBy<SmtpClient>()
-                    .LifestylePerWebRequest()
+                    .LifestyleTransient()
                 );
 
             container.Register(
