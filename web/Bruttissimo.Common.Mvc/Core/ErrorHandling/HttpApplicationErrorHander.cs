@@ -32,10 +32,18 @@ namespace Bruttissimo.Common.Mvc
 
         public void HandleApplicationError()
         {
-            HttpContextWrapper context = new HttpContextWrapper(HttpContext.Current);
+            HttpContextBase context = HttpContext.Current.Wrap();
+            Exception exception = application.Server.GetLastError();
+
+            helper.Log(log, exception);
+
+            if (context == null)
+            {
+                return;
+            }
+
             using (ErrorController controller = ErrorController.Instance(context))
             {
-                Exception exception = application.Server.GetLastError();
                 if (exception == null) // prevent bizarre scenario when handling requests to *.cshtml physical files.
                 {
                     return;
@@ -52,7 +60,6 @@ namespace Bruttissimo.Common.Mvc
                 {
                     response.Status = Constants.HttpServerError;
                 }
-                helper.Log(log, exception);
 
                 try
                 {

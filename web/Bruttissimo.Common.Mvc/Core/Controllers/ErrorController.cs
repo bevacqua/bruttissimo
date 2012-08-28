@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Bruttissimo.Common.Resources;
@@ -13,11 +14,15 @@ namespace Bruttissimo.Common.Mvc
         /// <summary>
         /// Wrap the current request context around an error controller instance.
         /// </summary>
-        public static ErrorController Instance(HttpContextWrapper context)
+        public static ErrorController Instance(HttpContextBase httpContext)
         {
+            if (httpContext == null)
+            {
+                throw new ArgumentNullException("httpContext");
+            }
             ErrorController controller = new ErrorController();
             RouteData data;
-            MvcHandler handler = context.Handler as MvcHandler;
+            MvcHandler handler = httpContext.Handler as MvcHandler;
             if (handler == null || handler.RequestContext == null || handler.RequestContext.RouteData == null)
             {
                 data = new RouteData();
@@ -28,7 +33,7 @@ namespace Bruttissimo.Common.Mvc
             {
                 data = handler.RequestContext.RouteData;
             }
-            controller.ControllerContext = new ControllerContext(context, data, controller);
+            controller.ControllerContext = new ControllerContext(httpContext, data, controller);
             return controller;
         }
     }
