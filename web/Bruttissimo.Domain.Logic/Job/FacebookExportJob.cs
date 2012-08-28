@@ -9,14 +9,20 @@ namespace Bruttissimo.Domain.Logic
     public class FacebookExportJob : BaseJob
     {
         private readonly IFacebookRepository facebookService;
+        private readonly IMapper mapper;
 
-        public FacebookExportJob(IFacebookRepository facebookService)
+        public FacebookExportJob(IFacebookRepository facebookService, IMapper mapper)
         {
             if (facebookService == null)
             {
                 throw new ArgumentNullException("facebookService");
             }
+            if (mapper == null)
+            {
+                throw new ArgumentNullException("mapper");
+            }
             this.facebookService = facebookService;
+            this.mapper = mapper;
         }
 
         public override void DoWork(IJobExecutionContext context)
