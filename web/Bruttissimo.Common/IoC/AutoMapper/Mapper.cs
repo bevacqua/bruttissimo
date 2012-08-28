@@ -27,7 +27,7 @@ namespace Bruttissimo.Common
             ConfigureEngine(kernel, profileTypes);
         }
 
-        private void ConfigureEngine(IKernel kernel, Type[] profileTypes)
+        internal void ConfigureEngine(IKernel kernel, Type[] profileTypes)
         {
             IMappingEngineRunner runner = engine as IMappingEngineRunner;
             if (runner == null)
