@@ -31,8 +31,31 @@ namespace Bruttissimo.Common
 
             foreach (Type jobType in jobTypes)
             {
+                AutoRunAttribute attribute = jobType.GetAttribute<AutoRunAttribute>();
+
+                if (attribute == null)
+                {
+                    continue; // sanity.
+                }
                 log.Debug(Resources.Debug.SchedulingAutoRunJob.FormatWith(jobType.Name));
-                scheduler.ScheduleJob(jobType);
+
+                if (attribute.RunOnce)
+                {
+                    scheduler.StartJob(jobType);
+                }
+                else
+                {
+                    DateTimeOffset now = DateTimeOffset.UtcNow;
+                    DateTimeOffset offset = now.AddMinutes(attribute.Delay);
+                    
+                    double minutes = attribute.Interval ?? AutoRunAttribute.DefaultInterval;
+                    TimeSpan interval = TimeSpan.FromMinutes(minutes);
+
+                    Action<SimpleScheduleBuilder> schedule = s => s.WithInterval(interval);
+                    ITrigger trigger = TriggerBuilder.Create().StartAt(offset).WithSimpleSchedule(schedule).Build();
+
+                    scheduler.ScheduleJob(jobType, trigger);
+                }
             }
         }
     }
