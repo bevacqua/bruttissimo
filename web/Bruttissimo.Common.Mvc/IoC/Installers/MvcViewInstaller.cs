@@ -44,14 +44,14 @@ namespace Bruttissimo.Common.Mvc
                 Component
                     .For<JavaScriptHelper>()
                     .ImplementedBy<JavaScriptHelper>()
-                    .LifestylePerWebRequest()
+                    .LifestyleTransient()
                 );
 
             container.Register(
                 Component
                     .For<MvcResourceHelper>()
                     .UsingFactoryMethod(InstanceMvcResourceHelper)
-                    .LifestylePerWebRequest()
+                    .LifestyleTransient()
                 );
 
             container.Register(
@@ -70,7 +70,7 @@ namespace Bruttissimo.Common.Mvc
             return helper;
         }
 
-        internal UrlHelper InstanceUrlHelper(IKernel kernel, ComponentModel model, CreationContext context)
+        internal UrlHelper InstanceUrlHelper(IKernel kernel)
         {
             HttpContext httpContext = HttpContext.Current;
 
@@ -78,14 +78,15 @@ namespace Bruttissimo.Common.Mvc
             {
                 HttpRequest request = new HttpRequest("/", Config.Site.Home, string.Empty);
                 HttpResponse response = new HttpResponse(new StringWriter());
-                httpContext = new HttpContext(request, response);
+                HttpContext context = new HttpContext(request, response);
+                HttpContextWrapper httpContextBase = new HttpContextWrapper(context);
+                RouteData routeData = new RouteData();
+                RequestContext requestContext = new RequestContext(httpContextBase, routeData);
+
+                return new UrlHelper(requestContext);
             }
 
-            HttpContextWrapper httpContextBase = new HttpContextWrapper(httpContext);
-            RouteData routeData = new RouteData();
-            RequestContext requestContext = new RequestContext(httpContextBase, routeData);
-
-            return new UrlHelper(requestContext);
+            return new UrlHelper(httpContext.Request.RequestContext);
         }
     }
 }
