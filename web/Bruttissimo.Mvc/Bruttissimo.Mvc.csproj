@@ -211,6 +211,7 @@
     <Content Include="Views\System\Log.js.cshtml" />
     <Content Include="Views\System\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\AggregateException.cshtml" />
+    <Content Include="Views\Comments\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\GlobalAssemblyInfo.cs">
