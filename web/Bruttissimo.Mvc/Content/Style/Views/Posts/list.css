@@ -1,22 +1,22 @@
 ﻿/* POST LIST LAYOUT
 ----------------------------------------------------------*/
 
-section.posts { text-align: center; }
+ol.posts { text-align: center; }
 
-section.posts > article.post { clear: both; }
+ol.posts > li.post { clear: both; }
 
-section.posts > article.post,
+ol.posts > li.post,
 section.more-posts { margin-top: 20px; }
 
-section.posts > article.post:first-child { margin-top: 0; }
+ol.posts > li.post:first-child { margin-top: 0; }
 
-section.posts > article.post > header {
+ol.posts > li.post > header {
     font-size: 1.5em;
     font-weight: bold;
     text-align: left;
 }
 
-section.posts > article.post > a.post-thumbnail img {
+ol.posts > li.post > a.post-thumbnail img {
     max-height: 125px;
     max-width: 40%;
     float: left;
@@ -25,50 +25,50 @@ section.posts > article.post > a.post-thumbnail img {
     margin-bottom: 12px;
 }
 
-section.posts > article.post > a.post-image img {
+ol.posts > li.post > a.post-image img {
     max-height: 300px;
     max-width: 100%;
     margin-top: 8px;
 }
 
-section.posts > article.post > section {
+ol.posts > li.post > section {
     font-size: 0.8em;
     line-height: 1.2em;
     text-align: left;
 }
 
-section.posts > article.post > section.post-description { margin-top: 8px; }
+ol.posts > li.post > section.post-description { margin-top: 8px; }
 
 section.more-posts { text-align: center; }
 
 section.more-posts .more-posts-link { display: inline-block; }
 
 @media only screen and (min-width: 768px) {
-    section.posts {
+    ol.posts {
         min-width: 700px;
         max-width: 900px;
         margin: 0 auto;
     }
 
-    section.posts > article.post:first-child + article { margin-top: 0; }
+    ol.posts > li.post:first-child + article { margin-top: 0; }
 
-    section.posts > article.post {
+    ol.posts > li.post {
         clear: none;
         float: left;
         width: 45%;
     }
 
-    section.posts > article.post.even {
+    ol.posts > li.post.even {
         margin-right: 35px;
         clear: both;
     }
 
-    section.posts > article.post > a.post-thumbnail img {
+    ol.posts > li.post > a.post-thumbnail img {
         max-height: 200px;
         max-width: 50%;
     }
 
-    section.posts > article.post > a.post-image img {
+    ol.posts > li.post > a.post-image img {
         max-height: 450px;
         max-width: 95%;
         margin-top: 16px;
@@ -76,10 +76,10 @@ section.more-posts .more-posts-link { display: inline-block; }
 }
 
 @media only screen and (min-width: 1024px) {
-    section.posts { max-width: 1000px; }
+    ol.posts { max-width: 1000px; }
 
-    section.posts > article.post,
+    ol.posts > li.post,
     section.more-posts { margin-top: 32px; }
 
-    section.posts > article.post.even { margin-right: 50px; }
+    ol.posts > li.post.even { margin-right: 50px; }
 }

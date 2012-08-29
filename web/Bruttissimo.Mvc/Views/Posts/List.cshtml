@@ -1,22 +1,22 @@
 ﻿@model PostListModel
 @if (Model.Posts == null || Model.Posts.Count == 0)
 {
-    <section class="posts">
-        <p>@Resource.String("NoMorePosts")</p>
-    </section>
+    <ol class="posts">
+        <li>@Resource.String("NoMorePosts")</li>
+    </ol>
 }
 else
 {
     long timestamp = Model.Posts.Last().Created.ToBinary();
-    <section class="posts">
+    <ol class="posts">
         @for (int i = 0; i < Model.Posts.Count; i++)
         {
             PostModel post = Model.Posts[i];
-            <article class="post @(i.IsEven() ? "even" : "odd")" data-timestamp="@timestamp">
+            <li class="post @(i.IsEven() ? "even" : "odd")" data-timestamp="@timestamp">
                 @Html.DisplayFor(m => post)
-            </article>
+            </li>
         }
-    </section>
+    </ol>
     <div class="clear"></div>
     <section class="more-posts">
         @if (Model.HasMorePosts)
