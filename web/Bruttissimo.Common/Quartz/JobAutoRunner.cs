@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Quartz;
 using log4net;
 
@@ -29,26 +30,26 @@ namespace Bruttissimo.Common
         {
             scheduler.Start();
 
-            foreach (Type jobType in jobTypes)
+            Parallel.ForEach(jobTypes, jobType =>
             {
-                AutoRunAttribute attribute = jobType.GetAttribute<AutoRunAttribute>();
+                AutoRunAttribute configuration = jobType.GetAttribute<AutoRunAttribute>();
 
-                if (attribute == null)
+                if (configuration == null)
                 {
-                    continue; // sanity.
+                    return; // sanity.
                 }
                 log.Debug(Resources.Debug.SchedulingAutoRunJob.FormatWith(jobType.Name));
 
-                if (attribute.RunOnce)
+                if (configuration.RunOnce)
                 {
                     scheduler.StartJob(jobType);
                 }
                 else
                 {
                     DateTimeOffset now = DateTimeOffset.UtcNow;
-                    DateTimeOffset offset = now.AddMinutes(attribute.Delay);
-                    
-                    double minutes = attribute.Interval ?? AutoRunAttribute.DefaultInterval;
+                    DateTimeOffset offset = now.AddMinutes(configuration.Delay);
+
+                    double minutes = configuration.Interval ?? AutoRunAttribute.DefaultInterval;
                     TimeSpan interval = TimeSpan.FromMinutes(minutes);
 
                     Action<SimpleScheduleBuilder> schedule = s => s.WithInterval(interval);
@@ -56,7 +57,7 @@ namespace Bruttissimo.Common
 
                     scheduler.ScheduleJob(jobType, trigger);
                 }
-            }
+            });
         }
     }
 }
