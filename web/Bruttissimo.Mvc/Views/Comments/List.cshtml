@@ -1,0 +1,18 @@
+﻿@model IList<CommentModel>
+<ol class="comments">
+	@foreach (CommentModel comment in Model)
+	{
+        <li class="comment">
+            <section>profile pic (or blank)</section>
+            <section>
+                <span>username</span>
+				<span>message</span>
+            </section>
+			<section>actions (like,comment)</section>
+            @if (comment.HasComments)
+            {
+                @Html.Partial("List", comment.Comments)
+            }
+        </li>
+	}
+</ol>
