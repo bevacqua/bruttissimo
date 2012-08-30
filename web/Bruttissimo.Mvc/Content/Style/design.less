@@ -22,20 +22,20 @@ body {
 /* WIREFRAME
 ----------------------------------------------------------*/
 
-header#layout-header h1 {	
+#layout-header h1 {	
 	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, Helvetica, sans-serif;
 	font-weight: bold;
 	font-size: 2.4em;
 }
 
 @media only screen and (min-width: 768px) {
-	header#layout-header h1 {	
+	#layout-header h1 {	
 		font-size: 3.2em;
 	}
 }
 
 @media only screen and (min-width: 1024px) {
-	header#layout-header h1 {	
+	#layout-header h1 {	
 		font-size: 4.6em;
 	}
 }
@@ -44,7 +44,7 @@ header#layout-header h1 {
 /* NAVIGATION MENU
 ----------------------------------------------------------*/
 
-a#menu-icon {
+#menu-icon {
     color: #fff;
     background: #4e4e4e;
     text-transform: uppercase;
@@ -52,30 +52,31 @@ a#menu-icon {
 	.box_round(3px);
 }
 
-nav#menu ol {
+#menu ul {
     background: #1c1c1c;
+    cursor: default;
 }
  
-nav#menu li span {
+#menu li span {
     color: #fff;
 }
-nav#menu li a {
+#menu li a {
     color: #fff;
     text-decoration: none;
     border-bottom: 1px solid #383838;
 }
  
-nav#menu li a:hover,
-nav#menu li a:focus {
+#menu li a:hover,
+#menu li a:focus {
     color: #1c1c1c;
     background: #ccc;
 }
 
 @media only screen and (min-width: 768px) {
-	nav#menu ol {
+	#menu ul {
 		.box_round(4px);
 	}
-	nav#menu li a {
+	#menu li a {
 		.box_round(2px);
 		border-bottom: inherit;
 	}

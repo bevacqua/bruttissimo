@@ -12,27 +12,27 @@ body {
     text-align: left;
 }
 
-header#layout-header {
+#layout-header {
     padding: 12px 0;
     margin-bottom: 20px;
 }
 
 @media only screen and (min-width: 768px) {
-    header#layout-header { margin-bottom: 30px; }
+    #layout-header { margin-bottom: 30px; }
 }
 
 @media only screen and (min-width: 1024px) {
-    header#layout-header { margin-bottom: 40px; }
+    #layout-header { margin-bottom: 40px; }
 }
 
-header#layout-header h1 {
+#layout-header h1 {
     margin: 0 auto;
     display: inline-block;
 }
 
-section#layout-content { padding: 6px 0; }
+#layout-content { padding: 6px 0; }
 
-section#layout-content h1 { margin-bottom: 12px; }
+#layout-content h1 { margin-bottom: 12px; }
 
 
 
@@ -72,7 +72,7 @@ section#layout-content h1 { margin-bottom: 12px; }
 /* NAVIGATION MENU
 ----------------------------------------------------------*/
 
-a#menu-icon {
+#menu-icon {
     float: right;
     padding: 0 10px;
     font-size: 12px;
@@ -83,11 +83,11 @@ a#menu-icon {
     margin-top: 10px;
 }
 
-nav#menu { margin-top: 30px; }
+#menu { margin-top: 30px; }
 
-nav#menu ol { padding: 5px 0; }
+#menu ul { padding: 5px 0; }
 
-nav#menu li a {
+#menu li a {
     display: block;
     padding: 0 20px;
     font-weight: bold;
@@ -97,13 +97,13 @@ nav#menu li a {
     height: 2em;
 }
 
-nav#menu li:last-child a { border-bottom: none; }
-nav#menu .logout-identifier { display: none; }
+#menu li:last-child a { border-bottom: none; }
+#menu .logout-identifier { display: none; }
 
 @media only screen and (min-width: 768px) {
-    section#layout-content { position: relative; }
+    #layout-content { position: relative; }
 
-    nav#menu {
+    #menu {
         margin-top: 0;
         position: absolute;
         top: 16px;
@@ -111,22 +111,22 @@ nav#menu .logout-identifier { display: none; }
         max-width: 45%;
     }
 
-    nav#menu ol { padding: 5px 5px; }
+    #menu ul { padding: 5px 5px; }
 
-    a#menu-icon,
-    nav#menu li.nav-top { display: none; }
+    #menu-icon,
+    #menu li.nav-top { display: none; }
 
-    nav#menu li { display: inline-block; }
+    #menu li { display: inline-block; }
 
-    nav#menu li a {
+    #menu li a {
         float: left;
         border: none;
         padding: 0 10px;
     }
 
-    nav#menu .logout-identifier { display: inline; }
+    #menu .logout-identifier { display: inline; }
 }
 
 @media only screen and (min-width: 1024px) {
-    nav#menu { top: 28px; }
+    #menu { top: 28px; }
 }
