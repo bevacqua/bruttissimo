@@ -8,7 +8,7 @@
 			api.url = url;
 
 			enqueue(function() {
-				extendHubs();
+				extendHubs(); // must extend before the connection is started.
 
 				$.connection.hub.start();
 			});
