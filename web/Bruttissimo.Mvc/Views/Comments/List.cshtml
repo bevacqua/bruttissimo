@@ -8,10 +8,10 @@
                 <span>username</span>
 				<span>message</span>
             </section>
-			<section>actions (like,comment)</section>
-            @if (comment.HasComments)
+			<section>actions (like, comment)</section>
+            @if (comment.HasReplies)
             {
-                @Html.Partial("List", comment.Comments)
+                @Html.Partial("List", comment.Replies)
             }
         </li>
 	}

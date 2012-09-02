@@ -8,11 +8,11 @@ namespace Bruttissimo.Mvc.Model
         public long? ParentId { get; set; }
         public string Message { get; set; }
 
-        public IList<CommentModel> Comments { get; set; }
+        public IList<CommentModel> Replies { get; set; }
 
-        public bool HasComments
+        public bool HasReplies
         {
-            get { return Comments.Count > 0; }
+            get { return Replies.Count > 0; }
         }
     }
 }
