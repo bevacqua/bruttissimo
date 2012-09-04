@@ -61,6 +61,7 @@
     </Compile>
     <Compile Include="Binders\MiniPrincipalModelBinder.cs" />
     <Compile Include="Interfaces\IHasOpenGraphMetadata.cs" />
+    <Compile Include="Mappers\TypeConverters\CommentListFromEntitiesConverter.cs" />
     <Compile Include="Mappers\TypeConverters\PostFromEntityConverter.cs" />
     <Compile Include="Mappers\DomainToModelProfile.cs" />
     <Compile Include="Mappers\TypeConverters\PostListFromEntitiesConverter.cs" />

@@ -14,10 +14,11 @@ namespace Bruttissimo.Mvc.Controller
     {
         private readonly ILinkService linkService;
         private readonly IPostService postService;
+        private readonly ICommentService commentService;
         private readonly UrlHelper urlHelper;
         private readonly IMapper mapper;
 
-        public PostsController(ILinkService linkService, IPostService postService, UrlHelper urlHelper, IMapper mapper)
+        public PostsController(ILinkService linkService, IPostService postService, ICommentService commentService, UrlHelper urlHelper, IMapper mapper)
         {
             if (linkService == null)
             {
@@ -26,6 +27,10 @@ namespace Bruttissimo.Mvc.Controller
             if (postService == null)
             {
                 throw new ArgumentNullException("postService");
+            }
+            if (commentService == null)
+            {
+                throw new ArgumentNullException("commentService");
             }
             if (urlHelper == null)
             {
@@ -37,6 +42,7 @@ namespace Bruttissimo.Mvc.Controller
             }
             this.linkService = linkService;
             this.postService = postService;
+            this.commentService = commentService;
             this.urlHelper = urlHelper;
             this.mapper = mapper;
         }
@@ -143,7 +149,7 @@ namespace Bruttissimo.Mvc.Controller
                     long? postId = parsed.Link.PostId;
                     if (postId.HasValue)
                     {
-                        Post post = postService.GetById(postId.Value, false);
+                        Post post = postService.GetById(postId.Value);
                         return Json(new
                         {
                             faulted = "used",
@@ -185,7 +191,7 @@ namespace Bruttissimo.Mvc.Controller
         [NotAjax]
         public ActionResult Details(long id, string slug)
         {
-            Post post = postService.GetById(id);
+            Post post = postService.GetById(id, true, true);
             if (post == null)
             {
                 return NotFound();

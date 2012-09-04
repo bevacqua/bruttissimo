@@ -211,7 +211,10 @@
     <Content Include="Views\System\Log.js.cshtml" />
     <Content Include="Views\System\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\AggregateException.cshtml" />
-    <Content Include="Views\Comments\List.cshtml" />
+    <Content Include="Views\Posts\DisplayTemplates\CommentThreadModel.cshtml" />
+    <Content Include="Views\Posts\DisplayTemplates\CommentListModel.cshtml" />
+    <Content Include="Views\Posts\DisplayTemplates\CommentModel.cshtml" />
+    <Content Include="Views\Posts\DisplayTemplates\CommentReplyModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\GlobalAssemblyInfo.cs">

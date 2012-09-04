@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain.Logic
@@ -43,6 +44,12 @@ namespace Bruttissimo.Domain.Logic
                 ParentId = parentId
             };
             return commentRepository.Insert(comment);
+        }
+
+        public IEnumerable<Comment> GetComments(Post post)
+        {
+            IEnumerable<Comment> comments = commentRepository.GetByPostId(post.Id);
+            return comments;
         }
     }
 }

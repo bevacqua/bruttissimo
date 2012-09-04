@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using Bruttissimo.Common;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
@@ -36,33 +37,24 @@ namespace Bruttissimo.Mvc.Model
 
         protected override void Configure()
         {
+            CreateCommentMaps();
             CreatePostMaps();
             CreateJobMaps();
             CreateMap<Log, LogModel>();
         }
 
-        internal void CreateJobMaps()
+        internal void CreateCommentMaps()
         {
-            CreateMap<JobDto, JobModel>();
-
-            CreateMap<ScheduledJobDto, ScheduledJobModel>().ForMember(
-                m => m.StartTime,
-                x => x.MapFrom(j => userService.ToCurrentUserTimeZone(HttpContext.Current.Wrap(), j.StartTime))
-            );
+            CreateMap<Comment, CommentModel>();
+            CreateMap<Post, CommentListModel>().ConvertUsing<CommentListFromEntitiesConverter>();
         }
 
         internal void CreatePostMaps()
         {
             CreateMap<Post, PostModel>().ConvertUsing<PostFromEntityConverter>();
 
-            CreateMap<Post, LinkPostModel>().ForMember(
-                m => m.PostSlug,
-                x => x.MapFrom(p => postService.GetTitleSlug(p))
-            );
-            CreateMap<Post, ImagePostModel>().ForMember(
-                m => m.PostSlug,
-                x => x.MapFrom(p => postService.GetTitleSlug(p))
-            );
+            PostModelMemberMappings(CreateMap<Post, LinkPostModel>());
+            PostModelMemberMappings(CreateMap<Post, ImagePostModel>());
 
             CreateMap<Post, OpenGraphModel>().ForMember(
                 m => m.Title,
@@ -82,5 +74,24 @@ namespace Bruttissimo.Mvc.Model
 
             CreateMap<IEnumerable<Post>, PostListModel>().ConvertUsing<PostListFromEntitiesConverter>();
         }
+
+        internal IMappingExpression<Post, T> PostModelMemberMappings<T>(IMappingExpression<Post, T> expression) where T : PostModel
+        {
+            return expression.ForMember(
+                m => m.PostSlug,
+                x => x.MapFrom(p => postService.GetTitleSlug(p))
+            ).Ignoring(m => m.Comments);
+        }
+
+        internal void CreateJobMaps()
+        {
+            CreateMap<JobDto, JobModel>();
+
+            CreateMap<ScheduledJobDto, ScheduledJobModel>().ForMember(
+                m => m.StartTime,
+                x => x.MapFrom(j => userService.ToCurrentUserTimeZone(HttpContext.Current.Wrap(), j.StartTime))
+            );
+        }
+
     }
 }

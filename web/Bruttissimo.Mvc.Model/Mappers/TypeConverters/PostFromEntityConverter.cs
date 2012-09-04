@@ -21,6 +21,8 @@ namespace Bruttissimo.Mvc.Model
         public PostModel Convert(ResolutionContext context)
         {
             Post post = (Post)context.SourceValue;
+            PostModel result;
+
             switch (post.Link.Type)
             {
                 default:
@@ -29,13 +31,17 @@ namespace Bruttissimo.Mvc.Model
                 }
                 case LinkType.Html:
                 {
-                    return mapper.Map<Post, LinkPostModel>(post);
+                    result = mapper.Map<Post, LinkPostModel>(post);
+                    break;
                 }
                 case LinkType.Image:
                 {
-                    return mapper.Map<Post, ImagePostModel>(post);
+                    result = mapper.Map<Post, ImagePostModel>(post);
+                    break;
                 }
             }
+            result.Comments = mapper.Map<Post, CommentListModel>(post);
+            return result;
         }
     }
 }

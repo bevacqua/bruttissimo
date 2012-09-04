@@ -17,5 +17,7 @@ namespace Bruttissimo.Mvc.Model
         {
             get { return !UserMessage.NullOrEmpty(); }
         }
+
+        public CommentListModel Comments { get; set; }
     }
 }

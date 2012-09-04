@@ -1,0 +1,10 @@
+﻿@model CommentModel
+<section class="comment-voting">
+    <a href="@Url.Action("UpVote", "Comments", new { id = @Model.Id })">@Resource.String("UpVote")</a>
+    <a href="@Url.Action("DownVote", "Comments", new { id = @Model.Id })">@Resource.String("DownVote")</a>
+</section>
+<section>profile pic (or blank)</section>
+<section>
+    <span>username</span>
+    <span>@Model.Message</span>
+</section>

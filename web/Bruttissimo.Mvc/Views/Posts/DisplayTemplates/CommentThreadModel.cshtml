@@ -1,0 +1,14 @@
+﻿@model CommentThreadModel
+<li class="comment">
+    @Html.DisplayFor(m => m.Original)
+    <section>
+        <a href="#@Model.Form.Name">@Resource.String("Reply")</a>
+    </section>
+</li>
+@foreach (CommentModel comment in Model.Replies)
+{
+    <li class="comment">
+        @Html.DisplayFor(m => comment)
+    </li>
+}
+@Html.DisplayFor(m => Model.Form)

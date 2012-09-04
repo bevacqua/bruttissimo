@@ -5,7 +5,7 @@ namespace Bruttissimo.Domain
 {
     public interface IPostService
     {
-        Post GetById(long id, bool includeLink = true);
+        Post GetById(long id, bool includeLink = false, bool includeComments = false);
         IEnumerable<Post> GetLatest(long? timestamp, int count);
         string GetTitleSlug(Post post);
         Post Create(Link link, string message, User user);

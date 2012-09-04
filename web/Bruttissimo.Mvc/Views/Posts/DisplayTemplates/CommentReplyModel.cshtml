@@ -1,0 +1,7 @@
+﻿@model CommentReplyModel
+<li class="comment-reply">
+    <form name="@Model.Name" action="@Url.Action("Create", "Comments", new { id = Model.PostId, parentId = Model.ParentId })" method="POST">
+        <input name="message" type="text" placeholder="@Resource.String("CommentPlaceholder")"/>
+        <input type="submit" value="@Resource.String("Comment")" /> 
+    </form>
+</li>

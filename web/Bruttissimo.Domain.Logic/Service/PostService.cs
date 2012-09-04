@@ -9,24 +9,34 @@ namespace Bruttissimo.Domain.Logic
     {
         private readonly IPostRepository postRepository;
         private readonly TextHelper textHelper;
+        private readonly ICommentService commentService;
 
-        public PostService(IPostRepository postRepository, TextHelper textHelper)
+        public PostService(IPostRepository postRepository, ICommentService commentService, TextHelper textHelper)
         {
             if (postRepository == null)
             {
                 throw new ArgumentNullException("postRepository");
+            }
+            if (commentService == null)
+            {
+                throw new ArgumentNullException("commentService");
             }
             if (textHelper == null)
             {
                 throw new ArgumentNullException("textHelper");
             }
             this.postRepository = postRepository;
+            this.commentService = commentService;
             this.textHelper = textHelper;
         }
 
-        public Post GetById(long id, bool includeLink = true)
+        public Post GetById(long id, bool includeLink = false, bool includeComments = false)
         {
             Post post = postRepository.GetById(id, includeLink);
+            if (includeComments)
+            {
+                post.Comments = commentService.GetComments(post);
+            }
             return post;
         }
 

@@ -1,0 +1,8 @@
+﻿@model CommentListModel
+<ol class="comments">
+    @foreach (CommentThreadModel thread in Model.Threads)
+    {
+        @Html.DisplayFor(m => thread)
+    }
+    @Html.DisplayFor(m => Model.Form)
+</ol>

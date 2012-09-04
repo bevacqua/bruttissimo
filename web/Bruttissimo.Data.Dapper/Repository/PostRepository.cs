@@ -38,7 +38,7 @@ namespace Bruttissimo.Data.Dapper
                     post.Link = link;
                     return post;
                 };
-                IEnumerable<Post> posts = connection.Query(sql, map, new {postId});
+                IEnumerable<Post> posts = connection.Query(sql, map, new { postId });
                 return posts.FirstOrDefault();
             }
             else
@@ -68,7 +68,7 @@ namespace Bruttissimo.Data.Dapper
                 post.User = user;
                 return post;
             };
-            IEnumerable<Post> posts = connection.Query(sql, map, new {created, count});
+            IEnumerable<Post> posts = connection.Query(sql, map, new { created, count });
             return posts;
         }
 

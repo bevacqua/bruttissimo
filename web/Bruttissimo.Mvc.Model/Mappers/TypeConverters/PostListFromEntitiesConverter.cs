@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Bruttissimo.Common;
-using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Mvc.Model

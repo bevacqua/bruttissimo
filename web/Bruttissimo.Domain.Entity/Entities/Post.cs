@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Bruttissimo.Domain.Entity
 {
@@ -22,5 +23,7 @@ namespace Bruttissimo.Domain.Entity
         public string FacebookFeedId { get; set; }
         public string FacebookPostId { get; set; }
         public string FacebookUserId { get; set; }
+
+        public IEnumerable<Comment> Comments { get; set; } // lazily loaded by request.
     }
 }

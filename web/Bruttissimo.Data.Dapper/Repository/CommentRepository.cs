@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
+using Dapper;
 
 namespace Bruttissimo.Data.Dapper
 {
@@ -17,6 +19,18 @@ namespace Bruttissimo.Data.Dapper
                 throw new ArgumentNullException("connection");
             }
             this.connection = connection;
+        }
+
+        public IEnumerable<Comment> GetByPostId(long postId)
+        {
+            const string sql = @"
+					SELECT [Comment].*
+					FROM [Comment]
+					LEFT JOIN [Post] ON [Comment].[PostId] = [Post].[Id]
+					WHERE [Post].[Id] = @postId
+				";
+            IEnumerable<Comment> comments = connection.Query<Comment>(sql, new { postId });
+            return comments;
         }
     }
 }
