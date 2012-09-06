@@ -50,6 +50,7 @@ Features:
 	- Inversion of Control, Dependency Injection via constructors and properties.
 	- POCO Entities.
 	- Dapper Micro-ORM, for performance boost and simplified database querying.
+	- DbUp for automatic build-step database schema upgrading.
 	- Log4Net logging, which tracks exceptions, stack traces, SQL code and request endpoints.
 	- Mvc MiniProfiler implementation to rapidly identify performance bottlenecks.
     - Quartz.NET job scheduling for long running background tasks.
