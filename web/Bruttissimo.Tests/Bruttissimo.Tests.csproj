@@ -206,9 +206,9 @@
     <EmbeddedResource Include="RazorEngine\Template\UnitTestLayoutSection.cshtml" />
     <EmbeddedResource Include="RazorEngine\Template\_UnitTestLayoutSection.cshtml" />
     <None Include="packages.config" />
-    <None Include="Xml\log4net.config">
+    <Content Include="Xml\log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
