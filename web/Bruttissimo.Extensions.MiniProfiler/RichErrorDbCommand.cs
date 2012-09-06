@@ -5,7 +5,7 @@ using StackExchange.Profiling;
 using StackExchange.Profiling.Data;
 using StackExchange.Profiling.SqlFormatters;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Extensions.MiniProfiler
 {
     public class RichErrorDbCommand : ProfiledDbCommand
     {

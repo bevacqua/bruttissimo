@@ -134,6 +134,10 @@
       <Project>{2CDC59CD-F04A-4CF3-BCD4-7063245101B6}</Project>
       <Name>Bruttissimo.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bruttissimo.Extensions.MiniProfiler\Bruttissimo.Extensions.MiniProfiler.csproj">
+      <Project>{4B10C9C7-9570-49F0-A7FB-7756BF4A1299}</Project>
+      <Name>Bruttissimo.Extensions.MiniProfiler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bruttissimo.Extensions.RazorEngine\Bruttissimo.Extensions.RazorEngine.csproj">
       <Project>{DADE5AE6-DDBB-48DC-B65A-C20A39FA0FF7}</Project>
       <Name>Bruttissimo.Extensions.RazorEngine</Name>

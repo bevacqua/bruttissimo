@@ -1,20 +1,19 @@
 using System.Data.Common;
-using StackExchange.Profiling;
 using StackExchange.Profiling.Data;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Extensions.MiniProfiler
 {
     public sealed class RichErrorDbConnection : ProfiledDbConnection
     {
 #if DEBUG
         private readonly DbConnection connection;
-        private readonly MiniProfiler profiler;
+        private readonly StackExchange.Profiling.MiniProfiler profiler;
 #endif
 
         /// <summary>
         /// Provides DbCommands that inject the faulty SQL into the Exception objects they throw.
         /// </summary>
-        public RichErrorDbConnection(DbConnection connection, MiniProfiler profiler)
+        public RichErrorDbConnection(DbConnection connection, StackExchange.Profiling.MiniProfiler profiler)
             : base(connection, profiler)
         {
 #if DEBUG
