@@ -9,6 +9,7 @@
     <DoNotUseAlterAssemblyStatementsToUpdateCLRTypes>False</DoNotUseAlterAssemblyStatementsToUpdateCLRTypes>
     <GenerateDropsIfNotInProject>False</GenerateDropsIfNotInProject>
     <IgnoreAnsiNulls>True</IgnoreAnsiNulls>
+    <IncludeTransactionalScripts>True</IncludeTransactionalScripts>
     <PerformDatabaseBackup>False</PerformDatabaseBackup>
     <SingleUserMode>False</SingleUserMode>
   </Properties>

@@ -9,10 +9,10 @@
   </SourceModelProvider>
   <TargetModelProvider>
     <ConnectionBasedModelProvider>
-      <ConnectionString>Data Source=.\Microserver;Initial Catalog=Bruttissimo_Debug;Integrated Security=True;Pooling=False;MultipleActiveResultSets=True;Application Name=EntityFramework</ConnectionString>
-      <DatabaseName>Bruttissimo_Debug</DatabaseName>
+      <ConnectionString>Data Source=.\Microserver;Initial Catalog=Bruttissimo;Integrated Security=True;Pooling=False;MultipleActiveResultSets=True;Application Name=EntityFramework</ConnectionString>
+      <DatabaseName>Bruttissimo</DatabaseName>
       <DspFamilyName>sql</DspFamilyName>
-      <Name>[MATRIX\Microserver.Bruttissimo_Debug]</Name>
+      <Name>[.\MicroServer.Bruttissimo]</Name>
     </ConnectionBasedModelProvider>
   </TargetModelProvider>
   <SchemaCompareSettingsService>
@@ -289,11 +289,11 @@
       </PropertyElementName>
       <PropertyElementName>
         <Name>TargetDatabaseName</Name>
-        <Value>Bruttissimo_Debug</Value>
+        <Value>Bruttissimo</Value>
       </PropertyElementName>
       <PropertyElementName>
         <Name>TargetConnectionString</Name>
-        <Value>Data Source=.\Microserver;Initial Catalog=Bruttissimo_Debug;Integrated Security=True;Pooling=False;MultipleActiveResultSets=True;Application Name=EntityFramework</Value>
+        <Value>Data Source=.\Microserver;Initial Catalog=Bruttissim;Integrated Security=True;Pooling=False;MultipleActiveResultSets=True;</Value>
       </PropertyElementName>
       <PropertyElementName>
         <Name>VerifyDeployment</Name>
