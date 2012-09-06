@@ -26,5 +26,15 @@ namespace Bruttissimo.Mvc.Controller
             commentService.Create(model.Id, model.Message, principal.User, model.ParentId);
             return RedirectToAction("Details", "Posts", new { id = model.Id });
         }
+
+        public ActionResult UpVote()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ActionResult DownVote()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
