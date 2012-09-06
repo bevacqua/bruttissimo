@@ -31,7 +31,7 @@
     <OutputPath>.\sql\release\</OutputPath>
     <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
     <TargetConnectionString>Data Source=.\MICROSERVER;Integrated Security=True;Pooling=False</TargetConnectionString>
-    <TargetDatabase>Bruttissimo_DeploymentTest</TargetDatabase>
+    <TargetDatabase>Bruttissimo</TargetDatabase>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <SuppressWarnings>
     </SuppressWarnings>
