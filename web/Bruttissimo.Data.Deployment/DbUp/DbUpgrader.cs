@@ -39,7 +39,7 @@ namespace Bruttissimo.Data.Deployment
             stopwatch.Restart();
 
             UpgradeEngine upgrader = DeployChanges.To
-                .SqlDatabase(GetConnectionString)
+                .SqlDatabase(GetConnection)
                 .WithScriptsEmbeddedInAssembly(assembly)
                 .LogTo(log)
                 .Build();
@@ -51,7 +51,7 @@ namespace Bruttissimo.Data.Deployment
             return exitCode;
         }
 
-        private int GetExitCode(DatabaseUpgradeResult result)
+        internal int GetExitCode(DatabaseUpgradeResult result)
         {
             if (!result.Successful)
             {
@@ -77,7 +77,7 @@ namespace Bruttissimo.Data.Deployment
             }
         }
 
-        internal IDbConnection GetConnectionString()
+        internal IDbConnection GetConnection()
         {
             string connectionString = Config.GetConnectionString("SqlConnection");
             DbConnection connection = new SqlConnection(connectionString);
