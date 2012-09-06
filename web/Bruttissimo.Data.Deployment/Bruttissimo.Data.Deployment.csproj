@@ -90,12 +90,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
-
   <Target Name="BeforeBuild">
     <!-- deploy database creation -->
     <MSBuild Projects="..\Bruttissimo.Data.SqlServer\Bruttissimo.Data.SqlServer.dbproj" Targets="Build;Deploy" />
   </Target>
-  
   <Target Name="AfterBuild">
     <!-- self-execute after build. -->
     <Exec Command="$(TargetPath)" />
