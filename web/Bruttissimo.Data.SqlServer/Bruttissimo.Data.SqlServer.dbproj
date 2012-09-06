@@ -135,12 +135,6 @@
     <BuildContributorArgument Include="OutDir=$(OutDir)" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Schema Objects\Storage\Files\Bruttissimo_Debug_log.sqlfile.sql">
-      <SubType>Code</SubType>
-    </Build>
-    <Build Include="Schema Objects\Storage\Files\Bruttissimo_Debug.sqlfile.sql">
-      <SubType>Code</SubType>
-    </Build>
     <Build Include="Schema Objects\Tables\Keys\FK_RoleRight_Right.fkey.sql">
       <SubType>Code</SubType>
     </Build>
