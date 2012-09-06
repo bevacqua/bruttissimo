@@ -56,6 +56,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bruttissimo.Mvc.Controller"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bruttissimo.Extensions.CommonLogging", "Bruttissimo.Extensions.CommonLogging\Bruttissimo.Extensions.CommonLogging.csproj", "{89562EED-6323-4739-9557-2D4F5AA69F8F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bruttissimo.Data.Deployment", "Bruttissimo.Data.Deployment\Bruttissimo.Data.Deployment.csproj", "{2656DDDF-69BC-4DA9-9691-5059CC710750}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -230,6 +232,16 @@ Global
 		{89562EED-6323-4739-9557-2D4F5AA69F8F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{89562EED-6323-4739-9557-2D4F5AA69F8F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{89562EED-6323-4739-9557-2D4F5AA69F8F}.Release|x86.ActiveCfg = Release|Any CPU
+		{2656DDDF-69BC-4DA9-9691-5059CC710750}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{2656DDDF-69BC-4DA9-9691-5059CC710750}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{2656DDDF-69BC-4DA9-9691-5059CC710750}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{2656DDDF-69BC-4DA9-9691-5059CC710750}.Debug|x86.ActiveCfg = Debug|x86
+		{2656DDDF-69BC-4DA9-9691-5059CC710750}.Debug|x86.Build.0 = Debug|x86
+		{2656DDDF-69BC-4DA9-9691-5059CC710750}.Release|Any CPU.ActiveCfg = Release|x86
+		{2656DDDF-69BC-4DA9-9691-5059CC710750}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{2656DDDF-69BC-4DA9-9691-5059CC710750}.Release|Mixed Platforms.Build.0 = Release|x86
+		{2656DDDF-69BC-4DA9-9691-5059CC710750}.Release|x86.ActiveCfg = Release|x86
+		{2656DDDF-69BC-4DA9-9691-5059CC710750}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -252,5 +264,6 @@ Global
 		{E5F5BA52-78CF-4ADD-94CE-0AF0BD38FC60} = {F249BFC1-C6E4-481E-B02B-D1128A52DAD0}
 		{F17E96BA-A4DA-4FD1-B091-2C85B953695A} = {3BF319B1-1B4B-4367-9129-651BBDE0A6BA}
 		{67CBC824-A49E-4E9B-A947-360F3DFE65C3} = {3BF319B1-1B4B-4367-9129-651BBDE0A6BA}
+		{2656DDDF-69BC-4DA9-9691-5059CC710750} = {3BF319B1-1B4B-4367-9129-651BBDE0A6BA}
 	EndGlobalSection
 EndGlobal
