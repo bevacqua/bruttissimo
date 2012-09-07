@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Microsoft.Data.Schema.Tasks</name>
+  </assembly>
+  <members>
+    <member name="T:Microsoft.Data.Schema.Tasks.DataGeneratorTask">
+      <summary>Represents data generation tasks.</summary>
+    </member>
+    <member name="M:Microsoft.Data.Schema.Tasks.DataGeneratorTask.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.Data.Schema.Tasks.DataGeneratorTask" /> class.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DataGeneratorTask.ConnectionString">
+      <summary>Gets or sets a connection string.</summary>
+    </member>
+    <member name="M:Microsoft.Data.Schema.Tasks.DataGeneratorTask.Execute">
+      <summary>Override. Returns the result of an attempt to execute a Data Generation plan.</summary>
+      <returns>Returns True if execution is successful; otherwise, False.</returns>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DataGeneratorTask.PurgeTablesBeforePopulate">
+      <summary>Gets or sets whether to purge tables before population.</summary>
+      <returns>Returns True if purge tables before population; otherwise, False.</returns>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DataGeneratorTask.SinkConfigName">
+      <summary>Gets or sets the sink configuration name.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DataGeneratorTask.SourceFile">
+      <summary>Gets or sets the input data generator file.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DataGeneratorTask.Verbose">
+      <summary>Gets or sets whether this task is set to verbose.</summary>
+    </member>
+    <member name="T:Microsoft.Data.Schema.Tasks.DataTask">
+      <summary>Abstract base class for tasks that support the database features of Visual Studio.</summary>
+    </member>
+    <member name="M:Microsoft.Data.Schema.Tasks.DataTask.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.Data.Schema.Tasks.DataTask" /> class. </summary>
+    </member>
+    <member name="E:Microsoft.Data.Schema.Tasks.DataTask.Canceled">
+      <summary>Raised when the event is canceled.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DataTask.IsCanceled">
+      <summary>Gets a value that indicates whether the task was canceled</summary>
+    </member>
+    <member name="M:Microsoft.Data.Schema.Tasks.DataTask.Microsoft#Build#Framework#ICancelableTask#Cancel">
+      <summary>Cancels the active operation.</summary>
+    </member>
+    <member name="M:Microsoft.Data.Schema.Tasks.DataTask.WriteError(System.String,Microsoft.Data.Schema.DataSchemaError,System.Boolean)">
+      <summary>Outputs the specified error.</summary>
+      <param name="subCategory"></param>
+      <param name="error"></param>
+      <param name="treatWarningsAsError"></param>
+    </member>
+    <member name="M:Microsoft.Data.Schema.Tasks.DataTask.WriteErrors(System.String,Microsoft.Data.Schema.ErrorManager,System.Object)">
+      <summary>Outputs the errors that are contained in the list of error categories.</summary>
+      <param name="subCategory"></param>
+      <param name="em"></param>
+      <param name="category"></param>
+    </member>
+    <member name="M:Microsoft.Data.Schema.Tasks.DataTask.WriteErrors(System.String,System.Collections.Generic.ICollection{Microsoft.Data.Schema.DataSchemaError})">
+      <summary>Outputs the specified list of errors.</summary>
+      <param name="subCategory"></param>
+      <param name="errors"></param>
+    </member>
+    <member name="T:Microsoft.Data.Schema.Tasks.DBBuildTask">
+      <summary>Represents the base build task that provides a default implementation for all build tasks.</summary>
+    </member>
+    <member name="M:Microsoft.Data.Schema.Tasks.DBBuildTask.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.Data.Schema.Tasks.DBBuildTask" /> class.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBBuildTask.BuildExtensionConfiguration"></member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBBuildTask.CatalogPropertiesFile">
+      <summary>Gets or sets the catalog properties file string.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBBuildTask.ContributorArguments"></member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBBuildTask.DatabaseSchemaProviderName">
+      <summary>Gets or sets the database schema provider name.</summary>
+    </member>
+    <member name="M:Microsoft.Data.Schema.Tasks.DBBuildTask.Execute">
+      <summary>Returns the result of build task execution.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBBuildTask.ModelCollation">
+      <summary>Gets or sets the model collation string.</summary>
+    </member>
+    <member name="M:Microsoft.Data.Schema.Tasks.DBBuildTask.OnAddProperties(System.Collections.Generic.Dictionary{System.String,System.String})">
+      <summary>Does nothing.</summary>
+      <param name="projectProperties">A list of project properties</param>
+    </member>
+    <member name="M:Microsoft.Data.Schema.Tasks.DBBuildTask.OnFinish(Microsoft.Data.Schema.Build.DatabaseTaskHost)">
+      <summary>Does nothing.</summary>
+      <param name="host">The database task host</param>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBBuildTask.OutputDBSchema">
+      <summary>Gets or sets the output database schema task item.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBBuildTask.ReferencePath">
+      <summary>Gets or sets an array of reference path task items.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBBuildTask.SerializeModel"></member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBBuildTask.ServerPropertiesFile">
+      <summary>Gets or sets a server properties file name.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBBuildTask.Source">
+      <summary>Gets or sets an array of source task items.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBBuildTask.SuppressWarnings">
+      <summary>Gets or sets a suppress warnings string.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBBuildTask.TreatWarningsAsErrors">
+      <summary>Gets or sets whether to treat warnings as errors.</summary>
+    </member>
+    <member name="T:Microsoft.Data.Schema.Tasks.DBDeployTask">
+      <summary>Represents the database deployment task.</summary>
+    </member>
+    <member name="M:Microsoft.Data.Schema.Tasks.DBDeployTask.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.Data.Schema.Tasks.DBDeployTask" /> class.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBDeployTask.ConnectionString">
+      <summary>Gets or sets a connection string.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBDeployTask.ContributorArguments"></member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBDeployTask.DatabaseName">
+      <summary>Gets or sets the database name.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBDeployTask.DeploymentConfigurationFile">
+      <summary>Gets or sets the deployment configuration file name.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBDeployTask.DeploymentExtensions">
+      <summary>Gets or sets the deployment extensions string.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBDeployTask.DeploymentManifest">
+      <summary>Gets or sets the deployment manifest task item.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBDeployTask.DeployScriptFile">
+      <summary>Gets or sets the deploy script file name.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBDeployTask.DeployToDatabase">
+      <summary>Gets or sets whether to deploy to the database.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBDeployTask.DeployToScript">
+      <summary>Gets or sets whether to deploy to the script.</summary>
+    </member>
+    <member name="M:Microsoft.Data.Schema.Tasks.DBDeployTask.Execute">
+      <summary>Returns the result of deployment execution.</summary>
+    </member>
+    <member name="M:Microsoft.Data.Schema.Tasks.DBDeployTask.OnInitializeConstructor(Microsoft.Data.Schema.Build.SchemaDeploymentConstructor)"></member>
+    <member name="M:Microsoft.Data.Schema.Tasks.DBDeployTask.OnInitializeDeployment(Microsoft.Data.Schema.Build.SchemaDeployment)"></member>
+    <member name="M:Microsoft.Data.Schema.Tasks.DBDeployTask.OnStart"></member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBDeployTask.SourceModel">
+      <summary>Gets or sets the source model task item.</summary>
+    </member>
+    <member name="T:Microsoft.Data.Schema.Tasks.DBSetupDeployTask">
+      <summary>Represents the deployment setup tasks.</summary>
+    </member>
+    <member name="M:Microsoft.Data.Schema.Tasks.DBSetupDeployTask.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.Data.Schema.Tasks.DBSetupDeployTask" /> class.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBSetupDeployTask.CatalogPropertiesFile">
+      <summary>Gets or sets a catalog properties file string.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBSetupDeployTask.ConnectionString">
+      <summary>Gets or sets a connection string.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBSetupDeployTask.DatabaseName">
+      <summary>Gets or sets a database name.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBSetupDeployTask.DatabaseSchemaProviderName">
+      <summary>Gets or sets a database schema provider name.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBSetupDeployTask.DeployManifestName">
+      <summary>Gets or sets a deploy manifest name.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBSetupDeployTask.DeploymentConfigFile">
+      <summary>Gets or sets a deployment configuration file string.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBSetupDeployTask.DeploymentExtensionConfiguration">
+      <summary>Gets or sets an array of deployment extension configuration tasks.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBSetupDeployTask.DeploymentExtensions">
+      <summary>Gets or sets a deployment extensions string.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBSetupDeployTask.DeploymentFiles">
+      <summary>Gets an array of deployment file tasks.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBSetupDeployTask.DeploymentScriptName">
+      <summary>Gets or sets a deployment script name.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBSetupDeployTask.DeployToDatabase">
+      <summary>Gets or sets whether to deploy to the database.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBSetupDeployTask.DeployToScript">
+      <summary>Gets or sets whether to deploy to a script.</summary>
+    </member>
+    <member name="M:Microsoft.Data.Schema.Tasks.DBSetupDeployTask.Execute">
+      <summary>Returns the result of setup execution.</summary>
+    </member>
+    <member name="M:Microsoft.Data.Schema.Tasks.DBSetupDeployTask.OnCreateDeploymentProjectBuilder(Microsoft.Data.Schema.Extensibility.ExtensionManager)">
+      <summary>Used to create a deployment project builder.</summary>
+      <returns>Returns a <see cref="T:Microsoft.Data.Schema.Build.DeploymentProjectBuilder" />.</returns>
+      <param name="extensionManager">The extension manager</param>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBSetupDeployTask.OutputDirectory">
+      <summary>Gets or sets the output directory string.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBSetupDeployTask.OverwriteExistingFiles">
+      <summary>Gets or sets whether to overwrite existing files.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBSetupDeployTask.PropertiesFile">
+      <summary>Gets or sets an array of property file tasks.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBSetupDeployTask.ReferencePath">
+      <summary>Gets or sets an array of reference path tasks.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBSetupDeployTask.ServerPropertiesFile">
+      <summary>Gets or sets a server properties file string.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.DBSetupDeployTask.SourceModel">
+      <summary>Gets or sets the source model task item.</summary>
+    </member>
+    <member name="T:Microsoft.Data.Schema.Tasks.StaticCodeAnalysisTask">
+      <summary>Represents the static code analysis task.</summary>
+    </member>
+    <member name="M:Microsoft.Data.Schema.Tasks.StaticCodeAnalysisTask.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.Data.Schema.Tasks.StaticCodeAnalysisTask" /> class.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.StaticCodeAnalysisTask.CatalogPropertiesFile">
+      <summary>Gets or sets the catalog properties file string.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.StaticCodeAnalysisTask.CodeAnalysisRules">
+      <summary>Gets or sets the code analysis rules string.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.StaticCodeAnalysisTask.DatabaseSchemaProviderName">
+      <summary>Gets or sets the database schema provider name.</summary>
+    </member>
+    <member name="M:Microsoft.Data.Schema.Tasks.StaticCodeAnalysisTask.Execute">
+      <summary>Returns the result of code analysis execution.</summary>
+    </member>
+    <member name="M:Microsoft.Data.Schema.Tasks.StaticCodeAnalysisTask.InitializeMessageSuppression"></member>
+    <member name="P:Microsoft.Data.Schema.Tasks.StaticCodeAnalysisTask.ModelCollation">
+      <summary>Gets or sets the task host loader model collation string.</summary>
+    </member>
+    <member name="M:Microsoft.Data.Schema.Tasks.StaticCodeAnalysisTask.OnAddProperties(System.Collections.Generic.Dictionary{System.String,System.String})">
+      <param name="projectProperties">The project properties</param>
+    </member>
+    <member name="M:Microsoft.Data.Schema.Tasks.StaticCodeAnalysisTask.OnStart"></member>
+    <member name="P:Microsoft.Data.Schema.Tasks.StaticCodeAnalysisTask.ReferencePath">
+      <summary>Gets or sets an array of reference path tasks.</summary>
+    </member>
+    <member name="M:Microsoft.Data.Schema.Tasks.StaticCodeAnalysisTask.ReportError(Microsoft.Data.Schema.DataSchemaError)"></member>
+    <member name="M:Microsoft.Data.Schema.Tasks.StaticCodeAnalysisTask.ReportSuppressionError(Microsoft.Data.Schema.DataSchemaError)"></member>
+    <member name="P:Microsoft.Data.Schema.Tasks.StaticCodeAnalysisTask.ResultsFile">
+      <summary>Gets or sets an array of results file tasks.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.StaticCodeAnalysisTask.ServerPropertiesFile">
+      <summary>Gets or sets the server properties file string.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.StaticCodeAnalysisTask.Source">
+      <summary>Gets or sets an array of source task items.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.StaticCodeAnalysisTask.StaticCodeAnalysisSucceededFile"></member>
+    <member name="M:Microsoft.Data.Schema.Tasks.StaticCodeAnalysisTask.SuppressProblemCallback(Microsoft.Data.Schema.StaticCodeAnalysis.DataRuleProblemSuppressionContext)"></member>
+    <member name="P:Microsoft.Data.Schema.Tasks.StaticCodeAnalysisTask.SuppressWarnings">
+      <summary>Gets or sets the suppress warnings string.</summary>
+    </member>
+    <member name="P:Microsoft.Data.Schema.Tasks.StaticCodeAnalysisTask.TreatWarningsAsErrors">
+      <summary>Gets or sets whether to treat warnings as errors.</summary>
+    </member>
+  </members>
+</doc>
