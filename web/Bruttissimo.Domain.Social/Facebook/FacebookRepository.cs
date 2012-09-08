@@ -52,6 +52,30 @@ namespace Bruttissimo.Domain.Social
             return result;
         }
 
+        public FacebookPost PostToFeed(Post post)
+        {
+            string accessToken = GetAccessToken(post);
+            string feed = post.FacebookFeedId ?? defaultFeedId;
+            /*
+             * TODO: post to the facebook feed.
+             */
+            throw new NotImplementedException();
+            FacebookPost result = new FacebookPost();
+            return result;
+        }
+
+        internal string GetAccessToken(Post post)
+        {
+            throw new NotImplementedException();
+            /*
+             * TODO: verify the user has a facebook connection
+             * TODO: verify the user allows posts to be posted to facebook on his behalf
+             * TODO: verify the access token is still valid (invalidate, set to null if it isn't)
+             * TODO: if any of the above fail, return defaultAccessToken.
+             */
+            return defaultAccessToken;
+        }
+
         internal IList<FacebookPost> FetchAll(string url, DateTime? since, FacebookImportLog importLog)
         {
             int queryCount = 0;

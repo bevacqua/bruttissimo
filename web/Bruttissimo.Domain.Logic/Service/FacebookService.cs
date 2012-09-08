@@ -1,32 +1,31 @@
 using System;
-using System.Collections.Generic;
 using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain.Logic
 {
     public class FacebookService : IFacebookService
     {
-        private readonly IFacebookRepository facebookRepository;
+        private readonly IFacebookImporterService importerService;
+        private readonly IFacebookExporterService exporterService;
         private readonly ILogRepository logRepository;
-        private readonly IFacebookImporterService facebookImporterService;
 
-        public FacebookService(IFacebookRepository facebookRepository, ILogRepository logRepository, IFacebookImporterService facebookImporterService)
+        public FacebookService(ILogRepository logRepository, IFacebookImporterService importerService, IFacebookExporterService exporterService)
         {
-            if (facebookRepository == null)
+            if (importerService == null)
             {
-                throw new ArgumentNullException("facebookRepository");
+                throw new ArgumentNullException("importerService");
+            }
+            if (exporterService == null)
+            {
+                throw new ArgumentNullException("exporterService");
             }
             if (logRepository == null)
             {
                 throw new ArgumentNullException("logRepository");
             }
-            if (facebookImporterService == null)
-            {
-                throw new ArgumentNullException("facebookImporterService");
-            }
-            this.facebookRepository = facebookRepository;
+            this.importerService = importerService;
+            this.exporterService = exporterService;
             this.logRepository = logRepository;
-            this.facebookImporterService = facebookImporterService;
         }
 
         public void Import(string feed)
@@ -35,31 +34,29 @@ namespace Bruttissimo.Domain.Logic
             {
                 throw new ArgumentNullException("feed");
             }
-            FacebookImportLog importLog = new FacebookImportLog
+            FacebookImportLog log = new FacebookImportLog
             {
                 FacebookFeedId = feed,
                 StartDate = DateTime.UtcNow
             };
             DateTime? since = logRepository.GetFacebookImportDate(feed);
-            IEnumerable<FacebookPost> posts = facebookRepository.GetPostsInFeed(feed, since, importLog);
 
-            facebookImporterService.Import(posts, importLog);
+            FacebookImportOptions options = new FacebookImportOptions
+            {
+                Feed = feed,
+                Log = log,
+                Since = since
+            };
+            importerService.Import(options);
 
-            importLog.Duration = DateTime.UtcNow - importLog.StartDate;
+            log.Duration = DateTime.UtcNow - log.StartDate;
 
-            logRepository.UpdateFacebookImportLog(importLog);
+            logRepository.UpdateFacebookImportLog(log);
         }
 
         public void Export()
         {
-            /*
-             * TODO: get all posts without a fb post Id
-             * TODO: for each post, check if the user has a fb access token that's usable, otherwise use the generic token
-             * TODO: check if a target feed Id is specified, otherwise target the default feed Id.
-             * TODO: post to the facebook feed.
-             * TODO: update the post with the fb post Id, and fb user Id (what about case when post is published with default token?)
-             */
-            throw new NotImplementedException();
+            exporterService.Export(); // TODO: exporter logs.
         }
     }
 }

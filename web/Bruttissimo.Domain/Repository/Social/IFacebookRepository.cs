@@ -7,5 +7,6 @@ namespace Bruttissimo.Domain
     public interface IFacebookRepository
     {
         IList<FacebookPost> GetPostsInFeed(string feed, DateTime? since, FacebookImportLog importLog);
+        FacebookPost PostToFeed(Post post);
     }
 }

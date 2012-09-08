@@ -90,5 +90,21 @@ namespace Bruttissimo.Data.Dapper
             link.PostId = connection.Insert(post);
             return post;
         }
+
+        public IEnumerable<Post> GetPostsPendingFacebookExport()
+        {
+            const string sql = @"
+                SELECT [Post].*, [Link].*
+                FROM [Post]
+                LEFT JOIN [Link] ON [Link].[Id] = [Post].[LinkId]
+                WHERE [Post].[FacebookPostId] = NULL
+            ";
+            Func<Post, Link, Post> map = (post, link) =>
+            {
+                post.Link = link;
+                return post;
+            };
+            connection.Query(sql, map);
+        }
     }
 }
