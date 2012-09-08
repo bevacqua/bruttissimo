@@ -55,13 +55,15 @@
     </Compile>
     <Compile Include="Authentication\AuthenticationResult.cs" />
     <Compile Include="Authentication\ConnectionStatus.cs" />
-    <Compile Include="Entity\Link\LinkParseResult.cs" />
-    <Compile Include="Entity\Link\LinkResult.cs" />
-    <Compile Include="Entity\Picture\PicturePixelsAttribute.cs" />
-    <Compile Include="Entity\Picture\PictureSize.cs" />
+    <Compile Include="DTO\Facebook\FacebookImportOptions.cs" />
+    <Compile Include="DTO\Link\LinkParseResult.cs" />
+    <Compile Include="DTO\Link\LinkResult.cs" />
+    <Compile Include="DTO\Picture\PicturePixelsAttribute.cs" />
+    <Compile Include="DTO\Picture\PictureSize.cs" />
     <Compile Include="Repository\ICommentRepository.cs" />
     <Compile Include="Repository\IEntityRepository.cs" />
     <Compile Include="Service\ICommentService.cs" />
+    <Compile Include="Service\IFacebookExporterService.cs" />
     <Compile Include="Service\IFacebookImporterService.cs" />
     <Compile Include="Repository\ILogRepository.cs" />
     <Compile Include="Repository\Social\IFacebookRepository.cs" />

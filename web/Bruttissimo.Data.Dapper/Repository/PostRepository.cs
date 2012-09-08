@@ -104,7 +104,8 @@ namespace Bruttissimo.Data.Dapper
                 post.Link = link;
                 return post;
             };
-            connection.Query(sql, map);
+            IEnumerable<Post> posts = connection.Query(sql, map);
+            return posts;
         }
     }
 }

@@ -8,6 +8,7 @@ namespace Bruttissimo.Domain.Logic
 {
     public class FacebookImporterService : IFacebookImporterService
     {
+        private readonly IFacebookRepository facebookRepository;
         private readonly IPostRepository postRepository;
         private readonly ILinkRepository linkRepository;
         private readonly IUserRepository userRepository;
@@ -15,8 +16,12 @@ namespace Bruttissimo.Domain.Logic
 
         private readonly ILog log = LogManager.GetLogger(typeof(FacebookImporterService));
 
-        public FacebookImporterService(IPostRepository postRepository, ILinkRepository linkRepository, IUserRepository userRepository, IMapper mapper)
+        public FacebookImporterService(IFacebookRepository facebookRepository, IPostRepository postRepository, ILinkRepository linkRepository, IUserRepository userRepository, IMapper mapper)
         {
+            if (facebookRepository == null)
+            {
+                throw new ArgumentNullException("facebookRepository");
+            }
             if (postRepository == null)
             {
                 throw new ArgumentNullException("postRepository");
@@ -33,24 +38,24 @@ namespace Bruttissimo.Domain.Logic
             {
                 throw new ArgumentNullException("mapper");
             }
+            this.facebookRepository = facebookRepository;
             this.postRepository = postRepository;
             this.linkRepository = linkRepository;
             this.userRepository = userRepository;
             this.mapper = mapper;
         }
 
-
         /// <summary>
         /// Imports a list of posts from Facebook, filters them and inserts into the persistance storage.
         /// </summary>
-        public void Import(FacebookImportOptions options)
+        public void Import(FacebookImportOptions opts)
         {
             int insertCount = 0;
             const string LINK_EXISTS = "Link exists: {0}";
             const string LINK_INSERTION = "Inserted Link #{0}";
             const string POST_INSERTION = "Inserted Post #{0}";
 
-            IEnumerable<FacebookPost> posts = facebookRepository.GetPostsInFeed(feed, since, importLog);
+            IEnumerable<FacebookPost> posts = facebookRepository.GetPostsInFeed(opts);
 
             foreach (FacebookPost facebookPost in posts)
             {
@@ -79,7 +84,7 @@ namespace Bruttissimo.Domain.Logic
                 insertCount++;
             }
 
-            options.Log.InsertCount = insertCount;
+            opts.Log.InsertCount = insertCount;
         }
     }
 }
