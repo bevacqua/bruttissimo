@@ -82,6 +82,7 @@
     <Compile Include="Service\IEmailService.cs" />
     <Compile Include="Service\ILinkCrawlerService.cs" />
     <Compile Include="Service\ILogRealtimeService.cs" />
+    <Compile Include="Service\ITwitterService.cs" />
     <Compile Include="Service\IUserService.cs" />
     <Compile Include="Service\IPostService.cs" />
     <Compile Include="Service\ILinkService.cs" />

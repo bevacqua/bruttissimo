@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain.Logic
@@ -23,9 +24,12 @@ namespace Bruttissimo.Domain.Logic
             this.facebookRepository = facebookRepository;
         }
 
-        public void Export()
+        public void Export(FacebookExportLog entry)
         {
-            IEnumerable<Post> posts = postRepository.GetPostsPendingFacebookExport();
+            IList<Post> posts = postRepository.GetPostsPendingFacebookExport().ToList();
+
+            entry.ExportCount = 0;
+            entry.PostCount = posts.Count();
 
             foreach (Post post in posts)
             {
@@ -40,6 +44,7 @@ namespace Bruttissimo.Domain.Logic
                 post.FacebookFeedId = result.To.Data[0].Id;
 
                 postRepository.Update(post);
+                entry.ExportCount++;
             }
         }
     }

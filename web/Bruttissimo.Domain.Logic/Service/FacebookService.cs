@@ -34,7 +34,7 @@ namespace Bruttissimo.Domain.Logic
             {
                 throw new ArgumentNullException("feed");
             }
-            FacebookImportLog log = new FacebookImportLog
+            FacebookImportLog entry = new FacebookImportLog
             {
                 FacebookFeedId = feed,
                 StartDate = DateTime.UtcNow
@@ -44,19 +44,27 @@ namespace Bruttissimo.Domain.Logic
             FacebookImportOptions options = new FacebookImportOptions
             {
                 Feed = feed,
-                Log = log,
+                Log = entry,
                 Since = since
             };
             importerService.Import(options);
 
-            log.Duration = DateTime.UtcNow - log.StartDate;
+            entry.Duration = DateTime.UtcNow - entry.StartDate;
 
-            logRepository.UpdateFacebookImportLog(log);
+            logRepository.UpdateFacebookImportLog(entry);
         }
 
         public void Export()
         {
-            exporterService.Export(); // TODO: exporter logs.
+            FacebookExportLog entry = new FacebookExportLog
+            {
+                StartDate = DateTime.UtcNow
+            };
+            exporterService.Export(entry);
+
+            entry.Duration = DateTime.UtcNow - entry.StartDate;
+
+            logRepository.UpdateFacebookExportLog(entry);
         }
     }
 }

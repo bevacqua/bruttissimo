@@ -50,10 +50,16 @@ namespace Bruttissimo.Data.Dapper
             return log == null ? (DateTime?)null : log.PostUpdated;
         }
 
-        public FacebookImportLog UpdateFacebookImportLog(FacebookImportLog entity)
+        public FacebookImportLog UpdateFacebookImportLog(FacebookImportLog importLog)
         {
-            connection.Insert(entity);
-            return entity;
+            connection.Insert(importLog);
+            return importLog;
+        }
+
+        public FacebookExportLog UpdateFacebookExportLog(FacebookExportLog exportLog)
+        {
+            connection.Insert(exportLog);
+            return exportLog;
         }
     }
 }

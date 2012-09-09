@@ -61,6 +61,7 @@
     <Compile Include="Email\EmailMessageModel.cs" />
     <Compile Include="Constants\Rights.cs" />
     <Compile Include="Entities\Comment.cs" />
+    <Compile Include="Entities\FacebookExportLog.cs" />
     <Compile Include="Entities\FacebookImportLog.cs" />
     <Compile Include="Enum\LinkType.cs" />
     <Compile Include="Constants\Roles.cs" />
