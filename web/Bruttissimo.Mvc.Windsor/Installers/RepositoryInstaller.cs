@@ -63,7 +63,7 @@ namespace Bruttissimo.Mvc.Windsor
 
         private IDbConnection InstanceDbConnection()
         {
-            string connectionString = ConnectionString("SqlConnection");
+            string connectionString = Config.GetConnectionString("SqlConnection");
             DbConnection connection = new SqlConnection(connectionString);
             RichErrorDbConnection profiled = new RichErrorDbConnection(connection, MiniProfiler.Current); // wraps MiniProfiler's ProfiledDbConnection.
             return profiled;
@@ -83,12 +83,6 @@ namespace Bruttissimo.Mvc.Windsor
             {
                 connection.Close();
             }
-        }
-
-        private string ConnectionString(string key)
-        {
-            string connectionString = Config.GetConnectionString(key);
-            return connectionString;
         }
     }
 }
