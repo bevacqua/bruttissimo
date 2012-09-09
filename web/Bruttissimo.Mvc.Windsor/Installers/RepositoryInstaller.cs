@@ -31,10 +31,14 @@ namespace Bruttissimo.Mvc.Windsor
                 );
 
             // Social assembly repositories.
+            string accessToken = Config.Social.FacebookAccessToken;
+
             container.Register(
                 Component
                     .For<IFacebookRepository>()
-                    .UsingFactoryMethod(InstanceFacebookRepository)
+                    .DynamicParameters(
+                        (k, parameters) => parameters["defaultAccessToken"] = accessToken
+                    )
                     .LifestyleHybridPerWebRequestPerThread()
                 );
 
@@ -85,12 +89,6 @@ namespace Bruttissimo.Mvc.Windsor
         {
             string connectionString = Config.GetConnectionString(key);
             return connectionString;
-        }
-
-        private IFacebookRepository InstanceFacebookRepository()
-        {
-            string accessToken = Config.Social.FacebookAccessToken;
-            return new FacebookRepository(accessToken);
         }
     }
 }
