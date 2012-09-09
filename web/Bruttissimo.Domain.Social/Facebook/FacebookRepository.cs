@@ -109,7 +109,7 @@ namespace Bruttissimo.Domain.Social
 
             importLog.QueryCount = queryCount;
             importLog.PostCount = posts.Count;
-            importLog.PostUpdated = posts.Max(p => (DateTime?)p.UpdatedTime);
+            importLog.PostUpdated = posts.Max(p => p.UpdatedTime);
             return posts;
         }
 
