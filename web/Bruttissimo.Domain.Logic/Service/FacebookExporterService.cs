@@ -7,8 +7,8 @@ namespace Bruttissimo.Domain.Logic
 {
     public class FacebookExporterService : IFacebookExporterService
     {
-        private readonly IPostRepository postRepository;
         private readonly IFacebookRepository facebookRepository;
+        private readonly IPostRepository postRepository;
         private readonly IUserRepository userRepository;
 
         public FacebookExporterService(IFacebookRepository facebookRepository, IPostRepository postRepository, IUserRepository userRepository)

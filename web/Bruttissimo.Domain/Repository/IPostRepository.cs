@@ -10,5 +10,6 @@ namespace Bruttissimo.Domain
         IEnumerable<Post> GetLatest(DateTime? until, int count);
         Post Insert(Link link, string message, User user);
         IEnumerable<Post> GetPostsPendingFacebookExport();
+        IEnumerable<Post> GetPostsPendingTwitterExport();
     }
 }

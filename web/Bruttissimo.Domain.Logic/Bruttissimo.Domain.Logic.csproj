@@ -118,6 +118,7 @@
     <Compile Include="MiniMembership\MembershipExtensions.cs" />
     <Compile Include="MiniMembership\MiniAuthenticationModule.cs" />
     <Compile Include="Service\CommentService.cs" />
+    <Compile Include="Service\TwitterExporterService.cs" />
     <Compile Include="Service\TwitterService.cs" />
     <Compile Include="Service\FacebookExporterService.cs" />
     <Compile Include="Service\FacebookImporterService.cs" />

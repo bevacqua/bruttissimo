@@ -63,6 +63,7 @@
     <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\FacebookExportLog.cs" />
     <Compile Include="Entities\FacebookImportLog.cs" />
+    <Compile Include="Entities\TwitterExportLog.cs" />
     <Compile Include="Enum\LinkType.cs" />
     <Compile Include="Constants\Roles.cs" />
     <Compile Include="Entities\Link.cs" />

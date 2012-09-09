@@ -5,14 +5,20 @@ namespace Bruttissimo.Domain.Logic
 {
     public class TwitterService : ITwitterService
     {
+        private readonly ITwitterExporterService exporterService;
         private readonly ILogRepository logRepository;
 
-        public TwitterService(ILogRepository logRepository)
+        public TwitterService(ITwitterExporterService exporterService, ILogRepository logRepository)
         {
+            if (exporterService == null)
+            {
+                throw new ArgumentNullException("exporterService");
+            }
             if (logRepository == null)
             {
                 throw new ArgumentNullException("logRepository");
             }
+            this.exporterService = exporterService;
             this.logRepository = logRepository;
         }
 
@@ -22,7 +28,7 @@ namespace Bruttissimo.Domain.Logic
             {
                 StartDate = DateTime.UtcNow
             };
-            // TODO: actual exporting.
+            exporterService.Export(entry);
 
             entry.Duration = DateTime.UtcNow - entry.StartDate;
 

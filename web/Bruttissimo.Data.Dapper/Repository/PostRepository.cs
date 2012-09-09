@@ -107,5 +107,23 @@ namespace Bruttissimo.Data.Dapper
             IEnumerable<Post> posts = connection.Query(sql, map);
             return posts;
         }
+
+        public IEnumerable<Post> GetPostsPendingTwitterExport()
+        {
+            const string sql = @"
+                SELECT [Post].*, [Link].*
+                FROM [Post]
+                LEFT JOIN [Link] ON [Link].[Id] = [Post].[LinkId]
+                WHERE [Post].[TwitterPostId] = NULL
+                AND [Post]-[TwitterUserId] != NULL
+            ";
+            Func<Post, Link, Post> map = (post, link) =>
+            {
+                post.Link = link;
+                return post;
+            };
+            IEnumerable<Post> posts = connection.Query(sql, map);
+            return posts;
+        }
     }
 }
