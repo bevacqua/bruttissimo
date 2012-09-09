@@ -33,7 +33,7 @@ namespace Bruttissimo.Domain.Social
             }
             this.defaultAccessToken = defaultAccessToken;
         }
-        
+
         public IList<FacebookPost> GetPostsInFeed(FacebookImportOptions opts)
         {
             if (opts == null)
@@ -42,7 +42,7 @@ namespace Bruttissimo.Domain.Social
             }
             DateTime? since = opts.Since;
             string url = GRAPH_FEED_LIMITED.FormatWith(opts.Feed, PAGE_LIMIT);
-            
+
             if (since.HasValue)
             {
                 string date = since.Value.ToIso8601();
@@ -52,11 +52,18 @@ namespace Bruttissimo.Domain.Social
             IList<FacebookPost> result = FetchAll(url, since, opts.Log);
             return result;
         }
-        
+
         public FacebookPost PostToFeed(Post post)
         {
+            if (post == null)
+            {
+                throw new ArgumentNullException("post");
+            }
+            if (post.FacebookFeedId == null) // sanity
+            {
+                return null;
+            }
             string accessToken = GetAccessToken(post);
-            //string feed = post.FacebookFeedId ?? defaultFeedId;
             /*
              * TODO: post to the facebook feed.
              */

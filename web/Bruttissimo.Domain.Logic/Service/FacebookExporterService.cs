@@ -31,6 +31,10 @@ namespace Bruttissimo.Domain.Logic
             {
                 FacebookPost result = facebookRepository.PostToFeed(post);
 
+                if (result == null) // post failed.
+                {
+                    continue;
+                }
                 post.FacebookPostId = result.Id;
                 post.FacebookUserId = result.From.Id;
                 post.FacebookFeedId = result.To.Data[0].Id;
