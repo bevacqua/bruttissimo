@@ -7,20 +7,20 @@ namespace Bruttissimo.Domain.Logic
     // [AutoRun]
     public class TwitterExportJob : BaseJob
     {
-        private readonly IFacebookService facebookService;
-        
-        public TwitterExportJob(IFacebookService facebookService)
+        private readonly ITwitterService twitterService;
+
+        public TwitterExportJob(ITwitterService twitterService)
         {
-            if (facebookService == null)
+            if (twitterService == null)
             {
-                throw new ArgumentNullException("facebookService");
+                throw new ArgumentNullException("twitterService");
             }
-            this.facebookService = facebookService;
+            this.twitterService = twitterService;
         }
 
         public override void DoWork(IJobExecutionContext context)
         {
-            facebookService.Export();
+            twitterService.Export();
         }
     }
 }
