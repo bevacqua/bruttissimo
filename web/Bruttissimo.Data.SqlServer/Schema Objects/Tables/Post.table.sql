@@ -5,6 +5,8 @@
     [FacebookFeedId]  NVARCHAR (MAX) NULL,
     [FacebookPostId]  NVARCHAR (MAX) NULL,
     [FacebookUserId]  NVARCHAR (MAX) NULL,
+    [TwitterPostId]   NVARCHAR (MAX) NULL,
+    [TwitterUserId]   NVARCHAR (MAX) NULL,
     [UserMessage]     NVARCHAR (MAX) NULL,
     [Created]         DATETIME2 (7)  NOT NULL,
     [Updated]         DATETIME2 (7)  NULL
