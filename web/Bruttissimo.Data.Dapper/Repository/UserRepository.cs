@@ -170,6 +170,27 @@ namespace Bruttissimo.Data.Dapper
             return AddOpenIdConnection(user, openId, null);
         }
 
+        public string GetFacebookAccessToken(User user)
+        {
+            const string sql = @"
+                SELECT TOP 1 [UC].[FacebookAccessToken]
+                FROM [UserConnection] [UC]
+                WHERE [UC].[UserId] = @userId
+            "; // TOP 1 is temporary, might change if we start supporting multiple accounts for each provider.
+            string accessToken = connection.Query<string>(sql, new {userId = user.Id}).FirstOrDefault();
+            return accessToken;
+        }
+
+        public void RevokeFacebookAccessToken(string accessToken)
+        {
+            const string sql = @"
+                UPDATE [UserConnection]
+                SET [FacebookAccessToken] = NULL
+                WHERE [FacebookAccessToken] = @accessToken
+            ";
+            connection.Query(sql, new { accessToken });
+        }
+
         public UserConnection AddOpenIdConnection(User user, string openId, IDbTransaction transaction)
         {
             if (user == null)

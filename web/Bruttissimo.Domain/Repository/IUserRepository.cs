@@ -16,5 +16,7 @@ namespace Bruttissimo.Domain
         User CreateWithTwitter(string twitterId, string displayName);
         UserConnection AddFacebookConnection(User user, string facebookId, string accessToken);
         UserConnection AddOpenIdConnection(User user, string openId);
+        string GetFacebookAccessToken(User user);
+        void RevokeFacebookAccessToken(string accessToken);
     }
 }

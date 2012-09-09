@@ -7,5 +7,6 @@ namespace Bruttissimo.Domain
     {
         IList<FacebookPost> GetPostsInFeed(FacebookImportOptions opts);
         FacebookPost PostToFeed(Post post, string userAccessToken);
+        bool ValidateToken(string accessToken);
     }
 }

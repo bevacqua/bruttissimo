@@ -19,6 +19,7 @@ namespace Bruttissimo.Domain.Social
         private const string GRAPH_FEED_SINCE = "{0}&since={1}";
 
         private const string DEBUG_API_GET = "Facebook API GET: {0}";
+        private const string INVALID_ACCESS_TOKEN_TESTED = "Invalid access token: {0}";
 
         private readonly ILog log = LogManager.GetLogger(typeof(FacebookRepository));
 
@@ -84,6 +85,25 @@ namespace Bruttissimo.Domain.Social
             dynamic response = client.Post(feed, json);
             FacebookPost deserialized = JsonConvert.DeserializeObject<FacebookPost>(response);
             return deserialized;
+        }
+
+        public bool ValidateToken(string accessToken)
+        {
+            if (accessToken == null)
+            {
+                return false;
+            }
+            FacebookClient client = new FacebookClient(accessToken);
+            try
+            {
+                client.Get("me");
+            }
+            catch (FacebookOAuthException)
+            {
+                log.Info(INVALID_ACCESS_TOKEN_TESTED.FormatWith(accessToken));
+                return false;
+            }
+            return true;
         }
 
         internal IList<FacebookPost> FetchAll(string url, DateTime? since, FacebookImportLog importLog)

@@ -9,19 +9,25 @@ namespace Bruttissimo.Domain.Logic
     {
         private readonly IPostRepository postRepository;
         private readonly IFacebookRepository facebookRepository;
+        private readonly IUserRepository userRepository;
 
-        public FacebookExporterService(IPostRepository postRepository, IFacebookRepository facebookRepository)
+        public FacebookExporterService(IFacebookRepository facebookRepository, IPostRepository postRepository, IUserRepository userRepository)
         {
-            if (postRepository == null)
-            {
-                throw new ArgumentNullException("postRepository");
-            }
             if (facebookRepository == null)
             {
                 throw new ArgumentNullException("facebookRepository");
             }
-            this.postRepository = postRepository;
+            if (postRepository == null)
+            {
+                throw new ArgumentNullException("postRepository");
+            }
+            if (userRepository== null)
+            {
+                throw new ArgumentNullException("userRepository");
+            }
             this.facebookRepository = facebookRepository;
+            this.postRepository = postRepository;
+            this.userRepository = userRepository;
         }
 
         public void Export(FacebookExportLog entry)
@@ -56,14 +62,18 @@ namespace Bruttissimo.Domain.Logic
             {
                 return null;
             }
-            throw new NotImplementedException();
-            /*
-             * TODO: verify the user has a facebook connection
-             * TODO: verify the user allows posts to be posted to facebook on his behalf
-             * TODO: verify the access token is still valid (invalidate, set to null if it isn't)
-             * TODO: if any of the above fail, return defaultAccessToken.
-             */
-            return null;
+            string accessToken = userRepository.GetFacebookAccessToken(post.User);
+
+            bool valid = facebookRepository.ValidateToken(accessToken);
+            if (!valid)
+            {
+                userRepository.RevokeFacebookAccessToken(accessToken);
+                return null;
+            }
+            else
+            {
+                return accessToken;
+            }
         }
     }
 }
