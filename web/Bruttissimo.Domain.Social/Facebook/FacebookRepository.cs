@@ -13,25 +13,33 @@ namespace Bruttissimo.Domain.Social
     public class FacebookRepository : IFacebookRepository
     {
         private const int PAGE_LIMIT = 15;
+
+        private const string GRAPH_FEED = "{0}/feed";
         private const string GRAPH_FEED_LIMITED = "{0}/feed?limit={1}";
         private const string GRAPH_FEED_SINCE = "{0}&since={1}";
 
         private const string DEBUG_API_GET = "Facebook API GET: {0}";
 
         private readonly ILog log = LogManager.GetLogger(typeof(FacebookRepository));
-
+        
         /// <summary>
         /// Access token used when no user-specific access token is provided to a method.
         /// </summary>
         private readonly string defaultAccessToken;
+        private readonly IMapper mapper;
 
-        public FacebookRepository(string defaultAccessToken)
+        public FacebookRepository(string defaultAccessToken, IMapper mapper)
         {
             if (defaultAccessToken == null)
             {
                 throw new ArgumentNullException("defaultAccessToken");
             }
+            if (mapper == null)
+            {
+                throw new ArgumentNullException("mapper");
+            }
             this.defaultAccessToken = defaultAccessToken;
+            this.mapper = mapper;
         }
 
         public IList<FacebookPost> GetPostsInFeed(FacebookImportOptions opts)
@@ -63,17 +71,24 @@ namespace Bruttissimo.Domain.Social
             {
                 return null;
             }
+            string feed = GRAPH_FEED.FormatWith(post.FacebookFeedId);
+
+            // create Facebook Post JSON object.
+            FacebookPost facebookPost = mapper.Map<Post,FacebookPost>(post);
+            string json = JsonConvert.SerializeObject(facebookPost);
+            
             string accessToken = GetAccessToken(post);
-            /*
-             * TODO: post to the facebook feed.
-             */
-            throw new NotImplementedException();
-            FacebookPost result = new FacebookPost();
-            return result;
+            FacebookClient client = new FacebookClient(accessToken);
+
+            // deserialize and return response.
+            dynamic response = client.Post(feed, json);
+            FacebookPost deserialized = JsonConvert.DeserializeObject<FacebookPost>(response);
+            return deserialized;
         }
 
         internal string GetAccessToken(Post post)
         {
+            throw new NotImplementedException();
             /*
              * this should be produced somewhere other than in this assembly (e.g the invoking method's assembly)
              * TODO: verify the user has a facebook connection
