@@ -76,6 +76,7 @@ namespace Bruttissimo.Domain.Social
         {
             throw new NotImplementedException();
             /*
+             * this should be produced somewhere other than in this assembly (e.g the invoking method's assembly)
              * TODO: verify the user has a facebook connection
              * TODO: verify the user allows posts to be posted to facebook on his behalf
              * TODO: verify the access token is still valid (invalidate, set to null if it isn't)
