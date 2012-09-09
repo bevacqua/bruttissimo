@@ -235,6 +235,9 @@
     <Build Include="Schema Objects\Tables\Keys\FK_Log_User.fkey.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Schema Objects\Tables\FacebookExportLog.table.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
   <ItemGroup>
     <NotInBuild Include="Schema Comparisons\SchemaComparer.scmp">
