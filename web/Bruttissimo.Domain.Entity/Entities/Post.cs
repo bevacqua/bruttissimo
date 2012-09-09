@@ -24,6 +24,9 @@ namespace Bruttissimo.Domain.Entity
         public string FacebookPostId { get; set; }
         public string FacebookUserId { get; set; }
 
+        public string TwitterPostId { get; set; }
+        public string TwitterUserId { get; set; }
+
         public IEnumerable<Comment> Comments { get; set; } // lazily loaded by request.
     }
 }

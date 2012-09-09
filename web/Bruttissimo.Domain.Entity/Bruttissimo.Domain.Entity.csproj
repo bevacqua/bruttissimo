@@ -83,6 +83,7 @@
     <Compile Include="Social\Facebook\Generic\FacebookTo.cs" />
     <Compile Include="Social\Facebook\Generic\FacebookFrom.cs" />
     <Compile Include="Social\Facebook\FacebookPost.cs" />
+    <Compile Include="Social\Facebook\TwitterPost.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -27,7 +27,25 @@ namespace Bruttissimo.Domain.Logic
         public void Export(TwitterExportLog entry)
         {
             IList<Post> posts = postRepository.GetPostsPendingTwitterExport().ToList();
-            throw new NotImplementedException("copy from exporter service for facebook");
+
+            int exportCount = 0;
+
+            foreach (Post post in posts)
+            {
+                TwitterPost result = twitterRepository.PostToFeed(post);
+
+                if (result == null) // post failed.
+                {
+                    continue;
+                }
+                post.TwitterPostId = result.Id;
+                post.TwitterUserId = result.FromId;
+
+                postRepository.Update(post);
+                exportCount++;
+            }
+            entry.ExportCount = exportCount;
+            entry.PostCount = posts.Count;
         }
     }
 }
