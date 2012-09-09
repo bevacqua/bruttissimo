@@ -52,6 +52,10 @@ namespace Bruttissimo.Domain.Logic
 
         internal string GetUserAccessToken(Post post)
         {
+            if (post.User == null)
+            {
+                return null;
+            }
             throw new NotImplementedException();
             /*
              * TODO: verify the user has a facebook connection
