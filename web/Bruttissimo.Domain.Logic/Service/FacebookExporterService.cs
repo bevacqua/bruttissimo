@@ -32,7 +32,8 @@ namespace Bruttissimo.Domain.Logic
 
             foreach (Post post in posts)
             {
-                FacebookPost result = facebookRepository.PostToFeed(post);
+                string userAccessToken = GetUserAccessToken(post);
+                FacebookPost result = facebookRepository.PostToFeed(post, userAccessToken);
 
                 if (result == null) // post failed.
                 {
@@ -47,6 +48,18 @@ namespace Bruttissimo.Domain.Logic
             }
             entry.ExportCount = exportCount;
             entry.PostCount = posts.Count;
+        }
+
+        internal string GetUserAccessToken(Post post)
+        {
+            throw new NotImplementedException();
+            /*
+             * TODO: verify the user has a facebook connection
+             * TODO: verify the user allows posts to be posted to facebook on his behalf
+             * TODO: verify the access token is still valid (invalidate, set to null if it isn't)
+             * TODO: if any of the above fail, return defaultAccessToken.
+             */
+            return null;
         }
     }
 }

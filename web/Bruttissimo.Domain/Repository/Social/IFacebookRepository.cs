@@ -6,6 +6,6 @@ namespace Bruttissimo.Domain
     public interface IFacebookRepository
     {
         IList<FacebookPost> GetPostsInFeed(FacebookImportOptions opts);
-        FacebookPost PostToFeed(Post post);
+        FacebookPost PostToFeed(Post post, string userAccessToken);
     }
 }

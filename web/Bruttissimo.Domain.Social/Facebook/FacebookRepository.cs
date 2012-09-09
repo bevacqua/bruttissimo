@@ -21,7 +21,7 @@ namespace Bruttissimo.Domain.Social
         private const string DEBUG_API_GET = "Facebook API GET: {0}";
 
         private readonly ILog log = LogManager.GetLogger(typeof(FacebookRepository));
-        
+
         /// <summary>
         /// Access token used when no user-specific access token is provided to a method.
         /// </summary>
@@ -61,7 +61,7 @@ namespace Bruttissimo.Domain.Social
             return result;
         }
 
-        public FacebookPost PostToFeed(Post post)
+        public FacebookPost PostToFeed(Post post, string userAccessToken)
         {
             if (post == null)
             {
@@ -74,29 +74,16 @@ namespace Bruttissimo.Domain.Social
             string feed = GRAPH_FEED.FormatWith(post.FacebookFeedId);
 
             // create Facebook Post JSON object.
-            FacebookPost facebookPost = mapper.Map<Post,FacebookPost>(post);
+            FacebookPost facebookPost = mapper.Map<Post, FacebookPost>(post);
             string json = JsonConvert.SerializeObject(facebookPost);
-            
-            string accessToken = GetAccessToken(post);
+
+            string accessToken = userAccessToken ?? defaultAccessToken;
             FacebookClient client = new FacebookClient(accessToken);
 
             // deserialize and return response.
             dynamic response = client.Post(feed, json);
             FacebookPost deserialized = JsonConvert.DeserializeObject<FacebookPost>(response);
             return deserialized;
-        }
-
-        internal string GetAccessToken(Post post)
-        {
-            throw new NotImplementedException();
-            /*
-             * this should be produced somewhere other than in this assembly (e.g the invoking method's assembly)
-             * TODO: verify the user has a facebook connection
-             * TODO: verify the user allows posts to be posted to facebook on his behalf
-             * TODO: verify the access token is still valid (invalidate, set to null if it isn't)
-             * TODO: if any of the above fail, return defaultAccessToken.
-             */
-            return defaultAccessToken;
         }
 
         internal IList<FacebookPost> FetchAll(string url, DateTime? since, FacebookImportLog importLog)
