@@ -5,7 +5,6 @@ using Bruttissimo.Common;
 using Bruttissimo.Data.Dapper;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Logic;
-using Bruttissimo.Domain.Social;
 using Bruttissimo.Extensions.MiniProfiler;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
