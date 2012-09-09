@@ -115,7 +115,7 @@ namespace Bruttissimo.Data.Dapper
                 FROM [Post]
                 LEFT JOIN [Link] ON [Link].[Id] = [Post].[LinkId]
                 WHERE [Post].[TwitterPostId] = NULL
-                AND [Post]-[TwitterUserId] != NULL
+                AND [Post].[TwitterUserId] != NULL
             ";
             Func<Post, Link, Post> map = (post, link) =>
             {
