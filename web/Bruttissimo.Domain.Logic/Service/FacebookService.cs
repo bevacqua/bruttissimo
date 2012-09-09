@@ -9,7 +9,7 @@ namespace Bruttissimo.Domain.Logic
         private readonly IFacebookExporterService exporterService;
         private readonly ILogRepository logRepository;
 
-        public FacebookService(ILogRepository logRepository, IFacebookImporterService importerService, IFacebookExporterService exporterService)
+        public FacebookService(IFacebookImporterService importerService, IFacebookExporterService exporterService, ILogRepository logRepository)
         {
             if (importerService == null)
             {

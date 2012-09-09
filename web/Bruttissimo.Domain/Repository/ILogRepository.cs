@@ -11,5 +11,6 @@ namespace Bruttissimo.Domain
         DateTime? GetFacebookImportDate(string feed);
         FacebookImportLog UpdateFacebookImportLog(FacebookImportLog importLog);
         FacebookExportLog UpdateFacebookExportLog(FacebookExportLog exportLog);
+        TwitterExportLog UpdateTwitterExportLog(TwitterExportLog exportLog);
     }
 }

@@ -61,5 +61,11 @@ namespace Bruttissimo.Data.Dapper
             connection.Insert(exportLog);
             return exportLog;
         }
+
+        public TwitterExportLog UpdateTwitterExportLog(TwitterExportLog exportLog)
+        {
+            connection.Insert(exportLog);
+            return exportLog;
+        }
     }
 }
