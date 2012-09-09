@@ -28,8 +28,7 @@ namespace Bruttissimo.Domain.Logic
         {
             IList<Post> posts = postRepository.GetPostsPendingFacebookExport().ToList();
 
-            entry.ExportCount = 0;
-            entry.PostCount = posts.Count();
+            int exportCount = 0;
 
             foreach (Post post in posts)
             {
@@ -44,8 +43,10 @@ namespace Bruttissimo.Domain.Logic
                 post.FacebookFeedId = result.To.Data[0].Id;
 
                 postRepository.Update(post);
-                entry.ExportCount++;
+                exportCount++;
             }
+            entry.ExportCount = exportCount;
+            entry.PostCount = posts.Count;
         }
     }
 }
