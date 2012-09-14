@@ -30,7 +30,7 @@ namespace Bruttissimo.Mvc.Windsor
 
             container.Register(
                 Component
-                    .For<TemplateResourceHelper>()
+                    .For<ITemplateResourceHelper>()
                     .UsingFactoryMethod(InstanceTemplateResourceHelper)
                     .LifestyleTransient()
                 );
@@ -63,7 +63,7 @@ namespace Bruttissimo.Mvc.Windsor
             return service;
         }
 
-        internal TemplateResourceHelper InstanceTemplateResourceHelper(IKernel kernel, ComponentModel model, CreationContext context)
+        internal ITemplateResourceHelper InstanceTemplateResourceHelper(IKernel kernel, ComponentModel model, CreationContext context)
         {
             TemplateBase templateBase = context.AdditionalArguments["templateBase"] as TemplateBase;
             return new TemplateResourceHelper(Common.Resources.Email.ResourceNamespaceRoot, templateBase);

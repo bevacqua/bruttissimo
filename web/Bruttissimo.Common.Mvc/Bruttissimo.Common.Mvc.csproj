@@ -87,6 +87,7 @@
     </Compile>
     <Compile Include="Core\ActionFilters\AjaxTransformFilter.cs" />
     <Compile Include="Core\ErrorHandling\ChildActionExceptionFilter.cs" />
+    <Compile Include="Interface\IJavaScriptHelper.cs" />
     <Compile Include="Exceptions\HttpNotFoundException.cs" />
     <Compile Include="Core\ActionResults\Json\AjaxViewJsonResult.cs" />
     <Compile Include="Core\ActionResults\NotFoundResult.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="HttpModules\HeaderCleanupModule.cs" />
     <Compile Include="HttpModules\MiniProfilerModule.cs" />
     <Compile Include="HttpModules\RequestSanitizerModule.cs" />
+    <Compile Include="Interface\IMvcResourceHelper.cs" />
     <Compile Include="IoC\Installers\SignalRInstaller.cs" />
     <Compile Include="IoC\Installers\HttpModuleInstaller.cs" />
     <Compile Include="IoC\MvcInfrastructure.cs" />

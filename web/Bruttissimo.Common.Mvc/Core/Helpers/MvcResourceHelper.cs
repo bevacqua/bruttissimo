@@ -5,7 +5,7 @@ using System.Web.Mvc;
 
 namespace Bruttissimo.Common.Mvc
 {
-    public class MvcResourceHelper : ResourceHelper<IHtmlString>
+    public class MvcResourceHelper : ResourceHelper<IHtmlString>, IMvcResourceHelper
     {
         private readonly HtmlHelper helper;
         private readonly Assembly assembly;

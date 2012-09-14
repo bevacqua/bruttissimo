@@ -27,7 +27,7 @@ namespace Bruttissimo.Extensions.RazorEngine
             IExtendedTemplate service = template as IExtendedTemplate;
             if (service != null)
             {
-                service.Resource = kernel.Resolve<TemplateResourceHelper>(new {templateBase = template});
+                service.Resource = kernel.Resolve<ITemplateResourceHelper>(new { templateBase = template });
                 service.Url = kernel.Resolve<TemplateUrlHelper>();
             }
             return template;

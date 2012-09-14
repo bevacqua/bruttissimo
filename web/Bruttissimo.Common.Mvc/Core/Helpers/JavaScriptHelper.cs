@@ -10,7 +10,7 @@ namespace Bruttissimo.Common.Mvc
     /// <summary>
     /// These help with partials requiring to inject scripts in the page.
     /// </summary>
-    public sealed class JavaScriptHelper
+    public sealed class JavaScriptHelper : IJavaScriptHelper
     {
         private readonly HttpContextBase context;
         private readonly IResourceCompressor compressor;

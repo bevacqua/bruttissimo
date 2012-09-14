@@ -5,7 +5,7 @@ using Bruttissimo.Common.Resources;
 
 namespace Bruttissimo.Common
 {
-    public abstract class ResourceHelper<TRawString> where TRawString : class
+    public abstract class ResourceHelper<TRawString> : IResourceHelper<TRawString> where TRawString : class
     {
         // Convention: Resources are stored in the same path as the view in a Resources directory:
         //                 + Views

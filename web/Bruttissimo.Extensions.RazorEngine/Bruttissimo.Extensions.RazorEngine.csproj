@@ -59,6 +59,7 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="ITemplateResourceHelper.cs" />
     <Compile Include="TemplateUrlHelper.cs" />
     <Compile Include="ExtendedTemplate.cs" />
     <Compile Include="IExtendedTemplate.cs" />

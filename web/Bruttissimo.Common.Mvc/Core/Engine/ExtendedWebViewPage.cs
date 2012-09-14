@@ -26,17 +26,17 @@ namespace Bruttissimo.Common.Mvc
             set { ViewBag.Title = value; }
         }
 
-        private MvcResourceHelper resource;
+        private IMvcResourceHelper resource;
 
-        public MvcResourceHelper Resource
+        public IMvcResourceHelper Resource
         {
             get { return resource.GetInjectedProperty("resource"); }
             private set { resource = resource.InjectProperty(value, "resource"); }
         }
 
-        private JavaScriptHelper javascript;
+        private IJavaScriptHelper javascript;
 
-        public JavaScriptHelper JavaScript
+        public IJavaScriptHelper JavaScript
         {
             get { return javascript.GetInjectedProperty("javascript"); }
             private set { javascript = javascript.InjectProperty(value, "javascript"); }
@@ -47,8 +47,8 @@ namespace Bruttissimo.Common.Mvc
             base.InitHelpers();
 
             IWindsorContainer container = IoC.Container;
-            Resource = container.Resolve<MvcResourceHelper>(new {htmlHelper = Html});
-            JavaScript = container.Resolve<JavaScriptHelper>();
+            Resource = container.Resolve<IMvcResourceHelper>(new {htmlHelper = Html});
+            JavaScript = container.Resolve<IJavaScriptHelper>();
         }
 
         #region Section Methods

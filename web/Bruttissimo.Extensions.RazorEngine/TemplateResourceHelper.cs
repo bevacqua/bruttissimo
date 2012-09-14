@@ -6,7 +6,7 @@ using RazorEngine.Text;
 
 namespace Bruttissimo.Extensions.RazorEngine
 {
-    public class TemplateResourceHelper : ResourceHelper<IEncodedString>
+    public class TemplateResourceHelper : ResourceHelper<IEncodedString>, ITemplateResourceHelper
     {
         /// <summary>
         /// This allows manual tweaks regarding where a resource is supposed to be.

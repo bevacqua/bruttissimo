@@ -8,10 +8,10 @@ namespace Bruttissimo.Extensions.RazorEngine
     /// </summary>
     public class ExtendedTemplate<T> : TemplateBase<T>, IExtendedTemplate
     {
-        private TemplateResourceHelper resource;
+        private ITemplateResourceHelper resource;
         private TemplateUrlHelper url;
 
-        public TemplateResourceHelper Resource
+        public ITemplateResourceHelper Resource
         {
             get { return resource; }
             set { resource = resource.InjectProperty(value, "Resource"); }

@@ -42,14 +42,14 @@ namespace Bruttissimo.Common.Mvc
             // Register view helpers.
             container.Register(
                 Component
-                    .For<JavaScriptHelper>()
+                    .For<IJavaScriptHelper>()
                     .ImplementedBy<JavaScriptHelper>()
                     .LifestyleTransient()
                 );
 
             container.Register(
                 Component
-                    .For<MvcResourceHelper>()
+                    .For<IMvcResourceHelper>()
                     .UsingFactoryMethod(InstanceMvcResourceHelper)
                     .LifestyleTransient()
                 );
@@ -62,11 +62,11 @@ namespace Bruttissimo.Common.Mvc
                 );
         }
 
-        internal MvcResourceHelper InstanceMvcResourceHelper(IKernel kernel, ComponentModel model, CreationContext context)
+        internal IMvcResourceHelper InstanceMvcResourceHelper(IKernel kernel, ComponentModel model, CreationContext context)
         {
             string ns = Resources.Constants.ResourceNamespaceRoot;
             HtmlHelper html = context.AdditionalArguments["htmlHelper"] as HtmlHelper;
-            MvcResourceHelper helper = new MvcResourceHelper(ns, html, assembly);
+            IMvcResourceHelper helper = new MvcResourceHelper(ns, html, assembly);
             return helper;
         }
 

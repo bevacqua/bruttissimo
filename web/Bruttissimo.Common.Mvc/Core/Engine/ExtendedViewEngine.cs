@@ -55,7 +55,7 @@ namespace Bruttissimo.Common.Mvc
             string partial = controller.JavaScriptPartialViewString(viewPath, controller.ViewData.Model);
             if (partial != null)
             {
-                JavaScriptHelper javaScriptHelper = kernel.Resolve<JavaScriptHelper>();
+                IJavaScriptHelper javaScriptHelper = kernel.Resolve<IJavaScriptHelper>();
                 javaScriptHelper.Register(viewPath, partial, guid);
             }
         }
