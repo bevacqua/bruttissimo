@@ -20,10 +20,10 @@ namespace Bruttissimo.Mvc.Model
 
         public void CreateMaps(IMapper mapper)
         {
-            mapper.CreateMap<Post, LinkPostModel>().ForMember(
-                m => m.PostSlug,
-                x => x.MapFrom(p => postService.GetTitleSlug(p))
-            ).Ignoring(m => m.Comments);
+            mapper.CreateMap<Post, LinkPostModel>().Ignoring(
+                m => m.Comments,
+                m => m.PostSlug
+            );
         }
     }
 }

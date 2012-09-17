@@ -27,7 +27,10 @@ namespace Bruttissimo.Domain.Entity
                 m => m.User,
                 m => m.LinkId,
                 m => m.Link,
-                m => m.Updated
+                m => m.Updated,
+                m => m.TwitterPostId,
+                m => m.TwitterUserId,
+                m => m.Comments
             );
         }
     }
