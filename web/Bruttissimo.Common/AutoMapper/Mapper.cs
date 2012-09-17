@@ -58,6 +58,16 @@ namespace Bruttissimo.Common
             return engine.Map<TSource, TDestination>(source);
         }
 
+        public TDestination Map<TSource, TDestination>(TSource source, TDestination destination)
+        {
+            return engine.Map(source, destination);
+        }
+
+        public object Map(object source, object destination, Type sourceType, Type destinationType)
+        {
+            return engine.Map(source, destination, sourceType, destinationType);
+        }
+
         public IMappingExpression CreateMap(Type sourceType, Type destinationType)
         {
             IConfiguration configuration = GetConfiguration();
