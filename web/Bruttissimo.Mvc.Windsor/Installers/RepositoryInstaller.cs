@@ -41,6 +41,15 @@ namespace Bruttissimo.Mvc.Windsor
                     .LifestyleHybridPerWebRequestPerThread()
                 );
 
+            container.Register(
+                Component
+                    .For<ITwitterRepository>()
+                    .DynamicParameters(
+                        (k, parameters) => parameters["defaultServiceParams"] = GetDefaultTwitterServiceParameters()
+                    )
+                    .LifestyleHybridPerWebRequestPerThread()
+                );
+
             // Dapper assembly repositories.
             container.Register(
                 AllTypes.FromAssemblyContaining<UserRepository>()
@@ -82,6 +91,17 @@ namespace Bruttissimo.Mvc.Windsor
             {
                 connection.Close();
             }
+        }
+
+        private TwitterServiceParams GetDefaultTwitterServiceParameters()
+        {
+            return new TwitterServiceParams
+            {
+                App = Config.Social.TwitterAppId,
+                AppSecret = Config.Social.TwitterAppSecret,
+                Token = Config.Social.TwitterAccessToken,
+                TokenSecret = Config.Social.TwitterAccessTokenSecret
+            };
         }
     }
 }

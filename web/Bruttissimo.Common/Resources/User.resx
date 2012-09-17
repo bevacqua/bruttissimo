@@ -153,6 +153,9 @@
   <data name="Refresh" xml:space="preserve">
     <value>Refrescar</value>
   </data>
+  <data name="TwitterLink" xml:space="preserve">
+    <value>Nuevo!</value>
+  </data>
   <data name="UnhandledAjaxException" xml:space="preserve">
     <value>Algo salió mal! Vuelve a intentar más tarde.</value>
   </data>

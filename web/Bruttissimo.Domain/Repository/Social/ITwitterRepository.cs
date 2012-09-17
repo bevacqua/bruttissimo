@@ -4,6 +4,6 @@ namespace Bruttissimo.Domain
 {
     public interface ITwitterRepository
     {
-        TwitterPost PostToFeed(Post post);
+        TwitterPost PostToFeed(string message, TwitterServiceParams serviceParams = null);
     }
 }

@@ -96,6 +96,16 @@ namespace Bruttissimo.Common
             {
                 get { return Get("Social.TwitterAppSecret"); }
             }
+
+            public static string TwitterAccessToken
+            {
+                get { return Get("Social.TwitterAccessToken"); }
+            }
+
+            public static string TwitterAccessTokenSecret
+            {
+                get { return Get("Social.TwitterAccessTokenSecret"); }
+            }
         }
 
         public static class OutgoingEmail
