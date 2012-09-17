@@ -1,7 +1,8 @@
 using Bruttissimo.Common;
+using Bruttissimo.Domain.Entity;
 using TweetSharp;
 
-namespace Bruttissimo.Domain.Entity
+namespace Bruttissimo.Domain.Social
 {
     public class TwitterPostMapper : IMapperConfigurator
     {

@@ -13,41 +13,29 @@ namespace Bruttissimo.Common
 {
     internal sealed class AutoMapperInstaller : IWindsorInstaller
     {
-        private readonly Type[] profileTypes;
+        private readonly Assembly[] mapperAssemblies;
 
-        public AutoMapperInstaller(params Type[] profileTypes)
+        public AutoMapperInstaller(params Assembly[] mapperAssemblies)
         {
-            if (profileTypes == null)
+            if (mapperAssemblies == null)
             {
-                throw new ArgumentNullException("profileTypes");
+                throw new ArgumentNullException("mapperAssemblies");
             }
-            this.profileTypes = profileTypes;
+            this.mapperAssemblies = mapperAssemblies;
         }
 
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            IEnumerable<Assembly> assemblies = profileTypes.Select(t => t.Assembly).ToList();
-
-            foreach (Assembly assembly in assemblies)
+            foreach (Assembly assembly in mapperAssemblies)
             {
                 container.Register(
                     AllTypes
                         .FromAssembly(assembly)
-                        .BasedOn(typeof(ITypeConverter<,>))
-                        .WithServiceSelf()
-                    );
-            }
-
-            foreach (Assembly assembly in assemblies)
-            {
-                container.Register(
-                    Classes
-                        .FromAssembly(assembly)
-                        .BasedOn<Profile>()
+                        .BasedOn<IMapperConfigurator>()
                         .LifestyleTransient()
                     );
             }
-
+            
             container.Register(
                 Component
                     .For<ITypeMapFactory>()
@@ -74,7 +62,7 @@ namespace Bruttissimo.Common
                     .For<IMapper>()
                     .ImplementedBy<Mapper>()
                     .DynamicParameters(
-                        (k, parameters) => parameters["profileTypes"] = profileTypes
+                        (k, parameters) => parameters["configurators"] = container.ResolveAll<IMapperConfigurator>()
                     )
                     .LifestyleSingleton()
                 );

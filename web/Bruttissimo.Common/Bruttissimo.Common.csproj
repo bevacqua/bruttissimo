@@ -88,8 +88,9 @@
     <Compile Include="Extensions\WebResponse.cs" />
     <Compile Include="Helpers\Uri.cs" />
     <Compile Include="CompiledRegex.cs" />
-    <Compile Include="IoC\AutoMapper\IMapper.cs" />
-    <Compile Include="IoC\AutoMapper\Mapper.cs" />
+    <Compile Include="Interface\IMapperConfigurator.cs" />
+    <Compile Include="Interface\IMapper.cs" />
+    <Compile Include="AutoMapper\Mapper.cs" />
     <Compile Include="IoC\ContainerAccessor.cs" />
     <Compile Include="IoC\Installers\AutoMapperInstaller.cs" />
     <Compile Include="IoC\Installers\CapabilitiesInstaller.cs" />

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
+using Bruttissimo.Common;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain.Entity;
 using Bruttissimo.Domain.Logic;
@@ -66,7 +68,7 @@ namespace Bruttissimo.Mvc.Windsor
             Assembly controllerAssembly = typeof (HomeController).Assembly;
             ActionInvokerFilters filters = new ActionInvokerFilters();
             Assembly jobAssembly = typeof(FacebookService).Assembly;
-            Type[] profileTypes = GetAutoMapperProfileTypes();
+            Assembly[] automapperAssemblies = GetAutoMapperAssemblies();
             Assembly hubAssembly = typeof (LogHub).Assembly;
 
             MvcInstallerParameters parameters = new MvcInstallerParameters
@@ -78,18 +80,23 @@ namespace Bruttissimo.Mvc.Windsor
                 resourceAssemblies,
                 filters,
                 jobAssembly,
-                profileTypes,
+                automapperAssemblies,
                 hubAssembly
             );
             return parameters;
         }
 
-        private Type[] GetAutoMapperProfileTypes()
+        private Assembly[] GetAutoMapperAssemblies()
         {
-            Type domainToModel = typeof (DomainToModelProfile);
-            Type entityToDto = typeof (EntityToDtoProfile);
-            Type[] profileTypes = new[] {entityToDto, domainToModel};
-            return profileTypes;
+            Assembly[] assemblies = AppDomain.CurrentDomain
+                .GetAssemblies()
+                .Where(assembly => assembly
+                    .GetTypes()
+                    .Any(type => type.IsInstanceOfType(typeof(IMapperConfigurator)))
+                )
+                .ToArray();
+
+            return assemblies;
         }
     }
 }

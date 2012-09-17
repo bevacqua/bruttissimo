@@ -14,7 +14,7 @@ namespace Bruttissimo.Common.Mvc
         public IList<ResourceAssemblyLocation> ResourceAssemblies { get; private set; }
         public ActionInvokerFilters Filters { get; private set; }
         public Assembly JobAssembly { get; set; }
-        public Type[] AutomapperProfileTypes { get; set; }
+        public Assembly[] AutomapperAssemblies { get; set; }
 
         /// <summary>
         /// All required parameters for the Mvc infrastructure package.
@@ -26,7 +26,7 @@ namespace Bruttissimo.Common.Mvc
         /// <param name="resourceAssemblies">The location of the different string resources that are rendered client-side.</param>
         /// <param name="filters">A list of default action invoker filters.</param>
         /// <param name="jobAssembly">The assembly containing jobs.</param>
-        /// <param name="automapperProfileTypes">A list of AutoMapper profile types.</param>
+        /// <param name="automapperAssemblies">A list of AutoMapper profile types.</param>
         /// <param name="hubAssembly">The SignalR hub assembly.</param>
         public MvcInstallerParameters(
             Assembly modelAssembly,
@@ -36,7 +36,7 @@ namespace Bruttissimo.Common.Mvc
             IList<ResourceAssemblyLocation> resourceAssemblies,
             ActionInvokerFilters filters,
             Assembly jobAssembly,
-            Type[] automapperProfileTypes,
+            Assembly[] automapperAssemblies,
             Assembly hubAssembly)
         {
             if (modelAssembly == null)
@@ -67,9 +67,9 @@ namespace Bruttissimo.Common.Mvc
             {
                 throw new ArgumentNullException("jobAssembly");
             }
-            if (automapperProfileTypes == null)
+            if (automapperAssemblies == null)
             {
-                throw new ArgumentNullException("automapperProfileTypes");
+                throw new ArgumentNullException("automapperAssemblies");
             }
             if (hubAssembly == null)
             {
@@ -82,7 +82,7 @@ namespace Bruttissimo.Common.Mvc
             ResourceAssemblies = resourceAssemblies;
             Filters = filters;
             JobAssembly = jobAssembly;
-            AutomapperProfileTypes = automapperProfileTypes;
+            AutomapperAssemblies = automapperAssemblies;
             HubAssembly = hubAssembly;
         }
     }
