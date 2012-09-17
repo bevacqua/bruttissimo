@@ -11,9 +11,8 @@ namespace Bruttissimo.Mvc.Controller
     {
         private readonly IFormsAuthentication formsAuthentication;
         private readonly IAuthenticationService authenticationService;
-        private readonly UrlHelper urlHelper;
 
-        public UserController(IFormsAuthentication formsAuthentication, IAuthenticationService authenticationService, UrlHelper urlHelper)
+        public UserController(IFormsAuthentication formsAuthentication, IAuthenticationService authenticationService)
         {
             if (formsAuthentication == null)
             {
@@ -23,13 +22,8 @@ namespace Bruttissimo.Mvc.Controller
             {
                 throw new ArgumentNullException("authenticationService");
             }
-            if (urlHelper == null)
-            {
-                throw new ArgumentNullException("urlHelper");
-            }
             this.formsAuthentication = formsAuthentication;
             this.authenticationService = authenticationService;
-            this.urlHelper = urlHelper;
         }
 
         [HttpGet]

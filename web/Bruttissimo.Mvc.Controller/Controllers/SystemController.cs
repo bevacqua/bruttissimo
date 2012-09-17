@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using Bruttissimo.Common;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
@@ -13,20 +12,14 @@ namespace Bruttissimo.Mvc.Controller
     public class SystemController : ExtendedController
     {
         private readonly ILogService logService;
-        private readonly IMapper mapper;
 
-        public SystemController(ILogService logService, IMapper mapper)
+        public SystemController(ILogService logService)
         {
             if (logService == null)
             {
                 throw new ArgumentNullException("logService");
             }
-            if (mapper == null)
-            {
-                throw new ArgumentNullException("mapper");
-            }
             this.logService = logService;
-            this.mapper = mapper;
         }
 
         [HttpGet]

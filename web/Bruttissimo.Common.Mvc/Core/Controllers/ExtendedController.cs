@@ -8,7 +8,26 @@ namespace Bruttissimo.Common.Mvc
     /// </summary>
     public abstract class ExtendedController : StringRenderingController
     {
-        /// <summary>
+		private readonly Lazy<IUrlHelper> urlHelperLazy;
+		private readonly Lazy<IMapper> mapperLazy;
+
+	    protected IUrlHelper urlHelper
+	    {
+		    get { return urlHelperLazy.Value; }
+	    }
+
+		protected IMapper mapper
+		{
+			get { return mapperLazy.Value; }
+		}
+
+		protected ExtendedController()
+		{
+			urlHelperLazy = IoC.Container.Resolve<Lazy<IUrlHelper>>();
+			mapperLazy = IoC.Container.Resolve<Lazy<IMapper>>();
+		}
+
+	    /// <summary>
         /// Returns the invalid model state messages, in either Json format for AJAX requests, or as a ViewResult for regular requests.
         /// </summary>
         protected ActionResult InvalidModelState(object model, bool throwOnEmptyModel = true)

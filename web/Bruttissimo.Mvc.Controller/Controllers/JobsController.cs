@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using Bruttissimo.Common;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
@@ -13,20 +12,14 @@ namespace Bruttissimo.Mvc.Controller
     public class JobsController : ExtendedController
     {
         private readonly IJobService jobService;
-        private readonly IMapper mapper;
 
-        public JobsController(IJobService jobService, IMapper mapper)
+        public JobsController(IJobService jobService)
         {
             if (jobService == null)
             {
                 throw new ArgumentNullException("jobService");
             }
-            if (mapper == null)
-            {
-                throw new ArgumentNullException("mapper");
-            }
             this.jobService = jobService;
-            this.mapper = mapper;
         }
 
         [HttpGet]

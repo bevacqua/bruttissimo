@@ -120,6 +120,8 @@
     <Compile Include="HttpModules\MiniProfilerModule.cs" />
     <Compile Include="HttpModules\RequestSanitizerModule.cs" />
     <Compile Include="Interface\IMvcResourceHelper.cs" />
+    <Compile Include="Interface\IUrlHelper.cs" />
+    <Compile Include="Utility\UrlHelperWrapper.cs" />
     <Compile Include="IoC\Installers\SignalRInstaller.cs" />
     <Compile Include="IoC\Installers\HttpModuleInstaller.cs" />
     <Compile Include="IoC\MvcInfrastructure.cs" />

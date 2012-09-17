@@ -15,10 +15,8 @@ namespace Bruttissimo.Mvc.Controller
         private readonly ILinkService linkService;
         private readonly IPostService postService;
         private readonly ICommentService commentService;
-        private readonly UrlHelper urlHelper;
-        private readonly IMapper mapper;
 
-        public PostsController(ILinkService linkService, IPostService postService, ICommentService commentService, UrlHelper urlHelper, IMapper mapper)
+        public PostsController(ILinkService linkService, IPostService postService, ICommentService commentService)
         {
             if (linkService == null)
             {
@@ -32,19 +30,9 @@ namespace Bruttissimo.Mvc.Controller
             {
                 throw new ArgumentNullException("commentService");
             }
-            if (urlHelper == null)
-            {
-                throw new ArgumentNullException("urlHelper");
-            }
-            if (mapper == null)
-            {
-                throw new ArgumentNullException("mapper");
-            }
             this.linkService = linkService;
             this.postService = postService;
             this.commentService = commentService;
-            this.urlHelper = urlHelper;
-            this.mapper = mapper;
         }
 
         #region Get

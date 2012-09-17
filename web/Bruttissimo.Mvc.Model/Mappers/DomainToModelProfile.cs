@@ -13,8 +13,8 @@ namespace Bruttissimo.Mvc.Model
     public class DomainToModelProfile : Profile
     {
         private readonly IPostService postService;
-        private readonly UrlHelper urlHelper;
-        private readonly IUserService userService;
+		private readonly IUserService userService;
+		private readonly UrlHelper urlHelper;
 
         public DomainToModelProfile(IPostService postService, IUserService userService, UrlHelper urlHelper)
         {
