@@ -11,7 +11,7 @@ namespace Bruttissimo.Mvc.Model
         {
             mapper.CreateMap<Post, CommentListModel>()
                 .ForMember(dest => dest.PostId, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.Form, opt => opt.MapFrom(src => new CommentReplyModel(src.Id)))
+                .ForMember(dest => dest.Form, opt => opt.MapFrom(src => new CommentReplyModel(src.Id, null)))
                 .ForMember(dest => dest.Threads, opt => opt.MapFrom(src => GetCommentThreads(src, mapper)));
         }
 

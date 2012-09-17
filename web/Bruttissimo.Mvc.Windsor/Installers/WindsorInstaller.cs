@@ -7,6 +7,7 @@ using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain.Entity;
 using Bruttissimo.Domain.Logic;
 using Bruttissimo.Domain.Logic.Hubs;
+using Bruttissimo.Domain.Social;
 using Bruttissimo.Mvc.Controller;
 using Bruttissimo.Mvc.Model;
 using Castle.MicroKernel.Registration;
@@ -64,12 +65,12 @@ namespace Bruttissimo.Mvc.Windsor
 
         private MvcInstallerParameters GetMvcInstallerParameters()
         {
-            Assembly modelAssembly = typeof (UserLoginModel).Assembly;
-            Assembly controllerAssembly = typeof (HomeController).Assembly;
+            Assembly modelAssembly = typeof(UserLoginModel).Assembly;
+            Assembly controllerAssembly = typeof(HomeController).Assembly;
             ActionInvokerFilters filters = new ActionInvokerFilters();
             Assembly jobAssembly = typeof(FacebookService).Assembly;
-            Assembly[] automapperAssemblies = GetAutoMapperAssemblies();
-            Assembly hubAssembly = typeof (LogHub).Assembly;
+            Assembly[] mapperAssemblies = GetMapperAssemblies();
+            Assembly hubAssembly = typeof(LogHub).Assembly;
 
             MvcInstallerParameters parameters = new MvcInstallerParameters
             (
@@ -80,22 +81,27 @@ namespace Bruttissimo.Mvc.Windsor
                 resourceAssemblies,
                 filters,
                 jobAssembly,
-                automapperAssemblies,
+                mapperAssemblies,
                 hubAssembly
             );
             return parameters;
         }
 
-        private Assembly[] GetAutoMapperAssemblies()
+        private Assembly[] GetMapperAssemblies()
         {
-            Assembly[] assemblies = AppDomain.CurrentDomain
-                .GetAssemblies()
-                .Where(assembly => assembly
-                    .GetTypes()
-                    .Any(type => type.IsInstanceOfType(typeof(IMapperConfigurator)))
-                )
-                .ToArray();
-
+            //Assembly[] assemblies = AppDomain.CurrentDomain
+            //    .GetAssemblies()
+            //    .Where(assembly => assembly
+            //        .GetTypes()
+            //        .Any(type => typeof(IMapperConfigurator).IsAssignableFrom(type))
+            //    )
+            //    .ToArray();
+            Assembly[] assemblies = new []
+            {
+                typeof(TwitterPostMapper).Assembly,
+                typeof(PostMapper).Assembly,
+                typeof(PostModelMapper).Assembly
+            };
             return assemblies;
         }
     }

@@ -29,9 +29,10 @@ namespace Bruttissimo.Common
             foreach (Assembly assembly in mapperAssemblies)
             {
                 container.Register(
-                    AllTypes
+                    Classes
                         .FromAssembly(assembly)
                         .BasedOn<IMapperConfigurator>()
+                        .WithServiceFromInterface(typeof(IMapperConfigurator))
                         .LifestyleTransient()
                     );
             }

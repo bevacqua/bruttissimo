@@ -14,7 +14,7 @@ namespace Bruttissimo.Common.Mvc
         public IList<ResourceAssemblyLocation> ResourceAssemblies { get; private set; }
         public ActionInvokerFilters Filters { get; private set; }
         public Assembly JobAssembly { get; set; }
-        public Assembly[] AutomapperAssemblies { get; set; }
+        public Assembly[] MapperAssemblies { get; set; }
 
         /// <summary>
         /// All required parameters for the Mvc infrastructure package.
@@ -82,7 +82,7 @@ namespace Bruttissimo.Common.Mvc
             ResourceAssemblies = resourceAssemblies;
             Filters = filters;
             JobAssembly = jobAssembly;
-            AutomapperAssemblies = automapperAssemblies;
+            MapperAssemblies = automapperAssemblies;
             HubAssembly = hubAssembly;
         }
     }

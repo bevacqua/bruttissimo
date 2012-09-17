@@ -79,7 +79,10 @@
     <Compile Include="Entities\Log.cs" />
     <Compile Include="Entities\Picture.cs" />
     <Compile Include="Entities\Post.cs" />
-    <Compile Include="Mappers\EntityToDtoProfile.cs" />
+    <Compile Include="Mappers\ScheduledJobDtoMapper.cs" />
+    <Compile Include="Mappers\JobDtoMapper.cs" />
+    <Compile Include="Mappers\PostMapper.cs" />
+    <Compile Include="Mappers\LinkMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserConnection.cs" />

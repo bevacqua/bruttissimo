@@ -12,27 +12,27 @@ namespace Bruttissimo.Common
     public sealed class CommonInstaller : IWindsorInstaller
     {
         private readonly Assembly jobAssembly;
-        private readonly Assembly[] automapperAssemblies;
+        private readonly Assembly[] mapperAssemblies;
 
-        public CommonInstaller(Assembly jobAssembly, Assembly[] automapperAssemblies)
+        public CommonInstaller(Assembly jobAssembly, Assembly[] mapperAssemblies)
         {
             if (jobAssembly == null)
             {
                 throw new ArgumentNullException("jobAssembly");
             }
-            if (automapperAssemblies == null)
+            if (mapperAssemblies == null)
             {
-                throw new ArgumentNullException("automapperAssemblies");
+                throw new ArgumentNullException("mapperAssemblies");
             }
             this.jobAssembly = jobAssembly;
-            this.automapperAssemblies = automapperAssemblies;
+            this.mapperAssemblies = mapperAssemblies;
         }
 
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Install(
                 new UtilityInstaller(),
-                new AutoMapperInstaller(automapperAssemblies),
+                new AutoMapperInstaller(mapperAssemblies),
                 new CapabilitiesInstaller(),
                 new QuartzInstaller(jobAssembly)
             );

@@ -27,7 +27,7 @@ namespace Bruttissimo.Common.Mvc
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Install(
-                new CommonInstaller(parameters.JobAssembly, parameters.AutomapperAssemblies),
+                new CommonInstaller(parameters.JobAssembly, parameters.MapperAssemblies),
                 new AspNetInstaller(),
                 new HttpModuleInstaller(),
                 new MvcComponentInstaller(),

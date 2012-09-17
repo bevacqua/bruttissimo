@@ -38,19 +38,31 @@ namespace Bruttissimo.Common
             }
         }
 
-        private IConfiguration GetConfiguration()
+        private IConfigurationProvider GetConfigurationProvider()
         {
             IMappingEngineRunner runner = engine as IMappingEngineRunner;
             if (runner == null)
             {
                 throw new ArgumentException(Resources.Error.AutoMapperInvalidEngine);
             }
-            IConfiguration configuration = runner.ConfigurationProvider as IConfiguration;
+            return runner.ConfigurationProvider;
+        }
+
+        private IConfiguration GetConfiguration()
+        {
+            IConfigurationProvider provider = GetConfigurationProvider();
+            IConfiguration configuration = provider as IConfiguration;
             if (configuration == null)
             {
                 throw new ArgumentException(Resources.Error.AutoMapperInvalidProvider);
             }
             return configuration;
+        }
+
+        public void AssertConfigurationIsValid()
+        {
+            IConfigurationProvider provider = GetConfigurationProvider();
+            provider.AssertConfigurationIsValid();
         }
 
         public TDestination Map<TSource, TDestination>(TSource source)
