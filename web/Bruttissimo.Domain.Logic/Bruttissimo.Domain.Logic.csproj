@@ -117,6 +117,7 @@
     <Compile Include="log4net\RequestIdentityPattern.cs" />
     <Compile Include="MiniMembership\MembershipExtensions.cs" />
     <Compile Include="MiniMembership\MiniAuthenticationModule.cs" />
+    <Compile Include="Service\BaseService.cs" />
     <Compile Include="Service\CommentService.cs" />
     <Compile Include="Service\TwitterExporterService.cs" />
     <Compile Include="Service\TwitterService.cs" />

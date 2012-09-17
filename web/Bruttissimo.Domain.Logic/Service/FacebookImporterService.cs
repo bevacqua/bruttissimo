@@ -6,17 +6,16 @@ using log4net;
 
 namespace Bruttissimo.Domain.Logic
 {
-    public class FacebookImporterService : IFacebookImporterService
+    public class FacebookImporterService : BaseService, IFacebookImporterService
     {
         private readonly IFacebookRepository facebookRepository;
         private readonly IPostRepository postRepository;
         private readonly ILinkRepository linkRepository;
         private readonly IUserRepository userRepository;
-        private readonly IMapper mapper;
 
         private readonly ILog log = LogManager.GetLogger(typeof(FacebookImporterService));
 
-        public FacebookImporterService(IFacebookRepository facebookRepository, IPostRepository postRepository, ILinkRepository linkRepository, IUserRepository userRepository, IMapper mapper)
+        public FacebookImporterService(IFacebookRepository facebookRepository, IPostRepository postRepository, ILinkRepository linkRepository, IUserRepository userRepository)
         {
             if (facebookRepository == null)
             {
@@ -42,7 +41,6 @@ namespace Bruttissimo.Domain.Logic
             this.postRepository = postRepository;
             this.linkRepository = linkRepository;
             this.userRepository = userRepository;
-            this.mapper = mapper;
         }
 
         /// <summary>
