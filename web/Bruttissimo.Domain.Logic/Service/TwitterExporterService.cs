@@ -55,7 +55,7 @@ namespace Bruttissimo.Domain.Logic
         private string GetStatusMessageForPost(Post post)
         {
             StringBuilder status = new StringBuilder();
-            string url = urlHelper.Action("Details", "Posts", new { id = post.Id }, "http");
+            string url = urlHelper.RouteUrl("PostShortcut", new { id = post.Id }, "http");
             string message = post.UserMessage ?? post.Link.Title ?? Common.Resources.User.TwitterLink;
 
             int maxlen = MAX_TWEET_LENGTH - url.Length;
