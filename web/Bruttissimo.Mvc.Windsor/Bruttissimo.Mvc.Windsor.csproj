@@ -118,6 +118,10 @@
       <Project>{F17E96BA-A4DA-4FD1-B091-2C85B953695A}</Project>
       <Name>Bruttissimo.Data.Dapper</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bruttissimo.Data.Deployment\Bruttissimo.Data.Deployment.csproj">
+      <Project>{2656DDDF-69BC-4DA9-9691-5059CC710750}</Project>
+      <Name>Bruttissimo.Data.Deployment</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bruttissimo.Domain.Entity\Bruttissimo.Domain.Entity.csproj">
       <Project>{F03C32AC-F451-43D2-8506-D4E695C6C8A9}</Project>
       <Name>Bruttissimo.Domain.Entity</Name>
