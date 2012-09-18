@@ -22,7 +22,7 @@ namespace Bruttissimo.Tests.Mocking
             };
             container.Install(
                 new ApplicationInstaller()
-                );
+            );
             OverrideRegistrations(container);
             return container;
         }

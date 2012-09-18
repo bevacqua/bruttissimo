@@ -13,7 +13,7 @@ namespace Bruttissimo.Mvc
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            Assembly viewAssembly = typeof (ApplicationInstaller).Assembly;
+            Assembly viewAssembly = typeof(ApplicationInstaller).Assembly;
 
             string title = Views.Shared.Resources.Application.Title;
 

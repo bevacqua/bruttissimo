@@ -31,7 +31,8 @@ namespace Bruttissimo.Domain.Social
             string token = parameters.Token;
             string tokenSecret = parameters.TokenSecret;
 
-            TwitterService service = new TwitterService(app, appSecret, token, tokenSecret);
+            TwitterService service = new TwitterService();
+            service.AuthenticateWith(app, appSecret, token, tokenSecret);
             return service;
         }
 
