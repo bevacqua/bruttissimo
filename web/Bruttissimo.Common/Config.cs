@@ -1,6 +1,8 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Net;
 using System.Net.Mail;
+using System.Reflection;
 using System.Security.Authentication;
 using Bruttissimo.Common.Resources;
 
@@ -8,6 +10,22 @@ namespace Bruttissimo.Common
 {
     public static class Config
     {
+        public string test
+        {
+            get
+            {
+                var p = ConfigurationManager.AppSettings["RuntimeEnvironment"];
+                if (p.NullOrEmpty()) throw new InvalidOperationException();
+                if (p == "Local")
+                    throw new ArgumentOutOfRangeException("Local");
+                else
+                {
+                    throw new InvalidFilterCriteriaException(p);
+                }
+            }
+        }
+
+
         #region Common
 
         public static string Get(string key)
