@@ -74,7 +74,7 @@ namespace Bruttissimo.Mvc.Windsor
 
         private IDbConnection InstanceDbConnection()
         {
-            string connectionString = Config.GetConnectionString("SqlConnection");
+            string connectionString = Config.GetConnectionString("SQLSERVER_CONNECTION_STRING");
             DbConnection connection = new SqlConnection(connectionString);
             RichErrorDbConnection profiled = new RichErrorDbConnection(connection, MiniProfiler.Current); // wraps MiniProfiler's ProfiledDbConnection.
             return profiled;

@@ -79,7 +79,7 @@ namespace Bruttissimo.Data.Deployment
 
         internal IDbConnection GetConnection()
         {
-            string connectionString = Config.GetConnectionString("SqlConnection");
+            string connectionString = Config.GetConnectionString("SQLSERVER_CONNECTION_STRING");
             DbConnection connection = new SqlConnection(connectionString);
             RichErrorDbConnection profiled = new RichErrorDbConnection(connection, MiniProfiler.Current); // wraps MiniProfiler's ProfiledDbConnection.
             connections.Add(profiled);
