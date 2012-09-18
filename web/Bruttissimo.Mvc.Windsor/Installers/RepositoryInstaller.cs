@@ -5,6 +5,7 @@ using Bruttissimo.Common;
 using Bruttissimo.Data.Dapper;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Logic;
+using Bruttissimo.Domain.Social;
 using Bruttissimo.Extensions.MiniProfiler;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
@@ -35,6 +36,7 @@ namespace Bruttissimo.Mvc.Windsor
             container.Register(
                 Component
                     .For<IFacebookRepository>()
+                    .ImplementedBy<FacebookRepository>()
                     .DynamicParameters(
                         (k, parameters) => parameters["defaultAccessToken"] = accessToken
                     )
@@ -44,6 +46,7 @@ namespace Bruttissimo.Mvc.Windsor
             container.Register(
                 Component
                     .For<ITwitterRepository>()
+                    .ImplementedBy<TwitterRepository>()
                     .DynamicParameters(
                         (k, parameters) => parameters["defaultServiceParams"] = GetDefaultTwitterServiceParameters()
                     )
