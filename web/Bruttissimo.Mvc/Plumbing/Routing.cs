@@ -9,6 +9,11 @@ namespace Bruttissimo.Mvc
     internal static class Routing
     {
         private static readonly object notFound = new { controller = "Error", action = "NotFound" };
+        
+        public static void RegisterAllAreas()
+        {
+            AreaRegistration.RegisterAllAreas();
+        }
 
         public static void RegisterRoutes(RouteCollection routes)
         {
