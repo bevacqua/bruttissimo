@@ -18,10 +18,10 @@ namespace Bruttissimo.Mvc.Windsor
             Install(installers);
 
             UpgradeTool upgradeTool = new UpgradeTool();
-            upgradeTool.Execute();
+            upgradeTool.Execute(); // database script changes.
 
             IJobAutoRunner autoRunner = IoC.Container.Resolve<IJobAutoRunner>();
-            autoRunner.Fire();
+            autoRunner.Fire(); // AutoRun Quartz jobs.
         }
 
         public static void Install(params IWindsorInstaller[] installers)
