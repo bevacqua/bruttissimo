@@ -10,7 +10,7 @@ namespace Bruttissimo.Common
 {
     public static class Config
     {
-        public string test
+        public static string test
         {
             get
             {
