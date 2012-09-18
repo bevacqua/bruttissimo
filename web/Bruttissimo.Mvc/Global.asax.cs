@@ -1,5 +1,4 @@
 ﻿using System.Web;
-using System.Web.Mvc;
 using System.Web.Routing;
 using Bruttissimo.Common;
 using Bruttissimo.Common.Resources;
@@ -15,14 +14,11 @@ namespace Bruttissimo.Mvc
         protected void Application_Start()
         {
             // System.Diagnostics.Debugger.Break(); // debug application start in IIS.
-            CompositionRoot.Install(new ApplicationInstaller());
+            CompositionRoot.Initialize(new ApplicationInstaller());
 
             Routing.RegisterAllAreas();
             Routing.RegisterRoutes(RouteTable.Routes);
-
-            IJobAutoRunner autoRunner = IoC.Container.Resolve<IJobAutoRunner>();
-            autoRunner.Fire();
-
+            
             log.Debug(Debug.ApplicationStart);
         }
 
