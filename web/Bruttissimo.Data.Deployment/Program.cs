@@ -4,8 +4,8 @@
     {
         public static int Main()
         {
-            DbUpgrader upgrader = new DbUpgrader();
-            int exitCode = upgrader.Execute();
+            UpgradeTool deployTool = new UpgradeTool();
+            int exitCode = deployTool.Execute();
             return exitCode;
         }
     }

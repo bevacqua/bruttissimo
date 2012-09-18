@@ -17,14 +17,14 @@ using log4net;
 
 namespace Bruttissimo.Data.Deployment
 {
-    public class DbUpgrader
+    public class UpgradeTool
     {
         private readonly ILog logger;
         private readonly IUpgradeLog log;
         private readonly Stopwatch stopwatch;
         private readonly IList<IDbConnection> connections;
 
-        public DbUpgrader()
+        public UpgradeTool()
         {
             logger = LogManager.GetLogger(typeof(UpgradeEngine));
             log = new Log4NetAndConsoleUpgradeLog(logger);

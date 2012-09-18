@@ -37,6 +37,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper">
+      <HintPath>..\packages\Dapper.1.11\lib\net40\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="DbUp">
       <HintPath>..\packages\dbup.2.0.113\lib\NET35\DbUp.dll</HintPath>
     </Reference>
@@ -59,17 +62,53 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="DbUp\DbUpgrader.cs" />
+    <Compile Include="UpgradeTool.cs" />
     <Compile Include="DbUp\Log4NetAndConsoleUpgradeLog.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Scripts\20120906.1.roles.sql" />
+    <EmbeddedResource Include="Scripts\Updates\20120906.1.roles.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <Content Include="Scripts\Core\Keys\PK_SchemaVersions.pkey.sql" />
+    <Content Include="Scripts\Tables\Comment.table.sql" />
+    <Content Include="Scripts\Tables\FacebookExportLog.table.sql" />
+    <Content Include="Scripts\Tables\FacebookImportLog.table.sql" />
+    <Content Include="Scripts\Tables\Keys\FK_Comment_Comment.fkey.sql" />
+    <Content Include="Scripts\Tables\Keys\FK_Comment_Post.fkey.sql" />
+    <Content Include="Scripts\Tables\Keys\FK_Comment_User.fkey.sql" />
+    <Content Include="Scripts\Tables\Keys\FK_Log_User.fkey.sql" />
+    <Content Include="Scripts\Tables\Keys\FK_Post_Link.fkey.sql" />
+    <Content Include="Scripts\Tables\Keys\FK_Post_User.fkey.sql" />
+    <Content Include="Scripts\Tables\Keys\FK_RoleRight_Right.fkey.sql" />
+    <Content Include="Scripts\Tables\Keys\FK_RoleRight_Role.fkey.sql" />
+    <Content Include="Scripts\Tables\Keys\FK_UserConnection_User.fkey.sql" />
+    <Content Include="Scripts\Tables\Keys\FK_User_Role.fkey.sql" />
+    <Content Include="Scripts\Tables\Keys\PK_Comment.pkey.sql" />
+    <Content Include="Scripts\Tables\Keys\PK_FacebookImportLog.pkey.sql" />
+    <Content Include="Scripts\Tables\Keys\PK_Link.pkey.sql" />
+    <Content Include="Scripts\Core\Keys\PK_Log.pkey.sql" />
+    <Content Include="Scripts\Tables\Keys\PK_Picture.pkey.sql" />
+    <Content Include="Scripts\Tables\Keys\PK_Post.pkey.sql" />
+    <Content Include="Scripts\Tables\Keys\PK_Right.pkey.sql" />
+    <Content Include="Scripts\Tables\Keys\PK_Role.pkey.sql" />
+    <Content Include="Scripts\Tables\Keys\PK_RoleRight.pkey.sql" />
+    <Content Include="Scripts\Tables\Keys\PK_User.pkey.sql" />
+    <Content Include="Scripts\Tables\Keys\PK_UserConnection.pkey.sql" />
+    <Content Include="Scripts\Tables\Link.table.sql" />
+    <Content Include="Scripts\Core\Log.table.sql" />
+    <Content Include="Scripts\Tables\Picture.table.sql" />
+    <Content Include="Scripts\Tables\Post.table.sql" />
+    <Content Include="Scripts\Tables\Right.table.sql" />
+    <Content Include="Scripts\Tables\Role.table.sql" />
+    <Content Include="Scripts\Tables\RoleRight.table.sql" />
+    <Content Include="Scripts\Core\SchemaVersions.table.sql" />
+    <Content Include="Scripts\Tables\TwitterExportLog.table.sql" />
+    <Content Include="Scripts\Tables\User.table.sql" />
+    <Content Include="Scripts\Tables\UserConnection.table.sql" />
     <Content Include="Xml\db.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -91,8 +130,6 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <Target Name="BeforeBuild">
-    <!-- deploy database creation -->
-    <MSBuild Projects="..\Bruttissimo.Data.SqlServer\Bruttissimo.Data.SqlServer.dbproj" Targets="Build;Deploy" />
   </Target>
   <Target Name="AfterBuild">
     <!-- self-execute after build. -->
