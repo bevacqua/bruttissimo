@@ -52,6 +52,9 @@
     <Reference Include="MiniProfiler">
       <HintPath>..\packages\MiniProfiler.2.0.2\lib\net40\MiniProfiler.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="SignalR">
       <HintPath>..\packages\SignalR.Server.0.5.2\lib\net40\SignalR.dll</HintPath>
     </Reference>
@@ -121,6 +124,8 @@
     <Compile Include="HttpModules\RequestSanitizerModule.cs" />
     <Compile Include="Interface\IMvcResourceHelper.cs" />
     <Compile Include="Interface\IUrlHelper.cs" />
+    <Compile Include="Interface\IUrlShortener.cs" />
+    <Compile Include="Utility\GoogleUrlShortener.cs" />
     <Compile Include="Utility\UrlHelperWrapper.cs" />
     <Compile Include="IoC\Installers\SignalRInstaller.cs" />
     <Compile Include="IoC\Installers\HttpModuleInstaller.cs" />

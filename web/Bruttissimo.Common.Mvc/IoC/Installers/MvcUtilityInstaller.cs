@@ -31,6 +31,13 @@ namespace Bruttissimo.Common.Mvc
                     .ImplementedBy<RequestSanitizer>()
                     .LifestyleTransient()
                 );
+
+            container.Register(
+                Component
+                    .For<IUrlShortener>()
+                    .ImplementedBy<GoogleUrlShortener>()
+                    .LifestyleTransient()
+                );
         }
     }
 }
