@@ -34,7 +34,7 @@ namespace Bruttissimo.Data.Deployment
 
         public int Execute()
         {
-            Assembly assembly = typeof(Program).Assembly;
+            Assembly assembly = typeof(UpgradeTool).Assembly;
             
             stopwatch.Restart();
 

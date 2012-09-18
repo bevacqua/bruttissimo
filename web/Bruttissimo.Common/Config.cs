@@ -10,23 +10,6 @@ namespace Bruttissimo.Common
 {
     public static class Config
     {
-        public static int test
-        {
-            get
-            {
-                var p = ConfigurationManager.AppSettings["RuntimeEnvironment"];
-                if (p.NullOrEmpty()) return -2;
-                if (p == "Local")
-                    return -3;
-                else
-                {
-                    return -4;
-                }
-                
-            }
-        }
-
-
         #region Common
 
         public static string Get(string key)
