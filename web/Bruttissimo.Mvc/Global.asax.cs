@@ -17,7 +17,7 @@ namespace Bruttissimo.Mvc
             // System.Diagnostics.Debugger.Break(); // debug application start in IIS.
             CompositionRoot.Install(new ApplicationInstaller());
 
-            AreaRegistration.RegisterAllAreas();
+            Routing.RegisterAllAreas();
             Routing.RegisterRoutes(RouteTable.Routes);
 
             IJobAutoRunner autoRunner = IoC.Container.Resolve<IJobAutoRunner>();
