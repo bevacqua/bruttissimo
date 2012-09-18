@@ -38,6 +38,10 @@ namespace Bruttissimo.Domain.Social
 
         public TwitterPost PostToFeed(string message, TwitterServiceParams serviceParams = null)
         {
+            if (message == null)
+            {
+                throw new ArgumentNullException("message");
+            }
             TwitterServiceParams parameters = serviceParams ?? defaultServiceParams;
             TwitterService service = InstanceTwitterService(parameters);
             TwitterStatus status = service.SendTweet(message);

@@ -15,7 +15,7 @@ namespace Bruttissimo.Domain.Logic
         private readonly IPostRepository postRepository;
         private readonly IUrlShortener urlShortener;
 
-        public TwitterExporterService(ITwitterRepository twitterRepository, IPostRepository postRepository,IUrlShortener urlShortener)
+        public TwitterExporterService(ITwitterRepository twitterRepository, IPostRepository postRepository, IUrlShortener urlShortener)
         {
             if (twitterRepository == null)
             {
@@ -24,6 +24,10 @@ namespace Bruttissimo.Domain.Logic
             if (postRepository == null)
             {
                 throw new ArgumentNullException("postRepository");
+            }
+            if (urlShortener == null)
+            {
+                throw new ArgumentNullException("urlShortener");
             }
             this.twitterRepository = twitterRepository;
             this.postRepository = postRepository;
@@ -61,17 +65,21 @@ namespace Bruttissimo.Domain.Logic
             string longUrl = urlHelper.RouteUrl("PostShortcut", new { id = post.Id }, "http");
             string url = urlShortener.Shorten(longUrl);
 
-            string message = post.UserMessage ?? post.Link.Title ?? Common.Resources.User.TwitterLink;
+            string description = post.UserMessage ?? post.Link.Title ?? Common.Resources.User.TwitterLink;
+            string message = description.Trim() + " ";
 
             int maxlen = MAX_TWEET_LENGTH - url.Length;
             if (maxlen > 4)
             {
-                if (message.Length < maxlen - 1) // take the space into account.
+                if (message.Length > maxlen)
                 {
-                    message = message.Substring(0, maxlen - 3) + "...";
+                    status.Append(message.Substring(0, maxlen - 3));
+                    status.Append(".. ");
                 }
-                status.Append(message);
-                status.Append(" ");
+                else
+                {
+                    status.Append(message);
+                }
             }
             status.Append(url);
 
