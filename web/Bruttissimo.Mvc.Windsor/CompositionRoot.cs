@@ -12,7 +12,6 @@ namespace Bruttissimo.Mvc.Windsor
         /// <summary>
         /// Registers all dependencies in the composition root, and then runs some start-up processes.
         /// </summary>
-        /// <param name="installers"></param>
         public static void Initialize(params IWindsorInstaller[] installers)
         {
             Install(installers);
@@ -24,7 +23,7 @@ namespace Bruttissimo.Mvc.Windsor
             autoRunner.Fire(); // AutoRun Quartz jobs.
         }
 
-        public static void Install(params IWindsorInstaller[] installers)
+        internal static void Install(params IWindsorInstaller[] installers)
         {
             IWindsorContainer container = new WindsorContainer();
             container.Install(installers);
