@@ -217,6 +217,12 @@
     <Content Include="Views\Posts\DisplayTemplates\CommentListModel.cshtml" />
     <Content Include="Views\Posts\DisplayTemplates\CommentModel.cshtml" />
     <Content Include="Views\Posts\DisplayTemplates\CommentReplyModel.cshtml" />
+    <Content Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </Content>
+    <Content Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\GlobalAssemblyInfo.cs">
