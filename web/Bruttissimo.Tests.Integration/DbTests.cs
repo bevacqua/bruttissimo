@@ -16,7 +16,7 @@ namespace Bruttissimo.Tests.Integration
         [TestMethod]
         public void SqlConnection_CanBeEstablished()
         {
-            string connectionString = Config.GetConnectionString("SQLSERVER_CONNECTION_STRING");
+            string connectionString = Config.GetConnectionString("SqlServerConnectionString");
             IDbConnection connection = new SqlConnection(connectionString);
             connection.Open();
             connection.Close();
