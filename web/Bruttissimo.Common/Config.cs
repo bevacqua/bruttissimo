@@ -10,18 +10,19 @@ namespace Bruttissimo.Common
 {
     public static class Config
     {
-        public static string test
+        public static int test
         {
             get
             {
                 var p = ConfigurationManager.AppSettings["RuntimeEnvironment"];
-                if (p.NullOrEmpty()) throw new InvalidOperationException();
+                if (p.NullOrEmpty()) return -2;
                 if (p == "Local")
-                    throw new ArgumentOutOfRangeException("Local");
+                    return -3;
                 else
                 {
-                    throw new InvalidFilterCriteriaException(p);
+                    return -4;
                 }
+                
             }
         }
 
