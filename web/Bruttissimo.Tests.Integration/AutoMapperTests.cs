@@ -27,13 +27,13 @@ namespace Bruttissimo.Tests.Integration
         }
 
         [TestMethod]
-        public void AutoMapperShouldBeProperlyConfigured()
+        public void AutoMapper_should_be_properly_configured()
         {
             mapper.AssertConfigurationIsValid();
         }
 
         [TestMethod]
-        public void PostShouldMapToConcreteLinkPostModel()
+        public void Post_should_map_to_concrete_LinkPostModel()
         {
             Post post = new Post { Link = new Link { Type = LinkType.Html } };
 
@@ -43,7 +43,7 @@ namespace Bruttissimo.Tests.Integration
         }
 
         [TestMethod]
-        public void PostShouldMapPropertiesToConcreteLinkPostModel()
+        public void Post_should_map_properties_to_concrete_LinkPostModel()
         {
             Post post = new Post { Link = new Link { Type = LinkType.Html, Description = "desc" } };
 
@@ -53,7 +53,7 @@ namespace Bruttissimo.Tests.Integration
         }
 
         [TestMethod]
-        public void PostShouldMapToConcreteImagePostModel()
+        public void Post_should_map_to_concrete_ImagePostModel()
         {
             Post post = new Post { Link = new Link { Type = LinkType.Image } };
 
@@ -63,13 +63,33 @@ namespace Bruttissimo.Tests.Integration
         }
 
         [TestMethod]
-        public void PostShouldMapPropertiesToConcreteImagePostModel()
+        public void post_should_map_properties_to_concrete_ImagePostModel()
         {
             Post post = new Post { Link = new Link { Type = LinkType.Image, Picture = "pic" } };
 
             PostModel model = mapper.Map<Post, PostModel>(post);
 
             Assert.AreEqual("pic", ((ImagePostModel)model).LinkPicture);
+        }
+
+        [TestMethod]
+        public void Post_should_map_CommentListModel_even_if_empty()
+        {
+            Post post = new Post { Id = 2, Link = new Link { Type = LinkType.Image, Picture = "pic" } };
+
+            CommentListModel model = mapper.Map<Post, CommentListModel>(post);
+
+            Assert.IsNotNull(model);
+        }
+
+        [TestMethod]
+        public void Post_should_map_Comments_property_even_if_empty()
+        {
+            Post post = new Post { Id = 2, Link = new Link { Type = LinkType.Image, Picture = "pic" } };
+
+            PostModel model = mapper.Map<Post, PostModel>(post);
+
+            Assert.IsNotNull(model.Comments);
         }
     }
 }

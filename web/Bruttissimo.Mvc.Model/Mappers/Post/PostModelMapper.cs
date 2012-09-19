@@ -27,8 +27,7 @@ namespace Bruttissimo.Mvc.Model
                 .ForMember(
                     dest => dest.PostSlug,
                     opt => opt.MapFrom(src => postService.GetTitleSlug(src))
-                )
-                .Ignoring(dest => dest.Comments);
+                );
         }
 
         public PostModel ModelByLinkType(Post post)
