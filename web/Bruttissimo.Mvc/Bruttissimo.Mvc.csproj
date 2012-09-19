@@ -268,6 +268,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Views\Posts\DisplayTemplates\Resources\CommentReplyModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CommentReplyModel.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Posts\DisplayTemplates\Resources\CommentModel.Designer.cs">
+      <DependentUpon>CommentModel.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\Posts\DisplayTemplates\Resources\CommentThreadModel.Designer.cs">
+      <DependentUpon>CommentThreadModel.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Views\Posts\Resources\List.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -381,6 +396,18 @@
     <EmbeddedResource Include="Views\Jobs\Resources\Index.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Index.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Posts\DisplayTemplates\Resources\CommentReplyModel.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CommentReplyModel.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Posts\DisplayTemplates\Resources\CommentModel.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CommentModel.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Posts\DisplayTemplates\Resources\CommentThreadModel.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CommentThreadModel.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Posts\Resources\List.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
