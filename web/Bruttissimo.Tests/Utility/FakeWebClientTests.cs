@@ -22,7 +22,7 @@ namespace Bruttissimo.Tests
         {
             // Arrange
             Uri uri = FakeWebClientTestUri;
-            Stream fakeResponseStream = MockHelpers.GetFakeResponseStream(uri);
+            Stream fakeResponseStream = MockHelpers.GetResourceStream(uri);
             TestWebRequestCreate.CreateTestRequest(fakeResponseStream);
 
             // Act
@@ -44,7 +44,7 @@ namespace Bruttissimo.Tests
         {
             // Arrange
             Uri uri = FakeWebClientTestUri;
-            Stream fakeResponseStream = MockHelpers.GetFakeResponseStream(uri);
+            Stream fakeResponseStream = MockHelpers.GetResourceStream(uri);
             TestWebRequestCreate.CreateTestRequest(fakeResponseStream);
 
             // Act

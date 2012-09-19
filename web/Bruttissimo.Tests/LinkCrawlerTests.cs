@@ -506,7 +506,7 @@ namespace Bruttissimo.Tests
         public void CrawlHttpResource_WithUri_ReturnsLinkEntity(Uri uri)
         {
             // Arrange
-            Stream fakeResponseStream = MockHelpers.GetFakeResponseStream(uri);
+            Stream fakeResponseStream = MockHelpers.GetResourceStream(uri);
             TestWebRequestCreate.CreateTestRequest(fakeResponseStream);
 
             // Act
@@ -519,7 +519,7 @@ namespace Bruttissimo.Tests
         public void CrawlHttpResource_WithUri_ReturnsLinkEntityWithTitle(Uri uri)
         {
             // Arrange
-            Stream fakeResponseStream = MockHelpers.GetFakeResponseStream(uri);
+            Stream fakeResponseStream = MockHelpers.GetResourceStream(uri);
             TestWebRequestCreate.CreateTestRequest(fakeResponseStream);
 
             // Act
@@ -532,7 +532,7 @@ namespace Bruttissimo.Tests
         public void CrawlHttpResource_WithUri_ReturnsLinkEntityWithDescription(Uri uri)
         {
             // Arrange
-            Stream fakeResponseStream = MockHelpers.GetFakeResponseStream(uri);
+            Stream fakeResponseStream = MockHelpers.GetResourceStream(uri);
             TestWebRequestCreate.CreateTestRequest(fakeResponseStream);
 
             // Act
@@ -545,7 +545,7 @@ namespace Bruttissimo.Tests
         public void CrawlHttpResource_WithUri_ReturnsLinkEntityWithThumbnail(Uri uri)
         {
             // Arrange
-            Stream fakeResponseStream = MockHelpers.GetFakeResponseStream(uri);
+            Stream fakeResponseStream = MockHelpers.GetResourceStream(uri);
             TestWebRequestCreate.CreateTestRequest(fakeResponseStream);
 
             // Act
@@ -560,7 +560,7 @@ namespace Bruttissimo.Tests
         public void CrawlHttpResource_WithUriHtml_ReturnsEmptyImage(Uri uri)
         {
             // Arrange
-            Stream fakeResponseStream = MockHelpers.GetFakeResponseStream(uri);
+            Stream fakeResponseStream = MockHelpers.GetResourceStream(uri);
             TestWebRequestCreate.CreateTestRequest(fakeResponseStream);
 
             // Act
@@ -573,7 +573,7 @@ namespace Bruttissimo.Tests
         public void CrawlHttpResource_WithUriImage_ReturnsImage(Uri uri)
         {
             // Arrange
-            Stream fakeResponseStream = MockHelpers.GetFakeResponseStream(uri);
+            Stream fakeResponseStream = MockHelpers.GetResourceStream(uri);
             TestWebRequestCreate.CreateTestRequest(fakeResponseStream);
 
             // Act

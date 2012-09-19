@@ -137,66 +137,28 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FakeWebResponse\a8.sphotos.ak.fbcdn.nethphotos-ak-ash4424073_3445312773582_1293528893_33315385_487270322_n.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FakeWebResponse\cdn.sstatic.netprogrammersimglogo.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FakeWebResponse\es.noticias.yahoo.comindignacion-en-suiza-tras-la-maternidad-una-jubilada-194759466.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FakeWebResponse\www.26noticias.com.aradjuntosimagenportada180929.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FakeWebResponse\www.26noticias.com.arlos-docentes-bonaerenses-ratifican-el-paro-y-no-habra-clases-martes-y-miercoles-148162.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FakeWebResponse\www.biobiochile.cl20111108mujer-enloquece-luego-de-que-amiga-la-eliminara-de-facebook-e-incendia-su-casa.shtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FakeWebResponse\www.clarin.comciudadesAlerta-tormentas-Buenos-Aires-provincias_0_658134328.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FakeWebResponse\www.codinghorror.comblogimagescoding-horror-official-logo-small.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FakeWebResponse\www.cronica.com.ardiario2012030522140-matan-a-delincuente-en-feroz-tiroteo.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FakeWebResponse\www.infobae.comnotas635464-Roger-Waters-ahora-aseguro-que-fue-tergiversado-respecto-del-tema-Malvinas.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FakeWebResponse\www.la-razon.comnacionalDelegados-Bolivia-EEUU-cooperacion-comercial_0_1571842855.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FakeWebResponse\www.rosario3.comnoticiaspolicialesnoticias.aspx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <EmbeddedResource Include="ResourceStream\a8.sphotos.ak.fbcdn.nethphotos-ak-ash4424073_3445312773582_1293528893_33315385_487270322_n.jpg" />
+    <EmbeddedResource Include="ResourceStream\cdn.sstatic.netprogrammersimglogo.png" />
+    <EmbeddedResource Include="ResourceStream\es.noticias.yahoo.comindignacion-en-suiza-tras-la-maternidad-una-jubilada-194759466.html" />
+    <EmbeddedResource Include="ResourceStream\www.26noticias.com.aradjuntosimagenportada180929.jpg" />
+    <EmbeddedResource Include="ResourceStream\www.26noticias.com.arlos-docentes-bonaerenses-ratifican-el-paro-y-no-habra-clases-martes-y-miercoles-148162.html" />
+    <EmbeddedResource Include="ResourceStream\www.biobiochile.cl20111108mujer-enloquece-luego-de-que-amiga-la-eliminara-de-facebook-e-incendia-su-casa.shtml" />
+    <EmbeddedResource Include="ResourceStream\www.clarin.comciudadesAlerta-tormentas-Buenos-Aires-provincias_0_658134328.html" />
+    <EmbeddedResource Include="ResourceStream\www.codinghorror.comblogimagescoding-horror-official-logo-small.png" />
+    <EmbeddedResource Include="ResourceStream\www.cronica.com.ardiario2012030522140-matan-a-delincuente-en-feroz-tiroteo.html" />
+    <EmbeddedResource Include="ResourceStream\www.infobae.comnotas635464-Roger-Waters-ahora-aseguro-que-fue-tergiversado-respecto-del-tema-Malvinas.html" />
+    <EmbeddedResource Include="ResourceStream\www.la-razon.comnacionalDelegados-Bolivia-EEUU-cooperacion-comercial_0_1571842855.html" />
+    <EmbeddedResource Include="ResourceStream\www.rosario3.comnoticiaspolicialesnoticias.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FakeWebResponse\elsensacional.infonews.comnota7150-video-increible-gordito-alzado-le-da-murra-a-la-novia-dentro-de-una-pileta">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FakeWebResponse\fake-web-client-test">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <EmbeddedResource Include="ResourceStream\elsensacional.infonews.comnota7150-video-increible-gordito-alzado-le-da-murra-a-la-novia-dentro-de-una-pileta" />
+    <EmbeddedResource Include="ResourceStream\fake-web-client-test" />
     <None Include="app.config" />
-    <None Include="FakeWebResponse\noticias.es.msn.comentornoinsolitola-muneca-que-balbucea-palabrotas">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <Content Include="FakeWebResponse\www.lanacion.com.ar1454024-waters-nego-haber-afirmado-categoricamente-que-las-malvinas-son-argentinas">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FakeWebResponse\www.minutouno.com.arminutounonota161280-malvinas-cfk-reitero-la-idea-de-ampliar-vuelos">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FakeWebResponse\www.tierradeperiodistas.comindex.php">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FakeWebResponse\www.vocero.cominsolitasmujer-de-95-sale-de-ataud-seis-dias-despues-de-haber-muerto">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <EmbeddedResource Include="ResourceStream\noticias.es.msn.comentornoinsolitola-muneca-que-balbucea-palabrotas" />
+    <EmbeddedResource Include="ResourceStream\www.lanacion.com.ar1454024-waters-nego-haber-afirmado-categoricamente-que-las-malvinas-son-argentinas" />
+    <EmbeddedResource Include="ResourceStream\www.minutouno.com.arminutounonota161280-malvinas-cfk-reitero-la-idea-de-ampliar-vuelos" />
+    <EmbeddedResource Include="ResourceStream\www.tierradeperiodistas.comindex.php" />
+    <EmbeddedResource Include="ResourceStream\www.vocero.cominsolitasmujer-de-95-sale-de-ataud-seis-dias-despues-de-haber-muerto" />
     <Content Include="Xml\app.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

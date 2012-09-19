@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Net;
 using System.Net.Mail;
+using System.Reflection;
 using System.Web;
 using Bruttissimo.Common;
 using Bruttissimo.Domain;
@@ -146,7 +147,7 @@ namespace Bruttissimo.Tests.Mocking
             {
                 throw new ArgumentNullException("uri");
             }
-            using (Stream response = GetFakeResponseStream(uri))
+            using (Stream response = GetResourceStream(uri))
             {
                 return response.ReadFully();
             }
@@ -155,32 +156,29 @@ namespace Bruttissimo.Tests.Mocking
         /// <summary>
         /// Loads the fake response from the file system instead of the web, in order to decrease testing response times.
         /// </summary>
-        public static Stream GetFakeResponseStream(Uri uri)
+        public static Stream GetResourceStream(Uri uri)
         {
             if (uri == null)
             {
                 throw new ArgumentNullException("uri");
             }
-            string path = GetLocalPathFromUri(uri);
-            if (!File.Exists(path))
-            {
-                throw new FileNotFoundException(path);
-            }
-            return new FileStream(path, FileMode.Open, FileAccess.Read);
+            string resourceName = GetResourceNameFromUri(uri);
+            Assembly executing = Assembly.GetCallingAssembly();
+            Stream stream = executing.GetManifestResourceStream(resourceName);
+            return stream;
         }
 
         /// <summary>
         /// Maps the test uri to a physical location on disk.
         /// </summary>
-        public static string GetLocalPathFromUri(Uri uri)
+        public static string GetResourceNameFromUri(Uri uri)
         {
-            string filename = uri.GetLeftPart(UriPartial.Path).Replace(uri.GetLeftPart(UriPartial.Scheme), string.Empty)
+            string resource = uri.GetLeftPart(UriPartial.Path).Replace(uri.GetLeftPart(UriPartial.Scheme), string.Empty)
                 .Replace("/", string.Empty)
                 .Replace("?", string.Empty)
                 .Replace(":", string.Empty);
 
-            string domain = AppDomain.CurrentDomain.BaseDirectory;
-            string path = Path.Combine(domain, "FakeWebResponse", filename);
+            string path = string.Concat("Bruttissimo.Tests.ResourceStream.", resource);
             return path;
         }
 
