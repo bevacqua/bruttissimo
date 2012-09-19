@@ -17,6 +17,7 @@ namespace Bruttissimo.Mvc
             CompositionRoot.Initialize(new ApplicationInstaller());
 
             Routing.RegisterAllAreas();
+            Routing.RegisterSignalR(RouteTable.Routes);
             Routing.RegisterRoutes(RouteTable.Routes);
             
             log.Debug(Debug.ApplicationStart);

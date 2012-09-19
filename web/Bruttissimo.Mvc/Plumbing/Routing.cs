@@ -15,6 +15,16 @@ namespace Bruttissimo.Mvc
             AreaRegistration.RegisterAllAreas();
         }
 
+        public static void RegisterSignalR(RouteCollection routes)
+        {
+            if (routes == null)
+            {
+                throw new ArgumentNullException("routes");
+            }
+            // this special route is for SignalR hubs.
+            routes.MapHubs("~/realtime");
+        }
+
         public static void RegisterRoutes(RouteCollection routes)
         {
             if (routes == null)
@@ -22,10 +32,7 @@ namespace Bruttissimo.Mvc
                 throw new ArgumentNullException("routes");
             }
             RegisterRouteIgnores(routes);
-
-            // this special route is for SignalR hubs.
-            routes.MapHubs("~/realtime");
-
+            
             RegisterViewRoutes(routes);
 
             // this route is intended to catch 404 Not Found errors instead of bubbling them all the way up to IIS.

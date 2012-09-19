@@ -108,7 +108,7 @@ namespace Bruttissimo.Tests
             // Act
             string body = UnitTestDeclaration;
             string section = UnitTestNotice.FormatWith(model.Username);
-            string expected = "[\r\n\t{0}\r\n\r\n\r\n]\r\n{{\r\n\t\r\n\t{1}\r\n\r\n}}".FormatWith(body, section);
+            string expected = "[\r\n{0}\r\n\r\n\r\n]\r\n{{\r\n\r\n    {1}\r\n\r\n}}".FormatWith(body, section);
             ITemplate template = templateService.Resolve("UnitTestLayoutSection", model);
 
             string result = template.Run();
