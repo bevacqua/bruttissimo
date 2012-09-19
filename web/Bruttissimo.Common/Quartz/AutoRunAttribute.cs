@@ -16,16 +16,16 @@ namespace Bruttissimo.Common
         /// <summary>
         /// Delay to start the job for the first time, specified in minutes.
         /// </summary>
-        public double Delay { get; set; }
+        public int Delay { get; set; }
 
         /// <summary>
         /// Interval between jobs, specified in minutes.
         /// </summary>
-        public double? Interval { get; set; }
+        public int? Interval { get; set; }
 
         /// <summary>
         /// Default interval if no interval is set, specified in minutes.
         /// </summary>
-        public const double DefaultInterval = 5;
+        public const int DefaultInterval = 5;
     }
 }

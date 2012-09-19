@@ -49,11 +49,10 @@ namespace Bruttissimo.Common
                     DateTimeOffset now = DateTimeOffset.UtcNow;
                     DateTimeOffset offset = now.AddMinutes(configuration.Delay);
 
-                    double minutes = configuration.Interval ?? AutoRunAttribute.DefaultInterval;
-                    TimeSpan interval = TimeSpan.FromMinutes(minutes);
+                    int minutes = configuration.Interval ?? AutoRunAttribute.DefaultInterval;
 
-                    Action<SimpleScheduleBuilder> schedule = s => s.WithInterval(interval);
-                    ITrigger trigger = TriggerBuilder.Create().StartAt(offset).WithSimpleSchedule(schedule).Build();
+                    IScheduleBuilder schedule = DailyTimeIntervalScheduleBuilder.Create().WithIntervalInMinutes(minutes);
+                    ITrigger trigger = TriggerBuilder.Create().StartAt(offset).WithSchedule(schedule).Build();
 
                     scheduler.ScheduleJob(jobType, trigger);
                 }
