@@ -171,13 +171,6 @@
     <Content Include="Views\Shared\_LayoutStyles.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Xml\app.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Xml\compilation.config" />
-    <Content Include="Xml\db.config">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Xml\log4net.config">
       <SubType>Designer</SubType>
     </Content>
