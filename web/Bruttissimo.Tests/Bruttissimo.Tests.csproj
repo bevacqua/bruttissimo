@@ -151,11 +151,11 @@
     <EmbeddedResource Include="ResourceStream\www.rosario3.comnoticiaspolicialesnoticias.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ResourceStream\elsensacional.infonews.comnota7150-gordito-alzado" />
+    <EmbeddedResource Include="ResourceStream\elsensacional.infonews.comnota7150-gordito-alzado" />
     <EmbeddedResource Include="ResourceStream\fake-web-client-test" />
     <None Include="app.config" />
     <EmbeddedResource Include="ResourceStream\noticias.es.msn.comentornoinsolitola-muneca-que-balbucea-palabrotas" />
-    <None Include="ResourceStream\www.lanacion.com.ar1454024-waters-nego-haber-afirmado" />
+    <EmbeddedResource Include="ResourceStream\www.lanacion.com.ar1454024-waters-nego-haber-afirmado" />
     <EmbeddedResource Include="ResourceStream\www.minutouno.com.arminutounonota161280-malvinas-cfk-reitero-la-idea-de-ampliar-vuelos" />
     <EmbeddedResource Include="ResourceStream\www.tierradeperiodistas.comindex.php" />
     <EmbeddedResource Include="ResourceStream\www.vocero.cominsolitasmujer-de-95-sale-de-ataud-seis-dias-despues-de-haber-muerto" />
