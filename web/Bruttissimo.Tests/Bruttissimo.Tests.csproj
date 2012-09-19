@@ -142,7 +142,7 @@
     <EmbeddedResource Include="ResourceStream\es.noticias.yahoo.comindignacion-en-suiza-tras-la-maternidad-una-jubilada-194759466.html" />
     <EmbeddedResource Include="ResourceStream\www.26noticias.com.aradjuntosimagenportada180929.jpg" />
     <EmbeddedResource Include="ResourceStream\www.26noticias.com.arno-habra-clases-martes-y-miercoles-148162.html" />
-    <EmbeddedResource Include="ResourceStream\www.biobiochile.cl20111108mujer-enloquece-luego-de-que-amiga-la-eliminara-de-facebook-e-incendia-su-casa.shtml" />
+    <EmbeddedResource Include="ResourceStream\www.biobiochile.cl20111108mujer-enloquece.shtml" />
     <EmbeddedResource Include="ResourceStream\www.clarin.comciudadesAlerta-tormentas-Buenos-Aires-provincias_0_658134328.html" />
     <EmbeddedResource Include="ResourceStream\www.codinghorror.comblogimagescoding-horror-official-logo-small.png" />
     <EmbeddedResource Include="ResourceStream\www.cronica.com.ardiario2012030522140-matan-a-delincuente-en-feroz-tiroteo.html" />
@@ -151,11 +151,11 @@
     <EmbeddedResource Include="ResourceStream\www.rosario3.comnoticiaspolicialesnoticias.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ResourceStream\elsensacional.infonews.comnota7150-video-increible-gordito-alzado-le-da-murra-a-la-novia-dentro-de-una-pileta" />
+    <None Include="ResourceStream\elsensacional.infonews.comnota7150-gordito-alzado" />
     <EmbeddedResource Include="ResourceStream\fake-web-client-test" />
     <None Include="app.config" />
     <EmbeddedResource Include="ResourceStream\noticias.es.msn.comentornoinsolitola-muneca-que-balbucea-palabrotas" />
-    <EmbeddedResource Include="ResourceStream\www.lanacion.com.ar1454024-waters-nego-haber-afirmado-categoricamente-que-las-malvinas-son-argentinas" />
+    <None Include="ResourceStream\www.lanacion.com.ar1454024-waters-nego-haber-afirmado" />
     <EmbeddedResource Include="ResourceStream\www.minutouno.com.arminutounonota161280-malvinas-cfk-reitero-la-idea-de-ampliar-vuelos" />
     <EmbeddedResource Include="ResourceStream\www.tierradeperiodistas.comindex.php" />
     <EmbeddedResource Include="ResourceStream\www.vocero.cominsolitasmujer-de-95-sale-de-ataud-seis-dias-despues-de-haber-muerto" />

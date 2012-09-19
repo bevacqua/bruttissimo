@@ -30,20 +30,20 @@ namespace Bruttissimo.Tests
             linkCrawler.CrawlHttpResource(null);
         }
 
-        private readonly Uri UriSensacional = new Uri("test://elsensacional.infonews.com/nota/7150-video-increible-gordito-alzado-le-da-murra-a-la-novia-dentro-de-una-pileta/");
+        private readonly Uri UriSensacional = new Uri("test://elsensacional.infonews.com/nota/7150-gordito-alzado/");
         private readonly Uri UriInfobae = new Uri("test://www.infobae.com/notas/tergiversado-respecto-del-tema-Malvinas.html");
         private readonly Uri UriMinuto = new Uri("test://www.minutouno.com.ar/minutouno/nota/161280-malvinas-cfk-reitero-la-idea-de-ampliar-vuelos/");
         private readonly Uri UriCronica = new Uri("test://www.cronica.com.ar/diario/2012/03/05/22140-matan-a-delincuente-en-feroz-tiroteo.html");
         private readonly Uri UriTierra = new Uri("test://www.tierradeperiodistas.com/index.php?op=noticia&id=67484");
         private readonly Uri UriYahoo = new Uri("test://es.noticias.yahoo.com/indignacion-en-suiza-tras-la-maternidad-una-jubilada-194759466.html");
         private readonly Uri UriMsn = new Uri("test://noticias.es.msn.com/entorno/insolito/la-muneca-que-balbucea-palabrotas");
-        private readonly Uri UriNacion = new Uri("test://www.lanacion.com.ar/1454024-waters-nego-haber-afirmado-categoricamente-que-las-malvinas-son-argentinas");
+        private readonly Uri UriNacion = new Uri("test://www.lanacion.com.ar/1454024-waters-nego-haber-afirmado");
         private readonly Uri UriClarin = new Uri("test://www.clarin.com/ciudades/Alerta-tormentas-Buenos-Aires-provincias_0_658134328.html");
         private readonly Uri UriRosario = new Uri("test://www.rosario3.com/noticias/policiales/noticias.aspx?idNot=107910&Casi-una-fija:-con-lluvia,-accidente-en-Circunvalaci%C3%B3n");
         private readonly Uri UriVeintiseis = new Uri("test://www.26noticias.com.ar/no-habra-clases-martes-y-miercoles-148162.html");
         private readonly Uri UriVocero = new Uri("test://www.vocero.com/insolitas/mujer-de-95-sale-de-ataud-seis-dias-despues-de-haber-muerto");
         private readonly Uri UriRazon = new Uri("test://www.la-razon.com/nacional/Delegados-Bolivia-EEUU-cooperacion-comercial_0_1571842855.html");
-        private readonly Uri UriBiochile = new Uri("test://www.biobiochile.cl/2011/11/08/mujer-enloquece-luego-de-que-amiga-la-eliminara-de-facebook-e-incendia-su-casa.shtml");
+        private readonly Uri UriBiochile = new Uri("test://www.biobiochile.cl/2011/11/08/mujer-enloquece.shtml");
 
         private readonly Uri UriImageProgrammers = new Uri("test://cdn.sstatic.net/programmers/img/logo.png?v=123");
         private readonly Uri UriImageFacebook = new Uri("test://a8.sphotos.ak.fbcdn.net/hphotos-ak-ash4/424073_3445312773582_1293528893_33315385_487270322_n.jpg");
