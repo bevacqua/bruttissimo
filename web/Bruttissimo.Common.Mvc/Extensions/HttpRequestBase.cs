@@ -12,7 +12,7 @@ namespace Bruttissimo.Common.Mvc
         /// </summary>
         public static bool CanDisplayDebuggingDetails(this HttpRequestBase request)
         {
-            bool authorized = true;
+            bool authorized = false;
 
             if (request.IsAuthenticated)
             {
