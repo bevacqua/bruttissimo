@@ -26,7 +26,7 @@ namespace Bruttissimo.Tests.Integration
             container.Dispose();
         }
 
-        [TestMethod]
+        // [TestMethod]
         public void EmailService_ShouldSend_RegistrationEmail()
         {
             // Arrange
