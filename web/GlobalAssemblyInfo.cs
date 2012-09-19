@@ -14,8 +14,6 @@ using log4net.Config;
 [assembly: XmlConfigurator(Watch = true, ConfigFile = "Xml/log4net.config")]
 
 // NOTE: allow Unit Tests to access internal classes and methods
-#if DEBUG
 [assembly: InternalsVisibleTo("Bruttissimo.Tests")]
 [assembly: InternalsVisibleTo("Bruttissimo.Tests.Integration")]
 [assembly: InternalsVisibleTo("Bruttissimo.Tests.Mocking")]
-#endif
