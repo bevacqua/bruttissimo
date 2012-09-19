@@ -62,7 +62,7 @@ namespace Bruttissimo.Domain.Logic
         private string GetStatusMessageForPost(Post post)
         {
             StringBuilder status = new StringBuilder();
-            string longUrl = urlHelper.RouteUrl("PostShortcut", new { id = post.Id }, "http");
+            string longUrl = urlHelper.PublicRouteUrl("PostShortcut", new { id = post.Id });
             string url = urlShortener.Shorten(longUrl);
 
             string description = post.UserMessage ?? post.Link.Title ?? Common.Resources.User.TwitterLink;

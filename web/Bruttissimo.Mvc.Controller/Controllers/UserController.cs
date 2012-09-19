@@ -68,13 +68,12 @@ namespace Bruttissimo.Mvc.Controller
                 }
                 case AuthenticationSource.OpenId:
                 {
-                    string route = urlHelper.Action("Authenticate", "User", new
+                    string route = urlHelper.PublicAction("Authenticate", "User", new
                     {
                         source = "openid",
                         returnUrl = model.ReturnUrl // the actual returnUrl where the user will be ultimately redirected to.
-                    }, "http");
-                    Uri actionUrl = new Uri(route); // this is the returnUrl for the provider to complete authentication.
-                    Uri returnUrl = actionUrl.WithPublicPort(); // fix issues in production caused by load balancers.
+                    });
+                    Uri returnUrl = new Uri(route); // this is the returnUrl for the provider to complete authentication.
                     return process(authenticationService.AuthenticateWithOpenId(model.OpenIdProvider, returnUrl));
                 }
                 default:

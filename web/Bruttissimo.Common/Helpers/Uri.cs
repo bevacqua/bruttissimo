@@ -32,6 +32,8 @@ namespace Bruttissimo.Common
 
         /// <summary>
         /// In production, we need to force a port to get around load balancers using non-standard ports.
+        /// This is non-breaking in debug environments, since we just leave the port unchanged,
+        /// besides, it's typically port 80 in debug environments anyways.
         /// </summary>
         public static Uri WithPublicPort(this Uri uri, int? port = null)
         {
