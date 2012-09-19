@@ -25,9 +25,7 @@ namespace Bruttissimo.Common.Mvc
             HttpRequestBase request = context.Request;
             HttpResponseBase response = context.Response;
 
-            // in production, we need to force a port to get around load balancers using non-standard ports.
-            UriBuilder builder = new UriBuilder(request.Url) { Port = Config.Site.Port ?? request.Url.Port };
-            Uri requestUrl = builder.Uri;
+            Uri requestUrl = request.Url.WithPublicPort();
 
             string incoming = requestUrl.GetLeftPart(UriPartial.Path);
             string absolute = requestUrl.AbsolutePath;

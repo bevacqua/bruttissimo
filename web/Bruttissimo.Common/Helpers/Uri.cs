@@ -29,5 +29,15 @@ namespace Bruttissimo.Common
             }
             return uri;
         }
+
+        /// <summary>
+        /// In production, we need to force a port to get around load balancers using non-standard ports.
+        /// </summary>
+        public static Uri WithPublicPort(this Uri uri, int? port = null)
+        {
+            UriBuilder builder = new UriBuilder(uri) { Port = port ?? Config.Site.Port ?? uri.Port };
+            Uri publicUri = builder.Uri;
+            return publicUri;
+        }
     }
 }
