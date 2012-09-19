@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Bruttissimo.Common;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
@@ -41,11 +42,21 @@ namespace Bruttissimo.Mvc.Controller
             return View(model);
         }
 
+        [HttpGet]
+        [NotAjax]
+        [ExtendedAuthorize(Roles = Rights.CanAccessApplicationVariables)]
+        public ActionResult Environment()
+        {
+            IList<KeyValuePair<string, string>> model = Config.AsKeyValuePairs();
+            return View(model);
+        }
+
         private IEnumerable<ActionLinkModel> GetActions(IMiniPrincipal principal)
         {
             Permission[] permissions = new[]
             {
                 permission(Rights.CanAccessApplicationLogs, Url.Action("Log"), "Log"),
+                permission(Rights.CanAccessApplicationJobs, Url.Action("Environment", "System"), "Environment"),
                 permission(Rights.CanAccessApplicationJobs, Url.Action("Index", "Jobs"), "Jobs")
             };
             return permissions.Where(p => principal.IsInRole(p.Role)).Select(p => p.Action);

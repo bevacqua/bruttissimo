@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Configuration;
+using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Reflection;
@@ -164,6 +167,13 @@ namespace Bruttissimo.Common
             {
                 get { return Int(Get("Defaults.PostListPageSize")) ?? 1; }
             }
+        }
+
+        public static IList<KeyValuePair<string, string>> AsKeyValuePairs()
+        {
+            NameValueCollection set = ConfigurationManager.AppSettings;
+            string[] keys = set.AllKeys;
+            return keys.Select(key => new KeyValuePair<string, string>(key, set[key])).ToList();
         }
     }
 }
