@@ -12,16 +12,14 @@ namespace Bruttissimo.Common.Mvc
         /// </summary>
         public static bool CanDisplayDebuggingDetails(this HttpRequestBase request)
         {
-            bool authorized = false;
+            bool authorized = true;
 
             if (request.IsAuthenticated)
             {
                 IPrincipal principal = request.RequestContext.HttpContext.User;
                 // authorized = principal.IsInRole(Bruttissimo.Domain.Entity.Rights.CanAccessApplicationLogs); // TODO, figure out.
             }
-
             bool local = false;
-
             try
             {
                 local = request.IsLocal;
