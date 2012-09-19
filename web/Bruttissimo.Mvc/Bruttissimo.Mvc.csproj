@@ -148,9 +148,9 @@
       <Link>README.md</Link>
     </None>
     <Content Include="Content\Style\controls.css" />
-    <None Include="Content\Style\design.less" />
-    <None Include="Content\Style\layout.footer.less" />
-    <None Include="Content\Style\functions.less" />
+    <Content Include="Content\Style\design.less" />
+    <Content Include="Content\Style\layout.footer.less" />
+    <Content Include="Content\Style\functions.less" />
     <Content Include="Content\Style\layout.css" />
     <Content Include="Content\Script\Lib\jquery.signalR-0.5.2.js" />
     <Content Include="Content\Script\Lib\jquery.signalR-0.5.2.min.js" />
