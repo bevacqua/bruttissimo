@@ -24,15 +24,18 @@ namespace Bruttissimo.Common.Mvc
         {
             HttpRequestBase request = context.Request;
             HttpResponseBase response = context.Response;
-            string incoming = request.Url.GetLeftPart(UriPartial.Path);
-            string absolute = request.Url.AbsolutePath;
+            UriBuilder builder = new UriBuilder(request.Url) { Port = Config.Site.Port ?? request.Url.Port };
+            Uri requestUrl = builder.Uri;
+
+            string incoming = requestUrl.GetLeftPart(UriPartial.Path);
+            string absolute = requestUrl.AbsolutePath;
             string decoded = HttpUtility.UrlDecode(absolute);
             string redirect;
 
             if (absolute != decoded)
             {
                 // encoded characters such as %7D result in issues, so we better leave them untouched.
-                string host = request.Url.GetLeftPart(UriPartial.Authority);
+                string host = requestUrl.GetLeftPart(UriPartial.Authority);
                 redirect = host.ToLowerInvariant() + absolute;
             }
             else
