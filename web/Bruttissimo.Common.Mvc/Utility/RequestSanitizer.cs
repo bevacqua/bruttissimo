@@ -25,6 +25,7 @@ namespace Bruttissimo.Common.Mvc
             HttpRequestBase request = context.Request;
             HttpResponseBase response = context.Response;
 
+            // load balancers in production trick us into using the wrong port, we won't fall for that.
             Uri requestUrl = request.Url.WithPublicPort();
 
             string incoming = requestUrl.GetLeftPart(UriPartial.Path);
