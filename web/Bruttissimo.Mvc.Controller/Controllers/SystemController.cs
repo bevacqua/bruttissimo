@@ -56,7 +56,7 @@ namespace Bruttissimo.Mvc.Controller
             Permission[] permissions = new[]
             {
                 permission(Rights.CanAccessApplicationLogs, Url.Action("Log"), "Log"),
-                permission(Rights.CanAccessApplicationJobs, Url.Action("Environment", "System"), "Environment"),
+                permission(Rights.CanAccessApplicationVariables, Url.Action("Environment", "System"), "Environment"),
                 permission(Rights.CanAccessApplicationJobs, Url.Action("Index", "Jobs"), "Jobs")
             };
             return permissions.Where(p => principal.IsInRole(p.Role)).Select(p => p.Action);
