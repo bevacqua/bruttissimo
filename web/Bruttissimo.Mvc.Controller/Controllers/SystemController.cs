@@ -68,7 +68,7 @@ namespace Bruttissimo.Mvc.Controller
                 permission(Rights.CanAccessApplicationLogs, Url.Action("Log"), "Log"),
                 permission(Rights.CanAccessApplicationJobs, Url.Action("Index", "Jobs"), "Jobs"),
                 permission(Rights.CanAccessApplicationVariables, Url.Action("Environment", "System"), "Environment"),
-                permission(Rights.CanAccessApplicationVariables, Url.Action("Reset", "System"), "Reset")
+                permission(Rights.CanResetApplicationPool, Url.Action("Reset", "System"), "Reset")
             };
             return permissions.Where(p => principal.IsInRole(p.Role)).Select(p => p.Action);
         }
