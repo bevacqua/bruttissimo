@@ -93,7 +93,6 @@
     <Compile Include="Service\ImageServiceTests.cs" />
     <Compile Include="Service\LinkServiceTests.cs" />
     <Compile Include="EmailTests.cs" />
-    <Compile Include="Utility\EnumerableExtensionTests.cs" />
     <Compile Include="Utility\FakeWebClientTests.cs" />
     <Compile Include="Utility\RazorEngineTests.cs" />
     <Compile Include="Utility\UtilityTests.cs" />
