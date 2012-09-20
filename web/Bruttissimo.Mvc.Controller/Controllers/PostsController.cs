@@ -14,9 +14,8 @@ namespace Bruttissimo.Mvc.Controller
     {
         private readonly ILinkService linkService;
         private readonly IPostService postService;
-        private readonly ICommentService commentService;
 
-        public PostsController(ILinkService linkService, IPostService postService, ICommentService commentService)
+        public PostsController(ILinkService linkService, IPostService postService)
         {
             if (linkService == null)
             {
@@ -26,16 +25,9 @@ namespace Bruttissimo.Mvc.Controller
             {
                 throw new ArgumentNullException("postService");
             }
-            if (commentService == null)
-            {
-                throw new ArgumentNullException("commentService");
-            }
             this.linkService = linkService;
             this.postService = postService;
-            this.commentService = commentService;
         }
-
-        #region Get
 
         [HttpGet]
         [NotAjax]
@@ -78,10 +70,6 @@ namespace Bruttissimo.Mvc.Controller
         {
             return base.View(viewName, masterName, model);
         }
-
-        #endregion
-
-        #region Create
 
         [HttpGet]
         [NotAjax]
@@ -162,8 +150,6 @@ namespace Bruttissimo.Mvc.Controller
                 }
             }
         }
-
-        #endregion
 
         [NonAction]
         internal string DetailsRoute(Post post)

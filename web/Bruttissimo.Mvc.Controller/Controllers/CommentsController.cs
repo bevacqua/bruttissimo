@@ -27,11 +27,13 @@ namespace Bruttissimo.Mvc.Controller
             return RedirectToAction("Details", "Posts", new { id = model.Id });
         }
 
+        [ExtendedAuthorize]
         public ActionResult UpVote()
         {
             throw new NotImplementedException();
         }
 
+        [ExtendedAuthorize]
         public ActionResult DownVote()
         {
             throw new NotImplementedException();
