@@ -86,5 +86,14 @@ namespace Bruttissimo.Mvc.Views.System.Resources {
                 return ResourceManager.GetString("Log", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restart Application.
+        /// </summary>
+        public static string Reset {
+            get {
+                return ResourceManager.GetString("Reset", resourceCulture);
+            }
+        }
     }
 }
