@@ -9,7 +9,7 @@ namespace Bruttissimo.Common
         public static TResult MaxOrDefault<T, TResult>(this IEnumerable<T> enumerable, Func<T, TResult> selector)
         {
             IList<T> list = enumerable.ToList();
-            if (list.Any())
+            if (!list.Any())
             {
                 return default(TResult);
             }
