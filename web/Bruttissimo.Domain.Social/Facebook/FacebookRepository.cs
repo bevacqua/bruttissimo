@@ -148,6 +148,7 @@ namespace Bruttissimo.Domain.Social
 
         private const string FACEBOOK_GRAPH_API = "https://graph.facebook.com/";
         private const string FACEBOOK_ACCESS_TOKEN_REGEX = "&access_token=(?:[^&])+";
+        private const string FACEBOOK_PAGING_TOKEN_REGEX = "&__paging_token=(?:[^&])+";
 
         private void LogApiCall(string url)
         {
@@ -157,6 +158,7 @@ namespace Bruttissimo.Domain.Social
                 parameters = parameters.Remove(0, FACEBOOK_GRAPH_API.Length);
             }
             parameters = Regex.Replace(parameters, FACEBOOK_ACCESS_TOKEN_REGEX, string.Empty);
+            parameters = Regex.Replace(parameters, FACEBOOK_PAGING_TOKEN_REGEX, string.Empty);
             log.Debug(DEBUG_API_GET.FormatWith(parameters));
         }
     }
