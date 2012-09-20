@@ -83,6 +83,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Scripts\20120919.1.rights.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\20120920.1.rights.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
 </Project>

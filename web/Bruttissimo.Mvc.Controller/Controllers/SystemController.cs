@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using Bruttissimo.Common;
 using Bruttissimo.Common.Mvc;
@@ -49,6 +50,15 @@ namespace Bruttissimo.Mvc.Controller
         {
             IList<KeyValuePair<string, string>> model = Config.AsKeyValuePairs();
             return View(model);
+        }
+
+        [HttpGet]
+        [NotAjax]
+        [ExtendedAuthorize(Roles = Rights.CanResetApplicationPool)]
+        public ActionResult Reset()
+        {
+            HttpRuntime.UnloadAppDomain();
+            return RedirectToAction("Index", "Home");
         }
 
         private IEnumerable<ActionLinkModel> GetActions(IMiniPrincipal principal)
