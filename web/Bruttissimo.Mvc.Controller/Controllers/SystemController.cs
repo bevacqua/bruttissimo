@@ -61,6 +61,7 @@ namespace Bruttissimo.Mvc.Controller
             return RedirectToAction("Index", "Home");
         }
 
+        // TODO: use sitemap for this
         private IEnumerable<ActionLinkModel> GetActions(IMiniPrincipal principal)
         {
             Permission[] permissions = new[]
