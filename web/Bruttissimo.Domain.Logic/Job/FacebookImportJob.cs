@@ -5,6 +5,7 @@ using Quartz;
 namespace Bruttissimo.Domain.Logic
 {
     [AutoRun]
+    [DisallowConcurrentExecution]
     public class FacebookImportJob : BaseJob
     {
         private readonly IFacebookService facebookService;
@@ -16,6 +17,11 @@ namespace Bruttissimo.Domain.Logic
                 throw new ArgumentNullException("facebookService");
             }
             this.facebookService = facebookService;
+        }
+
+        public override bool PreventConcurrentJobInstanceExecution
+        {
+            get { return true; }
         }
 
         public override void DoWork(IJobExecutionContext context)

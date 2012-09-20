@@ -5,6 +5,7 @@ using Quartz;
 namespace Bruttissimo.Domain.Logic
 {
     // [AutoRun]
+    [DisallowConcurrentExecution]
     public class TwitterExportJob : BaseJob
     {
         private readonly ITwitterService twitterService;
