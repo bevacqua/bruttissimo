@@ -34,8 +34,8 @@ namespace Bruttissimo.Domain.Logic
             {
                 throw new ArgumentNullException("password");
             }
-            User user = userService.GetByEmail(email);
             bool isNewUser = false;
+            User user = userService.GetByEmail(email);
             if (user == null) // create a brand new account.
             {
                 user = userService.CreateWithCredentials(email, password);
