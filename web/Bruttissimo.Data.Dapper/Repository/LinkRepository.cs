@@ -22,22 +22,24 @@ namespace Bruttissimo.Data.Dapper
             this.connection = connection;
         }
 
-        public Link GetByReferenceUri(Uri referenceUri)
-        {
-            if (referenceUri == null)
-            {
-                throw new ArgumentNullException("referenceUri");
-            }
-            const string sql = @"
+	    public Link GetByReferenceUri(Uri referenceUri)
+	    {
+		    Link link = GetByReferenceUri(referenceUri.ToString());
+		    return link;
+	    }
+
+		public Link GetByReferenceUri(string referenceUri)
+		{
+			const string sql = @"
 				SELECT [Link].*, [Post].[Id] AS [PostId]
 				FROM [Link]
 				LEFT JOIN [Post] ON [Post].[LinkId] = [Link].[Id]
 				WHERE [Link].[ReferenceUri] = @referenceUri
             ";
-            IEnumerable<Link> result = connection.Query<Link>(sql, new {referenceUri = referenceUri.AbsoluteUri});
+			IEnumerable<Link> result = connection.Query<Link>(sql, new { referenceUri  });
 
-            Link link = result.FirstOrDefault();
-            return link;
-        }
+			Link link = result.FirstOrDefault();
+			return link;
+		}
     }
 }

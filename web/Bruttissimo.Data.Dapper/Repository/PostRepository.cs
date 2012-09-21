@@ -72,7 +72,19 @@ namespace Bruttissimo.Data.Dapper
             return posts;
         }
 
-        public Post Insert(Link link, string message, User user)
+		public override Post Insert(Post entity)
+		{
+			if (entity == null)
+			{
+				throw new ArgumentNullException("entity");
+			}
+			DateTime now = DateTime.UtcNow;
+			entity.Created = now;
+			entity.Updated = now;
+			return base.Insert(entity);
+		}
+
+		public Post Insert(Link link, string message, User user)
         {
             if (link == null)
             {

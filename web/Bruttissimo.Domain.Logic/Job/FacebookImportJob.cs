@@ -19,11 +19,6 @@ namespace Bruttissimo.Domain.Logic
             this.facebookService = facebookService;
         }
 
-        public override bool PreventConcurrentJobInstanceExecution
-        {
-            get { return true; }
-        }
-
         public override void DoWork(IJobExecutionContext context)
         {
             string feed = Config.Social.FacebookFeedId;
