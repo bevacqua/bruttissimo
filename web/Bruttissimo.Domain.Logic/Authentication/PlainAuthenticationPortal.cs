@@ -34,17 +34,20 @@ namespace Bruttissimo.Domain.Logic
             {
                 throw new ArgumentNullException("password");
             }
-            bool valid = membershipProvider.ValidateUser(email, password);
-            if (!valid)
-            {
-                return InvalidAuthentication();
-            }
             User user = userService.GetByEmail(email);
             bool isNewUser = false;
             if (user == null) // create a brand new account.
             {
                 user = userService.CreateWithCredentials(email, password);
                 isNewUser = true;
+            }
+            else // attempt to authenticate existing user.
+            {
+                bool valid = membershipProvider.ValidateUser(email, password);
+                if (!valid)
+                {
+                    return InvalidAuthentication();
+                }
             }
             return SuccessfulAuthentication(user, isNewUser);
         }
