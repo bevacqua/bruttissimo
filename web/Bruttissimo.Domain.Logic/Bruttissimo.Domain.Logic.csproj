@@ -108,6 +108,7 @@
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Authentication\AuthenticationPortal.cs" />
+    <Compile Include="Authentication\DebugDetailsRoleAccesor.cs" />
     <Compile Include="Authentication\PlainAuthenticationPortal.cs" />
     <Compile Include="Authentication\OAuthAuthenticationPortal.cs" />
     <Compile Include="Authentication\OpenIdAuthenticationPortal.cs" />

@@ -12,13 +12,35 @@ namespace Bruttissimo.Common.Mvc
         /// </summary>
         public static bool CanDisplayDebuggingDetails(this HttpRequestBase request)
         {
+            bool local = IsLocalRequest(request);
+            bool authorized = IsAuthorizedRequest(request);
+            return local || authorized;
+        }
+
+        internal static bool IsAuthorizedRequest(HttpRequestBase request)
+        {
             bool authorized = false;
 
             if (request.IsAuthenticated)
             {
                 IPrincipal principal = request.RequestContext.HttpContext.User;
-                // authorized = principal.IsInRole(Bruttissimo.Domain.Entity.Rights.CanAccessApplicationLogs); // TODO, figure out.
+                IDebugDetailsRoleAccesor accesor = IoC.Container.Resolve<IDebugDetailsRoleAccesor>();
+                string[] roles = accesor.GetAuthorizedRoles(request);
+
+                foreach (string role in roles)
+                {
+                    authorized = principal.IsInRole(role);
+                    if (authorized)
+                    {
+                        break;
+                    }
+                }
             }
+            return authorized;
+        }
+
+        internal static bool IsLocalRequest(HttpRequestBase request)
+        {
             bool local = false;
             try
             {
@@ -28,7 +50,7 @@ namespace Bruttissimo.Common.Mvc
             {
                 // suppress.
             }
-            return authorized || local;
+            return local;
         }
     }
 }
