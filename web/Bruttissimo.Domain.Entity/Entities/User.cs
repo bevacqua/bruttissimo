@@ -15,6 +15,7 @@ namespace Bruttissimo.Domain.Entity
 
         public DateTime Created { get; set; }
 
-        public double TimeZone { get; set; }
+        public long UserSettingsId { get; set; }
+        public UserSettings Settings { get; set; }
     }
 }

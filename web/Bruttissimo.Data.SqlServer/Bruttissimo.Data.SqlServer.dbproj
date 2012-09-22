@@ -242,6 +242,15 @@
     <Build Include="Schema Objects\Tables\SchemaVersions.table.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Schema Objects\Tables\UserSettings.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\PK_UserSettings.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\FK_User_UserSettings.fkey.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
   <ItemGroup>
     <NotInBuild Include="Schema Comparisons\SchemaComparer.scmp">

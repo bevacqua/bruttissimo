@@ -293,6 +293,11 @@ namespace Bruttissimo.Data.Dapper
 
         private User InternalCreate(string email, string password, string displayName, IDbTransaction transaction = null)
         {
+            UserSettings settings = new UserSettings
+            {
+                TimeZone = Config.Defaults.TimeZone
+            };
+            connection.Insert(settings, transaction);
             User user = new User
             {
                 RoleId = GetRoleId(Roles.Regular, transaction),
@@ -300,7 +305,7 @@ namespace Bruttissimo.Data.Dapper
                 DisplayName = GetDisplayName(email, displayName),
                 Password = password == null ? null : InternalPasswordHash(password),
                 Created = DateTime.UtcNow,
-                TimeZone = Config.Defaults.TimeZone
+                UserSettingsId = settings.Id
             };
             connection.Insert(user, transaction);
             return user;

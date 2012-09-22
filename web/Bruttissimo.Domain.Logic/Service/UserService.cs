@@ -159,7 +159,7 @@ namespace Bruttissimo.Domain.Logic
         public DateTime ToCurrentUserTimeZone(HttpContextBase httpContext, DateTime dateTime)
         {
             User user = httpContext.GetUser();
-            double tz = user == null ? Config.Defaults.TimeZone : user.TimeZone;
+            double tz = user == null ? Config.Defaults.TimeZone : user.Settings.TimeZone;
             DateTime result = dateTime.AddHours(tz);
             return result;
         }

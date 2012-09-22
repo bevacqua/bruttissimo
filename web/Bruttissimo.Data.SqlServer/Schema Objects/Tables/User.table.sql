@@ -5,5 +5,5 @@
     [DisplayName] NVARCHAR (60)  NULL,
     [Password]    NVARCHAR (60)  NULL,
     [Created]     DATETIME2 (7)  NOT NULL,
-    [TimeZone]    FLOAT          NOT NULL
+    [UserSettingsId] BIGINT      NOT NULL
 );
