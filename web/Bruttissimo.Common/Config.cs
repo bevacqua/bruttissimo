@@ -159,6 +159,11 @@ namespace Bruttissimo.Common
             {
                 get { return Int(Get("Site.Port")); }
             }
+
+            public static bool Analytics
+            {
+                get { return Boolean(Get("Site.Analytics")) ?? false; }
+            }
         }
 
         public static class Defaults
