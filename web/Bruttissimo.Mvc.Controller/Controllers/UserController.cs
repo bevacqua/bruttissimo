@@ -128,10 +128,20 @@ namespace Bruttissimo.Mvc.Controller
 
         [HttpGet]
         [NotAjax]
+        [ExtendedAuthorize]
         public ActionResult Logout()
         {
             formsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        [NotAjax]
+        [ExtendedAuthorize]
+        public ActionResult Settings()
+        {
+            return NotFound();
+            // TODO return View();
         }
     }
 }

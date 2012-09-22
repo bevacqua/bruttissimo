@@ -219,6 +219,7 @@
     <Content Include="Views\System\Environment.cshtml" />
     <Content Include="Views\Shared\_Analytics.cshtml" />
     <Content Include="Views\Shared\_AnalyticsPixel.cshtml" />
+    <Content Include="Views\User\Settings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\GlobalAssemblyInfo.cs">
