@@ -41,6 +41,6 @@
     .WithConfiguration()
     .MvcRender("~/all.js?_=1")
 )
-@Html.Analytics()
+@Html.Analytics(JavaScript)
 @JavaScript.Emit()
 @MiniProfiler.RenderIncludes(useExistingjQuery: true)
