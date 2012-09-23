@@ -22,3 +22,5 @@ desktop.ini
 # db project files
 *.dbmdl
 *.schemaview
+
+# project upgrade files
