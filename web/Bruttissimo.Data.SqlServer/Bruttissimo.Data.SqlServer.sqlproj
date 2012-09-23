@@ -3,9 +3,13 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
-    <PostConversionRemoveFromScc>;F:\Projects.NET\GitHub\Bruttissimo\web\Bruttissimo.Data.SqlServer\Properties\Database.sqldeployment;F:\Projects.NET\GitHub\Bruttissimo\web\Bruttissimo.Data.SqlServer\Properties\Database.sqlsettings;Properties\Database.sqlsettings;Properties\Database.sqldeployment;Properties\Database.sqlcmdvars;Properties\Database.sqlpermissions;F:\Projects.NET\GitHub\Bruttissimo\web\Bruttissimo.Data.SqlServer\Bruttissimo.Data.SqlServer.dbproj</PostConversionRemoveFromScc>
-    <PostConversionAddToScc>;F:\Projects.NET\GitHub\Bruttissimo\web\Bruttissimo.Data.SqlServer\Release.publish.xml;F:\Projects.NET\GitHub\Bruttissimo\web\Bruttissimo.Data.SqlServer\Debug.publish.xml;F:\Projects.NET\GitHub\Bruttissimo\web\Bruttissimo.Data.SqlServer\Permissions.sql;F:\Projects.NET\GitHub\Bruttissimo\web\Bruttissimo.Data.SqlServer\Bruttissimo.Data.SqlServer.sqlproj</PostConversionAddToScc>
-    <PostConversionCheckOutFromScc>;F:\Projects.NET\GitHub\Bruttissimo\web\Bruttissimo.Data.SqlServer\Schema Comparisons\SchemaComparer.scmp</PostConversionCheckOutFromScc>
+    <PostConversionRemoveFromScc>
+    </PostConversionRemoveFromScc>
+    <PostConversionAddToScc>
+    </PostConversionAddToScc>
+    <PostConversionCheckOutFromScc>
+    </PostConversionCheckOutFromScc>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
