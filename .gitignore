@@ -24,7 +24,7 @@ desktop.ini
 *.schemaview
 
 # project upgrade files
-Backup
-UpgradeLog.htm
-UpgradeLog.XML
+Backup*
+UpgradeLog*.htm
+UpgradeLog*.XML
 _UpgradeReport_Files
