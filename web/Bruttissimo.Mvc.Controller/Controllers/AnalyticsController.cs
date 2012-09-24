@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Bruttissimo.Common;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain;
-using Bruttissimo.Domain.Entity;
-using Bruttissimo.Domain.Logic;
 using Bruttissimo.Mvc.Model;
 
 namespace Bruttissimo.Mvc.Controller
@@ -26,7 +21,7 @@ namespace Bruttissimo.Mvc.Controller
         }
 
         [ChildActionOnly]
-        public ActionResult Pixel()
+        public ActionResult Pixel(string title)
         {
             if (!Config.Site.Analytics)
             {
@@ -35,10 +30,9 @@ namespace Bruttissimo.Mvc.Controller
             string analyticsId = Config.Site.AnalyticsId;
             string domain = Config.Site.Home;
             string referer = Request.ServerVariables["HTTP_REFERER"];
-            string title = null;
-            string user = User.Identity.Name;
+            string user = User == null ? null : User.Identity.Name;
             string pixel = analyticsService.BuildPixelUrl(analyticsId, domain, referer, title, user);
-            
+
             AnalyticsPixelModel model = new AnalyticsPixelModel
             {
                 Account = analyticsId,

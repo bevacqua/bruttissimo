@@ -2,7 +2,6 @@ using System;
 using System.Text;
 using System.Web;
 using Bruttissimo.Common;
-using Bruttissimo.Domain;
 
 namespace Bruttissimo.Domain.Logic
 {

@@ -23,6 +23,6 @@
 </section>
 <footer id="footer" class="layout-section">@copyright</footer>
 
-@Html.Action("Pixel", "Analytics")
+@Html.Action("Pixel", "Analytics", new { title = @Title })
 @Html.Partial("NoScript")
 @RenderSection("Script", false)
