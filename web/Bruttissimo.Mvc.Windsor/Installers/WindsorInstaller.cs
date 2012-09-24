@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using Bruttissimo.Common;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain.Entity;
 using Bruttissimo.Domain.Logic;
@@ -56,6 +54,7 @@ namespace Bruttissimo.Mvc.Windsor
 
             container.Install(
                 new MvcInstaller(parameters),
+                new DomainInstaller(),
                 new MiniMembershipInstaller(),
                 new ServiceInstaller(),
                 new RepositoryInstaller(),
