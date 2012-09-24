@@ -29,18 +29,18 @@ namespace Bruttissimo.Common.Mvc
             container.Register(
                 AllTypes
                     .FromThisAssembly()
-                    .BasedOn(typeof (IValidator<>))
+                    .BasedOn(typeof(IValidator<>))
                     .WithServiceBase()
-                    .LifestylePerWebRequest()
+                    .LifestyleTransient()
                 );
 
             // Register validators in model project assembly.
             container.Register(
                 AllTypes
                     .FromAssembly(assembly)
-                    .BasedOn(typeof (IValidator<>))
+                    .BasedOn(typeof(IValidator<>))
                     .WithServiceBase()
-                    .LifestylePerWebRequest()
+                    .LifestyleTransient()
                 );
         }
     }

@@ -35,7 +35,7 @@ namespace Bruttissimo.Common.Mvc
                 Classes
                     .FromAssembly(parameters.ControllerAssembly)
                     .BasedOn<IController>()
-                    .LifestylePerWebRequest()
+                    .LifestyleTransient()
                 );
 
             // Registers all controllers from this assembly.
@@ -43,7 +43,7 @@ namespace Bruttissimo.Common.Mvc
                 Classes
                     .FromThisAssembly()
                     .BasedOn<IController>()
-                    .LifestylePerWebRequest()
+                    .LifestyleTransient()
                 );
 
             // Register our action invoker injector.

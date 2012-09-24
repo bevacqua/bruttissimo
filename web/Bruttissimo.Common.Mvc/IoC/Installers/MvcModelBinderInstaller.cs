@@ -31,7 +31,7 @@ namespace Bruttissimo.Common.Mvc
                 Classes
                     .FromAssembly(assembly)
                     .BasedOn<IModelBinder>()
-                    .LifestylePerWebRequest()
+                    .LifestyleTransient()
                 );
 
             container.Register(
@@ -45,7 +45,7 @@ namespace Bruttissimo.Common.Mvc
         private WindsorModelBinderProvider InstanceModelBinderProvider(IKernel kernel)
         {
             IDictionary<Type, Type> modelBinderTypes = new Dictionary<Type, Type>();
-            IHandler[] handlers = kernel.GetAssignableHandlers(typeof (IModelBinder));
+            IHandler[] handlers = kernel.GetAssignableHandlers(typeof(IModelBinder));
             foreach (IHandler handler in handlers)
             {
                 Type modelBinderType = handler.ComponentModel.Implementation;
