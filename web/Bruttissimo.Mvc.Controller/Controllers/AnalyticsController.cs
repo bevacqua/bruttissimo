@@ -38,7 +38,7 @@ namespace Bruttissimo.Mvc.Controller
                 Account = analyticsId,
                 Pixel = pixel
             };
-            return View(model); // also registers the JavaScript version that will be used most of the time.
+            return PartialView(model); // also registers the JavaScript version that will be used most of the time.
         }
     }
 }
