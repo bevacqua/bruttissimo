@@ -27,11 +27,14 @@ namespace Bruttissimo.Mvc.Controller
             {
                 return new EmptyResult();
             }
+            Uri domain = new Uri(Config.Site.Home);
+
             string analyticsId = Config.Site.AnalyticsId;
-            string domain = Config.Site.Home;
+            string host = domain.Host;
             string referer = Request.ServerVariables["HTTP_REFERER"];
+            string absolute = Request.Url.AbsolutePath;
             string user = User == null ? null : User.Identity.Name;
-            string pixel = analyticsService.BuildPixelUrl(analyticsId, domain, referer, title, user);
+            string pixel = analyticsService.BuildPixelUrl(analyticsId, host, referer, absolute, title, user);
 
             AnalyticsPixelModel model = new AnalyticsPixelModel
             {
