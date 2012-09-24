@@ -164,6 +164,11 @@ namespace Bruttissimo.Common
             {
                 get { return Boolean(Get("Site.Analytics")) ?? false; }
             }
+
+            public static string AnalyticsId
+            {
+                get { return Get("Site.AnalyticsId"); }
+            }
         }
 
         public static class Defaults

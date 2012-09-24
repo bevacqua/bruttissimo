@@ -6,7 +6,7 @@ using Bruttissimo.Domain;
 
 namespace Bruttissimo.Mvc.Model
 {
-    [ModelType(typeof (IMiniPrincipal))]
+    [ModelType(typeof(IMiniPrincipal))]
     public class MiniPrincipalModelBinder : IModelBinder
     {
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)

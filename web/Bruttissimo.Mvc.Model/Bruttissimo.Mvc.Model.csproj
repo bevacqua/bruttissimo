@@ -80,6 +80,7 @@
     <Compile Include="ViewModels\CommentModel.cs" />
     <Compile Include="ViewModels\CommentReplyModel.cs" />
     <Compile Include="ViewModels\CommentThreadModel.cs" />
+    <Compile Include="ViewModels\AnalyticsPixelModel.cs" />
     <Compile Include="ViewModels\JobModel.cs" />
     <Compile Include="ViewModels\ScheduledJobModel.cs" />
     <Compile Include="ViewModels\LogModel.cs" />
