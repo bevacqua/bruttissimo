@@ -19,13 +19,6 @@ namespace Bruttissimo.Mvc.Windsor
                     .ImplementedBy<DebugDetailsRoleAccesor>()
                     .LifestyleTransient()
                 );
-
-            container.Register(
-                Component
-                    .For<IApplicationModuleManager>()
-                    .ImplementedBy<ApplicationModuleManager>()
-                    .LifestyleTransient()
-                );
         }
     }
 }

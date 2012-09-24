@@ -19,6 +19,13 @@ namespace Bruttissimo.Common.Mvc
                     .WithServiceFromInterface()
                     .LifestyleTransient()
                 );
+
+            container.Register(
+                Component
+                    .For<IApplicationModuleManager>()
+                    .ImplementedBy<ApplicationModuleManager>()
+                    .LifestyleTransient()
+                );
         }
     }
 }
