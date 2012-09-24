@@ -92,6 +92,9 @@
     </Compile>
     <Compile Include="Core\ActionFilters\AjaxTransformFilter.cs" />
     <Compile Include="Core\ErrorHandling\ChildActionExceptionFilter.cs" />
+    <Compile Include="HttpModules\Wiring\ApplicationModuleAttribute.cs" />
+    <Compile Include="HttpModules\Wiring\ApplicationModuleManager.cs" />
+    <Compile Include="HttpModules\Wiring\IApplicationModuleManager.cs" />
     <Compile Include="Interface\IDebugDetailsRoleAccesor.cs" />
     <Compile Include="Interface\IJavaScriptHelper.cs" />
     <Compile Include="Exceptions\HttpNotFoundException.cs" />

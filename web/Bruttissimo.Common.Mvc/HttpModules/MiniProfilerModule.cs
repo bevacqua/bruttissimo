@@ -4,6 +4,7 @@ using StackExchange.Profiling;
 
 namespace Bruttissimo.Common.Mvc
 {
+    [ApplicationModule]
     public class MiniProfilerModule : IHttpModule
     {
         public void Init(HttpApplication context)

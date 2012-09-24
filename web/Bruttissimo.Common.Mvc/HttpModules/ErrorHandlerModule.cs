@@ -3,6 +3,7 @@ using System.Web;
 
 namespace Bruttissimo.Common.Mvc
 {
+    [ApplicationModule]
     public class ErrorHandlerModule : IHttpModule
     {
         public void Init(HttpApplication context)

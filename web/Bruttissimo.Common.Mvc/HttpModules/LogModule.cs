@@ -4,6 +4,7 @@ using log4net;
 
 namespace Bruttissimo.Common.Mvc
 {
+    [ApplicationModule]
     public class LogModule : IHttpModule
     {
         private const string HTTP_BEGIN_REQUEST = "HTTP Begin Request";

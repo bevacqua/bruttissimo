@@ -5,6 +5,7 @@ using Bruttissimo.Common.Resources;
 
 namespace Bruttissimo.Common.Mvc
 {
+    [ApplicationModule]
     public class HeaderCleanupModule : IHttpModule
     {
         public void Init(HttpApplication context)

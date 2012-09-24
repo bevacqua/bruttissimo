@@ -1,9 +1,11 @@
 using System;
 using System.Web;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Mvc;
 
 namespace Bruttissimo.Domain.Logic
 {
+    [ApplicationModule(100)]
     public class MiniAuthenticationModule : IHttpModule
     {
         public void Init(HttpApplication context)

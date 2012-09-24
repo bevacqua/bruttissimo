@@ -1,6 +1,7 @@
 ﻿using System.Web;
 using System.Web.Routing;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Mvc;
 using Bruttissimo.Common.Resources;
 using Bruttissimo.Mvc.Windsor;
 using log4net;
@@ -19,18 +20,14 @@ namespace Bruttissimo.Mvc
             Routing.RegisterAllAreas();
             Routing.RegisterSignalR(RouteTable.Routes);
             Routing.RegisterRoutes(RouteTable.Routes);
-            
+
             log.Debug(Debug.ApplicationStart);
         }
 
         public override void Init()
         {
-            IHttpModule[] modules = IoC.Container.ResolveAll<IHttpModule>();
-
-            foreach (IHttpModule module in modules)
-            {
-                module.Init(this);
-            }
+            IApplicationModuleManager manager = IoC.Container.Resolve<IApplicationModuleManager>();
+            manager.Execute(this);
         }
 
         protected void Application_End()
