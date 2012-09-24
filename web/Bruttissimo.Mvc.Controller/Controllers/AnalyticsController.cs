@@ -33,10 +33,10 @@ namespace Bruttissimo.Mvc.Controller
                 return new EmptyResult();
             }
             string analyticsId = Config.Site.AnalyticsId;
-            string domain = null;
-            string referer = null;
+            string domain = Config.Site.Home;
+            string referer = Request.ServerVariables["HTTP_REFERER"];
             string title = null;
-            string user = "";// helper.ViewContext.HttpContext.User == null ? "" : "";
+            string user = User.Identity.Name;
             string pixel = analyticsService.BuildPixelUrl(analyticsId, domain, referer, title, user);
             
             AnalyticsPixelModel model = new AnalyticsPixelModel
