@@ -1,5 +1,6 @@
 using System;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain.Entity;
 using DotNetOpenAuth.Messaging;
@@ -17,14 +18,9 @@ namespace Bruttissimo.Domain.Logic
         public OpenIdAuthenticationPortal(OpenIdRelyingParty relyingParty, IUserService userService, IFormsAuthentication formsAuthentication)
             : base(userService, formsAuthentication)
         {
-            if (relyingParty == null)
-            {
-                throw new ArgumentNullException("relyingParty");
-            }
-            if (userService == null)
-            {
-                throw new ArgumentNullException("userService");
-            }
+            Ensure.That(relyingParty, "relyingParty").IsNotNull();
+            Ensure.That(userService, "userService").IsNotNull();
+
             this.relyingParty = relyingParty;
             this.userService = userService;
         }

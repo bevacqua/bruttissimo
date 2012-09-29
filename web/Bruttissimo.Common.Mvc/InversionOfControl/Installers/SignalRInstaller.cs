@@ -1,5 +1,6 @@
 using System;
 using System.Reflection;
+using Bruttissimo.Common.Guard;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
@@ -16,10 +17,8 @@ namespace Bruttissimo.Common.Mvc
 
         public SignalRInstaller(Assembly hubAssembly)
         {
-            if (hubAssembly == null)
-            {
-                throw new ArgumentNullException("hubAssembly");
-            }
+            Ensure.That(hubAssembly, "hubAssembly").IsNotNull();
+
             this.hubAssembly = hubAssembly;
         }
 

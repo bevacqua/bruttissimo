@@ -1,4 +1,5 @@
 using System;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain.Entity;
 
@@ -11,14 +12,9 @@ namespace Bruttissimo.Domain.Logic
 
         protected AuthenticationPortal(IUserService userService, IFormsAuthentication formsAuthentication)
         {
-            if (userService == null)
-            {
-                throw new ArgumentNullException("userService");
-            }
-            if (formsAuthentication == null)
-            {
-                throw new ArgumentNullException("formsAuthentication");
-            }
+            Ensure.That(userService, "userService").IsNotNull();
+            Ensure.That(formsAuthentication, "formsAuthentication").IsNotNull();
+
             this.userService = userService;
             this.formsAuthentication = formsAuthentication;
         }

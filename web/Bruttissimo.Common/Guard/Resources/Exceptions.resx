@@ -145,13 +145,13 @@
     <value>Argument expected to be non-null or blank.</value>
   </data>
   <data name="EnsureExtensions_IsNotFalse" xml:space="preserve">
-    <value>Condition evaluates to 'True'. Expected 'False'.</value>
+    <value>Precondition unexpectedly returned 'True'.</value>
   </data>
   <data name="EnsureExtensions_IsNotTrue" xml:space="preserve">
-    <value>Condition evaluates to 'False'. Expected 'True'.</value>
+    <value>Precondition unexpectedly returned 'False'.</value>
   </data>
   <data name="EnsureExtensions_IsNotOfType" xml:space="preserve">
-    <value>The param is not of expected type: '{0}'.</value>
+    <value>Argument expected to be '{0}' or any subclass. value is of type '{1}'.</value>
   </data>
   <data name="EnsureExtensions_IsNotLt" xml:space="preserve">
     <value>Argument out of range: value '{0}' is not lower than '{1}'.</value>

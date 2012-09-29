@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using Bruttissimo.Common.Guard;
 using Castle.Core;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Context;
@@ -21,10 +22,8 @@ namespace Bruttissimo.Common.Mvc
 
         public MvcControllerInstaller(MvcInstallerParameters parameters)
         {
-            if (parameters == null)
-            {
-                throw new ArgumentNullException("parameters");
-            }
+            Ensure.That(parameters, "parameters").IsNotNull();
+
             this.parameters = parameters;
         }
 

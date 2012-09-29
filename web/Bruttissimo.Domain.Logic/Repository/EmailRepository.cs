@@ -1,6 +1,7 @@
 using System;
 using System.Net.Mail;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain.Entity;
 using log4net;
 
@@ -13,19 +14,15 @@ namespace Bruttissimo.Domain.Logic
 
         public EmailRepository(SmtpClient client)
         {
-            if (client == null)
-            {
-                throw new ArgumentNullException("client");
-            }
+            Ensure.That(client, "client").IsNotNull();
+
             this.client = client;
         }
 
         public void Send(EmailMessageModel model)
         {
-            if (model == null)
-            {
-                throw new ArgumentNullException("model");
-            }
+            Ensure.That(model, "model").IsNotNull();
+
             MailMessage message = new MailMessage(model.Sender, model.Recipient)
             {
                 Subject = model.Subject,

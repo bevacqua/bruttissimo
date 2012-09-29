@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Bruttissimo.Common.Guard;
 
 namespace Bruttissimo.Common.Mvc
 {
@@ -39,42 +40,17 @@ namespace Bruttissimo.Common.Mvc
             Assembly[] automapperAssemblies,
             Assembly hubAssembly)
         {
-            if (modelAssembly == null)
-            {
-                throw new ArgumentNullException("modelAssembly");
-            }
-            if (viewAssembly == null)
-            {
-                throw new ArgumentNullException("viewAssembly");
-            }
-            if (controllerAssembly == null)
-            {
-                throw new ArgumentNullException("controllerAssembly");
-            }
-            if (applicationTitle == null)
-            {
-                throw new ArgumentNullException("applicationTitle");
-            }
-            if (resourceAssemblies == null)
-            {
-                throw new ArgumentNullException("resourceAssemblies");
-            }
-            if (filters == null)
-            {
-                throw new ArgumentNullException("filters");
-            }
-            if (jobAssembly == null)
-            {
-                throw new ArgumentNullException("jobAssembly");
-            }
-            if (automapperAssemblies == null)
-            {
-                throw new ArgumentNullException("automapperAssemblies");
-            }
-            if (hubAssembly == null)
-            {
-                throw new ArgumentNullException("hubAssembly");
-            }
+            Ensure.That(modelAssembly, "modelAssembly").IsNotNull();
+            Ensure.That(viewAssembly, "viewAssembly").IsNotNull();
+            Ensure.That(controllerAssembly, "controllerAssembly").IsNotNull();
+            Ensure.That(applicationTitle, "applicationTitle").IsNotNullOrEmpty();
+            Ensure.That(resourceAssemblies, "resourceAssemblies").IsNotNull();
+            Ensure.That(filters, "filters").IsNotNull();
+            Ensure.That(jobAssembly, "jobAssembly").IsNotNull();
+            Ensure.That(filters, "filters").IsNotNull();
+            Ensure.That(automapperAssemblies, "automapperAssemblies").IsNotNull();
+            Ensure.That(hubAssembly, "hubAssembly").IsNotNull();
+
             ModelAssembly = modelAssembly;
             ViewAssembly = viewAssembly;
             ControllerAssembly = controllerAssembly;

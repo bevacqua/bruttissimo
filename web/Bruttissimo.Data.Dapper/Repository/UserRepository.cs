@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
 using Dapper;
@@ -18,14 +19,9 @@ namespace Bruttissimo.Data.Dapper
         public UserRepository(IDbConnection connection, HashProvider hashProvider)
             : base(connection)
         {
-            if (connection == null)
-            {
-                throw new ArgumentNullException("connection");
-            }
-            if (hashProvider == null)
-            {
-                throw new ArgumentNullException("hashProvider");
-            }
+            Ensure.That(connection, "connection").IsNotNull();
+            Ensure.That(hashProvider, "hashProvider").IsNotNull();
+
             this.connection = connection;
             this.hashProvider = hashProvider;
         }
@@ -34,33 +30,29 @@ namespace Bruttissimo.Data.Dapper
 
         public User GetByEmail(string email)
         {
-            if (email == null)
-            {
-                throw new ArgumentNullException("email");
-            }
+            Ensure.That(email, "email").IsNotNull();
+
             const string sql = @"
                 SELECT [User].*
                 FROM [User]
                 WHERE [User].[Email] = @email
             ";
-            IEnumerable<User> result = connection.Query<User>(sql, new {email});
+            IEnumerable<User> result = connection.Query<User>(sql, new { email });
             User user = result.FirstOrDefault();
             return user;
         }
 
         public User GetByOpenId(string openId)
         {
-            if (openId == null)
-            {
-                throw new ArgumentNullException("openId");
-            }
+            Ensure.That(openId, "openId").IsNotNull();
+
             const string sql = @"
 				SELECT [User].* FROM [User]
 				INNER JOIN [UserConnection]
 				ON [User].[Id] = [UserConnection].[UserId]
 				WHERE [UserConnection].[OpenId] = @openId
             ";
-            IEnumerable<User> result = connection.Query<User>(sql, new {openId});
+            IEnumerable<User> result = connection.Query<User>(sql, new { openId });
 
             User user = result.FirstOrDefault();
             return user;
@@ -68,17 +60,15 @@ namespace Bruttissimo.Data.Dapper
 
         public User GetByFacebookGraphId(string facebookId)
         {
-            if (facebookId == null)
-            {
-                throw new ArgumentNullException("facebookId");
-            }
+            Ensure.That(facebookId, "facebookId").IsNotNull();
+
             const string sql = @"
 				SELECT [User].* FROM [User]
 				INNER JOIN [UserConnection]
 				ON [User].[Id] = [UserConnection].[UserId]
 				WHERE [UserConnection].[FacebookId] = @facebookId
             ";
-            IEnumerable<User> result = connection.Query<User>(sql, new {facebookId});
+            IEnumerable<User> result = connection.Query<User>(sql, new { facebookId });
 
             User user = result.FirstOrDefault();
             return user;
@@ -86,17 +76,15 @@ namespace Bruttissimo.Data.Dapper
 
         public User GetByTwitterId(string twitterId)
         {
-            if (twitterId == null)
-            {
-                throw new ArgumentNullException("twitterId");
-            }
+            Ensure.That(twitterId, "twitterId").IsNotNull();
+
             const string sql = @"
 				SELECT [User].* FROM [User]
 				INNER JOIN [UserConnection]
 				ON [User].[Id] = [UserConnection].[UserId]
 				WHERE [UserConnection].[TwitterId] = @twitterId
             ";
-            IEnumerable<User> result = connection.Query<User>(sql, new {twitterId});
+            IEnumerable<User> result = connection.Query<User>(sql, new { twitterId });
 
             User user = result.FirstOrDefault();
             return user;
@@ -108,24 +96,17 @@ namespace Bruttissimo.Data.Dapper
 
         public User CreateWithCredentials(string email, string password)
         {
-            if (email == null)
-            {
-                throw new ArgumentNullException("email");
-            }
-            if (password == null)
-            {
-                throw new ArgumentNullException("password");
-            }
+            Ensure.That(email, "email").IsNotNull();
+            Ensure.That(password, "password").IsNotNull();
+
             User user = InternalCreate(email, password, null);
             return user;
         }
 
         public User CreateWithOpenId(string openId, string email, string displayName)
         {
-            if (email == null)
-            {
-                throw new ArgumentNullException("email");
-            }
+            Ensure.That(email, "email").IsNotNull();
+
             using (IDbTransaction transaction = connection.BeginTransaction())
             {
                 User user = InternalCreate(email, null, displayName, transaction);
@@ -177,7 +158,7 @@ namespace Bruttissimo.Data.Dapper
                 FROM [UserConnection] [UC]
                 WHERE [UC].[UserId] = @userId
             "; // TOP 1 is temporary, might change if we start supporting multiple accounts for each provider.
-            string accessToken = connection.Query<string>(sql, new {userId = user.Id}).FirstOrDefault();
+            string accessToken = connection.Query<string>(sql, new { userId = user.Id }).FirstOrDefault();
             return accessToken;
         }
 
@@ -193,14 +174,9 @@ namespace Bruttissimo.Data.Dapper
 
         public UserConnection AddOpenIdConnection(User user, string openId, IDbTransaction transaction)
         {
-            if (user == null)
-            {
-                throw new ArgumentNullException("user");
-            }
-            if (openId == null)
-            {
-                throw new ArgumentNullException("openId");
-            }
+            Ensure.That(user, "user").IsNotNull();
+            Ensure.That(openId, "openId").IsNotNull();
+
             UserConnection userConnection = new UserConnection
             {
                 UserId = user.Id,
@@ -217,14 +193,9 @@ namespace Bruttissimo.Data.Dapper
 
         public UserConnection AddFacebookConnection(User user, string facebookId, string accessToken, IDbTransaction transaction)
         {
-            if (user == null)
-            {
-                throw new ArgumentNullException("user");
-            }
-            if (facebookId == null)
-            {
-                throw new ArgumentNullException("facebookId");
-            }
+            Ensure.That(user, "user").IsNotNull();
+            Ensure.That(facebookId, "facebookId").IsNotNull();
+
             UserConnection userConnection = new UserConnection
             {
                 UserId = user.Id,
@@ -242,14 +213,9 @@ namespace Bruttissimo.Data.Dapper
 
         public UserConnection AddTwitterConnection(User user, string twitterId, IDbTransaction transaction)
         {
-            if (user == null)
-            {
-                throw new ArgumentNullException("user");
-            }
-            if (twitterId == null)
-            {
-                throw new ArgumentNullException("twitterId");
-            }
+            Ensure.That(user, "user").IsNotNull();
+            Ensure.That(twitterId, "twitterId").IsNotNull();
+
             UserConnection userConnection = new UserConnection
             {
                 UserId = user.Id,
@@ -263,14 +229,9 @@ namespace Bruttissimo.Data.Dapper
 
         public bool IsInRoleOrHasRight(User user, string roleOrRight)
         {
-            if (user == null)
-            {
-                throw new ArgumentNullException("user");
-            }
-            if (roleOrRight == null)
-            {
-                throw new ArgumentNullException("roleOrRight");
-            }
+            Ensure.That(user, "user").IsNotNull();
+            Ensure.That(roleOrRight, "roleOrRight").IsNotNull();
+
             if (user.Role == null)
             {
                 user.Role = GetRoleDetails(user); // load lazily.
@@ -318,7 +279,7 @@ namespace Bruttissimo.Data.Dapper
                 FROM [Role]
                 WHERE [Role].[Name] = @name
             ";
-            long role = connection.Query<long>(sql, new {name}, transaction).First();
+            long role = connection.Query<long>(sql, new { name }, transaction).First();
             return role;
         }
 
@@ -330,7 +291,7 @@ namespace Bruttissimo.Data.Dapper
 				INNER JOIN [RoleRight] [RR] ON [R].[Id] = [RR].[RightId]
 				INNER JOIN [Role] ON [RR].[RoleId] = @roleId
             ";
-            IEnumerable<Right> rights = connection.Query<Right>(sql, new {roleId = user.RoleId});
+            IEnumerable<Right> rights = connection.Query<Right>(sql, new { roleId = user.RoleId });
 
             role.Rights = rights;
             return role;

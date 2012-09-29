@@ -1,4 +1,5 @@
 using System;
+using Bruttissimo.Common.Guard;
 
 namespace Bruttissimo.Common.Mvc
 {
@@ -11,10 +12,8 @@ namespace Bruttissimo.Common.Mvc
 
         public ModelTypeAttribute(Type modelType)
         {
-            if (modelType == null)
-            {
-                throw new ArgumentNullException("modelType");
-            }
+            Ensure.That(modelType, "modelType").IsNotNull();
+
             ModelType = modelType;
         }
     }

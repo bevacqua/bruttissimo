@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain.Logic
@@ -10,23 +11,16 @@ namespace Bruttissimo.Domain.Logic
 
         public CommentService(ICommentRepository commentRepository)
         {
-            if (commentRepository == null)
-            {
-                throw new ArgumentNullException("commentRepository");
-            }
+            Ensure.That(commentRepository, "commentRepository").IsNotNull();
+
             this.commentRepository = commentRepository;
         }
 
         public Comment Create(long postId, string message, User user, long? parentId)
         {
-            if (message == null)
-            {
-                throw new ArgumentNullException("message");
-            }
-            if (user == null)
-            {
-                throw new ArgumentNullException("user");
-            }
+            Ensure.That(message, "message").IsNotNull();
+            Ensure.That(user, "user").IsNotNull();
+
             if (parentId.HasValue)
             {
                 Comment parent = commentRepository.GetById(parentId.Value);

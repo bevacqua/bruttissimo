@@ -1,6 +1,7 @@
 using System;
 using System.Security.Principal;
 using System.Web;
+using Bruttissimo.Common.Guard;
 using Castle.MicroKernel;
 using log4net;
 
@@ -14,14 +15,9 @@ namespace Bruttissimo.Domain.Logic
 
         public MiniAuthenticationWrapper(IKernel kernel, HttpContextBase context)
         {
-            if (kernel == null)
-            {
-                throw new ArgumentNullException("kernel");
-            }
-            if (context == null)
-            {
-                throw new ArgumentNullException("context");
-            }
+            Ensure.That(kernel, "kernel").IsNotNull();
+            Ensure.That(context, "context").IsNotNull();
+
             this.kernel = kernel;
             this.context = context;
         }

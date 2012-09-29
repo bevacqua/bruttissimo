@@ -1,4 +1,5 @@
 using System;
+using Bruttissimo.Common.Guard;
 using SignalR.Hubs;
 
 namespace Bruttissimo.Common.Mvc
@@ -9,10 +10,8 @@ namespace Bruttissimo.Common.Mvc
 
         public HubJavaScriptMinifier(IResourceCompressor resourceCompressor)
         {
-            if (resourceCompressor == null)
-            {
-                throw new ArgumentNullException("resourceCompressor");
-            }
+            Ensure.That(resourceCompressor, "resourceCompressor").IsNotNull();
+
             this.resourceCompressor = resourceCompressor;
         }
 

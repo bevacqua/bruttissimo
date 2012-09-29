@@ -1,5 +1,6 @@
 using System;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain.Entity;
 using Facebook;
@@ -15,23 +16,16 @@ namespace Bruttissimo.Domain.Logic
         public OAuthAuthenticationPortal(IUserService userService, IFormsAuthentication formsAuthentication)
             : base(userService, formsAuthentication)
         {
-            if (userService == null)
-            {
-                throw new ArgumentNullException("userService");
-            }
+            Ensure.That(userService, "userService").IsNotNull();
+
             this.userService = userService;
         }
 
         internal AuthenticationResult AuthenticateWithFacebook(string facebookId, string accessToken)
         {
-            if (facebookId == null)
-            {
-                throw new ArgumentNullException("facebookId");
-            }
-            if (accessToken == null)
-            {
-                throw new ArgumentNullException("accessToken");
-            }
+            Ensure.That(facebookId, "facebookId").IsNotNull();
+            Ensure.That(accessToken, "accessToken").IsNotNull();
+
             dynamic response;
             try
             {
@@ -83,14 +77,9 @@ namespace Bruttissimo.Domain.Logic
 
         internal AuthenticationResult AuthenticateWithTwitter(string twitterId, string displayName)
         {
-            if (twitterId == null)
-            {
-                throw new ArgumentNullException("twitterId");
-            }
-            if (displayName == null)
-            {
-                throw new ArgumentNullException("displayName");
-            }
+            Ensure.That(twitterId, "twitterId").IsNotNull();
+            Ensure.That(displayName, "displayName").IsNotNull();
+
             User user = userService.GetByTwitterId(twitterId);
             bool isNewUser = false;
             if (user == null) // create a brand new account.

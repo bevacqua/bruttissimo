@@ -8,7 +8,7 @@ namespace Bruttissimo.Common.Guard
     {
         private static class Types
         {
-            internal static readonly Type IntType = typeof (int);
+            internal static readonly Type IntType = typeof(int);
 
             internal static readonly Type ShortType = typeof(short);
 
@@ -76,9 +76,17 @@ namespace Bruttissimo.Common.Guard
         [DebuggerStepThrough]
         public static TypeParam IsOfType(this TypeParam param, Type type)
         {
-            if (!param.Type.Equals(type))
-                throw ExceptionFactory.Create(param,
-                    Exceptions.EnsureExtensions_IsNotOfType.FormatWith(param.Type.FullName));
+            if (!(type.IsAssignableFrom(param.Type)))
+                throw ExceptionFactory.Create(param, Exceptions.EnsureExtensions_IsNotOfType.FormatWith(type.FullName, param.Type.FullName));
+
+            return param;
+        }
+
+        [DebuggerStepThrough]
+        public static TypeParam IsOfType<T>(this TypeParam param)
+        {
+            if (!(param is T))
+                throw ExceptionFactory.Create(param, Exceptions.EnsureExtensions_IsNotOfType.FormatWith(typeof(T).FullName, param.Type.FullName));
 
             return param;
         }
@@ -86,7 +94,7 @@ namespace Bruttissimo.Common.Guard
         [DebuggerStepThrough]
         public static Param<Type> IsClass(this Param<Type> param)
         {
-            if(param.Value == null)
+            if (param.Value == null)
                 throw ExceptionFactory.Create(param,
                     Exceptions.EnsureExtensions_IsNotClass_WasNull);
 

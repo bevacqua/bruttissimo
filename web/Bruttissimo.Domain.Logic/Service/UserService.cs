@@ -3,6 +3,7 @@ using System.Security.Principal;
 using System.Web;
 using System.Web.Security;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain.Entity;
 using Bruttissimo.Domain.Logic.Email.Model;
 
@@ -15,14 +16,9 @@ namespace Bruttissimo.Domain.Logic
 
         public UserService(IUserRepository userRepository, IEmailService emailService)
         {
-            if (userRepository == null)
-            {
-                throw new ArgumentNullException("userRepository");
-            }
-            if (emailService == null)
-            {
-                throw new ArgumentNullException("emailService");
-            }
+            Ensure.That(userRepository, "userRepository").IsNotNull();
+            Ensure.That(emailService, "emailService").IsNotNull();
+
             this.userRepository = userRepository;
             this.emailService = emailService;
         }
@@ -35,10 +31,8 @@ namespace Bruttissimo.Domain.Logic
 
         public User GetByEmail(string email)
         {
-            if (email == null)
-            {
-                throw new ArgumentNullException("email");
-            }
+            Ensure.That(email, "email").IsNotNull();
+
             User user = userRepository.GetByEmail(email);
             return user;
         }
@@ -63,14 +57,9 @@ namespace Bruttissimo.Domain.Logic
 
         public User CreateWithCredentials(string email, string password)
         {
-            if (email.NullOrBlank())
-            {
-                throw new ArgumentNullException("email");
-            }
-            if (password.NullOrBlank())
-            {
-                throw new ArgumentNullException("password");
-            }
+            Ensure.That(email, "email").IsNotNull();
+            Ensure.That(password, "password").IsNotNull();
+
             User user = userRepository.GetByEmail(email);
             if (user != null)
             {
@@ -111,10 +100,8 @@ namespace Bruttissimo.Domain.Logic
 
         public void SendRegistrationEmail(User user)
         {
-            if (user == null)
-            {
-                throw new ArgumentNullException("user");
-            }
+            Ensure.That(user, "user").IsNotNull();
+
             emailService.SendRegistrationEmail(user.Email, new RegistrationEmailModel
             {
                 DisplayName = user.DisplayName
@@ -123,20 +110,16 @@ namespace Bruttissimo.Domain.Logic
 
         public string GetAuthCookie(User user)
         {
-            if (user == null)
-            {
-                throw new ArgumentNullException("user");
-            }
+            Ensure.That(user, "user").IsNotNull();
+
             string encoded = EncodeUserIdIntoAuthCookie(user.Id);
             return encoded;
         }
 
         public long? GetUserId(IIdentity identity)
         {
-            if (identity == null)
-            {
-                throw new ArgumentNullException("identity");
-            }
+            Ensure.That(identity, "identity").IsNotNull();
+
             MiniIdentity mini = identity as MiniIdentity;
             if (mini != null)
             {

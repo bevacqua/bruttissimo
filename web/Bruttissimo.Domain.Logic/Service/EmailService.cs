@@ -1,6 +1,7 @@
 using System;
 using System.Net.Mail;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain.Entity;
 using Bruttissimo.Domain.Logic.Email.Model;
 using RazorEngine.Templating;
@@ -16,24 +17,17 @@ namespace Bruttissimo.Domain.Logic
 
         public EmailService(IEmailTemplateService templateService, IEmailRepository emailRepository)
         {
-            if (templateService == null)
-            {
-                throw new ArgumentNullException("templateService");
-            }
-            if (emailRepository == null)
-            {
-                throw new ArgumentNullException("emailRepository");
-            }
+            Ensure.That(templateService, "templateService").IsNotNull();
+            Ensure.That(emailRepository, "emailRepository").IsNotNull();
+
             this.templateService = templateService;
             this.emailRepository = emailRepository;
         }
 
         public string RunEmailTemplate(string templateName, object model = null)
         {
-            if (templateName == null)
-            {
-                throw new ArgumentNullException("templateName");
-            }
+            Ensure.That(templateName, "templateName").IsNotNull();
+
             ITemplate template = templateService.Resolve(templateName, model);
             string body = template.Run();
             return body;
@@ -49,10 +43,8 @@ namespace Bruttissimo.Domain.Logic
 
         internal void IncludeCommonEmailModelValues(EmailModel model)
         {
-            if (model == null)
-            {
-                throw new ArgumentNullException("model");
-            }
+            Ensure.That(model, "model").IsNotNull();
+
             model.FacebookProfileLink = Common.Resources.Links.FacebookProfile;
             model.TwitterProfileLink = Common.Resources.Links.TwitterProfile;
             model.CopyrightYear = DateTime.UtcNow.Year;
@@ -64,19 +56,12 @@ namespace Bruttissimo.Domain.Logic
 
         public void SendRegistrationEmail(string recipient, object model)
         {
-            if (recipient == null)
-            {
-                throw new ArgumentNullException("recipient");
-            }
-            if (model == null)
-            {
-                throw new ArgumentNullException("model");
-            }
-            RegistrationEmailModel email = model as RegistrationEmailModel;
-            if (email == null)
-            {
-                throw new ArgumentException("Expected model type is RegistrationEmailModel");
-            }
+            Ensure.That(recipient, "recipient").IsNotNull();
+            Ensure.That(model, "model").IsNotNull();
+            Ensure.ThatTypeFor(model, "model").IsOfType<RegistrationEmailModel>();
+
+            var email = (RegistrationEmailModel)model;
+
             IncludeCommonEmailModelValues(email);
             email.Subject = Common.Resources.User.EmailRegistrationSubject;
             email.AccountValidationLink = "http://bruttissi.mo/user/validate/alksdjalksjd"; // TODO: provide when invoking sendregistrationemail, model validation?

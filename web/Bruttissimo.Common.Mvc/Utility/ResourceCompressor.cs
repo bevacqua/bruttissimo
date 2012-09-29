@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Bruttissimo.Common.Guard;
 using Yahoo.Yui.Compressor;
 
 namespace Bruttissimo.Common.Mvc
@@ -12,14 +13,9 @@ namespace Bruttissimo.Common.Mvc
 
         public ResourceCompressor(CssCompressor cssCompressor, JavaScriptCompressor jsCompressor)
         {
-            if (cssCompressor == null)
-            {
-                throw new ArgumentNullException("cssCompressor");
-            }
-            if (jsCompressor == null)
-            {
-                throw new ArgumentNullException("jsCompressor");
-            }
+            Ensure.That(cssCompressor, "cssCompressor").IsNotNull();
+            Ensure.That(jsCompressor, "jsCompressor").IsNotNull();
+
             this.cssCompressor = cssCompressor;
             this.jsCompressor = jsCompressor;
         }
@@ -63,10 +59,8 @@ namespace Bruttissimo.Common.Mvc
 
         internal string MinifyResource(string source, bool wrapResultInTags, string tag, Func<string, string> minify)
         {
-            if (source == null)
-            {
-                throw new ArgumentNullException("source");
-            }
+            Ensure.That(source, "source").IsNotNull();
+
             string plain = StripTag(tag, source); // minifiers require we pass just the code.
             string minified;
             if (Config.Debug.IgnoreMinification)

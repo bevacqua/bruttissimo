@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Security;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain.Logic
@@ -12,10 +13,8 @@ namespace Bruttissimo.Domain.Logic
 
         public MiniRoleProvider(IUserRepository userRepository)
         {
-            if (userRepository == null)
-            {
-                throw new ArgumentNullException("userRepository");
-            }
+            Ensure.That(userRepository, "userRepository").IsNotNull();
+
             this.userRepository = userRepository;
         }
 

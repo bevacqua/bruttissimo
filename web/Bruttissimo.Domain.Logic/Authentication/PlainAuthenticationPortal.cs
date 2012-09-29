@@ -1,4 +1,5 @@
 using System;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain.Entity;
 
@@ -12,28 +13,18 @@ namespace Bruttissimo.Domain.Logic
         public PlainAuthenticationPortal(IUserService userService, IMembershipProvider membershipProvider, IFormsAuthentication formsAuthentication)
             : base(userService, formsAuthentication)
         {
-            if (userService == null)
-            {
-                throw new ArgumentNullException("userService");
-            }
-            if (membershipProvider == null)
-            {
-                throw new ArgumentNullException("membershipProvider");
-            }
+            Ensure.That(userService, "userService").IsNotNull();
+            Ensure.That(membershipProvider, "membershipProvider").IsNotNull();
+
             this.userService = userService;
             this.membershipProvider = membershipProvider;
         }
 
         internal AuthenticationResult Authenticate(string email, string password)
         {
-            if (email == null)
-            {
-                throw new ArgumentNullException("email");
-            }
-            if (password == null)
-            {
-                throw new ArgumentNullException("password");
-            }
+            Ensure.That(email, "email").IsNotNull();
+            Ensure.That(password, "password").IsNotNull();
+
             bool isNewUser = false;
             User user = userService.GetByEmail(email);
             if (user == null) // create a brand new account.

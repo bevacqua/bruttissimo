@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Web.Mvc;
+using Bruttissimo.Common.Guard;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
@@ -18,10 +19,8 @@ namespace Bruttissimo.Common.Mvc
 
         public MvcModelBinderInstaller(Assembly assembly)
         {
-            if (assembly == null)
-            {
-                throw new ArgumentNullException("assembly");
-            }
+            Ensure.That(assembly, "assembly").IsNotNull();
+
             this.assembly = assembly;
         }
 

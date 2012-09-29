@@ -1,4 +1,5 @@
 using System;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.InversionOfControl.Installers;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
@@ -18,10 +19,8 @@ namespace Bruttissimo.Common.Mvc.InversionOfControl
         /// </summary>
         public MvcInstaller(MvcInstallerParameters parameters)
         {
-            if (parameters == null)
-            {
-                throw new ArgumentNullException("parameters");
-            }
+            Ensure.That(parameters, "parameters").IsNotNull();
+
             this.parameters = parameters;
         }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Specialized;
 using System.Web;
+using Bruttissimo.Common.Guard;
 
 namespace Bruttissimo.Common.Mvc
 {
@@ -10,10 +11,8 @@ namespace Bruttissimo.Common.Mvc
 
         public RequestSanitizer(HttpContextBase context)
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException("context");
-            }
+            Ensure.That(context, "context").IsNotNull();
+
             this.context = context;
         }
 

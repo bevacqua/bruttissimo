@@ -1,5 +1,6 @@
 using System;
 using System.Reflection;
+using Bruttissimo.Common.Guard;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
@@ -16,10 +17,8 @@ namespace Bruttissimo.Common.Mvc
 
         public MvcModelValidatorInstaller(Assembly assembly)
         {
-            if (assembly == null)
-            {
-                throw new ArgumentNullException("assembly");
-            }
+            Ensure.That(assembly, "assembly").IsNotNull();
+
             this.assembly = assembly;
         }
 

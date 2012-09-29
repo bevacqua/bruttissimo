@@ -1,6 +1,7 @@
 using System;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Bruttissimo.Common.Guard;
 
 namespace Bruttissimo.Common.Mvc
 {
@@ -19,14 +20,9 @@ namespace Bruttissimo.Common.Mvc
         /// </summary>
         public static void MapRouteLowercase(this RouteCollection routes, string name, string url, object defaults, object constraints)
         {
-            if (routes == null)
-            {
-                throw new ArgumentNullException("routes");
-            }
-            if (url == null)
-            {
-                throw new ArgumentNullException("url");
-            }
+            Ensure.That(routes, "routes").IsNotNull();
+            Ensure.That(url, "url").IsNotNull();
+
             LowercaseRoute route = new LowercaseRoute(url, new MvcRouteHandler())
             {
                 Defaults = new RouteValueDictionary(defaults),

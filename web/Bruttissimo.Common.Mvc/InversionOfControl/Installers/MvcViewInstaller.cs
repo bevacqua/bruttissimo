@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Bruttissimo.Common.Guard;
 using Castle.Core;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Context;
@@ -21,11 +22,9 @@ namespace Bruttissimo.Common.Mvc
 		private readonly Assembly assembly;
 
 		public MvcViewInstaller(Assembly assembly)
-		{
-			if (assembly == null)
-			{
-				throw new ArgumentNullException("assembly");
-			}
+        {
+            Ensure.That(assembly, "assembly").IsNotNull();
+
 			this.assembly = assembly;
 		}
 

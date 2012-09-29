@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Security;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain.Logic
@@ -11,10 +12,8 @@ namespace Bruttissimo.Domain.Logic
 
         public MiniMembershipProvider(IUserRepository userRepository)
         {
-            if (userRepository == null)
-            {
-                throw new ArgumentNullException("userRepository");
-            }
+            Ensure.That(userRepository, "userRepository").IsNotNull();
+
             this.userRepository = userRepository;
         }
 

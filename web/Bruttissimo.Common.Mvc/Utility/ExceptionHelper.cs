@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Web;
 using System.Web.Routing;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Resources;
 using log4net;
 
@@ -14,10 +15,8 @@ namespace Bruttissimo.Common.Mvc
 
         public ExceptionHelper(HttpContextBase context)
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException("context");
-            }
+            Ensure.That(context, "context").IsNotNull();
+
             this.context = context;
         }
 

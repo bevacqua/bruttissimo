@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Bruttissimo.Common.Guard;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Registration;
 using SignalR;
@@ -14,10 +15,8 @@ namespace Bruttissimo.Common.Mvc
 
         public WindsorDependencyResolver(IKernel kernel)
         {
-            if (kernel == null)
-            {
-                throw new ArgumentNullException("kernel");
-            }
+            Ensure.That(kernel, "kernel").IsNotNull();
+
             this.kernel = kernel;
 
             RegisterDeferredComponents();

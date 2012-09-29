@@ -1,5 +1,5 @@
-﻿using System;
-using System.Security.Principal;
+﻿using System.Security.Principal;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain.Logic
@@ -13,14 +13,9 @@ namespace Bruttissimo.Domain.Logic
 
         public MiniPrincipal(IUserService userService, IIdentity identity)
         {
-            if (userService == null)
-            {
-                throw new ArgumentNullException("userService");
-            }
-            if (identity == null)
-            {
-                throw new ArgumentNullException("identity");
-            }
+            Ensure.That(userService, "userService").IsNotNull();
+            Ensure.That(identity, "identity").IsNotNull();
+
             this.userService = userService;
             long? id = userService.GetUserId(identity);
 

@@ -97,7 +97,7 @@ namespace Bruttissimo.Common.Guard.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Condition evaluates to &apos;True&apos;. Expected &apos;False&apos;..
+        ///   Looks up a localized string similar to Precondition unexpectedly returned &apos;True&apos;..
         /// </summary>
         internal static string EnsureExtensions_IsNotFalse {
             get {
@@ -196,7 +196,7 @@ namespace Bruttissimo.Common.Guard.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The param is not of expected type: &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Argument expected to be &apos;{0}&apos; or any subclass. value is of type &apos;{1}&apos;..
         /// </summary>
         internal static string EnsureExtensions_IsNotOfType {
             get {
@@ -205,7 +205,7 @@ namespace Bruttissimo.Common.Guard.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Condition evaluates to &apos;False&apos;. Expected &apos;True&apos;..
+        ///   Looks up a localized string similar to Precondition unexpectedly returned &apos;False&apos;..
         /// </summary>
         internal static string EnsureExtensions_IsNotTrue {
             get {

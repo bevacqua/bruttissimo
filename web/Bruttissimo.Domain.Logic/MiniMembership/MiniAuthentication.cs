@@ -1,5 +1,6 @@
 using System;
 using System.Web;
+using Bruttissimo.Common.Guard;
 
 namespace Bruttissimo.Domain.Logic
 {
@@ -10,14 +11,9 @@ namespace Bruttissimo.Domain.Logic
 
         public MiniAuthentication(IUserService userService, HttpContextBase context)
         {
-            if (userService == null)
-            {
-                throw new ArgumentNullException("userService");
-            }
-            if (context == null)
-            {
-                throw new ArgumentNullException("context");
-            }
+            Ensure.That(userService, "userService").IsNotNull();
+            Ensure.That(context, "context").IsNotNull();
+
             this.userService = userService;
             this.context = context;
         }

@@ -38,7 +38,7 @@ namespace Bruttissimo.Common.Mvc
             {
                 Ensure.That(model, "model").IsNotNull();
             }
-            Ensure.That(() => ModelState.IsValid).IsFalse().WithExtraMessage(() => Resources.Error.ModelStateIsValid);
+            Ensure.That(() => ModelState.IsValid).WithExtraMessage(() => Resources.Error.ModelStateIsValid).IsFalse();
 
             if (Request.IsAjaxRequest())
             {

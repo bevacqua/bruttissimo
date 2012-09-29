@@ -1,5 +1,5 @@
-﻿using System;
-using Bruttissimo.Common;
+﻿using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Quartz;
 
 namespace Bruttissimo.Domain.Logic
@@ -12,10 +12,8 @@ namespace Bruttissimo.Domain.Logic
 
         public FacebookExportJob(IFacebookService facebookService)
         {
-            if (facebookService == null)
-            {
-                throw new ArgumentNullException("facebookService");
-            }
+            Ensure.That(facebookService, "facebookService").IsNotNull();
+
             this.facebookService = facebookService;
         }
 

@@ -1,7 +1,9 @@
 using System;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Web;
+using Bruttissimo.Common.Guard;
 
 namespace Bruttissimo.Domain.Logic
 {
@@ -11,19 +13,15 @@ namespace Bruttissimo.Domain.Logic
 
         public PictureStorageRepository(HttpContextBase httpContext)
         {
-            if (httpContext == null)
-            {
-                throw new ArgumentNullException("httpContext");
-            }
+            Ensure.That(httpContext, "httpContext").IsNotNull();
+
             this.httpContext = httpContext;
         }
 
         internal string GetPhysicalPath(string id, out string filename, out string folder, out string relativePath)
         {
-            if (id == null)
-            {
-                throw new ArgumentNullException("id");
-            }
+            Ensure.That(id, "id").IsNotNull();
+
             filename = string.Concat(id, ".jpg");
             folder = Common.Resources.Constants.ImageUploadFolder;
             relativePath = Path.Combine(folder, filename);
@@ -49,16 +47,11 @@ namespace Bruttissimo.Domain.Logic
             return relativePath;
         }
 
-        public void Save(System.Drawing.Image image, string id)
+        public void Save(Image image, string id)
         {
-            if (image == null)
-            {
-                throw new ArgumentNullException("image");
-            }
-            if (id == null)
-            {
-                throw new ArgumentNullException("id");
-            }
+            Ensure.That(image, "image").IsNotNull();
+            Ensure.That(id, "id").IsNotNull();
+
             string physicalPath = GetPhysicalPath(id);
             if (!File.Exists(physicalPath))
             {
@@ -66,16 +59,14 @@ namespace Bruttissimo.Domain.Logic
             }
         }
 
-        public System.Drawing.Image Load(string id)
+        public Image Load(string id)
         {
-            if (id == null)
-            {
-                throw new ArgumentNullException("id");
-            }
+            Ensure.That(id, "id").IsNotNull();
+
             string physicalPath = GetPhysicalPath(id);
             if (File.Exists(physicalPath))
             {
-                return System.Drawing.Image.FromFile(physicalPath);
+                return Image.FromFile(physicalPath);
             }
             return null;
         }

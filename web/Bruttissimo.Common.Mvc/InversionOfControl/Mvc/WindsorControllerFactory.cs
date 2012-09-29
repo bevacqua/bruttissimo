@@ -1,6 +1,7 @@
 using System;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Bruttissimo.Common.Guard;
 using Castle.MicroKernel;
 
 namespace Bruttissimo.Common.Mvc
@@ -11,10 +12,8 @@ namespace Bruttissimo.Common.Mvc
 
         public WindsorControllerFactory(IKernel kernel)
         {
-            if (kernel == null)
-            {
-                throw new ArgumentNullException("kernel");
-            }
+            Ensure.That(kernel, "kernel").IsNotNull();
+
             this.kernel = kernel;
         }
 

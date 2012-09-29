@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using Bruttissimo.Common.Guard;
 using Castle.MicroKernel;
 
 namespace Bruttissimo.Common.Mvc
@@ -12,24 +13,17 @@ namespace Bruttissimo.Common.Mvc
 
         public WindsorModelBinderProvider(IKernel kernel, IDictionary<Type, Type> modelBinderTypes)
         {
-            if (kernel == null)
-            {
-                throw new ArgumentNullException("kernel");
-            }
-            if (modelBinderTypes == null)
-            {
-                throw new ArgumentNullException("modelBinderTypes");
-            }
+            Ensure.That(kernel, "kernel").IsNotNull();
+            Ensure.That(modelBinderTypes, "modelBinderTypes").IsNotNull();
+
             this.kernel = kernel;
             this.modelBinderTypes = modelBinderTypes;
         }
 
         public IModelBinder GetBinder(Type modelType)
         {
-            if (modelType == null)
-            {
-                throw new ArgumentNullException("modelType");
-            }
+            Ensure.That(modelType, "modelType").IsNotNull();
+
             if (modelBinderTypes.ContainsKey(modelType))
             {
                 Type modelBinder = modelBinderTypes[modelType];

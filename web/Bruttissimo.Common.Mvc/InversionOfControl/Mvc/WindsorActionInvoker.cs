@@ -1,5 +1,6 @@
 using System;
 using System.Web.Mvc;
+using Bruttissimo.Common.Guard;
 
 namespace Bruttissimo.Common.Mvc
 {
@@ -9,10 +10,8 @@ namespace Bruttissimo.Common.Mvc
 
         public WindsorActionInvoker(ActionInvokerFilters filters)
         {
-            if (filters == null)
-            {
-                throw new ArgumentNullException("filters");
-            }
+            Ensure.That(filters, "filters").IsNotNull();
+
             this.filters = filters;
         }
 

@@ -1,4 +1,5 @@
 using System;
+using Bruttissimo.Common.Guard;
 
 namespace Bruttissimo.Domain.Logic
 {
@@ -10,18 +11,10 @@ namespace Bruttissimo.Domain.Logic
 
         public AuthenticationService(PlainAuthenticationPortal plainAuthentication, OpenIdAuthenticationPortal openIdAuthentication, OAuthAuthenticationPortal oAuthAuthentication)
         {
-            if (plainAuthentication == null)
-            {
-                throw new ArgumentNullException("plainAuthentication");
-            }
-            if (openIdAuthentication == null)
-            {
-                throw new ArgumentNullException("openIdAuthentication");
-            }
-            if (oAuthAuthentication == null)
-            {
-                throw new ArgumentNullException("oAuthAuthentication");
-            }
+            Ensure.That(plainAuthentication, "plainAuthentication").IsNotNull();
+            Ensure.That(openIdAuthentication, "openIdAuthentication").IsNotNull();
+            Ensure.That(oAuthAuthentication, "oAuthAuthentication").IsNotNull();
+
             this.plainAuthentication = plainAuthentication;
             this.openIdAuthentication = openIdAuthentication;
             this.oAuthAuthentication = oAuthAuthentication;
