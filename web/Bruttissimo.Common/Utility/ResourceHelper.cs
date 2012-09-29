@@ -12,7 +12,7 @@ namespace Bruttissimo.Common
         //                   + Account
         //                     + Resources
         //                        o Register.resx (Class name: [NamespaceRoot].Views.[Controller].Resources.[View])
-        //                     o Register.aspx (the view)
+        //                     o Register.cshtml (the view)
         //
         //
         // Convention: Shared resources are stored in the /Views/Shared/Resources directory:
@@ -149,7 +149,6 @@ namespace Bruttissimo.Common
         /// </summary>
         /// <param name="key">The name of the string resource or the format string resource.</param>
         /// <param name="args">An object array that contains zero or more objects to format.</param>
-        /// <returns></returns>
         public string String(string key, params object[] args)
         {
             string formatString = GetStringResource(key);

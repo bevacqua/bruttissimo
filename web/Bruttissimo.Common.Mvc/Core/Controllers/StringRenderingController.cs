@@ -257,7 +257,7 @@ namespace Bruttissimo.Common.Mvc
             }
             if (viewPath.StartsWith("~")) // virtual view path, e.g: "~/Views/Home/Index.cshtml"
             {
-                return CompiledRegex.JavaScriptViewNamingConvention.Replace(viewPath, Resources.Regex.JavaScriptViewNamingExtension);
+                return CompiledRegex.JavaScriptViewNamingConvention.Replace(viewPath, Resources.Regular.JavaScriptViewNamingExtension);
             }
             else // view name, e.g: "Index"
             {

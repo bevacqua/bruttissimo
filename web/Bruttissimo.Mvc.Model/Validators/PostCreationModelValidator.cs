@@ -11,7 +11,7 @@ namespace Bruttissimo.Mvc.Model
                 .WithLocalizedMessage(() => Common.Resources.Validation.Required);
 
             RuleFor(m => m.Link)
-                .Matches(Common.Resources.Shared.Regex.WebLink)
+                .Matches(Common.Resources.Shared.Regular.WebLink)
                 .WithLocalizedMessage(() => Common.Resources.Validation.NoLink);
         }
     }

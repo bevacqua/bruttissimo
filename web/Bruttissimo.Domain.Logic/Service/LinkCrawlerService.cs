@@ -167,7 +167,7 @@ namespace Bruttissimo.Domain.Logic
             {
                 return null;
             }
-            string result = CompiledRegex.DistinctLineBreaks.Replace(description, Regex.DistinctLineBreaksReplacement);
+            string result = CompiledRegex.DistinctLineBreaks.Replace(description, Regular.DistinctLineBreaksReplacement);
             string decoded = HttpUtility.HtmlDecode(result);
             return decoded;
         }

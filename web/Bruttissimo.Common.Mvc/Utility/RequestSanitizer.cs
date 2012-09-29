@@ -45,7 +45,7 @@ namespace Bruttissimo.Common.Mvc
             }
 
             // remove www. from the beginning of the url.
-            redirect = CompiledRegex.WwwSubdomain.Replace(redirect, Resources.Shared.Regex.WwwSubdomainReplacement);
+            redirect = CompiledRegex.WwwSubdomain.Replace(redirect, Resources.Shared.Regular.WwwSubdomainReplacement);
 
             if (absolute.Length > 1 && absolute.EndsWith("/"))
             {

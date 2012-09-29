@@ -77,7 +77,31 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Config.cs" />
+    <Compile Include="Guard\CustomMessageExtensions.cs" />
+    <Compile Include="Guard\Ensure.cs" />
+    <Compile Include="Guard\EnsureBoolExtensions.cs" />
+    <Compile Include="Guard\EnsureCollectionExtensions.cs" />
+    <Compile Include="Guard\EnsureDateTimeExtensions.cs" />
+    <Compile Include="Guard\EnsureDecimalExtensions.cs" />
+    <Compile Include="Guard\EnsureDoubleExtensions.cs" />
+    <Compile Include="Guard\EnsureGuidExtensions.cs" />
+    <Compile Include="Guard\EnsureIntExtensions.cs" />
+    <Compile Include="Guard\EnsureLongExtensions.cs" />
+    <Compile Include="Guard\EnsureNullableValueTypeExtensions.cs" />
+    <Compile Include="Guard\EnsureObjectExtensions.cs" />
+    <Compile Include="Guard\EnsureShortExtensions.cs" />
+    <Compile Include="Guard\EnsureStringExtensions.cs" />
+    <Compile Include="Guard\EnsureTypeExtensions.cs" />
+    <Compile Include="Guard\ExceptionFactory.cs" />
+    <Compile Include="Guard\ExpressionExtensions.cs" />
+    <Compile Include="Guard\Param.cs" />
+    <Compile Include="Guard\Resources\Exceptions.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Exceptions.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Guard\TypeParam.cs" />
+    <Compile Include="Static\Config.cs" />
     <Compile Include="Extensions\IConvertible.cs" />
     <Compile Include="Extensions\Stream.cs" />
     <Compile Include="Extensions\Enumerable.cs" />
@@ -87,7 +111,7 @@
     <Compile Include="Helpers\HtmlParsing.cs" />
     <Compile Include="Extensions\WebResponse.cs" />
     <Compile Include="Helpers\Uri.cs" />
-    <Compile Include="CompiledRegex.cs" />
+    <Compile Include="Static\CompiledRegex.cs" />
     <Compile Include="Interface\IMapperConfigurator.cs" />
     <Compile Include="Interface\IMapper.cs" />
     <Compile Include="AutoMapper\Mapper.cs" />
@@ -116,7 +140,7 @@
     <Compile Include="Quartz\IJobTypeStore.cs" />
     <Compile Include="Quartz\JobAutoRunner.cs" />
     <Compile Include="Quartz\JobTypeStore.cs" />
-    <Compile Include="ResourceHelper.cs" />
+    <Compile Include="Utility\ResourceHelper.cs" />
     <Compile Include="Resources\Authentication.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -157,15 +181,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RazorEngine.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Regex.Designer.cs">
+    <Compile Include="Resources\Regular.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Regex.resx</DependentUpon>
+      <DependentUpon>Regular.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Shared\Regex.Designer.cs">
+    <Compile Include="Resources\Shared\Regular.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Regex.resx</DependentUpon>
+      <DependentUpon>Regular.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\TimeSpan.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -199,6 +223,10 @@
     <Compile Include="IoC\Installers\UtilityInstaller.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Guard\Resources\Exceptions.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Exceptions.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Authentication.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Authentication.Designer.cs</LastGenOutput>
@@ -234,14 +262,14 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RazorEngine.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Regex.resx">
+    <EmbeddedResource Include="Resources\Regular.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Regex.Designer.cs</LastGenOutput>
+      <LastGenOutput>Regular.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Shared\Regex.resx">
+    <EmbeddedResource Include="Resources\Shared\Regular.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Regex.Designer.cs</LastGenOutput>
+      <LastGenOutput>Regular.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\TimeSpan.resx">

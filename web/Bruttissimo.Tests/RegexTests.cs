@@ -32,7 +32,7 @@ namespace Bruttissimo.Tests
         {
             // Arrange
             Regex regex = CompiledRegex.JavaScriptViewNamingConvention;
-            string replacement = Common.Resources.Regex.JavaScriptViewNamingExtension;
+            string replacement = Common.Resources.Regular.JavaScriptViewNamingExtension;
             const string input = "~/Views/User/Register.cshtml";
             const string expected = "~/Views/User/Register.js.cshtml";
 

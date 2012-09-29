@@ -99,14 +99,14 @@ namespace Common.Logging.Log4Net
         static CommonLoggingAppender()
         {
             logMethods = new Dictionary<Level, LogMethod>();
-            logMethods[Level.Trace] = delegate(ILog log, MessageFormatter msg, Exception ex) { log.Trace(delegate(FormatMessageHandler m) { m(msg()); }, ex); };
-            logMethods[Level.Debug] = delegate(ILog log, MessageFormatter msg, Exception ex) { log.Debug(delegate(FormatMessageHandler m) { m(msg()); }, ex); };
-            logMethods[Level.Info] = delegate(ILog log, MessageFormatter msg, Exception ex) { log.Info(delegate(FormatMessageHandler m) { m(msg()); }, ex); };
-            logMethods[Level.Warn] = delegate(ILog log, MessageFormatter msg, Exception ex) { log.Warn(delegate(FormatMessageHandler m) { m(msg()); }, ex); };
-            logMethods[Level.Error] = delegate(ILog log, MessageFormatter msg, Exception ex) { log.Error(delegate(FormatMessageHandler m) { m(msg()); }, ex); };
-            logMethods[Level.Fatal] = delegate(ILog log, MessageFormatter msg, Exception ex) { log.Fatal(delegate(FormatMessageHandler m) { m(msg()); }, ex); };
+            logMethods[Level.Trace] = (log, formatter, exception) => log.Trace(x => x(formatter()), exception);
+            logMethods[Level.Debug] = (log, formatter, exception) => log.Debug(x => x(formatter()), exception);
+            logMethods[Level.Info] = (log, formatter, exception) => log.Info(x => x(formatter()), exception);
+            logMethods[Level.Warn] = (log, formatter, exception) => log.Warn(x => x(formatter()), exception);
+            logMethods[Level.Error] = (log, formatter, exception) => log.Error(x => x(formatter()), exception);
+            logMethods[Level.Fatal] = (log, formatter, exception) => log.Fatal(x => x(formatter()), exception);
             logMethods[Level.All] = logMethods[Level.Trace];
-            logMethods[Level.Off] = delegate(ILog log, MessageFormatter msg, Exception ex) { };
+            logMethods[Level.Off] = delegate { };
         }
 
         /// <summary>
