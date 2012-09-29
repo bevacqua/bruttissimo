@@ -1,5 +1,6 @@
 ﻿using System;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain.Entity;
 using TweetSharp;
 
@@ -12,14 +13,9 @@ namespace Bruttissimo.Domain.Social
 
         public TwitterRepository(TwitterServiceParams defaultServiceParams, IMapper mapper)
         {
-            if (defaultServiceParams == null)
-            {
-                throw new ArgumentNullException("defaultServiceParams");
-            }
-            if (mapper == null)
-            {
-                throw new ArgumentNullException("mapper");
-            }
+            Ensure.That(defaultServiceParams, "defaultServiceParams").IsNotNull();
+            Ensure.That(mapper, "mapper").IsNotNull();
+
             this.defaultServiceParams = defaultServiceParams;
             this.mapper = mapper;
         }
@@ -38,10 +34,8 @@ namespace Bruttissimo.Domain.Social
 
         public TwitterPost PostToFeed(string message, TwitterServiceParams serviceParams = null)
         {
-            if (message == null)
-            {
-                throw new ArgumentNullException("message");
-            }
+            Ensure.That(message, "message").IsNotNull();
+
             TwitterServiceParams parameters = serviceParams ?? defaultServiceParams;
             TwitterService service = InstanceTwitterService(parameters);
             TwitterStatus status = service.SendTweet(message);

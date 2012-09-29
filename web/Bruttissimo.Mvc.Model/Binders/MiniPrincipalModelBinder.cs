@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Security.Authentication;
 using System.Web.Mvc;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain;
 
@@ -11,14 +12,9 @@ namespace Bruttissimo.Mvc.Model
     {
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
-            if (controllerContext == null)
-            {
-                throw new ArgumentNullException("controllerContext");
-            }
-            if (bindingContext == null)
-            {
-                throw new ArgumentNullException("bindingContext");
-            }
+            Ensure.That(controllerContext, "controllerContext").IsNotNull();
+            Ensure.That(bindingContext, "bindingContext").IsNotNull();
+
             IMiniPrincipal principal = controllerContext.HttpContext.User as IMiniPrincipal;
             if (principal == null)
             {

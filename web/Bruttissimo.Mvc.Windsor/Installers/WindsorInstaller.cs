@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Common.Mvc.InversionOfControl;
 using Bruttissimo.Domain.Entity;
@@ -32,18 +33,10 @@ namespace Bruttissimo.Mvc.Windsor.Installers
         /// <param name="resourceAssemblies">The location of the different string resources that are rendered client-side.</param>
         public WindsorInstaller(Assembly viewAssembly, string applicationTitle, IList<ResourceAssemblyLocation> resourceAssemblies)
         {
-            if (viewAssembly == null)
-            {
-                throw new ArgumentNullException("viewAssembly");
-            }
-            if (applicationTitle == null)
-            {
-                throw new ArgumentNullException("applicationTitle");
-            }
-            if (resourceAssemblies == null)
-            {
-                throw new ArgumentNullException("resourceAssemblies");
-            }
+            Ensure.That(viewAssembly, "viewAssembly").IsNotNull();
+            Ensure.That(applicationTitle, "applicationTitle").IsNotNull();
+            Ensure.That(resourceAssemblies, "resourceAssemblies").IsNotNull();
+
             this.viewAssembly = viewAssembly;
             this.applicationTitle = applicationTitle;
             this.resourceAssemblies = resourceAssemblies;

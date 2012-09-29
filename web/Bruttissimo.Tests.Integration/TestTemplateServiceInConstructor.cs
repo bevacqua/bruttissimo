@@ -1,4 +1,5 @@
 using System;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain.Logic;
 
 namespace Bruttissimo.Tests.Integration
@@ -9,10 +10,8 @@ namespace Bruttissimo.Tests.Integration
 
         public TestTemplateServiceInConstructor(IEmailTemplateService templateService)
         {
-            if (templateService == null)
-            {
-                throw new ArgumentNullException("templateService");
-            }
+            Ensure.That(templateService, "templateService").IsNotNull();
+
             this.templateService = templateService;
         }
     }

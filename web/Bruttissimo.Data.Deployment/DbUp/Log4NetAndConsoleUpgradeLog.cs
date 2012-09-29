@@ -1,4 +1,5 @@
 using System;
+using Bruttissimo.Common.Guard;
 using DbUp.Engine.Output;
 using log4net;
 
@@ -11,10 +12,8 @@ namespace Bruttissimo.Data.Deployment
 
         public Log4NetAndConsoleUpgradeLog(ILog log)
         {
-            if (log == null)
-            {
-                throw new ArgumentNullException("log");
-            }
+            Ensure.That(log, "log").IsNotNull();
+
             this.log = log;
 
             console = new ConsoleUpgradeLog();

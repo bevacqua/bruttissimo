@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
@@ -15,10 +16,8 @@ namespace Bruttissimo.Mvc.Controller
 
         public JobsController(IJobService jobService)
         {
-            if (jobService == null)
-            {
-                throw new ArgumentNullException("jobService");
-            }
+            Ensure.That(jobService, "jobService").IsNotNull();
+
             this.jobService = jobService;
         }
 

@@ -1,6 +1,7 @@
 using System;
 using System.Reflection;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using RazorEngine.Templating;
 using RazorEngine.Text;
 
@@ -18,10 +19,8 @@ namespace Bruttissimo.Extensions.RazorEngine
         public TemplateResourceHelper(string resourceNamespaceRoot, TemplateBase templateBase)
             : base(resourceNamespaceRoot)
         {
-            if (templateBase == null)
-            {
-                throw new ArgumentNullException("templateBase");
-            }
+            Ensure.That(templateBase, "templateBase").IsNotNull();
+
             this.templateBase = templateBase;
         }
 

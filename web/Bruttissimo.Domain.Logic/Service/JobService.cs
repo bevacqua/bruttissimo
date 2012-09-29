@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain.Entity;
 using Quartz;
 
@@ -14,14 +15,9 @@ namespace Bruttissimo.Domain.Logic
 
         public JobService(IScheduler scheduler, IJobTypeStore store)
         {
-            if (scheduler == null)
-            {
-                throw new ArgumentNullException("scheduler");
-            }
-            if (store == null)
-            {
-                throw new ArgumentNullException("store");
-            }
+            Ensure.That(scheduler, "scheduler").IsNotNull();
+            Ensure.That(store, "store").IsNotNull();
+
             this.store = store;
             this.scheduler = scheduler;
         }

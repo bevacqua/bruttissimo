@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Web;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Resources;
 using Bruttissimo.Domain.Entity;
 using HtmlAgilityPack;
@@ -20,10 +21,8 @@ namespace Bruttissimo.Domain.Logic
 
         public LinkCrawlerService(HttpHelper httpHelper)
         {
-            if (httpHelper == null)
-            {
-                throw new ArgumentNullException("httpHelper");
-            }
+            Ensure.That(httpHelper, "httpHelper").IsNotNull();
+
             this.httpHelper = httpHelper;
         }
 
@@ -32,10 +31,8 @@ namespace Bruttissimo.Domain.Logic
         /// </summary>
         public Link CrawlHttpResource(Uri uri)
         {
-            if (uri == null)
-            {
-                throw new ArgumentNullException("uri");
-            }
+            Ensure.That(uri, "uri").IsNotNull();
+
             HtmlDocument document = httpHelper.DownloadAsHtml(uri);
             if (document != null)
             {
@@ -177,7 +174,7 @@ namespace Bruttissimo.Domain.Logic
             IEnumerable<Func<string>> sources = new List<Func<string>>
             {
                 () => CrawlUsingMetadata(XPath.ResourcePicture, document),
-                () => GetPictureByBestGuess(document) // if no metadata regarding a picture is present, fallback to best-guess from image tags.
+                () => GetPictureByBestGuess(document) // if no metadata regarding a picture is present, fallback to best-guess based on image tags.
             };
             foreach (Func<string> inspectSource in sources)
             {

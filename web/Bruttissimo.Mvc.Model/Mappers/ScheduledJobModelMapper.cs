@@ -1,6 +1,7 @@
 using System;
 using System.Web;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
@@ -13,10 +14,8 @@ namespace Bruttissimo.Mvc.Model
 
         public ScheduledJobModelMapper(IUserService userService)
         {
-            if (userService == null)
-            {
-                throw new ArgumentNullException("userService");
-            }
+            Ensure.That(userService, "userService").IsNotNull();
+
             this.userService = userService;
         }
 

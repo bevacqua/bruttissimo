@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain
@@ -11,10 +12,8 @@ namespace Bruttissimo.Domain
 
         public LogService(ILogRepository logRepository)
         {
-            if (logRepository == null)
-            {
-                throw new ArgumentNullException("logRepository");
-            }
+            Ensure.That(logRepository, "logRepository").IsNotNull();
+
             this.logRepository = logRepository;
         }
 

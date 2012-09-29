@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain.Logic
@@ -13,18 +14,10 @@ namespace Bruttissimo.Domain.Logic
 
         public PostService(IPostRepository postRepository, ICommentService commentService, TextHelper textHelper)
         {
-            if (postRepository == null)
-            {
-                throw new ArgumentNullException("postRepository");
-            }
-            if (commentService == null)
-            {
-                throw new ArgumentNullException("commentService");
-            }
-            if (textHelper == null)
-            {
-                throw new ArgumentNullException("textHelper");
-            }
+            Ensure.That(postRepository, "postRepository").IsNotNull();
+            Ensure.That(commentService, "commentService").IsNotNull();
+            Ensure.That(textHelper, "textHelper").IsNotNull();
+
             this.postRepository = postRepository;
             this.commentService = commentService;
             this.textHelper = textHelper;

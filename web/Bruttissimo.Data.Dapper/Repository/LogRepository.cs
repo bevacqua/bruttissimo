@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
 using Dapper;
@@ -15,10 +16,8 @@ namespace Bruttissimo.Data.Dapper
 
         public LogRepository(IDbConnection connection)
         {
-            if (connection == null)
-            {
-                throw new ArgumentNullException("connection");
-            }
+            Ensure.That(connection, "connection").IsNotNull();
+
             this.connection = connection;
         }
 

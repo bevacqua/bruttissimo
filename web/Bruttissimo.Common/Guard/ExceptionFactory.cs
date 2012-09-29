@@ -1,22 +1,49 @@
 ﻿using System;
+using System.Collections.Generic;
+using Bruttissimo.Common.Guard.Resources;
+using log4net;
 
 namespace Bruttissimo.Common.Guard
 {
     public static class ExceptionFactory
     {
-        public static ArgumentException Create(Param param, string message)
+        private static readonly ILog log = LogManager.GetLogger(typeof(ExceptionFactory));
+
+        internal static IDictionary<Type, Func<Param, string, Exception>> _factory;
+
+        static ExceptionFactory()
         {
-            return new ArgumentException(GetMessage(param, message), param.Name);
+            _factory = new Dictionary<Type, Func<Param, string, Exception>>();
+            _factory.Add(typeof(ArgumentException), (p, m) => new ArgumentException(GetMessage(p, m), p.Name));
+            _factory.Add(typeof(ArgumentNullException), (p, m) => new ArgumentNullException(p.Name, GetMessage(p, m)));
+            _factory.Add(typeof(ArgumentOutOfRangeException), (p, m) => new ArgumentOutOfRangeException(p.Name, GetMessage(p, m)));
+            _factory.Add(typeof(InvalidOperationException), (p, m) => new InvalidOperationException(GetMessage(p, m)));
         }
 
-        public static ArgumentNullException CreateForNull(Param param, string message)
+        public static Exception Create(Param param, string message)
         {
-            return new ArgumentNullException(param.Name, GetMessage(param, message));
+            return Create<ArgumentException>(param, message);
         }
 
-        public static InvalidOperationException CreateForNonNull(Param param, string message)
+        public static Exception CreateForNull(Param param, string message)
         {
-            return new InvalidOperationException(GetMessage(param, message));
+            return Create<ArgumentNullException>(param, message);
+        }
+
+        public static Exception CreateForNonNull(Param param, string message)
+        {
+            return Create<InvalidOperationException>(param, message);
+        }
+
+        public static Exception Create<TException>(Param param, string message) where TException : Exception
+        {
+            Type type = typeof(TException);
+            if (_factory.ContainsKey(type))
+            {
+                return _factory[type](param, message);
+            }
+            log.Warn(Exceptions.ExceptionFactory_NotFound);
+            return _factory[typeof(ArgumentException)](param, message);
         }
 
         internal static string GetMessage(Param param, string message)

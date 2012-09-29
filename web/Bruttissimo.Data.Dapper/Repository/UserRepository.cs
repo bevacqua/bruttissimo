@@ -118,10 +118,8 @@ namespace Bruttissimo.Data.Dapper
 
         public User CreateWithFacebook(string facebookId, string accessToken, string email, string displayName)
         {
-            if (email == null)
-            {
-                throw new ArgumentNullException("email");
-            }
+            Ensure.That(email, "email").IsNotNull();
+
             using (IDbTransaction transaction = connection.BeginTransaction())
             {
                 User user = InternalCreate(email, null, displayName, transaction);

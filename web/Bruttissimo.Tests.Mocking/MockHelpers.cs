@@ -5,6 +5,7 @@ using System.Net.Mail;
 using System.Reflection;
 using System.Web;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
 using Bruttissimo.Domain.Logic;
@@ -143,10 +144,8 @@ namespace Bruttissimo.Tests.Mocking
         /// </summary>
         public static string GetFakeResponse(Uri uri)
         {
-            if (uri == null)
-            {
-                throw new ArgumentNullException("uri");
-            }
+            Ensure.That(uri, "uri").IsNotNull();
+
             using (Stream response = GetResourceStream(uri))
             {
                 return response.ReadFully();
@@ -158,10 +157,8 @@ namespace Bruttissimo.Tests.Mocking
         /// </summary>
         public static Stream GetResourceStream(Uri uri)
         {
-            if (uri == null)
-            {
-                throw new ArgumentNullException("uri");
-            }
+            Ensure.That(uri, "uri").IsNotNull();
+
             string resourceName = GetResourceNameFromUri(uri);
             Assembly executing = Assembly.GetCallingAssembly();
             Stream stream = executing.GetManifestResourceStream(resourceName);

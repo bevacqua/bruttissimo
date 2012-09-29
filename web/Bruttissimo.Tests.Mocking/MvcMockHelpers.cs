@@ -3,6 +3,7 @@ using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Bruttissimo.Common.Guard;
 using Moq;
 
 namespace Bruttissimo.Tests.Mocking
@@ -73,14 +74,8 @@ namespace Bruttissimo.Tests.Mocking
 
         public static void SetupRequestUrl(this HttpRequestBase request, string url)
         {
-            if (url == null)
-            {
-                throw new ArgumentNullException("url");
-            }
-            if (!url.StartsWith("~/"))
-            {
-                throw new ArgumentException(@"Sorry, we Setup a virtual url starting with ""~/"".");
-            }
+            Ensure.That(url, "url").IsNotNull();
+            Ensure.That(() => !url.StartsWith("~/")).WithExtraMessage(() => @"Sorry, we set up a virtual url starting with ""~/"".").IsFalse();
 
             Mock<HttpRequestBase> mock = Mock.Get(request);
 

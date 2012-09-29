@@ -1,5 +1,6 @@
 using System;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain.Entity;
 
@@ -11,10 +12,8 @@ namespace Bruttissimo.Mvc.Model
 
         public OpenGraphModelMapper(IUrlHelper urlHelper)
         {
-            if (urlHelper == null)
-            {
-                throw new ArgumentNullException("urlHelper");
-            }
+            Ensure.That(urlHelper, "urlHelper").IsNotNull();
+
             this.urlHelper = urlHelper;
         }
 

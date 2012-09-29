@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using Bruttissimo.Common.Guard.Resources;
 
@@ -8,8 +9,14 @@ namespace Bruttissimo.Common.Guard
         [DebuggerStepThrough]
         public static Param<bool> IsTrue(this Param<bool> param)
         {
+            return param.IsTrueOrThrow<ArgumentException>();
+        }
+
+        [DebuggerStepThrough]
+        public static Param<bool> IsTrueOrThrow<TException>(this Param<bool> param) where TException : Exception
+        {
             if (!param.Value)
-                throw ExceptionFactory.Create(param, Exceptions.EnsureExtensions_IsNotTrue);
+                throw ExceptionFactory.Create<TException>(param, Exceptions.EnsureExtensions_IsNotTrue);
 
             return param;
         }
@@ -17,8 +24,14 @@ namespace Bruttissimo.Common.Guard
         [DebuggerStepThrough]
         public static Param<bool> IsFalse(this Param<bool> param)
         {
+            return param.IsFalseOrThrow<ArgumentException>();
+        }
+
+        [DebuggerStepThrough]
+        public static Param<bool> IsFalseOrThrow<TException>(this Param<bool> param) where TException : Exception
+        {
             if (param.Value)
-                throw ExceptionFactory.Create(param, Exceptions.EnsureExtensions_IsNotFalse);
+                throw ExceptionFactory.Create<TException>(param, Exceptions.EnsureExtensions_IsNotFalse);
 
             return param;
         }

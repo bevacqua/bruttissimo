@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain.Entity;
 
@@ -17,18 +18,10 @@ namespace Bruttissimo.Domain.Logic
 
         public TwitterExporterService(ITwitterRepository twitterRepository, IPostRepository postRepository, IUrlShortener urlShortener)
         {
-            if (twitterRepository == null)
-            {
-                throw new ArgumentNullException("twitterRepository");
-            }
-            if (postRepository == null)
-            {
-                throw new ArgumentNullException("postRepository");
-            }
-            if (urlShortener == null)
-            {
-                throw new ArgumentNullException("urlShortener");
-            }
+            Ensure.That(twitterRepository, "twitterRepository").IsNotNull();
+            Ensure.That(postRepository, "postRepository").IsNotNull();
+            Ensure.That(urlShortener, "urlShortener").IsNotNull();
+
             this.twitterRepository = twitterRepository;
             this.postRepository = postRepository;
             this.urlShortener = urlShortener;

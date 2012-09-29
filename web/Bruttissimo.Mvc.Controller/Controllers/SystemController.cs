@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
@@ -17,10 +18,8 @@ namespace Bruttissimo.Mvc.Controller
 
         public SystemController(ILogService logService)
         {
-            if (logService == null)
-            {
-                throw new ArgumentNullException("logService");
-            }
+            Ensure.That(logService, "logService").IsNotNull();
+
             this.logService = logService;
         }
 

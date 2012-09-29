@@ -1,6 +1,7 @@
 using System;
 using System.Web;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain.Logic.Hubs;
 using log4net.Core;
@@ -13,19 +14,15 @@ namespace Bruttissimo.Domain.Logic
 
         public LogRealtimeService(IHubContextWrapper<LogHub> hub)
         {
-            if (hub == null)
-            {
-                throw new ArgumentNullException("hub");
-            }
+            Ensure.That(hub, "hub").IsNotNull();
+            
             this.hub = hub;
         }
 
         public void Update(HttpContextBase context, LoggingEvent loggingEvent)
         {
-            if (loggingEvent == null)
-            {
-                throw new ArgumentNullException("loggingEvent");
-            }
+            Ensure.That(loggingEvent, "loggingEvent").IsNotNull();
+
             LoggingEventData data = loggingEvent.GetLoggingEventData();
             Exception exception = loggingEvent.ExceptionObject;
             string requestUrl = GetRawUrl(context);

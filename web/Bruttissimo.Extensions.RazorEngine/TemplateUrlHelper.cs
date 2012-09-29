@@ -1,6 +1,7 @@
 using System;
 using System.Text;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 
 namespace Bruttissimo.Extensions.RazorEngine
 {
@@ -8,11 +9,8 @@ namespace Bruttissimo.Extensions.RazorEngine
     {
         public string Content(string relativeUrl)
         {
-            if (relativeUrl == null)
-            {
-                throw new ArgumentNullException("relativeUrl");
-            }
-
+            Ensure.That(relativeUrl, "relativeUrl").IsNotNull();
+            
             if (relativeUrl.StartsWith("~"))
             {
                 relativeUrl = relativeUrl.Remove(0, 1);

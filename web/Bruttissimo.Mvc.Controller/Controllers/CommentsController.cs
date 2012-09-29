@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain;
 using Bruttissimo.Mvc.Model;
@@ -12,10 +13,8 @@ namespace Bruttissimo.Mvc.Controller
 
         public CommentsController(ICommentService commentService)
         {
-            if (commentService == null)
-            {
-                throw new ArgumentNullException("commentService");
-            }
+            Ensure.That(commentService, "commentService").IsNotNull();
+
             this.commentService = commentService;
         }
 

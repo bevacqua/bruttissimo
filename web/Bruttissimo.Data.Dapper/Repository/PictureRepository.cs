@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain;
 
 namespace Bruttissimo.Data.Dapper
@@ -10,10 +11,8 @@ namespace Bruttissimo.Data.Dapper
 
         public PictureRepository(IDbConnection connection)
         {
-            if (connection == null)
-            {
-                throw new ArgumentNullException("connection");
-            }
+            Ensure.That(connection, "connection").IsNotNull();
+
             this.connection = connection;
         }
     }

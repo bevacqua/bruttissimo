@@ -1,5 +1,6 @@
 using System;
 using System.Net.Mail;
+using Bruttissimo.Common.Guard;
 
 namespace Bruttissimo.Domain.Entity
 {
@@ -17,22 +18,11 @@ namespace Bruttissimo.Domain.Entity
 
         public EmailMessageModel(MailAddress sender, string recipient, string subject, string body)
         {
-            if (sender == null)
-            {
-                throw new ArgumentNullException("sender");
-            }
-            if (recipient == null)
-            {
-                throw new ArgumentNullException("recipient");
-            }
-            if (subject == null)
-            {
-                throw new ArgumentNullException("subject");
-            }
-            if (body == null)
-            {
-                throw new ArgumentNullException("body");
-            }
+            Ensure.That(sender, "sender").IsNotNull();
+            Ensure.That(recipient, "recipient").IsNotNull();
+            Ensure.That(subject, "subject").IsNotNull();
+            Ensure.That(body, "body").IsNotNull();
+
             Sender = sender;
             Recipient = new MailAddress(recipient);
             Subject = subject;

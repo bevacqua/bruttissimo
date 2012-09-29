@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Net;
+using Bruttissimo.Common.Guard;
 
 namespace Bruttissimo.Tests.Mocking
 {
@@ -10,10 +11,8 @@ namespace Bruttissimo.Tests.Mocking
 
         public TestWebReponse(Stream responseStream)
         {
-            if (responseStream == null)
-            {
-                throw new ArgumentNullException("responseStream");
-            }
+            Ensure.That(responseStream, "responseStream").IsNotNull();
+
             this.responseStream = responseStream;
         }
 

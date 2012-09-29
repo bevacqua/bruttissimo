@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain.Entity;
 using Facebook;
 using Newtonsoft.Json;
@@ -31,24 +32,17 @@ namespace Bruttissimo.Domain.Social
 
         public FacebookRepository(string defaultAccessToken, IMapper mapper)
         {
-            if (defaultAccessToken == null)
-            {
-                throw new ArgumentNullException("defaultAccessToken");
-            }
-            if (mapper == null)
-            {
-                throw new ArgumentNullException("mapper");
-            }
+            Ensure.That(defaultAccessToken, "defaultAccessToken").IsNotNull();
+            Ensure.That(mapper, "mapper").IsNotNull();
+
             this.defaultAccessToken = defaultAccessToken;
             this.mapper = mapper;
         }
 
         public IList<FacebookPost> GetPostsInFeed(FacebookImportOptions opts)
         {
-            if (opts == null)
-            {
-                throw new ArgumentNullException("opts");
-            }
+            Ensure.That(opts, "opts").IsNotNull();
+
             DateTime? since = opts.Since;
             string url = GRAPH_FEED_LIMITED.FormatWith(opts.Feed, PAGE_LIMIT);
 
@@ -64,10 +58,8 @@ namespace Bruttissimo.Domain.Social
 
         public FacebookPost PostToFeed(Post post, string userAccessToken)
         {
-            if (post == null)
-            {
-                throw new ArgumentNullException("post");
-            }
+            Ensure.That(post, "post").IsNotNull();
+
             if (post.FacebookFeedId == null) // sanity
             {
                 return null;

@@ -88,7 +88,7 @@ namespace Bruttissimo.Common.Guard.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Argument expected to be an object, but was NULL..
+        ///   Looks up a localized string similar to Argument expected to be an object, but was null..
         /// </summary>
         internal static string EnsureExtensions_IsNotClass_WasNull {
             get {
@@ -214,7 +214,7 @@ namespace Bruttissimo.Common.Guard.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Argument expected to be NULL..
+        ///   Looks up a localized string similar to Argument expected to be null..
         /// </summary>
         internal static string EnsureExtensions_IsNull {
             get {
@@ -228,6 +228,15 @@ namespace Bruttissimo.Common.Guard.Resources {
         internal static string EnsureExtensions_NoMatch {
             get {
                 return ResourceManager.GetString("EnsureExtensions_NoMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exception factory for type {0} is not registered. Falling back to ArgumentException.
+        /// </summary>
+        internal static string ExceptionFactory_NotFound {
+            get {
+                return ResourceManager.GetString("ExceptionFactory_NotFound", resourceCulture);
             }
         }
         

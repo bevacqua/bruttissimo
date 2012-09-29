@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Common.Resources;
 using Bruttissimo.Domain;
@@ -17,14 +18,9 @@ namespace Bruttissimo.Mvc.Controller
 
         public PostsController(ILinkService linkService, IPostService postService)
         {
-            if (linkService == null)
-            {
-                throw new ArgumentNullException("linkService");
-            }
-            if (postService == null)
-            {
-                throw new ArgumentNullException("postService");
-            }
+            Ensure.That(linkService, "linkService").IsNotNull();
+            Ensure.That(postService, "postService").IsNotNull();
+
             this.linkService = linkService;
             this.postService = postService;
         }

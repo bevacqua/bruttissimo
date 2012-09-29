@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain.Entity;
 using log4net;
 
@@ -17,26 +18,11 @@ namespace Bruttissimo.Domain.Logic
 
         public FacebookImporterService(IFacebookRepository fbRepository, IPostRepository postRepository, ILinkRepository linkRepository, IUserRepository userRepository)
         {
-            if (fbRepository == null)
-            {
-                throw new ArgumentNullException("fbRepository");
-            }
-            if (postRepository == null)
-            {
-                throw new ArgumentNullException("postRepository");
-            }
-            if (linkRepository == null)
-            {
-                throw new ArgumentNullException("linkRepository");
-            }
-            if (userRepository == null)
-            {
-                throw new ArgumentNullException("userRepository");
-            }
-            if (mapper == null)
-            {
-                throw new ArgumentNullException("mapper");
-            }
+            Ensure.That(fbRepository, "fbRepository").IsNotNull();
+            Ensure.That(postRepository, "postRepository").IsNotNull();
+            Ensure.That(linkRepository, "linkRepository").IsNotNull();
+            Ensure.That(userRepository, "userRepository").IsNotNull();
+
             this.fbRepository = fbRepository;
             this.postRepository = postRepository;
             this.linkRepository = linkRepository;

@@ -7,6 +7,7 @@ using System.Text;
 using System.Collections.Concurrent;
 using System.Reflection.Emit;
 using System.Threading;
+using Bruttissimo.Common.Guard;
 
 namespace Dapper.Contrib.Extensions
 {
@@ -174,10 +175,8 @@ namespace Dapper.Contrib.Extensions
         /// <returns>true if deleted, false if not found</returns>
         public static bool Delete<T>(this IDbConnection connection, T entityToDelete, IDbTransaction transaction = null, int? commandTimeout = null) where T : class
         {
-            if (entityToDelete == null)
-            {
-                throw new ArgumentNullException("entityToDelete");
-            }
+            Ensure.That(entityToDelete, "entityToDelete").IsNotNull();
+
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat("DELETE FROM [{0}] WHERE [{0}].[Id] = @Id", typeof (T).Name);
             int deleted = connection.Execute(sb.ToString(), entityToDelete, transaction, commandTimeout);

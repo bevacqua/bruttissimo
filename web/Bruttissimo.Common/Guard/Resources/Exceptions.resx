@@ -172,9 +172,12 @@
     <value>Argument expected to be an object, but was type of: '{0}'.</value>
   </data>
   <data name="EnsureExtensions_IsNotClass_WasNull" xml:space="preserve">
-    <value>Argument expected to be an object, but was NULL.</value>
+    <value>Argument expected to be an object, but was null.</value>
   </data>
   <data name="EnsureExtensions_IsNull" xml:space="preserve">
-    <value>Argument expected to be NULL.</value>
+    <value>Argument expected to be null.</value>
+  </data>
+  <data name="ExceptionFactory_NotFound" xml:space="preserve">
+    <value>Exception factory for type {0} is not registered. Falling back to ArgumentException</value>
   </data>
 </root>

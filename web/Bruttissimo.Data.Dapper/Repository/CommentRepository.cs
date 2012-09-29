@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
 using Dapper;
@@ -14,10 +15,8 @@ namespace Bruttissimo.Data.Dapper
         public CommentRepository(IDbConnection connection)
             : base(connection)
         {
-            if (connection == null)
-            {
-                throw new ArgumentNullException("connection");
-            }
+            Ensure.That(connection, "connection").IsNotNull();
+
             this.connection = connection;
         }
 

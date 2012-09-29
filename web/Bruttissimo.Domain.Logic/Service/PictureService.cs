@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain.Logic
@@ -16,18 +17,10 @@ namespace Bruttissimo.Domain.Logic
 
         public PictureService(IPictureRepository pictureRepository, IPictureStorageRepository pictureStorageRepository, FileSystemHelper fsHelper)
         {
-            if (pictureRepository == null)
-            {
-                throw new ArgumentNullException("pictureRepository");
-            }
-            if (pictureStorageRepository == null)
-            {
-                throw new ArgumentNullException("pictureStorageRepository");
-            }
-            if (fsHelper == null)
-            {
-                throw new ArgumentNullException("fsHelper");
-            }
+            Ensure.That(pictureRepository, "pictureRepository").IsNotNull();
+            Ensure.That(pictureStorageRepository, "pictureStorageRepository").IsNotNull();
+            Ensure.That(fsHelper, "fsHelper").IsNotNull();
+
             this.pictureRepository = pictureRepository;
             this.pictureStorageRepository = pictureStorageRepository;
             this.fsHelper = fsHelper;
@@ -40,10 +33,9 @@ namespace Bruttissimo.Domain.Logic
         public Picture Persist(Image image, PictureSize size = PictureSize.All)
         {
             throw new NotImplementedException();
-            if (image == null)
-            {
-                throw new ArgumentNullException("image");
-            }
+
+            Ensure.That(image, "image").IsNotNull();
+
             if (size == PictureSize.None)
             {
                 return null;
@@ -81,14 +73,9 @@ namespace Bruttissimo.Domain.Logic
         /// </summary>
         public string SizeAndSaveImage(string name, Image image, int maxSizeInPixels)
         {
-            if (name == null)
-            {
-                throw new ArgumentNullException("name");
-            }
-            if (image == null)
-            {
-                throw new ArgumentNullException("image");
-            }
+            Ensure.That(name, "name").IsNotNull();
+            Ensure.That(image, "image").IsNotNull();
+
             if (image.Width <= maxSizeInPixels && image.Height <= maxSizeInPixels) // no need to resize
             {
                 string id = name.FormatWith("src");
@@ -110,10 +97,7 @@ namespace Bruttissimo.Domain.Logic
 
         public Image ScaleImage(Image image, float scale)
         {
-            if (image == null)
-            {
-                throw new ArgumentNullException("image");
-            }
+            Ensure.That(image, "image").IsNotNull();
 
             int sourceWidth = image.Width;
             int sourceHeight = image.Height;

@@ -1,5 +1,6 @@
 using System;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
 
@@ -11,10 +12,8 @@ namespace Bruttissimo.Mvc.Model
 
         public PostModelMapper(IPostService postService)
         {
-            if (postService == null)
-            {
-                throw new ArgumentNullException("postService");
-            }
+            Ensure.That(postService, "postService").IsNotNull();
+
             this.postService = postService;
         }
 

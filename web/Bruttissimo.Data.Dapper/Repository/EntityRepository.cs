@@ -1,5 +1,6 @@
 using System;
 using System.Data;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain;
 using Dapper.Contrib.Extensions;
 
@@ -11,10 +12,8 @@ namespace Bruttissimo.Data.Dapper
 
         protected EntityRepository(IDbConnection connection)
         {
-            if (connection == null)
-            {
-                throw new ArgumentNullException("connection");
-            }
+            Ensure.That(connection, "connection").IsNotNull();
+
             this.connection = connection;
         }
 
@@ -26,30 +25,24 @@ namespace Bruttissimo.Data.Dapper
 
         public virtual T Insert(T entity)
         {
-            if (entity == null)
-            {
-                throw new ArgumentNullException("entity");
-            }
+            Ensure.That(entity, "entity").IsNotNull();
+
             connection.Insert(entity);
             return entity;
         }
 
         public virtual T Update(T entity)
         {
-            if (entity == null)
-            {
-                throw new ArgumentNullException("entity");
-            }
+            Ensure.That(entity, "entity").IsNotNull();
+
             connection.Update(entity);
             return entity;
         }
 
         public virtual bool Delete(T entity)
         {
-            if (entity == null)
-            {
-                throw new ArgumentNullException("entity");
-            }
+            Ensure.That(entity, "entity").IsNotNull();
+
             bool result = connection.Delete(entity);
             return result;
         }

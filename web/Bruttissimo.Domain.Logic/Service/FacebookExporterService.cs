@@ -1,31 +1,24 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain.Logic
 {
     public class FacebookExporterService : IFacebookExporterService
     {
-        private readonly IFacebookRepository facebookRepository;
+        private readonly IFacebookRepository fbRepository;
         private readonly IPostRepository postRepository;
         private readonly IUserRepository userRepository;
 
-        public FacebookExporterService(IFacebookRepository facebookRepository, IPostRepository postRepository, IUserRepository userRepository)
+        public FacebookExporterService(IFacebookRepository fbRepository, IPostRepository postRepository, IUserRepository userRepository)
         {
-            if (facebookRepository == null)
-            {
-                throw new ArgumentNullException("facebookRepository");
-            }
-            if (postRepository == null)
-            {
-                throw new ArgumentNullException("postRepository");
-            }
-            if (userRepository== null)
-            {
-                throw new ArgumentNullException("userRepository");
-            }
-            this.facebookRepository = facebookRepository;
+            Ensure.That(fbRepository, "fbRepository").IsNotNull();
+            Ensure.That(postRepository, "postRepository").IsNotNull();
+            Ensure.That(userRepository, "userRepository").IsNotNull();
+
+            this.fbRepository = fbRepository;
             this.postRepository = postRepository;
             this.userRepository = userRepository;
         }
@@ -39,7 +32,7 @@ namespace Bruttissimo.Domain.Logic
             foreach (Post post in posts)
             {
                 string userAccessToken = GetUserAccessToken(post);
-                FacebookPost result = facebookRepository.PostToFeed(post, userAccessToken);
+                FacebookPost result = fbRepository.PostToFeed(post, userAccessToken);
 
                 if (result == null) // post failed.
                 {
@@ -64,7 +57,7 @@ namespace Bruttissimo.Domain.Logic
             }
             string accessToken = userRepository.GetFacebookAccessToken(post.User);
 
-            bool valid = facebookRepository.ValidateToken(accessToken);
+            bool valid = fbRepository.ValidateToken(accessToken);
             if (!valid)
             {
                 userRepository.RevokeFacebookAccessToken(accessToken);

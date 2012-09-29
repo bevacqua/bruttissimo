@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc;
 using SignalR;
 
@@ -17,22 +18,17 @@ namespace Bruttissimo.Mvc
 
         public static void RegisterSignalR(RouteCollection routes)
         {
-            if (routes == null)
-            {
-                throw new ArgumentNullException("routes");
-            }
+            Ensure.That(routes, "routes").IsNotNull();
+
             // this special route is for SignalR hubs.
             routes.MapHubs("~/realtime");
         }
 
         public static void RegisterRoutes(RouteCollection routes)
         {
-            if (routes == null)
-            {
-                throw new ArgumentNullException("routes");
-            }
+            Ensure.That(routes, "routes").IsNotNull();
+
             RegisterRouteIgnores(routes);
-            
             RegisterViewRoutes(routes);
 
             // this route is intended to catch 404 Not Found errors instead of bubbling them all the way up to IIS.

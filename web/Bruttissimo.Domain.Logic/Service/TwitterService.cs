@@ -1,4 +1,5 @@
 using System;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain.Logic
@@ -10,14 +11,9 @@ namespace Bruttissimo.Domain.Logic
 
         public TwitterService(ITwitterExporterService exporterService, ILogRepository logRepository)
         {
-            if (exporterService == null)
-            {
-                throw new ArgumentNullException("exporterService");
-            }
-            if (logRepository == null)
-            {
-                throw new ArgumentNullException("logRepository");
-            }
+            Ensure.That(exporterService, "exporterService").IsNotNull();
+            Ensure.That(logRepository, "logRepository").IsNotNull();
+
             this.exporterService = exporterService;
             this.logRepository = logRepository;
         }

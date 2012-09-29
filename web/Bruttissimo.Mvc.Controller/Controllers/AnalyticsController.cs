@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain;
 using Bruttissimo.Mvc.Model;
@@ -13,10 +14,8 @@ namespace Bruttissimo.Mvc.Controller
 
         public AnalyticsController(IGoogleAnalyticsService analyticsService)
         {
-            if (analyticsService == null)
-            {
-                throw new ArgumentNullException("analyticsService");
-            }
+            Ensure.That(analyticsService, "analyticsService").IsNotNull();
+
             this.analyticsService = analyticsService;
         }
 

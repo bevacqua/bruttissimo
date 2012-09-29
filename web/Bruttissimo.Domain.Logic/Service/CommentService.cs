@@ -23,11 +23,9 @@ namespace Bruttissimo.Domain.Logic
 
             if (parentId.HasValue)
             {
+                // prevent nesting deeper than one level.
                 Comment parent = commentRepository.GetById(parentId.Value);
-                if (parent == null || parent.ParentId.HasValue) // prevent nesting deeper than one level.
-                {
-                    throw new ArgumentOutOfRangeException("parentId");
-                }
+                Ensure.That(() => parent == null || parent.ParentId.HasValue).IsFalseOrThrow<ArgumentOutOfRangeException>();
             }
             Comment comment = new Comment
             {

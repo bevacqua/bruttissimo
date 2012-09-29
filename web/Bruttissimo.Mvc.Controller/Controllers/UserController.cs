@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc;
 using Bruttissimo.Domain;
 using Bruttissimo.Mvc.Model;
@@ -14,14 +15,9 @@ namespace Bruttissimo.Mvc.Controller
 
         public UserController(IFormsAuthentication formsAuthentication, IAuthenticationService authenticationService)
         {
-            if (formsAuthentication == null)
-            {
-                throw new ArgumentNullException("formsAuthentication");
-            }
-            if (authenticationService == null)
-            {
-                throw new ArgumentNullException("authenticationService");
-            }
+            Ensure.That(formsAuthentication, "formsAuthentication").IsNotNull();
+            Ensure.That(authenticationService, "authenticationService").IsNotNull();
+
             this.formsAuthentication = formsAuthentication;
             this.authenticationService = authenticationService;
         }
@@ -59,27 +55,27 @@ namespace Bruttissimo.Mvc.Controller
             switch (model.Source)
             {
                 case AuthenticationSource.Facebook:
-                    {
-                        return process(authenticationService.AuthenticateWithFacebook(model.UserId, model.AccessToken));
-                    }
+                {
+                    return process(authenticationService.AuthenticateWithFacebook(model.UserId, model.AccessToken));
+                }
                 case AuthenticationSource.Twitter:
-                    {
-                        return process(authenticationService.AuthenticateWithTwitter(model.UserId, model.DisplayName));
-                    }
+                {
+                    return process(authenticationService.AuthenticateWithTwitter(model.UserId, model.DisplayName));
+                }
                 case AuthenticationSource.OpenId:
+                {
+                    string route = urlHelper.PublicAction("Authenticate", "User", new
                     {
-                        string route = urlHelper.PublicAction("Authenticate", "User", new
-                        {
-                            source = "openid",
-                            returnUrl = model.ReturnUrl // the actual returnUrl where the user will be ultimately redirected to.
-                        });
-                        Uri returnUrl = new Uri(route); // this is the returnUrl for the provider to complete authentication.
-                        return process(authenticationService.AuthenticateWithOpenId(model.OpenIdProvider, returnUrl));
-                    }
+                        source = "openid",
+                        returnUrl = model.ReturnUrl // the actual returnUrl where the user will be ultimately redirected to.
+                    });
+                    Uri returnUrl = new Uri(route); // this is the returnUrl for the provider to complete authentication.
+                    return process(authenticationService.AuthenticateWithOpenId(model.OpenIdProvider, returnUrl));
+                }
                 default:
-                    {
-                        return process(null);
-                    }
+                {
+                    return process(null);
+                }
             }
         }
 
@@ -93,35 +89,35 @@ namespace Bruttissimo.Mvc.Controller
             switch (result.Status)
             {
                 case ConnectionStatus.Canceled:
-                    {
-                        return RedirectToAction("Login");
-                    }
+                {
+                    return RedirectToAction("Login");
+                }
                 case ConnectionStatus.Faulted:
-                    {
-                        ModelState.AddModelError("Authentication", Common.Resources.User.AuthenticationFaulted);
-                        return InvalidModelState(model);
-                    }
+                {
+                    ModelState.AddModelError("Authentication", Common.Resources.User.AuthenticationFaulted);
+                    return InvalidModelState(model);
+                }
                 case ConnectionStatus.RedirectToProvider:
-                    {
-                        return result.Action;
-                    }
+                {
+                    return result.Action;
+                }
                 case ConnectionStatus.InvalidCredentials:
-                    {
-                        ModelState.AddModelError("Authentication", Common.Resources.User.AuthenticationError);
-                        return InvalidModelState(model);
-                    }
+                {
+                    ModelState.AddModelError("Authentication", Common.Resources.User.AuthenticationError);
+                    return InvalidModelState(model);
+                }
                 case ConnectionStatus.Authenticated:
+                {
+                    if (result.UserId.HasValue)
                     {
-                        if (result.UserId.HasValue)
+                        if (!model.ReturnUrl.NullOrEmpty())
                         {
-                            if (!model.ReturnUrl.NullOrEmpty())
-                            {
-                                return Redirect(model.ReturnUrl);
-                            }
-                            return RedirectToAction("Index", "Home");
+                            return Redirect(model.ReturnUrl);
                         }
-                        break;
+                        return RedirectToAction("Index", "Home");
                     }
+                    break;
+                }
             }
             return RedirectToAction("Login"); // sanity
         }
@@ -140,8 +136,7 @@ namespace Bruttissimo.Mvc.Controller
         [ExtendedAuthorize]
         public ActionResult Settings()
         {
-            return NotFound();
-            // TODO return View();
+            return NotFound(); // TODO return View();
         }
     }
 }

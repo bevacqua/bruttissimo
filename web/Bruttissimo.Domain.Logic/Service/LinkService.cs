@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain.Logic
@@ -15,18 +16,10 @@ namespace Bruttissimo.Domain.Logic
 
         public LinkService(ILinkRepository linkRepository, ILinkCrawlerService linkCrawler, HttpHelper httpHelper)
         {
-            if (linkRepository == null)
-            {
-                throw new ArgumentNullException("linkRepository");
-            }
-            if (linkCrawler == null)
-            {
-                throw new ArgumentNullException("linkCrawler");
-            }
-            if (httpHelper == null)
-            {
-                throw new ArgumentNullException("httpHelper");
-            }
+            Ensure.That(linkRepository, "linkRepository").IsNotNull();
+            Ensure.That(linkCrawler, "linkCrawler").IsNotNull();
+            Ensure.That(httpHelper, "httpHelper").IsNotNull();
+            
             this.linkRepository = linkRepository;
             this.linkCrawler = linkCrawler;
             this.httpHelper = httpHelper;
@@ -37,10 +30,8 @@ namespace Bruttissimo.Domain.Logic
         /// </summary>
         public LinkResult ParseUserInput(string text)
         {
-            if (text == null)
-            {
-                throw new ArgumentNullException("text");
-            }
+            Ensure.That(text, "text").IsNotNull();
+
             IList<Uri> uris = GetReferenceUris(text);
             LinkResult result = GetExistingLinkOrCrawlResource(uris);
             return result;
@@ -51,10 +42,8 @@ namespace Bruttissimo.Domain.Logic
         /// </summary>
         public IList<Uri> GetReferenceUris(string text)
         {
-            if (text == null)
-            {
-                throw new ArgumentNullException("text");
-            }
+            Ensure.That(text, "text").IsNotNull();
+
             MatchCollection matches = CompiledRegex.WebLink.Matches(text);
             IList<Uri> uris = matches
                 .Cast<Match>()
@@ -67,10 +56,8 @@ namespace Bruttissimo.Domain.Logic
 
         internal LinkResult GetExistingLinkOrCrawlResource(IEnumerable<Uri> uris)
         {
-            if (uris == null)
-            {
-                throw new ArgumentNullException("uris");
-            }
+            Ensure.That(uris, "uris").IsNotNull();
+
             Uri uri = uris.FirstOrDefault();
             if (uri == null)
             {

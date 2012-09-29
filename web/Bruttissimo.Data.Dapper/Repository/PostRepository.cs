@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
 using Dapper;
@@ -16,10 +17,8 @@ namespace Bruttissimo.Data.Dapper
         public PostRepository(IDbConnection connection)
             : base(connection)
         {
-            if (connection == null)
-            {
-                throw new ArgumentNullException("connection");
-            }
+            Ensure.That(connection, "connection").IsNotNull();
+
             this.connection = connection;
         }
 
@@ -73,11 +72,9 @@ namespace Bruttissimo.Data.Dapper
         }
 
 		public override Post Insert(Post entity)
-		{
-			if (entity == null)
-			{
-				throw new ArgumentNullException("entity");
-			}
+        {
+            Ensure.That(entity, "entity").IsNotNull();
+
 			DateTime now = DateTime.UtcNow;
 			entity.Created = now;
 			entity.Updated = now;
@@ -86,10 +83,9 @@ namespace Bruttissimo.Data.Dapper
 
 		public Post Insert(Link link, string message, User user)
         {
-            if (link == null)
-            {
-                throw new ArgumentNullException("link");
-            }
+            Ensure.That(link, "link").IsNotNull();
+            Ensure.That(user, "user").IsNotNull();
+
             DateTime now = DateTime.UtcNow;
             Post post = new Post
             {

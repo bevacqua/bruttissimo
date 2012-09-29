@@ -1,4 +1,5 @@
 using System;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain.Logic
@@ -11,18 +12,10 @@ namespace Bruttissimo.Domain.Logic
 
         public FacebookService(IFacebookImporterService importerService, IFacebookExporterService exporterService, ILogRepository logRepository)
         {
-            if (importerService == null)
-            {
-                throw new ArgumentNullException("importerService");
-            }
-            if (exporterService == null)
-            {
-                throw new ArgumentNullException("exporterService");
-            }
-            if (logRepository == null)
-            {
-                throw new ArgumentNullException("logRepository");
-            }
+            Ensure.That(importerService, "importerService").IsNotNull();
+            Ensure.That(exporterService, "exporterService").IsNotNull();
+            Ensure.That(logRepository, "logRepository").IsNotNull();
+
             this.importerService = importerService;
             this.exporterService = exporterService;
             this.logRepository = logRepository;
@@ -30,10 +23,8 @@ namespace Bruttissimo.Domain.Logic
 
         public void Import(string feed)
         {
-            if (feed == null)
-            {
-                throw new ArgumentNullException("feed");
-            }
+            Ensure.That(feed, "feed").IsNotNull();
+
             FacebookImportLog entry = new FacebookImportLog
             {
                 FacebookFeedId = feed,
