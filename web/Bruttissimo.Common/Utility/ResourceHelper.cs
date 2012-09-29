@@ -1,6 +1,7 @@
 using System;
 using System.Reflection;
 using System.Text;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Resources;
 
 namespace Bruttissimo.Common
@@ -26,10 +27,8 @@ namespace Bruttissimo.Common
 
         protected ResourceHelper(string namespaceRoot)
         {
-            if (namespaceRoot == null)
-            {
-                throw new ArgumentNullException("namespaceRoot");
-            }
+            Ensure.That(namespaceRoot, "namespaceRoot").IsNotNull();
+
             this.namespaceRoot = namespaceRoot;
         }
 
@@ -95,39 +94,15 @@ namespace Bruttissimo.Common
         /// <summary>
         /// Returns a resource based on its resource maanger type and resource string name.
         /// </summary>
-        internal string GetStringResource(Type resourceType, string resourceName, bool throwIfNotFound = false)
+        internal string GetStringResource(Type resourceType, string resourceName)
         {
-            if (resourceType == null)
+            if (resourceType == null || resourceName == null)
             {
-                if (throwIfNotFound)
-                {
-                    throw new ArgumentNullException("resourceType");
-                }
                 return resourceName;
-            }
-            if (resourceName == null)
-            {
-                if (throwIfNotFound)
-                {
-                    throw new ArgumentNullException("resourceName");
-                }
-                return null;
             }
             PropertyInfo property = resourceType.GetProperty(resourceName, BindingFlags.Public | BindingFlags.Static);
-            if (property == null)
+            if (property == null || property.PropertyType != typeof(string))
             {
-                if (throwIfNotFound)
-                {
-                    throw new InvalidOperationException(Error.ResourceTypeNoProperty.FormatWith(resourceName));
-                }
-                return resourceName;
-            }
-            if (property.PropertyType != typeof (string))
-            {
-                if (throwIfNotFound)
-                {
-                    throw new InvalidOperationException(Error.ResourceTypeNotString.FormatWith(resourceName));
-                }
                 return resourceName;
             }
             return (string)property.GetValue(null, null);

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Bruttissimo.Common.Guard;
 using Quartz;
 using log4net;
 
@@ -14,14 +15,9 @@ namespace Bruttissimo.Common
 
         public JobAutoRunner(IScheduler scheduler, IList<Type> jobTypes)
         {
-            if (scheduler == null)
-            {
-                throw new ArgumentNullException("scheduler");
-            }
-            if (jobTypes == null)
-            {
-                throw new ArgumentNullException("jobTypes");
-            }
+            Ensure.That(scheduler, "scheduler").IsNotNull();
+            Ensure.That(jobTypes, "jobTypes").IsNotNull();
+
             this.scheduler = scheduler;
             this.jobTypes = jobTypes;
         }

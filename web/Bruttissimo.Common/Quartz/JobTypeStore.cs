@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Bruttissimo.Common.Guard;
 
 namespace Bruttissimo.Common
 {
@@ -22,14 +23,9 @@ namespace Bruttissimo.Common
 
         public JobTypeStore(IEnumerable<Type> allTypes, IEnumerable<Type> autoRunTypes)
         {
-            if (allTypes == null)
-            {
-                throw new ArgumentNullException("allTypes");
-            }
-            if (autoRunTypes == null)
-            {
-                throw new ArgumentNullException("autoRunTypes");
-            }
+            Ensure.That(allTypes, "allTypes").IsNotNull();
+            Ensure.That(autoRunTypes, "autoRunTypes").IsNotNull();
+
             this.allTypes = new ReadOnlyCollection<Type>(allTypes.ToList());
             this.autoRunTypes = new ReadOnlyCollection<Type>(autoRunTypes.ToList());
         }

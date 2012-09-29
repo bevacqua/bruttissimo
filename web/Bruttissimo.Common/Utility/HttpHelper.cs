@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Resources;
 using HtmlAgilityPack;
 using log4net;
@@ -16,10 +17,8 @@ namespace Bruttissimo.Common
 
         public Uri ConvertToUri(string uriText)
         {
-            if (uriText == null)
-            {
-                throw new ArgumentNullException("uriText");
-            }
+            Ensure.That(uriText, "uriText").IsNotNullOrEmpty();
+
             if (!uriText.StartsWith("http"))
             {
                 uriText = "http://{0}".FormatWith(uriText);
@@ -62,10 +61,8 @@ namespace Bruttissimo.Common
         /// </summary>
         public WebHeaderCollection DownloadHttpHeader(Uri endpoint, bool retryWithGet = false)
         {
-            if (endpoint == null)
-            {
-                throw new ArgumentNullException("endpoint");
-            }
+            Ensure.That(endpoint, "endpoint").IsNotNull();
+
             try
             {
                 using (ExtendedWebClient client = new ExtendedWebClient {Method = Constants.HttpHeadRequest})
@@ -108,10 +105,8 @@ namespace Bruttissimo.Common
         /// </summary>
         public Image DownloadAsImage(Uri endpoint, bool inferContentTypeFromHttpHeaders = false)
         {
-            if (endpoint == null)
-            {
-                throw new ArgumentNullException("endpoint");
-            }
+            Ensure.That(endpoint, "endpoint").IsNotNull();
+
             log.DebugFormat(Debug.DownloadingAsImage, endpoint);
             try
             {
@@ -148,10 +143,8 @@ namespace Bruttissimo.Common
         /// </summary>
         public HtmlDocument DownloadAsHtml(Uri endpoint)
         {
-            if (endpoint == null)
-            {
-                throw new ArgumentNullException("endpoint");
-            }
+            Ensure.That(endpoint, "endpoint").IsNotNull();
+
             log.DebugFormat(Debug.DownloadingAsHtml, endpoint);
             try
             {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
+using Bruttissimo.Common.Guard;
 
 namespace Bruttissimo.Common
 {
@@ -19,10 +20,8 @@ namespace Bruttissimo.Common
         /// </summary>
         public long ComputeAsLong(string input)
         {
-            if (input == null)
-            {
-                throw new ArgumentNullException("input");
-            }
+            Ensure.That(input, "input").IsNotNull();
+
             byte[] checksum = Compute(input);
             long hash = BitConverter.ToInt64(checksum, 0);
             return hash;
@@ -33,10 +32,8 @@ namespace Bruttissimo.Common
         /// </summary>
         public string ComputeAsString(string input)
         {
-            if (input == null)
-            {
-                throw new ArgumentNullException("input");
-            }
+            Ensure.That(input, "input").IsNotNull();
+
             byte[] checksum = Compute(input);
             string hash = BitConverter.ToString(checksum, 0);
             return hash;
