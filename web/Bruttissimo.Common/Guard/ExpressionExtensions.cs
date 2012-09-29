@@ -15,30 +15,31 @@ namespace Bruttissimo.Common.Guard
             return path + e.Member.Name;
         }
 
-        internal static MemberExpression GetRightMostMember(this Expression e)
+        internal static MemberExpression GetRightMostMember(this Expression expression)
         {
-			if (e is LambdaExpression)
-				return GetRightMostMember(((LambdaExpression)e).Body);
+            var lambdaExpression = expression as LambdaExpression;
+            if (lambdaExpression != null)
+                return GetRightMostMember(lambdaExpression.Body);
 
-			if (e is MemberExpression)
-				return (MemberExpression)e;
+            var rightMostMember = expression as MemberExpression;
+            if (rightMostMember != null)
+                return rightMostMember;
 
-			if (e is MethodCallExpression)
-			{
-				var callExpression = (MethodCallExpression)e;
+            var callExpression = expression as MethodCallExpression;
+            if (callExpression != null)
+            {
+                if (callExpression.Object is MethodCallExpression || callExpression.Object is MemberExpression)
+                    return GetRightMostMember(callExpression.Object);
 
-				if (callExpression.Object is MethodCallExpression || callExpression.Object is MemberExpression)
-					return GetRightMostMember(callExpression.Object);
+                var member = callExpression.Arguments.Count > 0 ? callExpression.Arguments[0] : callExpression.Object;
+                return GetRightMostMember(member);
+            }
 
-				var member = callExpression.Arguments.Count > 0 ? callExpression.Arguments[0] : callExpression.Object;
-				return GetRightMostMember(member);
-			}
-
-			if (e is UnaryExpression)
-			{
-				var unaryExpression = (UnaryExpression)e;
-				return GetRightMostMember(unaryExpression.Operand);
-			}
+            var unaryExpression = expression as UnaryExpression;
+            if (unaryExpression != null)
+            {
+                return GetRightMostMember(unaryExpression.Operand);
+            }
 
             return null;
         }

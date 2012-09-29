@@ -8,9 +8,10 @@ namespace Bruttissimo.Common.Mvc
     {
         public static bool IsHttpNotFound(this Exception exception)
         {
-            if (exception is HttpException)
+            var httpException = exception as HttpException;
+            if (httpException != null)
             {
-                return ((HttpException)exception).GetHttpCode() == (int)HttpStatusCode.NotFound;
+                return httpException.GetHttpCode() == (int)HttpStatusCode.NotFound;
             }
             return false;
         }

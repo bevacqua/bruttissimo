@@ -147,7 +147,9 @@
     <EmbeddedResource Include="ResourceStream\www.cronica.com.ardiario2012030522140-matan-a-delincuente-en-feroz-tiroteo.html" />
     <EmbeddedResource Include="ResourceStream\www.infobae.comnotastergiversado-respecto-del-tema-Malvinas.html" />
     <EmbeddedResource Include="ResourceStream\www.la-razon.comnacionalDelegados-Bolivia-EEUU-cooperacion-comercial_0_1571842855.html" />
-    <EmbeddedResource Include="ResourceStream\www.rosario3.comnoticiaspolicialesnoticias.aspx" />
+    <EmbeddedResource Include="ResourceStream\www.rosario3.comnoticiaspolicialesnoticias.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ResourceStream\elsensacional.infonews.comnota7150-gordito-alzado" />

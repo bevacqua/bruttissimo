@@ -27,13 +27,6 @@ namespace Bruttissimo.Tests.Mocking
             return linkRepository;
         }
 
-        private static IPostRepository FakePostRepository()
-        {
-            Mock<IPostRepository> mock = new Mock<IPostRepository>();
-            IPostRepository postRepository = mock.Object;
-            return postRepository;
-        }
-
         public static IPictureRepository FakeImageRepository()
         {
             Mock<IPictureRepository> mock = new Mock<IPictureRepository>();
