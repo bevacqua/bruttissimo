@@ -8,7 +8,7 @@ using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain.Logic
 {
-    public class TwitterExporterService : BaseService, ITwitterExporterService
+    public class TwitterExporterService : ExporterService<TwitterPost>, ITwitterExporterService
     {
         private const int MAX_TWEET_LENGTH = 140;
 
@@ -29,27 +29,28 @@ namespace Bruttissimo.Domain.Logic
 
         public void Export(TwitterExportLog entry)
         {
+            base.Export(entry);
+        }
+
+        protected override IList<Post> GetPostsToExport()
+        {
             IList<Post> posts = postRepository.GetPostsPendingTwitterExport().ToList();
+            return posts;
+        }
 
-            int exportCount = 0;
+        protected override TwitterPost Send(Post post)
+        {
+            string status = GetStatusMessageForPost(post);
+            TwitterPost response = twitterRepository.PostToFeed(status);
+            return response;
+        }
 
-            foreach (Post post in posts)
-            {
-                string status = GetStatusMessageForPost(post);
-                TwitterPost result = twitterRepository.PostToFeed(status);
+        protected override void Update(Post post, TwitterPost response)
+        {
+            post.TwitterPostId = response.Id;
+            post.TwitterUserId = response.FromId;
 
-                if (result == null) // post failed.
-                {
-                    continue;
-                }
-                post.TwitterPostId = result.Id;
-                post.TwitterUserId = result.FromId;
-
-                postRepository.Update(post);
-                exportCount++;
-            }
-            entry.ExportCount = exportCount;
-            entry.PostCount = posts.Count;
+            postRepository.Update(post);
         }
 
         private string GetStatusMessageForPost(Post post)

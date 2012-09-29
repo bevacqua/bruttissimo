@@ -94,34 +94,22 @@ namespace Dapper.Contrib.Extensions
         public static long Insert<T>(this IDbConnection connection, T entityToInsert, IDbTransaction transaction = null, int? commandTimeout = null) where T : class
         {
             Type type = typeof (T);
-            StringBuilder columnList = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
 
-            List<PropertyInfo> allProperties = TypePropertiesCache(type).ToList();
-            PropertyInfo key = allProperties.First(prop => prop.Name.ToLowerInvariant() == "id");
-            List<PropertyInfo> allPropertiesExceptKey = allProperties.Except(new[] {key}).ToList();
-
-            for (int i = 0; i < allPropertiesExceptKey.Count; i++)
-            {
-                PropertyInfo property = allPropertiesExceptKey.ElementAt(i);
-                columnList.Append(property.Name);
-                if (i < allPropertiesExceptKey.Count - 1)
-                {
-                    columnList.Append(", ");
-                }
-            }
-
+            EntityProperties props = AppendProperties(type, sb, property => sb.Append(property.Name));
+            
             StringBuilder parameterList = new StringBuilder();
-            for (int i = 0; i < allPropertiesExceptKey.Count; i++)
+            for (int i = 0; i < props.AllExceptKey.Count; i++)
             {
-                PropertyInfo property = allPropertiesExceptKey.ElementAt(i);
+                PropertyInfo property = props.AllExceptKey.ElementAt(i);
                 parameterList.AppendFormat("@{0}", property.Name);
-                if (i < allPropertiesExceptKey.Count - 1)
+                if (i < props.AllExceptKey.Count - 1)
                 {
                     parameterList.Append(", ");
                 }
             }
             ISqlAdapter adapter = GetFormatter(connection);
-            int id = adapter.Insert(connection, transaction, commandTimeout, type.Name, columnList.ToString(), parameterList.ToString(), key, entityToInsert);
+            int id = adapter.Insert(connection, transaction, commandTimeout, type.Name, sb.ToString(), parameterList.ToString(), props.Key, entityToInsert);
             return id;
         }
 
@@ -146,22 +134,43 @@ namespace Dapper.Contrib.Extensions
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat("UPDATE [{0}] SET ", type.Name);
 
-            IEnumerable<PropertyInfo> allProperties = TypePropertiesCache(type).ToList();
+            AppendProperties(type, sb, property => sb.AppendFormat("{0} = @{1}", property.Name, property.Name));
+
+            sb.AppendFormat(" WHERE [{0}].[Id] = @Id", type.Name);
+            int updated = connection.Execute(sb.ToString(), entityToUpdate, commandTimeout: commandTimeout, transaction: transaction);
+            return updated > 0;
+        }
+        
+        private static EntityProperties AppendProperties(Type type, StringBuilder builder, Action<PropertyInfo> appendColumn)
+        {
+            IList<PropertyInfo> allProperties = TypePropertiesCache(type).ToList();
             PropertyInfo key = allProperties.First(prop => prop.Name.ToLowerInvariant() == "id");
-            List<PropertyInfo> allPropertiesExceptKey = allProperties.Except(new[] {key}).ToList();
+            IList<PropertyInfo> allPropertiesExceptKey = allProperties.Except(new[] { key }).ToList();
 
             for (int i = 0; i < allPropertiesExceptKey.Count; i++)
             {
                 PropertyInfo property = allPropertiesExceptKey.ElementAt(i);
-                sb.AppendFormat("{0} = @{1}", property.Name, property.Name);
+                appendColumn(property);
+
                 if (i < allPropertiesExceptKey.Count - 1)
                 {
-                    sb.AppendFormat(", ");
+                    builder.Append(", ");
                 }
             }
-            sb.AppendFormat(" WHERE [{0}].[Id] = @Id", type.Name);
-            int updated = connection.Execute(sb.ToString(), entityToUpdate, commandTimeout: commandTimeout, transaction: transaction);
-            return updated > 0;
+
+            return new EntityProperties
+            {
+                Key = key,
+                All = allProperties,
+                AllExceptKey = allPropertiesExceptKey
+            };
+        }
+
+        private class EntityProperties
+        {
+            public PropertyInfo Key { get; set; }
+            public IList<PropertyInfo> All { get; set; }
+            public IList<PropertyInfo> AllExceptKey { get; set; }
         }
 
         /// <summary>

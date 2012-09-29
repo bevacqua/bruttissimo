@@ -2,7 +2,7 @@ using System;
 
 namespace Bruttissimo.Domain.Entity
 {
-    public class FacebookExportLog
+    public class FacebookExportLog : IExportLog
     {
         public long Id { get; set; }
         public DateTime StartDate { get; set; }

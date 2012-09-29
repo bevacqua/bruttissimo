@@ -2,7 +2,7 @@ using System;
 
 namespace Bruttissimo.Domain.Entity
 {
-    public class TwitterExportLog
+    public class TwitterExportLog : IExportLog
     {
         public long Id { get; set; }
         public DateTime StartDate { get; set; }

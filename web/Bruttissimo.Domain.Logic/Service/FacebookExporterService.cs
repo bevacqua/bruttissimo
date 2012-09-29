@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Bruttissimo.Common.Guard;
@@ -6,7 +5,7 @@ using Bruttissimo.Domain.Entity;
 
 namespace Bruttissimo.Domain.Logic
 {
-    public class FacebookExporterService : IFacebookExporterService
+    public class FacebookExporterService : ExporterService<FacebookPost>, IFacebookExporterService
     {
         private readonly IFacebookRepository fbRepository;
         private readonly IPostRepository postRepository;
@@ -25,28 +24,29 @@ namespace Bruttissimo.Domain.Logic
 
         public void Export(FacebookExportLog entry)
         {
+            base.Export(entry);
+        }
+
+        protected override IList<Post> GetPostsToExport()
+        {
             IList<Post> posts = postRepository.GetPostsPendingFacebookExport().ToList();
+            return posts;
+        }
 
-            int exportCount = 0;
+        protected override FacebookPost Send(Post post)
+        {
+            string userAccessToken = GetUserAccessToken(post);
+            FacebookPost response = fbRepository.PostToFeed(post, userAccessToken);
+            return response;
+        }
 
-            foreach (Post post in posts)
-            {
-                string userAccessToken = GetUserAccessToken(post);
-                FacebookPost result = fbRepository.PostToFeed(post, userAccessToken);
+        protected override void Update(Post post, FacebookPost response)
+        {
+            post.FacebookPostId = response.Id;
+            post.FacebookUserId = response.From.Id;
+            post.FacebookFeedId = response.To.Data[0].Id;
 
-                if (result == null) // post failed.
-                {
-                    continue;
-                }
-                post.FacebookPostId = result.Id;
-                post.FacebookUserId = result.From.Id;
-                post.FacebookFeedId = result.To.Data[0].Id;
-
-                postRepository.Update(post);
-                exportCount++;
-            }
-            entry.ExportCount = exportCount;
-            entry.PostCount = posts.Count;
+            postRepository.Update(post);
         }
 
         internal string GetUserAccessToken(Post post)
