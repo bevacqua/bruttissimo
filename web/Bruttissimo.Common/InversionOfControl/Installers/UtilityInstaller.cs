@@ -2,7 +2,7 @@ using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.InversionOfControl.Installers
 {
     /// <summary>
     /// Registers all internal component dependencies, such as common utility classes.

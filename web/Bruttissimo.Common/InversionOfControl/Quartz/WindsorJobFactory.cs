@@ -1,4 +1,5 @@
 using System;
+using Bruttissimo.Common.Guard;
 using Castle.MicroKernel;
 using Quartz;
 using Quartz.Spi;
@@ -8,17 +9,14 @@ namespace Bruttissimo.Common
 {
     public class WindsorJobFactory : IJobFactory
     {
-        private const string EXCEPTION_INSTANTIATING_JOB = "An error ocurred instantiating job type {0}";
+        private const string EXCEPTION_INSTANTIATING_JOB = "An error occurred instantiating job type {0}";
 
         private readonly ILog log = LogManager.GetLogger(typeof(WindsorJobFactory));
         private readonly IKernel kernel;
 
         public WindsorJobFactory(IKernel kernel)
         {
-            if (kernel == null)
-            {
-                throw new ArgumentNullException("kernel");
-            }
+            Ensure.That(kernel, "kernel").IsNotNull();
             this.kernel = kernel;
         }
 

@@ -1,11 +1,12 @@
 using System;
-using System.Collections.Concurrent;
 using System.Linq;
 using System.Reflection;
+using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.InversionOfControl.Resources;
 using Castle.DynamicProxy;
 using Castle.MicroKernel;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.InversionOfControl
 {
     /// <summary>
     /// Interceptor to release components in contexts other than per web request.
@@ -14,6 +15,17 @@ namespace Bruttissimo.Common
     /// <typeparam name="T">The type that implements IDisposable.</typeparam>
     public class ReleaseComponentInterceptor<T> : IInterceptor where T : class
     {
+        static ReleaseComponentInterceptor()
+        {
+            Type type = typeof(T);
+
+            bool disposable = type.GetInterfaces().All(@interface => @interface != typeof(IDisposable));
+            if (!disposable)
+            {
+                throw new NotSupportedException(Exceptions.ReleaseComponentInterceptor_NotSupported.FormatWith(type.Name));
+            }
+        }
+
         private static readonly MethodInfo dispose = typeof(T).GetInterfaceMap(typeof(IDisposable)).TargetMethods.Single();
 
         private readonly IKernel kernel;
@@ -21,10 +33,7 @@ namespace Bruttissimo.Common
 
         public ReleaseComponentInterceptor(IKernel kernel)
         {
-            if (kernel == null)
-            {
-                throw new ArgumentNullException("kernel");
-            }
+            Ensure.That(kernel, "kernel").IsNotNull();
             this.kernel = kernel;
         }
 

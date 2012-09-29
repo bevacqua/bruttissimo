@@ -12,11 +12,9 @@ namespace Bruttissimo.Common.Guard
 
         public static Param<T> That<T>(Expression<Func<T>> expression)
         {
-            var memberExpression = expression.GetRightMostMember();
+            MemberExpression memberExpression = expression.GetRightMostMember();
 
-            return new Param<T>(
-                memberExpression.ToPath(),
-                expression.Compile().Invoke());
+            return new Param<T>(memberExpression.ToPath(), expression.Compile().Invoke());
         }
 
         public static TypeParam ThatTypeFor<T>(T value, string name = Param.DefaultName)

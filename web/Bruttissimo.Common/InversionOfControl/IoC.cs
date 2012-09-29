@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Castle.Windsor;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.InversionOfControl
 {
     public static class IoC
     {
@@ -18,7 +18,7 @@ namespace Bruttissimo.Common
             {
                 if (Accessor == null)
                 {
-                    throw new InvalidOperationException(Resources.Error.NoContainerInitialized);
+                    throw new InvalidOperationException(Bruttissimo.Common.Resources.Error.NoContainerInitialized);
                 }
                 return Accessor.Container;
             }

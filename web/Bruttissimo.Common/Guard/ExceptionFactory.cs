@@ -4,22 +4,31 @@ namespace Bruttissimo.Common.Guard
 {
     public static class ExceptionFactory
     {
-        public static ArgumentException CreateForParamValidation(Param param, string message)
+        public static ArgumentException Create(Param param, string message)
         {
-            return new ArgumentException(
-                param.ExtraMessageFn == null 
-                    ? message 
-                    : string.Concat(message, Environment.NewLine, param.ExtraMessageFn()),
-                param.Name);
+            return new ArgumentException(GetMessage(param, message), param.Name);
         }
 
-        public static ArgumentNullException CreateForParamNullValidation(Param param, string message)
+        public static ArgumentNullException CreateForNull(Param param, string message)
         {
-            return new ArgumentNullException(
-                param.Name, 
-                param.ExtraMessageFn == null 
-                    ? message 
-                    : string.Concat(message, Environment.NewLine, param.ExtraMessageFn()));
+            return new ArgumentNullException(param.Name, GetMessage(param, message));
+        }
+
+        public static InvalidOperationException CreateForNonNull(Param param, string message)
+        {
+            return new InvalidOperationException(GetMessage(param, message));
+        }
+
+        internal static string GetMessage(Param param, string message)
+        {
+            if (param.ExtraMessage == null)
+            {
+                return message;
+            }
+            else
+            {
+                return string.Concat(message, Environment.NewLine, param.ExtraMessage());
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using Bruttissimo.Common;
+using Bruttissimo.Common.InversionOfControl;
 using log4net.Appender;
 using log4net.Core;
 

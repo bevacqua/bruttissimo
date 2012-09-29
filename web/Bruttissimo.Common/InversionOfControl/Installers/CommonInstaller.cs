@@ -1,10 +1,10 @@
-using System;
 using System.Reflection;
+using Bruttissimo.Common.Guard;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.InversionOfControl.Installers
 {
     /// <summary>
     /// Registers all common dependencies.
@@ -16,14 +16,8 @@ namespace Bruttissimo.Common
 
         public CommonInstaller(Assembly jobAssembly, Assembly[] mapperAssemblies)
         {
-            if (jobAssembly == null)
-            {
-                throw new ArgumentNullException("jobAssembly");
-            }
-            if (mapperAssemblies == null)
-            {
-                throw new ArgumentNullException("mapperAssemblies");
-            }
+            Ensure.That(jobAssembly, "jobAssembly").IsNotNull();
+            Ensure.That(mapperAssemblies, "mapperAssemblies").IsNotNull();
             this.jobAssembly = jobAssembly;
             this.mapperAssemblies = mapperAssemblies;
         }

@@ -6,8 +6,8 @@ namespace Bruttissimo.Common.Guard
     {
         public readonly Type Type;
 
-        internal TypeParam(string name, Type type, Func<string> extraMessageFn = null)
-            : base(name, extraMessageFn)
+        internal TypeParam(string name, Type type, Func<string> extraMessage = null)
+            : base(name, extraMessage)
         {
             Type = type;
         }

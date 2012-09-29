@@ -1,6 +1,7 @@
 using System;
 using System.Web;
 using Bruttissimo.Common;
+using Bruttissimo.Common.InversionOfControl;
 using Bruttissimo.Common.Mvc;
 
 namespace Bruttissimo.Domain.Logic

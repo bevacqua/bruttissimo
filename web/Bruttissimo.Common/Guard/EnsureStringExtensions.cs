@@ -10,7 +10,7 @@ namespace Bruttissimo.Common.Guard
         public static Param<string> IsNotNullOrWhiteSpace(this Param<string> param)
         {
             if (string.IsNullOrWhiteSpace(param.Value))
-                throw ExceptionFactory.CreateForParamValidation(param, Exceptions.EnsureExtensions_IsNotNullOrWhiteSpace);
+                throw ExceptionFactory.Create(param, Exceptions.EnsureExtensions_IsNotNullOrWhiteSpace);
 
             return param;
         }
@@ -19,7 +19,7 @@ namespace Bruttissimo.Common.Guard
         public static Param<string> IsNotNullOrEmpty(this Param<string> param)
         {
             if (string.IsNullOrEmpty(param.Value))
-                throw ExceptionFactory.CreateForParamValidation(param, Exceptions.EnsureExtensions_IsNotNullOrEmpty);
+                throw ExceptionFactory.Create(param, Exceptions.EnsureExtensions_IsNotNullOrEmpty);
 
             return param;
         }
@@ -28,15 +28,15 @@ namespace Bruttissimo.Common.Guard
         public static Param<string> HasLengthBetween(this Param<string> param, int minLength, int maxLength)
         {
             if (string.IsNullOrEmpty(param.Value))
-                throw ExceptionFactory.CreateForParamValidation(param, Exceptions.EnsureExtensions_IsNotNullOrEmpty);
+                throw ExceptionFactory.Create(param, Exceptions.EnsureExtensions_IsNotNullOrEmpty);
 
             var length = param.Value.Length;
 
             if (length < minLength)
-                throw ExceptionFactory.CreateForParamValidation(param, Exceptions.EnsureExtensions_IsNotInRange_String.FormatWith(minLength, maxLength, length));
+                throw ExceptionFactory.Create(param, Exceptions.EnsureExtensions_IsNotInRange_String.FormatWith(minLength, maxLength, length));
 
             if (length > maxLength)
-                throw ExceptionFactory.CreateForParamValidation(param, Exceptions.EnsureExtensions_IsNotInRange_String.FormatWith(minLength, maxLength, length));
+                throw ExceptionFactory.Create(param, Exceptions.EnsureExtensions_IsNotInRange_String.FormatWith(minLength, maxLength, length));
 
             return param;
         }
@@ -52,7 +52,7 @@ namespace Bruttissimo.Common.Guard
         {
             if (!match.IsMatch(param.Value))
             {
-                throw ExceptionFactory.CreateForParamValidation(param, Exceptions.EnsureExtensions_NoMatch.FormatWith(param.Value, match));
+                throw ExceptionFactory.Create(param, Exceptions.EnsureExtensions_NoMatch.FormatWith(param.Value, match));
             }
             return param;
         }

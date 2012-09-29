@@ -214,6 +214,15 @@ namespace Bruttissimo.Common.Guard.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Argument expected to be NULL..
+        /// </summary>
+        internal static string EnsureExtensions_IsNull {
+            get {
+                return ResourceManager.GetString("EnsureExtensions_IsNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Argument out of range: value &apos;{0}&apos; does not match &apos;{1}&apos;..
         /// </summary>
         internal static string EnsureExtensions_NoMatch {

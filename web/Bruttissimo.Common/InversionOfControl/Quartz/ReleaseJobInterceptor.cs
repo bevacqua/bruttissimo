@@ -1,6 +1,6 @@
 using Castle.MicroKernel;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.InversionOfControl.Quartz
 {
     public class ReleaseJobInterceptor : ReleaseComponentInterceptor<BaseJob>
     {

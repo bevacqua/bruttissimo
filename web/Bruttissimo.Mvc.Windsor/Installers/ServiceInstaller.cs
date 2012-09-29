@@ -1,4 +1,5 @@
 using Bruttissimo.Common;
+using Bruttissimo.Common.InversionOfControl;
 using Bruttissimo.Domain.Logic;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;

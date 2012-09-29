@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Resources;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.InversionOfControl
 {
     /// <summary>
     /// Reflection helpers to help deal with attributes.
@@ -13,14 +13,8 @@ namespace Bruttissimo.Common
         /// </summary>
         public static T GetInjectedProperty<T>(this T property, string propertyName) where T : class
         {
-            if (property == null)
-            {
-                throw new ArgumentNullException(propertyName);
-            }
-            else
-            {
-                return property;
-            }
+            Ensure.That(property, propertyName).IsNotNull();
+            return property;
         }
 
         /// <summary>
@@ -28,18 +22,10 @@ namespace Bruttissimo.Common
         /// </summary>
         public static T InjectProperty<T>(this T property, T value, string propertyName) where T : class
         {
-            if (value == null)
-            {
-                throw new ArgumentNullException(propertyName);
-            }
-            else if (property == null)
-            {
-                return value;
-            }
-            else
-            {
-                throw new InvalidOperationException(Error.DuplicatePropertyInjection.FormatWith(propertyName));
-            }
+            Ensure.That(property, propertyName).IsNull().WithExtraMessage(() => Error.DuplicatePropertyInjection.FormatWith(propertyName));
+            Ensure.That(value, propertyName).IsNotNull();
+
+            return value;
         }
 
         /// <summary>
@@ -47,14 +33,8 @@ namespace Bruttissimo.Common
         /// </summary>
         public static T? GetInjectedProperty<T>(this T? property, string propertyName) where T : struct
         {
-            if (property == null)
-            {
-                throw new ArgumentNullException(propertyName);
-            }
-            else
-            {
-                return property;
-            }
+            Ensure.That(property, propertyName).IsNotNull();
+            return property;
         }
 
         /// <summary>
@@ -62,18 +42,10 @@ namespace Bruttissimo.Common
         /// </summary>
         public static T? InjectProperty<T>(this T? property, T? value, string propertyName) where T : struct
         {
-            if (value == null)
-            {
-                throw new ArgumentNullException(propertyName);
-            }
-            else if (property == null)
-            {
-                return value;
-            }
-            else
-            {
-                throw new InvalidOperationException(Error.DuplicatePropertyInjection.FormatWith(propertyName));
-            }
+            Ensure.That(property, propertyName).IsNull().WithExtraMessage(() => Error.DuplicatePropertyInjection.FormatWith(propertyName));
+            Ensure.That(value, propertyName).IsNotNull();
+
+            return value;
         }
     }
 }

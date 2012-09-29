@@ -3,7 +3,7 @@ using Castle.MicroKernel.Resolvers;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.InversionOfControl.Installers
 {
     /// <summary>
     /// Registers common dependencies and components.

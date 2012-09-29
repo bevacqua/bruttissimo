@@ -1,7 +1,7 @@
-using System;
+using Bruttissimo.Common.Guard;
 using Castle.Windsor;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.InversionOfControl
 {
     internal sealed class ContainerAccessor : IContainerAccessor
     {
@@ -14,10 +14,7 @@ namespace Bruttissimo.Common
 
         public ContainerAccessor(IWindsorContainer container)
         {
-            if (container == null)
-            {
-                throw new ArgumentNullException("container");
-            }
+            Ensure.That(container, "container").IsNotNull();
             this.container = container;
         }
     }

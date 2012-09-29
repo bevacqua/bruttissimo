@@ -10,7 +10,7 @@ namespace Bruttissimo.Common.Guard
         public static Param<Guid> IsNotEmpty(this Param<Guid> param)
         {
             if (Guid.Empty.Equals(param.Value))
-                throw ExceptionFactory.CreateForParamValidation(param, Exceptions.EnsureExtensions_IsEmptyGuid);
+                throw ExceptionFactory.Create(param, Exceptions.EnsureExtensions_IsEmptyGuid);
 
             return param;
         }

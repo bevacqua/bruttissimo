@@ -1,6 +1,7 @@
 using System;
 using System.Web.Mvc;
 using System.Web.WebPages;
+using Bruttissimo.Common.InversionOfControl;
 using Castle.Windsor;
 
 namespace Bruttissimo.Common.Mvc

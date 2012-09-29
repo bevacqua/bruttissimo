@@ -4,9 +4,9 @@ namespace Bruttissimo.Common.Guard
 {
     public static class CustomMessageExtensions
     {
-        public static Param<T> WithExtraMessageOf<T>(this Param<T> param, Func<string> messageFn)
+        public static Param<T> WithExtraMessage<T>(this Param<T> param, Func<string> message)
         {
-            param.ExtraMessageFn = messageFn;
+            param.ExtraMessage = message;
             return param;
         }
     }

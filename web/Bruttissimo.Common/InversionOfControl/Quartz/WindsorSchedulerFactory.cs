@@ -1,4 +1,4 @@
-using System;
+using Bruttissimo.Common.Guard;
 using Castle.MicroKernel;
 using Quartz;
 using Quartz.Core;
@@ -13,10 +13,7 @@ namespace Bruttissimo.Common
 
         public WindsorSchedulerFactory(IKernel kernel)
         {
-            if (kernel == null)
-            {
-                throw new ArgumentNullException("kernel");
-            }
+            Ensure.That(kernel, "kernel").IsNotNull();
             this.kernel = kernel;
         }
 

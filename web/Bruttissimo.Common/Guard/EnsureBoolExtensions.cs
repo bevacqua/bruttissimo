@@ -9,7 +9,7 @@ namespace Bruttissimo.Common.Guard
         public static Param<bool> IsTrue(this Param<bool> param)
         {
             if (!param.Value)
-                throw ExceptionFactory.CreateForParamValidation(param, Exceptions.EnsureExtensions_IsNotTrue);
+                throw ExceptionFactory.Create(param, Exceptions.EnsureExtensions_IsNotTrue);
 
             return param;
         }
@@ -18,7 +18,7 @@ namespace Bruttissimo.Common.Guard
         public static Param<bool> IsFalse(this Param<bool> param)
         {
             if (param.Value)
-                throw ExceptionFactory.CreateForParamValidation(param, Exceptions.EnsureExtensions_IsNotFalse);
+                throw ExceptionFactory.Create(param, Exceptions.EnsureExtensions_IsNotFalse);
 
             return param;
         }

@@ -1,7 +1,8 @@
 using System;
 using System.Web;
+using Bruttissimo.Common.InversionOfControl;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.HttpModules
 {
     [ApplicationModule]
     public class ErrorHandlerModule : IHttpModule

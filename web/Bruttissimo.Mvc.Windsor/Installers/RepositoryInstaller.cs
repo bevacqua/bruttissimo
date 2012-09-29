@@ -2,6 +2,7 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using Bruttissimo.Common;
+using Bruttissimo.Common.InversionOfControl;
 using Bruttissimo.Data.Dapper;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Logic;

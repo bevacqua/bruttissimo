@@ -1,15 +1,14 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using AutoMapper;
 using AutoMapper.Mappers;
+using Bruttissimo.Common.Guard;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.InversionOfControl.Installers
 {
     internal sealed class AutoMapperInstaller : IWindsorInstaller
     {
@@ -17,10 +16,7 @@ namespace Bruttissimo.Common
 
         public AutoMapperInstaller(params Assembly[] mapperAssemblies)
         {
-            if (mapperAssemblies == null)
-            {
-                throw new ArgumentNullException("mapperAssemblies");
-            }
+            Ensure.That(mapperAssemblies, "mapperAssemblies").IsNotNull();
             this.mapperAssemblies = mapperAssemblies;
         }
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using Bruttissimo.Common.Mvc;
+using Bruttissimo.Common.Mvc.InversionOfControl;
 using Bruttissimo.Domain.Entity;
 using Bruttissimo.Domain.Logic;
 using Bruttissimo.Domain.Logic.Hubs;
@@ -12,7 +13,7 @@ using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
-namespace Bruttissimo.Mvc.Windsor
+namespace Bruttissimo.Mvc.Windsor.Installers
 {
     /// <summary>
     /// Installs all dependencies into the container.

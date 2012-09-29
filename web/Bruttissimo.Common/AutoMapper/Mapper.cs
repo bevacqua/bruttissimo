@@ -1,5 +1,6 @@
 using System;
 using AutoMapper;
+using Bruttissimo.Common.Guard;
 using Castle.MicroKernel;
 
 namespace Bruttissimo.Common
@@ -10,18 +11,10 @@ namespace Bruttissimo.Common
 
         public Mapper(IKernel kernel, IMappingEngine engine, IMapperConfigurator[] configurators)
         {
-            if (kernel == null)
-            {
-                throw new ArgumentNullException("kernel");
-            }
-            if (engine == null)
-            {
-                throw new ArgumentNullException("engine");
-            }
-            if (configurators == null)
-            {
-                throw new ArgumentNullException("configurators");
-            }
+            Ensure.That(kernel, "kernel").IsNotNull();
+            Ensure.That(engine, "engine").IsNotNull();
+            Ensure.That(configurators, "configurators").IsNotNull();
+
             this.engine = engine;
 
             ConfigureEngine(kernel, configurators);
@@ -41,10 +34,9 @@ namespace Bruttissimo.Common
         private IConfigurationProvider GetConfigurationProvider()
         {
             IMappingEngineRunner runner = engine as IMappingEngineRunner;
-            if (runner == null)
-            {
-                throw new ArgumentException(Resources.Error.AutoMapperInvalidEngine);
-            }
+
+            Ensure.That(runner, "runner").IsNotNull().WithExtraMessage(() => Resources.Error.AutoMapperInvalidEngine);
+
             return runner.ConfigurationProvider;
         }
 
@@ -52,10 +44,9 @@ namespace Bruttissimo.Common
         {
             IConfigurationProvider provider = GetConfigurationProvider();
             IConfiguration configuration = provider as IConfiguration;
-            if (configuration == null)
-            {
-                throw new ArgumentException(Resources.Error.AutoMapperInvalidProvider);
-            }
+
+            Ensure.That(configuration, "configuration").IsNotNull().WithExtraMessage(() => Resources.Error.AutoMapperInvalidProvider);
+
             return configuration;
         }
 

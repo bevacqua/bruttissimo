@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.InversionOfControl.Quartz;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
@@ -9,7 +11,7 @@ using Castle.Windsor;
 using Quartz;
 using Quartz.Spi;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.InversionOfControl.Installers
 {
     /// <summary>
     /// Registers dependencies for Quartz.NET components.
@@ -20,10 +22,7 @@ namespace Bruttissimo.Common
 
         public QuartzInstaller(Assembly jobAssembly)
         {
-            if (jobAssembly == null)
-            {
-                throw new ArgumentNullException("jobAssembly");
-            }
+            Ensure.That(jobAssembly, "jobAssembly").IsNotNull();
             this.jobAssembly = jobAssembly;
         }
 

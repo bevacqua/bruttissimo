@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Text;
 using System.Web.Mvc;
+using Bruttissimo.Common.InversionOfControl;
 
 namespace Bruttissimo.Common.Mvc
 {

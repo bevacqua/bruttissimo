@@ -77,7 +77,7 @@ namespace Bruttissimo.Common.Guard
         public static TypeParam IsOfType(this TypeParam param, Type type)
         {
             if (!param.Type.Equals(type))
-                throw ExceptionFactory.CreateForParamValidation(param,
+                throw ExceptionFactory.Create(param,
                     Exceptions.EnsureExtensions_IsNotOfType.FormatWith(param.Type.FullName));
 
             return param;
@@ -87,11 +87,11 @@ namespace Bruttissimo.Common.Guard
         public static Param<Type> IsClass(this Param<Type> param)
         {
             if(param.Value == null)
-                throw ExceptionFactory.CreateForParamValidation(param,
+                throw ExceptionFactory.Create(param,
                     Exceptions.EnsureExtensions_IsNotClass_WasNull);
 
             if (!param.Value.IsClass)
-                throw ExceptionFactory.CreateForParamValidation(param,
+                throw ExceptionFactory.Create(param,
                     Exceptions.EnsureExtensions_IsNotClass.FormatWith(param.Value.FullName));
 
             return param;

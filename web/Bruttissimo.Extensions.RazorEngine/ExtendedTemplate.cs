@@ -1,4 +1,4 @@
-using Bruttissimo.Common;
+using Bruttissimo.Common.InversionOfControl;
 using RazorEngine.Templating;
 
 namespace Bruttissimo.Extensions.RazorEngine
