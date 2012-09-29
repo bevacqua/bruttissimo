@@ -1,5 +1,5 @@
-﻿using System;
-using Bruttissimo.Common;
+﻿using Bruttissimo.Common;
+using Bruttissimo.Common.Guard;
 using Quartz;
 
 namespace Bruttissimo.Domain.Logic
@@ -12,10 +12,8 @@ namespace Bruttissimo.Domain.Logic
 
         public TwitterExportJob(ITwitterService twitterService)
         {
-            if (twitterService == null)
-            {
-                throw new ArgumentNullException("twitterService");
-            }
+            Ensure.That(twitterService, "twitterService").IsNotNull();
+
             this.twitterService = twitterService;
         }
 

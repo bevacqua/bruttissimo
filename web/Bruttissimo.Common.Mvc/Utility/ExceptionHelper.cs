@@ -86,10 +86,8 @@ namespace Bruttissimo.Common.Mvc
 
         public ErrorViewModel GetErrorViewModel(RouteData data, Exception exception, bool ajax = false)
         {
-            if (data == null)
-            {
-                throw new ArgumentNullException("data");
-            }
+            Ensure.That(data, "data").IsNotNull();
+
             string controllerName = data.GetControllerString(Error.EmptyController);
             string actionName = data.GetActionString(Error.EmptyAction);
             string errorMessage = GetMessage(exception, ajax);
