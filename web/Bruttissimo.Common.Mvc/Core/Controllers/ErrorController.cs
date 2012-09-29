@@ -2,6 +2,7 @@
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Resources;
 
 namespace Bruttissimo.Common.Mvc
@@ -16,10 +17,8 @@ namespace Bruttissimo.Common.Mvc
         /// </summary>
         public static ErrorController Instance(HttpContextBase httpContext)
         {
-            if (httpContext == null)
-            {
-                throw new ArgumentNullException("httpContext");
-            }
+            Ensure.That(httpContext, "httpContext").IsNotNull();
+
             ErrorController controller = new ErrorController();
             RouteData data;
             MvcHandler handler = httpContext.Handler as MvcHandler;

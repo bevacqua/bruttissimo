@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Resources;
 using System.Text;
 using System.Web.Mvc;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Resources;
 
 namespace Bruttissimo.Common.Mvc
@@ -19,20 +20,15 @@ namespace Bruttissimo.Common.Mvc
 
         public ResourceController(IList<ResourceAssemblyLocation> locations, IResourceCompressor compressor)
         {
-            if (locations == null)
-            {
-                throw new ArgumentNullException("locations");
-            }
-            if (compressor == null)
-            {
-                throw new ArgumentNullException("compressor");
-            }
+            Ensure.That(locations, "locations").IsNotNull();
+            Ensure.That(compressor, "compressor").IsNotNull();
+
             this.locations = locations;
             this.compressor = compressor;
 
             sharedLocation = new ResourceAssemblyLocation
             {
-                Assembly = Assembly.GetAssembly(typeof (FileSystemHelper)),
+                Assembly = Assembly.GetAssembly(typeof(FileSystemHelper)),
                 Namespace = Constants.SharedResourceNamespaceRoot
             };
         }
@@ -74,7 +70,7 @@ namespace Bruttissimo.Common.Mvc
         private IEnumerable<KeyValuePair<string, ResourceManager>> GetResourceManagers()
         {
             IEnumerable<Type> resourceTypes = locations
-                .Concat(new[] {sharedLocation})
+                .Concat(new[] { sharedLocation })
                 .SelectMany(location =>
                             location.Assembly.GetTypes().Where(type => location.Namespace == type.Namespace));
 

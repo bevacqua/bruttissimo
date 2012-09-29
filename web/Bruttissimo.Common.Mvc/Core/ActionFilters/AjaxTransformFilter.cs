@@ -1,5 +1,6 @@
 using System;
 using System.Web.Mvc;
+using Bruttissimo.Common.Guard;
 
 namespace Bruttissimo.Common.Mvc
 {
@@ -9,10 +10,7 @@ namespace Bruttissimo.Common.Mvc
 
         public AjaxTransformFilter(string defaultTitle)
         {
-            if (defaultTitle.NullOrBlank())
-            {
-                throw new ArgumentNullException("defaultTitle");
-            }
+            Ensure.That(defaultTitle, "defaultTitle").IsNotNull();
             this.defaultTitle = defaultTitle;
         }
 

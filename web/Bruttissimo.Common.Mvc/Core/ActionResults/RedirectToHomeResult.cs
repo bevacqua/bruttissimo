@@ -1,6 +1,6 @@
-using System;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Bruttissimo.Common.Guard;
 
 namespace Bruttissimo.Common.Mvc
 {
@@ -13,14 +13,9 @@ namespace Bruttissimo.Common.Mvc
 
         private static RouteValueDictionary CreateRouteValueDictionary(string action, string controller)
         {
-            if (action == null)
-            {
-                throw new ArgumentNullException("action");
-            }
-            if (controller == null)
-            {
-                throw new ArgumentNullException("controller");
-            }
+            Ensure.That(action, "action").IsNotNull();
+            Ensure.That(controller, "controller").IsNotNull();
+
             RouteValueDictionary dictionary = new RouteValueDictionary
             {
                 {"action", action},

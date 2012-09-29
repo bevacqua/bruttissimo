@@ -1,5 +1,6 @@
 using System;
 using System.Web.Mvc;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.InversionOfControl;
 
 namespace Bruttissimo.Common.Mvc
@@ -33,22 +34,17 @@ namespace Bruttissimo.Common.Mvc
         /// </summary>
         protected ActionResult InvalidModelState(object model, bool throwOnEmptyModel = true)
         {
-            if (throwOnEmptyModel && model == null)
+            if (throwOnEmptyModel)
             {
-                throw new ArgumentNullException("model");
+                Ensure.That(model, "model").IsNotNull();
             }
-            if (ModelState.IsValid)
-            {
-                throw new ArgumentException(Resources.Error.ModelStateIsValid);
-            }
-            else if (Request.IsAjaxRequest())
+            Ensure.That(() => ModelState.IsValid).IsFalse().WithExtraMessage(() => Resources.Error.ModelStateIsValid);
+
+            if (Request.IsAjaxRequest())
             {
                 return new ModelStateValidationJsonResult(ModelState);
             }
-            else
-            {
-                return View(model);
-            }
+	        return View(model);
         }
 
         /// <summary>

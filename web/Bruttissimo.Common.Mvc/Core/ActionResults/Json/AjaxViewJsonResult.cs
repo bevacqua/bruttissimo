@@ -1,5 +1,5 @@
-using System;
 using System.Web.Mvc;
+using Bruttissimo.Common.Guard;
 
 namespace Bruttissimo.Common.Mvc
 {
@@ -13,10 +13,8 @@ namespace Bruttissimo.Common.Mvc
         /// </summary>
         public AjaxViewJsonResult(string title, string html, string script, string container = null)
         {
-            if (html == null)
-            {
-                throw new ArgumentNullException("html");
-            }
+            Ensure.That(html, "html").IsNotNull();
+
             Data = new
             {
                 partial = true,
