@@ -2,6 +2,7 @@ using System;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
+using Bruttissimo.Common.Guard;
 
 namespace Bruttissimo.Common.Mvc
 {
@@ -13,14 +14,9 @@ namespace Bruttissimo.Common.Mvc
         public MvcResourceHelper(string namespaceRoot, HtmlHelper helper, Assembly assembly)
             : base(namespaceRoot)
         {
-            if (helper == null)
-            {
-                throw new ArgumentNullException("helper");
-            }
-            if (assembly == null)
-            {
-                throw new ArgumentNullException("assembly");
-            }
+            Ensure.That(helper, "helper").IsNotNull();
+            Ensure.That(assembly, "assembly").IsNotNull();
+
             this.helper = helper;
             this.assembly = assembly;
         }

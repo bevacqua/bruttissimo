@@ -92,6 +92,7 @@
     </Compile>
     <Compile Include="Core\ActionFilters\AjaxTransformFilter.cs" />
     <Compile Include="Core\ErrorHandling\ChildActionExceptionFilter.cs" />
+    <Compile Include="Core\Models\ResourceAssemblyLocation.cs" />
     <Compile Include="HttpModules\Wiring\ApplicationModuleAttribute.cs" />
     <Compile Include="HttpModules\Wiring\ApplicationModuleManager.cs" />
     <Compile Include="HttpModules\Wiring\IApplicationModuleManager.cs" />

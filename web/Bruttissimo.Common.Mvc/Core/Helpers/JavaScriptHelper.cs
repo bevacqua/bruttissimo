@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Resources;
 
 namespace Bruttissimo.Common.Mvc
@@ -17,14 +18,9 @@ namespace Bruttissimo.Common.Mvc
 
         public JavaScriptHelper(HttpContextBase context, IResourceCompressor compressor)
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException("context");
-            }
-            if (compressor == null)
-            {
-                throw new ArgumentNullException("compressor");
-            }
+            Ensure.That(context, "context").IsNotNull();
+            Ensure.That(compressor, "compressor").IsNotNull();
+
             this.context = context;
             this.compressor = compressor;
         }

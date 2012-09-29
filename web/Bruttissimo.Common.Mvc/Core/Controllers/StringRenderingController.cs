@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Text;
 using System.Web.Mvc;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.InversionOfControl;
 
 namespace Bruttissimo.Common.Mvc
@@ -248,10 +249,8 @@ namespace Bruttissimo.Common.Mvc
         /// </summary>
         private string GetJavaScriptVirtualViewPath(string viewPath)
         {
-            if (viewPath == null)
-            {
-                throw new ArgumentNullException("viewPath");
-            }
+            Ensure.That(viewPath, "viewPath").IsNotNull();
+
             if (viewPath.EndsWith(Resources.Constants.JavaScriptViewNamingExtension)) // virtual javascript view path
             {
                 return viewPath;

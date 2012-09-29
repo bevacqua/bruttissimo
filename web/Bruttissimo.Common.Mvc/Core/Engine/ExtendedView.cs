@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Web.Mvc;
+using Bruttissimo.Common.Guard;
 
 namespace Bruttissimo.Common.Mvc
 {
@@ -19,14 +20,9 @@ namespace Bruttissimo.Common.Mvc
 
         public ExtendedView(IView view, ControllerContext controllerContext)
         {
-            if (view == null)
-            {
-                throw new ArgumentNullException("view");
-            }
-            if (controllerContext == null)
-            {
-                throw new ArgumentNullException("controllerContext");
-            }
+            Ensure.That(view, "view").IsNotNull();
+            Ensure.That(controllerContext, "controllerContext").IsNotNull();
+
             this.view = view;
             this.controllerContext = controllerContext;
         }

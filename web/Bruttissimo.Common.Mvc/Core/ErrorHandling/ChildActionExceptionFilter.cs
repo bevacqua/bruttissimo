@@ -1,5 +1,6 @@
 using System;
 using System.Web.Mvc;
+using Bruttissimo.Common.Guard;
 using log4net;
 
 namespace Bruttissimo.Common.Mvc
@@ -11,14 +12,9 @@ namespace Bruttissimo.Common.Mvc
 
         public ChildActionExceptionFilter(ILog log, ExceptionHelper helper)
         {
-            if (log == null)
-            {
-                throw new ArgumentNullException("log");
-            }
-            if (helper == null)
-            {
-                throw new ArgumentNullException("helper");
-            }
+            Ensure.That(log, "log").IsNotNull();
+            Ensure.That(helper, "helper").IsNotNull();
+
             this.log = log;
             this.helper = helper;
         }

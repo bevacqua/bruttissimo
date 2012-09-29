@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Resources;
 using log4net;
 
@@ -18,14 +19,9 @@ namespace Bruttissimo.Common.Mvc
 
         public HttpApplicationErrorHander(HttpApplication application, ExceptionHelper helper)
         {
-            if (application == null)
-            {
-                throw new ArgumentNullException("application");
-            }
-            if (helper == null)
-            {
-                throw new ArgumentNullException("helper");
-            }
+            Ensure.That(application, "application").IsNotNull();
+            Ensure.That(helper, "helper").IsNotNull();
+
             this.application = application;
             this.helper = helper;
         }

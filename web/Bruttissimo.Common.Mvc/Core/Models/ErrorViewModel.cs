@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web;
 using System.Web.Mvc;
+using Bruttissimo.Common.Guard;
 
 namespace Bruttissimo.Common.Mvc
 {
@@ -23,10 +24,8 @@ namespace Bruttissimo.Common.Mvc
         public ErrorViewModel(HttpContextBase context, Exception exception, string controllerName, string actionName, string message = null)
             : base(exception, controllerName, actionName)
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException("context");
-            }
+            Ensure.That(context, "context").IsNotNull();
+
             this.context = context;
             Message = message;
         }
