@@ -1,7 +1,8 @@
+using Bruttissimo.Common.Mvc.Interface;
 using SignalR;
 using SignalR.Hubs;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.SignalR
 {
     /// <summary>
     /// Provides access to the IHubContext implementation for THub.

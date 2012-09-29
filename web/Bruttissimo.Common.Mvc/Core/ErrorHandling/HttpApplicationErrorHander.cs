@@ -5,11 +5,16 @@ using System.Reflection;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Mvc.Core.Controllers;
+using Bruttissimo.Common.Mvc.Core.Models;
+using Bruttissimo.Common.Mvc.Extensions;
+using Bruttissimo.Common.Mvc.Utility;
 using Bruttissimo.Common.Resources;
 using log4net;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.ErrorHandling
 {
     public class HttpApplicationErrorHander
     {

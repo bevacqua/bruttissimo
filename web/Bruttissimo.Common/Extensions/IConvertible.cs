@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.Extensions
 {
     public static class ConvertibleExtensions
     {

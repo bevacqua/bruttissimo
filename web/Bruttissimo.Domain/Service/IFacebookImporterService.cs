@@ -1,4 +1,6 @@
-namespace Bruttissimo.Domain
+using Bruttissimo.Domain.DTO.Facebook;
+
+namespace Bruttissimo.Domain.Service
 {
     public interface IFacebookImporterService
     {

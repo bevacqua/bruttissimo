@@ -1,9 +1,9 @@
-using System;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Mvc.Core.Routing;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Extensions
 {
     public static class RouteCollectionExtensions
     {

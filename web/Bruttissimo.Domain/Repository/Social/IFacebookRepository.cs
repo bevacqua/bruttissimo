@@ -1,7 +1,9 @@
 using System.Collections.Generic;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Domain.DTO.Facebook;
+using Bruttissimo.Domain.Entity.Entities;
+using Bruttissimo.Domain.Entity.Social.Facebook;
 
-namespace Bruttissimo.Domain
+namespace Bruttissimo.Domain.Repository.Social
 {
     public interface IFacebookRepository
     {

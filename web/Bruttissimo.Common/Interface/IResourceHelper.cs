@@ -1,4 +1,4 @@
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.Interface
 {
     public interface IResourceHelper<out TRawString>
     {

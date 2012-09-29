@@ -1,6 +1,8 @@
-using Bruttissimo.Domain.Logic;
+using Bruttissimo.Common.Resources;
+using Bruttissimo.Domain.Logic.Email.RazorEngine;
 using Bruttissimo.Domain.Logic.Email.Template;
 using Bruttissimo.Extensions.RazorEngine;
+using Bruttissimo.Extensions.RazorEngine.Interface;
 using Castle.Core;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Context;
@@ -11,7 +13,7 @@ using DotNetOpenAuth.OpenId.RelyingParty;
 using RazorEngine.Configuration;
 using RazorEngine.Templating;
 
-namespace Bruttissimo.Mvc.Windsor
+namespace Bruttissimo.Mvc.Windsor.Installers
 {
     /// <summary>
     /// Registers all external dependencies, such as RazorEngine templating services.
@@ -66,7 +68,7 @@ namespace Bruttissimo.Mvc.Windsor
         internal ITemplateResourceHelper InstanceTemplateResourceHelper(IKernel kernel, ComponentModel model, CreationContext context)
         {
             TemplateBase templateBase = context.AdditionalArguments["templateBase"] as TemplateBase;
-            return new TemplateResourceHelper(Common.Resources.Email.ResourceNamespaceRoot, templateBase);
+            return new TemplateResourceHelper(Email.ResourceNamespaceRoot, templateBase);
         }
     }
 }

@@ -1,6 +1,6 @@
 using System.Web.Mvc;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.ActionResults.Json
 {
     public class JsonRedirectResult : JsonResult
     {

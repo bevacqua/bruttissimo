@@ -1,9 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Reflection;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Mvc.Core.Models;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.InversionOfControl.Mvc
 {
     public sealed class MvcInstallerParameters
     {

@@ -1,6 +1,7 @@
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Domain.DTO.Twitter;
+using Bruttissimo.Domain.Entity.Social.Twitter;
 
-namespace Bruttissimo.Domain
+namespace Bruttissimo.Domain.Repository.Social
 {
     public interface ITwitterRepository
     {

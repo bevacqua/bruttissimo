@@ -1,6 +1,7 @@
 using System;
+using Bruttissimo.Common.Static;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.Helpers
 {
     public static class UriHelpers
     {

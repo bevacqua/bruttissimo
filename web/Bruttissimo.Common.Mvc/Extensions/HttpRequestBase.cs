@@ -2,8 +2,9 @@ using System;
 using System.Security.Principal;
 using System.Web;
 using Bruttissimo.Common.InversionOfControl;
+using Bruttissimo.Common.Mvc.Interface;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Extensions
 {
     public static class HttpRequestBaseExtensions
     {

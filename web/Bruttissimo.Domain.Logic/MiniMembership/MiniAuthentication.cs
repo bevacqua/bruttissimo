@@ -1,8 +1,8 @@
-using System;
 using System.Web;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Domain.Service;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.MiniMembership
 {
     public class MiniAuthentication
     {

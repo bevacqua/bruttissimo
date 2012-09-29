@@ -1,6 +1,6 @@
 using System;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.HttpModules.Wiring
 {
     /// <summary>
     /// Marks an HttpModule as a module intended to be paired with the application pipeline.

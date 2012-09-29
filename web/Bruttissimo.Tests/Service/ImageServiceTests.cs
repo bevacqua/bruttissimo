@@ -1,9 +1,10 @@
 ﻿using System;
 using Bruttissimo.Domain;
+using Bruttissimo.Domain.Service;
 using Bruttissimo.Tests.Mocking;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Bruttissimo.Tests
+namespace Bruttissimo.Tests.Service
 {
     [TestClass]
     public class ImageServiceTests

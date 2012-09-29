@@ -1,6 +1,6 @@
 using RazorEngine.Templating;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.Email.RazorEngine
 {
     /// <summary>
     /// Template service for emails.

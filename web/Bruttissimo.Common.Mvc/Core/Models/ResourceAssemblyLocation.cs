@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.Models
 {
     public class ResourceAssemblyLocation
     {

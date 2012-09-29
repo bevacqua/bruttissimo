@@ -2,9 +2,10 @@ using System;
 using System.Web.Mvc;
 using System.Web.WebPages;
 using Bruttissimo.Common.InversionOfControl;
+using Bruttissimo.Common.Mvc.Interface;
 using Castle.Windsor;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.Engine
 {
     /// <summary>
     /// Our implementation of view page base.

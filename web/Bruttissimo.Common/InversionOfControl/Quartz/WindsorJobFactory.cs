@@ -1,11 +1,12 @@
 using System;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
 using Castle.MicroKernel;
 using Quartz;
 using Quartz.Spi;
 using log4net;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.InversionOfControl.Quartz
 {
     public class WindsorJobFactory : IJobFactory
     {

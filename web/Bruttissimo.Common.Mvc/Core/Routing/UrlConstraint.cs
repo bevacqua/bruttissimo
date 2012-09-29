@@ -1,4 +1,4 @@
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.Routing
 {
     public static class UrlConstraint
     {

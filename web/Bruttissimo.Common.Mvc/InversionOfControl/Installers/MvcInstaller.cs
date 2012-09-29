@@ -1,11 +1,11 @@
-using System;
 using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.InversionOfControl.Installers;
+using Bruttissimo.Common.Mvc.InversionOfControl.Mvc;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
-namespace Bruttissimo.Common.Mvc.InversionOfControl
+namespace Bruttissimo.Common.Mvc.InversionOfControl.Installers
 {
     /// <summary>
     /// Registers core MVC-specific dependencies.

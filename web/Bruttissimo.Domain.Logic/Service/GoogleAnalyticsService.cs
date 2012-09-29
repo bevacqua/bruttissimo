@@ -2,8 +2,10 @@ using System;
 using System.Text;
 using System.Web;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Extensions;
+using Bruttissimo.Domain.Service;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.Service
 {
     public sealed class GoogleAnalyticsService : IGoogleAnalyticsService
     {

@@ -1,11 +1,10 @@
-﻿using System;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Resources;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.Controllers
 {
     /// <summary>
     /// Controller dedicated to handling error views.

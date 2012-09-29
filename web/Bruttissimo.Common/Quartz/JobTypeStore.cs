@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using Bruttissimo.Common.Guard;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.Quartz
 {
     public sealed class JobTypeStore : IJobTypeStore
     {

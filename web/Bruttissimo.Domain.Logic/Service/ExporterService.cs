@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Domain.Entity.Entities;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.Service
 {
     public abstract class ExporterService<TResponse> : BaseService where TResponse : class
     {

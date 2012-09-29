@@ -1,8 +1,11 @@
 ﻿using System;
 using System.IO;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Domain.Entity;
+using Bruttissimo.Domain.Entity.Entities;
 using Bruttissimo.Domain.Logic;
+using Bruttissimo.Domain.Service;
 using Bruttissimo.Tests.Mocking;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using log4net;

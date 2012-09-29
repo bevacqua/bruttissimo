@@ -2,10 +2,16 @@ using System;
 using System.IO;
 using System.Text;
 using System.Web.Mvc;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.InversionOfControl;
+using Bruttissimo.Common.Mvc.Core.Engine;
+using Bruttissimo.Common.Mvc.Extensions;
+using Bruttissimo.Common.Mvc.Interface;
+using Bruttissimo.Common.Resources;
+using Bruttissimo.Common.Static;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.Controllers
 {
     /// <summary>
     /// Our implementation of controller base.
@@ -251,17 +257,17 @@ namespace Bruttissimo.Common.Mvc
         {
             Ensure.That(viewPath, "viewPath").IsNotNull();
 
-            if (viewPath.EndsWith(Resources.Constants.JavaScriptViewNamingExtension)) // virtual javascript view path
+            if (viewPath.EndsWith(Constants.JavaScriptViewNamingExtension)) // virtual javascript view path
             {
                 return viewPath;
             }
             if (viewPath.StartsWith("~")) // virtual view path, e.g: "~/Views/Home/Index.cshtml"
             {
-                return CompiledRegex.JavaScriptViewNamingConvention.Replace(viewPath, Resources.Regular.JavaScriptViewNamingExtension);
+                return CompiledRegex.JavaScriptViewNamingConvention.Replace(viewPath, Regular.JavaScriptViewNamingExtension);
             }
             else // view name, e.g: "Index"
             {
-                return Resources.Constants.JavaScriptViewNamingConvention.FormatWith(viewPath);
+                return Constants.JavaScriptViewNamingConvention.FormatWith(viewPath);
             }
         }
 
@@ -286,10 +292,10 @@ namespace Bruttissimo.Common.Mvc
             ExtendedControllerContext context = new ExtendedControllerContext(copy);
 
             // required for requests to *.cshtml physical files, in order to render the error view.
-            if (!context.RouteData.Values.ContainsKey(Resources.Constants.RouteDataController))
+            if (!context.RouteData.Values.ContainsKey(Constants.RouteDataController))
             {
-                context.RouteData.Values.Add(Resources.Constants.RouteDataController, Resources.Constants.RouteDataControllerNotFound);
-                context.RouteData.Values.Add(Resources.Constants.RouteDataAction, Resources.Constants.RouteDataActionNotFound);
+                context.RouteData.Values.Add(Constants.RouteDataController, Constants.RouteDataControllerNotFound);
+                context.RouteData.Values.Add(Constants.RouteDataAction, Constants.RouteDataActionNotFound);
             }
             return context;
         }

@@ -1,4 +1,4 @@
-namespace Bruttissimo.Domain.Social
+namespace Bruttissimo.Domain.Social.Facebook.Entity
 {
     internal class FacebookResponsePaging
     {

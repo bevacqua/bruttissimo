@@ -1,7 +1,7 @@
-using System;
 using System.Text;
 using Bruttissimo.Common;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Static;
 
 namespace Bruttissimo.Extensions.RazorEngine
 {

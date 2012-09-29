@@ -2,8 +2,9 @@ using System;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
+using Bruttissimo.Common.Extensions;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.Attributes
 {
     /// <summary>
     /// Only AJAX POST requests or Non AJAX GET requests are allowed.

@@ -2,7 +2,7 @@ using System;
 using System.Net;
 using System.Web;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Exceptions
 {
     public class HttpNotFoundException : HttpException
     {

@@ -1,7 +1,7 @@
 using System;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Domain.Entity.Entities;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Service
 {
     public interface ILinkCrawlerService
     {

@@ -1,7 +1,7 @@
 using System;
 using AutoMapper;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.Interface
 {
     public interface IMapper
     {

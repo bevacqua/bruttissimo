@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.Extensions
 {
     public static class StreamExtensions
     {

@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Common.Interface;
+using Bruttissimo.Domain.DTO.Facebook;
+using Bruttissimo.Domain.Entity.Entities;
+using Bruttissimo.Domain.Entity.Social.Facebook;
+using Bruttissimo.Domain.Repository.Social;
+using Bruttissimo.Domain.Social.Facebook.Entity;
 using Facebook;
 using Newtonsoft.Json;
 using log4net;
 
-namespace Bruttissimo.Domain.Social
+namespace Bruttissimo.Domain.Social.Facebook
 {
     public class FacebookRepository : IFacebookRepository
     {

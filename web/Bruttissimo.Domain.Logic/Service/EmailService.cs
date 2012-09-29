@@ -1,13 +1,19 @@
 using System;
 using System.Net.Mail;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Common.Resources;
+using Bruttissimo.Common.Static;
+using Bruttissimo.Domain.Entity.Email;
 using Bruttissimo.Domain.Logic.Email.Model;
+using Bruttissimo.Domain.Logic.Email.RazorEngine;
+using Bruttissimo.Domain.Repository;
+using Bruttissimo.Domain.Service;
 using RazorEngine.Templating;
 using log4net;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.Service
 {
     public class EmailService : IEmailService
     {
@@ -37,7 +43,7 @@ namespace Bruttissimo.Domain.Logic
         {
             MailAddress sender = Config.OutgoingEmail.GetAddress();
             EmailMessageModel email = new EmailMessageModel(sender, recipient, subject, body);
-            log.Info(Common.Resources.Debug.EmailOutgoing.FormatWith(recipient, subject));
+            log.Info(Debug.EmailOutgoing.FormatWith(recipient, subject));
             emailRepository.Send(email);
         }
 
@@ -45,8 +51,8 @@ namespace Bruttissimo.Domain.Logic
         {
             Ensure.That(model, "model").IsNotNull();
 
-            model.FacebookProfileLink = Common.Resources.Links.FacebookProfile;
-            model.TwitterProfileLink = Common.Resources.Links.TwitterProfile;
+            model.FacebookProfileLink = Links.FacebookProfile;
+            model.TwitterProfileLink = Links.TwitterProfile;
             model.CopyrightYear = DateTime.UtcNow.Year;
             model.LatestNewsSidebarModel = new LatestNewsSidebarModel
             {
@@ -63,7 +69,7 @@ namespace Bruttissimo.Domain.Logic
             var email = (RegistrationEmailModel)model;
 
             IncludeCommonEmailModelValues(email);
-            email.Subject = Common.Resources.User.EmailRegistrationSubject;
+            email.Subject = User.EmailRegistrationSubject;
             email.AccountValidationLink = "http://bruttissi.mo/user/validate/alksdjalksjd"; // TODO: provide when invoking sendregistrationemail, model validation?
             string body = RunEmailTemplate(Common.Resources.Email.ValidationTemplate, model);
             SendEmail(recipient, email.Subject, body);

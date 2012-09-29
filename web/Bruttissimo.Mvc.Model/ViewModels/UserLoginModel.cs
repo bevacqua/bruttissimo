@@ -1,7 +1,8 @@
-using Bruttissimo.Common;
+using Bruttissimo.Common.Extensions;
+using Bruttissimo.Mvc.Model.Validators;
 using FluentValidation.Attributes;
 
-namespace Bruttissimo.Mvc.Model
+namespace Bruttissimo.Mvc.Model.ViewModels
 {
     [Validator(typeof (UserLoginModelValidator))]
     public class UserLoginModel

@@ -1,8 +1,11 @@
 ﻿using Bruttissimo.Common;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Quartz;
+using Bruttissimo.Common.Static;
+using Bruttissimo.Domain.Service;
 using Quartz;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.Job
 {
     [AutoRun]
     [DisallowConcurrentExecution]

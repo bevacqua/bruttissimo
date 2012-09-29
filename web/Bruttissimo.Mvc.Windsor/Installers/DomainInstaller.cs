@@ -1,10 +1,11 @@
 using Bruttissimo.Common.Mvc;
-using Bruttissimo.Domain.Logic;
+using Bruttissimo.Common.Mvc.Interface;
+using Bruttissimo.Domain.Logic.Authentication;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
-namespace Bruttissimo.Mvc.Windsor
+namespace Bruttissimo.Mvc.Windsor.Installers
 {
     /// <summary>
     /// Registers all other dependencies for the Domain layer.

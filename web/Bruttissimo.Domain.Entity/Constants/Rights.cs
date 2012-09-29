@@ -1,4 +1,4 @@
-namespace Bruttissimo.Domain.Entity
+namespace Bruttissimo.Domain.Entity.Constants
 {
     public class Rights
     {

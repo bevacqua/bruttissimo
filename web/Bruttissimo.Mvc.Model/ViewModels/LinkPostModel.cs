@@ -1,6 +1,6 @@
-using Bruttissimo.Common;
+using Bruttissimo.Common.Extensions;
 
-namespace Bruttissimo.Mvc.Model
+namespace Bruttissimo.Mvc.Model.ViewModels
 {
     public class LinkPostModel : PostModel
     {

@@ -1,5 +1,6 @@
 ﻿using Bruttissimo.Domain;
 using Bruttissimo.Domain.Logic.Email.Model;
+using Bruttissimo.Domain.Service;
 using Bruttissimo.Tests.Mocking;
 using Castle.Windsor;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

@@ -1,7 +1,8 @@
 using System;
+using Bruttissimo.Domain.Entity.Social.Facebook.Generic;
 using Newtonsoft.Json;
 
-namespace Bruttissimo.Domain.Entity
+namespace Bruttissimo.Domain.Entity.Social.Facebook
 {
     public class FacebookPost
     {

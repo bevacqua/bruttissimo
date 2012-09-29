@@ -1,12 +1,12 @@
 using System.Web;
 using System.Web.Security;
-using Bruttissimo.Domain;
-using Bruttissimo.Domain.Logic;
+using Bruttissimo.Domain.Logic.MiniMembership;
+using Bruttissimo.Domain.MiniMembership;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
-namespace Bruttissimo.Mvc.Windsor
+namespace Bruttissimo.Mvc.Windsor.Installers
 {
     /// <summary>
     /// Installs MiniMembership implementation components.

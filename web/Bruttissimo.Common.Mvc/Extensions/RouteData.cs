@@ -1,6 +1,7 @@
 using System.Web.Routing;
+using Bruttissimo.Common.Extensions;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Extensions
 {
     public static class RouteDataExtensions
     {

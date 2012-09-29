@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Data;
+using System.Linq;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Static;
+using Bruttissimo.Common.Utility;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
+using Bruttissimo.Domain.Entity.Constants;
+using Bruttissimo.Domain.Entity.Entities;
+using Bruttissimo.Domain.Repository;
 using Dapper;
-using Dapper.Contrib.Extensions;
 
-namespace Bruttissimo.Data.Dapper
+namespace Bruttissimo.Data.Dapper.Repository
 {
     public class UserRepository : EntityRepository<User>, IUserRepository
     {

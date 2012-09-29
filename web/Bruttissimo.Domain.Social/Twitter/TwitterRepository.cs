@@ -1,10 +1,12 @@
-﻿using System;
-using Bruttissimo.Common;
+﻿using Bruttissimo.Common;
 using Bruttissimo.Common.Guard;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Common.Interface;
+using Bruttissimo.Domain.DTO.Twitter;
+using Bruttissimo.Domain.Entity.Social.Twitter;
+using Bruttissimo.Domain.Repository.Social;
 using TweetSharp;
 
-namespace Bruttissimo.Domain.Social
+namespace Bruttissimo.Domain.Social.Twitter
 {
     public class TwitterRepository : ITwitterRepository
     {

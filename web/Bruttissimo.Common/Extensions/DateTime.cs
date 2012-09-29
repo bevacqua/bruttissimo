@@ -1,17 +1,19 @@
 ﻿using System;
+using Bruttissimo.Common.Resources;
+using TimeSpan = System.TimeSpan;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.Extensions
 {
     public static class DateTimeExtensions
     {
         public static string ToLongDateString(this DateTime date)
         {
-            return date.ToString(Resources.User.LongDateFormat);
+            return date.ToString(User.LongDateFormat);
         }
 
         public static string ToLongDateTimeString(this DateTime date)
         {
-            return date.ToString(Resources.User.LongDateTimeFormat);
+            return date.ToString(User.LongDateTimeFormat);
         }
 
         public static string ToTimeAgoString(this DateTime since)

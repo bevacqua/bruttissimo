@@ -1,12 +1,10 @@
-using System.Web.Security;
-
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.InversionOfControl.Membership
 {
     public class DefaultMembershipProvider : IMembershipProvider
     {
         public bool ValidateUser(string username, string password)
         {
-            return Membership.ValidateUser(username, password);
+            return System.Web.Security.Membership.ValidateUser(username, password);
         }
     }
 }

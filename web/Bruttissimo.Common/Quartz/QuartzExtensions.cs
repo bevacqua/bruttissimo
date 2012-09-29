@@ -1,7 +1,7 @@
 using System;
 using Quartz;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.Quartz
 {
     public static class QuartzExtensions
     {

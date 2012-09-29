@@ -1,10 +1,10 @@
 ﻿using System.Web;
-using Bruttissimo.Common;
 using Bruttissimo.Common.InversionOfControl;
+using Bruttissimo.Domain.Service;
 using log4net.Appender;
 using log4net.Core;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.log4net
 {
     public class RealtimeAdoNetAppender : AdoNetAppender
     {

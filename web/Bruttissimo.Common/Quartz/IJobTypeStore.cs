@@ -1,7 +1,7 @@
 using System;
 using System.Collections.ObjectModel;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.Quartz
 {
     public interface IJobTypeStore
     {

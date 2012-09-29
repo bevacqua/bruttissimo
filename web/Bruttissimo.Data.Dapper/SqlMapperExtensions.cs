@@ -1,15 +1,17 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Collections.Concurrent;
 using System.Reflection.Emit;
+using System.Text;
 using System.Threading;
 using Bruttissimo.Common.Guard;
+using Dapper;
+using PropertyAttributes = System.Reflection.PropertyAttributes;
 
-namespace Dapper.Contrib.Extensions
+namespace Bruttissimo.Data.Dapper
 {
     public static class SqlMapperExtensions
     {
@@ -247,7 +249,7 @@ namespace Dapper.Contrib.Extensions
             {
                 Type propType = typeof (bool);
                 FieldBuilder field = typeBuilder.DefineField("_" + "IsDirty", propType, FieldAttributes.Private);
-                PropertyBuilder property = typeBuilder.DefineProperty("IsDirty", System.Reflection.PropertyAttributes.None, propType, new[] {propType});
+                PropertyBuilder property = typeBuilder.DefineProperty("IsDirty", PropertyAttributes.None, propType, new[] {propType});
 
                 const MethodAttributes getSetAttr = MethodAttributes.Public | MethodAttributes.NewSlot | MethodAttributes.SpecialName | MethodAttributes.Final | MethodAttributes.Virtual | MethodAttributes.HideBySig;
 
@@ -280,7 +282,7 @@ namespace Dapper.Contrib.Extensions
             {
                 // define the field and the property.
                 FieldBuilder field = typeBuilder.DefineField("_" + propertyName, propType, FieldAttributes.Private);
-                PropertyBuilder property = typeBuilder.DefineProperty(propertyName, System.Reflection.PropertyAttributes.None, propType, new[] {propType});
+                PropertyBuilder property = typeBuilder.DefineProperty(propertyName, PropertyAttributes.None, propType, new[] {propType});
 
                 const MethodAttributes getSetAttr = MethodAttributes.Public | MethodAttributes.Virtual | MethodAttributes.HideBySig;
 

@@ -2,10 +2,13 @@
 using System.Web.Mvc;
 using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc;
-using Bruttissimo.Domain;
-using Bruttissimo.Mvc.Model;
+using Bruttissimo.Common.Mvc.Core.Attributes;
+using Bruttissimo.Common.Mvc.Core.Controllers;
+using Bruttissimo.Domain.MiniMembership;
+using Bruttissimo.Domain.Service;
+using Bruttissimo.Mvc.Model.ViewModels;
 
-namespace Bruttissimo.Mvc.Controller
+namespace Bruttissimo.Mvc.Controller.Controllers
 {
     public class CommentsController : ExtendedController
     {

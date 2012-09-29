@@ -1,10 +1,15 @@
-using System;
 using System.IO;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Mvc.Core.Engine;
+using Bruttissimo.Common.Mvc.Core.Helpers;
+using Bruttissimo.Common.Mvc.Interface;
+using Bruttissimo.Common.Mvc.Utility;
+using Bruttissimo.Common.Resources;
+using Bruttissimo.Common.Static;
 using Castle.Core;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Context;
@@ -12,7 +17,7 @@ using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.InversionOfControl.Installers
 {
 	/// <summary>
 	/// Registers core MVC-specific dependencies.
@@ -70,7 +75,7 @@ namespace Bruttissimo.Common.Mvc
 
 		internal IMvcResourceHelper InstanceMvcResourceHelper(IKernel kernel, ComponentModel model, CreationContext context)
 		{
-			string ns = Resources.Constants.ResourceNamespaceRoot;
+			string ns = Constants.ResourceNamespaceRoot;
 			HtmlHelper html = context.AdditionalArguments["htmlHelper"] as HtmlHelper;
 			IMvcResourceHelper helper = new MvcResourceHelper(ns, html, assembly);
 			return helper;

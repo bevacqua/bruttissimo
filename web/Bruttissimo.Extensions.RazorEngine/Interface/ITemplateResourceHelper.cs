@@ -1,7 +1,8 @@
 using Bruttissimo.Common;
+using Bruttissimo.Common.Interface;
 using RazorEngine.Text;
 
-namespace Bruttissimo.Extensions.RazorEngine
+namespace Bruttissimo.Extensions.RazorEngine.Interface
 {
     public interface ITemplateResourceHelper : IResourceHelper<IEncodedString>
     {

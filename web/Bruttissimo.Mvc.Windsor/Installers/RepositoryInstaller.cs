@@ -1,12 +1,15 @@
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
-using Bruttissimo.Common;
+using Bruttissimo.Common.Helpers;
 using Bruttissimo.Common.InversionOfControl;
-using Bruttissimo.Data.Dapper;
-using Bruttissimo.Domain;
-using Bruttissimo.Domain.Logic;
-using Bruttissimo.Domain.Social;
+using Bruttissimo.Common.Static;
+using Bruttissimo.Data.Dapper.Repository;
+using Bruttissimo.Domain.DTO.Twitter;
+using Bruttissimo.Domain.Logic.Repository;
+using Bruttissimo.Domain.Repository.Social;
+using Bruttissimo.Domain.Social.Facebook;
+using Bruttissimo.Domain.Social.Twitter;
 using Bruttissimo.Extensions.MiniProfiler;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
@@ -14,7 +17,7 @@ using Castle.Windsor;
 using StackExchange.Profiling;
 using StackExchange.Profiling.Data;
 
-namespace Bruttissimo.Mvc.Windsor
+namespace Bruttissimo.Mvc.Windsor.Installers
 {
     /// <summary>
     /// Registers all repositories.

@@ -3,10 +3,12 @@ using System.Reflection;
 using AutoMapper;
 using AutoMapper.Mappers;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Interface;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
+using Mapper = Bruttissimo.Common.AutoMapper.Mapper;
 
 namespace Bruttissimo.Common.InversionOfControl.Installers
 {

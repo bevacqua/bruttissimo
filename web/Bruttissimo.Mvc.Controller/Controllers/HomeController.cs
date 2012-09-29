@@ -1,7 +1,8 @@
 ﻿using System.Web.Mvc;
 using Bruttissimo.Common.Mvc;
+using Bruttissimo.Common.Mvc.Core.Controllers;
 
-namespace Bruttissimo.Mvc.Controller
+namespace Bruttissimo.Mvc.Controller.Controllers
 {
     public class HomeController : ExtendedController
     {

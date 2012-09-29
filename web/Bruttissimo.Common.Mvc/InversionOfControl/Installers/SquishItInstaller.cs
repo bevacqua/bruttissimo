@@ -4,7 +4,7 @@ using Castle.Windsor;
 using SquishIt.Less;
 using Yahoo.Yui.Compressor;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.InversionOfControl.Installers
 {
     /// <summary>
     /// Registers SquishIt components, such as preprocessors.

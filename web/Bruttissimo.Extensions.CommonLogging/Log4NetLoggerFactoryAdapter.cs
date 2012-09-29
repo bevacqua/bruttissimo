@@ -21,11 +21,12 @@
 using System;
 using System.Collections.Specialized;
 using System.IO;
-using Common.Logging.Factory;
+using Common.Logging;
 using Common.Logging.Configuration;
+using Common.Logging.Factory;
 using log4net.Config;
 
-namespace Common.Logging.Log4Net
+namespace Bruttissimo.Extensions.CommonLogging
 {
     /// <summary>
     /// Concrete subclass of ILoggerFactoryAdapter specific to log4net 1.2.9-1.2.11.

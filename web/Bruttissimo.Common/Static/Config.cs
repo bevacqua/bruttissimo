@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Reflection;
 using System.Security.Authentication;
 using Bruttissimo.Common.Resources;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.Static
 {
     public static class Config
     {

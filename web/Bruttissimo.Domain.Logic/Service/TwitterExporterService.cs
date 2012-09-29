@@ -1,12 +1,17 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Common.Mvc.Interface;
+using Bruttissimo.Domain.Entity.Entities;
+using Bruttissimo.Domain.Entity.Social.Twitter;
+using Bruttissimo.Domain.Repository;
+using Bruttissimo.Domain.Repository.Social;
+using Bruttissimo.Domain.Service;
+using User = Bruttissimo.Common.Resources.User;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.Service
 {
     public class TwitterExporterService : ExporterService<TwitterPost>, ITwitterExporterService
     {
@@ -59,7 +64,7 @@ namespace Bruttissimo.Domain.Logic
             string longUrl = urlHelper.PublicRouteUrl("PostShortcut", new { id = post.Id });
             string url = urlShortener.Shorten(longUrl);
 
-            string description = post.UserMessage ?? post.Link.Title ?? Common.Resources.User.TwitterLink;
+            string description = post.UserMessage ?? post.Link.Title ?? User.TwitterLink;
             string message = description.Trim() + " ";
 
             int maxlen = MAX_TWEET_LENGTH - url.Length;

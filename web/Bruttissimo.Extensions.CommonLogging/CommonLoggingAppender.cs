@@ -21,12 +21,13 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Common.Logging;
 using Common.Logging.Configuration;
 using log4net.Appender;
 using log4net.Core;
 using log4net.Layout;
 
-namespace Common.Logging.Log4Net
+namespace Bruttissimo.Extensions.CommonLogging
 {
     /// <summary>
     /// Routes log events to Common.Logging infrastructure.
@@ -130,7 +131,7 @@ namespace Common.Logging.Log4Net
         ///<summary>
         /// Get or set the layout for this appender
         ///</summary>
-        public override log4net.Layout.ILayout Layout
+        public override ILayout Layout
         {
             get
             {

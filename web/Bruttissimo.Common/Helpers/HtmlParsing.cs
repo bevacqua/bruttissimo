@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Bruttissimo.Common.Static;
 using HtmlAgilityPack;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.Helpers
 {
     public static class HtmlParsingHelpers
     {

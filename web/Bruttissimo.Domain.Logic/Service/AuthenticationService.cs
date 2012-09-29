@@ -1,7 +1,10 @@
 using System;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Domain.Authentication;
+using Bruttissimo.Domain.Logic.Authentication;
+using Bruttissimo.Domain.Service;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.Service
 {
     public class AuthenticationService : IAuthenticationService
     {

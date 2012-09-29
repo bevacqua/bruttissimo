@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Bruttissimo.Domain.Entity
+namespace Bruttissimo.Domain.Entity.DTO
 {
     public class ScheduledJobDto
     {

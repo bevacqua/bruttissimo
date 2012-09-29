@@ -1,11 +1,12 @@
-﻿using System;
-using System.Security.Authentication;
+﻿using System.Security.Authentication;
 using System.Web.Mvc;
 using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc;
-using Bruttissimo.Domain;
+using Bruttissimo.Common.Mvc.InversionOfControl.Mvc;
+using Bruttissimo.Common.Resources;
+using Bruttissimo.Domain.MiniMembership;
 
-namespace Bruttissimo.Mvc.Model
+namespace Bruttissimo.Mvc.Model.Binders
 {
     [ModelType(typeof(IMiniPrincipal))]
     public class MiniPrincipalModelBinder : IModelBinder
@@ -18,7 +19,7 @@ namespace Bruttissimo.Mvc.Model
             IMiniPrincipal principal = controllerContext.HttpContext.User as IMiniPrincipal;
             if (principal == null)
             {
-                throw new AuthenticationException(Common.Resources.Authentication.UnauthorizedRequest);
+                throw new AuthenticationException(Authentication.UnauthorizedRequest);
             }
             return principal;
         }

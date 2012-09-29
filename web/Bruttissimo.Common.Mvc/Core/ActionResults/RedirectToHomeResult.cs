@@ -2,7 +2,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Bruttissimo.Common.Guard;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.ActionResults
 {
     public sealed class RedirectToHomeResult : RedirectToRouteResult
     {

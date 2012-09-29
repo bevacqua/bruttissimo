@@ -1,12 +1,16 @@
-using System;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Common.Mvc.InversionOfControl.Membership;
+using Bruttissimo.Common.Resources;
+using Bruttissimo.Domain.Authentication;
+using Bruttissimo.Domain.Service;
 using Facebook;
 using log4net;
+using User = Bruttissimo.Domain.Entity.Entities.User;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.Authentication
 {
     public class OAuthAuthenticationPortal : AuthenticationPortal
     {
@@ -34,16 +38,16 @@ namespace Bruttissimo.Domain.Logic
             }
             catch (FacebookApiException exception)
             {
-                log.Info(Common.Resources.Error.FacebookApiException, exception);
+                log.Info(Error.FacebookApiException, exception);
                 return AuthenticationException(exception);
             }
             if (response == null) // sanity
             {
-                return AbortedAuthentication(Common.Resources.Error.FacebookApiException);
+                return AbortedAuthentication(Error.FacebookApiException);
             }
             if (response.error != null)
             {
-                return AbortedAuthentication(response.error.message ?? Common.Resources.Error.FacebookApiException);
+                return AbortedAuthentication(response.error.message ?? Error.FacebookApiException);
             }
             if (response.id != facebookId) // validate access token against facebookId for enhanced security.
             {

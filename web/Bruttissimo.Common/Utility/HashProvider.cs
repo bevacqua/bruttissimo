@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Bruttissimo.Common.Guard;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.Utility
 {
     public class HashProvider
     {

@@ -1,6 +1,9 @@
+using Bruttissimo.Common.Resources;
+using Bruttissimo.Mvc.Model.ViewModels;
 using FluentValidation;
+using Regular = Bruttissimo.Common.Resources.Shared.Regular;
 
-namespace Bruttissimo.Mvc.Model
+namespace Bruttissimo.Mvc.Model.Validators
 {
     public class PostCreationModelValidator : AbstractValidator<PostCreationModel>
     {
@@ -8,11 +11,11 @@ namespace Bruttissimo.Mvc.Model
         {
             RuleFor(m => m.Link)
                 .NotNull()
-                .WithLocalizedMessage(() => Common.Resources.Validation.Required);
+                .WithLocalizedMessage(() => Validation.Required);
 
             RuleFor(m => m.Link)
-                .Matches(Common.Resources.Shared.Regular.WebLink)
-                .WithLocalizedMessage(() => Common.Resources.Validation.NoLink);
+                .Matches(Regular.WebLink)
+                .WithLocalizedMessage(() => Validation.NoLink);
         }
     }
 }

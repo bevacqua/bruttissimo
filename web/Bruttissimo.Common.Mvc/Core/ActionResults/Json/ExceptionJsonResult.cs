@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.ActionResults.Json
 {
     /// <summary>
     /// Returns a JSON result that contains exception messages.

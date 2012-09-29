@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Bruttissimo.Common.Resources;
 using Castle.Windsor;
 
 namespace Bruttissimo.Common.InversionOfControl
@@ -18,7 +19,7 @@ namespace Bruttissimo.Common.InversionOfControl
             {
                 if (Accessor == null)
                 {
-                    throw new InvalidOperationException(Bruttissimo.Common.Resources.Error.NoContainerInitialized);
+                    throw new InvalidOperationException(Error.NoContainerInitialized);
                 }
                 return Accessor.Container;
             }

@@ -2,7 +2,7 @@ using System;
 using System.Web.Security;
 using Castle.Windsor;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.InversionOfControl.Membership
 {
     public abstract class WindsorMembershipProvider : MembershipProvider
     {

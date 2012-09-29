@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Specialized;
 using System.Web;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Helpers;
+using Bruttissimo.Common.Resources.Shared;
+using Bruttissimo.Common.Static;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Utility
 {
     public class RequestSanitizer
     {
@@ -44,7 +48,7 @@ namespace Bruttissimo.Common.Mvc
             }
 
             // remove www. from the beginning of the url.
-            redirect = CompiledRegex.WwwSubdomain.Replace(redirect, Resources.Shared.Regular.WwwSubdomainReplacement);
+            redirect = CompiledRegex.WwwSubdomain.Replace(redirect, Regular.WwwSubdomainReplacement);
 
             if (absolute.Length > 1 && absolute.EndsWith("/"))
             {

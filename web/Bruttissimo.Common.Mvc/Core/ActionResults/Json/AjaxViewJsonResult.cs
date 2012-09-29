@@ -1,7 +1,7 @@
 using System.Web.Mvc;
 using Bruttissimo.Common.Guard;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.ActionResults.Json
 {
     /// <summary>
     /// Returns a view expressed as a JSON result.

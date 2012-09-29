@@ -1,6 +1,9 @@
 ﻿using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
+using Bruttissimo.Domain.Entity.Entities;
 using Bruttissimo.Domain.Logic;
+using Bruttissimo.Domain.Logic.MiniMembership;
+using Bruttissimo.Domain.Repository;
 using Bruttissimo.Tests.Mocking;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Mvc.Interface;
 using Bruttissimo.Common.Resources;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.Helpers
 {
     /// <summary>
     /// These help with partials requiring to inject scripts in the page.

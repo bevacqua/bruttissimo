@@ -1,16 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Bruttissimo.Common;
 using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc;
-using Bruttissimo.Domain;
-using Bruttissimo.Domain.Entity;
-using Bruttissimo.Mvc.Model;
+using Bruttissimo.Common.Mvc.Core.Attributes;
+using Bruttissimo.Common.Mvc.Core.Controllers;
+using Bruttissimo.Common.Static;
+using Bruttissimo.Domain.Entity.Constants;
+using Bruttissimo.Domain.Entity.Entities;
+using Bruttissimo.Domain.MiniMembership;
+using Bruttissimo.Domain.Service;
+using Bruttissimo.Mvc.Model.ViewModels;
 
-namespace Bruttissimo.Mvc.Controller
+namespace Bruttissimo.Mvc.Controller.Controllers
 {
     public class SystemController : ExtendedController
     {

@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Security;
 using Bruttissimo.Common.Guard;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Domain.Entity.Entities;
+using Bruttissimo.Domain.Repository;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.MiniMembership
 {
     public class MiniRoleProvider : RoleProvider
     {

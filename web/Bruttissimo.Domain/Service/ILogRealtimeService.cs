@@ -1,7 +1,7 @@
 using System.Web;
 using log4net.Core;
 
-namespace Bruttissimo.Domain
+namespace Bruttissimo.Domain.Service
 {
     public interface ILogRealtimeService
     {

@@ -1,10 +1,11 @@
 using System;
-using Bruttissimo.Common;
 using Bruttissimo.Common.Guard;
-using Bruttissimo.Domain;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Common.Interface;
+using Bruttissimo.Domain.Entity.Enum;
+using Bruttissimo.Domain.Service;
+using Bruttissimo.Mvc.Model.ViewModels;
 
-namespace Bruttissimo.Mvc.Model
+namespace Bruttissimo.Mvc.Model.Mappers.Post
 {
     public class PostModelMapper : IMapperConfigurator
     {
@@ -19,9 +20,9 @@ namespace Bruttissimo.Mvc.Model
 
         public void CreateMaps(IMapper mapper)
         {
-            mapper.CreateMap<Post, PostModel>()
+            mapper.CreateMap<Domain.Entity.Entities.Post, PostModel>()
                 .ConstructUsing(ModelByLinkType)
-                .BeforeMap((src, dest) => mapper.Map(src, dest, typeof(Post), dest.GetType()))
+                .BeforeMap((src, dest) => mapper.Map(src, dest, typeof(Domain.Entity.Entities.Post), dest.GetType()))
                 .ForMember(dest => dest.Comments, opt => opt.MapFrom(src => src))
                 .ForMember(
                     dest => dest.PostSlug,
@@ -29,7 +30,7 @@ namespace Bruttissimo.Mvc.Model
                 );
         }
 
-        public PostModel ModelByLinkType(Post post)
+        public PostModel ModelByLinkType(Domain.Entity.Entities.Post post)
         {
             switch (post.Link.Type)
             {

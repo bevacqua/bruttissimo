@@ -1,4 +1,4 @@
-namespace Bruttissimo.Domain
+namespace Bruttissimo.Domain.DTO.Twitter
 {
     public sealed class TwitterServiceParams
     {

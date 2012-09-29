@@ -1,9 +1,9 @@
 using System;
 using System.Security.Principal;
 using System.Web;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Domain.Entity.Entities;
 
-namespace Bruttissimo.Domain
+namespace Bruttissimo.Domain.Service
 {
     public interface IUserService
     {

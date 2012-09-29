@@ -1,7 +1,8 @@
 using System.Drawing;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Domain.DTO.Picture;
+using Bruttissimo.Domain.Entity.Entities;
 
-namespace Bruttissimo.Domain
+namespace Bruttissimo.Domain.Service
 {
     public interface IPictureService
     {

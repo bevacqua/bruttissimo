@@ -1,10 +1,9 @@
-using System;
 using System.Data;
 using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain;
-using Dapper.Contrib.Extensions;
+using Bruttissimo.Domain.Repository;
 
-namespace Bruttissimo.Data.Dapper
+namespace Bruttissimo.Data.Dapper.Repository
 {
     public abstract class EntityRepository<T> : IEntityRepository<T> where T : class
     {

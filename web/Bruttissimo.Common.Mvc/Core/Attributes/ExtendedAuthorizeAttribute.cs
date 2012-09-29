@@ -1,7 +1,8 @@
 using System;
 using System.Web.Mvc;
+using Bruttissimo.Common.Mvc.Core.ActionResults;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.Attributes
 {
     /// <summary>
     /// AuthorizeAttribute implementation with a slight tweak that makes authenticated

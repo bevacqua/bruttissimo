@@ -2,10 +2,12 @@
 using System.Drawing;
 using System.Net;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Extensions;
+using Bruttissimo.Common.Utility;
 using HtmlAgilityPack;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Bruttissimo.Tests
+namespace Bruttissimo.Tests.Utility
 {
     [TestClass]
     public class UtilityTests

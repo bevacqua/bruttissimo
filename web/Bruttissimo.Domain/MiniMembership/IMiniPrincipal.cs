@@ -1,7 +1,7 @@
 ﻿using System.Security.Principal;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Domain.Entity.Entities;
 
-namespace Bruttissimo.Domain
+namespace Bruttissimo.Domain.MiniMembership
 {
     public interface IMiniPrincipal : IPrincipal
     {

@@ -1,6 +1,6 @@
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Domain.Entity.Entities;
 
-namespace Bruttissimo.Domain
+namespace Bruttissimo.Domain.Repository
 {
     public interface IUserRepository : IEntityRepository<User>
     {

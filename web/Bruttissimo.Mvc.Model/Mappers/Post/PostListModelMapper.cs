@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
-using Bruttissimo.Common;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Common.Interface;
+using Bruttissimo.Common.Static;
+using Bruttissimo.Mvc.Model.ViewModels;
 
-namespace Bruttissimo.Mvc.Model
+namespace Bruttissimo.Mvc.Model.Mappers.Post
 {
     public class PostListModelMapper : IMapperConfigurator
     {
@@ -11,7 +12,7 @@ namespace Bruttissimo.Mvc.Model
         {
             int pageSize = Config.Defaults.PostListPageSize;
 
-            mapper.CreateMap<IEnumerable<Post>, PostListModel>()
+            mapper.CreateMap<IEnumerable<Domain.Entity.Entities.Post>, PostListModel>()
                 .ForMember(dest => dest.Posts, opt => opt.MapFrom(src => src))
                 .ForMember(dest => dest.OpenGraph, opt => opt.MapFrom(src => src.FirstOrDefault()))
                 .ForMember(dest => dest.HasMorePosts, opt => opt.MapFrom(src => pageSize >= src.Count()));

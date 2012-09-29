@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Static;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Bruttissimo.Tests.Integration

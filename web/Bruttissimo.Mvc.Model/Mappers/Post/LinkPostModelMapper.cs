@@ -1,13 +1,14 @@
-using Bruttissimo.Common;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Common.Helpers;
+using Bruttissimo.Common.Interface;
+using Bruttissimo.Mvc.Model.ViewModels;
 
-namespace Bruttissimo.Mvc.Model
+namespace Bruttissimo.Mvc.Model.Mappers.Post
 {
     public class LinkPostModelMapper : IMapperConfigurator
     {
         public void CreateMaps(IMapper mapper)
         {
-            mapper.CreateMap<Post, LinkPostModel>().Ignoring(
+            mapper.CreateMap<Domain.Entity.Entities.Post, LinkPostModel>().Ignoring(
                 m => m.Comments,
                 m => m.PostSlug
             );

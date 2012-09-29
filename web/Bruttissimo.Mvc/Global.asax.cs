@@ -1,9 +1,9 @@
 ﻿using System.Web;
 using System.Web.Routing;
-using Bruttissimo.Common;
 using Bruttissimo.Common.InversionOfControl;
-using Bruttissimo.Common.Mvc;
+using Bruttissimo.Common.Mvc.HttpModules.Wiring;
 using Bruttissimo.Common.Resources;
+using Bruttissimo.Mvc.Plumbing;
 using Bruttissimo.Mvc.Windsor;
 using log4net;
 

@@ -1,12 +1,13 @@
-using System;
 using System.Web;
-using Bruttissimo.Common;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Interface;
 using Bruttissimo.Common.Mvc;
-using Bruttissimo.Domain;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Common.Mvc.Extensions;
+using Bruttissimo.Domain.Entity.DTO;
+using Bruttissimo.Domain.Service;
+using Bruttissimo.Mvc.Model.ViewModels;
 
-namespace Bruttissimo.Mvc.Model
+namespace Bruttissimo.Mvc.Model.Mappers
 {
     public class ScheduledJobModelMapper : IMapperConfigurator
     {

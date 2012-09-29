@@ -1,6 +1,7 @@
 using System;
+using Bruttissimo.Domain.Authentication;
 
-namespace Bruttissimo.Domain
+namespace Bruttissimo.Domain.Service
 {
     public interface IAuthenticationService
     {

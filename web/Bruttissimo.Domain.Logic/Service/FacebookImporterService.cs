@@ -1,11 +1,16 @@
-using System;
 using System.Collections.Generic;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Domain.DTO.Facebook;
+using Bruttissimo.Domain.Entity.Entities;
+using Bruttissimo.Domain.Entity.Social.Facebook;
+using Bruttissimo.Domain.Repository;
+using Bruttissimo.Domain.Repository.Social;
+using Bruttissimo.Domain.Service;
 using log4net;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.Service
 {
     public class FacebookImporterService : BaseService, IFacebookImporterService
     {

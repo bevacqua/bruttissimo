@@ -1,3 +1,4 @@
+using Bruttissimo.Common.Quartz;
 using Castle.MicroKernel;
 
 namespace Bruttissimo.Common.InversionOfControl.Quartz

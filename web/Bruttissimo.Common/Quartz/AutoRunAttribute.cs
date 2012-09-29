@@ -1,6 +1,6 @@
 using System;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.Quartz
 {
     /// <summary>
     /// Jobs decorated with this attribute should be fired when the application starts.

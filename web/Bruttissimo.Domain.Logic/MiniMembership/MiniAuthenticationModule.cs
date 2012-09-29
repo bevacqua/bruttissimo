@@ -1,10 +1,11 @@
 using System;
 using System.Web;
-using Bruttissimo.Common;
 using Bruttissimo.Common.InversionOfControl;
 using Bruttissimo.Common.Mvc;
+using Bruttissimo.Common.Mvc.HttpModules.Wiring;
+using Bruttissimo.Domain.MiniMembership;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.MiniMembership
 {
     [ApplicationModule(100)]
     public class MiniAuthenticationModule : IHttpModule

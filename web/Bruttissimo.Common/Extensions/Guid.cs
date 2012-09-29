@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.Extensions
 {
     public static class GuidExtensions
     {

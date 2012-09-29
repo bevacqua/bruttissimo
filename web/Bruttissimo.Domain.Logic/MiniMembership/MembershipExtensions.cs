@@ -1,8 +1,8 @@
 ﻿using System.Security.Principal;
 using System.Web;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Domain.Entity.Entities;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.MiniMembership
 {
     public static class MembershipExtensions
     {

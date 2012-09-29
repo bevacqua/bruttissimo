@@ -1,10 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Mvc.Interface;
+using Bruttissimo.Common.Resources;
+using Bruttissimo.Common.Static;
 using Yahoo.Yui.Compressor;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Utility
 {
     public class ResourceCompressor : IResourceCompressor
     {
@@ -25,7 +29,7 @@ namespace Bruttissimo.Common.Mvc
             StringBuilder builder = new StringBuilder();
             foreach (string styleSheet in sources)
             {
-                string source = StripTag(Resources.Html.StyleTagName, styleSheet);
+                string source = StripTag(Html.StyleTagName, styleSheet);
                 builder.AppendLine(source);
             }
             string all = builder.ToString();
@@ -35,7 +39,7 @@ namespace Bruttissimo.Common.Mvc
 
         public string MinifyStylesheet(string source, bool wrapResultInTags = true)
         {
-            string tag = Resources.Html.StyleTagName;
+            string tag = Html.StyleTagName;
             return MinifyResource(source, wrapResultInTags, tag, cssCompressor.Compress);
         }
 
@@ -44,7 +48,7 @@ namespace Bruttissimo.Common.Mvc
             StringBuilder builder = new StringBuilder();
             foreach (string script in sources)
             {
-                string source = StripTag(Resources.Html.ScriptTagName, script);
+                string source = StripTag(Html.ScriptTagName, script);
                 builder.AppendLine(source);
             }
             string all = builder.ToString();
@@ -53,7 +57,7 @@ namespace Bruttissimo.Common.Mvc
 
         public string MinifyJavaScript(string source, bool wrapResultInTags = true)
         {
-            string tag = Resources.Html.ScriptTagName;
+            string tag = Html.ScriptTagName;
             return MinifyResource(source, wrapResultInTags, tag, jsCompressor.Compress);
         }
 
@@ -74,7 +78,7 @@ namespace Bruttissimo.Common.Mvc
             }
             if (wrapResultInTags)
             {
-                string tagged = Resources.Constants.TagWithContents.FormatWith(tag, minified);
+                string tagged = Constants.TagWithContents.FormatWith(tag, minified);
                 return tagged;
             }
             else
@@ -85,7 +89,7 @@ namespace Bruttissimo.Common.Mvc
 
         internal string StripTag(string tag, string source)
         {
-            tag = Resources.Html.TagFormat.FormatWith(tag);
+            tag = Html.TagFormat.FormatWith(tag);
             source = source.Trim();
             if (source.StartsWith(tag))
             {

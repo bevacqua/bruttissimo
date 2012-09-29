@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Bruttissimo.Common.Helpers;
 using Bruttissimo.Common.InversionOfControl;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.HttpModules.Wiring
 {
     public sealed class ApplicationModuleManager : IApplicationModuleManager
     {

@@ -1,11 +1,11 @@
-﻿using System;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 using Bruttissimo.Common.Guard;
-using Bruttissimo.Common.Mvc;
+using Bruttissimo.Common.Mvc.Core.Routing;
+using Bruttissimo.Common.Mvc.Extensions;
 using SignalR;
 
-namespace Bruttissimo.Mvc
+namespace Bruttissimo.Mvc.Plumbing
 {
     internal static class Routing
     {

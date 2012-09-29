@@ -1,7 +1,7 @@
 using Bruttissimo.Common;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Common.Interface;
 
-namespace Bruttissimo.Domain.Social
+namespace Bruttissimo.Domain.Social.Mappers
 {
     public class FacebookPostMapper : IMapperConfigurator
     {

@@ -1,11 +1,12 @@
 using System.Net.Mail;
 using System.Web;
 using System.Web.Routing;
+using Bruttissimo.Common.Mvc.InversionOfControl.Membership;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.InversionOfControl.Installers
 {
     /// <summary>
     /// Registers all ASP.NET related components.

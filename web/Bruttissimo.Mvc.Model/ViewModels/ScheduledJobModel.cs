@@ -1,6 +1,6 @@
 using System;
 
-namespace Bruttissimo.Mvc.Model
+namespace Bruttissimo.Mvc.Model.ViewModels
 {
     public class ScheduledJobModel
     {

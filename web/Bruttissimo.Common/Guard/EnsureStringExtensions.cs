@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard.Resources;
 
 namespace Bruttissimo.Common.Guard

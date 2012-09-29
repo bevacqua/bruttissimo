@@ -5,7 +5,7 @@ using Quartz.Core;
 using Quartz.Impl;
 using Quartz.Spi;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.InversionOfControl.Quartz
 {
     public class WindsorSchedulerFactory : StdSchedulerFactory
     {

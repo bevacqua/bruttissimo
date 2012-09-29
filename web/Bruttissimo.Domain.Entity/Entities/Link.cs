@@ -1,6 +1,7 @@
 ﻿using System;
+using Bruttissimo.Domain.Entity.Enum;
 
-namespace Bruttissimo.Domain.Entity
+namespace Bruttissimo.Domain.Entity.Entities
 {
     public class Link
     {

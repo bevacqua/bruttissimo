@@ -1,9 +1,12 @@
 using System;
 using System.Web.Mvc;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Mvc.Core.Models;
+using Bruttissimo.Common.Mvc.Utility;
+using Bruttissimo.Common.Resources;
 using log4net;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.ErrorHandling
 {
     public class ChildActionExceptionFilter : IExceptionFilter
     {
@@ -35,12 +38,12 @@ namespace Bruttissimo.Common.Mvc
         {
             Exception exception = filterContext.Exception;
 
-            helper.Log(log, exception, Resources.Error.UnhandledChildActionException);
+            helper.Log(log, exception, Error.UnhandledChildActionException);
 
             ErrorViewModel model = helper.GetErrorViewModel(filterContext.RouteData, exception);
             filterContext.Result = new PartialViewResult
             {
-                ViewName = Resources.Constants.ChildActionErrorViewName,
+                ViewName = Constants.ChildActionErrorViewName,
                 ViewData = new ViewDataDictionary(model)
             };
             filterContext.ExceptionHandled = true;

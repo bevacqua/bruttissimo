@@ -1,4 +1,4 @@
-namespace Bruttissimo.Domain
+namespace Bruttissimo.Domain.Service
 {
     public interface IGoogleAnalyticsService
     {

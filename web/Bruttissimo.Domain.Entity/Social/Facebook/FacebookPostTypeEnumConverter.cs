@@ -2,7 +2,7 @@ using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Bruttissimo.Domain.Entity
+namespace Bruttissimo.Domain.Entity.Social.Facebook
 {
     public class FacebookPostTypeEnumConverter : StringEnumConverter
     {

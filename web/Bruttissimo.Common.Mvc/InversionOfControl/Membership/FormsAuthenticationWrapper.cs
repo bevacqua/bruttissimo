@@ -1,6 +1,6 @@
 using System.Web.Security;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.InversionOfControl.Membership
 {
     public class FormsAuthenticationWrapper : IFormsAuthentication
     {

@@ -1,9 +1,11 @@
 using System;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Interface;
 using Bruttissimo.Common.InversionOfControl;
 using Bruttissimo.Common.Mvc;
+using Bruttissimo.Common.Mvc.Interface;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.Service
 {
 	public abstract class BaseService
 	{

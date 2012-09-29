@@ -1,8 +1,7 @@
-using System;
 using System.Web.Mvc;
 using Bruttissimo.Common.Guard;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.InversionOfControl.Mvc
 {
     internal sealed class WindsorActionInvoker : ControllerActionInvoker
     {

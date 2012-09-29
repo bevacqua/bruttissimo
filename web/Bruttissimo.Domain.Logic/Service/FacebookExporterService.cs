@@ -1,9 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using Bruttissimo.Common.Guard;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Domain.Entity.Entities;
+using Bruttissimo.Domain.Entity.Social.Facebook;
+using Bruttissimo.Domain.Repository;
+using Bruttissimo.Domain.Repository.Social;
+using Bruttissimo.Domain.Service;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.Service
 {
     public class FacebookExporterService : ExporterService<FacebookPost>, IFacebookExporterService
     {

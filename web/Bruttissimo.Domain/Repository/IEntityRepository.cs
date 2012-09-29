@@ -1,4 +1,4 @@
-namespace Bruttissimo.Domain
+namespace Bruttissimo.Domain.Repository
 {
     public interface IEntityRepository<T>
     {

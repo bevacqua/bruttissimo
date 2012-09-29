@@ -1,4 +1,4 @@
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.Quartz
 {
     public interface IJobAutoRunner
     {

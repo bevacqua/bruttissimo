@@ -2,6 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Mvc.Core.ActionFilters;
+using Bruttissimo.Common.Mvc.Core.ErrorHandling;
+using Bruttissimo.Common.Mvc.Core.Models;
+using Bruttissimo.Common.Mvc.InversionOfControl.Mvc;
+using Bruttissimo.Common.Mvc.Utility;
 using Castle.Core;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Context;
@@ -11,7 +16,7 @@ using Castle.Windsor;
 using StackExchange.Profiling.MVCHelpers;
 using log4net;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.InversionOfControl.Installers
 {
     /// <summary>
     /// Registers core MVC-specific dependencies.

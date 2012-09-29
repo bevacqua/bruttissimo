@@ -1,12 +1,14 @@
-using System;
 using System.Reflection;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Mvc.Interface;
+using Bruttissimo.Common.Mvc.SignalR;
+using Bruttissimo.Common.Mvc.SignalR.Extensions;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using SignalR.Hubs;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.InversionOfControl.Installers
 {
     /// <summary>
     /// Registers SignalR components, such as hubs, proxies, or extensions.

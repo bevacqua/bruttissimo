@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Data;
+using log4net.Appender;
+using log4net.Core;
 using log4net.Util;
 
-namespace log4net.Appender
+namespace Bruttissimo.Common.log4net
 {
     public class NullableAdoNetParameter : AdoNetAppenderParameter
     {
-        public override void FormatValue(IDbCommand command, Core.LoggingEvent loggingEvent)
+        public override void FormatValue(IDbCommand command, LoggingEvent loggingEvent)
         {
             IDbDataParameter parameter = (IDbDataParameter)command.Parameters[ParameterName];
             object formattedValue = Layout.Format(loggingEvent);

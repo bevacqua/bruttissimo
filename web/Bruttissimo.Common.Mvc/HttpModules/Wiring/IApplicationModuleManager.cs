@@ -1,6 +1,6 @@
 using System.Web;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.HttpModules.Wiring
 {
     public interface IApplicationModuleManager
     {

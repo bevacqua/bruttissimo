@@ -7,6 +7,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Static;
+using Bruttissimo.Data.Deployment.DbUp;
 using Bruttissimo.Extensions.MiniProfiler;
 using DbUp;
 using DbUp.Engine;

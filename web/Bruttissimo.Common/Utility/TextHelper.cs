@@ -1,6 +1,7 @@
 ﻿using System.Text;
+using Bruttissimo.Common.Extensions;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.Utility
 {
     public class TextHelper
     {

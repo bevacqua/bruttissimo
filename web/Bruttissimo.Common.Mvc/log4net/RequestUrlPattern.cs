@@ -3,7 +3,7 @@ using System.Web;
 using log4net.Core;
 using log4net.Layout.Pattern;
 
-namespace log4net.Layout
+namespace Bruttissimo.Common.Mvc.log4net
 {
     public sealed class RequestUrlPattern : PatternLayoutConverter
     {

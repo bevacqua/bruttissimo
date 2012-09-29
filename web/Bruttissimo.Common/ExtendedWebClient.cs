@@ -1,5 +1,6 @@
 using System;
 using System.Net;
+using Bruttissimo.Common.Resources;
 
 namespace Bruttissimo.Common
 {
@@ -13,7 +14,7 @@ namespace Bruttissimo.Common
         public ExtendedWebClient()
         {
             // some sites attempt to block requests that do not come from a web browser, but we don't really care.
-            Headers.Add(Resources.Constants.UserAgentHeader, Resources.Constants.UserAgentHeaderMock);
+            Headers.Add(Constants.UserAgentHeader, Constants.UserAgentHeaderMock);
         }
 
         protected override WebRequest GetWebRequest(Uri address)

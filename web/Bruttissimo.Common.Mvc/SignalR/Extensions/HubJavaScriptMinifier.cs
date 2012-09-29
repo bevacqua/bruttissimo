@@ -1,8 +1,8 @@
-using System;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Mvc.Interface;
 using SignalR.Hubs;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.SignalR.Extensions
 {
     public sealed class HubJavaScriptMinifier : IJavaScriptMinifier
     {

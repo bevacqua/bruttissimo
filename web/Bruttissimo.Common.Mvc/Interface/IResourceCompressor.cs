@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Interface
 {
 	public interface IResourceCompressor
 	{

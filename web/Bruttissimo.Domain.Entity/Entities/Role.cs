@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Bruttissimo.Domain.Entity
+namespace Bruttissimo.Domain.Entity.Entities
 {
     public class Role
     {

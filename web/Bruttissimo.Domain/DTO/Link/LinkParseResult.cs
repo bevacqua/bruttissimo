@@ -1,4 +1,4 @@
-namespace Bruttissimo.Domain
+namespace Bruttissimo.Domain.DTO.Link
 {
     public enum LinkParseResult
     {

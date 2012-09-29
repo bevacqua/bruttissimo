@@ -1,8 +1,10 @@
+using Bruttissimo.Common.Mvc.Interface;
+using Bruttissimo.Common.Mvc.Utility;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.InversionOfControl.Installers
 {
     /// <summary>
     /// Registers all internal component dependencies, such as Mvc utility classes.

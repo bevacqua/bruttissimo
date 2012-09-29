@@ -1,8 +1,10 @@
 using System;
 using System.Web;
+using Bruttissimo.Common.Mvc.Extensions;
+using Bruttissimo.Common.Mvc.HttpModules.Wiring;
 using StackExchange.Profiling;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.HttpModules
 {
     [ApplicationModule]
     public class MiniProfilerModule : IHttpModule

@@ -1,7 +1,7 @@
 using System;
 using System.Web.Mvc;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.Engine
 {
     public class ExtendedControllerContext : ControllerContext
     {

@@ -1,4 +1,4 @@
-namespace Bruttissimo.Extensions.RazorEngine
+namespace Bruttissimo.Extensions.RazorEngine.Interface
 {
     public interface IExtendedTemplate
     {

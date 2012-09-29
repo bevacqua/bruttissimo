@@ -1,7 +1,7 @@
 using System;
 using System.Web.Mvc;
 
-namespace Bruttissimo.Domain
+namespace Bruttissimo.Domain.Authentication
 {
     public class AuthenticationResult
     {

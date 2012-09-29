@@ -1,6 +1,11 @@
 using Bruttissimo.Common;
+using Bruttissimo.Common.Helpers;
+using Bruttissimo.Common.Interface;
+using Bruttissimo.Domain.Entity.Entities;
+using Bruttissimo.Domain.Entity.Enum;
+using Bruttissimo.Domain.Entity.Social.Facebook;
 
-namespace Bruttissimo.Domain.Entity
+namespace Bruttissimo.Domain.Entity.Mappers
 {
     public class LinkMapper : IMapperConfigurator
     {

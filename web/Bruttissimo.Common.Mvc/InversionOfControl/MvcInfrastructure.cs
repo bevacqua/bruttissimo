@@ -1,10 +1,11 @@
 ﻿using System.Web.Mvc;
+using Bruttissimo.Common.Mvc.InversionOfControl.Mvc;
 using Castle.MicroKernel;
 using FluentValidation.Mvc;
 using SquishIt.Framework;
 using SquishIt.Less;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.InversionOfControl
 {
     public static class MvcInfrastructure
     {

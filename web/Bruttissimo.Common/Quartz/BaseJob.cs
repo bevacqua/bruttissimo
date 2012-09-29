@@ -1,9 +1,12 @@
 using System;
 using System.Diagnostics;
+using Bruttissimo.Common.Extensions;
+using Bruttissimo.Common.Resources;
 using Quartz;
 using log4net;
+using Debug = Bruttissimo.Common.Resources.Debug;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.Quartz
 {
     public abstract class BaseJob : IJob, IDisposable
     {
@@ -22,7 +25,7 @@ namespace Bruttissimo.Common
         {
             string id = context.FireInstanceId;
             string name = concreteType.FullName;
-            log.Info(Resources.Debug.JobExecuting.FormatWith(name, id));
+            log.Info(Debug.JobExecuting.FormatWith(name, id));
 
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
@@ -33,14 +36,14 @@ namespace Bruttissimo.Common
             }
             catch (Exception exception)
             {
-                log.Error(Resources.Error.UnhandledException, exception); // log here too, because the wrapper clears the stack trace.
+                log.Error(Error.UnhandledException, exception); // log here too, because the wrapper clears the stack trace.
                 throw new JobExecutionException(exception);
             }
             finally
             {
                 stopwatch.Stop();
                 string duration = stopwatch.Elapsed.ToShortDurationString();
-                log.Info(Resources.Debug.JobExecuted.FormatWith(name, id, duration));
+                log.Info(Debug.JobExecuted.FormatWith(name, id, duration));
 
                 Dispose();
             }

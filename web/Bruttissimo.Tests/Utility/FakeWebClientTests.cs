@@ -1,10 +1,11 @@
 ﻿using System;
 using System.IO;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Tests.Mocking;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Bruttissimo.Tests
+namespace Bruttissimo.Tests.Utility
 {
     [TestClass]
     public class FakeWebClientTests

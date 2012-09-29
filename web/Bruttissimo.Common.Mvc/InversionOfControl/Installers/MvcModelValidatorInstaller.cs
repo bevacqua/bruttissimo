@@ -1,4 +1,3 @@
-using System;
 using System.Reflection;
 using Bruttissimo.Common.Guard;
 using Castle.MicroKernel.Registration;
@@ -6,7 +5,7 @@ using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using FluentValidation;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.InversionOfControl.Installers
 {
     /// <summary>
     /// Registers all fluent validators.

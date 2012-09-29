@@ -1,9 +1,9 @@
 ﻿using SignalR.Hubs;
 
-namespace Bruttissimo.Domain.Logic.Hubs
+namespace Bruttissimo.Domain.Logic.SignalR.Hub
 {
     [HubName("logs")]
-    public class LogHub : Hub
+    public class LogHub : global::SignalR.Hubs.Hub
     {
     }
 }

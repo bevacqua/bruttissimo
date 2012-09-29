@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Drawing;
 using Bruttissimo.Domain.Logic;
+using Bruttissimo.Domain.Logic.Repository;
 using Bruttissimo.Tests.Mocking;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Bruttissimo.Tests
+namespace Bruttissimo.Tests.Repository
 {
     [TestClass]
     public class FsImageStorageRepositoryTests

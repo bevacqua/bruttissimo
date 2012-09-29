@@ -1,9 +1,8 @@
-using System;
 using System.IO;
 using System.Web.Mvc;
 using Bruttissimo.Common.Guard;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.Engine
 {
     public class ExtendedView : IView
     {

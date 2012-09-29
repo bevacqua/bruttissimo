@@ -1,6 +1,6 @@
 using System;
 
-namespace Bruttissimo.Domain
+namespace Bruttissimo.Domain.DTO.Picture
 {
     /// <summary>
     /// Picture entity size

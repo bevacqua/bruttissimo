@@ -1,10 +1,13 @@
 using System;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Mvc.Exceptions;
+using Bruttissimo.Common.Resources;
 using Castle.MicroKernel;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.InversionOfControl.Mvc
 {
     internal sealed class WindsorControllerFactory : DefaultControllerFactory
     {
@@ -26,7 +29,7 @@ namespace Bruttissimo.Common.Mvc
         {
             if (controllerType == null)
             {
-                string message = Resources.Error.ControllerNotFound.FormatWith(requestContext.HttpContext.Request.Path);
+                string message = Error.ControllerNotFound.FormatWith(requestContext.HttpContext.Request.Path);
                 throw new HttpNotFoundException(message);
             }
             return (IController)kernel.Resolve(controllerType); // this also resolves the IActionInvoker.

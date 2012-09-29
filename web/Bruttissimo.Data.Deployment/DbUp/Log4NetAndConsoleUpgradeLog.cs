@@ -1,9 +1,8 @@
-using System;
 using Bruttissimo.Common.Guard;
 using DbUp.Engine.Output;
 using log4net;
 
-namespace Bruttissimo.Data.Deployment
+namespace Bruttissimo.Data.Deployment.DbUp
 {
     public class Log4NetAndConsoleUpgradeLog : IUpgradeLog
     {

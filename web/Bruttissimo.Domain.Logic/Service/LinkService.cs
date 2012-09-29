@@ -4,9 +4,14 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Bruttissimo.Common;
 using Bruttissimo.Common.Guard;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Common.Static;
+using Bruttissimo.Common.Utility;
+using Bruttissimo.Domain.DTO.Link;
+using Bruttissimo.Domain.Entity.Entities;
+using Bruttissimo.Domain.Repository;
+using Bruttissimo.Domain.Service;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.Service
 {
     public class LinkService : ILinkService
     {

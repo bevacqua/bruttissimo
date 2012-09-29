@@ -1,11 +1,12 @@
-using Bruttissimo.Common;
+using Bruttissimo.Common.Helpers;
 using Bruttissimo.Common.InversionOfControl;
-using Bruttissimo.Domain.Logic;
+using Bruttissimo.Domain.Logic.Authentication;
+using Bruttissimo.Domain.Logic.Service;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
-namespace Bruttissimo.Mvc.Windsor
+namespace Bruttissimo.Mvc.Windsor.Installers
 {
     /// <summary>
     /// Registers all services and their support dependency components from Domain Logic.

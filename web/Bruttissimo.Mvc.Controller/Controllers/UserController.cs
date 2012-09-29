@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Web.Mvc;
-using Bruttissimo.Common;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc;
-using Bruttissimo.Domain;
-using Bruttissimo.Mvc.Model;
+using Bruttissimo.Common.Mvc.Core.Attributes;
+using Bruttissimo.Common.Mvc.Core.Controllers;
+using Bruttissimo.Common.Mvc.InversionOfControl.Membership;
+using Bruttissimo.Domain.Authentication;
+using Bruttissimo.Domain.Service;
+using Bruttissimo.Mvc.Model.ViewModels;
 
-namespace Bruttissimo.Mvc.Controller
+namespace Bruttissimo.Mvc.Controller.Controllers
 {
     public class UserController : ExtendedController
     {

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using Bruttissimo.Common.Resources;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.Extensions
 {
     public static class StringExtensions
     {
@@ -41,14 +42,14 @@ namespace Bruttissimo.Common
             {
                 return text;
             }
-            Regex regex = new Regex(Resources.Constants.UnicodeRegex, RegexOptions.IgnoreCase | RegexOptions.Compiled);
+            Regex regex = new Regex(Constants.UnicodeRegex, RegexOptions.IgnoreCase | RegexOptions.Compiled);
             return regex.Replace(text, match => ((char)int.Parse(match.Groups[1].Value, NumberStyles.HexNumber)).ToInvariantString());
         }
 
         public static string[] SplitOnNewLines(this string text, bool removeEmptyEntries = true)
         {
             StringSplitOptions opts = removeEmptyEntries ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None;
-            string[] separators = new[] {Environment.NewLine, Resources.Constants.NewLine, Resources.Constants.EscapedNewLine};
+            string[] separators = new[] {Environment.NewLine, Constants.NewLine, Constants.EscapedNewLine};
             string[] result = text.Split(separators, opts);
             return result;
         }

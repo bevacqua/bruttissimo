@@ -1,8 +1,9 @@
 ﻿using System.ServiceModel.Syndication;
 using System.Web.Mvc;
 using System.Xml;
+using Bruttissimo.Common.Resources;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.ActionResults
 {
     public class RssActionResult : ActionResult
     {
@@ -10,7 +11,7 @@ namespace Bruttissimo.Common.Mvc
 
         public override void ExecuteResult(ControllerContext context)
         {
-            context.HttpContext.Response.ContentType = Resources.Constants.RssContentType;
+            context.HttpContext.Response.ContentType = Constants.RssContentType;
 
             Rss20FeedFormatter rss = new Rss20FeedFormatter(Feed);
             using (XmlWriter writer = XmlWriter.Create(context.HttpContext.Response.Output))

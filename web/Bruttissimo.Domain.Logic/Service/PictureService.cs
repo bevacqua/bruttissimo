@@ -4,10 +4,16 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Common.Helpers;
+using Bruttissimo.Common.Utility;
+using Bruttissimo.Domain.DTO.Picture;
+using Bruttissimo.Domain.Entity.Entities;
+using Bruttissimo.Domain.Repository;
+using Bruttissimo.Domain.Service;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.Service
 {
     public class PictureService : IPictureService
     {

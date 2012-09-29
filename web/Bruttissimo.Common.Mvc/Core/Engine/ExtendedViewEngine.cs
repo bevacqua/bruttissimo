@@ -1,9 +1,12 @@
 using System;
 using System.Web.Mvc;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Mvc.Core.Controllers;
+using Bruttissimo.Common.Mvc.Interface;
+using Bruttissimo.Common.Resources;
 using Castle.MicroKernel;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.Engine
 {
     public sealed class ExtendedViewEngine : RazorViewEngine
     {
@@ -45,9 +48,9 @@ namespace Bruttissimo.Common.Mvc
             StringRenderingController controller = controllerContext.Controller as StringRenderingController;
             if (controller == null)
             {
-                throw new InvalidOperationException(Resources.Error.ControllerBaseTypeMismatch);
+                throw new InvalidOperationException(Error.ControllerBaseTypeMismatch);
             }
-            if (viewPath.EndsWith(Resources.Constants.JavaScriptViewNamingExtension)) // sanity.
+            if (viewPath.EndsWith(Constants.JavaScriptViewNamingExtension)) // sanity.
             {
                 return; // prevent StackOverflowException.
             }

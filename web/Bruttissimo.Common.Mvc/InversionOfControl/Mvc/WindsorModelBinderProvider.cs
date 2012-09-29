@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using Bruttissimo.Common.Guard;
 using Castle.MicroKernel;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.InversionOfControl.Mvc
 {
     internal sealed class WindsorModelBinderProvider : IModelBinderProvider
     {

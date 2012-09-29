@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc;
-using Bruttissimo.Domain;
-using Bruttissimo.Domain.Entity;
-using Bruttissimo.Mvc.Model;
+using Bruttissimo.Common.Mvc.Core.Attributes;
+using Bruttissimo.Common.Mvc.Core.Controllers;
+using Bruttissimo.Domain.Entity.Constants;
+using Bruttissimo.Domain.Entity.DTO;
+using Bruttissimo.Domain.Service;
+using Bruttissimo.Mvc.Model.ViewModels;
 
-namespace Bruttissimo.Mvc.Controller
+namespace Bruttissimo.Mvc.Controller.Controllers
 {
     [ExtendedAuthorize(Roles = Rights.CanAccessApplicationJobs)]
     public class JobsController : ExtendedController

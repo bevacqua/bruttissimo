@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using Bruttissimo.Domain.DTO.Link;
 
-namespace Bruttissimo.Domain
+namespace Bruttissimo.Domain.Service
 {
     public interface ILinkService
     {

@@ -1,8 +1,9 @@
 using System.Web;
 using Bruttissimo.Common.Mvc;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Common.Mvc.Interface;
+using Bruttissimo.Domain.Entity.Constants;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.Authentication
 {
     public sealed class DebugDetailsRoleAccesor : IDebugDetailsRoleAccesor
     {

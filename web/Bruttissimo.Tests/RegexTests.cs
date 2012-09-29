@@ -1,6 +1,7 @@
-﻿using System.Data.SqlClient;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Resources;
+using Bruttissimo.Common.Static;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Bruttissimo.Tests
@@ -32,7 +33,7 @@ namespace Bruttissimo.Tests
         {
             // Arrange
             Regex regex = CompiledRegex.JavaScriptViewNamingConvention;
-            string replacement = Common.Resources.Regular.JavaScriptViewNamingExtension;
+            string replacement = Regular.JavaScriptViewNamingExtension;
             const string input = "~/Views/User/Register.cshtml";
             const string expected = "~/Views/User/Register.js.cshtml";
 

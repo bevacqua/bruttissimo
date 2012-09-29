@@ -4,12 +4,18 @@ using System.Drawing;
 using System.Linq;
 using System.Web;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Helpers;
 using Bruttissimo.Common.Resources;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Common.Static;
+using Bruttissimo.Common.Utility;
+using Bruttissimo.Domain.Entity.Entities;
+using Bruttissimo.Domain.Entity.Enum;
+using Bruttissimo.Domain.Service;
 using HtmlAgilityPack;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.Service
 {
     public class LinkCrawlerService : ILinkCrawlerService
     {

@@ -1,6 +1,6 @@
 ﻿using System.Web.Routing;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.Routing
 {
     public class LowercaseRoute : Route
     {

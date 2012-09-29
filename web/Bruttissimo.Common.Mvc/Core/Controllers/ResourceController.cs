@@ -8,9 +8,13 @@ using System.Resources;
 using System.Text;
 using System.Web.Mvc;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Mvc.Core.Attributes;
+using Bruttissimo.Common.Mvc.Core.Models;
+using Bruttissimo.Common.Mvc.Interface;
 using Bruttissimo.Common.Resources;
+using Bruttissimo.Common.Utility;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.Controllers
 {
     public class ResourceController : ExtendedController
     {

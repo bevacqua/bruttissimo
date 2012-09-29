@@ -1,8 +1,10 @@
 using System;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Bruttissimo.Common.Helpers;
+using Bruttissimo.Common.Mvc.Interface;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Utility
 {
     public class UrlHelperWrapper : UrlHelper, IUrlHelper
     {

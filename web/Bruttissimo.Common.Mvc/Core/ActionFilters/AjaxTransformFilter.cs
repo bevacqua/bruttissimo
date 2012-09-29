@@ -1,8 +1,11 @@
 using System;
 using System.Web.Mvc;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Mvc.Core.ActionResults.Json;
+using Bruttissimo.Common.Mvc.Core.Controllers;
+using Bruttissimo.Common.Resources;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.ActionFilters
 {
     public class AjaxTransformFilter : IActionFilter
     {
@@ -27,7 +30,7 @@ namespace Bruttissimo.Common.Mvc
             var controller = filterContext.Controller as StringRenderingController;
             if (controller == null)
             {
-                throw new InvalidOperationException(Resources.Error.AjaxTransformAttributeDecoration);
+                throw new InvalidOperationException(Error.AjaxTransformAttributeDecoration);
             }
 
             var viewResult = filterContext.Result as ViewResult;

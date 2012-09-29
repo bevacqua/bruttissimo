@@ -5,10 +5,11 @@ using System.Linq;
 using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain;
 using Bruttissimo.Domain.Entity;
+using Bruttissimo.Domain.Entity.Entities;
+using Bruttissimo.Domain.Repository;
 using Dapper;
-using Dapper.Contrib.Extensions;
 
-namespace Bruttissimo.Data.Dapper
+namespace Bruttissimo.Data.Dapper.Repository
 {
     public class PostRepository : EntityRepository<Post>, IPostRepository
     {

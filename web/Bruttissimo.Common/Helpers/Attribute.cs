@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reflection;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.Helpers
 {
     /// <summary>
     /// Reflection helpers to help deal with attributes.

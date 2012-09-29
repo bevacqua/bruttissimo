@@ -1,8 +1,10 @@
 using System;
 using System.Web;
+using Bruttissimo.Common.Mvc.HttpModules.Wiring;
+using Bruttissimo.Common.Static;
 using log4net;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.HttpModules
 {
     [ApplicationModule]
     public class LogModule : IHttpModule

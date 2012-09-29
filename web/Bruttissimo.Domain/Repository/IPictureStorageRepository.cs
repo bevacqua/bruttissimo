@@ -1,9 +1,11 @@
-﻿namespace Bruttissimo.Domain
+﻿using System.Drawing;
+
+namespace Bruttissimo.Domain.Repository
 {
     public interface IPictureStorageRepository
     {
-        void Save(System.Drawing.Image image, string id);
-        System.Drawing.Image Load(string id);
+        void Save(Image image, string id);
+        Image Load(string id);
         string GetRelativePath(string id);
     }
 }

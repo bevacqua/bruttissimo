@@ -1,10 +1,10 @@
-using System;
-using Bruttissimo.Common;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Interface;
 using Bruttissimo.Common.Mvc;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Common.Mvc.Interface;
+using Bruttissimo.Mvc.Model.ViewModels;
 
-namespace Bruttissimo.Mvc.Model
+namespace Bruttissimo.Mvc.Model.Mappers
 {
     public class OpenGraphModelMapper : IMapperConfigurator
     {
@@ -19,7 +19,7 @@ namespace Bruttissimo.Mvc.Model
 
         public void CreateMaps(IMapper mapper)
         {
-            mapper.CreateMap<Post, OpenGraphModel>().ForMember(
+            mapper.CreateMap<Domain.Entity.Entities.Post, OpenGraphModel>().ForMember(
                 m => m.Title,
                 x => x.MapFrom(p => p.Link.Title)
             ).ForMember(

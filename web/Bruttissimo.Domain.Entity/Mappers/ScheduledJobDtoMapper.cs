@@ -1,7 +1,10 @@
 using Bruttissimo.Common;
+using Bruttissimo.Common.Extensions;
+using Bruttissimo.Common.Interface;
+using Bruttissimo.Domain.Entity.DTO;
 using Quartz;
 
-namespace Bruttissimo.Domain.Entity
+namespace Bruttissimo.Domain.Entity.Mappers
 {
     public class ScheduledJobDtoMapper : IMapperConfigurator
     {

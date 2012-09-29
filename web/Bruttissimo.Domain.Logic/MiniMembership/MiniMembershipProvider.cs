@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Web.Security;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Domain.Entity.Entities;
+using Bruttissimo.Domain.Repository;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.MiniMembership
 {
     public class MiniMembershipProvider : MembershipProvider
     {

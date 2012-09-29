@@ -1,11 +1,12 @@
 using System;
 using System.Linq;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Helpers;
 using Castle.MicroKernel;
 using FluentValidation;
 using FluentValidation.Attributes;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.InversionOfControl.Mvc
 {
     internal sealed class WindsorValidatorFactory : ValidatorFactoryBase
     {

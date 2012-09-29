@@ -2,8 +2,9 @@
 using System.Web;
 using System.Web.Mvc;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Mvc.Extensions;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.Models
 {
     public class ErrorViewModel : HandleErrorInfo
     {

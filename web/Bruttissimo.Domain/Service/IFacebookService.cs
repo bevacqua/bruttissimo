@@ -1,4 +1,4 @@
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Service
 {
     public interface IFacebookService
     {

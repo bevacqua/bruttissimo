@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using Bruttissimo.Mvc.Model.Interfaces;
 
-namespace Bruttissimo.Mvc.Model
+namespace Bruttissimo.Mvc.Model.ViewModels
 {
     public class PostListModel : IHasOpenGraphMetadata
     {

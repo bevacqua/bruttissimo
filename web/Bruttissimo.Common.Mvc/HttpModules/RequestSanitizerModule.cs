@@ -1,8 +1,10 @@
 using System;
 using System.Web;
 using Bruttissimo.Common.InversionOfControl;
+using Bruttissimo.Common.Mvc.HttpModules.Wiring;
+using Bruttissimo.Common.Mvc.Utility;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.HttpModules
 {
     [ApplicationModule]
     public class RequestSanitizerModule : IHttpModule

@@ -205,7 +205,9 @@
     <Content Include="Views\Posts\DisplayTemplates\ImagePostModel.cshtml" />
     <Content Include="Views\Posts\List.js.cshtml" />
     <Content Include="Views\Posts\Details.cshtml" />
-    <Content Include="Views\web.config" />
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Shared\DisplayTemplates\String.cshtml" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>

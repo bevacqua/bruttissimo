@@ -1,8 +1,7 @@
-using System;
 using System.Net.Mail;
 using Bruttissimo.Common.Guard;
 
-namespace Bruttissimo.Domain.Entity
+namespace Bruttissimo.Domain.Entity.Email
 {
     public class EmailMessageModel
     {

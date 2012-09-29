@@ -1,10 +1,10 @@
 using System.IO;
 using System.Web;
-using Bruttissimo.Domain.Logic;
+using Bruttissimo.Domain.Logic.MiniMembership;
 using log4net.Core;
 using log4net.Layout.Pattern;
 
-namespace log4net.Layout
+namespace Bruttissimo.Domain.Logic.log4net
 {
     public class RequestIdentityPattern : PatternLayoutConverter
     {

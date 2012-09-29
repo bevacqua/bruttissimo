@@ -1,6 +1,7 @@
+using Bruttissimo.Common.Mvc.Interface;
 using RestSharp;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Utility
 {
     public sealed class GoogleUrlShortener : IUrlShortener
     {

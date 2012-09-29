@@ -2,7 +2,7 @@ using System;
 using System.Reflection;
 using System.Web.Mvc;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.Attributes
 {
     /// <summary>
     /// This method handles only non-AJAX requests. AJAX requests are ignored.

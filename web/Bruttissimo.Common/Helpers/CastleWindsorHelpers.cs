@@ -1,7 +1,7 @@
 using System;
 using Castle.MicroKernel.Registration;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.Helpers
 {
     public static class CastleWindsorHelpers
     {

@@ -2,9 +2,12 @@ using System;
 using System.Collections.Generic;
 using Bruttissimo.Common;
 using Bruttissimo.Common.Guard;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Common.Utility;
+using Bruttissimo.Domain.Entity.Entities;
+using Bruttissimo.Domain.Repository;
+using Bruttissimo.Domain.Service;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.Service
 {
     public class PostService : IPostService
     {

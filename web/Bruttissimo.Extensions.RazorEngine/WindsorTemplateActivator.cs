@@ -1,5 +1,5 @@
-using System;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Extensions.RazorEngine.Interface;
 using Castle.MicroKernel;
 using RazorEngine.Templating;
 

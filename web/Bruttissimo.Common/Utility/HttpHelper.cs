@@ -4,12 +4,13 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Resources;
 using HtmlAgilityPack;
 using log4net;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.Utility
 {
     public class HttpHelper
     {

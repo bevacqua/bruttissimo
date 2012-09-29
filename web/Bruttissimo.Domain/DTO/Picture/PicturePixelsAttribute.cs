@@ -1,6 +1,6 @@
 using System;
 
-namespace Bruttissimo.Domain
+namespace Bruttissimo.Domain.DTO.Picture
 {
     /// <summary>
     /// Sets the maximum dimention for both width and height the decorated field supports, in pixels.

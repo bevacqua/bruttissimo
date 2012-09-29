@@ -1,7 +1,7 @@
 using System.IO;
 using System.Net;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.Extensions
 {
     public static class WebResponseExtensions
     {

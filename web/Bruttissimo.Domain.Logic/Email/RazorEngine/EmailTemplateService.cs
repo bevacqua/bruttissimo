@@ -1,7 +1,7 @@
 using RazorEngine.Configuration;
 using RazorEngine.Templating;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.Email.RazorEngine
 {
     public class EmailTemplateService : TemplateService, IEmailTemplateService
     {

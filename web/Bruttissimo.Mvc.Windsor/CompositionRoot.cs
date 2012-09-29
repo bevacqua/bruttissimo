@@ -1,6 +1,9 @@
 ﻿using Bruttissimo.Common;
 using Bruttissimo.Common.InversionOfControl;
 using Bruttissimo.Common.Mvc;
+using Bruttissimo.Common.Mvc.InversionOfControl;
+using Bruttissimo.Common.Mvc.InversionOfControl.SignalR;
+using Bruttissimo.Common.Quartz;
 using Bruttissimo.Data.Deployment;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;

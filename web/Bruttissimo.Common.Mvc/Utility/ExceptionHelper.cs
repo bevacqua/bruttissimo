@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Web;
 using System.Web.Routing;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Mvc.Core.Models;
+using Bruttissimo.Common.Mvc.Extensions;
 using Bruttissimo.Common.Resources;
 using log4net;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Utility
 {
     public class ExceptionHelper
     {

@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Helpers;
+using Bruttissimo.Common.Resources;
 using Quartz;
 using log4net;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.Quartz
 {
     public class JobAutoRunner : IJobAutoRunner
     {
@@ -34,7 +37,7 @@ namespace Bruttissimo.Common
                 {
                     return; // sanity.
                 }
-                log.Debug(Resources.Debug.SchedulingAutoRunJob.FormatWith(jobType.Name));
+                log.Debug(Debug.SchedulingAutoRunJob.FormatWith(jobType.Name));
 
                 if (configuration.RunOnce)
                 {

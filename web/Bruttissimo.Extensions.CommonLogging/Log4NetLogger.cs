@@ -20,11 +20,11 @@
 
 using System;
 using System.Diagnostics;
-using System.Reflection;
+using Common.Logging;
 using Common.Logging.Factory;
 using log4net.Core;
 
-namespace Common.Logging.Log4Net
+namespace Bruttissimo.Extensions.CommonLogging
 {
     /// <summary>
     /// Concrete implementation of <see cref="ILog"/> interface specific to log4net 1.2.9-1.2.11.

@@ -2,13 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Web.Mvc;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Helpers;
+using Bruttissimo.Common.Mvc.InversionOfControl.Mvc;
+using Bruttissimo.Common.Resources;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.InversionOfControl.Installers
 {
     /// <summary>
     /// Registers all model binders and the model binder provider.
@@ -51,7 +55,7 @@ namespace Bruttissimo.Common.Mvc
                 ModelTypeAttribute modelTypeAttribute = modelBinderType.GetAttribute<ModelTypeAttribute>();
                 if (modelTypeAttribute == null)
                 {
-                    throw new ArgumentException(Resources.Error.ModelTypeAttributeMissing.FormatWith(modelBinderType.FullName));
+                    throw new ArgumentException(Error.ModelTypeAttributeMissing.FormatWith(modelBinderType.FullName));
                 }
                 modelBinderTypes.Add(modelTypeAttribute.ModelType, modelBinderType);
             }

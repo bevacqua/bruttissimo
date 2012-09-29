@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Bruttissimo.Common;
 using Bruttissimo.Common.Guard;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Common.Quartz;
+using Bruttissimo.Domain.Entity.DTO;
+using Bruttissimo.Domain.Service;
 using Quartz;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.Service
 {
     public class JobService : BaseService, IJobService
     {

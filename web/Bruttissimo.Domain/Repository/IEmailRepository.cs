@@ -1,6 +1,6 @@
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Domain.Entity.Email;
 
-namespace Bruttissimo.Domain
+namespace Bruttissimo.Domain.Repository
 {
     public interface IEmailRepository
     {

@@ -1,11 +1,13 @@
-using System;
 using System.Net.Mail;
 using Bruttissimo.Common;
 using Bruttissimo.Common.Guard;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Common.Resources;
+using Bruttissimo.Common.Static;
+using Bruttissimo.Domain.Entity.Email;
+using Bruttissimo.Domain.Repository;
 using log4net;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.Repository
 {
     public class EmailRepository : IEmailRepository
     {
@@ -42,7 +44,7 @@ namespace Bruttissimo.Domain.Logic
             }
             catch (SmtpException exception)
             {
-                log.Warn(Common.Resources.Error.MailSendError, exception);
+                log.Warn(Error.MailSendError, exception);
             }
         }
     }

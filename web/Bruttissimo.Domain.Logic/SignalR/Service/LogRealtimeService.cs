@@ -1,12 +1,14 @@
 using System;
 using System.Web;
-using Bruttissimo.Common;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
-using Bruttissimo.Common.Mvc;
-using Bruttissimo.Domain.Logic.Hubs;
+using Bruttissimo.Common.Mvc.Interface;
+using Bruttissimo.Domain.Logic.MiniMembership;
+using Bruttissimo.Domain.Logic.SignalR.Hub;
+using Bruttissimo.Domain.Service;
 using log4net.Core;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.SignalR.Service
 {
     public class LogRealtimeService : ILogRealtimeService
     {

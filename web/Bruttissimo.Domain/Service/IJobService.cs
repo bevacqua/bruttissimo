@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Bruttissimo.Domain.Entity;
+using Bruttissimo.Domain.Entity.DTO;
 
-namespace Bruttissimo.Domain
+namespace Bruttissimo.Domain.Service
 {
     public interface IJobService
     {

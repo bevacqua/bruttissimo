@@ -2,10 +2,11 @@ using System;
 using System.Security.Principal;
 using System.Web;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Domain.MiniMembership;
 using Castle.MicroKernel;
 using log4net;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.MiniMembership
 {
     public class MiniAuthenticationWrapper : IMiniAuthentication
     {

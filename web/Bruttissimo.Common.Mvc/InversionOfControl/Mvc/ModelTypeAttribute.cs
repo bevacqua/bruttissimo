@@ -1,7 +1,7 @@
 using System;
 using Bruttissimo.Common.Guard;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.InversionOfControl.Mvc
 {
     /// <summary>
     /// Defines the model type a model binder is in charge of binding.

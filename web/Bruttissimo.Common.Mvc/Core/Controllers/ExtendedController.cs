@@ -1,9 +1,15 @@
 using System;
 using System.Web.Mvc;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Interface;
 using Bruttissimo.Common.InversionOfControl;
+using Bruttissimo.Common.Mvc.Core.ActionResults;
+using Bruttissimo.Common.Mvc.Core.ActionResults.Json;
+using Bruttissimo.Common.Mvc.Core.Attributes;
+using Bruttissimo.Common.Mvc.Interface;
+using Bruttissimo.Common.Resources;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.Controllers
 {
     /// <summary>
     /// Our implementation of controller base.
@@ -38,7 +44,7 @@ namespace Bruttissimo.Common.Mvc
             {
                 Ensure.That(model, "model").IsNotNull();
             }
-            Ensure.That(() => ModelState.IsValid).WithExtraMessage(() => Resources.Error.ModelStateIsValid).IsFalse();
+            Ensure.That(() => ModelState.IsValid).WithExtraMessage(() => Error.ModelStateIsValid).IsFalse();
 
             if (Request.IsAjaxRequest())
             {

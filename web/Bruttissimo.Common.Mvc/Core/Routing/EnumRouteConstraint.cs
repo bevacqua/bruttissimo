@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Routing;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Resources;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.Routing
 {
     public class EnumRouteConstraint<T> : IRouteConstraint where T : struct
     {
@@ -13,7 +15,7 @@ namespace Bruttissimo.Common.Mvc
 
         static EnumRouteConstraint()
         {
-            Ensure.That(() => typeof(T).IsEnum).WithExtraMessage(() => Resources.Error.EnumRouteConstraint.FormatWith(typeof(T).FullName));
+            Ensure.That(() => typeof(T).IsEnum).WithExtraMessage(() => Error.EnumRouteConstraint.FormatWith(typeof(T).FullName));
 
             string[] names = Enum.GetNames(typeof(T));
             _enumNames = new Lazy<HashSet<string>>(() => new HashSet<string>

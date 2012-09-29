@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Web.Mvc;
+using Bruttissimo.Common.Mvc.Exceptions;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.ActionResults
 {
     public class NotFoundResult : ActionResult
     {

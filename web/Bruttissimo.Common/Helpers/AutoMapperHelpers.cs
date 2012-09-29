@@ -3,7 +3,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using AutoMapper;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.Helpers
 {
     public static class AutoMapperHelpers
     {

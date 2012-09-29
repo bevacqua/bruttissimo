@@ -1,10 +1,11 @@
 using System;
 using System.Reflection;
 using System.Text;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
-using Bruttissimo.Common.Resources;
+using Bruttissimo.Common.Interface;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.Utility
 {
     public abstract class ResourceHelper<TRawString> : IResourceHelper<TRawString> where TRawString : class
     {

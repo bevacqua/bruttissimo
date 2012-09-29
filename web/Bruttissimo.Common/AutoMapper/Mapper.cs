@@ -1,9 +1,11 @@
 using System;
 using AutoMapper;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Interface;
+using Bruttissimo.Common.Resources;
 using Castle.MicroKernel;
 
-namespace Bruttissimo.Common
+namespace Bruttissimo.Common.AutoMapper
 {
     public class Mapper : IMapper
     {
@@ -35,7 +37,7 @@ namespace Bruttissimo.Common
         {
             IMappingEngineRunner runner = engine as IMappingEngineRunner;
 
-            Ensure.That(runner, "runner").WithExtraMessage(() => Resources.Error.AutoMapperInvalidEngine).IsNotNull();
+            Ensure.That(runner, "runner").WithExtraMessage(() => Error.AutoMapperInvalidEngine).IsNotNull();
 
             return runner.ConfigurationProvider;
         }
@@ -45,7 +47,7 @@ namespace Bruttissimo.Common
             IConfigurationProvider provider = GetConfigurationProvider();
             IConfiguration configuration = provider as IConfiguration;
 
-            Ensure.That(configuration, "configuration").WithExtraMessage(() => Resources.Error.AutoMapperInvalidProvider).IsNotNull();
+            Ensure.That(configuration, "configuration").WithExtraMessage(() => Error.AutoMapperInvalidProvider).IsNotNull();
 
             return configuration;
         }

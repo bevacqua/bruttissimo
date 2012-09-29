@@ -1,10 +1,12 @@
-using System;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Mvc.Interface;
+using Bruttissimo.Common.Resources;
+using Bruttissimo.Common.Utility;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.Core.Helpers
 {
     public class MvcResourceHelper : ResourceHelper<IHtmlString>, IMvcResourceHelper
     {
@@ -35,7 +37,7 @@ namespace Bruttissimo.Common.Mvc
 
         protected override string GetSharedResourceNamespace()
         {
-            return Resources.Constants.MvcResourceSharedNamespace;
+            return Constants.MvcResourceSharedNamespace;
         }
 
         protected override IHtmlString RawConverter(string resource)

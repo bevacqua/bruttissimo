@@ -1,9 +1,9 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain;
+using Bruttissimo.Domain.Repository;
 
-namespace Bruttissimo.Data.Dapper
+namespace Bruttissimo.Data.Dapper.Repository
 {
     public class PictureRepository : IPictureRepository
     {

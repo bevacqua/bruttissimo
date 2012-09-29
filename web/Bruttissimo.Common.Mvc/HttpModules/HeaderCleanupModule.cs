@@ -1,9 +1,10 @@
 using System;
 using System.Web;
 using System.Web.Mvc;
+using Bruttissimo.Common.Mvc.HttpModules.Wiring;
 using Bruttissimo.Common.Resources;
 
-namespace Bruttissimo.Common.Mvc
+namespace Bruttissimo.Common.Mvc.HttpModules
 {
     [ApplicationModule]
     public class HeaderCleanupModule : IHttpModule

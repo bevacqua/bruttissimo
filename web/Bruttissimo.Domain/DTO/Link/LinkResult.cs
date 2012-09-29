@@ -1,10 +1,8 @@
-using Bruttissimo.Domain.Entity;
-
-namespace Bruttissimo.Domain
+namespace Bruttissimo.Domain.DTO.Link
 {
     public class LinkResult
     {
-        public Link Link { get; set; }
+        public Entity.Entities.Link Link { get; set; }
         public LinkParseResult Result { get; set; }
     }
 }

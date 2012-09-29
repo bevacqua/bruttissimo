@@ -1,11 +1,12 @@
-using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Web;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Resources;
+using Bruttissimo.Domain.Repository;
 
-namespace Bruttissimo.Domain.Logic
+namespace Bruttissimo.Domain.Logic.Repository
 {
     public class PictureStorageRepository : IPictureStorageRepository
     {
@@ -23,7 +24,7 @@ namespace Bruttissimo.Domain.Logic
             Ensure.That(id, "id").IsNotNull();
 
             filename = string.Concat(id, ".jpg");
-            folder = Common.Resources.Constants.ImageUploadFolder;
+            folder = Constants.ImageUploadFolder;
             relativePath = Path.Combine(folder, filename);
             string physicalPath = httpContext.Server.MapPath(relativePath);
             return physicalPath;

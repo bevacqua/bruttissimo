@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Web.Mvc;
-using Bruttissimo.Common;
 using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc;
-using Bruttissimo.Domain;
-using Bruttissimo.Mvc.Model;
+using Bruttissimo.Common.Mvc.Core.Controllers;
+using Bruttissimo.Common.Static;
+using Bruttissimo.Domain.Service;
+using Bruttissimo.Mvc.Model.ViewModels;
 
-namespace Bruttissimo.Mvc.Controller
+namespace Bruttissimo.Mvc.Controller.Controllers
 {
     public class AnalyticsController : ExtendedController
     {

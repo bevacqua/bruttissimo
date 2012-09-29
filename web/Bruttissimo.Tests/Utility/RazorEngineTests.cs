@@ -1,9 +1,10 @@
-using System;
 using System.IO;
 using System.Reflection;
 using System.Text;
 using Bruttissimo.Common;
+using Bruttissimo.Common.Extensions;
 using Bruttissimo.Domain.Logic;
+using Bruttissimo.Domain.Logic.Email.RazorEngine;
 using Bruttissimo.Extensions.RazorEngine;
 using Bruttissimo.Tests.Mocking;
 using Bruttissimo.Tests.RazorEngine.Model;
@@ -11,7 +12,7 @@ using Bruttissimo.Tests.RazorEngine.Template;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RazorEngine.Templating;
 
-namespace Bruttissimo.Tests
+namespace Bruttissimo.Tests.Utility
 {
     [TestClass]
     public class RazorEngineTests
