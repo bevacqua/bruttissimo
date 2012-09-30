@@ -190,10 +190,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="unrecoverable.cshtml" />
+    <EmbeddedResource Include="Core\ErrorHandling\unrecoverable.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="unrecoverable.exception.cshtml" />
+    <EmbeddedResource Include="Core\ErrorHandling\unrecoverable.exception.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
