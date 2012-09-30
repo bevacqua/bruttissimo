@@ -1,7 +1,6 @@
 ﻿using System.Security.Authentication;
 using System.Web.Mvc;
 using Bruttissimo.Common.Guard;
-using Bruttissimo.Common.Mvc;
 using Bruttissimo.Common.Mvc.InversionOfControl.Mvc;
 using Bruttissimo.Common.Resources;
 using Bruttissimo.Domain.MiniMembership;

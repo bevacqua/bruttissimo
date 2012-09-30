@@ -1,5 +1,4 @@
 using Bruttissimo.Common.Guard;
-using Bruttissimo.Common.Mvc;
 using Bruttissimo.Common.Mvc.InversionOfControl.Membership;
 using Bruttissimo.Domain.Authentication;
 using Bruttissimo.Domain.Entity.Entities;

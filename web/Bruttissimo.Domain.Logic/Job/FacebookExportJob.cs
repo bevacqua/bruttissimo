@@ -1,5 +1,4 @@
-﻿using Bruttissimo.Common;
-using Bruttissimo.Common.Guard;
+﻿using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Quartz;
 using Bruttissimo.Domain.Service;
 using Quartz;

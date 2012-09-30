@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using Bruttissimo.Common;
 using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Helpers;

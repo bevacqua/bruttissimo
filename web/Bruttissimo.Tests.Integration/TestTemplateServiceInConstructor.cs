@@ -1,5 +1,4 @@
 using Bruttissimo.Common.Guard;
-using Bruttissimo.Domain.Logic;
 using Bruttissimo.Domain.Logic.Email.RazorEngine;
 
 namespace Bruttissimo.Tests.Integration

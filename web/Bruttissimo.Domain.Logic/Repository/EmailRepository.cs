@@ -1,5 +1,4 @@
 using System.Net.Mail;
-using Bruttissimo.Common;
 using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Resources;
 using Bruttissimo.Common.Static;

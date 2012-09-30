@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Bruttissimo.Common.Guard;
-using Bruttissimo.Domain;
-using Bruttissimo.Domain.Entity;
 using Bruttissimo.Domain.Entity.Entities;
 using Bruttissimo.Domain.Repository;
 using Dapper;

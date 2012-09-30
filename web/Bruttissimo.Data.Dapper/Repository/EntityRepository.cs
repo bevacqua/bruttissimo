@@ -1,6 +1,5 @@
 using System.Data;
 using Bruttissimo.Common.Guard;
-using Bruttissimo.Domain;
 using Bruttissimo.Domain.Repository;
 
 namespace Bruttissimo.Data.Dapper.Repository

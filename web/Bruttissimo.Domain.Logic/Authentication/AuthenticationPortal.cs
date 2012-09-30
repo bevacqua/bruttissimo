@@ -1,10 +1,9 @@
 using System;
 using Bruttissimo.Common.Guard;
-using Bruttissimo.Common.Mvc;
 using Bruttissimo.Common.Mvc.InversionOfControl.Membership;
 using Bruttissimo.Domain.Authentication;
+using Bruttissimo.Domain.Entity.Entities;
 using Bruttissimo.Domain.Service;
-using User = Bruttissimo.Domain.Entity.Entities.User;
 
 namespace Bruttissimo.Domain.Logic.Authentication
 {

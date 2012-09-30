@@ -2,14 +2,13 @@ using System;
 using System.Security.Principal;
 using System.Web;
 using System.Web.Security;
-using Bruttissimo.Common;
 using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Static;
+using Bruttissimo.Domain.Entity.Entities;
 using Bruttissimo.Domain.Logic.Email.Model;
 using Bruttissimo.Domain.Logic.MiniMembership;
 using Bruttissimo.Domain.Repository;
 using Bruttissimo.Domain.Service;
-using User = Bruttissimo.Domain.Entity.Entities.User;
 
 namespace Bruttissimo.Domain.Logic.Service
 {

@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Bruttissimo.Common.Guard;
-using Bruttissimo.Common.Mvc;
 using Bruttissimo.Common.Mvc.Interface;
 using Bruttissimo.Domain.Entity.Entities;
 using Bruttissimo.Domain.Entity.Social.Twitter;
