@@ -58,8 +58,8 @@ namespace Bruttissimo.Mvc.Windsor.Installers
             TemplateServiceConfiguration configuration = new TemplateServiceConfiguration
             {
                 Activator = new WindsorTemplateActivator(kernel),
-                BaseTemplateType = typeof (ExtendedTemplate<>),
-                Resolver = new EmbeddedTemplateResolver(typeof (EmailTemplate))
+                BaseTemplateType = typeof(ExtendedTemplate<>),
+                Resolver = new EmbeddedTemplateResolver(typeof(EmailTemplate))
             };
             IEmailTemplateService service = new EmailTemplateService(configuration);
             return service;
@@ -68,7 +68,8 @@ namespace Bruttissimo.Mvc.Windsor.Installers
         internal ITemplateResourceHelper InstanceTemplateResourceHelper(IKernel kernel, ComponentModel model, CreationContext context)
         {
             TemplateBase templateBase = context.AdditionalArguments["templateBase"] as TemplateBase;
-            return new TemplateResourceHelper(Email.ResourceNamespaceRoot, templateBase);
+            string @namespace = typeof(EmailTemplate).Namespace;
+            return new TemplateResourceHelper(@namespace, templateBase);
         }
     }
 }

@@ -252,6 +252,7 @@
     <EmbeddedResource Include="Resources\Email.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Email.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Error.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
