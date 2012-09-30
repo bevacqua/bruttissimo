@@ -34,10 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=2.1.267.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.2.1.267\lib\net40\AutoMapper.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.Core">
+    <Reference Include="Castle.Core, Version=3.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Castle.Core.3.1.0\lib\net40-client\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Windsor">
@@ -51,49 +49,13 @@
       <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
-    <Reference Include="Moq">
-      <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.8\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="RazorEngine">
       <HintPath>..\lib\RazorEngine.modified\RazorEngine.dll</HintPath>
     </Reference>
-    <Reference Include="SignalR">
-      <HintPath>..\packages\SignalR.Server.0.5.2\lib\net40\SignalR.dll</HintPath>
-    </Reference>
-    <Reference Include="SignalR.Hosting.AspNet, Version=0.5.2.10625, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SignalR.Hosting.AspNet.0.5.2\lib\net40\SignalR.Hosting.AspNet.dll</HintPath>
-    </Reference>
-    <Reference Include="SignalR.Hosting.Common">
-      <HintPath>..\packages\SignalR.Hosting.Common.0.5.2\lib\net40\SignalR.Hosting.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="SquishIt.Framework">
-      <HintPath>..\packages\SquishIt.0.9.0-alpha3\lib\SquishIt.Framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\RazorEngine.3.0.8\lib\net40\System.Web.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Yahoo.Yui.Compressor">
-      <HintPath>..\packages\YUICompressor.NET.2.0.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\GlobalAssemblyInfo.cs">
@@ -123,17 +85,9 @@
       <Project>{58A64FF9-DA97-4097-8149-E2E93844B738}</Project>
       <Name>Bruttissimo.Domain.Logic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Bruttissimo.Domain.Social\Bruttissimo.Domain.Social.csproj">
-      <Project>{AB09903B-4CC7-48E5-BE13-264F07D792E3}</Project>
-      <Name>Bruttissimo.Domain.Social</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Bruttissimo.Domain\Bruttissimo.Domain.csproj">
       <Project>{2CDC59CD-F04A-4CF3-BCD4-7063245101B6}</Project>
       <Name>Bruttissimo.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Bruttissimo.Extensions.RazorEngine\Bruttissimo.Extensions.RazorEngine.csproj">
-      <Project>{DADE5AE6-DDBB-48DC-B65A-C20A39FA0FF7}</Project>
-      <Name>Bruttissimo.Extensions.RazorEngine</Name>
     </ProjectReference>
     <ProjectReference Include="..\Bruttissimo.Mvc.Controller\Bruttissimo.Mvc.Controller.csproj">
       <Project>{29B0B536-3C50-481A-BC6C-89F66FE39F88}</Project>
@@ -142,10 +96,6 @@
     <ProjectReference Include="..\Bruttissimo.Mvc.Model\Bruttissimo.Mvc.Model.csproj">
       <Project>{C7BE64F2-B820-4B8D-8823-0DE436FCBA60}</Project>
       <Name>Bruttissimo.Mvc.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Bruttissimo.Mvc\Bruttissimo.Mvc.csproj">
-      <Project>{5C3C4F8C-DC67-4E7E-8435-667774FC043E}</Project>
-      <Name>Bruttissimo.Mvc</Name>
     </ProjectReference>
     <ProjectReference Include="..\Bruttissimo.Tests.Mocking\Bruttissimo.Tests.Mocking.csproj">
       <Project>{E5F5BA52-78CF-4ADD-94CE-0AF0BD38FC60}</Project>

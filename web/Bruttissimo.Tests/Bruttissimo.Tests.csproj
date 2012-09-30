@@ -34,7 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Windsor, Version=3.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\packages\HtmlAgilityPack.1.4.5\lib\Net40\HtmlAgilityPack.dll</HintPath>
     </Reference>
@@ -45,37 +44,16 @@
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.8\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="RazorEngine">
       <HintPath>..\lib\RazorEngine.modified\RazorEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="SignalR">
-      <HintPath>..\packages\SignalR.Server.0.5.2\lib\net40\SignalR.dll</HintPath>
-    </Reference>
-    <Reference Include="SignalR.Hosting.AspNet, Version=0.5.2.10625, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SignalR.Hosting.AspNet.0.5.2\lib\net40\SignalR.Hosting.AspNet.dll</HintPath>
-    </Reference>
-    <Reference Include="SignalR.Hosting.Common">
-      <HintPath>..\packages\SignalR.Hosting.Common.0.5.2\lib\net40\SignalR.Hosting.Common.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\RazorEngine.3.0.8\lib\net40\System.Web.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -98,10 +76,6 @@
     <Compile Include="Utility\UtilityTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bruttissimo.Common.Mvc\Bruttissimo.Common.Mvc.csproj">
-      <Project>{BE9DCCD0-D5AA-4AFF-9C42-34E325D1FD7E}</Project>
-      <Name>Bruttissimo.Common.Mvc</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Bruttissimo.Common\Bruttissimo.Common.csproj">
       <Project>{8069E6E0-91C4-4BC2-A490-80A5674F6CFC}</Project>
       <Name>Bruttissimo.Common</Name>
@@ -121,10 +95,6 @@
     <ProjectReference Include="..\Bruttissimo.Extensions.RazorEngine\Bruttissimo.Extensions.RazorEngine.csproj">
       <Project>{DADE5AE6-DDBB-48DC-B65A-C20A39FA0FF7}</Project>
       <Name>Bruttissimo.Extensions.RazorEngine</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Bruttissimo.Mvc.Controller\Bruttissimo.Mvc.Controller.csproj">
-      <Project>{29B0B536-3C50-481A-BC6C-89F66FE39F88}</Project>
-      <Name>Bruttissimo.Mvc.Controller</Name>
     </ProjectReference>
     <ProjectReference Include="..\Bruttissimo.Mvc\Bruttissimo.Mvc.csproj">
       <Project>{5C3C4F8C-DC67-4E7E-8435-667774FC043E}</Project>

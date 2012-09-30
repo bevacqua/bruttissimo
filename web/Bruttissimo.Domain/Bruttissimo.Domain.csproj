@@ -39,15 +39,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\GlobalAssemblyInfo.cs">
@@ -94,10 +88,6 @@
     <Compile Include="Service\IAuthenticationService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bruttissimo.Common\Bruttissimo.Common.csproj">
-      <Project>{8069E6E0-91C4-4BC2-A490-80A5674F6CFC}</Project>
-      <Name>Bruttissimo.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Bruttissimo.Domain.Entity\Bruttissimo.Domain.Entity.csproj">
       <Project>{F03C32AC-F451-43D2-8506-D4E695C6C8A9}</Project>
       <Name>Bruttissimo.Domain.Entity</Name>
