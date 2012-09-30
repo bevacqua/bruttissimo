@@ -10,7 +10,7 @@ namespace Bruttissimo.Mvc.Plumbing
     internal static class Routing
     {
         private static readonly object notFound = new { controller = "Error", action = "NotFound" };
-        
+
         public static void RegisterAllAreas()
         {
             AreaRegistration.RegisterAllAreas();
@@ -40,10 +40,7 @@ namespace Bruttissimo.Mvc.Plumbing
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             // by not using .IgnoreRoute I avoid IIS taking over my custom error handling engine.
-            routes.MapRoute(
-                "IgnoreExplicitPostDetails", "Posts/Details/{id}",
-                new { controller = "Error", action = "NotFound", id = UrlParameter.Optional });
-
+            routes.MapRoute("IgnoreExplicitPostDetails", "Posts/Details/{*pathInfo}", notFound);
             routes.MapRoute("IgnoreExplicitHome", "Home", notFound);
             routes.MapRoute("IgnoreExplicitIndex", "{controllerName}/Index/{*pathInfo}", notFound);
             routes.MapRoute("IgnoreExplicitSiteMap", "Home/SiteMapXml", notFound);
