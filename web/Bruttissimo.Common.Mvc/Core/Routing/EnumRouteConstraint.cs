@@ -15,7 +15,7 @@ namespace Bruttissimo.Common.Mvc.Core.Routing
 
         static EnumRouteConstraint()
         {
-            Ensure.That(() => typeof(T).IsEnum).WithExtraMessage(() => Error.EnumRouteConstraint.FormatWith(typeof(T).FullName));
+            Ensure.That(() => typeof(T).IsEnum).WithExtraMessage(Error.EnumRouteConstraint.FormatWith(typeof(T).FullName));
 
             string[] names = Enum.GetNames(typeof(T));
             _enumNames = new Lazy<HashSet<string>>(() => new HashSet<string>

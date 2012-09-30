@@ -24,7 +24,7 @@ namespace Bruttissimo.Common.Mvc.InversionOfControl.Mvc
             Ensure.That(() => validatorType).IsNotNull();
 
             Ensure.That(() => validatorType.IsGenericType && validatorType.GetGenericTypeDefinition() == typeof(IValidator<>))
-                  .WithExtraMessage(() => "validatorType must implement IValidator<>")
+                  .WithExtraMessage("validatorType must implement IValidator<>")
                   .IsTrue();
             
             Type modelType = validatorType.GetGenericArguments().Single();

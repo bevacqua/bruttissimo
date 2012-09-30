@@ -118,7 +118,7 @@
     <Compile Include="Core\Engine\ExtendedViewEngine.cs" />
     <Compile Include="Core\Controllers\StringRenderingController.cs" />
     <Compile Include="Core\Engine\ExtendedControllerContext.cs" />
-    <Compile Include="Extensions\BundleBase`1.cs" />
+    <Compile Include="SquishIt\BundleBase`1.cs" />
     <Compile Include="Extensions\Exception.cs" />
     <Compile Include="Extensions\HttpContextExtensions.cs" />
     <Compile Include="Extensions\HttpRequestBase.cs" />

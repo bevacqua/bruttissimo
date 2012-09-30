@@ -217,7 +217,9 @@
     <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
-    <Content Include="web.sitemap" />
+    <Content Include="web.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Xml\sitemap.config">
       <SubType>Designer</SubType>
     </Content>

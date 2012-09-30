@@ -1,7 +1,7 @@
 ﻿using Bruttissimo.Common.Static;
 using SquishIt.Framework.Base;
 
-namespace Bruttissimo.Common.Mvc.Extensions
+namespace Bruttissimo.Common.Mvc.SquishIt
 {
     public static class BundleBaseHelpers
     {

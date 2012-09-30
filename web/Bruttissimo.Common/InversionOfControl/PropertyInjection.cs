@@ -23,7 +23,7 @@ namespace Bruttissimo.Common.InversionOfControl
         /// </summary>
         public static T InjectProperty<T>(this T property, T value, string propertyName) where T : class
         {
-            Ensure.That(property, propertyName).WithExtraMessage(() => Error.DuplicatePropertyInjection.FormatWith(propertyName)).IsNull();
+            Ensure.That(property, propertyName).WithExtraMessage(Error.DuplicatePropertyInjection.FormatWith(propertyName)).IsNull();
             Ensure.That(value, propertyName).IsNotNull();
 
             return value;
@@ -43,7 +43,7 @@ namespace Bruttissimo.Common.InversionOfControl
         /// </summary>
         public static T? InjectProperty<T>(this T? property, T? value, string propertyName) where T : struct
         {
-            Ensure.That(property, propertyName).WithExtraMessage(() => Error.DuplicatePropertyInjection.FormatWith(propertyName)).IsNull();
+            Ensure.That(property, propertyName).WithExtraMessage(Error.DuplicatePropertyInjection.FormatWith(propertyName)).IsNull();
             Ensure.That(value, propertyName).IsNotNull();
 
             return value;

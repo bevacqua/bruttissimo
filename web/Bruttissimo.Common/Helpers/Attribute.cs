@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
@@ -28,7 +29,18 @@ namespace Bruttissimo.Common.Helpers
         /// <returns>The attribute instance on the target, if any.</returns>
         public static T GetAttribute<T>(this ICustomAttributeProvider instance) where T : Attribute
         {
-            return instance.GetCustomAttributes(typeof (T), true).Cast<T>().FirstOrDefault();
+            return instance.GetCustomAttributes(typeof(T), true).Cast<T>().FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Returns an enumerable of a given attribute T on an attribute provider.
+        /// </summary>
+        /// <typeparam name="T">The type of the attribute to look for.</typeparam>
+        /// <param name="instance">The target type.</param>
+        /// <returns>The attributes enumerable.</returns>
+        public static IEnumerable<T> GetAttributes<T>(this ICustomAttributeProvider instance) where T : Attribute
+        {
+            return instance.GetCustomAttributes(typeof(T), true).Cast<T>();
         }
 
         /// <summary>

@@ -231,17 +231,19 @@ namespace Bruttissimo.Data.Dapper.Repository
         {
             Ensure.That(() => user).IsNotNull();
             Ensure.That(() => roleOrRight).IsNotNull();
-
+            
             if (user.Role == null)
             {
                 user.Role = GetRoleDetails(user); // load lazily.
             }
-            // Shim this finer grained right-based schema into the ASP.NET role-based framework.
-            if (user.Role.Name.InsensitiveEquals(roleOrRight))
+
+            string name = roleOrRight.Trim(); // avoid issues with AuthorizeAttribute role list being "RoleA, RoleB".
+
+            if (user.Role.Name.InsensitiveEquals(name)) // shim this finer grained right-based schema into the ASP.NET role-based framework.
             {
                 return true;
             }
-            return user.Role.Rights.Any(right => right.Name.InsensitiveEquals(roleOrRight));
+            return user.Role.Rights.Any(right => right.Name.InsensitiveEquals(name));
         }
 
         public bool AreMatchingPasswords(string password, string databaseHash)
