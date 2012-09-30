@@ -13,7 +13,7 @@ namespace Bruttissimo.Common.Mvc.Core.ActionResults.Json
         /// </summary>
         public AjaxViewJsonResult(string title, string html, string script, string container = null)
         {
-            Ensure.That(html, "html").IsNotNull();
+            Ensure.That(() => html).IsNotNull();
 
             Data = new
             {

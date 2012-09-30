@@ -9,7 +9,7 @@ namespace Bruttissimo.Common.Mvc.InversionOfControl.Mvc
 
         public WindsorActionInvoker(ActionInvokerFilters filters)
         {
-            Ensure.That(filters, "filters").IsNotNull();
+            Ensure.That(() => filters).IsNotNull();
 
             this.filters = filters;
         }

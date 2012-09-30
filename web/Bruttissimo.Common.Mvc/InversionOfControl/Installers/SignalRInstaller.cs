@@ -19,7 +19,7 @@ namespace Bruttissimo.Common.Mvc.InversionOfControl.Installers
 
         public SignalRInstaller(Assembly hubAssembly)
         {
-            Ensure.That(hubAssembly, "hubAssembly").IsNotNull();
+            Ensure.That(() => hubAssembly).IsNotNull();
 
             this.hubAssembly = hubAssembly;
         }

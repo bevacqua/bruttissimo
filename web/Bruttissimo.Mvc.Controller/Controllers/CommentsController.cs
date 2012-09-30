@@ -16,7 +16,7 @@ namespace Bruttissimo.Mvc.Controller.Controllers
 
         public CommentsController(ICommentService commentService)
         {
-            Ensure.That(commentService, "commentService").IsNotNull();
+            Ensure.That(() => commentService).IsNotNull();
 
             this.commentService = commentService;
         }

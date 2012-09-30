@@ -24,8 +24,8 @@ namespace Bruttissimo.Data.Dapper.Repository
         public UserRepository(IDbConnection connection, HashProvider hashProvider)
             : base(connection)
         {
-            Ensure.That(connection, "connection").IsNotNull();
-            Ensure.That(hashProvider, "hashProvider").IsNotNull();
+            Ensure.That(() => connection).IsNotNull();
+            Ensure.That(() => hashProvider).IsNotNull();
 
             this.connection = connection;
             this.hashProvider = hashProvider;
@@ -35,7 +35,7 @@ namespace Bruttissimo.Data.Dapper.Repository
 
         public User GetByEmail(string email)
         {
-            Ensure.That(email, "email").IsNotNull();
+            Ensure.That(() => email).IsNotNull();
 
             const string sql = @"
                 SELECT [User].*
@@ -49,7 +49,7 @@ namespace Bruttissimo.Data.Dapper.Repository
 
         public User GetByOpenId(string openId)
         {
-            Ensure.That(openId, "openId").IsNotNull();
+            Ensure.That(() => openId).IsNotNull();
 
             const string sql = @"
 				SELECT [User].* FROM [User]
@@ -65,7 +65,7 @@ namespace Bruttissimo.Data.Dapper.Repository
 
         public User GetByFacebookGraphId(string facebookId)
         {
-            Ensure.That(facebookId, "facebookId").IsNotNull();
+            Ensure.That(() => facebookId).IsNotNull();
 
             const string sql = @"
 				SELECT [User].* FROM [User]
@@ -81,7 +81,7 @@ namespace Bruttissimo.Data.Dapper.Repository
 
         public User GetByTwitterId(string twitterId)
         {
-            Ensure.That(twitterId, "twitterId").IsNotNull();
+            Ensure.That(() => twitterId).IsNotNull();
 
             const string sql = @"
 				SELECT [User].* FROM [User]
@@ -101,8 +101,8 @@ namespace Bruttissimo.Data.Dapper.Repository
 
         public User CreateWithCredentials(string email, string password)
         {
-            Ensure.That(email, "email").IsNotNull();
-            Ensure.That(password, "password").IsNotNull();
+            Ensure.That(() => email).IsNotNull();
+            Ensure.That(() => password).IsNotNull();
 
             User user = InternalCreate(email, password, null);
             return user;
@@ -110,7 +110,7 @@ namespace Bruttissimo.Data.Dapper.Repository
 
         public User CreateWithOpenId(string openId, string email, string displayName)
         {
-            Ensure.That(email, "email").IsNotNull();
+            Ensure.That(() => email).IsNotNull();
 
             using (IDbTransaction transaction = connection.BeginTransaction())
             {
@@ -123,7 +123,7 @@ namespace Bruttissimo.Data.Dapper.Repository
 
         public User CreateWithFacebook(string facebookId, string accessToken, string email, string displayName)
         {
-            Ensure.That(email, "email").IsNotNull();
+            Ensure.That(() => email).IsNotNull();
 
             using (IDbTransaction transaction = connection.BeginTransaction())
             {
@@ -177,8 +177,8 @@ namespace Bruttissimo.Data.Dapper.Repository
 
         public UserConnection AddOpenIdConnection(User user, string openId, IDbTransaction transaction)
         {
-            Ensure.That(user, "user").IsNotNull();
-            Ensure.That(openId, "openId").IsNotNull();
+            Ensure.That(() => user).IsNotNull();
+            Ensure.That(() => openId).IsNotNull();
 
             UserConnection userConnection = new UserConnection
             {
@@ -196,8 +196,8 @@ namespace Bruttissimo.Data.Dapper.Repository
 
         public UserConnection AddFacebookConnection(User user, string facebookId, string accessToken, IDbTransaction transaction)
         {
-            Ensure.That(user, "user").IsNotNull();
-            Ensure.That(facebookId, "facebookId").IsNotNull();
+            Ensure.That(() => user).IsNotNull();
+            Ensure.That(() => facebookId).IsNotNull();
 
             UserConnection userConnection = new UserConnection
             {
@@ -216,8 +216,8 @@ namespace Bruttissimo.Data.Dapper.Repository
 
         public UserConnection AddTwitterConnection(User user, string twitterId, IDbTransaction transaction)
         {
-            Ensure.That(user, "user").IsNotNull();
-            Ensure.That(twitterId, "twitterId").IsNotNull();
+            Ensure.That(() => user).IsNotNull();
+            Ensure.That(() => twitterId).IsNotNull();
 
             UserConnection userConnection = new UserConnection
             {
@@ -232,8 +232,8 @@ namespace Bruttissimo.Data.Dapper.Repository
 
         public bool IsInRoleOrHasRight(User user, string roleOrRight)
         {
-            Ensure.That(user, "user").IsNotNull();
-            Ensure.That(roleOrRight, "roleOrRight").IsNotNull();
+            Ensure.That(() => user).IsNotNull();
+            Ensure.That(() => roleOrRight).IsNotNull();
 
             if (user.Role == null)
             {

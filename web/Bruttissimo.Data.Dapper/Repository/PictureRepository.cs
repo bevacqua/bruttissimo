@@ -11,7 +11,7 @@ namespace Bruttissimo.Data.Dapper.Repository
 
         public PictureRepository(IDbConnection connection)
         {
-            Ensure.That(connection, "connection").IsNotNull();
+            Ensure.That(() => connection).IsNotNull();
 
             this.connection = connection;
         }

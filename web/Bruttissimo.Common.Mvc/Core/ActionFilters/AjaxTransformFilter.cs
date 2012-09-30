@@ -13,7 +13,7 @@ namespace Bruttissimo.Common.Mvc.Core.ActionFilters
 
         public AjaxTransformFilter(string defaultTitle)
         {
-            Ensure.That(defaultTitle, "defaultTitle").IsNotNull();
+            Ensure.That(() => defaultTitle).IsNotNull();
             this.defaultTitle = defaultTitle;
         }
 

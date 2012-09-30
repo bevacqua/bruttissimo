@@ -17,9 +17,9 @@ namespace Bruttissimo.Domain.Logic.Service
 
         public PostService(IPostRepository postRepository, ICommentService commentService, TextHelper textHelper)
         {
-            Ensure.That(postRepository, "postRepository").IsNotNull();
-            Ensure.That(commentService, "commentService").IsNotNull();
-            Ensure.That(textHelper, "textHelper").IsNotNull();
+            Ensure.That(() => postRepository).IsNotNull();
+            Ensure.That(() => commentService).IsNotNull();
+            Ensure.That(() => textHelper).IsNotNull();
 
             this.postRepository = postRepository;
             this.commentService = commentService;

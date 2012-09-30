@@ -14,7 +14,7 @@ namespace Bruttissimo.Common.Mvc.Core.Engine
 
         public ExtendedViewEngine(IKernel kernel)
         {
-            Ensure.That(kernel, "kernel").IsNotNull();
+            Ensure.That(() => kernel).IsNotNull();
 
             this.kernel = kernel;
         }

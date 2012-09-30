@@ -19,8 +19,8 @@ namespace Bruttissimo.Mvc.Controller.Controllers
 
         public UserController(IFormsAuthentication formsAuthentication, IAuthenticationService authenticationService)
         {
-            Ensure.That(formsAuthentication, "formsAuthentication").IsNotNull();
-            Ensure.That(authenticationService, "authenticationService").IsNotNull();
+            Ensure.That(() => formsAuthentication).IsNotNull();
+            Ensure.That(() => authenticationService).IsNotNull();
 
             this.formsAuthentication = formsAuthentication;
             this.authenticationService = authenticationService;

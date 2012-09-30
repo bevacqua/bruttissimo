@@ -13,9 +13,9 @@ namespace Bruttissimo.Common.AutoMapper
 
         public Mapper(IKernel kernel, IMappingEngine engine, IMapperConfigurator[] configurators)
         {
-            Ensure.That(kernel, "kernel").IsNotNull();
-            Ensure.That(engine, "engine").IsNotNull();
-            Ensure.That(configurators, "configurators").IsNotNull();
+            Ensure.That(() => kernel).IsNotNull();
+            Ensure.That(() => engine).IsNotNull();
+            Ensure.That(() => configurators).IsNotNull();
 
             this.engine = engine;
 
@@ -37,7 +37,7 @@ namespace Bruttissimo.Common.AutoMapper
         {
             IMappingEngineRunner runner = engine as IMappingEngineRunner;
 
-            Ensure.That(runner, "runner").WithExtraMessage(() => Error.AutoMapperInvalidEngine).IsNotNull();
+            Ensure.That(() => runner).WithExtraMessage(() => Error.AutoMapperInvalidEngine).IsNotNull();
 
             return runner.ConfigurationProvider;
         }
@@ -47,7 +47,7 @@ namespace Bruttissimo.Common.AutoMapper
             IConfigurationProvider provider = GetConfigurationProvider();
             IConfiguration configuration = provider as IConfiguration;
 
-            Ensure.That(configuration, "configuration").WithExtraMessage(() => Error.AutoMapperInvalidProvider).IsNotNull();
+            Ensure.That(() => configuration).WithExtraMessage(() => Error.AutoMapperInvalidProvider).IsNotNull();
 
             return configuration;
         }

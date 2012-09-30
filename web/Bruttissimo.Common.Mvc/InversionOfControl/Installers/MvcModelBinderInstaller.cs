@@ -23,7 +23,7 @@ namespace Bruttissimo.Common.Mvc.InversionOfControl.Installers
 
         public MvcModelBinderInstaller(Assembly assembly)
         {
-            Ensure.That(assembly, "assembly").IsNotNull();
+            Ensure.That(() => assembly).IsNotNull();
 
             this.assembly = assembly;
         }

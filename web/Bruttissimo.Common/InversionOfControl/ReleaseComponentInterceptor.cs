@@ -40,7 +40,7 @@ namespace Bruttissimo.Common.InversionOfControl
 
         public ReleaseComponentInterceptor(IKernel kernel)
         {
-            Ensure.That(kernel, "kernel").IsNotNull();
+            Ensure.That(() => kernel).IsNotNull();
             this.kernel = kernel;
         }
 

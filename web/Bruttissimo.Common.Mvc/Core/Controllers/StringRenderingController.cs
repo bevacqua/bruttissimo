@@ -255,7 +255,7 @@ namespace Bruttissimo.Common.Mvc.Core.Controllers
         /// </summary>
         private string GetJavaScriptVirtualViewPath(string viewPath)
         {
-            Ensure.That(viewPath, "viewPath").IsNotNull();
+            Ensure.That(() => viewPath).IsNotNull();
 
             if (viewPath.EndsWith(Constants.JavaScriptViewNamingExtension)) // virtual javascript view path
             {

@@ -15,7 +15,7 @@ namespace Bruttissimo.Common.Mvc.InversionOfControl.Mvc
 
         public WindsorControllerFactory(IKernel kernel)
         {
-            Ensure.That(kernel, "kernel").IsNotNull();
+            Ensure.That(() => kernel).IsNotNull();
 
             this.kernel = kernel;
         }

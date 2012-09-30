@@ -20,15 +20,15 @@ namespace Bruttissimo.Domain.Logic.Authentication
         public OAuthAuthenticationPortal(IUserService userService, IFormsAuthentication formsAuthentication)
             : base(userService, formsAuthentication)
         {
-            Ensure.That(userService, "userService").IsNotNull();
+            Ensure.That(() => userService).IsNotNull();
 
             this.userService = userService;
         }
 
         internal AuthenticationResult AuthenticateWithFacebook(string facebookId, string accessToken)
         {
-            Ensure.That(facebookId, "facebookId").IsNotNull();
-            Ensure.That(accessToken, "accessToken").IsNotNull();
+            Ensure.That(() => facebookId).IsNotNull();
+            Ensure.That(() => accessToken).IsNotNull();
 
             dynamic response;
             try
@@ -81,8 +81,8 @@ namespace Bruttissimo.Domain.Logic.Authentication
 
         internal AuthenticationResult AuthenticateWithTwitter(string twitterId, string displayName)
         {
-            Ensure.That(twitterId, "twitterId").IsNotNull();
-            Ensure.That(displayName, "displayName").IsNotNull();
+            Ensure.That(() => twitterId).IsNotNull();
+            Ensure.That(() => displayName).IsNotNull();
 
             User user = userService.GetByTwitterId(twitterId);
             bool isNewUser = false;

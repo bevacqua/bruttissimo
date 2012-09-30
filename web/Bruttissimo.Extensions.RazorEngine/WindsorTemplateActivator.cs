@@ -11,14 +11,14 @@ namespace Bruttissimo.Extensions.RazorEngine
 
         public WindsorTemplateActivator(IKernel kernel)
         {
-            Ensure.That(kernel, "kernel").IsNotNull();
+            Ensure.That(() => kernel).IsNotNull();
 
             this.kernel = kernel;
         }
 
         public ITemplate CreateInstance(InstanceContext context)
         {
-            Ensure.That(context, "context").IsNotNull();
+            Ensure.That(() => context).IsNotNull();
 
             ITemplate template = context.Loader.CreateInstance(context.TemplateType);
             IExtendedTemplate service = template as IExtendedTemplate;

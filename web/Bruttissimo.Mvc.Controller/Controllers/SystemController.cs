@@ -21,7 +21,7 @@ namespace Bruttissimo.Mvc.Controller.Controllers
 
         public SystemController(ILogService logService)
         {
-            Ensure.That(logService, "logService").IsNotNull();
+            Ensure.That(() => logService).IsNotNull();
 
             this.logService = logService;
         }

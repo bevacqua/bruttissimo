@@ -23,8 +23,8 @@ namespace Bruttissimo.Common.Quartz
 
         public JobTypeStore(IEnumerable<Type> allTypes, IEnumerable<Type> autoRunTypes)
         {
-            Ensure.That(allTypes, "allTypes").IsNotNull();
-            Ensure.That(autoRunTypes, "autoRunTypes").IsNotNull();
+            Ensure.That(() => allTypes).IsNotNull();
+            Ensure.That(() => autoRunTypes).IsNotNull();
 
             this.allTypes = new ReadOnlyCollection<Type>(allTypes.ToList());
             this.autoRunTypes = new ReadOnlyCollection<Type>(autoRunTypes.ToList());

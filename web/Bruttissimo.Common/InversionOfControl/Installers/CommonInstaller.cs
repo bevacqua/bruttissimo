@@ -16,8 +16,8 @@ namespace Bruttissimo.Common.InversionOfControl.Installers
 
         public CommonInstaller(Assembly jobAssembly, Assembly[] mapperAssemblies)
         {
-            Ensure.That(jobAssembly, "jobAssembly").IsNotNull();
-            Ensure.That(mapperAssemblies, "mapperAssemblies").IsNotNull();
+            Ensure.That(() => jobAssembly).IsNotNull();
+            Ensure.That(() => mapperAssemblies).IsNotNull();
             this.jobAssembly = jobAssembly;
             this.mapperAssemblies = mapperAssemblies;
         }

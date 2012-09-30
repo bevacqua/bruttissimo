@@ -12,7 +12,7 @@ namespace Bruttissimo.Mvc.Model.Mappers
 
         public OpenGraphModelMapper(IUrlHelper urlHelper)
         {
-            Ensure.That(urlHelper, "urlHelper").IsNotNull();
+            Ensure.That(() => urlHelper).IsNotNull();
 
             this.urlHelper = urlHelper;
         }

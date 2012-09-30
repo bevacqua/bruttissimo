@@ -19,7 +19,7 @@ namespace Bruttissimo.Mvc.Controller.Controllers
 
         public JobsController(IJobService jobService)
         {
-            Ensure.That(jobService, "jobService").IsNotNull();
+            Ensure.That(() => jobService).IsNotNull();
 
             this.jobService = jobService;
         }

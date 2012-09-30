@@ -146,7 +146,7 @@ namespace Bruttissimo.Tests.Mocking
         /// </summary>
         public static string GetFakeResponse(Uri uri)
         {
-            Ensure.That(uri, "uri").IsNotNull();
+            Ensure.That(() => uri).IsNotNull();
 
             using (Stream response = GetResourceStream(uri))
             {
@@ -159,7 +159,7 @@ namespace Bruttissimo.Tests.Mocking
         /// </summary>
         public static Stream GetResourceStream(Uri uri)
         {
-            Ensure.That(uri, "uri").IsNotNull();
+            Ensure.That(() => uri).IsNotNull();
 
             string resourceName = GetResourceNameFromUri(uri);
             Assembly executing = Assembly.GetCallingAssembly();

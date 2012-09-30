@@ -14,7 +14,7 @@ namespace Bruttissimo.Domain.Logic.MiniMembership
 
         public MiniRoleProvider(IUserRepository userRepository)
         {
-            Ensure.That(userRepository, "userRepository").IsNotNull();
+            Ensure.That(() => userRepository).IsNotNull();
 
             this.userRepository = userRepository;
         }

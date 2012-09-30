@@ -28,7 +28,7 @@ namespace Bruttissimo.Common.Utility
 
         protected ResourceHelper(string namespaceRoot)
         {
-            Ensure.That(namespaceRoot, "namespaceRoot").IsNotNull();
+            Ensure.That(() => namespaceRoot).IsNotNull();
 
             this.namespaceRoot = namespaceRoot;
         }

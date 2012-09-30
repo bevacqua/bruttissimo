@@ -186,7 +186,7 @@ namespace Bruttissimo.Data.Dapper
         /// <returns>true if deleted, false if not found</returns>
         public static bool Delete<T>(this IDbConnection connection, T entityToDelete, IDbTransaction transaction = null, int? commandTimeout = null) where T : class
         {
-            Ensure.That(entityToDelete, "entityToDelete").IsNotNull();
+            Ensure.That(() => entityToDelete).IsNotNull();
 
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat("DELETE FROM [{0}] WHERE [{0}].[Id] = @Id", typeof (T).Name);

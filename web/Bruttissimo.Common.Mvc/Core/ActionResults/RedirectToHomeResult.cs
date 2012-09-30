@@ -13,8 +13,8 @@ namespace Bruttissimo.Common.Mvc.Core.ActionResults
 
         private static RouteValueDictionary CreateRouteValueDictionary(string action, string controller)
         {
-            Ensure.That(action, "action").IsNotNull();
-            Ensure.That(controller, "controller").IsNotNull();
+            Ensure.That(() => action).IsNotNull();
+            Ensure.That(() => controller).IsNotNull();
 
             RouteValueDictionary dictionary = new RouteValueDictionary
             {

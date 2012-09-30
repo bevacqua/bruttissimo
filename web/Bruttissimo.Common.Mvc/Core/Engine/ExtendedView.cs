@@ -19,8 +19,8 @@ namespace Bruttissimo.Common.Mvc.Core.Engine
 
         public ExtendedView(IView view, ControllerContext controllerContext)
         {
-            Ensure.That(view, "view").IsNotNull();
-            Ensure.That(controllerContext, "controllerContext").IsNotNull();
+            Ensure.That(() => view).IsNotNull();
+            Ensure.That(() => controllerContext).IsNotNull();
 
             this.view = view;
             this.controllerContext = controllerContext;

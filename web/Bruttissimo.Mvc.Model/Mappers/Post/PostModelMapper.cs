@@ -13,7 +13,7 @@ namespace Bruttissimo.Mvc.Model.Mappers.Post
 
         public PostModelMapper(IPostService postService)
         {
-            Ensure.That(postService, "postService").IsNotNull();
+            Ensure.That(() => postService).IsNotNull();
 
             this.postService = postService;
         }

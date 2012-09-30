@@ -13,7 +13,7 @@ namespace Bruttissimo.Common.InversionOfControl.Quartz
 
         public WindsorSchedulerFactory(IKernel kernel)
         {
-            Ensure.That(kernel, "kernel").IsNotNull();
+            Ensure.That(() => kernel).IsNotNull();
             this.kernel = kernel;
         }
 

@@ -18,7 +18,7 @@ namespace Bruttissimo.Common.Utility
 
         public Uri ConvertToUri(string uriText)
         {
-            Ensure.That(uriText, "uriText").IsNotNullOrEmpty();
+            Ensure.That(() => uriText).IsNotNullOrEmpty();
 
             if (!uriText.StartsWith("http"))
             {
@@ -62,7 +62,7 @@ namespace Bruttissimo.Common.Utility
         /// </summary>
         public WebHeaderCollection DownloadHttpHeader(Uri endpoint, bool retryWithGet = false)
         {
-            Ensure.That(endpoint, "endpoint").IsNotNull();
+            Ensure.That(() => endpoint).IsNotNull();
 
             try
             {
@@ -106,7 +106,7 @@ namespace Bruttissimo.Common.Utility
         /// </summary>
         public Image DownloadAsImage(Uri endpoint, bool inferContentTypeFromHttpHeaders = false)
         {
-            Ensure.That(endpoint, "endpoint").IsNotNull();
+            Ensure.That(() => endpoint).IsNotNull();
 
             log.DebugFormat(Debug.DownloadingAsImage, endpoint);
             try
@@ -144,7 +144,7 @@ namespace Bruttissimo.Common.Utility
         /// </summary>
         public HtmlDocument DownloadAsHtml(Uri endpoint)
         {
-            Ensure.That(endpoint, "endpoint").IsNotNull();
+            Ensure.That(() => endpoint).IsNotNull();
 
             log.DebugFormat(Debug.DownloadingAsHtml, endpoint);
             try

@@ -27,7 +27,7 @@ namespace Bruttissimo.Common.Mvc.InversionOfControl.Installers
 
         public MvcControllerInstaller(MvcInstallerParameters parameters)
         {
-            Ensure.That(parameters, "parameters").IsNotNull();
+            Ensure.That(() => parameters).IsNotNull();
 
             this.parameters = parameters;
         }

@@ -23,9 +23,9 @@ namespace Bruttissimo.Domain.Logic.Service
 
         public PictureService(IPictureRepository pictureRepository, IPictureStorageRepository pictureStorageRepository, FileSystemHelper fsHelper)
         {
-            Ensure.That(pictureRepository, "pictureRepository").IsNotNull();
-            Ensure.That(pictureStorageRepository, "pictureStorageRepository").IsNotNull();
-            Ensure.That(fsHelper, "fsHelper").IsNotNull();
+            Ensure.That(() => pictureRepository).IsNotNull();
+            Ensure.That(() => pictureStorageRepository).IsNotNull();
+            Ensure.That(() => fsHelper).IsNotNull();
 
             this.pictureRepository = pictureRepository;
             this.pictureStorageRepository = pictureStorageRepository;
@@ -40,7 +40,7 @@ namespace Bruttissimo.Domain.Logic.Service
         {
             throw new NotImplementedException();
 
-            Ensure.That(image, "image").IsNotNull();
+            Ensure.That(() => image).IsNotNull();
 
             if (size == PictureSize.None)
             {
@@ -79,8 +79,8 @@ namespace Bruttissimo.Domain.Logic.Service
         /// </summary>
         public string SizeAndSaveImage(string name, Image image, int maxSizeInPixels)
         {
-            Ensure.That(name, "name").IsNotNull();
-            Ensure.That(image, "image").IsNotNull();
+            Ensure.That(() => name).IsNotNull();
+            Ensure.That(() => image).IsNotNull();
 
             if (image.Width <= maxSizeInPixels && image.Height <= maxSizeInPixels) // no need to resize
             {
@@ -103,7 +103,7 @@ namespace Bruttissimo.Domain.Logic.Service
 
         public Image ScaleImage(Image image, float scale)
         {
-            Ensure.That(image, "image").IsNotNull();
+            Ensure.That(() => image).IsNotNull();
 
             int sourceWidth = image.Width;
             int sourceHeight = image.Height;

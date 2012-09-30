@@ -15,7 +15,7 @@ namespace Bruttissimo.Mvc.Model.Mappers
 
         public ScheduledJobModelMapper(IUserService userService)
         {
-            Ensure.That(userService, "userService").IsNotNull();
+            Ensure.That(() => userService).IsNotNull();
 
             this.userService = userService;
         }

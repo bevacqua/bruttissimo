@@ -22,8 +22,8 @@ namespace Bruttissimo.Domain.Logic.Authentication
         public OpenIdAuthenticationPortal(OpenIdRelyingParty relyingParty, IUserService userService, IFormsAuthentication formsAuthentication)
             : base(userService, formsAuthentication)
         {
-            Ensure.That(relyingParty, "relyingParty").IsNotNull();
-            Ensure.That(userService, "userService").IsNotNull();
+            Ensure.That(() => relyingParty).IsNotNull();
+            Ensure.That(() => userService).IsNotNull();
 
             this.relyingParty = relyingParty;
             this.userService = userService;

@@ -23,9 +23,9 @@ namespace Bruttissimo.Domain.Logic.Service
 
         public TwitterExporterService(ITwitterRepository twitterRepository, IPostRepository postRepository, IUrlShortener urlShortener)
         {
-            Ensure.That(twitterRepository, "twitterRepository").IsNotNull();
-            Ensure.That(postRepository, "postRepository").IsNotNull();
-            Ensure.That(urlShortener, "urlShortener").IsNotNull();
+            Ensure.That(() => twitterRepository).IsNotNull();
+            Ensure.That(() => postRepository).IsNotNull();
+            Ensure.That(() => urlShortener).IsNotNull();
 
             this.twitterRepository = twitterRepository;
             this.postRepository = postRepository;

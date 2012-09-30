@@ -10,7 +10,7 @@ namespace Bruttissimo.Common.Mvc.SignalR.Extensions
 
         public HubJavaScriptMinifier(IResourceCompressor resourceCompressor)
         {
-            Ensure.That(resourceCompressor, "resourceCompressor").IsNotNull();
+            Ensure.That(() => resourceCompressor).IsNotNull();
 
             this.resourceCompressor = resourceCompressor;
         }

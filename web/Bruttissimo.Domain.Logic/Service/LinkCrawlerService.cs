@@ -27,7 +27,7 @@ namespace Bruttissimo.Domain.Logic.Service
 
         public LinkCrawlerService(HttpHelper httpHelper)
         {
-            Ensure.That(httpHelper, "httpHelper").IsNotNull();
+            Ensure.That(() => httpHelper).IsNotNull();
 
             this.httpHelper = httpHelper;
         }
@@ -37,7 +37,7 @@ namespace Bruttissimo.Domain.Logic.Service
         /// </summary>
         public Link CrawlHttpResource(Uri uri)
         {
-            Ensure.That(uri, "uri").IsNotNull();
+            Ensure.That(() => uri).IsNotNull();
 
             HtmlDocument document = httpHelper.DownloadAsHtml(uri);
             if (document != null)

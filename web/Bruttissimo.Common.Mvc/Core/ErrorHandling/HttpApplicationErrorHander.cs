@@ -24,8 +24,8 @@ namespace Bruttissimo.Common.Mvc.Core.ErrorHandling
 
         public HttpApplicationErrorHander(HttpApplication application, ExceptionHelper helper)
         {
-            Ensure.That(application, "application").IsNotNull();
-            Ensure.That(helper, "helper").IsNotNull();
+            Ensure.That(() => application).IsNotNull();
+            Ensure.That(() => helper).IsNotNull();
 
             this.application = application;
             this.helper = helper;

@@ -23,8 +23,8 @@ namespace Bruttissimo.Domain.Logic.Service
 
         public EmailService(IEmailTemplateService templateService, IEmailRepository emailRepository)
         {
-            Ensure.That(templateService, "templateService").IsNotNull();
-            Ensure.That(emailRepository, "emailRepository").IsNotNull();
+            Ensure.That(() => templateService).IsNotNull();
+            Ensure.That(() => emailRepository).IsNotNull();
 
             this.templateService = templateService;
             this.emailRepository = emailRepository;
@@ -32,7 +32,7 @@ namespace Bruttissimo.Domain.Logic.Service
 
         public string RunEmailTemplate(string templateName, object model = null)
         {
-            Ensure.That(templateName, "templateName").IsNotNull();
+            Ensure.That(() => templateName).IsNotNull();
 
             ITemplate template = templateService.Resolve(templateName, model);
             string body = template.Run();
@@ -49,7 +49,7 @@ namespace Bruttissimo.Domain.Logic.Service
 
         internal void IncludeCommonEmailModelValues(EmailModel model)
         {
-            Ensure.That(model, "model").IsNotNull();
+            Ensure.That(() => model).IsNotNull();
 
             model.FacebookProfileLink = Links.FacebookProfile;
             model.TwitterProfileLink = Links.TwitterProfile;
@@ -62,8 +62,8 @@ namespace Bruttissimo.Domain.Logic.Service
 
         public void SendRegistrationEmail(string recipient, object model)
         {
-            Ensure.That(recipient, "recipient").IsNotNull();
-            Ensure.That(model, "model").IsNotNull();
+            Ensure.That(() => recipient).IsNotNull();
+            Ensure.That(() => model).IsNotNull();
             Ensure.ThatTypeFor(model, "model").IsOfType<RegistrationEmailModel>();
 
             var email = (RegistrationEmailModel)model;

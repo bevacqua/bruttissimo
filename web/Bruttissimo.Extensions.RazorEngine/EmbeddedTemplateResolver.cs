@@ -27,8 +27,8 @@ namespace Bruttissimo.Extensions.RazorEngine
         /// </summary>
         public EmbeddedTemplateResolver(Assembly assembly, string templateNamespace)
         {
-            Ensure.That(assembly, "assembly").IsNotNull();
-            Ensure.That(templateNamespace, "templateNamespace").IsNotNull();
+            Ensure.That(() => assembly).IsNotNull();
+            Ensure.That(() => templateNamespace).IsNotNull();
 
             this.assembly = assembly;
             this.templateNamespace = templateNamespace;
@@ -40,7 +40,7 @@ namespace Bruttissimo.Extensions.RazorEngine
         /// <param name="type">The type whose namespace is used to scope the manifest resource name.</param>
         public EmbeddedTemplateResolver(Type type)
         {
-            Ensure.That(type, "type").IsNotNull();
+            Ensure.That(() => type).IsNotNull();
 
             this.assembly = Assembly.GetAssembly(type);
             this.type = type;
@@ -48,7 +48,7 @@ namespace Bruttissimo.Extensions.RazorEngine
 
         public string Resolve(string name)
         {
-            Ensure.That(name, "name").IsNotNull();
+            Ensure.That(() => name).IsNotNull();
 
             Stream stream;
             if (templateNamespace == null)
@@ -59,7 +59,7 @@ namespace Bruttissimo.Extensions.RazorEngine
             {
                 stream = assembly.GetManifestResourceStream(Common.Resources.RazorEngine.TemplateNameWithNamespace.FormatWith(templateNamespace, name));
             }
-            Ensure.That(stream, "stream").IsNotNull(Common.Resources.RazorEngine.EmbeddedResourceNotFound);
+            Ensure.That(() => stream).IsNotNull(Common.Resources.RazorEngine.EmbeddedResourceNotFound);
 
             string template = stream.ReadFully();
             return template;

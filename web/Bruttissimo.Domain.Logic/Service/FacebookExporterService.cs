@@ -17,9 +17,9 @@ namespace Bruttissimo.Domain.Logic.Service
 
         public FacebookExporterService(IFacebookRepository fbRepository, IPostRepository postRepository, IUserRepository userRepository)
         {
-            Ensure.That(fbRepository, "fbRepository").IsNotNull();
-            Ensure.That(postRepository, "postRepository").IsNotNull();
-            Ensure.That(userRepository, "userRepository").IsNotNull();
+            Ensure.That(() => fbRepository).IsNotNull();
+            Ensure.That(() => postRepository).IsNotNull();
+            Ensure.That(() => userRepository).IsNotNull();
 
             this.fbRepository = fbRepository;
             this.postRepository = postRepository;

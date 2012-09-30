@@ -16,14 +16,14 @@ namespace Bruttissimo.Domain.Logic.Repository
 
         public EmailRepository(SmtpClient client)
         {
-            Ensure.That(client, "client").IsNotNull();
+            Ensure.That(() => client).IsNotNull();
 
             this.client = client;
         }
 
         public void Send(EmailMessageModel model)
         {
-            Ensure.That(model, "model").IsNotNull();
+            Ensure.That(() => model).IsNotNull();
 
             MailMessage message = new MailMessage(model.Sender, model.Recipient)
             {

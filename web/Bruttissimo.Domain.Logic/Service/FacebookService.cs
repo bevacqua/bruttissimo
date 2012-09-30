@@ -15,9 +15,9 @@ namespace Bruttissimo.Domain.Logic.Service
 
         public FacebookService(IFacebookImporterService importerService, IFacebookExporterService exporterService, ILogRepository logRepository)
         {
-            Ensure.That(importerService, "importerService").IsNotNull();
-            Ensure.That(exporterService, "exporterService").IsNotNull();
-            Ensure.That(logRepository, "logRepository").IsNotNull();
+            Ensure.That(() => importerService).IsNotNull();
+            Ensure.That(() => exporterService).IsNotNull();
+            Ensure.That(() => logRepository).IsNotNull();
 
             this.importerService = importerService;
             this.exporterService = exporterService;
@@ -26,7 +26,7 @@ namespace Bruttissimo.Domain.Logic.Service
 
         public void Import(string feed)
         {
-            Ensure.That(feed, "feed").IsNotNull();
+            Ensure.That(() => feed).IsNotNull();
 
             FacebookImportLog entry = new FacebookImportLog
             {

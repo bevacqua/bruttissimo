@@ -14,7 +14,7 @@ namespace Bruttissimo.Common.InversionOfControl
 
         public ContainerAccessor(IWindsorContainer container)
         {
-            Ensure.That(container, "container").IsNotNull();
+            Ensure.That(() => container).IsNotNull();
             this.container = container;
         }
     }

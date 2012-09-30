@@ -15,8 +15,8 @@ namespace Bruttissimo.Domain.Social.Twitter
 
         public TwitterRepository(TwitterServiceParams defaultServiceParams, IMapper mapper)
         {
-            Ensure.That(defaultServiceParams, "defaultServiceParams").IsNotNull();
-            Ensure.That(mapper, "mapper").IsNotNull();
+            Ensure.That(() => defaultServiceParams).IsNotNull();
+            Ensure.That(() => mapper).IsNotNull();
 
             this.defaultServiceParams = defaultServiceParams;
             this.mapper = mapper;
@@ -36,7 +36,7 @@ namespace Bruttissimo.Domain.Social.Twitter
 
         public TwitterPost PostToFeed(string message, TwitterServiceParams serviceParams = null)
         {
-            Ensure.That(message, "message").IsNotNull();
+            Ensure.That(() => message).IsNotNull();
 
             TwitterServiceParams parameters = serviceParams ?? defaultServiceParams;
             TwitterService service = InstanceTwitterService(parameters);

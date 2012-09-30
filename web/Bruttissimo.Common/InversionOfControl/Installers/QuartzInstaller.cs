@@ -24,7 +24,7 @@ namespace Bruttissimo.Common.InversionOfControl.Installers
 
         public QuartzInstaller(Assembly jobAssembly)
         {
-            Ensure.That(jobAssembly, "jobAssembly").IsNotNull();
+            Ensure.That(() => jobAssembly).IsNotNull();
             this.jobAssembly = jobAssembly;
         }
 

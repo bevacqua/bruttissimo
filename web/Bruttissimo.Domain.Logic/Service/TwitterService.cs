@@ -13,8 +13,8 @@ namespace Bruttissimo.Domain.Logic.Service
 
         public TwitterService(ITwitterExporterService exporterService, ILogRepository logRepository)
         {
-            Ensure.That(exporterService, "exporterService").IsNotNull();
-            Ensure.That(logRepository, "logRepository").IsNotNull();
+            Ensure.That(() => exporterService).IsNotNull();
+            Ensure.That(() => logRepository).IsNotNull();
 
             this.exporterService = exporterService;
             this.logRepository = logRepository;

@@ -16,8 +16,8 @@ namespace Bruttissimo.Common.Mvc.Core.Helpers
         public MvcResourceHelper(string namespaceRoot, HtmlHelper helper, Assembly assembly)
             : base(namespaceRoot)
         {
-            Ensure.That(helper, "helper").IsNotNull();
-            Ensure.That(assembly, "assembly").IsNotNull();
+            Ensure.That(() => helper).IsNotNull();
+            Ensure.That(() => assembly).IsNotNull();
 
             this.helper = helper;
             this.assembly = assembly;

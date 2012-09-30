@@ -15,7 +15,7 @@ namespace Bruttissimo.Mvc.Controller.Controllers
 
         public AnalyticsController(IGoogleAnalyticsService analyticsService)
         {
-            Ensure.That(analyticsService, "analyticsService").IsNotNull();
+            Ensure.That(() => analyticsService).IsNotNull();
 
             this.analyticsService = analyticsService;
         }

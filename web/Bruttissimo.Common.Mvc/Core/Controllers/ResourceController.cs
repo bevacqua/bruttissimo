@@ -24,8 +24,8 @@ namespace Bruttissimo.Common.Mvc.Core.Controllers
 
         public ResourceController(IList<ResourceAssemblyLocation> locations, IResourceCompressor compressor)
         {
-            Ensure.That(locations, "locations").IsNotNull();
-            Ensure.That(compressor, "compressor").IsNotNull();
+            Ensure.That(() => locations).IsNotNull();
+            Ensure.That(() => compressor).IsNotNull();
 
             this.locations = locations;
             this.compressor = compressor;

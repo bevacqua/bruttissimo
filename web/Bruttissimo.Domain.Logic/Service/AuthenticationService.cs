@@ -14,9 +14,9 @@ namespace Bruttissimo.Domain.Logic.Service
 
         public AuthenticationService(PlainAuthenticationPortal plainAuthentication, OpenIdAuthenticationPortal openIdAuthentication, OAuthAuthenticationPortal oAuthAuthentication)
         {
-            Ensure.That(plainAuthentication, "plainAuthentication").IsNotNull();
-            Ensure.That(openIdAuthentication, "openIdAuthentication").IsNotNull();
-            Ensure.That(oAuthAuthentication, "oAuthAuthentication").IsNotNull();
+            Ensure.That(() => plainAuthentication).IsNotNull();
+            Ensure.That(() => openIdAuthentication).IsNotNull();
+            Ensure.That(() => oAuthAuthentication).IsNotNull();
 
             this.plainAuthentication = plainAuthentication;
             this.openIdAuthentication = openIdAuthentication;

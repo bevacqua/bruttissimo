@@ -16,7 +16,7 @@ namespace Bruttissimo.Common.Mvc.InversionOfControl.SignalR
 
         public WindsorDependencyResolver(IKernel kernel)
         {
-            Ensure.That(kernel, "kernel").IsNotNull();
+            Ensure.That(() => kernel).IsNotNull();
 
             this.kernel = kernel;
 

@@ -15,8 +15,8 @@ namespace Bruttissimo.Domain.Logic.Authentication
 
         protected AuthenticationPortal(IUserService userService, IFormsAuthentication formsAuthentication)
         {
-            Ensure.That(userService, "userService").IsNotNull();
-            Ensure.That(formsAuthentication, "formsAuthentication").IsNotNull();
+            Ensure.That(() => userService).IsNotNull();
+            Ensure.That(() => formsAuthentication).IsNotNull();
 
             this.userService = userService;
             this.formsAuthentication = formsAuthentication;

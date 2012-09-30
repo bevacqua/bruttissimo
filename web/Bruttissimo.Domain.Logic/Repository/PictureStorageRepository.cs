@@ -14,14 +14,14 @@ namespace Bruttissimo.Domain.Logic.Repository
 
         public PictureStorageRepository(HttpContextBase httpContext)
         {
-            Ensure.That(httpContext, "httpContext").IsNotNull();
+            Ensure.That(() => httpContext).IsNotNull();
 
             this.httpContext = httpContext;
         }
 
         internal string GetPhysicalPath(string id, out string filename, out string folder, out string relativePath)
         {
-            Ensure.That(id, "id").IsNotNull();
+            Ensure.That(() => id).IsNotNull();
 
             filename = string.Concat(id, ".jpg");
             folder = Constants.ImageUploadFolder;
@@ -50,8 +50,8 @@ namespace Bruttissimo.Domain.Logic.Repository
 
         public void Save(Image image, string id)
         {
-            Ensure.That(image, "image").IsNotNull();
-            Ensure.That(id, "id").IsNotNull();
+            Ensure.That(() => image).IsNotNull();
+            Ensure.That(() => id).IsNotNull();
 
             string physicalPath = GetPhysicalPath(id);
             if (!File.Exists(physicalPath))
@@ -62,7 +62,7 @@ namespace Bruttissimo.Domain.Logic.Repository
 
         public Image Load(string id)
         {
-            Ensure.That(id, "id").IsNotNull();
+            Ensure.That(() => id).IsNotNull();
 
             string physicalPath = GetPhysicalPath(id);
             if (File.Exists(physicalPath))

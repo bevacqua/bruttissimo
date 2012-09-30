@@ -21,9 +21,9 @@ namespace Bruttissimo.Domain.Logic.Service
 
         public LinkService(ILinkRepository linkRepository, ILinkCrawlerService linkCrawler, HttpHelper httpHelper)
         {
-            Ensure.That(linkRepository, "linkRepository").IsNotNull();
-            Ensure.That(linkCrawler, "linkCrawler").IsNotNull();
-            Ensure.That(httpHelper, "httpHelper").IsNotNull();
+            Ensure.That(() => linkRepository).IsNotNull();
+            Ensure.That(() => linkCrawler).IsNotNull();
+            Ensure.That(() => httpHelper).IsNotNull();
             
             this.linkRepository = linkRepository;
             this.linkCrawler = linkCrawler;
@@ -35,7 +35,7 @@ namespace Bruttissimo.Domain.Logic.Service
         /// </summary>
         public LinkResult ParseUserInput(string text)
         {
-            Ensure.That(text, "text").IsNotNull();
+            Ensure.That(() => text).IsNotNull();
 
             IList<Uri> uris = GetReferenceUris(text);
             LinkResult result = GetExistingLinkOrCrawlResource(uris);
@@ -47,7 +47,7 @@ namespace Bruttissimo.Domain.Logic.Service
         /// </summary>
         public IList<Uri> GetReferenceUris(string text)
         {
-            Ensure.That(text, "text").IsNotNull();
+            Ensure.That(() => text).IsNotNull();
 
             MatchCollection matches = CompiledRegex.WebLink.Matches(text);
             IList<Uri> uris = matches
@@ -61,7 +61,7 @@ namespace Bruttissimo.Domain.Logic.Service
 
         internal LinkResult GetExistingLinkOrCrawlResource(IEnumerable<Uri> uris)
         {
-            Ensure.That(uris, "uris").IsNotNull();
+            Ensure.That(() => uris).IsNotNull();
 
             Uri uri = uris.FirstOrDefault();
             if (uri == null)

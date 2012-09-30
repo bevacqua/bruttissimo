@@ -14,14 +14,14 @@ namespace Bruttissimo.Common.Mvc.InversionOfControl.Mvc
 
         public WindsorValidatorFactory(IKernel kernel)
         {
-            Ensure.That(kernel, "kernel").IsNotNull();
+            Ensure.That(() => kernel).IsNotNull();
 
             this.kernel = kernel;
         }
 
         public override IValidator CreateInstance(Type validatorType)
         {
-            Ensure.That(validatorType, "validatorType").IsNotNull();
+            Ensure.That(() => validatorType).IsNotNull();
 
             Ensure.That(() => validatorType.IsGenericType && validatorType.GetGenericTypeDefinition() == typeof(IValidator<>))
                   .WithExtraMessage(() => "validatorType must implement IValidator<>")

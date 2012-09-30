@@ -17,8 +17,8 @@ namespace Bruttissimo.Common.Mvc.Utility
 
         public ResourceCompressor(CssCompressor cssCompressor, JavaScriptCompressor jsCompressor)
         {
-            Ensure.That(cssCompressor, "cssCompressor").IsNotNull();
-            Ensure.That(jsCompressor, "jsCompressor").IsNotNull();
+            Ensure.That(() => cssCompressor).IsNotNull();
+            Ensure.That(() => jsCompressor).IsNotNull();
 
             this.cssCompressor = cssCompressor;
             this.jsCompressor = jsCompressor;
@@ -63,7 +63,7 @@ namespace Bruttissimo.Common.Mvc.Utility
 
         internal string MinifyResource(string source, bool wrapResultInTags, string tag, Func<string, string> minify)
         {
-            Ensure.That(source, "source").IsNotNull();
+            Ensure.That(() => source).IsNotNull();
 
             string plain = StripTag(tag, source); // minifiers require we pass just the code.
             string minified;

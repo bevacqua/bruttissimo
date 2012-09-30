@@ -11,7 +11,7 @@ namespace Bruttissimo.Data.Dapper.Repository
 
         protected EntityRepository(IDbConnection connection)
         {
-            Ensure.That(connection, "connection").IsNotNull();
+            Ensure.That(() => connection).IsNotNull();
 
             this.connection = connection;
         }
@@ -24,7 +24,7 @@ namespace Bruttissimo.Data.Dapper.Repository
 
         public virtual T Insert(T entity)
         {
-            Ensure.That(entity, "entity").IsNotNull();
+            Ensure.That(() => entity).IsNotNull();
 
             connection.Insert(entity);
             return entity;
@@ -32,7 +32,7 @@ namespace Bruttissimo.Data.Dapper.Repository
 
         public virtual T Update(T entity)
         {
-            Ensure.That(entity, "entity").IsNotNull();
+            Ensure.That(() => entity).IsNotNull();
 
             connection.Update(entity);
             return entity;
@@ -40,7 +40,7 @@ namespace Bruttissimo.Data.Dapper.Repository
 
         public virtual bool Delete(T entity)
         {
-            Ensure.That(entity, "entity").IsNotNull();
+            Ensure.That(() => entity).IsNotNull();
 
             bool result = connection.Delete(entity);
             return result;

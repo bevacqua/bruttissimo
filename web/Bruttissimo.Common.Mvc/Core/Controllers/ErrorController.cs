@@ -16,7 +16,7 @@ namespace Bruttissimo.Common.Mvc.Core.Controllers
         /// </summary>
         public static ErrorController Instance(HttpContextBase httpContext)
         {
-            Ensure.That(httpContext, "httpContext").IsNotNull();
+            Ensure.That(() => httpContext).IsNotNull();
 
             ErrorController controller = new ErrorController();
             RouteData data;

@@ -11,8 +11,8 @@ namespace Bruttissimo.Domain.Logic.MiniMembership
 
         public MiniAuthentication(IUserService userService, HttpContextBase context)
         {
-            Ensure.That(userService, "userService").IsNotNull();
-            Ensure.That(context, "context").IsNotNull();
+            Ensure.That(() => userService).IsNotNull();
+            Ensure.That(() => context).IsNotNull();
 
             this.userService = userService;
             this.context = context;

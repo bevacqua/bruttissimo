@@ -9,7 +9,7 @@ namespace Bruttissimo.Extensions.RazorEngine
     {
         public string Content(string relativeUrl)
         {
-            Ensure.That(relativeUrl, "relativeUrl").IsNotNull();
+            Ensure.That(() => relativeUrl).IsNotNull();
             
             if (relativeUrl.StartsWith("~"))
             {

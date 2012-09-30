@@ -17,10 +17,10 @@ namespace Bruttissimo.Domain.Entity.Email
 
         public EmailMessageModel(MailAddress sender, string recipient, string subject, string body)
         {
-            Ensure.That(sender, "sender").IsNotNull();
-            Ensure.That(recipient, "recipient").IsNotNull();
-            Ensure.That(subject, "subject").IsNotNull();
-            Ensure.That(body, "body").IsNotNull();
+            Ensure.That(() => sender).IsNotNull();
+            Ensure.That(() => recipient).IsNotNull();
+            Ensure.That(() => subject).IsNotNull();
+            Ensure.That(() => body).IsNotNull();
 
             Sender = sender;
             Recipient = new MailAddress(recipient);

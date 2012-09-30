@@ -18,7 +18,7 @@ namespace Bruttissimo.Data.Dapper.Repository
         public PostRepository(IDbConnection connection)
             : base(connection)
         {
-            Ensure.That(connection, "connection").IsNotNull();
+            Ensure.That(() => connection).IsNotNull();
 
             this.connection = connection;
         }
@@ -74,7 +74,7 @@ namespace Bruttissimo.Data.Dapper.Repository
 
 		public override Post Insert(Post entity)
         {
-            Ensure.That(entity, "entity").IsNotNull();
+            Ensure.That(() => entity).IsNotNull();
 
 			DateTime now = DateTime.UtcNow;
 			entity.Created = now;
@@ -84,8 +84,8 @@ namespace Bruttissimo.Data.Dapper.Repository
 
 		public Post Insert(Link link, string message, User user)
         {
-            Ensure.That(link, "link").IsNotNull();
-            Ensure.That(user, "user").IsNotNull();
+            Ensure.That(() => link).IsNotNull();
+            Ensure.That(() => user).IsNotNull();
 
             DateTime now = DateTime.UtcNow;
             Post post = new Post

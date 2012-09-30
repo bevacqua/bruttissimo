@@ -18,7 +18,7 @@ namespace Bruttissimo.Data.Dapper.Repository
         public LinkRepository(IDbConnection connection)
             : base(connection)
         {
-            Ensure.That(connection, "connection").IsNotNull();
+            Ensure.That(() => connection).IsNotNull();
 
             this.connection = connection;
         }

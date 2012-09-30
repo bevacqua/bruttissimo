@@ -42,7 +42,7 @@ namespace Bruttissimo.Common.Mvc.Core.Controllers
         {
             if (throwOnEmptyModel)
             {
-                Ensure.That(model, "model").IsNotNull();
+                Ensure.That(() => model).IsNotNull();
             }
             Ensure.That(() => ModelState.IsValid).WithExtraMessage(() => Error.ModelStateIsValid).IsFalse();
 

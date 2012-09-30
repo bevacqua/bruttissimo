@@ -20,8 +20,8 @@ namespace Bruttissimo.Common.Mvc.Extensions
         /// </summary>
         public static void MapRouteLowercase(this RouteCollection routes, string name, string url, object defaults, object constraints)
         {
-            Ensure.That(routes, "routes").IsNotNull();
-            Ensure.That(url, "url").IsNotNull();
+            Ensure.That(() => routes).IsNotNull();
+            Ensure.That(() => url).IsNotNull();
 
             LowercaseRoute route = new LowercaseRoute(url, new MvcRouteHandler())
             {

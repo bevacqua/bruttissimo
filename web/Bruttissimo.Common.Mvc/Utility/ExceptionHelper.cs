@@ -18,7 +18,7 @@ namespace Bruttissimo.Common.Mvc.Utility
 
         public ExceptionHelper(HttpContextBase context)
         {
-            Ensure.That(context, "context").IsNotNull();
+            Ensure.That(() => context).IsNotNull();
 
             this.context = context;
         }
@@ -89,7 +89,7 @@ namespace Bruttissimo.Common.Mvc.Utility
 
         public ErrorViewModel GetErrorViewModel(RouteData data, Exception exception, bool ajax = false)
         {
-            Ensure.That(data, "data").IsNotNull();
+            Ensure.That(() => data).IsNotNull();
 
             string controllerName = data.GetControllerString(Error.EmptyController);
             string actionName = data.GetActionString(Error.EmptyAction);

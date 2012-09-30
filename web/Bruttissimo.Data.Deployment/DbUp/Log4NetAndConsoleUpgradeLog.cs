@@ -11,7 +11,7 @@ namespace Bruttissimo.Data.Deployment.DbUp
 
         public Log4NetAndConsoleUpgradeLog(ILog log)
         {
-            Ensure.That(log, "log").IsNotNull();
+            Ensure.That(() => log).IsNotNull();
 
             this.log = log;
 

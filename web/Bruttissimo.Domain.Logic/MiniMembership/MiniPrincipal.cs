@@ -15,8 +15,8 @@ namespace Bruttissimo.Domain.Logic.MiniMembership
 
         public MiniPrincipal(IUserService userService, IIdentity identity)
         {
-            Ensure.That(userService, "userService").IsNotNull();
-            Ensure.That(identity, "identity").IsNotNull();
+            Ensure.That(() => userService).IsNotNull();
+            Ensure.That(() => identity).IsNotNull();
 
             this.userService = userService;
             long? id = userService.GetUserId(identity);

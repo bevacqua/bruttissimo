@@ -41,9 +41,9 @@ namespace Bruttissimo.Mvc.Windsor.Installers
         /// <param name="resourceAssemblies">The location of the different string resources that are rendered client-side.</param>
         public WindsorInstaller(Assembly viewAssembly, string applicationTitle, IList<ResourceAssemblyLocation> resourceAssemblies)
         {
-            Ensure.That(viewAssembly, "viewAssembly").IsNotNull();
-            Ensure.That(applicationTitle, "applicationTitle").IsNotNull();
-            Ensure.That(resourceAssemblies, "resourceAssemblies").IsNotNull();
+            Ensure.That(() => viewAssembly).IsNotNull();
+            Ensure.That(() => applicationTitle).IsNotNull();
+            Ensure.That(() => resourceAssemblies).IsNotNull();
 
             this.viewAssembly = viewAssembly;
             this.applicationTitle = applicationTitle;

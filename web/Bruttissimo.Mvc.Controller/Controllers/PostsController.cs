@@ -22,8 +22,8 @@ namespace Bruttissimo.Mvc.Controller.Controllers
 
         public PostsController(ILinkService linkService, IPostService postService)
         {
-            Ensure.That(linkService, "linkService").IsNotNull();
-            Ensure.That(postService, "postService").IsNotNull();
+            Ensure.That(() => linkService).IsNotNull();
+            Ensure.That(() => postService).IsNotNull();
 
             this.linkService = linkService;
             this.postService = postService;

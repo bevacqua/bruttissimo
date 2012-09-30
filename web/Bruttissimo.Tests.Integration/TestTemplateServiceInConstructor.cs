@@ -10,7 +10,7 @@ namespace Bruttissimo.Tests.Integration
 
         public TestTemplateServiceInConstructor(IEmailTemplateService templateService)
         {
-            Ensure.That(templateService, "templateService").IsNotNull();
+            Ensure.That(() => templateService).IsNotNull();
 
             this.templateService = templateService;
         }

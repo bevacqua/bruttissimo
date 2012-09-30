@@ -15,8 +15,8 @@ namespace Bruttissimo.Domain.Logic.Authentication
         public PlainAuthenticationPortal(IUserService userService, IMembershipProvider membershipProvider, IFormsAuthentication formsAuthentication)
             : base(userService, formsAuthentication)
         {
-            Ensure.That(userService, "userService").IsNotNull();
-            Ensure.That(membershipProvider, "membershipProvider").IsNotNull();
+            Ensure.That(() => userService).IsNotNull();
+            Ensure.That(() => membershipProvider).IsNotNull();
 
             this.userService = userService;
             this.membershipProvider = membershipProvider;
@@ -24,8 +24,8 @@ namespace Bruttissimo.Domain.Logic.Authentication
 
         internal AuthenticationResult Authenticate(string email, string password)
         {
-            Ensure.That(email, "email").IsNotNull();
-            Ensure.That(password, "password").IsNotNull();
+            Ensure.That(() => email).IsNotNull();
+            Ensure.That(() => password).IsNotNull();
 
             bool isNewUser = false;
             User user = userService.GetByEmail(email);

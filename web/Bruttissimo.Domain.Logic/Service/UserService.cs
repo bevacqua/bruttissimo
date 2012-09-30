@@ -20,8 +20,8 @@ namespace Bruttissimo.Domain.Logic.Service
 
         public UserService(IUserRepository userRepository, IEmailService emailService)
         {
-            Ensure.That(userRepository, "userRepository").IsNotNull();
-            Ensure.That(emailService, "emailService").IsNotNull();
+            Ensure.That(() => userRepository).IsNotNull();
+            Ensure.That(() => emailService).IsNotNull();
 
             this.userRepository = userRepository;
             this.emailService = emailService;
@@ -35,7 +35,7 @@ namespace Bruttissimo.Domain.Logic.Service
 
         public User GetByEmail(string email)
         {
-            Ensure.That(email, "email").IsNotNull();
+            Ensure.That(() => email).IsNotNull();
 
             User user = userRepository.GetByEmail(email);
             return user;
@@ -61,8 +61,8 @@ namespace Bruttissimo.Domain.Logic.Service
 
         public User CreateWithCredentials(string email, string password)
         {
-            Ensure.That(email, "email").IsNotNull();
-            Ensure.That(password, "password").IsNotNull();
+            Ensure.That(() => email).IsNotNull();
+            Ensure.That(() => password).IsNotNull();
 
             User user = userRepository.GetByEmail(email);
             if (user != null)
@@ -104,7 +104,7 @@ namespace Bruttissimo.Domain.Logic.Service
 
         public void SendRegistrationEmail(User user)
         {
-            Ensure.That(user, "user").IsNotNull();
+            Ensure.That(() => user).IsNotNull();
 
             emailService.SendRegistrationEmail(user.Email, new RegistrationEmailModel
             {
@@ -114,7 +114,7 @@ namespace Bruttissimo.Domain.Logic.Service
 
         public string GetAuthCookie(User user)
         {
-            Ensure.That(user, "user").IsNotNull();
+            Ensure.That(() => user).IsNotNull();
 
             string encoded = EncodeUserIdIntoAuthCookie(user.Id);
             return encoded;
@@ -122,7 +122,7 @@ namespace Bruttissimo.Domain.Logic.Service
 
         public long? GetUserId(IIdentity identity)
         {
-            Ensure.That(identity, "identity").IsNotNull();
+            Ensure.That(() => identity).IsNotNull();
 
             MiniIdentity mini = identity as MiniIdentity;
             if (mini != null)

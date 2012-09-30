@@ -13,7 +13,7 @@ namespace Bruttissimo.Domain.Logic.Service
 
         public LogService(ILogRepository logRepository)
         {
-            Ensure.That(logRepository, "logRepository").IsNotNull();
+            Ensure.That(() => logRepository).IsNotNull();
 
             this.logRepository = logRepository;
         }

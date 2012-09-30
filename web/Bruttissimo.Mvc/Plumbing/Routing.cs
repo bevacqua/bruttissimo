@@ -18,7 +18,7 @@ namespace Bruttissimo.Mvc.Plumbing
 
         public static void RegisterSignalR(RouteCollection routes)
         {
-            Ensure.That(routes, "routes").IsNotNull();
+            Ensure.That(() => routes).IsNotNull();
 
             // this special route is for SignalR hubs.
             routes.MapHubs("~/realtime");
@@ -26,7 +26,7 @@ namespace Bruttissimo.Mvc.Plumbing
 
         public static void RegisterRoutes(RouteCollection routes)
         {
-            Ensure.That(routes, "routes").IsNotNull();
+            Ensure.That(() => routes).IsNotNull();
 
             RegisterRouteIgnores(routes);
             RegisterViewRoutes(routes);

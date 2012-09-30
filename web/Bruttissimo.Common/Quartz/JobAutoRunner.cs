@@ -18,8 +18,8 @@ namespace Bruttissimo.Common.Quartz
 
         public JobAutoRunner(IScheduler scheduler, IList<Type> jobTypes)
         {
-            Ensure.That(scheduler, "scheduler").IsNotNull();
-            Ensure.That(jobTypes, "jobTypes").IsNotNull();
+            Ensure.That(() => scheduler).IsNotNull();
+            Ensure.That(() => jobTypes).IsNotNull();
 
             this.scheduler = scheduler;
             this.jobTypes = jobTypes;

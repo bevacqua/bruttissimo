@@ -17,8 +17,8 @@ namespace Bruttissimo.Domain.Logic.Service
 
         public JobService(IScheduler scheduler, IJobTypeStore store)
         {
-            Ensure.That(scheduler, "scheduler").IsNotNull();
-            Ensure.That(store, "store").IsNotNull();
+            Ensure.That(() => scheduler).IsNotNull();
+            Ensure.That(() => store).IsNotNull();
 
             this.store = store;
             this.scheduler = scheduler;

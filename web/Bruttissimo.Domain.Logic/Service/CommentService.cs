@@ -13,15 +13,15 @@ namespace Bruttissimo.Domain.Logic.Service
 
         public CommentService(ICommentRepository commentRepository)
         {
-            Ensure.That(commentRepository, "commentRepository").IsNotNull();
+            Ensure.That(() => commentRepository).IsNotNull();
 
             this.commentRepository = commentRepository;
         }
 
         public Comment Create(long postId, string message, User user, long? parentId)
         {
-            Ensure.That(message, "message").IsNotNull();
-            Ensure.That(user, "user").IsNotNull();
+            Ensure.That(() => message).IsNotNull();
+            Ensure.That(() => user).IsNotNull();
 
             if (parentId.HasValue)
             {

@@ -12,7 +12,7 @@ namespace Bruttissimo.Common.Mvc.InversionOfControl.Mvc
 
         public ModelTypeAttribute(Type modelType)
         {
-            Ensure.That(modelType, "modelType").IsNotNull();
+            Ensure.That(() => modelType).IsNotNull();
 
             ModelType = modelType;
         }

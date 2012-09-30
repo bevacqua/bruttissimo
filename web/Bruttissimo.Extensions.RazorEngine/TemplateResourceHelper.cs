@@ -22,7 +22,7 @@ namespace Bruttissimo.Extensions.RazorEngine
         public TemplateResourceHelper(string resourceNamespaceRoot, TemplateBase templateBase)
             : base(resourceNamespaceRoot)
         {
-            Ensure.That(templateBase, "templateBase").IsNotNull();
+            Ensure.That(() => templateBase).IsNotNull();
 
             this.templateBase = templateBase;
         }

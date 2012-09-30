@@ -13,8 +13,8 @@ namespace Bruttissimo.Common.Mvc.InversionOfControl.Mvc
 
         public WindsorModelBinderProvider(IKernel kernel, IDictionary<Type, Type> modelBinderTypes)
         {
-            Ensure.That(kernel, "kernel").IsNotNull();
-            Ensure.That(modelBinderTypes, "modelBinderTypes").IsNotNull();
+            Ensure.That(() => kernel).IsNotNull();
+            Ensure.That(() => modelBinderTypes).IsNotNull();
 
             this.kernel = kernel;
             this.modelBinderTypes = modelBinderTypes;
@@ -22,7 +22,7 @@ namespace Bruttissimo.Common.Mvc.InversionOfControl.Mvc
 
         public IModelBinder GetBinder(Type modelType)
         {
-            Ensure.That(modelType, "modelType").IsNotNull();
+            Ensure.That(() => modelType).IsNotNull();
 
             if (modelBinderTypes.ContainsKey(modelType))
             {

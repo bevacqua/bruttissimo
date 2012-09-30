@@ -25,7 +25,7 @@ namespace Bruttissimo.Common.Mvc.Core.Models
         public ErrorViewModel(HttpContextBase context, Exception exception, string controllerName, string actionName, string message = null)
             : base(exception, controllerName, actionName)
         {
-            Ensure.That(context, "context").IsNotNull();
+            Ensure.That(() => context).IsNotNull();
 
             this.context = context;
             Message = message;

@@ -15,8 +15,8 @@ namespace Bruttissimo.Common.Mvc.Core.ErrorHandling
 
         public ChildActionExceptionFilter(ILog log, ExceptionHelper helper)
         {
-            Ensure.That(log, "log").IsNotNull();
-            Ensure.That(helper, "helper").IsNotNull();
+            Ensure.That(() => log).IsNotNull();
+            Ensure.That(() => helper).IsNotNull();
 
             this.log = log;
             this.helper = helper;

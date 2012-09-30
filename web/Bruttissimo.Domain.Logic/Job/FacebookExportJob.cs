@@ -14,7 +14,7 @@ namespace Bruttissimo.Domain.Logic.Job
 
         public FacebookExportJob(IFacebookService facebookService)
         {
-            Ensure.That(facebookService, "facebookService").IsNotNull();
+            Ensure.That(() => facebookService).IsNotNull();
 
             this.facebookService = facebookService;
         }

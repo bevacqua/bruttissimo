@@ -16,8 +16,8 @@ namespace Bruttissimo.Domain.Logic.MiniMembership
 
         public MiniAuthenticationWrapper(IKernel kernel, HttpContextBase context)
         {
-            Ensure.That(kernel, "kernel").IsNotNull();
-            Ensure.That(context, "context").IsNotNull();
+            Ensure.That(() => kernel).IsNotNull();
+            Ensure.That(() => context).IsNotNull();
 
             this.kernel = kernel;
             this.context = context;

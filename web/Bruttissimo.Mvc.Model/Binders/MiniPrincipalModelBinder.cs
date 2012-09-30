@@ -13,8 +13,8 @@ namespace Bruttissimo.Mvc.Model.Binders
     {
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
-            Ensure.That(controllerContext, "controllerContext").IsNotNull();
-            Ensure.That(bindingContext, "bindingContext").IsNotNull();
+            Ensure.That(() => controllerContext).IsNotNull();
+            Ensure.That(() => bindingContext).IsNotNull();
 
             IMiniPrincipal principal = controllerContext.HttpContext.User as IMiniPrincipal;
             if (principal == null)

@@ -23,10 +23,10 @@ namespace Bruttissimo.Domain.Logic.Service
 
         public FacebookImporterService(IFacebookRepository fbRepository, IPostRepository postRepository, ILinkRepository linkRepository, IUserRepository userRepository)
         {
-            Ensure.That(fbRepository, "fbRepository").IsNotNull();
-            Ensure.That(postRepository, "postRepository").IsNotNull();
-            Ensure.That(linkRepository, "linkRepository").IsNotNull();
-            Ensure.That(userRepository, "userRepository").IsNotNull();
+            Ensure.That(() => fbRepository).IsNotNull();
+            Ensure.That(() => postRepository).IsNotNull();
+            Ensure.That(() => linkRepository).IsNotNull();
+            Ensure.That(() => userRepository).IsNotNull();
 
             this.fbRepository = fbRepository;
             this.postRepository = postRepository;

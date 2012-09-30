@@ -40,16 +40,16 @@ namespace Bruttissimo.Common.Mvc.InversionOfControl.Mvc
             Assembly[] automapperAssemblies,
             Assembly hubAssembly)
         {
-            Ensure.That(modelAssembly, "modelAssembly").IsNotNull();
-            Ensure.That(viewAssembly, "viewAssembly").IsNotNull();
-            Ensure.That(controllerAssembly, "controllerAssembly").IsNotNull();
-            Ensure.That(applicationTitle, "applicationTitle").IsNotNullOrEmpty();
-            Ensure.That(resourceAssemblies, "resourceAssemblies").IsNotNull();
-            Ensure.That(filters, "filters").IsNotNull();
-            Ensure.That(jobAssembly, "jobAssembly").IsNotNull();
-            Ensure.That(filters, "filters").IsNotNull();
-            Ensure.That(automapperAssemblies, "automapperAssemblies").IsNotNull();
-            Ensure.That(hubAssembly, "hubAssembly").IsNotNull();
+            Ensure.That(() => modelAssembly).IsNotNull();
+            Ensure.That(() => viewAssembly).IsNotNull();
+            Ensure.That(() => controllerAssembly).IsNotNull();
+            Ensure.That(() => applicationTitle).IsNotNullOrEmpty();
+            Ensure.That(() => resourceAssemblies).IsNotNull();
+            Ensure.That(() => filters).IsNotNull();
+            Ensure.That(() => jobAssembly).IsNotNull();
+            Ensure.That(() => filters).IsNotNull();
+            Ensure.That(() => automapperAssemblies).IsNotNull();
+            Ensure.That(() => hubAssembly).IsNotNull();
 
             ModelAssembly = modelAssembly;
             ViewAssembly = viewAssembly;

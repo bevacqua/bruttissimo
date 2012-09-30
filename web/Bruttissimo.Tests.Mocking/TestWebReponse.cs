@@ -10,7 +10,7 @@ namespace Bruttissimo.Tests.Mocking
 
         public TestWebReponse(Stream responseStream)
         {
-            Ensure.That(responseStream, "responseStream").IsNotNull();
+            Ensure.That(() => responseStream).IsNotNull();
 
             this.responseStream = responseStream;
         }

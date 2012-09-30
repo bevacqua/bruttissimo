@@ -20,7 +20,7 @@ namespace Bruttissimo.Common.Utility
         /// </summary>
         public long ComputeAsLong(string input)
         {
-            Ensure.That(input, "input").IsNotNull();
+            Ensure.That(() => input).IsNotNull();
 
             byte[] checksum = Compute(input);
             long hash = BitConverter.ToInt64(checksum, 0);
@@ -32,7 +32,7 @@ namespace Bruttissimo.Common.Utility
         /// </summary>
         public string ComputeAsString(string input)
         {
-            Ensure.That(input, "input").IsNotNull();
+            Ensure.That(() => input).IsNotNull();
 
             byte[] checksum = Compute(input);
             string hash = BitConverter.ToString(checksum, 0);

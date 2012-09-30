@@ -15,7 +15,7 @@ namespace Bruttissimo.Common.Mvc.Utility
 
         public RequestSanitizer(HttpContextBase context)
         {
-            Ensure.That(context, "context").IsNotNull();
+            Ensure.That(() => context).IsNotNull();
 
             this.context = context;
         }

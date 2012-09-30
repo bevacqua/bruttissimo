@@ -20,8 +20,8 @@ namespace Bruttissimo.Common.Mvc.Core.Helpers
 
         public JavaScriptHelper(HttpContextBase context, IResourceCompressor compressor)
         {
-            Ensure.That(context, "context").IsNotNull();
-            Ensure.That(compressor, "compressor").IsNotNull();
+            Ensure.That(() => context).IsNotNull();
+            Ensure.That(() => compressor).IsNotNull();
 
             this.context = context;
             this.compressor = compressor;

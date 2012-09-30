@@ -38,8 +38,8 @@ namespace Bruttissimo.Domain.Social.Facebook
 
         public FacebookRepository(string defaultAccessToken, IMapper mapper)
         {
-            Ensure.That(defaultAccessToken, "defaultAccessToken").IsNotNull();
-            Ensure.That(mapper, "mapper").IsNotNull();
+            Ensure.That(() => defaultAccessToken).IsNotNull();
+            Ensure.That(() => mapper).IsNotNull();
 
             this.defaultAccessToken = defaultAccessToken;
             this.mapper = mapper;
@@ -47,7 +47,7 @@ namespace Bruttissimo.Domain.Social.Facebook
 
         public IList<FacebookPost> GetPostsInFeed(FacebookImportOptions opts)
         {
-            Ensure.That(opts, "opts").IsNotNull();
+            Ensure.That(() => opts).IsNotNull();
 
             DateTime? since = opts.Since;
             string url = GRAPH_FEED_LIMITED.FormatWith(opts.Feed, PAGE_LIMIT);
@@ -64,7 +64,7 @@ namespace Bruttissimo.Domain.Social.Facebook
 
         public FacebookPost PostToFeed(Post post, string userAccessToken)
         {
-            Ensure.That(post, "post").IsNotNull();
+            Ensure.That(() => post).IsNotNull();
 
             if (post.FacebookFeedId == null) // sanity
             {

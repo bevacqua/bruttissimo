@@ -14,7 +14,7 @@ namespace Bruttissimo.Domain.Logic.Job
 
         public TwitterExportJob(ITwitterService twitterService)
         {
-            Ensure.That(twitterService, "twitterService").IsNotNull();
+            Ensure.That(() => twitterService).IsNotNull();
 
             this.twitterService = twitterService;
         }

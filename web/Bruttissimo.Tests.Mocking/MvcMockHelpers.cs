@@ -73,7 +73,7 @@ namespace Bruttissimo.Tests.Mocking
 
         public static void SetupRequestUrl(this HttpRequestBase request, string url)
         {
-            Ensure.That(url, "url").IsNotNull();
+            Ensure.That(() => url).IsNotNull();
             Ensure.That(() => !url.StartsWith("~/")).WithExtraMessage(() => @"Sorry, we set up a virtual url starting with ""~/"".").IsFalse();
 
             Mock<HttpRequestBase> mock = Mock.Get(request);

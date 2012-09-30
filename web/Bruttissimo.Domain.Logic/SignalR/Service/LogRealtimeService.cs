@@ -16,14 +16,14 @@ namespace Bruttissimo.Domain.Logic.SignalR.Service
 
         public LogRealtimeService(IHubContextWrapper<LogHub> hub)
         {
-            Ensure.That(hub, "hub").IsNotNull();
+            Ensure.That(() => hub).IsNotNull();
             
             this.hub = hub;
         }
 
         public void Update(HttpContextBase context, LoggingEvent loggingEvent)
         {
-            Ensure.That(loggingEvent, "loggingEvent").IsNotNull();
+            Ensure.That(() => loggingEvent).IsNotNull();
 
             LoggingEventData data = loggingEvent.GetLoggingEventData();
             Exception exception = loggingEvent.ExceptionObject;

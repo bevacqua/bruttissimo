@@ -18,7 +18,7 @@ namespace Bruttissimo.Common.InversionOfControl.Installers
 
         public AutoMapperInstaller(params Assembly[] mapperAssemblies)
         {
-            Ensure.That(mapperAssemblies, "mapperAssemblies").IsNotNull();
+            Ensure.That(() => mapperAssemblies).IsNotNull();
             this.mapperAssemblies = mapperAssemblies;
         }
 
