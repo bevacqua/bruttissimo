@@ -41,6 +41,10 @@ namespace Bruttissimo.Common.Guard
                 return GetRightMostMember(unaryExpression.Operand);
             }
 
+            var binaryExpression = expression as BinaryExpression;
+            if (binaryExpression != null)
+                return GetRightMostMember(binaryExpression.Left);
+
             return null;
         }
     }

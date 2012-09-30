@@ -17,6 +17,11 @@ namespace Bruttissimo.Common.Guard
             return new Param<T>(memberExpression.ToPath(), expression.Compile().Invoke());
         }
 
+        public static Param<T> That<T>(Func<T> function, string name = Param.DefaultName)
+        {
+            return new Param<T>(name, function.Invoke());
+        }
+
         public static TypeParam ThatTypeFor<T>(T value, string name = Param.DefaultName)
         {
             return new TypeParam(name, value.GetType());
