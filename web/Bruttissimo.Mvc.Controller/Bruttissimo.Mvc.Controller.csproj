@@ -51,6 +51,7 @@
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\AnalyticsController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
+    <Compile Include="Controllers\SiteMapController.cs" />
     <Compile Include="Controllers\SystemController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostsController.cs" />

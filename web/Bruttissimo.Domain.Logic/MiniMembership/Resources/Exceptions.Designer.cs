@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Bruttissimo.Mvc.App_GlobalResources {
+namespace Bruttissimo.Domain.Logic.MiniMembership.Resources {
     using System;
     
     
@@ -22,24 +22,24 @@ namespace Bruttissimo.Mvc.App_GlobalResources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class web_sitemap {
+    internal class Exceptions {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal web_sitemap() {
+        internal Exceptions() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Bruttissimo.Mvc.App_GlobalResources.web.sitemap", typeof(web_sitemap).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Bruttissimo.Domain.Logic.MiniMembership.Resources.Exceptions", typeof(Exceptions).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace Bruttissimo.Mvc.App_GlobalResources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,29 +61,11 @@ namespace Bruttissimo.Mvc.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Home.
+        ///   Looks up a localized string similar to A controller &apos;{0}&apos; could not be instanced for action &apos;{1}&apos;.
         /// </summary>
-        public static string Home_title {
+        internal static string MiniAclModule_ControllerNotFound {
             get {
-                return ResourceManager.GetString("Home.title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Publicar.
-        /// </summary>
-        public static string Publish_title {
-            get {
-                return ResourceManager.GetString("Publish.title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to System.
-        /// </summary>
-        public static string System_title {
-            get {
-                return ResourceManager.GetString("System.title", resourceCulture);
+                return ResourceManager.GetString("MiniAclModule_ControllerNotFound", resourceCulture);
             }
         }
     }

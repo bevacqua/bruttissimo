@@ -1,34 +1,39 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Helpers;
+using Bruttissimo.Common.Mvc.Exceptions;
 using Bruttissimo.Common.Mvc.Extensions;
+using Bruttissimo.Domain.Logic.MiniMembership.Resources;
 using MvcSiteMapProvider;
 using MvcSiteMapProvider.Extensibility;
+using log4net;
 
 namespace Bruttissimo.Domain.Logic.MiniMembership
 {
     public class MiniAclModule : IAclModule
     {
+        private readonly ILog log = LogManager.GetLogger(typeof(MiniAclModule));
+
         public bool IsAccessibleToUser(IControllerTypeResolver controllerTypeResolver, DefaultSiteMapProvider provider, HttpContext context, SiteMapNode node)
         {
-            Ensure.ThatTypeFor(node).IsOfType<MvcSiteMapNode>();
+            Ensure.ThatTypeFor(() => node).IsOfType<MvcSiteMapNode>();
 
             HttpContextBase contextBase = context.Wrap();
             MvcSiteMapNode mvc = (MvcSiteMapNode)node;
             string controller = mvc.Controller;
             string action = mvc.Action;
 
-            bool accessible = IsActionAccessibleToUser(contextBase, controller, action);
+            bool accessible = IsActionAccessibleToUser(controllerTypeResolver, contextBase, controller, action);
             return accessible;
         }
 
-        internal bool IsActionAccessibleToUser(HttpContextBase context, string controllerName, string actionName)
+        internal bool IsActionAccessibleToUser(IControllerTypeResolver resolver, HttpContextBase context, string controllerName, string actionName)
         {
             MvcHandler handler = context.Handler as MvcHandler;
 
@@ -36,23 +41,39 @@ namespace Bruttissimo.Domain.Logic.MiniMembership
             {
                 return false;
             }
+            RequestContext requestContext = handler.RequestContext;
+            IController controller;
 
-            IController controller = ControllerBuilder.Current.GetControllerFactory().CreateController(handler.RequestContext, controllerName);
-            Type controllerType = controller.GetType();
+            try
+            {
+                controller = ControllerBuilder.Current.GetControllerFactory().CreateController(requestContext, controllerName);
+            }
+            catch (HttpNotFoundException)
+            {
+                // if we can't instance the controller, we just issue a warning log and trim the action from the site map.
+                log.Warn(Exceptions.MiniAclModule_ControllerNotFound.FormatWith(controllerName, actionName));
+                return false;
+            }
+
+            Ensure.ThatTypeFor(() => controller).Subclasses<ControllerBase>();
+
+            ControllerBase controllerBase = (ControllerBase)controller;
+            
+            if (controllerBase.ControllerContext == null) // just new it up.
+            {
+                controllerBase.ControllerContext = new ControllerContext(requestContext, controllerBase);
+            }
 
             // find all AuthorizeAttributes on the controller class and action method.
-            IEnumerable<AuthorizeAttribute> controllerAttributes = controllerType.GetAttributes<AuthorizeAttribute>();
-            IEnumerable<AuthorizeAttribute> actionAttributes = controllerType.GetMethod(actionName).GetAttributes<AuthorizeAttribute>();
+            IList<AuthorizeAttribute> authorizeAttributes = GetAuthorizeAttributes(controllerBase, actionName).ToList();
 
-            IList<AuthorizeAttribute> list = controllerAttributes.Concat(actionAttributes).ToList();
-
-            if (list.Count == 0) // unrestricted access.
+            if (authorizeAttributes.Count == 0) // unrestricted access.
             {
                 return true;
             }
             IPrincipal principal = context.User;
 
-            foreach (AuthorizeAttribute authorizeAttribute in list)
+            foreach (AuthorizeAttribute authorizeAttribute in authorizeAttributes)
             {
                 string roles = authorizeAttribute.Roles;
 
@@ -62,6 +83,20 @@ namespace Bruttissimo.Domain.Logic.MiniMembership
                 }
             }
             return true;
+        }
+
+        /// <summary>
+        /// Avoids risking things like AmbiguousMatchException, by accessing the controller and action descriptors.
+        /// </summary>
+        internal IEnumerable<AuthorizeAttribute> GetAuthorizeAttributes(ControllerBase controller, string actionName)
+        {
+            ControllerDescriptor controllerDescriptor = new ReflectedControllerDescriptor(controller.GetType());
+            ActionDescriptor actionDescriptor = controllerDescriptor.FindAction(controller.ControllerContext, actionName);
+
+            IEnumerable<AuthorizeAttribute> controllerAttributes = controllerDescriptor.GetAttributes<AuthorizeAttribute>();
+            IEnumerable<AuthorizeAttribute> actionAttributes = actionDescriptor.GetAttributes<AuthorizeAttribute>();
+
+            return controllerAttributes.Concat(actionAttributes);
         }
 
         internal bool SufficientAccessValidation(IPrincipal principal, string roles)

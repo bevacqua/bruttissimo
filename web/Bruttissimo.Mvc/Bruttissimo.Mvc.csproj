@@ -176,7 +176,7 @@
     </Content>
     <Content Include="Views\Shared\NoScript.cshtml" />
     <Content Include="Views\User\Login.js.cshtml" />
-    <Content Include="Views\Shared\_Sitemap.cshtml" />
+    <Content Include="Views\SiteMap\Menu.cshtml" />
     <Content Include="Views\Shared\_Logon.cshtml" />
     <Content Include="Views\Posts\List.cshtml" />
     <Content Include="Views\Shared\_OpenGraphMetadata.cshtml" />
@@ -211,18 +211,18 @@
     <Content Include="Views\Analytics\Pixel.js.cshtml" />
     <Content Include="Views\Analytics\Pixel.cshtml" />
     <Content Include="Views\User\Settings.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="web.sitemap">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Xml\sitemap.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Views\SiteMap\DisplayTemplates\MenuHelperModel.cshtml" />
+    <Content Include="Views\SiteMap\DisplayTemplates\SiteMapHelperModel.cshtml" />
+    <Content Include="Views\SiteMap\DisplayTemplates\SiteMapNodeModel.cshtml" />
+    <Content Include="Views\SiteMap\DisplayTemplates\SiteMapNodeModelList.cshtml" />
+    <Content Include="Views\SiteMap\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
+    <Content Include="Views\SiteMap\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
     <None Include="Xml\Xsd\MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>

@@ -63,7 +63,7 @@ namespace Bruttissimo.Domain.Logic.Service
         {
             Ensure.That(() => recipient).IsNotNull();
             Ensure.That(() => model).IsNotNull();
-            Ensure.ThatTypeFor(model, "model").IsOfType<RegistrationEmailModel>();
+            Ensure.ThatTypeFor(() => model).IsOfType<RegistrationEmailModel>();
 
             var email = (RegistrationEmailModel)model;
 

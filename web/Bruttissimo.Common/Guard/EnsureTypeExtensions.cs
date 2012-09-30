@@ -91,6 +91,15 @@ namespace Bruttissimo.Common.Guard
 
             return param;
         }
+        
+        [DebuggerStepThrough]
+        public static TypeParam Subclasses<T>(this TypeParam param)
+        {
+            if (!(typeof(T).IsAssignableFrom(param.Type)))
+                throw ExceptionFactory.Create(param, Exceptions.EnsureExtensions_IsNotOfType.FormatWith(typeof(T).FullName, param.Type.FullName));
+
+            return param;
+        }
 
         [DebuggerStepThrough]
         public static Param<Type> IsClass(this Param<Type> param)

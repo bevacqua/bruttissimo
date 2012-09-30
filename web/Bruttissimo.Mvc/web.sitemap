@@ -4,7 +4,8 @@
             xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-3.0"
             xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-3.0 Xml\Xsd\MvcSiteMapSchema.xsd">
 
-  <mvcSiteMapNode title="Home" controller="Home" action="Index">
-    <mvcSiteMapNode title="System" controller="System" action="Index" />
+  <mvcSiteMapNode resourceKey="Home" title="Home" controller="Home" action="Index">
+    <mvcSiteMapNode resourceKey="Publish" title="Publish" controller="Posts" action="Create" />
+    <mvcSiteMapNode resourceKey="System" title="System" controller="System" action="Index" />
   </mvcSiteMapNode>
 </mvcSiteMap>

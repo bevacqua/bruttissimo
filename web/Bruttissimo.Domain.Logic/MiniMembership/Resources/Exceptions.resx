@@ -117,13 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Home.title" xml:space="preserve">
-    <value>Home</value>
-  </data>
-  <data name="Publish.title" xml:space="preserve">
-    <value>Publicar</value>
-  </data>
-  <data name="System.title" xml:space="preserve">
-    <value>System</value>
+  <data name="MiniAclModule_ControllerNotFound" xml:space="preserve">
+    <value>A controller '{0}' could not be instanced for action '{1}'</value>
+    <comment>0=controller, 1=action</comment>
   </data>
 </root>

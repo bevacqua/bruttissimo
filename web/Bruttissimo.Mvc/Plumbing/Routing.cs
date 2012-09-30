@@ -43,14 +43,14 @@ namespace Bruttissimo.Mvc.Plumbing
             routes.MapRoute("IgnoreExplicitPostDetails", "Posts/Details/{*pathInfo}", notFound);
             routes.MapRoute("IgnoreExplicitHome", "Home", notFound);
             routes.MapRoute("IgnoreExplicitIndex", "{controllerName}/Index/{*pathInfo}", notFound);
-            routes.MapRoute("IgnoreExplicitSiteMap", "Home/SiteMapXml", notFound);
+            routes.MapRoute("IgnoreExplicitSiteMap", "SiteMap/Xml", notFound);
         }
 
         internal static void RegisterViewRoutes(RouteCollection routes)
         {
             routes.MapRouteLowercase( // sitemap.xml
                 "SiteMap", "sitemap.xml",
-                new { controller = "Home", action = "SiteMapXml" },
+                new { controller = "SiteMap", action = "Xml" },
                 new { httpMethod = new HttpMethodConstraint("GET") });
 
             routes.MapRouteLowercase( // comment upvoting
