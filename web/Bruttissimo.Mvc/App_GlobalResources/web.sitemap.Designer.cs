@@ -77,14 +77,5 @@ namespace Bruttissimo.Mvc.App_GlobalResources {
                 return ResourceManager.GetString("Publish.title", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to System.
-        /// </summary>
-        public static string System_title {
-            get {
-                return ResourceManager.GetString("System.title", resourceCulture);
-            }
-        }
     }
 }
