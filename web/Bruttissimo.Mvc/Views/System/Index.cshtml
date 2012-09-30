@@ -1,9 +1,2 @@
-﻿@model IEnumerable<ActionLinkModel>
-<section id="sysadmin">
-    @foreach (ActionLinkModel action in Model)
-    {
-        <div>
-            <a href="@action.Url">@Resource.String(action.ResourceKey)</a>
-        </div>
-    }
-</section>
+﻿@{ var mvc = Html.MvcSiteMap(); }
+@mvc.Menu(mvc.Provider.CurrentNode, startingNodeInChildLevel: true, showStartingNode: false)

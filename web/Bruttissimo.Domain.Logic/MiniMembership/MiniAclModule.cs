@@ -58,7 +58,7 @@ namespace Bruttissimo.Domain.Logic.MiniMembership
             Ensure.ThatTypeFor(() => controller).Subclasses<ControllerBase>();
 
             ControllerBase controllerBase = (ControllerBase)controller;
-            
+
             if (controllerBase.ControllerContext == null) // just new it up.
             {
                 controllerBase.ControllerContext = new ControllerContext(requestContext, controllerBase);
@@ -71,6 +71,11 @@ namespace Bruttissimo.Domain.Logic.MiniMembership
             {
                 return true;
             }
+            if (authorizeAttributes.Any(a => a is UnauthorizedAttribute)) // invalid action.
+            {
+                return false;
+            }
+
             IPrincipal principal = context.User;
 
             foreach (AuthorizeAttribute authorizeAttribute in authorizeAttributes)
@@ -93,6 +98,12 @@ namespace Bruttissimo.Domain.Logic.MiniMembership
             ControllerDescriptor controllerDescriptor = new ReflectedControllerDescriptor(controller.GetType());
             ActionDescriptor actionDescriptor = controllerDescriptor.FindAction(controller.ControllerContext, actionName);
 
+            if (actionDescriptor == null)
+            {
+                // if we can't find a matching action descriptor, we just issue a warning log and trim the action from the site map.
+                log.Warn(Exceptions.MiniAclModule_ActionDescriptorNotFound.FormatWith(controllerDescriptor.ControllerName, actionName));
+                return new AuthorizeAttribute[] { new UnauthorizedAttribute() };
+            }
             IEnumerable<AuthorizeAttribute> controllerAttributes = controllerDescriptor.GetAttributes<AuthorizeAttribute>();
             IEnumerable<AuthorizeAttribute> actionAttributes = actionDescriptor.GetAttributes<AuthorizeAttribute>();
 
@@ -118,6 +129,10 @@ namespace Bruttissimo.Domain.Logic.MiniMembership
                 return true;
             }
             return false;
+        }
+
+        private class UnauthorizedAttribute : AuthorizeAttribute
+        {
         }
     }
 }

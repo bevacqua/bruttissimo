@@ -87,7 +87,6 @@
     <Compile Include="ViewModels\PostListModel.cs" />
     <Compile Include="ViewModels\PostModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\ActionLinkModel.cs" />
     <Compile Include="ViewModels\UserLoginModel.cs" />
   </ItemGroup>
   <ItemGroup>

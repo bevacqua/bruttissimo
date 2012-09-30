@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Bruttissimo.Common.Guard;
@@ -8,7 +7,6 @@ using Bruttissimo.Common.Mvc.Core.Controllers;
 using Bruttissimo.Common.Static;
 using Bruttissimo.Domain.Entity.Constants;
 using Bruttissimo.Domain.Entity.Entities;
-using Bruttissimo.Domain.MiniMembership;
 using Bruttissimo.Domain.Service;
 using Bruttissimo.Mvc.Model.ViewModels;
 
@@ -38,10 +36,9 @@ namespace Bruttissimo.Mvc.Controller.Controllers
         [HttpGet]
         [NotAjax]
         [ExtendedAuthorize(Roles = Rights.CanAccessSystemPanel)]
-        public ActionResult Index(IMiniPrincipal principal)
+        public ActionResult Index()
         {
-            IEnumerable<ActionLinkModel> model = GetActions(principal);
-            return View(model);
+            return View();
         }
 
         [HttpGet]
@@ -60,38 +57,6 @@ namespace Bruttissimo.Mvc.Controller.Controllers
         {
             HttpRuntime.UnloadAppDomain();
             return RedirectToAction("Index", "Home");
-        }
-
-        // TODO: use sitemap for this
-        private IEnumerable<ActionLinkModel> GetActions(IMiniPrincipal principal)
-        {
-            Permission[] permissions = new[]
-            {
-                permission(Rights.CanAccessApplicationLogs, Url.Action("Log"), "Log"),
-                permission(Rights.CanAccessApplicationJobs, Url.Action("Index", "Jobs"), "Jobs"),
-                permission(Rights.CanAccessApplicationVariables, Url.Action("Environment", "System"), "Environment"),
-                permission(Rights.CanResetApplicationPool, Url.Action("Reset", "System"), "Reset")
-            };
-            return permissions.Where(p => principal.IsInRole(p.Role)).Select(p => p.Action);
-        }
-
-        private class Permission
-        {
-            public string Role { get; set; }
-            public ActionLinkModel Action { get; set; }
-        }
-
-        private Permission permission(string role, string url, string resourceKey)
-        {
-            return new Permission
-            {
-                Role = role,
-                Action = new ActionLinkModel
-                {
-                    Url = url,
-                    ResourceKey = resourceKey
-                }
-            };
         }
     }
 }

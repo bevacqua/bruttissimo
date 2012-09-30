@@ -61,6 +61,15 @@ namespace Bruttissimo.Domain.Logic.MiniMembership.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An ActionDescriptor for action &apos;{0}&apos; in controller &apos;{1}&apos; could not be found..
+        /// </summary>
+        internal static string MiniAclModule_ActionDescriptorNotFound {
+            get {
+                return ResourceManager.GetString("MiniAclModule_ActionDescriptorNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A controller &apos;{0}&apos; could not be instanced for action &apos;{1}&apos;.
         /// </summary>
         internal static string MiniAclModule_ControllerNotFound {

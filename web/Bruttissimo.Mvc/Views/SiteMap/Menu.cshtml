@@ -1,6 +1,7 @@
-﻿<nav id="menu">
+﻿@{ var mvc = Html.MvcSiteMap(); }
+<nav id="menu">
     <ul>
-        @Html.MvcSiteMap().Menu()
+        @mvc.Menu(maxDepth: 2, startingNode: mvc.Provider.RootNode, showStartingNode: true, startingNodeInChildLevel: true)
         <li>@Html.Partial("_Logon")</li>
         <li class="nav-top"><a href="#top">@Resource.String("Top")</a></li>
     </ul>
