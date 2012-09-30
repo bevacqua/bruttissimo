@@ -111,8 +111,6 @@
     <Content Include="Content\Script\b.facebook.js" />
     <Content Include="Content\Script\b.twitter.js" />
     <Content Include="Content\Script\b.realtime.js" />
-    <Content Include="Content\Script\Lib\jquery-1.7.2.js" />
-    <Content Include="Content\Script\Lib\jquery-1.7.2.min.js" />
     <Content Include="Content\Script\Lib\jquery.color.js" />
     <Content Include="Content\Script\Lib\json2.js" />
     <Content Include="Content\Script\Lib\jquery.validate.js" />
@@ -138,8 +136,8 @@
     <Content Include="Content\Style\layout.footer.less" />
     <Content Include="Content\Style\functions.less" />
     <Content Include="Content\Style\layout.css" />
-    <Content Include="Content\Script\Lib\jquery.signalR-0.5.2.js" />
-    <Content Include="Content\Script\Lib\jquery.signalR-0.5.2.min.js" />
+    <Content Include="Content\Script\Lib\jquery.signalR-0.5.3.js" />
+    <Content Include="Content\Script\Lib\jquery.signalR-0.5.3.min.js" />
     <Content Include="Views\Error\ChildAction.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
@@ -338,8 +336,6 @@
     <Content Include="Content\Script\b.core.js" />
     <Content Include="Content\Script\b.extensions.js" />
     <Content Include="Content\Script\Lib\html5shiv.js" />
-    <Content Include="Content\Script\Lib\jquery-1.7.1.js" />
-    <Content Include="Content\Script\Lib\jquery-1.7.1.min.js" />
     <Content Include="Content\Script\jquery.extensions.js" />
     <Content Include="Content\Script\Lib\jquery.form.js" />
     <Content Include="Content\Script\Lib\jquery.validate.min.js" />
