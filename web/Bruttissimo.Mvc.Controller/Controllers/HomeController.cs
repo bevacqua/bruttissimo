@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using Bruttissimo.Common.Mvc.Core.Controllers;
+using MvcSiteMapProvider.Web;
 
 namespace Bruttissimo.Mvc.Controller.Controllers
 {
@@ -9,5 +10,10 @@ namespace Bruttissimo.Mvc.Controller.Controllers
         {
             return View();
         }
+
+        public ActionResult SiteMapXml()
+        {
+            return new XmlSiteMapResult();
+        } 
     }
 }

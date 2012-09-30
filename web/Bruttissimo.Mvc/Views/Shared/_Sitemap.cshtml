@@ -1,7 +1,6 @@
 ﻿<nav id="menu">
     <ul>
-        <li><a href="@Url.Action("Index", "Home")">@Resource.String("Home")</a></li>
-        <li><a href="@Url.Action("Create", "Posts")">@Resource.String("Publish")</a></li>
+        @Html.MvcSiteMap().Menu()
         <li>@Html.Partial("_Logon")</li>
         <li class="nav-top"><a href="#top">@Resource.String("Top")</a></li>
     </ul>

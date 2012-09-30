@@ -41,15 +41,21 @@ namespace Bruttissimo.Mvc.Plumbing
 
             // by not using .IgnoreRoute I avoid IIS taking over my custom error handling engine.
             routes.MapRoute(
-                "IgnorePostDetails", "Posts/Details/{id}",
+                "IgnoreExplicitPostDetails", "Posts/Details/{id}",
                 new { controller = "Error", action = "NotFound", id = UrlParameter.Optional });
 
-            routes.MapRoute("IgnoreHome", "Home", notFound);
-            routes.MapRoute("IgnoreIndex", "{controllerName}/Index/{*pathInfo}", notFound);
+            routes.MapRoute("IgnoreExplicitHome", "Home", notFound);
+            routes.MapRoute("IgnoreExplicitIndex", "{controllerName}/Index/{*pathInfo}", notFound);
+            routes.MapRoute("IgnoreExplicitSiteMap", "Home/SiteMapXml", notFound);
         }
 
         internal static void RegisterViewRoutes(RouteCollection routes)
         {
+            routes.MapRouteLowercase( // sitemap.xml
+                "SiteMap", "sitemap.xml",
+                new { controller = "Home", action = "SiteMapXml" },
+                new { httpMethod = new HttpMethodConstraint("GET") });
+
             routes.MapRouteLowercase( // comment upvoting
                 "CommentUpVote", "Comments/{id}/Vote/Up",
                 new { controller = "Comments", action = "UpVote" },

@@ -64,6 +64,9 @@
     <Reference Include="MiniProfiler">
       <HintPath>..\packages\MiniProfiler.2.0.2\lib\net40\MiniProfiler.dll</HintPath>
     </Reference>
+    <Reference Include="MvcSiteMapProvider">
+      <HintPath>..\packages\MvcSiteMapProvider.3.3.3.0\lib\net40\MvcSiteMapProvider.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.4.5.9\lib\net40\Newtonsoft.Json.dll</HintPath>
@@ -164,7 +167,6 @@
     <Content Include="Xml\membership.authentication.config" />
     <Content Include="Xml\membership.provider.config" />
     <Content Include="Xml\membership.roles.config" />
-    <Content Include="Xml\pages.config" />
     <Content Include="web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -209,6 +211,19 @@
     <Content Include="Views\Analytics\Pixel.js.cshtml" />
     <Content Include="Views\Analytics\Pixel.cshtml" />
     <Content Include="Views\User\Settings.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
+    <Content Include="web.sitemap" />
+    <Content Include="Xml\sitemap.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Xml\Xsd\MvcSiteMapSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\GlobalAssemblyInfo.cs">
@@ -330,6 +345,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Login.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\web.sitemap.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>web.sitemap.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Image\Error\alone.png" />
@@ -441,6 +461,10 @@
     <EmbeddedResource Include="Views\User\Resources\Login.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Login.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\web.sitemap.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>web.sitemap.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

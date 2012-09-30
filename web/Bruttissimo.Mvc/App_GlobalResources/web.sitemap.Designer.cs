@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Bruttissimo.Mvc.Views.Shared.Resources {
+namespace Bruttissimo.Mvc.App_GlobalResources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Bruttissimo.Mvc.Views.Shared.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class _Sitemap {
+    public class web_sitemap {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal _Sitemap() {
+        internal web_sitemap() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Bruttissimo.Mvc.Views.Shared.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Bruttissimo.Mvc.Views.Shared.Resources._Sitemap", typeof(_Sitemap).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Bruttissimo.Mvc.App_GlobalResources.web.sitemap", typeof(web_sitemap).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,20 @@ namespace Bruttissimo.Mvc.Views.Shared.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Volver arriba.
+        ///   Looks up a localized string similar to Home.
         /// </summary>
-        public static string Top {
+        public static string Home_title {
             get {
-                return ResourceManager.GetString("Top", resourceCulture);
+                return ResourceManager.GetString("Home.title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Publicar.
+        /// </summary>
+        public static string Publish_title {
+            get {
+                return ResourceManager.GetString("Publish.title", resourceCulture);
             }
         }
     }
