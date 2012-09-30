@@ -60,6 +60,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bruttissimo.Extensions.Mini
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Bruttissimo.Data.SqlServer", "Bruttissimo.Data.SqlServer\Bruttissimo.Data.SqlServer.sqlproj", "{FFB30DED-209E-44D0-B034-01144431F66D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6. External Layer", "6. External Layer", "{6B2EF05A-99E9-4EF3-B9C8-06D2F2B86F8D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
