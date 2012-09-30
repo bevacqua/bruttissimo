@@ -20,7 +20,7 @@ namespace Bruttissimo.Common.InversionOfControl
         {
             Type type = typeof(T);
 
-            bool disposable = type.GetInterfaces().All(@interface => @interface != typeof(IDisposable));
+            bool disposable = type.GetInterfaces().Any(@interface => @interface == typeof(IDisposable));
             if (!disposable)
             {
                 throw new NotSupportedException(Exceptions.ReleaseComponentInterceptor_NotSupported.FormatWith(type.Name));
