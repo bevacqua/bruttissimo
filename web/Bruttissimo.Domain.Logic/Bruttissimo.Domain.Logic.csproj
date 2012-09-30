@@ -78,6 +78,7 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="MiniMembership\MiniAclModule.cs" />
     <Compile Include="Service\ExporterService.cs" />
     <Compile Include="Service\GoogleAnalyticsService.cs" />
     <Compile Include="Authentication\AuthenticationPortal.cs" />
