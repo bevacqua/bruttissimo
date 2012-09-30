@@ -72,6 +72,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\SignalR.Server.0.5.3\lib\net40\SignalR.dll</HintPath>
     </Reference>
+    <Reference Include="SignalR.Hosting.AspNet">
+      <HintPath>..\packages\SignalR.Hosting.AspNet.0.5.3\lib\net40\SignalR.Hosting.AspNet.dll</HintPath>
+    </Reference>
     <Reference Include="SignalR.Hosting.Common">
       <HintPath>..\packages\SignalR.Hosting.Common.0.5.3\lib\net40\SignalR.Hosting.Common.dll</HintPath>
     </Reference>
@@ -341,8 +344,6 @@
     <Content Include="Content\Script\Lib\jquery.validate.min.js" />
     <Content Include="Content\Script\Lib\jquery.validate.unobtrusive.js" />
     <Content Include="Content\Script\Lib\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Content\Script\Lib\modernizr-2.5.3.min.js" />
-    <Content Include="Content\Script\Lib\modernizr.js" />
     <Content Include="Content\Script\Views\User\login.js" />
     <Content Include="Content\Script\Views\Posts\create.js" />
     <Content Include="Content\Style\elements.css" />
