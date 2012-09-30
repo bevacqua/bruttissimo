@@ -1,6 +1,4 @@
-﻿using Bruttissimo.Common;
-using Bruttissimo.Common.InversionOfControl;
-using Bruttissimo.Common.Mvc;
+﻿using Bruttissimo.Common.InversionOfControl;
 using Bruttissimo.Common.Mvc.InversionOfControl;
 using Bruttissimo.Common.Mvc.InversionOfControl.SignalR;
 using Bruttissimo.Common.Quartz;

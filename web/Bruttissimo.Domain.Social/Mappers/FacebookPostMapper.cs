@@ -1,4 +1,3 @@
-using Bruttissimo.Common;
 using Bruttissimo.Common.Interface;
 
 namespace Bruttissimo.Domain.Social.Mappers

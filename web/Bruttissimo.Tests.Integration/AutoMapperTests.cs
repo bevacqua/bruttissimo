@@ -1,9 +1,6 @@
-﻿using Bruttissimo.Common;
-using Bruttissimo.Common.Interface;
-using Bruttissimo.Domain.Entity;
+﻿using Bruttissimo.Common.Interface;
 using Bruttissimo.Domain.Entity.Entities;
 using Bruttissimo.Domain.Entity.Enum;
-using Bruttissimo.Mvc.Model;
 using Bruttissimo.Mvc.Model.ViewModels;
 using Bruttissimo.Tests.Mocking;
 using Castle.Windsor;

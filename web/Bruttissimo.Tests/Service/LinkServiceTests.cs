@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Bruttissimo.Common;
 using Bruttissimo.Common.Utility;
-using Bruttissimo.Domain;
-using Bruttissimo.Domain.Entity;
 using Bruttissimo.Domain.Entity.Entities;
-using Bruttissimo.Domain.Logic;
 using Bruttissimo.Domain.Logic.Service;
 using Bruttissimo.Domain.Service;
 using Bruttissimo.Tests.Mocking;

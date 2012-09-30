@@ -1,4 +1,3 @@
-using Bruttissimo.Common.Resources;
 using Bruttissimo.Domain.Logic.Email.RazorEngine;
 using Bruttissimo.Domain.Logic.Email.Template;
 using Bruttissimo.Extensions.RazorEngine;

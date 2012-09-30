@@ -1,7 +1,6 @@
 using System;
 using System.Web;
 using Bruttissimo.Common.InversionOfControl;
-using Bruttissimo.Common.Mvc;
 using Bruttissimo.Common.Mvc.HttpModules.Wiring;
 using Bruttissimo.Domain.MiniMembership;
 

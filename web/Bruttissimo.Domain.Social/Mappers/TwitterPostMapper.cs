@@ -1,4 +1,3 @@
-using Bruttissimo.Common;
 using Bruttissimo.Common.Interface;
 using Bruttissimo.Domain.Entity.Social.Twitter;
 using TweetSharp;

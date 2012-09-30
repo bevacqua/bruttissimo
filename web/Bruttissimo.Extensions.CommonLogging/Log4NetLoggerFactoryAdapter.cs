@@ -25,6 +25,8 @@ using Common.Logging;
 using Common.Logging.Configuration;
 using Common.Logging.Factory;
 using log4net.Config;
+using ILog = log4net.ILog;
+using LogManager = log4net.LogManager;
 
 namespace Bruttissimo.Extensions.CommonLogging
 {
@@ -123,8 +125,8 @@ namespace Bruttissimo.Extensions.CommonLogging
             /// <summary>Calls <see cref="BasicConfigurator.Configure()"/></summary>
             void BasicConfiguratorConfigure();
 
-            /// <summary>Calls <see cref="LogManager.GetLogger(string)"/></summary>
-            log4net.ILog GetLogger(string name);
+            /// <summary>Calls <see cref="Common.Logging.LogManager.GetLogger(string)"/></summary>
+            ILog GetLogger(string name);
         }
 
         private class Log4NetRuntime : ILog4NetRuntime
@@ -149,9 +151,9 @@ namespace Bruttissimo.Extensions.CommonLogging
                 BasicConfigurator.Configure();
             }
 
-            public log4net.ILog GetLogger(string name)
+            public ILog GetLogger(string name)
             {
-                return log4net.LogManager.GetLogger(name);
+                return LogManager.GetLogger(name);
             }
         }
 
@@ -229,7 +231,7 @@ namespace Bruttissimo.Extensions.CommonLogging
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        protected override ILog CreateLogger(string name)
+        protected override Common.Logging.ILog CreateLogger(string name)
         {
             return new Log4NetLogger(_runtime.GetLogger(name));
         }

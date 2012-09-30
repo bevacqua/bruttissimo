@@ -1,5 +1,4 @@
 ﻿using System.Text.RegularExpressions;
-using Bruttissimo.Common;
 using Bruttissimo.Common.Resources;
 using Bruttissimo.Common.Static;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

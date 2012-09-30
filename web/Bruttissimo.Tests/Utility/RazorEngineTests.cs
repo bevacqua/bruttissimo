@@ -1,9 +1,7 @@
 using System.IO;
 using System.Reflection;
 using System.Text;
-using Bruttissimo.Common;
 using Bruttissimo.Common.Extensions;
-using Bruttissimo.Domain.Logic;
 using Bruttissimo.Domain.Logic.Email.RazorEngine;
 using Bruttissimo.Extensions.RazorEngine;
 using Bruttissimo.Tests.Mocking;

@@ -1,4 +1,3 @@
-using Bruttissimo.Common.Mvc;
 using Bruttissimo.Common.Mvc.Interface;
 using Bruttissimo.Domain.Logic.Authentication;
 using Castle.MicroKernel.Registration;
