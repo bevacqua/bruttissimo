@@ -35,12 +35,23 @@ namespace Bruttissimo.Domain.Logic.MiniMembership
 
         internal bool IsActionAccessibleToUser(IControllerTypeResolver resolver, HttpContextBase context, string controllerName, string actionName)
         {
-            MvcHandler handler = context.Handler as MvcHandler;
-
-            if (handler == null)
+            ControllerBase controller = GetController(context, controllerName, actionName);
+            if (controller == null)
             {
                 return false;
             }
+
+            // find all AuthorizeAttributes on the controller class and action method.
+            IList<AuthorizeAttribute> authorizeAttributes = GetAuthorizeAttributes(controller, actionName).ToList();
+            bool validationResult = ValidateAuthorizeAttributes(context.User, authorizeAttributes);
+            return validationResult;
+        }
+
+        internal ControllerBase GetController(HttpContextBase context, string controllerName, string actionName)
+        {
+            Ensure.ThatTypeFor(() => context.Handler).IsOfType<MvcHandler>();
+
+            MvcHandler handler = (MvcHandler)context.Handler;
             RequestContext requestContext = handler.RequestContext;
             IController controller;
 
@@ -52,9 +63,8 @@ namespace Bruttissimo.Domain.Logic.MiniMembership
             {
                 // if we can't instance the controller, we just issue a warning log and trim the action from the site map.
                 log.Warn(Exceptions.MiniAclModule_ControllerNotFound.FormatWith(controllerName, actionName));
-                return false;
+                return null;
             }
-
             Ensure.ThatTypeFor(() => controller).Subclasses<ControllerBase>();
 
             ControllerBase controllerBase = (ControllerBase)controller;
@@ -63,31 +73,7 @@ namespace Bruttissimo.Domain.Logic.MiniMembership
             {
                 controllerBase.ControllerContext = new ControllerContext(requestContext, controllerBase);
             }
-
-            // find all AuthorizeAttributes on the controller class and action method.
-            IList<AuthorizeAttribute> authorizeAttributes = GetAuthorizeAttributes(controllerBase, actionName).ToList();
-
-            if (authorizeAttributes.Count == 0) // unrestricted access.
-            {
-                return true;
-            }
-            if (authorizeAttributes.Any(a => a is UnauthorizedAttribute)) // invalid action.
-            {
-                return false;
-            }
-
-            IPrincipal principal = context.User;
-
-            foreach (AuthorizeAttribute authorizeAttribute in authorizeAttributes)
-            {
-                string roles = authorizeAttribute.Roles;
-
-                if (!SufficientAccessValidation(principal, roles))
-                {
-                    return false;
-                }
-            }
-            return true;
+            return controllerBase;
         }
 
         /// <summary>
@@ -108,6 +94,29 @@ namespace Bruttissimo.Domain.Logic.MiniMembership
             IEnumerable<AuthorizeAttribute> actionAttributes = actionDescriptor.GetAttributes<AuthorizeAttribute>();
 
             return controllerAttributes.Concat(actionAttributes);
+        }
+
+        internal bool ValidateAuthorizeAttributes(IPrincipal principal, IList<AuthorizeAttribute> authorizeAttributes)
+        {
+            if (authorizeAttributes.Count == 0) // unrestricted access.
+            {
+                return true;
+            }
+            if (authorizeAttributes.Any(a => a is UnauthorizedAttribute)) // invalid action.
+            {
+                return false;
+            }
+
+            foreach (AuthorizeAttribute authorizeAttribute in authorizeAttributes)
+            {
+                string roles = authorizeAttribute.Roles;
+
+                if (!SufficientAccessValidation(principal, roles))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         internal bool SufficientAccessValidation(IPrincipal principal, string roles)
