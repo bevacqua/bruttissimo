@@ -16,6 +16,8 @@ namespace Bruttissimo.Common.InversionOfControl
     /// <typeparam name="T">The type that implements IDisposable.</typeparam>
     public class ReleaseComponentInterceptor<T> : IInterceptor where T : class
     {
+        private static readonly MethodInfo dispose;
+
         static ReleaseComponentInterceptor()
         {
             Type type = typeof(T);
@@ -25,9 +27,13 @@ namespace Bruttissimo.Common.InversionOfControl
             {
                 throw new NotSupportedException(Exceptions.ReleaseComponentInterceptor_NotSupported.FormatWith(type.Name));
             }
-        }
 
-        private static readonly MethodInfo dispose = typeof(T).GetInterfaceMap(typeof(IDisposable)).TargetMethods.Single();
+            dispose = typeof(T).GetInterfaceMap(typeof(IDisposable)).TargetMethods.Single();
+            if (!dispose.IsVirtual)
+            {
+                throw new NotSupportedException(Exceptions.ReleaseComponentInterceptor_VirtualNotSupported.FormatWith(type.Name));
+            }
+        }
 
         private readonly IKernel kernel;
         private bool released;

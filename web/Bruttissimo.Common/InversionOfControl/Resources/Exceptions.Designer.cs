@@ -68,5 +68,14 @@ namespace Bruttissimo.Common.InversionOfControl.Resources {
                 return ResourceManager.GetString("ReleaseComponentInterceptor_NotSupported", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type {0} implements IDisposable, but Dispose method is not marked virtual or abstract..
+        /// </summary>
+        internal static string ReleaseComponentInterceptor_VirtualNotSupported {
+            get {
+                return ResourceManager.GetString("ReleaseComponentInterceptor_VirtualNotSupported", resourceCulture);
+            }
+        }
     }
 }

@@ -121,4 +121,8 @@
     <value>Type {0} does not implement IDisposable.</value>
     <comment>0=type name</comment>
   </data>
+  <data name="ReleaseComponentInterceptor_VirtualNotSupported" xml:space="preserve">
+    <value>Type {0} implements IDisposable, but Dispose method is not marked virtual or abstract.</value>
+    <comment>0=type name</comment>
+  </data>
 </root>
