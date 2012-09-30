@@ -1,4 +1,6 @@
 using System.Web;
+using MvcSiteMapProvider;
+using MvcSiteMapProvider.Extensibility;
 
 namespace Bruttissimo.Domain.Logic.MiniMembership
 {
