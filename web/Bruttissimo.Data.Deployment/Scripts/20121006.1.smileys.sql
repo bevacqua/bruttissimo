@@ -1,0 +1,13 @@
+﻿INSERT INTO [Smiley] (ResourceKey, Emoticon, Aliases, CssClass)
+            SELECT 'Smile', ':)', ':-) :} :-} :] :-]', 'smile'
+UNION ALL   SELECT 'Frown', ':(', ':-( :{ :-{ :[ :-[', 'frown'
+UNION ALL   SELECT 'Wink', ';)', ';-) ;} ;-} ;] ;-]', 'wink'
+UNION ALL   SELECT 'Tongue', ':P', ':-P ;P ;-P', 'tongue'
+UNION ALL   SELECT 'Grin', ':D', ':-D ;D ;-D', 'grin'
+UNION ALL   SELECT 'Gasp', ':O', ':-O ;O ;-O', 'gasp'
+UNION ALL   SELECT 'Pacman', ':V', ':-V ;V ;-V', 'pacman'
+UNION ALL   SELECT 'Cry', ':''(', ':''{ :''[', 'cry'
+UNION ALL   SELECT 'Love', '<3', '(L)', 'love'
+UNION ALL   SELECT 'Devil', '3:)', '(6)', 'devil'
+UNION ALL   SELECT 'Angel', 'O:)', '(A)', 'angel'
+UNION ALL   SELECT 'Like', '(Y)', NULL, 'like'

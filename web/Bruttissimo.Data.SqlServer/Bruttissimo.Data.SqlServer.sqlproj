@@ -276,6 +276,12 @@
     <Build Include="Schema Objects\Tables\Keys\FK_User_UserSettings.fkey.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Schema Objects\Tables\Smiley.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Tables\Keys\PK_Smiley.pkey.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
   <ItemGroup>
     <None Include="Schema Comparisons\SchemaComparer.scmp">

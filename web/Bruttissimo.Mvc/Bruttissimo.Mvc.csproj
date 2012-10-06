@@ -130,6 +130,7 @@
     <Content Include="Content\Style\Views\User\login.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Image\Sprite\smiley.png" />
     <Content Include="robots.txt" />
     <None Include="..\..\.gitignore">
       <Link>.gitignore</Link>
