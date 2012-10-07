@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Bruttissimo.Domain.Entity.Entities;
+using Bruttissimo.Domain.Entity.Entities.Interface;
 
 namespace Bruttissimo.Domain.Logic.Service
 {

@@ -4,7 +4,7 @@ using Bruttissimo.Domain.Entity.Entities;
 
 namespace Bruttissimo.Domain.Repository
 {
-    public interface ILogRepository
+    public interface ILogRepository : IEntityRepository<Log>
     {
         IEnumerable<Log> GetLast(int count);
 

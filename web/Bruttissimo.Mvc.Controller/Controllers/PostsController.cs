@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc.Core.Attributes;
@@ -176,6 +177,16 @@ namespace Bruttissimo.Mvc.Controller.Controllers
             }
             PostModel model = mapper.Map<Post, PostModel>(post);
             return View(model);
+        }
+
+        /// <summary>
+        /// Parses links and smileys in user input.
+        /// </summary>
+        /// <param name="message">A message provided by a user.</param>
+        /// <returns>The message formatted how we want to display it.</returns>
+        private string ParseUserMessageInput(string message)
+        {
+            throw new NotImplementedException();
         }
     }
 }

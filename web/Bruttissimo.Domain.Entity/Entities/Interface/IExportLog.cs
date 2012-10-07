@@ -1,6 +1,6 @@
 using System;
 
-namespace Bruttissimo.Domain.Entity.Entities
+namespace Bruttissimo.Domain.Entity.Entities.Interface
 {
     public interface IExportLog
     {

@@ -59,7 +59,8 @@
     <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\FacebookExportLog.cs" />
     <Compile Include="Entities\FacebookImportLog.cs" />
-    <Compile Include="Entities\IExportLog.cs" />
+    <Compile Include="Entities\Interface\IExportLog.cs" />
+    <Compile Include="Entities\Smiley.cs" />
     <Compile Include="Entities\TwitterExportLog.cs" />
     <Compile Include="Entities\UserSettings.cs" />
     <Compile Include="Enum\LinkType.cs" />
@@ -95,6 +96,7 @@
       <Name>Bruttissimo.Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

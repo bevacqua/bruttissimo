@@ -9,11 +9,12 @@ using Dapper;
 
 namespace Bruttissimo.Data.Dapper.Repository
 {
-    public class LogRepository : ILogRepository
+    public class LogRepository : EntityRepository<Log>, ILogRepository
     {
         private readonly IDbConnection connection;
 
         public LogRepository(IDbConnection connection)
+            : base(connection)
         {
             Ensure.That(() => connection).IsNotNull();
 
