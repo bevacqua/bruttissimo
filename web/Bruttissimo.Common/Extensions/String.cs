@@ -49,10 +49,18 @@ namespace Bruttissimo.Common.Extensions
         public static string[] SplitOnNewLines(this string text, bool removeEmptyEntries = true)
         {
             StringSplitOptions opts = removeEmptyEntries ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None;
-            string[] separators = new[] {Environment.NewLine, Constants.NewLine, Constants.EscapedNewLine};
+            string[] separators = new[] { Environment.NewLine, Constants.NewLine, Constants.EscapedNewLine };
             string[] result = text.Split(separators, opts);
             return result;
         }
+
+        public static string[] SplitNonEmpty(this string text, char separator)
+        {
+            char[] separators = new[] { separator };
+            string[] result = text.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            return result;
+        }
+
 
         public static string TrimAll(this string text, bool includeLineBreaks = true)
         {

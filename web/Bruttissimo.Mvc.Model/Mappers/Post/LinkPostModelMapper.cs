@@ -10,7 +10,8 @@ namespace Bruttissimo.Mvc.Model.Mappers.Post
         {
             mapper.CreateMap<Domain.Entity.Entities.Post, LinkPostModel>().Ignoring(
                 m => m.Comments,
-                m => m.PostSlug
+                m => m.PostSlug,
+                m => m.UserMessage
             );
         }
     }

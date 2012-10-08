@@ -148,16 +148,6 @@ namespace Bruttissimo.Common.Static
 
         public static class Site
         {
-            public static string Home
-            {
-                get { return Get("Site.Home"); }
-            }
-
-            public static int? Port
-            {
-                get { return Int(Get("Site.Port")); }
-            }
-
             public static bool Analytics
             {
                 get { return Boolean(Get("Site.Analytics")) ?? false; }
@@ -166,6 +156,21 @@ namespace Bruttissimo.Common.Static
             public static string AnalyticsId
             {
                 get { return Get("Site.AnalyticsId"); }
+            }
+
+            public static string Home
+            {
+                get { return Get("Site.Home"); }
+            }
+
+            public static string Pixel
+            {
+                get { return Get("Site.Pixel"); }
+            }
+
+            public static int? Port
+            {
+                get { return Int(Get("Site.Port")); }
             }
         }
 

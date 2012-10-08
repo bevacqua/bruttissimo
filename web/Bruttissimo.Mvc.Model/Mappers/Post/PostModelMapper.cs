@@ -27,6 +27,10 @@ namespace Bruttissimo.Mvc.Model.Mappers.Post
                 .ForMember(
                     dest => dest.PostSlug,
                     opt => opt.MapFrom(src => postService.GetTitleSlug(src))
+                )
+                .ForMember(
+                    dest => dest.UserMessage,
+                    opt => opt.MapFrom(src => postService.BeautifyUserMessage(src.UserMessage))
                 );
         }
 
@@ -35,17 +39,17 @@ namespace Bruttissimo.Mvc.Model.Mappers.Post
             switch (post.Link.Type)
             {
                 default:
-                {
-                    throw new ArgumentOutOfRangeException("post.Link.Type");
-                }
+                    {
+                        throw new ArgumentOutOfRangeException("post.Link.Type");
+                    }
                 case LinkType.Html:
-                {
-                    return new LinkPostModel();
-                }
+                    {
+                        return new LinkPostModel();
+                    }
                 case LinkType.Image:
-                {
-                    return new ImagePostModel();
-                }
+                    {
+                        return new ImagePostModel();
+                    }
             }
         }
     }
