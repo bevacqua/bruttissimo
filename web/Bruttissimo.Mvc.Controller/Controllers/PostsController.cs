@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc.Core.Attributes;
@@ -98,7 +97,7 @@ namespace Bruttissimo.Mvc.Controller.Controllers
             }
             return View(model);
         }
-        
+
         [HttpGet]
         [NotAjax]
         [ExtendedAuthorize]
@@ -117,37 +116,37 @@ namespace Bruttissimo.Mvc.Controller.Controllers
             {
                 default:
                 case LinkParseResult.Invalid:
-                {
-                    return Json(new { faulted = "invalid" });
-                }
-                case LinkParseResult.Used:
-                {
-                    long? postId = parsed.Link.PostId;
-                    if (postId.HasValue)
-                    {
-                        Post post = postService.GetById(postId.Value);
-                        return Json(new
-                        {
-                            faulted = "used",
-                            link = DetailsRoute(post),
-                            id = postId
-                        });
-                    }
-                    else
                     {
                         return Json(new { faulted = "invalid" });
                     }
-                }
-                case LinkParseResult.Valid:
-                {
-                    Link link = parsed.Link;
-                    if (link.Description != null && link.Description.Length > 200)
+                case LinkParseResult.Used:
                     {
-                        link.Description = link.Description.Substring(0, 200);
+                        long? postId = parsed.Link.PostId;
+                        if (postId.HasValue)
+                        {
+                            Post post = postService.GetById(postId.Value);
+                            return Json(new
+                            {
+                                faulted = "used",
+                                link = DetailsRoute(post),
+                                id = postId
+                            });
+                        }
+                        else
+                        {
+                            return Json(new { faulted = "invalid" });
+                        }
                     }
-                    LinkModel model = mapper.Map<Link, LinkModel>(link);
-                    return AjaxView(model);
-                }
+                case LinkParseResult.Valid:
+                    {
+                        Link link = parsed.Link;
+                        if (link.Description != null && link.Description.Length > 200)
+                        {
+                            link.Description = link.Description.Substring(0, 200);
+                        }
+                        LinkModel model = mapper.Map<Link, LinkModel>(link);
+                        return AjaxView(model);
+                    }
             }
         }
 
@@ -177,16 +176,6 @@ namespace Bruttissimo.Mvc.Controller.Controllers
             }
             PostModel model = mapper.Map<Post, PostModel>(post);
             return View(model);
-        }
-
-        /// <summary>
-        /// Parses links and smileys in user input.
-        /// </summary>
-        /// <param name="message">A message provided by a user.</param>
-        /// <returns>The message formatted how we want to display it.</returns>
-        private string ParseUserMessageInput(string message)
-        {
-            throw new NotImplementedException();
         }
     }
 }

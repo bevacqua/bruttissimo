@@ -75,6 +75,7 @@
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +88,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Exceptions.resx</DependentUpon>
     </Compile>
+    <Compile Include="Service\Resources\Smileys.Designer.cs">
+      <DependentUpon>Smileys.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Service\SmileyService.cs" />
     <Compile Include="Service\ExporterService.cs" />
     <Compile Include="Service\GoogleAnalyticsService.cs" />
     <Compile Include="Authentication\AuthenticationPortal.cs" />
@@ -174,6 +181,10 @@
     <EmbeddedResource Include="MiniMembership\Resources\Exceptions.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Exceptions.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Service\Resources\Smileys.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Smileys.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

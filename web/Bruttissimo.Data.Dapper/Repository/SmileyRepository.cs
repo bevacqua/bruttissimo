@@ -1,7 +1,9 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
 using Bruttissimo.Common.Guard;
 using Bruttissimo.Domain.Entity.Entities;
 using Bruttissimo.Domain.Repository;
+using Dapper;
 
 namespace Bruttissimo.Data.Dapper.Repository
 {
@@ -15,6 +17,13 @@ namespace Bruttissimo.Data.Dapper.Repository
             Ensure.That(() => connection).IsNotNull();
 
             this.connection = connection;
+        }
+
+        public IEnumerable<Smiley> GetSmileys()
+        {
+            const string sql = @"SELECT * FROM [Smiley]";
+            IEnumerable<Smiley> smileys = connection.Query<Smiley>(sql);
+            return smileys;
         }
     }
 }

@@ -59,6 +59,7 @@
     <Compile Include="Repository\IEntityRepository.cs" />
     <Compile Include="Repository\ISmileyRepository.cs" />
     <Compile Include="Repository\Social\ITwitterRepository.cs" />
+    <Compile Include="Service\ISmileyService.cs" />
     <Compile Include="Service\IGoogleAnalyticsService.cs" />
     <Compile Include="Service\ICommentService.cs" />
     <Compile Include="Service\IFacebookExporterService.cs" />
