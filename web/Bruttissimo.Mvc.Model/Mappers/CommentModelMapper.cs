@@ -22,7 +22,7 @@ namespace Bruttissimo.Mvc.Model.Mappers
             mapper.CreateMap<Comment, CommentModel>()
                 .ForMember(
                     dest => dest.Message,
-                    opt => opt.MapFrom(src => postService.BeautifyUserMessage(src.Message)));
+                    opt => opt.MapFrom(src => postService.BeautifyUserMessage(src.Message, null)));
         }
     }
 }

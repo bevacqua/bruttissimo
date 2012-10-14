@@ -78,6 +78,17 @@ namespace Bruttissimo.Domain.Logic.Service
             return hotLinked;
         }
 
+        public bool AreEqual(Uri uri, Link link)
+        {
+            if (link == null)
+            {
+                return false;
+            }
+            Uri linkUri = httpHelper.ConvertToUri(link.ReferenceUri);
+            bool equality = uri == linkUri;
+            return equality;
+        }
+
         private string GetAnchorLink(Uri uri, string text = null)
         {
             TagBuilder tag = new TagBuilder("a");

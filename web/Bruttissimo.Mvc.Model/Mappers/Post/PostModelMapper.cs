@@ -30,7 +30,7 @@ namespace Bruttissimo.Mvc.Model.Mappers.Post
                 )
                 .ForMember(
                     dest => dest.UserMessage,
-                    opt => opt.MapFrom(src => postService.BeautifyUserMessage(src.UserMessage))
+                    opt => opt.MapFrom(src => postService.BeautifyUserMessage(src.UserMessage, src))
                 );
         }
 

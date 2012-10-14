@@ -79,8 +79,9 @@ namespace Bruttissimo.Domain.Logic.Service
         /// the others, and turning smilies into their appropriate image tags.
         /// </summary>
         /// <param name="message">A message provided by a user.</param>
+        /// <param name="post">The post the user message belongs to, if any.</param>
         /// <returns>The message formatted how we want to display it.</returns>
-        public IHtmlString BeautifyUserMessage(string message)
+        public IHtmlString BeautifyUserMessage(string message, Post post = null)
         {
             if (message == null)
             {
@@ -88,7 +89,8 @@ namespace Bruttissimo.Domain.Logic.Service
             }
             string encoded = HttpUtility.HtmlEncode(message); // all user input must be html-encoded.
 
-            string hotLinked = linkService.HotLinkHtml(encoded, uri => true);
+            Func<Uri, bool> filter = uri => post == null || !linkService.AreEqual(uri, post.Link);
+            string hotLinked = linkService.HotLinkHtml(encoded, filter);
             string htmlString = smileyService.ReplaceSmileys(hotLinked, true);
             IHtmlString html = new MvcHtmlString(htmlString.TrimAll(includeLineBreaks: false));
             return html;

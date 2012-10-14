@@ -10,6 +10,6 @@ namespace Bruttissimo.Domain.Service
         Post GetById(long id, bool includeLink = false, bool includeComments = false);
         IEnumerable<Post> GetLatest(long? timestamp, int count);
         string GetTitleSlug(Post post);
-        IHtmlString BeautifyUserMessage(string message);
+        IHtmlString BeautifyUserMessage(string message, Post post = null);
     }
 }
