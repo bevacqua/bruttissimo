@@ -8,5 +8,6 @@ namespace Bruttissimo.Domain.Service
     {
         LinkResult ParseUserInput(string text);
         IList<Uri> GetReferenceUris(string text);
+        string HotLinkHtml(string html, Func<Uri, bool> filter);
     }
 }

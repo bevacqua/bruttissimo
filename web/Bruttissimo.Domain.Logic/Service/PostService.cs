@@ -4,9 +4,8 @@ using System.Web;
 using System.Web.Mvc;
 using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
-using Bruttissimo.Common.InversionOfControl;
+using Bruttissimo.Common.Static;
 using Bruttissimo.Common.Utility;
-using Bruttissimo.Domain.Entity.DTO;
 using Bruttissimo.Domain.Entity.Entities;
 using Bruttissimo.Domain.Repository;
 using Bruttissimo.Domain.Service;
@@ -17,18 +16,21 @@ namespace Bruttissimo.Domain.Logic.Service
     {
         private readonly IPostRepository postRepository;
         private readonly ICommentService commentService;
+        private readonly ILinkService linkService;
         private readonly ISmileyService smileyService;
         private readonly TextHelper textHelper;
 
-        public PostService(IPostRepository postRepository, ICommentService commentService, ISmileyService smileyService, TextHelper textHelper)
+        public PostService(IPostRepository postRepository, ICommentService commentService, ILinkService linkService, ISmileyService smileyService, TextHelper textHelper)
         {
             Ensure.That(() => postRepository).IsNotNull();
             Ensure.That(() => commentService).IsNotNull();
+            Ensure.That(() => linkService).IsNotNull();
             Ensure.That(() => smileyService).IsNotNull();
             Ensure.That(() => textHelper).IsNotNull();
 
             this.postRepository = postRepository;
             this.commentService = commentService;
+            this.linkService = linkService;
             this.smileyService = smileyService;
             this.textHelper = textHelper;
         }
@@ -84,12 +86,11 @@ namespace Bruttissimo.Domain.Logic.Service
             {
                 return null;
             }
-            string encoded = HttpUtility.HtmlEncode(message);
+            string encoded = HttpUtility.HtmlEncode(message); // all user input must be html-encoded.
 
-            // TODO links.
-
-            string htmlString = smileyService.ReplaceSmileys(encoded, true);
-            IHtmlString html = new MvcHtmlString(htmlString);
+            string hotLinked = linkService.HotLinkHtml(encoded, uri => true);
+            string htmlString = smileyService.ReplaceSmileys(hotLinked, true);
+            IHtmlString html = new MvcHtmlString(htmlString.TrimAll(includeLineBreaks: false));
             return html;
         }
     }

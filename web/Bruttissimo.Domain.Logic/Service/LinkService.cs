@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Web.Mvc;
 using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Static;
 using Bruttissimo.Common.Utility;
@@ -23,7 +24,7 @@ namespace Bruttissimo.Domain.Logic.Service
             Ensure.That(() => linkRepository).IsNotNull();
             Ensure.That(() => linkCrawler).IsNotNull();
             Ensure.That(() => httpHelper).IsNotNull();
-            
+
             this.linkRepository = linkRepository;
             this.linkCrawler = linkCrawler;
             this.httpHelper = httpHelper;
@@ -58,6 +59,37 @@ namespace Bruttissimo.Domain.Logic.Service
             return uris;
         }
 
+        public string HotLinkHtml(string html, Func<Uri, bool> filter)
+        {
+            Ensure.That(() => html).IsNotNull();
+
+            string hotLinked = CompiledRegex.WebLink.Replace(html, delegate(Match match)
+            {
+                string value = match.Captures[0].Value;
+
+                Uri uri = httpHelper.ConvertToUri(value);
+                if (filter(uri))
+                {
+                    string anchorLink = GetAnchorLink(uri);
+                    return anchorLink;
+                }
+                return string.Empty;
+            });
+            return hotLinked;
+        }
+
+        private string GetAnchorLink(Uri uri, string text = null)
+        {
+            TagBuilder tag = new TagBuilder("a");
+            tag.AddCssClass("external");
+            tag.Attributes.Add("rel", "nofollow");
+            tag.Attributes.Add("target", "_blank");
+            tag.Attributes.Add("href", uri.AbsoluteUri);
+            tag.SetInnerText(text ?? uri.AbsoluteUri);
+            string html = tag.ToString();
+            return html;
+        }
+
         internal LinkResult GetExistingLinkOrCrawlResource(IEnumerable<Uri> uris)
         {
             Ensure.That(() => uris).IsNotNull();
@@ -78,7 +110,7 @@ namespace Bruttissimo.Domain.Logic.Service
                 else
                 {
                     linkRepository.Insert(link);
-                    return new LinkResult {Result = LinkParseResult.Valid, Link = link};
+                    return new LinkResult { Result = LinkParseResult.Valid, Link = link };
                 }
             }
             else
@@ -93,7 +125,7 @@ namespace Bruttissimo.Domain.Logic.Service
 
         internal LinkResult Invalid()
         {
-            return new LinkResult {Result = LinkParseResult.Invalid};
+            return new LinkResult { Result = LinkParseResult.Invalid };
         }
     }
 }
