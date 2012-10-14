@@ -58,6 +58,9 @@
     <Reference Include="MvcSiteMapProvider">
       <HintPath>..\packages\MvcSiteMapProvider.3.3.3.0\lib\net40\MvcSiteMapProvider.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.9\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Quartz, Version=2.0.1.100, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
       <HintPath>..\packages\Quartz.2.0.1\lib\net40\Quartz.dll</HintPath>
     </Reference>
@@ -65,7 +68,7 @@
       <HintPath>..\lib\RazorEngine.modified\RazorEngine.dll</HintPath>
     </Reference>
     <Reference Include="SignalR">
-      <HintPath>..\packages\SignalR.Server.0.5.2\lib\net40\SignalR.dll</HintPath>
+      <HintPath>..\packages\SignalR.Server.0.5.3\lib\net40\SignalR.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -117,7 +120,7 @@
     <Compile Include="Service\FacebookService.cs" />
     <Compile Include="MiniMembership\MiniAuthenticationWrapper.cs" />
     <Compile Include="Service\LogService.cs" />
-    <Compile Include="SignalR\Hub\LogHub.cs" />
+    <Compile Include="SignalR\Hubs\LogHub.cs" />
     <Compile Include="MiniMembership\MiniIdentity.cs" />
     <Compile Include="MiniMembership\MiniPrincipal.cs" />
     <Compile Include="Email\Model\EmailModel.cs" />

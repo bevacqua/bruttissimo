@@ -90,7 +90,7 @@
       <Name>Bruttissimo.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Bruttissimo.Mvc.Controller\Bruttissimo.Mvc.Controller.csproj">
-      <Project>{29B0B536-3C50-481A-BC6C-89F66FE39F88}</Project>
+      <Project>{29b0b536-3c50-481a-bc6c-89f66fe39f88}</Project>
       <Name>Bruttissimo.Mvc.Controller</Name>
     </ProjectReference>
     <ProjectReference Include="..\Bruttissimo.Mvc.Model\Bruttissimo.Mvc.Model.csproj">

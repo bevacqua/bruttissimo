@@ -4,7 +4,7 @@ using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.Mvc.Interface;
 using Bruttissimo.Domain.Logic.MiniMembership;
-using Bruttissimo.Domain.Logic.SignalR.Hub;
+using Bruttissimo.Domain.Logic.SignalR.Hubs;
 using Bruttissimo.Domain.Service;
 using log4net.Core;
 

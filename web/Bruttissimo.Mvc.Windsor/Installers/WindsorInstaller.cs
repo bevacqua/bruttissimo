@@ -6,7 +6,7 @@ using Bruttissimo.Common.Mvc.InversionOfControl.Installers;
 using Bruttissimo.Common.Mvc.InversionOfControl.Mvc;
 using Bruttissimo.Domain.Entity.Mappers;
 using Bruttissimo.Domain.Logic.Service;
-using Bruttissimo.Domain.Logic.SignalR.Hub;
+using Bruttissimo.Domain.Logic.SignalR.Hubs;
 using Bruttissimo.Domain.Social.Mappers;
 using Bruttissimo.Mvc.Controller.Controllers;
 using Bruttissimo.Mvc.Model.Mappers.Post;
