@@ -39,17 +39,17 @@ namespace Bruttissimo.Mvc.Model.Mappers.Post
             switch (post.Link.Type)
             {
                 default:
-                    {
-                        throw new ArgumentOutOfRangeException("post.Link.Type");
-                    }
+                {
+                    throw new ArgumentOutOfRangeException("post.Link.Type");
+                }
                 case LinkType.Html:
-                    {
-                        return new LinkPostModel();
-                    }
+                {
+                    return new LinkPostModel();
+                }
                 case LinkType.Image:
-                    {
-                        return new ImagePostModel();
-                    }
+                {
+                    return new ImagePostModel();
+                }
             }
         }
     }

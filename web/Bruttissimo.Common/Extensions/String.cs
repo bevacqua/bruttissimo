@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Text;
 using System.Text.RegularExpressions;
 using Bruttissimo.Common.Resources;
 
@@ -81,6 +82,27 @@ namespace Bruttissimo.Common.Extensions
         {
             string splitted = Regex.Replace(text, CAMEL_CASE_REGEX, CAMEL_CASE_REPLACE);
             return splitted;
+        }
+
+        public static string Replace(this string text, string oldValue, string newValue, StringComparison comparison)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            int previousIndex = 0;
+            int index = text.IndexOf(oldValue, comparison);
+            
+            while (index != -1)
+            {
+                sb.Append(text.Substring(previousIndex, index - previousIndex));
+                sb.Append(newValue);
+                index += oldValue.Length;
+
+                previousIndex = index;
+                index = text.IndexOf(oldValue, index, comparison);
+            }
+            sb.Append(text.Substring(previousIndex));
+
+            return sb.ToString();
         }
     }
 }

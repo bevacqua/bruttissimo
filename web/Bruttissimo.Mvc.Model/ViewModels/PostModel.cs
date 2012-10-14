@@ -1,5 +1,6 @@
 ﻿using System;
-using Bruttissimo.Common.Extensions;
+using System.Web;
+using Bruttissimo.Common.Mvc.Extensions;
 
 namespace Bruttissimo.Mvc.Model.ViewModels
 {
@@ -11,7 +12,7 @@ namespace Bruttissimo.Mvc.Model.ViewModels
         public DateTime Created { get; set; }
         public string UserDisplayName { get; set; }
 
-        public string UserMessage { get; set; }
+        public IHtmlString UserMessage { get; set; }
 
         public bool HasUserMessage
         {

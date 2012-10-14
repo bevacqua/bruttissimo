@@ -1,14 +1,13 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
 using Bruttissimo.Common.InversionOfControl;
-using Bruttissimo.Common.Static;
 using Bruttissimo.Common.Utility;
+using Bruttissimo.Domain.Entity.DTO;
 using Bruttissimo.Domain.Entity.Entities;
-using Bruttissimo.Domain.Logic.Service.Resources;
 using Bruttissimo.Domain.Repository;
 using Bruttissimo.Domain.Service;
 
@@ -76,42 +75,29 @@ namespace Bruttissimo.Domain.Logic.Service
         /// </summary>
         /// <param name="message">A message provided by a user.</param>
         /// <returns>The message formatted how we want to display it.</returns>
-        public string BeautifyUserMessage(string message)
+        public IHtmlString BeautifyUserMessage(string message)
         {
+            if (message == null)
+            {
+                return null;
+            }
+            string encoded = HttpUtility.HtmlEncode(message);
+
             // TODO links.
-            // CompiledRegex.WebLink
 
             ISmileyService smileyService = IoC.Container.Resolve<ISmileyService>();
-            IList<Smiley> smileys = smileyService.GetSmileys();
-
-            var replacements = smileys.Select(x =>
+            IEnumerable<SmileyDto> replacements = smileyService.GetSmileyReplacements();
+            foreach (SmileyDto replacement in replacements)
             {
-                string aliases = x.Aliases ?? string.Empty;
-                IEnumerable<string> keywords = new[] { x.Emoticon }.Concat(aliases.SplitNonEmpty(' '));
+                string smiley = replacement.Smiley.Value;
 
-                Func<string> getSmiley = () =>
+                foreach (string keyword in replacement.EncodedKeywords)
                 {
-                    string name = Smileys.ResourceManager.GetString(x.ResourceKey);
-                    TagBuilder tag = new TagBuilder("img");
-                    tag.Attributes.Add("title", x.Emoticon);
-                    tag.Attributes.Add("alt", name);
-                    tag.Attributes.Add("src", Config.Site.Pixel);
-                    tag.AddCssClass(x.CssClass);
-                    string smiley = tag.ToString(TagRenderMode.SelfClosing);
-                    return smiley;
-                };
-                return new { Keywords = keywords, GetSmiley = getSmiley };
-            });
-            foreach (var replacement in replacements)
-            {
-                string smiley = replacement.GetSmiley();
-
-                foreach (string keyword in replacement.Keywords)
-                {
-                    message = message.Replace(keyword, smiley);
+                    encoded = encoded.Replace(keyword, smiley, StringComparison.InvariantCultureIgnoreCase);
                 }
             }
-            return message;
+            IHtmlString html = new MvcHtmlString(encoded);
+            return html;
         }
     }
 }

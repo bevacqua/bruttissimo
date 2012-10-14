@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Web;
 using Bruttissimo.Domain.Entity.Entities;
 
 namespace Bruttissimo.Domain.Service
@@ -9,6 +10,6 @@ namespace Bruttissimo.Domain.Service
         Post GetById(long id, bool includeLink = false, bool includeComments = false);
         IEnumerable<Post> GetLatest(long? timestamp, int count);
         string GetTitleSlug(Post post);
-        string BeautifyUserMessage(string message);
+        IHtmlString BeautifyUserMessage(string message);
     }
 }

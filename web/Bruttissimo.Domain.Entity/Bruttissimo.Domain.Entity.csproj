@@ -54,6 +54,7 @@
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="DTO\JobDto.cs" />
+    <Compile Include="DTO\SmileyDto.cs" />
     <Compile Include="Email\EmailMessageModel.cs" />
     <Compile Include="Constants\Rights.cs" />
     <Compile Include="Entities\Comment.cs" />
