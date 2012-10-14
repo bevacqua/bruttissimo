@@ -8,5 +8,6 @@ namespace Bruttissimo.Domain.Service
     {
         IList<Smiley> GetSmileys();
         IEnumerable<SmileyDto> GetSmileyReplacements();
+        string ReplaceSmileys(string text, bool encoded);
     }
 }

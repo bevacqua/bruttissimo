@@ -86,23 +86,23 @@ namespace Bruttissimo.Common.Extensions
 
         public static string Replace(this string text, string oldValue, string newValue, StringComparison comparison)
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder builder = new StringBuilder();
 
             int previousIndex = 0;
             int index = text.IndexOf(oldValue, comparison);
             
             while (index != -1)
             {
-                sb.Append(text.Substring(previousIndex, index - previousIndex));
-                sb.Append(newValue);
+                builder.Append(text.Substring(previousIndex, index - previousIndex));
+                builder.Append(newValue);
                 index += oldValue.Length;
 
                 previousIndex = index;
                 index = text.IndexOf(oldValue, index, comparison);
             }
-            sb.Append(text.Substring(previousIndex));
+            builder.Append(text.Substring(previousIndex));
 
-            return sb.ToString();
+            return builder.ToString();
         }
     }
 }

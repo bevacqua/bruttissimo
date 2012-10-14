@@ -16,17 +16,20 @@ namespace Bruttissimo.Domain.Logic.Service
     public class PostService : IPostService
     {
         private readonly IPostRepository postRepository;
-        private readonly TextHelper textHelper;
         private readonly ICommentService commentService;
+        private readonly ISmileyService smileyService;
+        private readonly TextHelper textHelper;
 
-        public PostService(IPostRepository postRepository, ICommentService commentService, TextHelper textHelper)
+        public PostService(IPostRepository postRepository, ICommentService commentService, ISmileyService smileyService, TextHelper textHelper)
         {
             Ensure.That(() => postRepository).IsNotNull();
             Ensure.That(() => commentService).IsNotNull();
+            Ensure.That(() => smileyService).IsNotNull();
             Ensure.That(() => textHelper).IsNotNull();
 
             this.postRepository = postRepository;
             this.commentService = commentService;
+            this.smileyService = smileyService;
             this.textHelper = textHelper;
         }
 
@@ -85,18 +88,8 @@ namespace Bruttissimo.Domain.Logic.Service
 
             // TODO links.
 
-            ISmileyService smileyService = IoC.Container.Resolve<ISmileyService>();
-            IEnumerable<SmileyDto> replacements = smileyService.GetSmileyReplacements();
-            foreach (SmileyDto replacement in replacements)
-            {
-                string smiley = replacement.Smiley.Value;
-
-                foreach (string keyword in replacement.EncodedKeywords)
-                {
-                    encoded = encoded.Replace(keyword, smiley, StringComparison.InvariantCultureIgnoreCase);
-                }
-            }
-            IHtmlString html = new MvcHtmlString(encoded);
+            string htmlString = smileyService.ReplaceSmileys(encoded, true);
+            IHtmlString html = new MvcHtmlString(htmlString);
             return html;
         }
     }

@@ -60,5 +60,23 @@ namespace Bruttissimo.Domain.Logic.Service
             });
             return replacements;
         }
+
+        public string ReplaceSmileys(string text, bool encoded)
+        {
+            IEnumerable<SmileyDto> replacements = GetSmileyReplacements();
+
+            foreach (SmileyDto replacement in replacements)
+            {
+                IEnumerable<string> keywords = encoded ? replacement.EncodedKeywords : replacement.Keywords;
+                string smiley = replacement.Smiley.Value;
+
+                foreach (string keyword in keywords)
+                {
+                    text = text.Replace(keyword, smiley, StringComparison.InvariantCultureIgnoreCase);
+                }
+            }
+
+            return text;
+        }
     }
 }
