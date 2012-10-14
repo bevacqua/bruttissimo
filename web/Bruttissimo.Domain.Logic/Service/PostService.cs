@@ -4,7 +4,6 @@ using System.Web;
 using System.Web.Mvc;
 using Bruttissimo.Common.Extensions;
 using Bruttissimo.Common.Guard;
-using Bruttissimo.Common.Static;
 using Bruttissimo.Common.Utility;
 using Bruttissimo.Domain.Entity.Entities;
 using Bruttissimo.Domain.Repository;
@@ -76,7 +75,7 @@ namespace Bruttissimo.Domain.Logic.Service
 
         /// <summary>
         /// Parses links and smileys in user input, removing undersired links, highlighting
-        /// the others, and turning smilies into their appropriate image tags.
+        /// the others, and turning smileys into their appropriate image tags.
         /// </summary>
         /// <param name="message">A message provided by a user.</param>
         /// <param name="post">The post the user message belongs to, if any.</param>

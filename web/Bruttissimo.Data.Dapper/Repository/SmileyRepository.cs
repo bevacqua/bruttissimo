@@ -21,7 +21,7 @@ namespace Bruttissimo.Data.Dapper.Repository
 
         public IEnumerable<Smiley> GetSmileys()
         {
-            const string sql = @"SELECT * FROM [Smiley]";
+            const string sql = @"SELECT [Smiley].* FROM [Smiley]";
             IEnumerable<Smiley> smileys = connection.Query<Smiley>(sql);
             return smileys;
         }

@@ -3,6 +3,7 @@ using System.Reflection;
 using AutoMapper;
 using AutoMapper.Mappers;
 using Bruttissimo.Common.Guard;
+using Bruttissimo.Common.Helpers;
 using Bruttissimo.Common.Interface;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Registration;
@@ -63,7 +64,7 @@ namespace Bruttissimo.Common.InversionOfControl.Installers
                     .DynamicParameters(
                         (k, parameters) => parameters["configurators"] = container.ResolveAll<IMapperConfigurator>()
                     )
-                    .LifestyleSingleton()
+                    .LifestyleHybridPerWebRequestPerThread() // so that connections get properly instanced.
                 );
         }
 
